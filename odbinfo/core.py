@@ -1,7 +1,7 @@
 """ Core module """
 from io import StringIO
 
-from odbinfo.out import write_dict
+from odbinfo.writer import write_dict
 
 
 def main():

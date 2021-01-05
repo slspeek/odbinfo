@@ -4,6 +4,7 @@ import logging
 from test.connect import datasource, start_office
 from test.resource import TEST_OUTPUT, DEFAULT_TESTDB
 from pytest import fixture
+import pytest
 from odbinfo.writer import create_jekyll_site, _make_site
 from odbinfo.reader import read_tables
 
@@ -12,6 +13,7 @@ logging.basicConfig()
 logger.setLevel(logging.DEBUG)
 
 
+@pytest.mark.slow
 # pylint:disable=unused-argument
 def test_new_site(libreoffice):  # pylint:disable=redefined-outer-name
     """ test new site scaffolding """
@@ -29,6 +31,7 @@ def libreoffice():
     logger.debug("LibreOffice killed")
 
 
+@pytest.mark.slow
 def test_generate_tables_site():
     """ test table rendering """
     tables = read_tables(datasource().getConnection("", ""))

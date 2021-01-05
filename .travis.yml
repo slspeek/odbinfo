@@ -1,0 +1,15 @@
+os: linux
+dist: xenial
+language: python
+python:
+    - "3.7"
+before_install:
+    - sudo apt-get -y install graphviz ruby-full build-essential zlib1g-dev pipenv
+    - sudo bash ci/linux.bash
+install:
+    - pipenv install -d
+    - export GEM_HOME=~/gems
+    - export PATH=$PATH:~/gems/bin
+    - gem install jekyll bundler
+script:
+    - pipenv run make all

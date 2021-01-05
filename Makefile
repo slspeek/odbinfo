@@ -9,28 +9,29 @@ build=$(target)/build
 test-output=$(build)/test-output
 PYTHONPATH=.:$$(pipenv --venv)/lib/python3.7/site-packages
 
-all: clean info check itest unit
+all: clean info check itest
 
 
 prepare:
 	-mkdir -p $(build) $(test-output)
-	cp -rv test odbinfo data $(build)
+	cp -r test odbinfo data $(build)
 
 .ONESHELL:
 info: prepare
 	cd $(build)
 	PYTHONPATH=$(PYTHONPATH) $(python) -m site
-	echo PATH=$PATH
+	echo PATH=$$(PATH)
 
 .ONESHELL:
 itest: prepare
 	cd $(build)
-	# PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -v test
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test
 
 .ONESHELL:
 unit: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -v test
+	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow" test
+	exit 0
 
 test: itest unit
 

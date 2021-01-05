@@ -53,6 +53,6 @@ def _make_site(output_dir, name, tables):
         for tbl in tables:
             with open(f"_tables/{tbl.name}.md", "w") as out:
                 write_dict(dataclasses.asdict(tbl), out)
-        exitcode = os.system("jekyll build")
+        exitcode = os.system("bundle exec jekyll build")
         if exitcode != 0:
             raise RuntimeError("unable to build jekyll site")

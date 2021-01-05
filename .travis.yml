@@ -7,7 +7,8 @@ before_install:
     - sudo apt-get -y install graphviz ruby-full build-essential zlib1g-dev
     - sudo bash ci/linux.bash
 install:
-    - pip install pipenv 
+    - ~/virtualenv/python3.7/bin/deactivate
+    - pip install pipenv
     - pipenv install -d
     - export GEM_HOME=~/gems
     - export PATH=$PATH:~/gems/bin

@@ -20,6 +20,7 @@ prepare:
 info: prepare
 	cd $(build)
 	PYTHONPATH=$(PYTHONPATH) $(python) -m site
+	echo PATH=$PATH
 
 .ONESHELL:
 itest: prepare

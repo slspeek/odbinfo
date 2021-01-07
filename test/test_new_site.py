@@ -5,7 +5,7 @@ from test.connect import datasource, start_office
 from test.resource import TEST_OUTPUT, DEFAULT_TESTDB
 from pytest import fixture
 import pytest
-from odbinfo.writer import create_jekyll_site, _make_site
+from odbinfo.writer import new_jekyll_site, _make_site
 from odbinfo.reader import read_tables
 
 logger = logging.getLogger()
@@ -17,7 +17,7 @@ logger.setLevel(logging.DEBUG)
 # pylint:disable=unused-argument
 def test_new_site(libreoffice):  # pylint:disable=redefined-outer-name
     """ test new site scaffolding """
-    result = create_jekyll_site(TEST_OUTPUT.format(""), "test-site")
+    result = new_jekyll_site(TEST_OUTPUT.format(""), "test-site")
     assert result == os.path.join(TEST_OUTPUT.format(""), "test-site")
 
 

@@ -1,7 +1,14 @@
 """ Writing out to jekyll site format """
 import os
+from os import path
+import shlex
+import socket
+import subprocess
+import time
 import contextlib
 import dataclasses
+import webbrowser
+import pathlib
 
 import yaml
 FRONT_MATTER_MARK = "---\n"
@@ -26,7 +33,7 @@ def write_dict(adict, out):
     out.write(FRONT_MATTER_MARK)
 
 
-def create_jekyll_site(output_dir, name):
+def new_jekyll_site(output_dir, name):
     """ Sets up a empty jekyll site """
     workingdir = output_dir
     os.makedirs(workingdir, exist_ok=True)
@@ -47,8 +54,7 @@ def create_jekyll_site(output_dir, name):
 
 
 def _make_site(output_dir, name, tables):
-    path = create_jekyll_site(output_dir, name)
-    with chdir(path):
+    with chdir(new_jekyll_site(output_dir, name)):
         os.mkdir("_tables")
         for tbl in tables:
             with open(f"_tables/{tbl.name}.md", "w") as out:
@@ -56,3 +62,31 @@ def _make_site(output_dir, name, tables):
         exitcode = os.system("bundle exec jekyll build")
         if exitcode != 0:
             raise RuntimeError("unable to build jekyll site")
+    _convert_local(output_dir, name)
+
+
+def _is_port_open(port):
+    # pylint: disable=no-member
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        result = sock.connect_ex(('127.0.0.1', port))
+        if result == 0:
+            return True
+        return False
+
+
+def _convert_local(output_dir, name):
+    with chdir(path.join(output_dir, name, '_site')):
+        args = shlex.split("python -m http.server")
+        webserver_proc = subprocess.Popen(args, shell=False)
+        with chdir("../.."):
+            localsite = f"{name}-local"
+            os.makedirs(localsite)
+            while not _is_port_open(8000):
+                time.sleep(0.1)
+            os.system(f"wget --convert-links -P {localsite} -r"
+                      " http://localhost:8000/")
+
+            webserver_proc.kill()
+            pwd = path.join(os.getcwd(), localsite)
+            uri = pathlib.Path(pwd).as_uri()
+            webbrowser.open(f"{uri}/localhost:8000/index.html")

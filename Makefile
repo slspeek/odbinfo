@@ -20,7 +20,7 @@ prepare:
 info: prepare
 	cd $(build)
 	PYTHONPATH=$(PYTHONPATH) $(python) -m site
-	echo PATH=$$(PATH)
+	echo PATH=$$PATH
 
 .ONESHELL:
 itest: prepare
@@ -37,8 +37,14 @@ test: itest unit
 
 .ONESHELL:
 serve:
-	cd $(test-output)/table-site
-	jekyll server --watch -l
+	cd $(test-output)/table-site/_site
+	$(python) -m http.server & $(python) -m webbrowser -t "http://127.0.0.1:8000";fg
+	
+.ONESHELL:
+store:
+		cd $(test-output)/
+		mkdir -p local-site
+		wget --convert-links -P local-site -r "http://localhost:4000/"
 
 format:
 	autopep8 -ri .

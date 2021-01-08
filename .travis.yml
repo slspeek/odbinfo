@@ -1,10 +1,13 @@
 os: linux
 dist: xenial
+addons:
+  snaps:
+    - hugo
 language: python
 python:
     - "3.7"
 before_install:
-    - sudo apt-get -y install graphviz hugo
+    - sudo apt-get -y install graphviz
     - sudo bash ci/linux.bash
 install:
     - pip install pipenv

@@ -21,6 +21,8 @@ info: prepare
 	cd $(build)
 	PYTHONPATH=$(PYTHONPATH) $(python) -m site
 	echo PATH=$$PATH
+	hugo version
+	find data/hugo-template/themes
 
 .ONESHELL:
 itest: prepare
@@ -38,7 +40,7 @@ test: itest unit
 .ONESHELL:
 serve:
 	cd $(test-output)/table-site/
-	hugo server -D 
+	hugo server -D
 
 .ONESHELL:
 store:

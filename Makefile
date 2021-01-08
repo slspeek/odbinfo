@@ -37,14 +37,14 @@ test: itest unit
 
 .ONESHELL:
 serve:
-	cd $(test-output)/table-site/_site
-	$(python) -m http.server & $(python) -m webbrowser -t "http://127.0.0.1:8000";fg
-	
+	cd $(test-output)/table-site/
+	hugo server -D 
+
 .ONESHELL:
 store:
 		cd $(test-output)/
 		mkdir -p local-site
-		wget --convert-links -P local-site -r "http://localhost:4000/"
+		wget --convert-links -P local-site -r "http://localhost:1313/"
 
 format:
 	autopep8 -ri .

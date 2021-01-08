@@ -1,0 +1,32 @@
+{{ partial "header" . }}
+
+<main>
+
+    <div>
+        <h2>{{ .Params.name }}</h2>
+        <h5>{{ .Params.description }}</h5>
+        <ul><h3>Columns</h3>
+          {{ range .Params.columns }}
+          <li><h4>{{ .name }}</h4></li>
+          {{ end}}
+        </ul>
+        <ul><h3>Keys</h3>
+          {{ $all_tables := where .Site.Pages "Section" "tables"}}
+          {{ range .Params.keys }}
+          <li><h4>{{ .name }}</h4>
+            {{ if not (eq .referenced_table "") }}
+              {{ $tables := where $all_tables "Params.name" .referenced_table }}
+              {{ $reftable := index $tables 0 }}
+              <a href="{{$reftable.URL}}">{{.referenced_table}}</a>
+            {{end}}
+          </li>
+
+          {{ end}}
+        </ul>
+    </div>
+
+    <div align="start" class="content">{{ .Content }}</div>
+
+</main>
+
+{{ partial "footer" . }}

@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 graphviz = "*"
 pyyaml = "*"
+toml = "*"
 
 [dev-packages]
 pylint = "*"

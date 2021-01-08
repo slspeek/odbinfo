@@ -11,6 +11,8 @@ import webbrowser
 import pathlib
 
 import yaml
+import toml
+
 FRONT_MATTER_MARK = "---\n"
 
 
@@ -33,35 +35,42 @@ def write_dict(adict, out):
     out.write(FRONT_MATTER_MARK)
 
 
-def new_jekyll_site(output_dir, name):
-    """ Sets up a empty jekyll site """
+def new_site(output_dir, name):
+    """ Sets up a empty hugo site """
     workingdir = output_dir
     os.makedirs(workingdir, exist_ok=True)
     with chdir(workingdir):
-        exitcode = os.system(f"jekyll new --blank {name}")
+        exitcode = os.system(f"hugo new site {name}")
         if exitcode != 0:
-            raise RuntimeError("jekyll unable to create blank site")
-        exitcode = os.system(f"cp -rv ../data/jekyll-template/* {name}")
+            raise RuntimeError(f"hugo new site failed to create site: {name}")
+        exitcode = os.system(f"cp -r ../data/hugo-template/* {name}")
         if exitcode != 0:
             raise RuntimeError("unable to copy additional sources")
-        os.system(f"rm {name}/index.md {name}/_layouts/default.html")
         sitedir = os.path.join(workingdir, name)
-        os.chdir(name)
-        exitcode = os.system("bundle install")
-        if exitcode != 0:
-            raise RuntimeError("bundle install failed")
     return sitedir
 
 
 def _make_site(output_dir, name, tables):
-    with chdir(new_jekyll_site(output_dir, name)):
-        os.mkdir("_tables")
+    with chdir(new_site(output_dir, name)):
+        with open("config.toml", "w") as cfg:
+            toml.dump({"title": name,
+                       "baseURL": "http://example.com/",
+                       "languageCode": "en-us",
+                       "theme": "minimal",
+                       "menu": {"main": [{"url": "/tables/index.html",
+                                          "name": "tables",
+                                          "weight": 2},
+                                         {"url": "/",
+                                          "name": "home",
+                                          "weight": 1}]}}, cfg)
+        targetpath = "content/tables"
+        os.makedirs(targetpath, exist_ok=True)
         for tbl in tables:
-            with open(f"_tables/{tbl.name}.md", "w") as out:
+            with open(f"{targetpath}/{tbl.name}.md", "w") as out:
                 write_dict(dataclasses.asdict(tbl), out)
-        exitcode = os.system("bundle exec jekyll build")
+        exitcode = os.system("hugo")
         if exitcode != 0:
-            raise RuntimeError("unable to build jekyll site")
+            raise RuntimeError("unable to build hugo site")
     _convert_local(output_dir, name)
 
 
@@ -75,18 +84,20 @@ def _is_port_open(port):
 
 
 def _convert_local(output_dir, name):
-    with chdir(path.join(output_dir, name, '_site')):
-        args = shlex.split("python -m http.server")
+    with chdir(path.join(output_dir, name)):
+        port = 1313
+        args = shlex.split("hugo server")
         webserver_proc = subprocess.Popen(args, shell=False)
-        with chdir("../.."):
+        with chdir(".."):
             localsite = f"{name}-local"
             os.makedirs(localsite)
-            while not _is_port_open(8000):
+            while not _is_port_open(1313):
                 time.sleep(0.1)
             os.system(f"wget --convert-links -P {localsite} -r"
-                      " http://localhost:8000/")
+                      f" http://localhost:{port}/")
 
             webserver_proc.kill()
-            pwd = path.join(os.getcwd(), localsite)
-            uri = pathlib.Path(pwd).as_uri()
-            webbrowser.open(f"{uri}/localhost:8000/index.html")
+            if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":
+                pwd = path.join(os.getcwd(), localsite)
+                uri = pathlib.Path(pwd).as_uri()
+                webbrowser.open(f"{uri}/localhost:{port}/index.html")

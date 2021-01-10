@@ -41,6 +41,7 @@ def _read_key(ookey) -> Key:
     return \
         Key(ookey.Name,
             list(ookey.Columns.ElementNames),
+            [col.RelatedColumn for col in ookey.Columns],
             ookey.ReferencedTable,
             ookey.Type,
             ookey.DeleteRule,

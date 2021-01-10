@@ -66,12 +66,13 @@
             <tr>
               <td>{{ .name }}</td>
               <td>{{ .typename }}</td>
-              <td>{{ range .columns }} {{ . }}, {{end}}</td>
+              <td>{{ $len := len .columns }}
+                {{ range $i, $col := .columns }}{{ . }}{{ if ne (add $i 1) $len }}, {{ end }}{{end}}</td>
               <td>
               {{ if not (eq .referenced_table "") }}
                 {{ $tables := where $all_tables "Params.name" .referenced_table }}
                 {{ $reftable := index $tables 0 }}
-                <a href="{{$reftable.URL}}">{{.referenced_table}}</a>
+                <a href="{{$reftable.URL}}">{{.referenced_table}}({{ $len := len .relatedcolumns }}{{ range $i, $col := .relatedcolumns }}{{ . }}{{ if ne (add $i 1) $len }}, {{ end }}{{end}})</a>
               {{end}}
               </td>
             </tr>
@@ -96,7 +97,9 @@
                 <td>{{ .unique }}</td>
                 <td>{{ .primary }}</td>
                 <td>{{ .clustered }}</td>
-                <td>{{ range .columns }} {{ . }}, {{end}}</td>
+                <td>{{ $len := len .columns }}
+                  {{ range $i, $col := .columns }}{{ . }}{{ if ne (add $i 1) $len }}, {{ end }}{{end}}
+                </td>
               </tr>
             {{ end}}
             </tbody>

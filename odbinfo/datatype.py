@@ -36,12 +36,13 @@ class Column:  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Key:
+class Key:  # pylint: disable=too-many-instance-attributes
     """ Database key properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
     name: str
     columns: [str]
+    relatedcolumns: [str]
     referenced_table: str
     _type: int = field(repr=False)
     typename: str = field(init=False)

@@ -24,7 +24,7 @@ def test_new_site(libreoffice):  # pylint:disable=redefined-outer-name
 @fixture(scope="module")
 def libreoffice():
     """ A libreoffice running on a test repository """
-    testdb = os.getenv("BD_TESTDB", DEFAULT_TESTDB)
+    testdb = os.getenv("ODBINFO_TESTDB", DEFAULT_TESTDB)
     office_proc = start_office(testdb)
     yield office_proc
     office_proc.terminate()

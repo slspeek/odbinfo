@@ -1,15 +1,12 @@
 {{ partial "header" . }}
 
 <main>
-
     <h2>{{ .Title }}</h2>
-
-    <ul>
+    <ol>
     {{ range .Pages }}
-      <li><a href="{{.URL}}">{{.Params.name}}</a></li>
-
+      <li><h3><a href="{{.URL}}">{{.Params.name}}</a></h3></li>
     {{ end }}
-    </ul>
+    </ol>
 </main>
 
 {{ partial "footer" . }}

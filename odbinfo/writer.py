@@ -86,7 +86,7 @@ def _is_port_open(port):
 def _convert_local(output_dir, name):
     with chdir(path.join(output_dir, name)):
         port = 1313
-        args = shlex.split("hugo server")
+        args = shlex.split("hugo server --disableLiveReload")
         webserver_proc = subprocess.Popen(args, shell=False)
         with chdir(".."):
             localsite = f"{name}-local"

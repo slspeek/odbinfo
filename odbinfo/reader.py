@@ -1,5 +1,5 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
-from odbinfo.datatype import Table, Column, Key
+from odbinfo.datatype import Table, Column, Index, Key
 
 
 def read_tables(connection) -> [Table]:
@@ -14,18 +14,19 @@ def read_tables(connection) -> [Table]:
 def _read_table(ootable) -> Table:
     columns = list(map(_read_column, ootable.Columns))
     keys = list(map(_read_key, ootable.Keys))
+    indexes = list(map(_read_index, ootable.Indexes))
     return \
         Table(ootable.Name,
               ootable.Description,
               keys,
-              columns)
+              columns,
+              indexes)
 
 
 def _read_column(oocolumn) -> Column:
     return \
         Column(oocolumn.Name,
                oocolumn.DefaultValue,
-               oocolumn.Description,
                oocolumn.HelpText,
                oocolumn.IsAutoIncrement,
                oocolumn.IsNullable,
@@ -45,3 +46,13 @@ def _read_key(ookey) -> Key:
             ookey.DeleteRule,
             ookey.UpdateRule
             )
+
+
+def _read_index(ooindex) -> Index:
+    return \
+        Index(ooindex.Name,
+              ooindex.Catalog,
+              ooindex.IsUnique,
+              ooindex.IsPrimaryKeyIndex,
+              ooindex.IsClustered,
+              list(ooindex.Columns.ElementNames))

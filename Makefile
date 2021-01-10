@@ -22,7 +22,6 @@ info: prepare
 	PYTHONPATH=$(PYTHONPATH) $(python) -m site
 	echo PATH=$$PATH
 	hugo version
-	find data/hugo-template/themes
 
 .ONESHELL:
 itest: prepare

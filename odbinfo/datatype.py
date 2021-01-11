@@ -1,18 +1,22 @@
 """ Defines the main datatypes used """
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 import uno
 
 _ooconst = uno.pyuno.getConstantByName
-_SUNNAME = "com.sun.star.sdbcx."
-_KEYTYPE = _SUNNAME + "KeyType."
+_SUNNAME = "com.sun.star."
+_KEYTYPE = _SUNNAME + "sdbcx.KeyType."
 """ www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html """
 KEYTYPES = {_ooconst(_KEYTYPE + name.upper()): name for name in
             ["Unique", "Foreign", "Primary"]}
 
-_COLUMNVALUE = "com.sun.star.sdbc.ColumnValue."
+_COLUMNVALUE = _SUNNAME + "sdbc.ColumnValue."
 " www.openoffice.org/api/docs/common/ref/com/sun/star/sdbc/ColumnValue.html "
 COLUMNVALUES = {_ooconst(_COLUMNVALUE + name.upper()): name for name in
                 ["No_Nulls", "Nullable", "Nullable_Unknown"]}
+_KEYRULE = _SUNNAME + "sdbc.KeyRule."
+" www.openoffice.org/api/docs/common/ref/com/sun/star/sdbc/KeyRule.html "
+KEYRULES = {_ooconst(_KEYRULE + name.upper()): name for name in
+            ["Cascade", "Restrict", "Set_Null", "No_Action", "Set_Default"]}
 
 
 @dataclass
@@ -24,15 +28,14 @@ class Column:  # pylint: disable=too-many-instance-attributes
     defaultvalue: str
     description: str
     autoincrement: bool
-    _nullable: int = field(repr=False)
-    nullable: str = field(init=False)
+    nullable: object
     tablename: str
     typename: str
     precision: str
     scale: str
 
     def __post_init__(self):
-        self.nullable = COLUMNVALUES[self._nullable]
+        self.nullable = COLUMNVALUES[self.nullable]
 
 
 @dataclass
@@ -44,13 +47,14 @@ class Key:  # pylint: disable=too-many-instance-attributes
     columns: [str]
     relatedcolumns: [str]
     referenced_table: str
-    _type: int = field(repr=False)
-    typename: str = field(init=False)
+    typename: object
     delete_rule: int
     update_rule: int
 
     def __post_init__(self):
-        self.typename = KEYTYPES[self._type]
+        self.typename = KEYTYPES[self.typename]
+        self.update_rule = KEYRULES[self.update_rule]
+        self.delete_rule = KEYRULES[self.delete_rule]
 
 
 @dataclass

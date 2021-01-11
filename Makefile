@@ -69,3 +69,20 @@ open_test_db: prepare
 open_shell: prepare
 	cd $(build)
 	PYTHONPATH=$(PYTHONPATH) rlwrap $(python) -i odbinfo/reader.py
+
+.ONESHELL:
+oxt:
+	-mkdir -p $(lib) $(dist) $(build)
+	python -m pip install graphviz pyyaml toml \
+	--ignore-installed --target $(lib)
+	cp main.py $(stage)/python
+	cp -r odbinfo $(lib)
+	cp -r oometadata/* $(stage)
+	cp LICENSE $(stage)
+	cd $(stage)
+	zip -r ../odbinfo.oxt .
+	unzip -t ../odbinfo.oxt
+
+install_oxt: oxt
+	-$(unopkg) remove "com.github.slspeek.ODBInfo"
+	$(unopkg) add -s $(dist)/odbinfo.oxt

@@ -1,0 +1,2 @@
+{{ $len := len . }}
+{{ range $i, $col := . }}{{ . }}{{ if ne (add $i 1) $len }}, {{ end }}{{end}}

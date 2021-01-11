@@ -4,7 +4,9 @@
     <h2>{{ .Title }}</h2>
     <ol>
     {{ range .Pages }}
-      <li><h3><a href="{{.URL}}">{{.Params.name}}</a></h3></li>
+      <li><h3><a href="{{.URL}}">{{.Params.name}}</a></h3>
+        {{ partial "columns-table.html" . }}
+      </li>
     {{ end }}
     </ol>
 </main>

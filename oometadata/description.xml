@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description xmlns="http://openoffice.org/extensions/description/2006"
+    xmlns:dep="http://openoffice.org/extensions/description/2006" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <identifier value="com.github.slspeek.ODBInfo"/>
+    <icon>
+        <default xlink:href="icons/odbinfo.png"/>
+    </icon>
+    <version value="0.2.2"/>
+    <registration>
+        <simple-license accept-by="user" default-license-id="ID0" suppress-on-update="true">
+            <license-text lang="en" license-id="ID0" xlink:href="LICENSE"/>
+        </simple-license>
+    </registration>
+    <publisher>
+        <name xlink:href="mailto:slspeek@gmail.com">Steven L. Speek</name>
+    </publisher>
+    <display-name>
+        <name>ODBInfo</name>
+    </display-name>
+    <extension-description>
+        <src xlink:href="description/desc_en.txt"/>
+        <src lang="en" xlink:href="description/desc_en.txt"/>
+    </extension-description>
+</description>

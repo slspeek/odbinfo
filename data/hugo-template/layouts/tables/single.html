@@ -5,105 +5,11 @@
         <h2>{{ .Params.name }}</h2>
         <h5>{{ .Params.description }}</h5>
         <h4>Columns</h4>
-        <table class="table table-bordered">
-          <thead>
-          <tr>
-            <th>Name</th>
-            <th>Default value</th>
-            <th>Description</th>
-            <th>Auto increment</th>
-            <th>Nullable</th>
-            <th>Typename</th>
-            <th>Precision</th>
-            <th>Scale</th>
-          </tr>
-          </thead>
-          <tbody>
-          {{ range .Params.Columns }}
-           <tr>
-              <td>
-              {{  .name }}
-              </td>
-              <td>
-              {{  .defaultvalue }}
-              </td>
-              <td>
-              {{ .description }}
-              </td>
-              <td>
-              {{  .autoincrement }}
-              </td>
-              <td>
-                {{ .nullable }}
-              </td>
-              <td>
-              {{  .typename }}
-              </td>
-              <td>
-              {{  .precision }}
-              </td>
-              <td>
-              {{  .scale }}
-              </td>
-            </tr>
-        {{ end }}
-        </tbody>
-        </table>
-
+        {{ partial "columns-table.html" . }}
         <h4>Keys</h4>
-        <table class="table table-bordered">
-          <thead >
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Columns</th>
-              <th>Referenced table</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{ $all_tables := where .Site.Pages "Section" "tables"}}
-            {{ range .Params.keys }}
-            <tr>
-              <td>{{ .name }}</td>
-              <td>{{ .typename }}</td>
-              <td>{{ $len := len .columns }}
-                {{ range $i, $col := .columns }}{{ . }}{{ if ne (add $i 1) $len }}, {{ end }}{{end}}</td>
-              <td>
-              {{ if not (eq .referenced_table "") }}
-                {{ $tables := where $all_tables "Params.name" .referenced_table }}
-                {{ $reftable := index $tables 0 }}
-                <a href="{{$reftable.URL}}">{{.referenced_table}}({{ $len := len .relatedcolumns }}{{ range $i, $col := .relatedcolumns }}{{ . }}{{ if ne (add $i 1) $len }}, {{ end }}{{end}})</a>
-              {{end}}
-              </td>
-            </tr>
-            {{ end}}
-          </tbody>
-          </table>
-          <h4>Indexes</h4>
-          <table class="table table-bordered">
-            <thead >
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Unique</th>
-                <th scope="col">PrimaryKey</th>
-                <th scope="col">Clustered</th>
-                <th scope="col">Columns</th>
-              </tr>
-            </thead>
-            <tbody>
-            {{ range .Params.indexes }}
-              <tr>
-                <td>{{ .name }}</td>
-                <td>{{ .unique }}</td>
-                <td>{{ .primary }}</td>
-                <td>{{ .clustered }}</td>
-                <td>{{ $len := len .columns }}
-                  {{ range $i, $col := .columns }}{{ . }}{{ if ne (add $i 1) $len }}, {{ end }}{{end}}
-                </td>
-              </tr>
-            {{ end}}
-            </tbody>
-            </table>
+        {{ partial "keys-table.html" . }}
+        <h4>Indexes</h4>
+        {{ partial "indexes-table.html" . }}
     </div>
 </main>
 

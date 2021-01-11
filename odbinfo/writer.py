@@ -94,11 +94,11 @@ def _convert_local(output_dir, name):
             os.makedirs(localsite)
             while not _is_port_open(1313):
                 time.sleep(0.1)
-            os.system(f"wget --convert-links -P {localsite} -r"
+            os.system(f"wget -nH --convert-links -P {localsite} -r"
                       f" http://localhost:{port}/")
 
             webserver_proc.kill()
             if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":
                 pwd = path.join(os.getcwd(), localsite)
                 uri = pathlib.Path(pwd).as_uri()
-                webbrowser.open(f"{uri}/localhost:{port}/index.html")
+                webbrowser.open(f"{uri}/index.html")

@@ -68,3 +68,8 @@ def desktop():
 def datasource():
     """ Returns the datasource from the active window """
     return desktop().CurrentComponent.CurrentController.DataSource
+
+
+def oodocument():
+    """ Returns the document from the active window """
+    return desktop().CurrentComponent

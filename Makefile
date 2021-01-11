@@ -41,12 +41,6 @@ serve:
 	cd $(test-output)/table-site/
 	hugo server -D
 
-.ONESHELL:
-store:
-		cd $(test-output)/
-		mkdir -p local-site
-		wget --convert-links -P local-site -r "http://localhost:1313/"
-
 format:
 	autopep8 -ri .
 
@@ -76,7 +70,7 @@ oxt:
 	python -m pip install graphviz pyyaml toml \
 	--ignore-installed --target $(lib)
 	cp main.py $(stage)/python
-	cp -r odbinfo $(lib)
+	cp -r odbinfo data $(lib)
 	cp -r oometadata/* $(stage)
 	cp LICENSE $(stage)
 	cd $(stage)

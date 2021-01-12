@@ -1,12 +1,11 @@
 """ test site creation """
 import os
 import logging
-from test.connect import datasource, start_office, oodocument
+from test.connect import start_office, oodocument
 from test.resource import TEST_OUTPUT, DEFAULT_TESTDB
 from pytest import fixture
 import pytest
-from odbinfo.writer import new_site, _make_site
-from odbinfo.reader import read_tables
+from odbinfo.writer import new_site
 from odbinfo.core import generate_report
 
 logger = logging.getLogger()
@@ -37,10 +36,3 @@ def libreoffice():
     yield office_proc
     office_proc.terminate()
     logger.debug("LibreOffice killed")
-
-
-@pytest.mark.slow
-def test_generate_tables_site():
-    """ test table rendering """
-    tables = read_tables(datasource().getConnection("", ""))
-    _make_site(TEST_OUTPUT.format(""), "table-site", tables)

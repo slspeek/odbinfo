@@ -72,7 +72,7 @@ def _make_site(output_dir, name, tables):
         exitcode = os.system("hugo")
         if exitcode != 0:
             raise RuntimeError("unable to build hugo site")
-    _convert_local(output_dir, name)
+    return _convert_local(output_dir, name)
 
 
 def _is_port_open(port):
@@ -85,7 +85,8 @@ def _is_port_open(port):
 
 
 def _convert_local(output_dir, name):
-    with chdir(path.join(output_dir, name)):
+    result = path.join(output_dir, name)
+    with chdir(result):
         port = 1313
         args = shlex.split("hugo server --disableLiveReload")
         webserver_proc = subprocess.Popen(args, shell=False)
@@ -102,3 +103,4 @@ def _convert_local(output_dir, name):
                 pwd = path.join(os.getcwd(), localsite)
                 uri = pathlib.Path(pwd).as_uri()
                 webbrowser.open(f"{uri}/index.html")
+    return f"{result}-local"

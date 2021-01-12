@@ -8,4 +8,5 @@ def make_site():
     """ Generate report on database metadata """
     # pylint: disable=undefined-variable
     doc = XSCRIPTCONTEXT.getDocument()
-    generate_report(doc)
+    reportdir = generate_report(doc)
+    print(f"ODBInfo: report written in {reportdir}")

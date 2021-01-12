@@ -20,6 +20,24 @@ KEYRULES = {_ooconst(_KEYRULE + name.upper()): name for name in
 
 
 @dataclass
+class Query:
+    " View properties see:"\
+      " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
+      " QueryDefinition.html"
+    name: str
+    command: str
+
+
+@dataclass
+class View:
+    """ View properties see:
+        www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/View.html
+    """
+    name: str
+    command: str
+
+
+@dataclass
 class Column:  # pylint: disable=too-many-instance-attributes
     """ Column properties see:
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Column.html
@@ -48,8 +66,8 @@ class Key:  # pylint: disable=too-many-instance-attributes
     relatedcolumns: [str]
     referenced_table: str
     typename: object
-    delete_rule: int
-    update_rule: int
+    delete_rule: object
+    update_rule: object
 
     def __post_init__(self):
         self.typename = KEYTYPES[self.typename]

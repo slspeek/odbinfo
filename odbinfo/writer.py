@@ -51,7 +51,7 @@ def new_site(output_dir, name):
     return sitedir
 
 
-def _make_site(output_dir, name, tables):
+def _make_site(output_dir, name, tables, views, queries):
     with chdir(new_site(output_dir, name)):
         with open("config.toml", "w") as cfg:
             toml.dump({"title": name,
@@ -61,18 +61,34 @@ def _make_site(output_dir, name, tables):
                        "menu": {"main": [{"url": "/tables/index.html",
                                           "name": "tables",
                                           "weight": 2},
+                                         {"url": "/queries/index.html",
+                                          "name": "queries",
+                                          "weight": 3},
+                                         {"url": "/views/index.html",
+                                          "name": "views",
+                                          "weight": 4},
                                          {"url": "/",
                                           "name": "home",
-                                          "weight": 1}]}}, cfg)
-        targetpath = "content/tables"
-        os.makedirs(targetpath, exist_ok=True)
-        for tbl in tables:
-            with open(f"{targetpath}/{tbl.name}.md", "w") as out:
-                write_dict(dataclasses.asdict(tbl), out)
+                                          "weight": 1}
+                                         ],
+                                }
+                       }, cfg)
+        _write_content("tables", tables)
+        _write_content("views", views)
+        _write_content("queries", queries)
+
         exitcode = os.system("hugo")
         if exitcode != 0:
             raise RuntimeError("unable to build hugo site")
     return _convert_local(output_dir, name)
+
+
+def _write_content(name, contentlist):
+    targetpath = f"content/{name}"
+    os.makedirs(targetpath, exist_ok=True)
+    for content in contentlist:
+        with open(f"{targetpath}/{content.name}.md", "w") as out:
+            write_dict(dataclasses.asdict(content), out)
 
 
 def _is_port_open(port):

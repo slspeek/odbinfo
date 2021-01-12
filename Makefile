@@ -38,8 +38,8 @@ test: itest unit
 
 .ONESHELL:
 serve:
-	cd $(test-output)/table-site/
-	hugo server -D
+	cd $(build)/test/resources/testdb/.odbinfo/testdb
+	hugo server
 
 format:
 	autopep8 -ri .

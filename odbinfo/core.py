@@ -4,7 +4,7 @@ from contextlib import contextmanager
 import shutil
 from urllib.parse import urlparse
 from odbinfo.writer import _make_site
-from odbinfo.reader import read_tables
+from odbinfo.reader import read_tables, read_views, read_queries
 
 
 @contextmanager
@@ -29,6 +29,9 @@ def generate_report(oodocument):
     if os.path.isdir(reportdir) and os.path.exists(reportdir):
         shutil.rmtree(reportdir)
         shutil.rmtree(f"{reportdir}-local")
+    queries = read_queries(oodocument.DataSource)
     with open_connection(oodocument.DataSource) as con:
         tables = read_tables(con)
-    return _make_site(workingdir, name, tables)
+        views = read_views(con)
+
+    return _make_site(workingdir, name, tables, views, queries)

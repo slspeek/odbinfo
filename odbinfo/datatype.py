@@ -1,6 +1,7 @@
 """ Defines the main datatypes used """
 from dataclasses import dataclass
 import uno
+from sql_formatter.core import format_sql
 
 _ooconst = uno.pyuno.getConstantByName
 _SUNNAME = "com.sun.star."
@@ -22,19 +23,17 @@ KEYRULES = {_ooconst(_KEYRULE + name.upper()): name for name in
 @dataclass
 class Query:
     " View properties see:"\
-      " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
-      " QueryDefinition.html"
+        " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
+        " QueryDefinition.html"
     name: str
     command: str
 
+    def __post_init__(self):
+        self.command = format_sql(self.command).replace('\n', "<br/>")\
+            .replace(' ', "&nbsp;")
 
-@dataclass
-class View:
-    """ View properties see:
-        www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/View.html
-    """
-    name: str
-    command: str
+
+View = Query
 
 
 @dataclass

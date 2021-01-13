@@ -54,26 +54,7 @@ def new_site(output_dir, name):
 def make_site(output_dir, name, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
     with chdir(new_site(output_dir, name)):
-        with open("config.toml", "w") as cfg:
-            toml.dump({"title": name,
-                       "baseURL": "http://example.com/",
-                       "languageCode": "en-us",
-                       "theme": "minimal",
-                       "menu": {"main": [{"url": "/tables/index.html",
-                                          "name": "tables",
-                                          "weight": 2},
-                                         {"url": "/queries/index.html",
-                                          "name": "queries",
-                                          "weight": 3},
-                                         {"url": "/views/index.html",
-                                          "name": "views",
-                                          "weight": 4},
-                                         {"url": "/",
-                                          "name": "home",
-                                          "weight": 1}
-                                         ],
-                                }
-                       }, cfg)
+        _write_config(name)
         _write_content("tables", metadata.tables)
         _write_content("views", metadata.views)
         _write_content("queries", metadata.queries)
@@ -82,6 +63,29 @@ def make_site(output_dir, name, metadata):
         if exitcode != 0:
             raise RuntimeError("unable to build hugo site")
     return _convert_local(output_dir, name)
+
+
+def _write_config(name):
+    with open("config.toml", "w") as cfg:
+        toml.dump({"title": name,
+                   "baseURL": "http://example.com/",
+                   "languageCode": "en-us",
+                   "theme": "minimal",
+                   "menu": {"main": [{"url": "/tables/index.html",
+                                      "name": "tables",
+                                      "weight": 2},
+                                     {"url": "/queries/index.html",
+                                      "name": "queries",
+                                      "weight": 3},
+                                     {"url": "/views/index.html",
+                                      "name": "views",
+                                      "weight": 4},
+                                     {"url": "/",
+                                      "name": "home",
+                                      "weight": 1}
+                                     ],
+                            }
+                   }, cfg)
 
 
 def _write_content(name, contentlist):
@@ -106,8 +110,8 @@ def _convert_local(output_dir, name):
     with chdir(result):
         port = 1313
         args = shlex.split("hugo server --disableLiveReload --watch=false "
-                           "  2> /dev/null")
-        webserver_proc = subprocess.Popen(args, shell=False)
+                           "  2> /dev/null 1>&2")
+        webserver_proc = subprocess.Popen(args)
         with chdir(".."):
             localsite = f"{name}-local"
             os.makedirs(localsite)

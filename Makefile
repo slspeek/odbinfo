@@ -40,6 +40,12 @@ unit: prepare
 	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow" test
 	exit 0
 
+.ONESHELL:
+quick_view: clean prepare
+	cd $(build)
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest test/test_quick_view.py
+
+
 test: itest unit
 
 .ONESHELL:
@@ -73,7 +79,7 @@ open_shell: prepare
 .ONESHELL:
 oxt:
 	-mkdir -p $(lib) $(dist) $(build)
-	python -m pip install graphviz pyyaml toml \
+	python -m pip install graphviz pyyaml toml xmltodict sql_formatter \
 	--ignore-installed --target $(lib)
 	cp main.py $(stage)/python
 	cp -r odbinfo data $(lib)

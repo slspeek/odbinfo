@@ -1,6 +1,33 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
+from zipfile import ZipFile
+import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
 from odbinfo.ooutil import open_connection
+
+
+def _office_body(info):
+    return info["office:document-content"]["office:body"]
+
+
+def _forms_index(odbpath):
+    content = _read_from_odb(odbpath, "content.xml")
+    return _office_body(content)["office:database"]["db:forms"]
+
+
+def _forms(odbpath):
+    index = _forms_index(odbpath)
+    forms = []
+    for frm in index["db:component"]:
+        relpath = frm["@xlink:href"] + "/content.xml"
+        info = _office_body(_read_from_odb(odbpath, relpath))["office:text"]
+        info = info["office:forms"]["form:form"]
+        forms.append((frm["@db:name"], info))
+    return forms
+
+
+def _read_from_odb(odbpath, file):
+    with ZipFile(odbpath, "r") as odb:
+        return xmltodict.parse(odb.read(file))
 
 
 def read_metadata(datasource):

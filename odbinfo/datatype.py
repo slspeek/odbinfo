@@ -97,3 +97,11 @@ class Table:
     keys: [Key]
     columns: [Column]
     indexes: [Index]
+
+
+@dataclass
+class Metadata:
+    """ Collector class for all metadata read from the odb-file """
+    tables: [Table]
+    views: [View]
+    queries: [Query]

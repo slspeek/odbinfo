@@ -29,6 +29,12 @@ itest: prepare
 	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test
 
 .ONESHELL:
+fixture: prepare
+	cd $(build)
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test/fixture_reader.py
+
+
+.ONESHELL:
 unit: prepare
 	cd $(build)
 	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow" test
@@ -39,7 +45,7 @@ test: itest unit
 .ONESHELL:
 serve:
 	cd $(build)/test/resources/testdb/.odbinfo/testdb
-	hugo server
+	hugo server --layoutDir ../../../../../../../data/hugo-template/layouts
 
 format:
 	autopep8 -ri .

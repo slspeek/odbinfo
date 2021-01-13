@@ -40,7 +40,7 @@ def new_site(output_dir, name):
     workingdir = output_dir
     os.makedirs(workingdir, exist_ok=True)
     with chdir(workingdir):
-        exitcode = os.system(f"hugo new site {name}")
+        exitcode = os.system(f"hugo new site {name} > /dev/null")
         if exitcode != 0:
             raise RuntimeError(f"hugo new site failed to create site: {name}")
         datapath = path.join(path.dirname(path.dirname(__file__)), "data")
@@ -51,7 +51,8 @@ def new_site(output_dir, name):
     return sitedir
 
 
-def _make_site(output_dir, name, tables, views, queries):
+def make_site(output_dir, name, metadata):
+    """ Builds report in `output_dir` with `name` from `metadata` """
     with chdir(new_site(output_dir, name)):
         with open("config.toml", "w") as cfg:
             toml.dump({"title": name,
@@ -73,9 +74,9 @@ def _make_site(output_dir, name, tables, views, queries):
                                          ],
                                 }
                        }, cfg)
-        _write_content("tables", tables)
-        _write_content("views", views)
-        _write_content("queries", queries)
+        _write_content("tables", metadata.tables)
+        _write_content("views", metadata.views)
+        _write_content("queries", metadata.queries)
 
         exitcode = os.system("hugo")
         if exitcode != 0:
@@ -104,7 +105,8 @@ def _convert_local(output_dir, name):
     result = path.join(output_dir, name)
     with chdir(result):
         port = 1313
-        args = shlex.split("hugo server --disableLiveReload")
+        args = shlex.split("hugo server --disableLiveReload --watch=false "
+                           "  2> /dev/null")
         webserver_proc = subprocess.Popen(args, shell=False)
         with chdir(".."):
             localsite = f"{name}-local"
@@ -112,7 +114,7 @@ def _convert_local(output_dir, name):
             while not _is_port_open(1313):
                 time.sleep(0.1)
             os.system(f"wget -nH --convert-links -P {localsite} -r"
-                      f" http://localhost:{port}/")
+                      f" http://localhost:{port}/ > /dev/null 2>&1")
 
             webserver_proc.kill()
             if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":

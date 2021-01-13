@@ -1,5 +1,15 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
-from odbinfo.datatype import View, Query, Table, Column, Index, Key
+from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
+from odbinfo.ooutil import open_connection
+
+
+def read_metadata(datasource):
+    """ reads all metadata """
+    with open_connection(datasource) as con:
+        return \
+            Metadata(read_tables(con),
+                     read_views(con),
+                     read_queries(datasource))
 
 
 def read_views(connection) -> [View]:

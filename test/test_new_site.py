@@ -28,7 +28,7 @@ def test_generate_report(libreoffice):  # pylint:disable=redefined-outer-name
     generate_report(oodoc)
 
 
-@fixture(scope="module")
+@fixture(scope="session")
 def libreoffice():
     """ A libreoffice running on a test repository """
     testdb = os.getenv("ODBINFO_TESTDB", DEFAULT_TESTDB)

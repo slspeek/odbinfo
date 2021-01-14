@@ -50,6 +50,15 @@ class Control:  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
+class ListBox(Control):
+    " ListBox control"
+    boundcolumn: int
+    dropdown: bool
+    listsourcetype: str
+    listsource: str
+
+
+@dataclass
 class Grid:
     " Table view control"
     name: str

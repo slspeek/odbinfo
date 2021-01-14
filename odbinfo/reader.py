@@ -2,7 +2,7 @@
 from zipfile import ZipFile
 import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
-from odbinfo.datatype import Form, SubForm, Control, Grid
+from odbinfo.datatype import Form, SubForm, Control, Grid, ListBox
 from odbinfo.ooutil import open_connection
 
 
@@ -28,8 +28,8 @@ def _read_subforms(data):
 def _read_subform(data):
     controls = []
     subformname = data["@form:name"]
-    command = data.get("@command", "")
-    commandtype = data.get("Command-type", "")
+    command = data.get("@form:command", "")
+    commandtype = data.get("@form:command-type", "")
     for name in data.keys():
         if name == "form:properties":
             continue
@@ -39,6 +39,8 @@ def _read_subform(data):
         elif name == "form:grid":
             value = data[name]
             controls.append(_read_grid(value))
+        elif name == "form:listbox":
+            controls.append(_read_listbox(data[name]))
         elif name.startswith("form:"):
             value = data[name]
             if isinstance(value, list):
@@ -52,11 +54,8 @@ def _read_grid(data):
     gridname = data["@form:name"]
     controls = []
     for column in data["form:column"]:
-        for elem in column.keys():
-            if elem == "form:properties":
-                continue
-            if elem.startswith("form:"):
-                controls.append(_read_control(column.get(elem)))
+        controls.append(_read_grid_control(column))
+
     return Grid(gridname, controls)
 
 
@@ -70,6 +69,34 @@ def _read_control(data):
                 data.get("@form:label", ""),
                 data.get("@form:formfor", ""),
                 data.get("@form:control-implementation", ""))
+
+
+def _read_listbox(data):
+    return\
+        ListBox(data.get("@form:name", ""),
+                data.get("@form:id", ""),
+                data.get("@form:data-field", ""),
+                data.get("@form:input-required", ""),
+                data.get("@form:conevrtemptytonull", ""),
+                data.get("@form:label", ""),
+                data.get("@form:formfor", ""),
+                data.get("@form:control-implementation", ""),
+                data.get("@form:bound-column"),
+                data.get("@form:dropdown"),
+                data.get("@form:list-source-type"),
+                data.get("@form:list-source")
+                )
+
+
+def _read_grid_control(column):
+    for elem in column.keys():
+        if elem == "form:properties":
+            continue
+        if elem.startswith("form:"):
+            control = _read_control(column[elem])
+    control.label = column["@form:label"]
+    control.type = column["@form:control-implementation"]
+    return control
 
 
 def _office_body(info):

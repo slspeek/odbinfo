@@ -79,7 +79,8 @@ open_shell: prepare
 .ONESHELL:
 oxt:
 	-mkdir -p $(lib) $(dist) $(build)
-	python -m pip install graphviz pyyaml toml xmltodict sql_formatter \
+	pipenv lock -r > /tmp/requirements.txt
+	python -m pip install -r /tmp/requirements.txt \
 	--ignore-installed --target $(lib)
 	cp main.py $(stage)/python
 	cp -r odbinfo data $(lib)

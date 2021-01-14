@@ -2,32 +2,95 @@
 from zipfile import ZipFile
 import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
+from odbinfo.datatype import Form, SubForm, Control, Grid
 from odbinfo.ooutil import open_connection
+
+
+def read_forms(odbpath):
+    """ Reads form metadata from `odbpath` zip """
+    forms = []
+    for name, data in _forms(odbpath):
+        form = Form(name, _read_subforms(data))
+        forms.append(form)
+    return forms
+
+
+def _read_subforms(data):
+    subforms = []
+    data = data["form:form"]
+    if isinstance(data, list):
+        subforms = list(map(_read_subform, data))
+    else:
+        subforms.append(_read_subform(data))
+    return subforms
+
+
+def _read_subform(data):
+    controls = []
+    subformname = data["@form:name"]
+    command = data.get("@command", "")
+    commandtype = data.get("Command-type", "")
+    for name in data.keys():
+        if name == "form:properties":
+            continue
+        if name == "form:form":
+            value = data[name]
+            controls.append(_read_subform(value))
+        elif name == "form:grid":
+            value = data[name]
+            controls.append(_read_grid(value))
+        elif name.startswith("form:"):
+            value = data[name]
+            if isinstance(value, list):
+                controls.append(list(map(_read_control, value)))
+            else:
+                controls.append(_read_control(value))
+    return SubForm(subformname, command, commandtype, controls)
+
+
+def _read_grid(data):
+    gridname = data["@form:name"]
+    controls = []
+    for column in data["form:column"]:
+        for elem in column.keys():
+            if elem == "form:properties":
+                continue
+            if elem.startswith("form:"):
+                controls.append(_read_control(column.get(elem)))
+    return Grid(gridname, controls)
+
+
+def _read_control(data):
+    return\
+        Control(data.get("@form:name", ""),
+                data.get("@form:id", ""),
+                data.get("@form:data-field", ""),
+                data.get("@form:input-required", ""),
+                data.get("@form:conevrtemptytonull", ""),
+                data.get("@form:label", ""),
+                data.get("@form:formfor", ""),
+                data.get("@form:control-implementation", ""))
 
 
 def _office_body(info):
     return info["office:document-content"]["office:body"]
 
 
-def _forms_index(odbpath):
-    content = _read_from_odb(odbpath, "content.xml")
-    return _office_body(content)["office:database"]["db:forms"]
-
-
 def _forms(odbpath):
-    index = _forms_index(odbpath)
-    forms = []
-    for frm in index["db:component"]:
-        relpath = frm["@xlink:href"] + "/content.xml"
-        info = _office_body(_read_from_odb(odbpath, relpath))["office:text"]
-        info = info["office:forms"]["form:form"]
-        forms.append((frm["@db:name"], info))
-    return forms
-
-
-def _read_from_odb(odbpath, file):
     with ZipFile(odbpath, "r") as odb:
-        return xmltodict.parse(odb.read(file))
+        content = _read_from_odb(odb, "content.xml")
+        index = _office_body(content)["office:database"]["db:forms"]
+        forms = []
+        for frm in index["db:component"]:
+            relpath = frm["@xlink:href"] + "/content.xml"
+            info = _office_body(_read_from_odb(odb, relpath))["office:text"]
+            info = info["office:forms"]
+            forms.append((frm["@db:name"], info))
+        return forms
+
+
+def _read_from_odb(odb, file):
+    return xmltodict.parse(odb.read(file))
 
 
 def read_metadata(datasource):

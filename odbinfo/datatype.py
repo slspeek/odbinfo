@@ -21,6 +21,42 @@ KEYRULES = {_ooconst(_KEYRULE + name.upper()): name for name in
 
 
 @dataclass
+class SubForm:
+    " Database subform "
+    name: str
+    command: str
+    commandtype: str
+    controls: [object]
+
+
+@dataclass
+class Form:
+    " Toplevel form "
+    name: str
+    subforms: [SubForm]
+
+
+@dataclass
+class Control:  # pylint: disable=too-many-instance-attributes
+    " Form control "
+    name: str
+    controlid: str
+    datafield: str
+    inputrequired: bool
+    convertemptytonull: bool
+    label: str
+    formfor: str
+    type: str
+
+
+@dataclass
+class Grid:
+    " Table view control"
+    name: str
+    columns: [Control]
+
+
+@dataclass
 class Query:
     " View properties see:"\
         " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\

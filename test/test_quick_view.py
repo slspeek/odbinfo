@@ -2,6 +2,7 @@
 import pickle
 
 from test.resource import FIXTURE_DIR, TEST_OUTPUT
+import pytest
 from pytest import fixture
 from odbinfo.writer import make_site
 
@@ -20,6 +21,7 @@ def metadata():
 
 
 # pylint:disable=redefined-outer-name
+@pytest.mark.slow
 def test_quick_view(metadata):
     """ Run without database scan """
     name = "testdb"

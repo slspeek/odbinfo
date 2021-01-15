@@ -21,6 +21,13 @@ KEYRULES = {_ooconst(_KEYRULE + name.upper()): name for name in
 
 
 @dataclass
+class EventListener:
+    " Control eventlistener "
+    event: str
+    script: str
+
+
+@dataclass
 class SubForm:
     " Database subform "
     name: str
@@ -47,6 +54,7 @@ class Control:  # pylint: disable=too-many-instance-attributes
     label: str
     formfor: str
     type: str
+    eventlisteners: [EventListener]
 
 
 @dataclass

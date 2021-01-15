@@ -2,7 +2,8 @@
 from zipfile import ZipFile
 import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
-from odbinfo.datatype import Form, SubForm, Control, Grid, ListBox
+from odbinfo.datatype import Form, SubForm, Control,\
+                             Grid, ListBox, EventListener
 from odbinfo.ooutil import open_connection
 
 
@@ -59,19 +60,36 @@ def _read_grid(data):
     return Grid(gridname, controls)
 
 
-def _read_control(data):
+def _read_eventlisteners(data) -> [EventListener]:
+    def read_listener(oolistn):
+        return \
+            EventListener(oolistn["@script:event-name"],
+                          oolistn["@xlink:href"])
+    eventlisteners = []
+    if "office:event-listeners" in data.keys():
+        data = data["office:event-listeners"]["script:event-listener"]
+        if isinstance(data, list):
+            eventlisteners.append(
+                list(map(read_listener, data)))
+        else:
+            eventlisteners.append(read_listener(data))
+    return eventlisteners
+
+
+def _read_control(data) -> Control:
     return\
         Control(data.get("@form:name", ""),
                 data.get("@form:id", ""),
                 data.get("@form:data-field", ""),
                 data.get("@form:input-required", ""),
-                data.get("@form:conevrtemptytonull", ""),
+                data.get("@form:convert-empty-to-null", ""),
                 data.get("@form:label", ""),
-                data.get("@form:formfor", ""),
-                data.get("@form:control-implementation", ""))
+                data.get("@form:for", ""),
+                data.get("@form:control-implementation", ""),
+                _read_eventlisteners(data))
 
 
-def _read_listbox(data):
+def _read_listbox(data) -> ListBox:
     return\
         ListBox(data.get("@form:name", ""),
                 data.get("@form:id", ""),
@@ -79,8 +97,9 @@ def _read_listbox(data):
                 data.get("@form:input-required", ""),
                 data.get("@form:conevrtemptytonull", ""),
                 data.get("@form:label", ""),
-                data.get("@form:formfor", ""),
+                data.get("@form:for", ""),
                 data.get("@form:control-implementation", ""),
+                _read_eventlisteners(data),
                 data.get("@form:bound-column"),
                 data.get("@form:dropdown"),
                 data.get("@form:list-source-type"),

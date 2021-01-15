@@ -9,6 +9,13 @@ from odbinfo.datatype import Form, SubForm, Control,\
 from odbinfo.ooutil import open_connection
 
 
+def mapiflist(function, maybelist):
+    " apply `function` on `maybelist` if `maybelist` is not a list"
+    if isinstance(maybelist, list):
+        return list(map(function, maybelist))
+    return [function(maybelist)]
+
+
 def _has_libraries(odbpath) -> bool:
     with ZipFile(odbpath, "r") as odb:
         manifest = _read_from_odb(odb, "META-INF/manifest.xml")
@@ -25,10 +32,8 @@ def read_libraries(odbpath) -> [Library]:
         with ZipFile(odbpath, "r") as odb:
             script_lc = _read_from_odb(odb, "Basic/script-lc.xml")
             data = script_lc["library:libraries"]["library:library"]
-            if isinstance(data, list):
-                libraries = list(map(partial(_read_library, odbpath), data))
-            else:
-                libraries.append(_read_library(odbpath, data))
+            read_library = partial(_read_library, odbpath)
+            libraries.extend(mapiflist(read_library, data))
     return libraries
 
 
@@ -38,10 +43,8 @@ def _read_library(odbpath, data) -> Library:
     with ZipFile(odbpath, "r") as odb:
         script_lb = _read_from_odb(odb, f"Basic/{name}/script-lb.xml")
         data = script_lb["library:library"]["library:element"]
-        if isinstance(data, list):
-            modules = list(map(partial(_read_module, odbpath, name), data))
-        else:
-            modules.append(_read_module(odbpath, name, data))
+        read_module = partial(_read_module, odbpath, name)
+        modules.extend(mapiflist(read_module, data))
     return Library(name, modules)
 
 
@@ -61,14 +64,9 @@ def read_forms(odbpath):
     return forms
 
 
-def _read_subforms(data):
-    subforms = []
+def _read_subforms(data) -> [SubForm]:
     data = data["form:form"]
-    if isinstance(data, list):
-        subforms = list(map(_read_subform, data))
-    else:
-        subforms.append(_read_subform(data))
-    return subforms
+    return mapiflist(_read_subform, data)
 
 
 def _read_subform(data):
@@ -77,31 +75,25 @@ def _read_subform(data):
     command = data.get("@form:command", "")
     commandtype = data.get("@form:command-type", "")
     for name in data.keys():
+        collected_controls = []
+        value = data[name]
         if name == "form:properties":
             continue
         if name == "form:form":
-            value = data[name]
-            controls.append(_read_subform(value))
+            collected_controls = mapiflist(_read_subform, value)
         elif name == "form:grid":
-            value = data[name]
-            controls.append(_read_grid(value))
+            collected_controls = mapiflist(_read_grid, value)
         elif name == "form:listbox":
-            controls.append(_read_listbox(data[name]))
+            collected_controls = mapiflist(_read_listbox, value)
         elif name.startswith("form:"):
-            value = data[name]
-            if isinstance(value, list):
-                controls.append(list(map(_read_control, value)))
-            else:
-                controls.append(_read_control(value))
+            collected_controls = mapiflist(_read_control, value)
+        controls.extend(collected_controls)
     return SubForm(subformname, command, commandtype, controls)
 
 
 def _read_grid(data):
     gridname = data["@form:name"]
-    controls = []
-    for column in data["form:column"]:
-        controls.append(_read_grid_control(column))
-
+    controls = mapiflist(_read_grid_control, data["form:column"])
     return Grid(gridname, controls)
 
 
@@ -113,11 +105,7 @@ def _read_eventlisteners(data) -> [EventListener]:
     eventlisteners = []
     if "office:event-listeners" in data.keys():
         data = data["office:event-listeners"]["script:event-listener"]
-        if isinstance(data, list):
-            eventlisteners.append(
-                list(map(read_listener, data)))
-        else:
-            eventlisteners.append(read_listener(data))
+        eventlisteners.extend(mapiflist(read_listener, data))
     return eventlisteners
 
 

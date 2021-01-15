@@ -21,6 +21,20 @@ KEYRULES = {_ooconst(_KEYRULE + name.upper()): name for name in
 
 
 @dataclass
+class Module:
+    " Basic module"
+    name: str
+    source: str
+
+
+@dataclass
+class Library:
+    " Basic library"
+    name: str
+    modules: [Module]
+
+
+@dataclass
 class EventListener:
     " Control eventlistener "
     event: str
@@ -158,3 +172,5 @@ class Metadata:
     tables: [Table]
     views: [View]
     queries: [Query]
+    forms: [Form]
+    libraries: [Library]

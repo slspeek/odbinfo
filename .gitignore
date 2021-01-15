@@ -5,6 +5,7 @@ __pycache__/
 tags
 # C extensions
 *.so
+test/resources/testdb/unzipped
 
 # Distribution / packaging
 .Python

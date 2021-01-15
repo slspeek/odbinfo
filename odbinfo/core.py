@@ -17,5 +17,5 @@ def generate_report(oodocument):
     if os.path.isdir(reportdir) and os.path.exists(reportdir):
         shutil.rmtree(reportdir)
         shutil.rmtree(f"{reportdir}-local")
-    metadata = read_metadata(oodocument.DataSource)
+    metadata = read_metadata(oodocument.DataSource, docpath)
     return make_site(workingdir, name, metadata)

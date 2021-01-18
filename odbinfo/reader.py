@@ -11,54 +11,50 @@ from odbinfo.ooutil import open_connection
 
 def mapiflist(function, maybelist):
     " apply `function` on `maybelist` if `maybelist` is not a list"
-    if isinstance(maybelist, list):
-        return list(map(function, maybelist))
-    return [function(maybelist)]
+    if not isinstance(maybelist, list):
+        maybelist = [maybelist]
+    return list(map(function, maybelist))
 
 
-def _has_libraries(odbpath) -> bool:
-    with ZipFile(odbpath, "r") as odb:
-        manifest = _read_from_odb(odb, "META-INF/manifest.xml")
-        for entry in manifest["manifest:manifest"]["manifest:file-entry"]:
-            if entry["@manifest:full-path"].startswith("Basic"):
-                return True
-        return False
+def _has_libraries(odbzip) -> bool:
+    manifest = _parse_xml(odbzip, "META-INF/manifest.xml")
+    for entry in manifest["manifest:manifest"]["manifest:file-entry"]:
+        if entry["@manifest:full-path"].startswith("Basic"):
+            return True
+    return False
 
 
-def read_libraries(odbpath) -> [Library]:
+def read_libraries(odbzip) -> [Library]:
     " Reads Basic libraries "
     libraries = []
-    if _has_libraries(odbpath):
-        with ZipFile(odbpath, "r") as odb:
-            script_lc = _read_from_odb(odb, "Basic/script-lc.xml")
-            data = script_lc["library:libraries"]["library:library"]
-            read_library = partial(_read_library, odbpath)
-            libraries.extend(mapiflist(read_library, data))
+    if _has_libraries(odbzip):
+        script_lc = _parse_xml(odbzip, "Basic/script-lc.xml")
+        data = script_lc["library:libraries"]["library:library"]
+        read_library = partial(_read_library, odbzip)
+        libraries.extend(mapiflist(read_library, data))
     return libraries
 
 
-def _read_library(odbpath, data) -> Library:
+def _read_library(odbzip, data) -> Library:
     name = data["@library:name"]
     modules = []
-    with ZipFile(odbpath, "r") as odb:
-        script_lb = _read_from_odb(odb, f"Basic/{name}/script-lb.xml")
-        data = script_lb["library:library"]["library:element"]
-        read_module = partial(_read_module, odbpath, name)
-        modules.extend(mapiflist(read_module, data))
+    script_lb = _parse_xml(odbzip, f"Basic/{name}/script-lb.xml")
+    data = script_lb["library:library"]["library:element"]
+    read_module = partial(_read_module, odbzip, name)
+    modules.extend(mapiflist(read_module, data))
     return Library(name, modules)
 
 
-def _read_module(odbpath, library_name,  data) -> Module:
+def _read_module(odbzip, library_name,  data) -> Module:
     name = data["@library:name"]
-    with ZipFile(odbpath, "r") as odb:
-        data = _read_from_odb(odb, f"Basic/{library_name}/{name}.xml")
-        return Module(name, data["script:module"]["#text"])
+    data = _parse_xml(odbzip, f"Basic/{library_name}/{name}.xml")
+    return Module(name, data["script:module"]["#text"])
 
 
-def read_forms(odbpath):
+def read_forms(odbzip):
     """ Reads form metadata from `odbpath` zip """
     forms = []
-    for name, data in _forms(odbpath):
+    for name, data in _forms(odbzip):
         form = Form(name, _read_subforms(data))
         forms.append(form)
     return forms
@@ -146,6 +142,7 @@ def _read_grid_control(column):
             continue
         if elem.startswith("form:"):
             control = _read_control(column[elem])
+    control.name = column["@form:name"]
     control.label = column["@form:label"]
     control.type = column["@form:control-implementation"]
     return control
@@ -155,32 +152,32 @@ def _office_body(info):
     return info["office:document-content"]["office:body"]
 
 
-def _forms(odbpath):
-    with ZipFile(odbpath, "r") as odb:
-        content = _read_from_odb(odb, "content.xml")
-        index = _office_body(content)["office:database"]["db:forms"]
-        forms = []
-        for frm in index["db:component"]:
-            relpath = frm["@xlink:href"] + "/content.xml"
-            info = _office_body(_read_from_odb(odb, relpath))["office:text"]
-            info = info["office:forms"]
-            forms.append((frm["@db:name"], info))
-        return forms
+def _forms(odbzip):
+    content = _parse_xml(odbzip, "content.xml")
+    index = _office_body(content)["office:database"]["db:forms"]
+    forms = []
+    for frm in index["db:component"]:  # mapiflist if one form
+        relpath = frm["@xlink:href"] + "/content.xml"
+        info = _office_body(_parse_xml(odbzip, relpath))["office:text"]
+        info = info["office:forms"]
+        forms.append((frm["@db:name"], info))
+    return forms
 
 
-def _read_from_odb(odb, file):
+def _parse_xml(odb, file):
     return xmltodict.parse(odb.read(file))
 
 
 def read_metadata(datasource, odbpath):
     """ reads all metadata """
     with open_connection(datasource) as con:
-        return \
-            Metadata(read_tables(con),
-                     read_views(con),
-                     read_queries(datasource),
-                     read_forms(odbpath),
-                     read_libraries(odbpath))
+        with ZipFile(odbpath, "r") as odbzip:
+            return \
+                Metadata(read_tables(con),
+                         read_views(con),
+                         read_queries(datasource),
+                         read_forms(odbzip),
+                         read_libraries(odbzip))
 
 
 def read_views(connection) -> [View]:

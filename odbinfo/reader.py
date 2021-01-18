@@ -155,17 +155,20 @@ def _office_body(info):
 def _forms(odbzip):
     content = _parse_xml(odbzip, "content.xml")
     index = _office_body(content)["office:database"]["db:forms"]
-    forms = []
-    for frm in index["db:component"]:  # mapiflist if one form
+    dbcomponent = index["db:component"]
+
+    def form(frm):
         relpath = frm["@xlink:href"] + "/content.xml"
         info = _office_body(_parse_xml(odbzip, relpath))["office:text"]
         info = info["office:forms"]
-        forms.append((frm["@db:name"], info))
+        return (frm["@db:name"], info)
+
+    forms = mapiflist(form, dbcomponent)
     return forms
 
 
-def _parse_xml(odb, file):
-    return xmltodict.parse(odb.read(file))
+def _parse_xml(odbzip, file):
+    return xmltodict.parse(odbzip.read(file))
 
 
 def read_metadata(datasource, odbpath):

@@ -5,7 +5,7 @@ import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
 from odbinfo.datatype import Form, SubForm, Control,\
     Grid, ListBox, EventListener,\
-    Library, Module, QueryColumn
+    Library, Module, QueryColumn, Report
 from odbinfo.ooutil import open_connection
 
 
@@ -14,6 +14,31 @@ def mapiflist(function, maybelist):
     if not isinstance(maybelist, list):
         maybelist = [maybelist]
     return list(map(function, maybelist))
+
+
+def _reports(odbzip):
+    content = _parse_xml(odbzip, "content.xml")
+    index = _office_body(content)["office:database"]["db:reports"]
+    dbcomponent = index["db:component"]
+
+    def report(rpt):
+        relpath = rpt["@xlink:href"] + "/content.xml"
+        info = _office_body(_parse_xml(odbzip, relpath))
+        info = info["office:report"]
+        return (rpt["@db:name"], info)
+
+    return mapiflist(report, dbcomponent)
+
+
+def read_reports(odbzip) -> [Report]:
+    " Read reports from odb file "
+    reports = []
+    for name, info in _reports(odbzip):
+        reports.append(Report(name,
+                              info["@rpt:command"],
+                              info["@rpt:command-type"])
+                       )
+    return reports
 
 
 def _has_libraries(odbzip) -> bool:
@@ -180,17 +205,19 @@ def read_metadata(datasource, odbpath):
                          read_views(con),
                          read_queries(con, datasource),
                          read_forms(odbzip),
-                         [],
+                         read_reports(odbzip),
                          read_libraries(odbzip))
 
 
 def read_views(connection) -> [View]:
     """ Reads view metadata from `connection` """
-    return [_read_view(ooview) for ooview in connection.Views]
+    return [_read_view(connection, ooview) for ooview in connection.Views]
 
 
-def _read_view(ooview):
-    return View(ooview.Name, ooview.Command, [])
+def _read_view(connection, ooview):
+    return View(ooview.Name,
+                ooview.Command,
+                _read_query_columns(connection, ooview.Command))
 
 
 def read_queries(connection, datasource):

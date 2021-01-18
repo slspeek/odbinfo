@@ -33,6 +33,7 @@ KEYRULES = _consts(_KEYRULE, ["Cascade",
 
 @dataclass
 class Report:
+    " Report metadata "
     name: str
     command: str
     commandtype: str

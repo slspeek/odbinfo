@@ -28,7 +28,7 @@ def chdir(dirname=None):
         os.chdir(curdir)
 
 
-def write_dict(adict, out):
+def _frontmatter(adict, out):
     """ Writes `adict` to yaml and marks it as frontmatter """
     out.write(FRONT_MATTER_MARK)
     yaml.dump(adict, out)
@@ -93,7 +93,7 @@ def _write_content(name, contentlist):
     os.makedirs(targetpath, exist_ok=True)
     for content in contentlist:
         with open(f"{targetpath}/{content.name}.md", "w") as out:
-            write_dict(dataclasses.asdict(content), out)
+            _frontmatter(dataclasses.asdict(content), out)
 
 
 def _is_port_open(port):

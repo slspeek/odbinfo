@@ -5,7 +5,7 @@ import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
 from odbinfo.datatype import Form, SubForm, Control,\
     Grid, ListBox, EventListener,\
-    Library, Module
+    Library, Module, QueryColumn
 from odbinfo.ooutil import open_connection
 
 
@@ -178,7 +178,7 @@ def read_metadata(datasource, odbpath):
             return \
                 Metadata(read_tables(con),
                          read_views(con),
-                         read_queries(datasource),
+                         read_queries(con, datasource),
                          read_forms(odbzip),
                          read_libraries(odbzip))
 
@@ -189,16 +189,40 @@ def read_views(connection) -> [View]:
 
 
 def _read_view(ooview):
-    return View(ooview.Name, ooview.Command)
+    return View(ooview.Name, ooview.Command, [])
 
 
-def read_queries(datasource):
+def read_queries(connection, datasource):
     """ Reads query metadata from `datasource` """
-    return list(map(_read_query, datasource.QueryDefinitions))
+    read_query = partial(_read_query, connection)
+    return list(map(read_query, datasource.QueryDefinitions))
 
 
-def _read_query(ooquery):
-    return Query(ooquery.Name, ooquery.Command)
+def _read_query(connection, ooquery):
+    return Query(ooquery.Name,
+                 ooquery.Command,
+                 _read_query_columns(connection, ooquery.Command))
+
+
+def _read_query_columns(connection, command) -> [QueryColumn]:
+    cols = []
+    stmt = connection.createStatement()
+    resultset = stmt.executeQuery(command)
+    rsmeta = resultset.getMetaData()
+    for i in range(1, rsmeta.getColumnCount() + 1):
+        cols.append(QueryColumn(
+            rsmeta.getColumnName(i),
+            rsmeta.isAutoIncrement(i),
+            rsmeta.isNullable(i),
+            rsmeta.getTableName(i),
+            rsmeta.getColumnTypeName(i),
+            rsmeta.getPrecision(i),
+            rsmeta.getScale(i),
+            rsmeta.isSigned(i),
+            rsmeta.isWritable(i),
+            rsmeta.isReadOnly(i)
+        ))
+    return cols
 
 
 def read_tables(connection) -> [Table]:

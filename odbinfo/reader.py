@@ -180,6 +180,7 @@ def read_metadata(datasource, odbpath):
                          read_views(con),
                          read_queries(con, datasource),
                          read_forms(odbzip),
+                         [],
                          read_libraries(odbzip))
 
 

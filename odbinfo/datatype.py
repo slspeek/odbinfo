@@ -32,6 +32,13 @@ KEYRULES = _consts(_KEYRULE, ["Cascade",
 
 
 @dataclass
+class Report:
+    name: str
+    command: str
+    commandtype: str
+
+
+@dataclass
 class Module:
     " Basic module"
     name: str
@@ -204,4 +211,5 @@ class Metadata:
     views: [View]
     queries: [Query]
     forms: [Form]
+    reports: [Report]
     libraries: [Library]

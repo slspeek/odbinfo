@@ -115,7 +115,7 @@ def _convert_local(output_dir, name):
         with chdir(".."):
             localsite = f"{name}-local"
             os.makedirs(localsite)
-            while not _is_port_open(1313):
+            while not _is_port_open(port):
                 time.sleep(0.1)
             os.system(f"wget -nH --convert-links -P {localsite} -r"
                       f" http://localhost:{port}/ > /dev/null 2>&1")

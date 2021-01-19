@@ -16,15 +16,18 @@ def mapiflist(function, maybelist):
     return list(map(function, maybelist))
 
 
+def _body_elem(oozip, path):
+    content = _parse_xml(oozip, path)
+    return _office_body(content)
+
+
 def _reports(odbzip):
-    content = _parse_xml(odbzip, "content.xml")
-    index = _office_body(content)["office:database"]["db:reports"]
+    index = _body_elem(odbzip, "content.xml")["office:database"]["db:reports"]
     dbcomponent = index["db:component"]
 
     def report(rpt):
         relpath = rpt["@xlink:href"] + "/content.xml"
-        info = _office_body(_parse_xml(odbzip, relpath))
-        info = info["office:report"]
+        info = _body_elem(odbzip, relpath)["office:report"]
         return (rpt["@db:name"], info)
 
     return mapiflist(report, dbcomponent)
@@ -77,7 +80,7 @@ def _read_module(odbzip, library_name,  data) -> Module:
 
 
 def read_forms(odbzip):
-    """ Reads form metadata from `odbpath` zip """
+    """ Reads form metadata from `odbzip` """
     forms = []
     for name, data in _forms(odbzip):
         form = Form(name, _read_subforms(data))
@@ -178,13 +181,12 @@ def _office_body(info):
 
 
 def _forms(odbzip):
-    content = _parse_xml(odbzip, "content.xml")
-    index = _office_body(content)["office:database"]["db:forms"]
+    index = _body_elem(odbzip, "content.xml")["office:database"]["db:forms"]
     dbcomponent = index["db:component"]
 
     def form(frm):
         relpath = frm["@xlink:href"] + "/content.xml"
-        info = _office_body(_parse_xml(odbzip, relpath))["office:text"]
+        info = _body_elem(odbzip, relpath)["office:text"]
         info = info["office:forms"]
         return (frm["@db:name"], info)
 

@@ -1,6 +1,6 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
 from zipfile import ZipFile
-from functools import partial
+from functools import partial, reduce
 import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
 from odbinfo.datatype import Form, SubForm, Control,\
@@ -14,6 +14,24 @@ def mapiflist(function, maybelist):
     if not isinstance(maybelist, list):
         maybelist = [maybelist]
     return list(map(function, maybelist))
+
+
+def _collect_attribute(data, attribute):
+    def collect_attr(info):
+        values = []
+        if not info:
+            return values
+        if not hasattr(info, "items"):
+            return values
+        for key, value in info.items():
+            if key == attribute:
+                values.append(value)
+                continue
+            if key.startswith("@"):
+                continue
+            values.extend(_collect_attribute(value, attribute))
+        return values
+    return reduce(lambda a, b: a + b, mapiflist(collect_attr, data))
 
 
 def _body_elem(oozip, path):
@@ -39,9 +57,14 @@ def read_reports(odbzip) -> [Report]:
     for name, info in _reports(odbzip):
         reports.append(Report(name,
                               info["@rpt:command"],
-                              info["@rpt:command-type"])
+                              info["@rpt:command-type"],
+                              _read_report_formulas(info))
                        )
     return reports
+
+
+def _read_report_formulas(info) -> [str]:
+    return _collect_attribute(info, "@rpt:formula")
 
 
 def _has_libraries(odbzip) -> bool:

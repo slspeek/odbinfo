@@ -3,7 +3,7 @@ import json
 from zipfile import ZipFile
 from test.resource import DEFAULT_TESTDB
 import pytest
-from odbinfo.reader import _forms, read_forms, read_libraries
+from odbinfo.reader import read_libraries, _reports, _collect_attribute
 
 
 @pytest.fixture(scope="package")
@@ -13,20 +13,19 @@ def odbzip():
         yield zipfile
 
 
-def test_forms(odbzip):  # pylint: disable=redefined-outer-name
-    " _forms  "
-    info = _forms(odbzip)
-    for _, form in info:
-        print(json.dumps(form, indent=4))
-
-
-def test_read_forms(odbzip):  # pylint: disable=redefined-outer-name
-    " read_forms  "
-    info = read_forms(odbzip)
-    for form in info:
-        print(form)
+def test_reports(odbzip):  # pylint: disable=redefined-outer-name
+    " _reports  "
+    info = _reports(odbzip)
+    for name, form in info:
+        print(name, json.dumps(form, indent=4))
 
 
 def test_libraries(odbzip):  # pylint: disable=redefined-outer-name
     " libraries "
     print(read_libraries(odbzip))
+
+
+def test_collect_attribute():
+    " simple test "
+    data = {"elem": {"@foo": "bar"}, "@foo": "foo"}
+    assert _collect_attribute(data, "@foo") == ["bar", "foo"]

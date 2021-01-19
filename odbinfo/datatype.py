@@ -37,6 +37,7 @@ class Report:
     name: str
     command: str
     commandtype: str
+    formulas: [str]
 
 
 @dataclass

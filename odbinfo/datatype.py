@@ -32,6 +32,23 @@ KEYRULES = _consts(_KEYRULE, ["Cascade",
 
 
 @dataclass
+class DatabaseDisplay:
+    " Field in TextDocument "
+    database: str
+    table: str
+    tabletype: str
+    column: str
+
+
+@dataclass
+class TextDocument:
+    " ODT od OTT file metadata "
+    name: str
+    path: str
+    fields: [DatabaseDisplay]
+
+
+@dataclass
 class Report:
     " Report metadata "
     name: str
@@ -215,3 +232,4 @@ class Metadata:
     forms: [Form]
     reports: [Report]
     libraries: [Library]
+    textdocuments: [TextDocument]

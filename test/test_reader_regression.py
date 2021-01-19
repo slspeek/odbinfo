@@ -4,11 +4,13 @@ import pickle
 from test.test_new_site import libreoffice  # pylint:disable=unused-import
 from test.connect import datasource
 from test.resource import DEFAULT_TESTDB
+import pytest
 from odbinfo.reader import read_metadata
 
 
 # pylint:disable=unused-argument
 # pylint:disable=redefined-outer-name
+@pytest.mark.slow
 def test_metadata_regression(libreoffice):
     """ make fixture """
     dsource = datasource()

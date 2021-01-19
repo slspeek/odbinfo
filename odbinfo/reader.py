@@ -1,11 +1,14 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
+import os
 from zipfile import ZipFile
-from functools import partial, reduce
+from functools import reduce
+from functools import partial
+from collections import OrderedDict
 import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
 from odbinfo.datatype import Form, SubForm, Control,\
     Grid, ListBox, EventListener,\
-    Library, Module, QueryColumn, Report
+    Library, Module, QueryColumn, Report, DatabaseDisplay, TextDocument
 from odbinfo.ooutil import open_connection
 
 
@@ -17,6 +20,7 @@ def mapiflist(function, maybelist):
 
 
 def _collect_attribute(data, attribute):
+
     def collect_attr(info):
         values = []
         if not info:
@@ -31,12 +35,71 @@ def _collect_attribute(data, attribute):
                 continue
             values.extend(_collect_attribute(value, attribute))
         return values
-    return reduce(lambda a, b: a + b, mapiflist(collect_attr, data))
+    return reduce(lambda x, y: x + y, mapiflist(collect_attr, data), [])
+
+
+def _collect_element(data, element) -> [OrderedDict]:
+
+    def collect_elem(info):
+        values = []
+        if not info:
+            return values
+        if not hasattr(info, "items"):
+            return values
+        for key, value in info.items():
+            if key == element:
+                values.append(value)
+                continue
+            if key.startswith("@"):
+                continue
+            values.extend(_collect_element(value, element))
+        return values
+    return reduce(lambda x, y: x + y, mapiflist(collect_elem, data), [])
 
 
 def _body_elem(oozip, path):
     content = _parse_xml(oozip, path)
     return _office_body(content)
+
+
+def _text_documents(dir_path) -> [str]:
+    docs = []
+    for root, _, files in os.walk(dir_path):
+        for file in files:
+            if file.endswith('.odt') or file.endswith('.ott'):
+                docs.append(root + '/' + str(file))
+    return docs
+
+
+def _database_displays(doc_path) -> [DatabaseDisplay]:
+    def display(data):
+        return \
+            DatabaseDisplay(
+                data["@text:database-name"],
+                data["@text:table-name"],
+                data["@text:table-type"],
+                data["@text:column-name"]
+            )
+    with ZipFile(doc_path) as file:
+        body = _body_elem(file, "content.xml")["office:text"]
+        return list(map(display,
+                        _collect_attribute(body, "text:database-display")))
+
+
+def read_text_documents(dir_path) -> [TextDocument]:
+    " search odt, ott file and look for database-display fields"
+    docs = []
+    for doc_path in _text_documents(dir_path):
+        displays = _database_displays(doc_path)
+        if len(displays) > 0:
+            docs.append(
+                TextDocument(
+                    os.path.basename(doc_path),
+                    doc_path,
+                    displays
+                )
+            )
+    return docs
 
 
 def _reports(odbzip):
@@ -231,7 +294,8 @@ def read_metadata(datasource, odbpath):
                          read_queries(con, datasource),
                          read_forms(odbzip),
                          read_reports(odbzip),
-                         read_libraries(odbzip))
+                         read_libraries(odbzip),
+                         read_text_documents(os.path.dirname(odbpath)))
 
 
 def read_views(connection) -> [View]:

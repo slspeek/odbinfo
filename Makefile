@@ -93,3 +93,6 @@ oxt:
 install_oxt: oxt
 	-$(unopkg) remove "com.github.slspeek.ODBInfo"
 	$(unopkg) add -s $(dist)/odbinfo.oxt
+
+doc: prepare
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pydoc -p 0

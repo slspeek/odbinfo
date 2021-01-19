@@ -4,6 +4,7 @@ from zipfile import ZipFile
 from test.resource import DEFAULT_TESTDB
 import pytest
 from odbinfo.reader import read_libraries, _reports, _collect_attribute
+from odbinfo.reader import _text_documents, read_text_documents
 
 
 @pytest.fixture(scope="package")
@@ -29,3 +30,25 @@ def test_collect_attribute():
     " simple test "
     data = {"elem": {"@foo": "bar"}, "@foo": "foo"}
     assert _collect_attribute(data, "@foo") == ["bar", "foo"]
+
+
+def test_collect_attribute1():
+    " simple test "
+    data = {"@foo": "bar"}
+    assert _collect_attribute(data, "@foo") == ["bar"]
+
+
+def test_collect_element():
+    " simple test "
+    data = {"@foo": "bar", "foo": {}}
+    assert _collect_attribute(data, "foo") == [{}]
+
+
+def test_text_document():
+    " find odts "
+    assert len(_text_documents("test/resources/testdb")) == 2
+
+
+def test_read_text_documents():
+    " find odts "
+    print(read_text_documents("test/resources/testdb"))

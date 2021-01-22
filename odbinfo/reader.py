@@ -184,6 +184,11 @@ def _read_subform(data):
     subformname = data["@form:name"]
     command = data.get("@form:command", "")
     commandtype = data.get("@form:command-type", "")
+    allowdeletes = data.get("@form:allow-deletes", "true")
+    allowupdates = data.get("@form:allow-updates", "true")
+    allowinsertes = data.get("@form:allow-inserts", "true")
+    masterfields = data.get("@form:master-fields", "")
+    detailfields = data.get("@form:detail-fields", "")
     for name in data.keys():
         collected_controls = []
         value = data[name]
@@ -198,7 +203,15 @@ def _read_subform(data):
         elif name.startswith("form:"):
             collected_controls = mapiflist(_read_control, value)
         controls.extend(collected_controls)
-    return SubForm(subformname, command, commandtype, controls)
+    return SubForm(subformname,
+                   command,
+                   commandtype,
+                   allowdeletes,
+                   allowinsertes,
+                   allowupdates,
+                   masterfields,
+                   detailfields,
+                   controls)
 
 
 def _read_grid(data):

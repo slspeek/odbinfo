@@ -96,3 +96,9 @@ install_oxt: oxt
 
 doc: prepare
 	PYTHONPATH=$(PYTHONPATH) $(python) -m pydoc -p 0
+
+.ONESHELL:
+unziptestdb:
+	rm -rf test/resources/testdb/unzipped
+	cd test/resources/testdb && mkdir unzipped
+	cd unzipped && unzip ../testdb.odb

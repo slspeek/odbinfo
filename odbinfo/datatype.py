@@ -79,11 +79,16 @@ class EventListener:
 
 
 @dataclass
-class SubForm:
+class SubForm:  # pylint: disable=too-many-instance-attributes
     " Database subform "
     name: str
     command: str
     commandtype: str
+    allowdeletes: str
+    allowinsertes: str
+    allowupdates: str
+    masterfields: str
+    detailfields: str
     controls: [object]
 
 

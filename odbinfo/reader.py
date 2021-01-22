@@ -8,7 +8,8 @@ import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
 from odbinfo.datatype import Form, SubForm, Control,\
     Grid, ListBox, EventListener,\
-    Library, Module, QueryColumn, Report, DatabaseDisplay, TextDocument
+    Library, Module, QueryColumn, Report, DatabaseDisplay, TextDocument,\
+    PythonModule, PythonLibrary
 from odbinfo.ooutil import open_connection
 
 
@@ -130,9 +131,43 @@ def _read_report_formulas(info) -> [str]:
     return _collect_attribute(info, "@rpt:formula")
 
 
-def _has_libraries(odbzip) -> bool:
+def _manifest_fileentries(odbzip):
     manifest = _parse_xml(odbzip, "META-INF/manifest.xml")
-    for entry in manifest["manifest:manifest"]["manifest:file-entry"]:
+    return manifest["manifest:manifest"]["manifest:file-entry"]
+
+
+def read_python_libraries(odbzip):
+    " Read python libraries from `odbzip`"
+    libraries = []
+    for entry in _manifest_fileentries(odbzip):
+        fullpath = entry["@manifest:full-path"]
+        if fullpath.startswith("Scripts/python")\
+                and entry["@manifest:media-type"] == "application/binary":
+            libraries.append(
+                _read_python_library(odbzip, fullpath)
+            )
+    return libraries
+
+
+def _read_python_library(odbzip, fullpath):
+    name = os.path.basename(fullpath)
+    modules = []
+    for entry in _manifest_fileentries(odbzip):
+        entrypath = entry["@manifest:full-path"]
+        if entrypath.startswith(fullpath)\
+                and entry["@manifest:media-type"] == "":
+            modules.append(_read_python_module(odbzip, entrypath))
+    return PythonLibrary(name, modules)
+
+
+def _read_python_module(odbzip, fullpath):
+    return PythonModule(os.path.basename(fullpath),
+                        odbzip.read(fullpath)
+                        )
+
+
+def _has_libraries(odbzip) -> bool:
+    for entry in _manifest_fileentries(odbzip):
         if entry["@manifest:full-path"].startswith("Basic"):
             return True
     return False
@@ -308,6 +343,7 @@ def read_metadata(datasource, odbpath):
                          read_forms(odbzip),
                          read_reports(odbzip),
                          read_libraries(odbzip),
+                         read_python_libraries(odbzip),
                          read_text_documents(os.path.dirname(odbpath)))
 
 

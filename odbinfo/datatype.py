@@ -58,6 +58,20 @@ class Report:
 
 
 @dataclass
+class PythonModule:
+    " Python Module "
+    name: str
+    source: str
+
+
+@dataclass
+class PythonLibrary:
+    " Python library "
+    name: str
+    modules: [PythonModule]
+
+
+@dataclass
 class Module:
     " Basic module"
     name: str
@@ -229,7 +243,7 @@ class Table:
 
 
 @dataclass
-class Metadata:
+class Metadata:  # pylint: disable=too-many-instance-attributes
     """ Collector class for all metadata read from the odb-file """
     tables: [Table]
     views: [View]
@@ -237,4 +251,5 @@ class Metadata:
     forms: [Form]
     reports: [Report]
     libraries: [Library]
+    pythonlibraries: [PythonLibrary]
     textdocuments: [TextDocument]

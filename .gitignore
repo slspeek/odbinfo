@@ -6,6 +6,7 @@ tags
 # C extensions
 *.so
 test/resources/testdb/unzipped*
+odbinfo/parser/sqlite
 
 # Distribution / packaging
 .Python

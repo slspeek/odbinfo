@@ -1,6 +1,7 @@
 libreoffice=/tmp/program
 python=$(libreoffice)/python
 unopkg=$(libreoffice)/unopkg
+antlr4=java -jar ../../../../odbinfo/parser/lib/antlr-4.9.1-complete.jar
 target=target
 dist=$(target)/dist
 stage=$(dist)/odbinfo_oxt/
@@ -54,7 +55,7 @@ serve:
 	hugo server --layoutDir ../../../../../../../data/hugo-template/layouts
 
 format:
-	autopep8 -ri .
+	autopep8 -ri --exclude="odbinfo/parser/sqlite/*" odbinfo/ main.py
 
 .ONESHELL:
 check: format
@@ -102,3 +103,15 @@ unziptestdb:
 	rm -rf test/resources/testdb/unzipped
 	cd test/resources/testdb && mkdir unzipped
 	cd unzipped && unzip ../testdb.odb
+
+.ONESHELL:
+genparser:
+	rm -rf odbinfo/parser/sqlite
+	cd odbinfo/parser/grammars/sqlite/ && \
+	$(antlr4) -Dlanguage=Python3 -o ../../sqlite -package odbinfo.parser.sqlite \
+		-no-listener -visitor SQLiteLexer.g4 SQLiteParser.g4
+
+.ONESHELL:
+installantlr:
+	cd odbinfo/parser/lib
+	curl -O https://www.antlr.org/download/antlr-4.9.1-complete.jar

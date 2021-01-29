@@ -106,12 +106,13 @@ unziptestdb:
 
 .ONESHELL:
 genparser:
-	rm -rf odbinfo/parser/sqlite
+	-rm -rf odbinfo/parser/sqlite
 	cd odbinfo/parser/grammars/sqlite/ && \
 	$(antlr4) -Dlanguage=Python3 -o ../../sqlite -package odbinfo.parser.sqlite \
 		-no-listener -visitor SQLiteLexer.g4 SQLiteParser.g4
 
 .ONESHELL:
 installantlr:
+	-mkdir -p odbinfo/parser/lib
 	cd odbinfo/parser/lib
 	curl -O https://www.antlr.org/download/antlr-4.9.1-complete.jar

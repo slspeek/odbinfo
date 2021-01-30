@@ -9,7 +9,7 @@ def test_parse():
 
 def test_parse_select():
     " call parse select"
-    parse('select * from "table"')
+    parse('select * from "table", "second_table", (select * from "foo")')
 
 
 def test_parse_error():

@@ -30,6 +30,12 @@ itest: prepare
 	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test
 
 .ONESHELL:
+single: prepare
+	cd $(build)
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test/${SINGLE}
+
+
+.ONESHELL:
 fixture: prepare
 	cd $(build)
 	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test/fixture_reader.py
@@ -109,7 +115,7 @@ genparser:
 	-rm -rf odbinfo/parser/sqlite
 	cd odbinfo/parser/grammars/sqlite/ && \
 	$(antlr4) -Dlanguage=Python3 -o ../../sqlite -package odbinfo.parser.sqlite \
-		-no-listener -visitor SQLiteLexer.g4 SQLiteParser.g4
+		 -visitor SQLiteLexer.g4 SQLiteParser.g4
 
 .ONESHELL:
 installantlr:

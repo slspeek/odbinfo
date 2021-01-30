@@ -1,7 +1,22 @@
 """ Facade fot the SQLiteParser """
-from antlr4 import InputStream, CommonTokenStream
+from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker
 from odbinfo.parser.sqlite.SQLiteParser import SQLiteParser
 from odbinfo.parser.sqlite.SQLiteLexer import SQLiteLexer
+from odbinfo.parser.sqlite.SQLiteParserListener import\
+    SQLiteParserListener
+
+
+class SQLListener(SQLiteParserListener):
+    "Collect tablenames"
+
+    def __init__(self):
+        super().__init__()
+        self.tablenames = []
+
+    def enterTable_name(self, ctx):
+        self.tablenames.append(
+            (ctx.getText(), ctx.start.line, ctx.start.column)
+        )
 
 
 def parse(sqlcommand):
@@ -11,5 +26,9 @@ def parse(sqlcommand):
     stream = CommonTokenStream(lexer)
     parser = SQLiteParser(stream)
     tree = parser.parse()
-    print(tree.toStringTree())
+    walker = ParseTreeWalker()
+    listener = SQLListener()
+    walker.walk(listener, tree)
+
+    print(listener.tablenames)
     return tree

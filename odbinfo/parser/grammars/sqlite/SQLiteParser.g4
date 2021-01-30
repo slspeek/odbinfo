@@ -30,7 +30,7 @@ options {
 parse: ( sql_stmt_list | error)* EOF;
 
 error:
-	UNEXPECTED_CHAR;
+	UNEXPECTED_CHAR{raise RuntimeError("UNEXPECTED_CHAR=" + $UNEXPECTED_CHAR.text)};
 
 sql_stmt_list: ';'* sql_stmt (';'+ sql_stmt)* ';'*;
 

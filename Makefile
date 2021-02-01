@@ -61,7 +61,7 @@ serve:
 	hugo server --layoutDir ../../../../../../../data/hugo-template/layouts
 
 format:
-	autopep8 -ri --exclude="odbinfo/parser/sqlite/*" odbinfo/ main.py
+	autopep8 -ri --exclude="odbinfo/parser/sqlite/*,odbinfo/parser/oobasic/*" odbinfo/ main.py
 
 .ONESHELL:
 check: format
@@ -113,9 +113,13 @@ unziptestdb:
 .ONESHELL:
 genparser:
 	-rm -rf odbinfo/parser/sqlite
-	cd odbinfo/parser/grammars/sqlite/ && \
+	cd  odbinfo/parser/grammars/sqlite/ && \
 	$(antlr4) -Dlanguage=Python3 -o ../../sqlite -package odbinfo.parser.sqlite \
 		 -visitor SQLiteLexer.g4 SQLiteParser.g4
+	cd -
+	cd odbinfo/parser/grammars/oobasic/ && \
+		$(antlr4) -Dlanguage=Python3 -o ../../oobasic -package odbinfo.parser.oobasic \
+	 		 -visitor OOBasic.g4
 
 .ONESHELL:
 installantlr:

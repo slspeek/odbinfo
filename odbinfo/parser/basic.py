@@ -17,11 +17,22 @@ class BasicListener(OOBasicListener):
         self.functionnames.append(
             ctx.ambiguousIdentifier().getText()
         )
+        print(f"Entering {ctx.ambiguousIdentifier().getText()}")
 
     def enterImplicitCallStmt_InBlock(self, ctx):
         print(ctx.getText())
 
     def exitImplicitCallStmt_InBlock(self, ctx):
+        print(ctx.getText())
+
+    def enterICS_B_ProcedureCall(self, ctx):
+        print(ctx.getText())
+
+    def enterMsgBox(self, ctx):
+        print(ctx.getText())
+
+    def enterVsNot(self, ctx):
+        print("&&&&&&&&&&&&&&&")
         print(ctx.getText())
 
 

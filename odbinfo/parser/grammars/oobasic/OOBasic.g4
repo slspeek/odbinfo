@@ -74,7 +74,7 @@ moduleOption
    ;
 
 moduleBody
-   : moduleBodyElement (NEWLINE + moduleBodyElement)*
+   : moduleBodyElement COMMENT? (NEWLINE + moduleBodyElement COMMENT?)*
    ;
 
 moduleBodyElement
@@ -90,6 +90,7 @@ moduleBodyElement
    | propertyLetStmt
    | subStmt
    | typeStmt
+   | COMMENT
    ;
 
 // controls ----------------------------------
@@ -138,11 +139,12 @@ attributeStmt
    ;
 
 block
-   : blockStmt (NEWLINE + WS? blockStmt)*
+   : blockStmt COMMENT? (NEWLINE + WS? blockStmt COMMENT?)*
    ;
 
 blockStmt
    : appActivateStmt
+   | msgBox
    | attributeStmt
    | beepStmt
    | chDirStmt
@@ -209,6 +211,7 @@ blockStmt
    | withStmt
    | writeStmt
    | implicitCallStmt_InBlock
+   | COMMENT
    ;
 
 // statements ----------------------------------
@@ -595,6 +598,7 @@ valueStmt
    | valueStmt WS? IMP WS? valueStmt                                 # vsImp
    | implicitCallStmt_InStmt                                         # vsICS
    | midStmt                                                         # vsMid
+   | msgBox                                                          # vsMsgBox
    ;
 
 variableStmt
@@ -632,6 +636,10 @@ explicitCallStmt
    | eCS_MemberProcedureCall
    ;
 
+msgBox
+   : MSGBOX WS? LPAREN WS? argsCall WS? RPAREN
+   | MSGBOX WS argsCall
+   ;
 // parantheses are required in case of args -> empty parantheses are removed
 eCS_ProcedureCall
    : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)?
@@ -655,7 +663,7 @@ iCS_B_ProcedureCall
    ;
 
 iCS_B_MemberProcedureCall
-   : implicitCallStmt_InStmt? DOT ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? dictionaryCallStmt?
+   : implicitCallStmt_InStmt? DOT ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)? dictionaryCallStmt?
    ;
 
 // iCS_S_MembersCall first, so that member calls are not resolved as separate iCS_S_VariableOrProcedureCalls
@@ -707,7 +715,7 @@ dictionaryCallStmt
 
 // atomic rules for statements
 argList
-   : LPAREN (WS? arg (WS? COMMA WS? arg)*)? WS? RPAREN
+   : LPAREN (WS? arg LINE_CONTINUATION? (WS? COMMA WS? arg WS? LINE_CONTINUATION?)*)? WS? RPAREN
    ;
 
 arg
@@ -1479,6 +1487,10 @@ ME
    : M E
    ;
 
+
+MSGBOX
+   : M S G B O X
+   ;
 
 MID
    : M I D

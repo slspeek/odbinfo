@@ -338,12 +338,11 @@ def test_parse():
 
 def test_parse_select():
     " call parse select"
-    tree = parse(CODE)
+    parse(CODE)
     # print(tree.toStringTree())
 
 
 def test_parse_error():
     " call parse select"
-    parse("REM Hi!")
-    tree = parse(SOURCECODE)
+    parse(SOURCECODE)
     # print(tree.toStringTree())

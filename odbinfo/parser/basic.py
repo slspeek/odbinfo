@@ -35,6 +35,10 @@ class BasicListener(OOBasicListener):
         print("&&&&&&&&&&&&&&&")
         print(ctx.getText())
 
+    def enterInlineIfThenElse(self, ctx):
+        print("IF THEN")
+        print(ctx.getText())
+
 
 def parse(basiccode):
     " Returns parsetree object "

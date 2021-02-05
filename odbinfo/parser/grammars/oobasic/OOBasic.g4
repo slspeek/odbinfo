@@ -27,7 +27,7 @@ startRule
    ;
 
 module
-   : WS? NEWLINE* (moduleHeader NEWLINE +)? moduleReferences? NEWLINE* controlProperties? NEWLINE* moduleConfig? NEWLINE* moduleAttributes? NEWLINE* moduleOptions? NEWLINE* moduleBody? NEWLINE* WS?
+   : WS? NEWLINE* (moduleHeader NEWLINE +)? moduleReferences? NEWLINE*  moduleConfig? NEWLINE* moduleOptions? NEWLINE* moduleBody? NEWLINE* WS?
    ;
 
 moduleReferences
@@ -58,10 +58,6 @@ moduleConfigElement
    : ambiguousIdentifier WS? EQ WS? literal NEWLINE
    ;
 
-moduleAttributes
-   : (attributeStmt NEWLINE +) +
-   ;
-
 moduleOptions
    : (moduleOption NEWLINE +) +
    ;
@@ -71,6 +67,8 @@ moduleOption
    | OPTION_COMPARE WS (BINARY | TEXT) # optionCompareStmt
    | OPTION_EXPLICIT # optionExplicitStmt
    | OPTION_PRIVATE_MODULE # optionPrivateModuleStmt
+   | OPTION_COMPATIBLE # optionCompatible
+   | OPTION_CLASSMODULE # optionClassModule
    ;
 
 moduleBody
@@ -80,53 +78,11 @@ moduleBody
 moduleBodyElement
    : moduleBlock
    | moduleOption
-   | declareStmt
-   | enumerationStmt
-   | eventStmt
    | functionStmt
-   | macroIfThenElseStmt
-   | propertyGetStmt
-   | propertySetStmt
-   | propertyLetStmt
    | subStmt
    | typeStmt
    | COMMENT
    ;
-
-// controls ----------------------------------
-
-controlProperties
-	: WS? BEGIN WS cp_ControlType WS cp_ControlIdentifier WS? NEWLINE+ cp_Properties+ END NEWLINE*
-	;
-
-cp_Properties
-	: cp_SingleProperty
-	| cp_NestedProperty
-	| controlProperties;
-
-cp_SingleProperty
-	: WS? implicitCallStmt_InStmt WS? EQ WS? '$'? cp_PropertyValue FRX_OFFSET? NEWLINE+
-	;
-
-cp_PropertyName
-	: (OBJECT DOT)? ambiguousIdentifier (LPAREN literal RPAREN)? (DOT ambiguousIdentifier (LPAREN literal RPAREN)?)*
-	;
-
-cp_PropertyValue
-    : DOLLAR? (literal | (LBRACE ambiguousIdentifier RBRACE) | POW ambiguousIdentifier)
-    ;
-
-cp_NestedProperty
-	: WS? BEGINPROPERTY WS ambiguousIdentifier (LPAREN INTEGERLITERAL RPAREN)? (WS GUID)? NEWLINE+ (cp_Properties+)? ENDPROPERTY NEWLINE+
-	;
-
-cp_ControlType
-	: complexType
-	;
-
-cp_ControlIdentifier
-	: ambiguousIdentifier
-	;
 
 // block ----------------------------------
 
@@ -134,77 +90,52 @@ moduleBlock
    : block
    ;
 
-attributeStmt
-   : ATTRIBUTE WS implicitCallStmt_InStmt WS? EQ WS? literal (WS? COMMA WS? literal)*
-   ;
 
 block
    : blockStmt COMMENT? (NEWLINE + WS? blockStmt COMMENT?)*
    ;
 
 blockStmt
-   : appActivateStmt
-   | msgBox
-   | attributeStmt
+   : msgBox
    | beepStmt
    | chDirStmt
    | chDriveStmt
    | closeStmt
    | constStmt
    | dateStmt
-   | deleteSettingStmt
    | deftypeStmt
    | doLoopStmt
    | endStmt
-   | eraseStmt
+   | explicitCallStmt
    | errorStmt
    | exitStmt
-   | explicitCallStmt
    | filecopyStmt
    | forEachStmt
    | forNextStmt
-   | getStmt
-   | goSubStmt
    | goToStmt
    | ifThenElseStmt
-   | implementsStmt
    | inputStmt
-   | killStmt
    | letStmt
    | lineInputStmt
    | lineLabel
-   | loadStmt
-   | lockStmt
-   | lsetStmt
-   | macroIfThenElseStmt
    | midStmt
    | mkdirStmt
    | nameStmt
    | onErrorStmt
    | onGoToStmt
-   | onGoSubStmt
    | openStmt
    | printStmt
    | putStmt
-   | raiseEventStmt
    | randomizeStmt
    | redimStmt
    | resetStmt
    | resumeStmt
-   | returnStmt
    | rmdirStmt
-   | rsetStmt
-   | savepictureStmt
-   | saveSettingStmt
    | seekStmt
    | selectCaseStmt
-   | sendkeysStmt
-   | setattrStmt
    | setStmt
    | stopStmt
    | timeStmt
-   | unloadStmt
-   | unlockStmt
    | variableStmt
    | whileWendStmt
    | widthStmt
@@ -215,10 +146,6 @@ blockStmt
    ;
 
 // statements ----------------------------------
-
-appActivateStmt
-   : APPACTIVATE WS valueStmt (WS? COMMA WS? valueStmt)?
-   ;
 
 beepStmt
    : BEEP
@@ -248,16 +175,8 @@ dateStmt
    : DATE WS? EQ WS? valueStmt
    ;
 
-declareStmt
-   : (visibility WS)? DECLARE WS (FUNCTION typeHint? | SUB) WS ambiguousIdentifier typeHint? WS LIB WS STRINGLITERAL (WS ALIAS WS STRINGLITERAL)? (WS? argList)? (WS asTypeClause)?
-   ;
-
 deftypeStmt
    : (DEFBOOL | DEFBYTE | DEFINT | DEFLNG | DEFCUR | DEFSNG | DEFDBL | DEFDEC | DEFDATE | DEFSTR | DEFOBJ | DEFVAR) WS letterrange (WS? COMMA WS? letterrange)*
-   ;
-
-deleteSettingStmt
-   : DELETESETTING WS valueStmt WS? COMMA WS? valueStmt (WS? COMMA WS? valueStmt)?
    ;
 
 doLoopStmt
@@ -270,31 +189,14 @@ endStmt
    : END
    ;
 
-enumerationStmt
-   : (publicPrivateVisibility WS)? ENUM WS ambiguousIdentifier NEWLINE + (enumerationStmt_Constant)* END_ENUM
-   ;
-
-enumerationStmt_Constant
-   : ambiguousIdentifier (WS? EQ WS? valueStmt)? NEWLINE +
-   ;
-
-eraseStmt
-   : ERASE WS valueStmt (WS? COMMA WS? valueStmt)*
-   ;
-
 errorStmt
    : ERROR WS valueStmt
-   ;
-
-eventStmt
-   : (visibility WS)? EVENT WS ambiguousIdentifier WS? argList
    ;
 
 exitStmt
    : EXIT_DO
    | EXIT_FOR
    | EXIT_FUNCTION
-   | EXIT_PROPERTY
    | EXIT_SUB
    ;
 
@@ -314,13 +216,6 @@ functionStmt
    : (visibility WS)? (STATIC WS)? FUNCTION WS ambiguousIdentifier (WS? argList)? (WS asTypeClause)? NEWLINE + (block NEWLINE +)? END_FUNCTION
    ;
 
-getStmt
-   : GET WS valueStmt WS? COMMA WS? valueStmt? WS? COMMA WS? valueStmt
-   ;
-
-goSubStmt
-   : GOSUB WS valueStmt
-   ;
 
 goToStmt
    : GOTO WS valueStmt
@@ -332,7 +227,7 @@ ifThenElseStmt
    ;
 
 ifBlockStmt
-   : IF WS ifConditionStmt WS THEN NEWLINE + (block NEWLINE +)?
+   : IF WS ifConditionStmt WS THEN WS? COMMENT? NEWLINE + (block NEWLINE +)?
    ;
 
 ifConditionStmt
@@ -340,23 +235,15 @@ ifConditionStmt
    ;
 
 ifElseIfBlockStmt
-   : ELSEIF WS ifConditionStmt WS THEN NEWLINE + (block NEWLINE +)?
+   : ELSEIF WS ifConditionStmt WS THEN WS? COMMENT? NEWLINE + (block NEWLINE +)?
    ;
 
 ifElseBlockStmt
    : ELSE NEWLINE + (block NEWLINE +)?
    ;
 
-implementsStmt
-   : IMPLEMENTS WS ambiguousIdentifier
-   ;
-
 inputStmt
    : INPUT WS valueStmt (WS? COMMA WS? valueStmt) +
-   ;
-
-killStmt
-   : KILL WS valueStmt
    ;
 
 letStmt
@@ -365,34 +252,6 @@ letStmt
 
 lineInputStmt
    : LINE_INPUT WS valueStmt WS? COMMA WS? valueStmt
-   ;
-
-loadStmt
-   : LOAD WS valueStmt
-   ;
-
-lockStmt
-   : LOCK WS valueStmt (WS? COMMA WS? valueStmt (WS TO WS valueStmt)?)?
-   ;
-
-lsetStmt
-   : LSET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt
-   ;
-
-macroIfThenElseStmt
-   : macroIfBlockStmt macroElseIfBlockStmt* macroElseBlockStmt? MACRO_END_IF
-   ;
-
-macroIfBlockStmt
-   : MACRO_IF WS ifConditionStmt WS THEN NEWLINE + (moduleBody NEWLINE +)?
-   ;
-
-macroElseIfBlockStmt
-   : MACRO_ELSEIF WS ifConditionStmt WS THEN NEWLINE + (moduleBody NEWLINE +)?
-   ;
-
-macroElseBlockStmt
-   : MACRO_ELSE NEWLINE + (moduleBody NEWLINE +)?
    ;
 
 midStmt
@@ -415,12 +274,8 @@ onGoToStmt
    : ON WS valueStmt WS GOTO WS valueStmt (WS? COMMA WS? valueStmt)*
    ;
 
-onGoSubStmt
-   : ON WS valueStmt WS GOSUB WS valueStmt (WS? COMMA WS? valueStmt)*
-   ;
-
 openStmt
-   : OPEN WS valueStmt WS FOR WS (APPEND | BINARY | INPUT | OUTPUT | RANDOM) (WS ACCESS WS (READ | WRITE | READ_WRITE))? (WS (SHARED | LOCK_READ | LOCK_WRITE | LOCK_READ_WRITE))? WS AS WS valueStmt (WS LEN WS? EQ WS? valueStmt)?
+   : OPEN WS valueStmt WS FOR WS (APPEND | BINARY | INPUT | OUTPUT | RANDOM) WS AS WS valueStmt (WS LEN WS? EQ WS? valueStmt)?
    ;
 
 outputList
@@ -437,24 +292,8 @@ printStmt
    : PRINT WS valueStmt WS? COMMA (WS? outputList)?
    ;
 
-propertyGetStmt
-   : (visibility WS)? (STATIC WS)? PROPERTY_GET WS ambiguousIdentifier typeHint? (WS? argList)? (WS asTypeClause)? NEWLINE + (block NEWLINE +)? END_PROPERTY
-   ;
-
-propertySetStmt
-   : (visibility WS)? (STATIC WS)? PROPERTY_SET WS ambiguousIdentifier (WS? argList)? NEWLINE + (block NEWLINE +)? END_PROPERTY
-   ;
-
-propertyLetStmt
-   : (visibility WS)? (STATIC WS)? PROPERTY_LET WS ambiguousIdentifier (WS? argList)? NEWLINE + (block NEWLINE +)? END_PROPERTY
-   ;
-
 putStmt
    : PUT WS valueStmt WS? COMMA WS? valueStmt? WS? COMMA WS? valueStmt
-   ;
-
-raiseEventStmt
-   : RAISEEVENT WS ambiguousIdentifier (WS? LPAREN WS? (argsCall WS?)? RPAREN)?
    ;
 
 randomizeStmt
@@ -477,24 +316,8 @@ resumeStmt
    : RESUME (WS (NEXT | ambiguousIdentifier))?
    ;
 
-returnStmt
-   : RETURN
-   ;
-
 rmdirStmt
    : RMDIR WS valueStmt
-   ;
-
-rsetStmt
-   : RSET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt
-   ;
-
-savepictureStmt
-   : SAVEPICTURE WS valueStmt WS? COMMA WS? valueStmt
-   ;
-
-saveSettingStmt
-   : SAVESETTING WS valueStmt WS? COMMA WS? valueStmt WS? COMMA WS? valueStmt WS? COMMA WS? valueStmt
    ;
 
 seekStmt
@@ -506,7 +329,7 @@ selectCaseStmt
    ;
 
 sC_Case
-   : CASE WS sC_Cond WS? (COLON? NEWLINE* | NEWLINE +) (block NEWLINE +)?
+   : CASE WS sC_Cond WS? (COLON? NEWLINE* | NEWLINE +) (WS? block NEWLINE +)?
    ;
 
 // ELSE first, so that it is not interpreted as a variable call
@@ -516,17 +339,8 @@ sC_Cond
    ;
 
 sC_CondExpr
-   : IS WS? comparisonOperator WS? valueStmt # caseCondExprIs
-   | valueStmt # caseCondExprValue
+   : valueStmt # caseCondExprValue
    | valueStmt WS TO WS valueStmt # caseCondExprTo
-   ;
-
-sendkeysStmt
-   : SENDKEYS WS valueStmt (WS? COMMA WS? valueStmt)?
-   ;
-
-setattrStmt
-   : SETATTR WS valueStmt WS? COMMA WS? valueStmt
    ;
 
 setStmt
@@ -553,25 +367,12 @@ typeStmt_Element
    : ambiguousIdentifier (WS? LPAREN (WS? subscripts)? WS? RPAREN)? (WS asTypeClause)? NEWLINE +
    ;
 
-typeOfStmt
-   : TYPEOF WS valueStmt (WS IS WS otype)?
-   ;
-
-unloadStmt
-   : UNLOAD WS valueStmt
-   ;
-
-unlockStmt
-   : UNLOCK WS valueStmt (WS? COMMA WS? valueStmt (WS TO WS valueStmt)?)?
-   ;
 
 // operator precedence is represented by rule order
 valueStmt
-   : literal                                                         # vsLiteral
+   : literal LINE_CONTINUATION?                                      # vsLiteral
    | LPAREN WS? valueStmt (WS? COMMA WS? valueStmt)* WS? RPAREN      # vsStruct
    | NEW WS valueStmt                                                # vsNew
-   | typeOfStmt                                                      # vsTypeOf
-   | ADDRESSOF WS valueStmt                                          # vsAddressOf
    | implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt                # vsAssign
    | valueStmt WS? POW WS? valueStmt                                 # vsPow
    | MINUS WS? valueStmt                                             # vsNegation
@@ -581,15 +382,13 @@ valueStmt
    | valueStmt WS? MOD WS? valueStmt                                 # vsMod
    | valueStmt WS? PLUS WS? valueStmt                                # vsAdd
    | valueStmt WS? MINUS WS? valueStmt                               # vsMinus
-   | valueStmt WS? AMPERSAND WS? valueStmt                           # vsAmp
+   | valueStmt (WS|LINE_CONTINUATION)? WS? AMPERSAND WS? valueStmt        # vsAmp
    | valueStmt WS? EQ WS? valueStmt                                  # vsEq
    | valueStmt WS? NEQ WS? valueStmt                                 # vsNeq
    | valueStmt WS? LT WS? valueStmt                                  # vsLt
    | valueStmt WS? GT WS? valueStmt                                  # vsGt
    | valueStmt WS? LEQ WS? valueStmt                                 # vsLeq
    | valueStmt WS? GEQ WS? valueStmt                                 # vsGeq
-   | valueStmt WS LIKE WS valueStmt                                  # vsLike
-   | valueStmt WS IS WS valueStmt                                    # vsIs
    | NOT (WS valueStmt | LPAREN WS? valueStmt WS? RPAREN)            # vsNot
    | valueStmt WS? AND WS? valueStmt                                 # vsAnd
    | valueStmt WS? OR WS? valueStmt                                  # vsOr
@@ -602,7 +401,7 @@ valueStmt
    ;
 
 variableStmt
-   : (DIM | STATIC | visibility) WS (WITHEVENTS WS)? variableListStmt
+   : (DIM | STATIC | visibility) WS variableListStmt
    ;
 
 variableListStmt
@@ -630,24 +429,24 @@ writeStmt
    ;
 
 // complex call statements ----------------------------------
-
 explicitCallStmt
    : eCS_ProcedureCall
    | eCS_MemberProcedureCall
    ;
 
-msgBox
-   : MSGBOX WS? LPAREN WS? argsCall WS? RPAREN
-   | MSGBOX WS argsCall
-   ;
 // parantheses are required in case of args -> empty parantheses are removed
 eCS_ProcedureCall
-   : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)?
+   : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)?
    ;
 
 // parantheses are required in case of args -> empty parantheses are removed
 eCS_MemberProcedureCall
-   : CALL WS implicitCallStmt_InStmt? DOT WS? ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)?
+   : CALL WS implicitCallStmt_InStmt? DOT WS? ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)?
+   ;
+
+msgBox
+   : MSGBOX WS? LPAREN WS? argsCall WS? RPAREN
+   | MSGBOX WS argsCall
    ;
 
 implicitCallStmt_InBlock
@@ -655,15 +454,13 @@ implicitCallStmt_InBlock
    | iCS_B_MemberProcedureCall
    ;
 
-// parantheses are forbidden in case of args
-// variables cannot be called in blocks
 // certainIdentifier instead of ambiguousIdentifier for preventing ambiguity with statement keywords
 iCS_B_ProcedureCall
-   : certainIdentifier (WS? LPAREN WS? argsCall WS? RPAREN)?
+   : ambiguousIdentifier (WS? LPAREN WS? (argsCall WS?)? RPAREN)?
    ;
 
 iCS_B_MemberProcedureCall
-   : implicitCallStmt_InStmt? DOT ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)? dictionaryCallStmt?
+   : implicitCallStmt_InStmt? DOT ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)?
    ;
 
 // iCS_S_MembersCall first, so that member calls are not resolved as separate iCS_S_VariableOrProcedureCalls
@@ -671,15 +468,14 @@ implicitCallStmt_InStmt
    : iCS_S_MembersCall
    | iCS_S_VariableOrProcedureCall
    | iCS_S_ProcedureOrArrayCall
-   | iCS_S_DictionaryCall
    ;
 
 iCS_S_VariableOrProcedureCall
-   : ambiguousIdentifier typeHint? dictionaryCallStmt?
+   : ambiguousIdentifier typeHint?
    ;
 
 iCS_S_ProcedureOrArrayCall
-   : (ambiguousIdentifier | baseType | iCS_S_NestedProcedureCall) typeHint? WS? (LPAREN WS? (argsCall WS?)? RPAREN)+ dictionaryCallStmt?
+   : (ambiguousIdentifier | baseType | iCS_S_NestedProcedureCall) typeHint? WS? (LPAREN WS? (argsCall WS?)? RPAREN)+
    ;
 
 iCS_S_NestedProcedureCall
@@ -688,15 +484,11 @@ iCS_S_NestedProcedureCall
 
 
 iCS_S_MembersCall
-   : (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall)? iCS_S_MemberCall + dictionaryCallStmt?
+   : (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall)? iCS_S_MemberCall +
    ;
 
 iCS_S_MemberCall
    : WS? DOT (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall)
-   ;
-
-iCS_S_DictionaryCall
-   : dictionaryCallStmt
    ;
 
 // atomic call statements ----------------------------------
@@ -706,11 +498,7 @@ argsCall
    ;
 
 argCall
-   : ((BYVAL | BYREF | PARAMARRAY) WS)? valueStmt
-   ;
-
-dictionaryCallStmt
-   : EXCLAMATIONMARK ambiguousIdentifier typeHint?
+   : ((BYVAL | BYREF ) WS)? valueStmt
    ;
 
 // atomic rules for statements
@@ -719,7 +507,7 @@ argList
    ;
 
 arg
-   : ((BYVAL | BYREF) WS)? (OPTIONAL WS)? (PARAMARRAY WS)? ambiguousIdentifier typeHint? (WS? LPAREN WS? RPAREN)? (WS asTypeClause)? (WS? argDefaultValue)?
+   : (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (OPTIONAL WS)? ambiguousIdentifier typeHint? (WS? LPAREN WS? RPAREN)? (WS asTypeClause)? (WS? argDefaultValue)?
    ;
 
 argDefaultValue
@@ -748,13 +536,11 @@ asTypeClause
 baseType
    : BOOLEAN
    | BYTE
-   | COLLECTION
    | DATE
    | DOUBLE
    | INTEGER
    | LONG
    | OBJECT
-   | SINGLE
    | STRING
    | VARIANT
    ;
@@ -771,8 +557,6 @@ comparisonOperator
    | GEQ
    | EQ
    | NEQ
-   | IS
-   | LIKE
    ;
 
 complexType
@@ -824,7 +608,6 @@ typeHint
    : AMPERSAND
    | AT
    | DOLLAR
-   | EXCLAMATIONMARK
    | HASH
    | PERCENT
    ;
@@ -832,18 +615,13 @@ typeHint
 visibility
    : PRIVATE
    | PUBLIC
-   | FRIEND
    | GLOBAL
    ;
 
 // ambiguous keywords
 ambiguousKeyword
-   : ACCESS
-   | ADDRESSOF
-   | ALIAS
+   : ALIAS
    | AND
-   | ATTRIBUTE
-   | APPACTIVATE
    | APPEND
    | AS
    | BEEP
@@ -859,10 +637,8 @@ ambiguousKeyword
    | CLOSE
    | CHDIR
    | CHDRIVE
-   | COLLECTION
    | CONST
    | DATE
-   | DECLARE
    | DEFBOOL
    | DEFBYTE
    | DEFCUR
@@ -875,7 +651,6 @@ ambiguousKeyword
    | DEFSNG
    | DEFSTR
    | DEFVAR
-   | DELETESETTING
    | DIM
    | DO
    | DOUBLE
@@ -883,37 +658,23 @@ ambiguousKeyword
    | ELSE
    | ELSEIF
    | END
-   | ENUM
    | EQV
-   | ERASE
    | ERROR
-   | EVENT
    | FALSE
    | FILECOPY
-   | FRIEND
    | FOR
    | FUNCTION
-   | GET
    | GLOBAL
-   | GOSUB
    | GOTO
    | IF
    | IMP
-   | IMPLEMENTS
    | IN
    | INPUT
-   | IS
    | INTEGER
-   | KILL
-   | LOAD
-   | LOCK
    | LONG
    | LOOP
    | LEN
    | LET
-   | LIB
-   | LIKE
-   | LSET
    | ME
    | MID
    | MKDIR
@@ -930,7 +691,6 @@ ambiguousKeyword
    | OPTIONAL
    | OR
    | OUTPUT
-   | PARAMARRAY
    | PRESERVE
    | PRINT
    | PRIVATE
@@ -938,25 +698,15 @@ ambiguousKeyword
    | PUT
    | RANDOM
    | RANDOMIZE
-   | RAISEEVENT
    | READ
    | REDIM
    | REM
    | RESET
    | RESUME
-   | RETURN
    | RMDIR
-   | RSET
-   | SAVEPICTURE
-   | SAVESETTING
    | SEEK
    | SELECT
-   | SENDKEYS
    | SET
-   | SETATTR
-   | SHARED
-   | SINGLE
-   | SPC
    | STATIC
    | STEP
    | STOP
@@ -970,8 +720,6 @@ ambiguousKeyword
    | TRUE
    | TYPE
    | TYPEOF
-   | UNLOAD
-   | UNLOCK
    | UNTIL
    | VARIANT
    | VERSION
@@ -979,7 +727,6 @@ ambiguousKeyword
    | WHILE
    | WIDTH
    | WITH
-   | WITHEVENTS
    | WRITE
    | XOR
    ;
@@ -988,13 +735,8 @@ ambiguousKeyword
 
 // keywords
 
-ACCESS
-   : A C C E S S
-   ;
-
-
-ADDRESSOF
-   : A D D R E S S O F
+APPEND
+   : A P P E N D
    ;
 
 
@@ -1005,21 +747,6 @@ ALIAS
 
 AND
    : A N D
-   ;
-
-
-ATTRIBUTE
-   : A T T R I B U T E
-   ;
-
-
-APPACTIVATE
-   : A P P A C T I V A T E
-   ;
-
-
-APPEND
-   : A P P E N D
    ;
 
 
@@ -1035,11 +762,6 @@ BEEP
 
 BEGIN
    : B E G I N
-   ;
-
-
-BEGINPROPERTY
-   : B E G I N P R O P E R T Y
    ;
 
 
@@ -1068,11 +790,6 @@ BYTE
    ;
 
 
-CALL
-   : C A L L
-   ;
-
-
 CASE
    : C A S E
    ;
@@ -1088,6 +805,10 @@ CHDRIVE
    ;
 
 
+CALL
+  : C A L L
+  ;
+
 CLASS
    : C L A S S
    ;
@@ -1098,11 +819,6 @@ CLOSE
    ;
 
 
-COLLECTION
-   : C O L L E C T I O N
-   ;
-
-
 CONST
    : C O N S T
    ;
@@ -1110,11 +826,6 @@ CONST
 
 DATE
    : D A T E
-   ;
-
-
-DECLARE
-   : D E C L A R E
    ;
 
 
@@ -1178,11 +889,6 @@ DEFVAR
    ;
 
 
-DELETESETTING
-   : D E L E T E S E T T I N G
-   ;
-
-
 DIM
    : D I M
    ;
@@ -1213,11 +919,6 @@ ELSEIF
    ;
 
 
-END_ENUM
-   : E N D ' ' E N U M
-   ;
-
-
 END_FUNCTION
    : E N D ' ' F U N C T I O N
    ;
@@ -1225,11 +926,6 @@ END_FUNCTION
 
 END_IF
    : E N D ' ' I F
-   ;
-
-
-END_PROPERTY
-   : E N D ' ' P R O P E R T Y
    ;
 
 
@@ -1258,33 +954,13 @@ END
    ;
 
 
-ENDPROPERTY
-   : E N D P R O P E R T Y
-   ;
-
-
-ENUM
-   : E N U M
-   ;
-
-
 EQV
    : E Q V
    ;
 
 
-ERASE
-   : E R A S E
-   ;
-
-
 ERROR
    : E R R O R
-   ;
-
-
-EVENT
-   : E V E N T
    ;
 
 
@@ -1303,11 +979,6 @@ EXIT_FUNCTION
    ;
 
 
-EXIT_PROPERTY
-   : E X I T ' ' P R O P E R T Y
-   ;
-
-
 EXIT_SUB
    : E X I T ' ' S U B
    ;
@@ -1323,11 +994,6 @@ FILECOPY
    ;
 
 
-FRIEND
-   : F R I E N D
-   ;
-
-
 FOR
    : F O R
    ;
@@ -1338,18 +1004,8 @@ FUNCTION
    ;
 
 
-GET
-   : G E T
-   ;
-
-
 GLOBAL
    : G L O B A L
-   ;
-
-
-GOSUB
-   : G O S U B
    ;
 
 
@@ -1368,11 +1024,6 @@ IMP
    ;
 
 
-IMPLEMENTS
-   : I M P L E M E N T S
-   ;
-
-
 IN
    : I N
    ;
@@ -1383,28 +1034,8 @@ INPUT
    ;
 
 
-IS
-   : I S
-   ;
-
-
 INTEGER
    : I N T E G E R
-   ;
-
-
-KILL
-   : K I L L
-   ;
-
-
-LOAD
-   : L O A D
-   ;
-
-
-LOCK
-   : L O C K
    ;
 
 
@@ -1428,58 +1059,8 @@ LET
    ;
 
 
-LIB
-   : L I B
-   ;
-
-
-LIKE
-   : L I K E
-   ;
-
-
 LINE_INPUT
    : L I N E ' ' I N P U T
-   ;
-
-
-LOCK_READ
-   : L O C K ' ' R E A D
-   ;
-
-
-LOCK_WRITE
-   : L O C K ' ' W R I T E
-   ;
-
-
-LOCK_READ_WRITE
-   : L O C K ' ' R E A D ' ' W R I T E
-   ;
-
-
-LSET
-   : L S E T
-   ;
-
-
-MACRO_IF
-   : HASH I F
-   ;
-
-
-MACRO_ELSEIF
-   : HASH E L S E I F
-   ;
-
-
-MACRO_ELSE
-   : HASH E L S E
-   ;
-
-
-MACRO_END_IF
-   : HASH E N D ' ' I F
    ;
 
 
@@ -1584,6 +1165,13 @@ OPTION_PRIVATE_MODULE
    : O P T I O N ' ' P R I V A T E ' ' M O D U L E
    ;
 
+OPTION_COMPATIBLE
+   : O P T I O N ' ' C O M P A T I B L E
+   ;
+
+OPTION_CLASSMODULE
+   : O P T I O N ' ' C L A S S M O D U L E
+   ;
 
 OR
    : O R
@@ -1592,11 +1180,6 @@ OR
 
 OUTPUT
    : O U T P U T
-   ;
-
-
-PARAMARRAY
-   : P A R A M A R R A Y
    ;
 
 
@@ -1612,21 +1195,6 @@ PRINT
 
 PRIVATE
    : P R I V A T E
-   ;
-
-
-PROPERTY_GET
-   : P R O P E R T Y ' ' G E T
-   ;
-
-
-PROPERTY_LET
-   : P R O P E R T Y ' ' L E T
-   ;
-
-
-PROPERTY_SET
-   : P R O P E R T Y ' ' S E T
    ;
 
 
@@ -1647,11 +1215,6 @@ RANDOM
 
 RANDOMIZE
    : R A N D O M I Z E
-   ;
-
-
-RAISEEVENT
-   : R A I S E E V E N T
    ;
 
 
@@ -1695,21 +1258,6 @@ RMDIR
    ;
 
 
-RSET
-   : R S E T
-   ;
-
-
-SAVEPICTURE
-   : S A V E P I C T U R E
-   ;
-
-
-SAVESETTING
-   : S A V E S E T T I N G
-   ;
-
-
 SEEK
    : S E E K
    ;
@@ -1720,29 +1268,10 @@ SELECT
    ;
 
 
-SENDKEYS
-   : S E N D K E Y S
-   ;
-
-
 SET
    : S E T
    ;
 
-
-SETATTR
-   : S E T A T T R
-   ;
-
-
-SHARED
-   : S H A R E D
-   ;
-
-
-SINGLE
-   : S I N G L E
-   ;
 
 
 SPC
@@ -1815,16 +1344,6 @@ TYPEOF
    ;
 
 
-UNLOAD
-   : U N L O A D
-   ;
-
-
-UNLOCK
-   : U N L O C K
-   ;
-
-
 UNTIL
    : U N T I L
    ;
@@ -1857,11 +1376,6 @@ WIDTH
 
 WITH
    : W I T H
-   ;
-
-
-WITHEVENTS
-   : W I T H E V E N T S
    ;
 
 
@@ -1918,11 +1432,6 @@ DOT
 
 EQ
    : '='
-   ;
-
-
-EXCLAMATIONMARK
-   : '!'
    ;
 
 
@@ -2042,12 +1551,12 @@ COLORLITERAL
 
 
 INTEGERLITERAL
-   : (PLUS | MINUS)? ('0' .. '9') + (('e' | 'E') INTEGERLITERAL)* (HASH | AMPERSAND | EXCLAMATIONMARK | AT)?
+   : (PLUS | MINUS)? ('0' .. '9') + (('e' | 'E') INTEGERLITERAL)* (HASH | AMPERSAND | AT)?
    ;
 
 
 DOUBLELITERAL
-   : (PLUS | MINUS)? ('0' .. '9')* DOT ('0' .. '9') + (('e' | 'E') (PLUS | MINUS)? ('0' .. '9') +)* (HASH | AMPERSAND | EXCLAMATIONMARK | AT)?
+   : (PLUS | MINUS)? ('0' .. '9')* DOT ('0' .. '9') + (('e' | 'E') (PLUS | MINUS)? ('0' .. '9') +)* (HASH | AMPERSAND | AT)?
    ;
 
 

@@ -186,12 +186,10 @@ def read_libraries(odbzip) -> [Library]:
 
 def _read_library(odbzip, data) -> Library:
     name = data["@library:name"]
-    modules = []
     script_lb = _parse_xml(odbzip, f"Basic/{name}/script-lb.xml")
     data = script_lb["library:library"]["library:element"]
     read_module = partial(_read_module, odbzip, name)
-    modules.extend(mapiflist(read_module, data))
-    return Library(name, modules)
+    return Library(name, mapiflist(read_module, data))
 
 
 def _read_module(odbzip, library_name,  data) -> Module:

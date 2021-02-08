@@ -79,9 +79,11 @@ moduleBodyElement
    : moduleBlock
    | moduleOption
    | functionStmt
+   | propertyGetStmt
+   | propertySetStmt
+   | propertyLetStmt
    | subStmt
    | typeStmt
-   | COMMENT
    ;
 
 // block ----------------------------------
@@ -92,7 +94,11 @@ moduleBlock
 
 
 block
-   : blockStmt COMMENT? (NEWLINE + WS? blockStmt COMMENT?)*
+   : blockLine (NEWLINE + WS? blockLine)*
+   ;
+
+blockLine
+   : blockStmt (WS? COLON WS? blockStmt)* COMMENT?
    ;
 
 blockStmt
@@ -127,11 +133,11 @@ blockStmt
    | printStmt
    | putStmt
    | randomizeStmt
+   | COMMENT
    | redimStmt
    | resetStmt
    | resumeStmt
    | rmdirStmt
-   | seekStmt
    | selectCaseStmt
    | setStmt
    | stopStmt
@@ -142,7 +148,6 @@ blockStmt
    | withStmt
    | writeStmt
    | implicitCallStmt_InBlock
-   | COMMENT
    ;
 
 // statements ----------------------------------
@@ -209,7 +214,7 @@ forEachStmt
    ;
 
 forNextStmt
-   : FOR WS iCS_S_VariableOrProcedureCall typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt WS TO WS valueStmt (WS STEP WS valueStmt)? NEWLINE + (block NEWLINE +)? NEXT (WS ambiguousIdentifier typeHint?)?
+   : FOR WS iCS_S_VariableOrProcedureCall typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt WS TO WS valueStmt (WS STEP WS valueStmt)? COMMENT? NEWLINE + (block NEWLINE +)? NEXT (WS ambiguousIdentifier typeHint?)?
    ;
 
 functionStmt
@@ -239,7 +244,7 @@ ifElseIfBlockStmt
    ;
 
 ifElseBlockStmt
-   : ELSE NEWLINE + (block NEWLINE +)?
+   : ELSE WS? COMMENT? NEWLINE + (block NEWLINE +)?
    ;
 
 inputStmt
@@ -247,7 +252,7 @@ inputStmt
    ;
 
 letStmt
-   : (LET WS)? implicitCallStmt_InStmt WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt
+   : (LET WS)? implicitCallStmt_InStmt WS? (ADDNUMERIC | EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt
    ;
 
 lineInputStmt
@@ -275,8 +280,8 @@ onGoToStmt
    ;
 
 openStmt
-   : OPEN WS valueStmt WS FOR WS (APPEND | BINARY | INPUT | OUTPUT | RANDOM) WS AS WS valueStmt (WS LEN WS? EQ WS? valueStmt)?
-   ;
+  : OPEN WS valueStmt WS FOR WS (APPEND | BINARY | INPUT | OUTPUT | RANDOM) (WS ACCESS WS (READ | WRITE | READ_WRITE))? (WS (SHARED | LOCK_READ | LOCK_WRITE | LOCK_READ_WRITE))? WS AS WS valueStmt (WS LEN WS? EQ WS? valueStmt)?
+  ;
 
 outputList
    : outputList_Expression (WS? (SEMICOLON | COMMA) WS? outputList_Expression?)*
@@ -290,7 +295,20 @@ outputList_Expression
 
 printStmt
    : PRINT WS valueStmt WS? COMMA (WS? outputList)?
+   | PRINT WS? LPAREN WS? valueStmt (WS? COMMA WS? outputList)? WS? RPAREN
    ;
+
+propertyGetStmt
+  : (visibility WS)? (STATIC WS)? PROPERTY_GET WS ambiguousIdentifier typeHint? (WS? argList)? (WS asTypeClause)? NEWLINE + (block NEWLINE +)? END_PROPERTY
+  ;
+
+propertySetStmt
+  : (visibility WS)? (STATIC WS)? PROPERTY_SET WS ambiguousIdentifier (WS? argList)? NEWLINE + (block NEWLINE +)? END_PROPERTY
+  ;
+
+propertyLetStmt
+  : (visibility WS)? (STATIC WS)? PROPERTY_LET WS ambiguousIdentifier (WS? argList)? NEWLINE + (block NEWLINE +)? END_PROPERTY
+  ;
 
 putStmt
    : PUT WS valueStmt WS? COMMA WS? valueStmt? WS? COMMA WS? valueStmt
@@ -320,16 +338,13 @@ rmdirStmt
    : RMDIR WS valueStmt
    ;
 
-seekStmt
-   : SEEK WS valueStmt WS? COMMA WS? valueStmt
-   ;
-
 selectCaseStmt
-   : SELECT WS CASE WS valueStmt NEWLINE + sC_Case* WS? END_SELECT
+   : SELECT WS CASE WS valueStmt COMMENT? NEWLINE + sC_Case* WS? END_SELECT
    ;
 
 sC_Case
    : CASE WS sC_Cond WS? (COLON? NEWLINE* | NEWLINE +) (WS? block NEWLINE +)?
+   | COMMENT NEWLINE+
    ;
 
 // ELSE first, so that it is not interpreted as a variable call
@@ -370,10 +385,10 @@ typeStmt_Element
 
 // operator precedence is represented by rule order
 valueStmt
-   : literal LINE_CONTINUATION?                                      # vsLiteral
+   : LINE_CONTINUATION? WS? literal LINE_CONTINUATION?                                      # vsLiteral
    | LPAREN WS? valueStmt (WS? COMMA WS? valueStmt)* WS? RPAREN      # vsStruct
    | NEW WS valueStmt                                                # vsNew
-   | implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt                # vsAssign
+   | LINE_CONTINUATION? WS? implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt                # vsAssign
    | valueStmt WS? POW WS? valueStmt                                 # vsPow
    | MINUS WS? valueStmt                                             # vsNegation
    | PLUS WS? valueStmt                                              # vsPlus
@@ -382,7 +397,7 @@ valueStmt
    | valueStmt WS? MOD WS? valueStmt                                 # vsMod
    | valueStmt WS? PLUS WS? valueStmt                                # vsAdd
    | valueStmt WS? MINUS WS? valueStmt                               # vsMinus
-   | valueStmt (WS|LINE_CONTINUATION)? WS? AMPERSAND WS? valueStmt        # vsAmp
+   | valueStmt (WS|LINE_CONTINUATION)? WS? AMPERSAND WS? valueStmt   # vsAmp
    | valueStmt WS? EQ WS? valueStmt                                  # vsEq
    | valueStmt WS? NEQ WS? valueStmt                                 # vsNeq
    | valueStmt WS? LT WS? valueStmt                                  # vsLt
@@ -395,7 +410,7 @@ valueStmt
    | valueStmt WS? XOR WS? valueStmt                                 # vsXor
    | valueStmt WS? EQV WS? valueStmt                                 # vsEqv
    | valueStmt WS? IMP WS? valueStmt                                 # vsImp
-   | implicitCallStmt_InStmt                                         # vsICS
+   | LINE_CONTINUATION? WS? implicitCallStmt_InStmt (WS|LINE_CONTINUATION)?                 # vsICS
    | midStmt                                                         # vsMid
    | msgBox                                                          # vsMsgBox
    ;
@@ -456,11 +471,13 @@ implicitCallStmt_InBlock
 
 // certainIdentifier instead of ambiguousIdentifier for preventing ambiguity with statement keywords
 iCS_B_ProcedureCall
-   : ambiguousIdentifier (WS? LPAREN WS? (argsCall WS?)? RPAREN)?
+   : certainIdentifier (WS? LPAREN WS? (argsCall WS?)? RPAREN)?
+   | certainIdentifier WS? (argsCall WS?)?
    ;
 
 iCS_B_MemberProcedureCall
    : implicitCallStmt_InStmt? DOT ambiguousIdentifier typeHint? (WS? LPAREN WS? (argsCall WS?)? RPAREN)?
+   | implicitCallStmt_InStmt? DOT ambiguousIdentifier typeHint? WS? (argsCall WS?)?
    ;
 
 // iCS_S_MembersCall first, so that member calls are not resolved as separate iCS_S_VariableOrProcedureCalls
@@ -498,7 +515,7 @@ argsCall
    ;
 
 argCall
-   : ((BYVAL | BYREF ) WS)? valueStmt
+   : ((BYVAL | BYREF ) WS)? valueStmt LINE_CONTINUATION?
    ;
 
 // atomic rules for statements
@@ -578,10 +595,10 @@ lineLabel
 literal
    : COLORLITERAL
    | DATELITERAL
-   | DOUBLELITERAL
+   | (PLUS | MINUS)? DOUBLELITERAL
    | FILENUMBER
-   | INTEGERLITERAL
-   | OCTALLITERAL
+   | (PLUS | MINUS)? INTEGERLITERAL
+   | (PLUS | MINUS)? OCTALLITERAL
    | STRINGLITERAL
    | TRUE
    | FALSE
@@ -620,7 +637,8 @@ visibility
 
 // ambiguous keywords
 ambiguousKeyword
-   : ALIAS
+   : ACCESS
+   | ALIAS
    | AND
    | APPEND
    | AS
@@ -704,7 +722,6 @@ ambiguousKeyword
    | RESET
    | RESUME
    | RMDIR
-   | SEEK
    | SELECT
    | SET
    | STATIC
@@ -734,6 +751,14 @@ ambiguousKeyword
 // lexer rules --------------------------------------------------------------------------------
 
 // keywords
+ACCESS
+   : A C C E S S
+   ;
+
+
+ADDNUMERIC
+   : '_' A D D N U M E R I C LPAREN RPAREN EQ
+   ;
 
 APPEND
    : A P P E N D
@@ -929,6 +954,12 @@ END_IF
    ;
 
 
+END_PROPERTY
+  : E N D ' ' P R O P E R T Y
+  ;
+
+
+
 END_SELECT
    : E N D ' ' S E L E C T
    ;
@@ -1038,6 +1069,10 @@ INTEGER
    : I N T E G E R
    ;
 
+LOCK
+  : L O C K
+  ;
+
 
 LONG
    : L O N G
@@ -1062,6 +1097,20 @@ LET
 LINE_INPUT
    : L I N E ' ' I N P U T
    ;
+
+LOCK_READ
+  : L O C K ' ' R E A D
+  ;
+
+
+LOCK_WRITE
+  : L O C K ' ' W R I T E
+  ;
+
+
+LOCK_READ_WRITE
+  : L O C K ' ' R E A D ' ' W R I T E
+  ;
 
 
 ME
@@ -1198,6 +1247,21 @@ PRIVATE
    ;
 
 
+PROPERTY_GET
+  : P R O P E R T Y ' ' G E T
+  ;
+
+
+PROPERTY_LET
+  : P R O P E R T Y ' ' L E T
+  ;
+
+
+PROPERTY_SET
+  : P R O P E R T Y ' ' S E T
+  ;
+
+
 PUBLIC
    : P U B L I C
    ;
@@ -1258,14 +1322,14 @@ RMDIR
    ;
 
 
-SEEK
-   : S E E K
-   ;
-
-
 SELECT
    : S E L E C T
    ;
+
+
+SHARED
+  : S H A R E D
+  ;
 
 
 SET
@@ -1411,7 +1475,7 @@ COLON
 
 
 COMMA
-   : ','
+   : ',' LINE_CONTINUATION?
    ;
 
 
@@ -1460,7 +1524,7 @@ LBRACE
 
 
 LPAREN
-   : '('
+   : '(' LINE_CONTINUATION?
    ;
 
 
@@ -1515,7 +1579,7 @@ RBRACE
 
 
 RPAREN
-   : ')'
+   : ')' LINE_CONTINUATION?
    ;
 
 
@@ -1551,12 +1615,12 @@ COLORLITERAL
 
 
 INTEGERLITERAL
-   : (PLUS | MINUS)? ('0' .. '9') + (('e' | 'E') INTEGERLITERAL)* (HASH | AMPERSAND | AT)?
+   : ('0' .. '9') + (('e' | 'E') INTEGERLITERAL)* (HASH | AMPERSAND | AT)?
    ;
 
 
 DOUBLELITERAL
-   : (PLUS | MINUS)? ('0' .. '9')* DOT ('0' .. '9') + (('e' | 'E') (PLUS | MINUS)? ('0' .. '9') +)* (HASH | AMPERSAND | AT)?
+   :  ('0' .. '9')* DOT ('0' .. '9') + (('e' | 'E') (PLUS | MINUS)? ('0' .. '9') +)* (HASH | AMPERSAND | AT)?
    ;
 
 
@@ -1565,7 +1629,7 @@ FILENUMBER
    ;
 
 OCTALLITERAL
-   : (PLUS | MINUS)? '&O' [0-7] + AMPERSAND?
+   : '&O' [0-7] + AMPERSAND?
    ;
 
 // misc
@@ -1596,7 +1660,7 @@ NEWLINE
 
 
 COMMENT
-   : WS? ('\'' | COLON? REM ' ') (LINE_CONTINUATION | ~ ('\n' | '\r'))*
+   : WS? ('\'' | COLON? REM (' '|'\t')) (LINE_CONTINUATION | ~ ('\n' | '\r'))*
    ;
 
 

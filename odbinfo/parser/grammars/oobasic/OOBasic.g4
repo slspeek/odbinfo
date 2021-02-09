@@ -388,7 +388,7 @@ valueStmt
    : LINE_CONTINUATION? WS? literal LINE_CONTINUATION?                                      # vsLiteral
    | LPAREN WS? valueStmt (WS? COMMA WS? valueStmt)* WS? RPAREN      # vsStruct
    | NEW WS valueStmt                                                # vsNew
-   | LINE_CONTINUATION? WS? implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt                # vsAssign
+   | implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt                # vsAssign
    | valueStmt WS? POW WS? valueStmt                                 # vsPow
    | MINUS WS? valueStmt                                             # vsNegation
    | PLUS WS? valueStmt                                              # vsPlus
@@ -397,7 +397,7 @@ valueStmt
    | valueStmt WS? MOD WS? valueStmt                                 # vsMod
    | valueStmt WS? PLUS WS? valueStmt                                # vsAdd
    | valueStmt WS? MINUS WS? valueStmt                               # vsMinus
-   | valueStmt (WS|LINE_CONTINUATION)? WS? AMPERSAND WS? valueStmt   # vsAmp
+   | valueStmt WS? AMPERSAND WS? valueStmt   # vsAmp
    | valueStmt WS? EQ WS? valueStmt                                  # vsEq
    | valueStmt WS? NEQ WS? valueStmt                                 # vsNeq
    | valueStmt WS? LT WS? valueStmt                                  # vsLt

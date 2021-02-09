@@ -10,7 +10,7 @@ build=$(target)/build
 test-output=$(build)/test-output
 PYTHONPATH=.:$$(pipenv --venv)/lib/python3.7/site-packages
 
-all: clean info check itest
+all: clean info genparser check itest
 
 
 prepare:

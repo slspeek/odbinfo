@@ -25,7 +25,18 @@ console.writeline("the answer is "& answer)
 
 def test_parse():
     " call parse "
-    parse("")
+    names, callgraph = parse("""
+        function foo(arg)
+            bar(0): gnu(9)
+            a = spooler(45, 0)
+            baz(9).graphics(kaleidos(a), 0)
+            call linux()
+            foo = 3
+        end function
+        """)
+    assert names == set(["foo"])
+    assert callgraph == {"foo": set(["a", "bar", "gnu", "baz", "graphics",
+                                    "kaleidos", "linux", "foo", "spooler"])}
 
 
 def test_parse_module_statements():

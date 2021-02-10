@@ -16,22 +16,29 @@ class BasicListener(OOBasicListener):
         super().__init__()
         self.functionnames = set()
         self.callgraph = {}
-        self.cur_func = ""
-        self.callgraph[""] = set()
+        self._set_cur_func("")
 
     def _set_cur_func(self, function):
         self.cur_func = function
-        self.functionnames.add(self.cur_func)
-        self.callgraph[self.cur_func] = set()
+        if self.cur_func != "":
+            self.functionnames.add(function)
+            self.callgraph[function] = set()
 
     def enterFunctionStmt(self, ctx):
         self._set_cur_func(ctx.ambiguousIdentifier().getText())
 
+    def exitFunctionStmt(self, ctx):
+        self._set_cur_func("")
+
     def enterSubStmt(self, ctx):
         self._set_cur_func(ctx.ambiguousIdentifier().getText())
 
+    def exitSubStmt(self, ctx):
+        self._set_cur_func("")
+
     def _add_call(self, callee):
-        self.callgraph[self.cur_func].add(callee)
+        if self.cur_func != "":
+            self.callgraph[self.cur_func].add(callee)
 
     # call graph collection of callees
     def enterECS_ProcedureCall(self, ctx):
@@ -50,18 +57,22 @@ class BasicListener(OOBasicListener):
         self._add_call(ctx.ambiguousIdentifier().getText())
 
     def enterICS_S_NestedProcedureCall(self, ctx):
+        print(ctx.getText())
         self._add_call(ctx.ambiguousIdentifier().getText())
 
+    def enterIcsAmbiguousIdentifier(self, ctx):
+        self._add_call(ctx.ambiguousIdentifier().getText())
 
 # pylint:disable=too-few-public-methods
+
+
 class ThrowingErrorListener(ErrorListener):
     " An ErrorListeners that raises an Error"
 
     # pylint:disable=too-many-arguments
     # pylint:disable=invalid-name
     # pylint:disable=no-self-use
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg,
-                    e):
+    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
         "raise the error"
         stack = recognizer.getRuleInvocationStack()
         stack.reverse()
@@ -88,6 +99,4 @@ def parse(basiccode, diagnostic=False):
     listener = BasicListener()
     walker.walk(listener, tree)
 
-    print(listener.functionnames)
-    print(listener.callgraph)
-    return tree
+    return (listener.functionnames, listener.callgraph)

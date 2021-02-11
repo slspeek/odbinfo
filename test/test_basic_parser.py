@@ -36,7 +36,7 @@ def test_parse():
         """)
     assert names == set(["foo"])
     assert callgraph == {"foo": set(["a", "bar", "gnu", "baz", "graphics",
-                                    "kaleidos", "linux", "foo", "spooler"])}
+                                    "kaleidos", "linux", "spooler"])}
 
 
 def test_parse_module_statements():

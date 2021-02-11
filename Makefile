@@ -115,12 +115,12 @@ genparser:
 	-rm -rf odbinfo/parser/sqlite
 	cd  odbinfo/parser/grammars/sqlite/ && \
 	$(antlr4) -Dlanguage=Python3 -o ../../sqlite -package odbinfo.parser.sqlite \
-		 -visitor SQLiteLexer.g4 SQLiteParser.g4
+		 SQLiteLexer.g4 SQLiteParser.g4
 	cd -
 	-rm -rf odbinfo/parser/oobasic
 	cd odbinfo/parser/grammars/oobasic/ && \
 		$(antlr4) -Dlanguage=Python3 -o ../../oobasic -package odbinfo.parser.oobasic \
-	 		 -visitor OOBasic.g4
+	 	 OOBasic.g4
 
 .ONESHELL:
 installantlr:

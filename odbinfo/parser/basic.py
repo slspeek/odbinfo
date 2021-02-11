@@ -37,7 +37,7 @@ class BasicListener(OOBasicListener):
         self._set_cur_func("")
 
     def _add_call(self, callee):
-        if self.cur_func != "":
+        if self.cur_func not in ["", callee]:
             self.callgraph[self.cur_func].add(callee)
 
     # call graph collection of callees

@@ -294,7 +294,7 @@ outputList_Expression
    ;
 
 printStmt
-   : PRINT WS valueStmt WS? COMMA (WS? outputList)?
+   : PRINT WS valueStmt (WS? COMMA (WS? outputList)?)?
    | PRINT WS? LPAREN WS? valueStmt (WS? COMMA WS? outputList)? WS? RPAREN
    ;
 

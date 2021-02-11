@@ -5,6 +5,7 @@ from test.resource import FIXTURE_DIR, TEST_OUTPUT
 import pytest
 from pytest import fixture
 from odbinfo.writer import make_site
+from odbinfo.core import process_metadata
 
 
 def load_metadata():
@@ -27,3 +28,10 @@ def test_quick_view(metadata):
     name = "testdb"
     outdir = TEST_OUTPUT.format("")
     make_site(outdir, name, metadata)
+
+
+# pylint:disable=redefined-outer-name
+def test_parse_libraries(metadata):
+    """ parse libraries """
+    process_metadata(metadata)
+    print(metadata.libraries)

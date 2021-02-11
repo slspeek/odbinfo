@@ -1,5 +1,5 @@
 """ Defines the main datatypes used """
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import uno
 from sql_formatter.core import format_sql
 
@@ -76,6 +76,8 @@ class Module:
     " Basic module"
     name: str
     source: str
+    functionnames: [str] = field(init=False, default_factory=list)
+    callgraph: dict = field(init=False, default_factory=dict)
 
 
 @dataclass

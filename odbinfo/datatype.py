@@ -74,6 +74,8 @@ class PythonLibrary:
 @dataclass
 class Callable:
     " Basic sub or function "
+    library: str
+    module: str
     name: str
     source: str
     callees: str = field(init=False, default_factory=set)

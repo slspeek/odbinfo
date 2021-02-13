@@ -4,9 +4,9 @@ from test.resource import BASEDOCUMENTER
 from functools import partial
 from zipfile import ZipFile
 import pytest
-from odbinfo.parser.basic import parse
 from odbinfo.reader import _parse_xml,  mapiflist
 from odbinfo.datatype import Module
+import odbinfo
 
 CODE = """
 dim number1, number2 as integer
@@ -21,6 +21,11 @@ total=number1+number2
 console.writeline("the answer is "& answer)
 
 """
+
+
+def parse(source):
+    " wrap parse with default arguments "
+    return odbinfo.parser.basic.parse(source, "Standard", "Module")
 
 
 @pytest.mark.slow
@@ -60,7 +65,6 @@ end sub
 def test_parse_select():
     " call parse select"
     parse(SELECT)
-
 
 def test_for_next():
     "for next loop parsing"

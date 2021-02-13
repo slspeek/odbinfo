@@ -49,7 +49,7 @@ fixture: prepare
 .ONESHELL:
 unit: prepare
 	cd $(build)
-	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow" test
+	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow and not endless" test
 	exit 0
 
 .ONESHELL:

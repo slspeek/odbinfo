@@ -12,7 +12,7 @@ def _process_library(library: Library):
     def parse_module(module: Module):
         # print("parsing: " + module.source)
         module.callables =\
-            parse(module.source)
+            parse(module.source, library.name, module.name)
 
     list(map(parse_module, library.modules))
 

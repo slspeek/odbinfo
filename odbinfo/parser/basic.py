@@ -13,8 +13,10 @@ from odbinfo.datatype import Callable
 class BasicListener(OOBasicListener):
     "Collect tablenames"
 
-    def __init__(self):
+    def __init__(self, library, module):
         super().__init__()
+        self.library = library
+        self.module = module
         self.callables = []
         self.cur_callable = None
 
@@ -24,7 +26,9 @@ class BasicListener(OOBasicListener):
             self.callables.append(function)
 
     def enterFunctionStmt(self, ctx):
-        bcallable = Callable(ctx.ambiguousIdentifier().getText(),
+        bcallable = Callable(self.library,
+                             self.module,
+                             ctx.ambiguousIdentifier().getText(),
                              ctx.getText())
         self._set_cur_callable(bcallable)
 
@@ -32,12 +36,10 @@ class BasicListener(OOBasicListener):
         self._set_cur_callable(None)
 
     def enterSubStmt(self, ctx):
-        bcallable = Callable(ctx.ambiguousIdentifier().getText(),
-                             ctx.getText())
-        self._set_cur_callable(bcallable)
+        self.enterFunctionStmt(ctx)
 
     def exitSubStmt(self, ctx):
-        self._set_cur_callable(None)
+        self.exitFunctionStmt(ctx)
 
     def _add_call(self, callee):
         if self.cur_callable is not None:
@@ -84,7 +86,7 @@ class ThrowingErrorListener(ErrorListener):
         raise RuntimeError("Parse failed")
 
 
-def parse(basiccode, diagnostic=False):
+def parse(basiccode, library, module, diagnostic=False):
     " Returns parsetree object "
     input_stream = InputStream(basiccode)
     lexer = OOBasicLexer(input_stream)
@@ -99,7 +101,7 @@ def parse(basiccode, diagnostic=False):
         parser.addErrorListener(ThrowingErrorListener())
     tree = parser.startRule()
     walker = ParseTreeWalker()
-    listener = BasicListener()
+    listener = BasicListener(library, module)
     walker.walk(listener, tree)
 
     return listener.callables

@@ -27,6 +27,11 @@ info: prepare
 .ONESHELL:
 itest: prepare
 	cd $(build)
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not endless" test
+
+.ONESHELL:
+alltest: prepare
+	cd $(build)
 	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test
 
 .ONESHELL:

@@ -11,7 +11,7 @@ from odbinfo.datatype import Library, Module
 def _process_library(library: Library):
     def parse_module(module: Module):
         # print("parsing: " + module.source)
-        module.functionnames, module.callgraph =\
+        module.callables =\
             parse(module.source)
 
     list(map(parse_module, library.modules))

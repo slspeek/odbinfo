@@ -23,9 +23,10 @@ console.writeline("the answer is "& answer)
 """
 
 
+@pytest.mark.slow
 def test_parse():
     " call parse "
-    names, callgraph = parse("""
+    callables = parse("""
         function foo(arg)
             bar(0): gnu(9)
             a = spooler(45, 0)
@@ -34,11 +35,12 @@ def test_parse():
             foo = 3
         end function
         """)
-    assert names == set(["foo"])
-    assert callgraph == {"foo": set(["a", "bar", "gnu", "baz", "graphics",
-                                    "kaleidos", "linux", "spooler"])}
+    assert callables[0].name == "foo"
+    assert callables[0].callees == set(["a", "bar", "gnu", "baz", "graphics",
+                                        "kaleidos", "linux", "spooler"])
 
 
+@pytest.mark.slow
 def test_parse_module_statements():
     " call parse "
     parse(CODE)
@@ -58,6 +60,7 @@ end sub
 def test_parse_select():
     " call parse select"
     parse(SELECT)
+
 
 def test_for_next():
     "for next loop parsing"
@@ -123,7 +126,7 @@ def test_rem_header():
     parse(REMHEADER)
 
 
-@pytest.mark.slow
+@pytest.mark.endless
 def test_basedocumenter_sources():
     " parse all basedocumenter sources "
     with ZipFile(BASEDOCUMENTER, "r") as based:

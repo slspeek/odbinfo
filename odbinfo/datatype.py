@@ -72,12 +72,19 @@ class PythonLibrary:
 
 
 @dataclass
+class Callable:
+    " Basic sub or function "
+    name: str
+    source: str
+    callees: str = field(init=False, default_factory=set)
+
+
+@dataclass
 class Module:
     " Basic module"
     name: str
     source: str
-    functionnames: [str] = field(init=False, default_factory=list)
-    callgraph: dict = field(init=False, default_factory=dict)
+    callables: [Callable] = field(init=False, default_factory=list)
 
 
 @dataclass

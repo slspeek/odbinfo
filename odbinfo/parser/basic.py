@@ -7,6 +7,7 @@ from odbinfo.parser.oobasic.OOBasicParser import OOBasicParser
 from odbinfo.parser.oobasic.OOBasicLexer import OOBasicLexer
 from odbinfo.parser.oobasic.OOBasicListener import\
     OOBasicListener
+from odbinfo.datatype import Callable
 
 
 class BasicListener(OOBasicListener):
@@ -14,31 +15,34 @@ class BasicListener(OOBasicListener):
 
     def __init__(self):
         super().__init__()
-        self.functionnames = set()
-        self.callgraph = {}
-        self._set_cur_func("")
+        self.callables = []
+        self.cur_callable = None
 
-    def _set_cur_func(self, function):
-        self.cur_func = function
-        if self.cur_func != "":
-            self.functionnames.add(function)
-            self.callgraph[function] = set()
+    def _set_cur_callable(self, function):
+        self.cur_callable = function
+        if self.cur_callable is not None:
+            self.callables.append(function)
 
     def enterFunctionStmt(self, ctx):
-        self._set_cur_func(ctx.ambiguousIdentifier().getText())
+        bcallable = Callable(ctx.ambiguousIdentifier().getText(),
+                             ctx.getText())
+        self._set_cur_callable(bcallable)
 
     def exitFunctionStmt(self, ctx):
-        self._set_cur_func("")
+        self._set_cur_callable(None)
 
     def enterSubStmt(self, ctx):
-        self._set_cur_func(ctx.ambiguousIdentifier().getText())
+        bcallable = Callable(ctx.ambiguousIdentifier().getText(),
+                             ctx.getText())
+        self._set_cur_callable(bcallable)
 
     def exitSubStmt(self, ctx):
-        self._set_cur_func("")
+        self._set_cur_callable(None)
 
     def _add_call(self, callee):
-        if self.cur_func not in ["", callee]:
-            self.callgraph[self.cur_func].add(callee)
+        if self.cur_callable is not None:
+            if self.cur_callable.name != callee:
+                self.cur_callable.callees.add(callee)
 
     # call graph collection of callees
     def enterECS_ProcedureCall(self, ctx):
@@ -57,7 +61,6 @@ class BasicListener(OOBasicListener):
         self._add_call(ctx.ambiguousIdentifier().getText())
 
     def enterICS_S_NestedProcedureCall(self, ctx):
-        print(ctx.getText())
         self._add_call(ctx.ambiguousIdentifier().getText())
 
     def enterIcsAmbiguousIdentifier(self, ctx):
@@ -99,4 +102,4 @@ def parse(basiccode, diagnostic=False):
     listener = BasicListener()
     walker.walk(listener, tree)
 
-    return (listener.functionnames, listener.callgraph)
+    return listener.callables

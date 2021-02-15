@@ -46,7 +46,7 @@ def test_collect_element():
 
 def test_text_document():
     " find odts "
-    assert len(_text_documents("test/resources/testdb")) == 2
+    assert len(_text_documents("test/resources/testdb")) == 3
 
 
 def test_read_text_documents():

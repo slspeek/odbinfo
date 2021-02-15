@@ -83,7 +83,7 @@ def _database_displays(doc_path) -> [DatabaseDisplay]:
             )
     with ZipFile(doc_path) as file:
         body = _body_elem(file, "content.xml")["office:text"]
-        return list(map(display,
+        return list(map(partial(mapiflist, display),
                         _collect_attribute(body, "text:database-display")))
 
 

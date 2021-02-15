@@ -195,7 +195,7 @@ def _read_library(odbzip, data) -> Library:
 def _read_module(odbzip, library_name,  data) -> Module:
     name = data["@library:name"]
     data = _parse_xml(odbzip, f"Basic/{library_name}/{name}.xml")
-    return Module(name, data["script:module"]["#text"])
+    return Module(library_name, name, data["script:module"]["#text"])
 
 
 def read_forms(odbzip):

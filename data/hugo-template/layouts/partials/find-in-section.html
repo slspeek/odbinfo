@@ -1,0 +1,1 @@
+{{ $all_objects := where .context.Site.Pages "Section" "modules"}}{{ $objects := where $all_objects "Params.title" .title }}{{$obj := (index $objects 0) }}{{$obj.URL}}

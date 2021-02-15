@@ -58,6 +58,9 @@ def make_site(output_dir, name, metadata):
         _write_content("tables", metadata.tables)
         _write_content("views", metadata.views)
         _write_content("queries", metadata.queries)
+        _write_content("libraries", metadata.libraries)
+        _write_content("modules", metadata.modules())
+        _write_content("macros", metadata.callables())
 
         exitcode = os.system("hugo")
         if exitcode != 0:
@@ -80,6 +83,15 @@ def _write_config(name):
                                      {"url": "/views/index.html",
                                       "name": "views",
                                       "weight": 4},
+                                     {"url": "/libraries/index.html",
+                                      "name": "libraries",
+                                      "weight": 5},
+                                     {"url": "/modules/index.html",
+                                      "name": "modules",
+                                      "weight": 6},
+                                     {"url": "/macros/index.html",
+                                      "name": "macros",
+                                      "weight": 7},
                                      {"url": "/",
                                       "name": "home",
                                       "weight": 1}
@@ -89,10 +101,15 @@ def _write_config(name):
 
 
 def _write_content(name, contentlist):
+    def basename(content):
+        if hasattr(content, "title"):
+            return content.title
+        return content.name
+
     targetpath = f"content/{name}"
     os.makedirs(targetpath, exist_ok=True)
     for content in contentlist:
-        with open(f"{targetpath}/{content.name}.md", "w") as out:
+        with open(f"{targetpath}/{basename(content)}.md", "w") as out:
             _frontmatter(dataclasses.asdict(content), out)
 
 

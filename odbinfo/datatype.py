@@ -31,6 +31,14 @@ KEYRULES = _consts(_KEYRULE, ["Cascade",
                               "Set_Default"])
 
 
+def tohtml(code):
+    "preserve spaces tabs and newlines"
+    return\
+        code.replace('\n', "<br/>")\
+            .replace(' ', "&nbsp;")\
+            .replace('\t', "&nbsp;&nbsp;&nbsp;&nbsp;")
+
+
 @dataclass
 class DatabaseDisplay:
     " Field in TextDocument "
@@ -79,14 +87,25 @@ class Callable:
     name: str
     source: str
     callees: str = field(init=False, default_factory=set)
+    title: str = field(init=False)
+
+    def __post_init__(self):
+        # self.source = tohtml(self.source)
+        self.title = f"{self.library}.{self.module}.{self.name}"
 
 
 @dataclass
 class Module:
     " Basic module"
+    library: str
     name: str
     source: str
     callables: [Callable] = field(init=False, default_factory=list)
+    title: str = field(init=False)
+
+    def __post_init__(self):
+        # self.source = tohtml(self.source)
+        self.title = f"{self.library}.{self.name}"
 
 
 @dataclass
@@ -264,3 +283,18 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
     libraries: [Library]
     pythonlibraries: [PythonLibrary]
     textdocuments: [TextDocument]
+
+    def callables(self) -> [Callable]:
+        "collect all callables from libraries"
+        result = []
+        for lib in self.libraries:
+            for module in lib.modules:
+                result.extend(module.callables)
+        return result
+
+    def modules(self) -> [Module]:
+        "collect all basic modules from libraries"
+        result = []
+        for lib in self.libraries:
+            result.extend(lib.modules)
+        return result

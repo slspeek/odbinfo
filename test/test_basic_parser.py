@@ -80,7 +80,7 @@ def test_for_next():
 def _read_module(odbzip, library_name,  data) -> Module:
     name = data["@library:name"]
     data = _parse_xml(odbzip, f"{library_name}/{name}.xba")
-    return Module(name, data["script:module"]["#text"])
+    return Module("BaseDocumenter", name, data["script:module"]["#text"])
 
 
 ADDNUMERIC="""

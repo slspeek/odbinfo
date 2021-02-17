@@ -3,7 +3,6 @@ import os
 from zipfile import ZipFile
 from functools import reduce
 from functools import partial
-from collections import OrderedDict
 import xmltodict
 from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
 from odbinfo.datatype import Form, SubForm, Control,\
@@ -37,25 +36,6 @@ def _collect_attribute(data, attribute):
             values.extend(_collect_attribute(value, attribute))
         return values
     return reduce(lambda x, y: x + y, mapiflist(collect_attr, data), [])
-
-
-def _collect_element(data, element) -> [OrderedDict]:
-
-    def collect_elem(info):
-        values = []
-        if not info:
-            return values
-        if not hasattr(info, "items"):
-            return values
-        for key, value in info.items():
-            if key == element:
-                values.append(value)
-                continue
-            if key.startswith("@"):
-                continue
-            values.extend(_collect_element(value, element))
-        return values
-    return reduce(lambda x, y: x + y, mapiflist(collect_elem, data), [])
 
 
 def _body_elem(oozip, path):

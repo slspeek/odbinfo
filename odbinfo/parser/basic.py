@@ -1,6 +1,7 @@
 """ Facade fot the OOBasicParser """
 from antlr4 import InputStream, CommonTokenStream,\
     ParseTreeWalker
+import antlr4
 from antlr4.error.ErrorListener import ErrorListener
 from antlr4.error.DiagnosticErrorListener import DiagnosticErrorListener
 from antlr4.atn.PredictionMode import PredictionMode
@@ -95,7 +96,7 @@ def get_basic_tokens(basiccode) -> [Token]:
     tokens = []
     for i in range(stream.getNumberOfOnChannelTokens()):
         atoken = stream.get(i)
-        if atoken.type != -1:
+        if atoken.type != antlr4.Token.EOF:
             tokens.append(Token(atoken.column,
                                 atoken.line,
                                 atoken.text,

@@ -1,12 +1,14 @@
 """ test site creation """
 import os
 import logging
-from test.connect import start_office, oodocument
-from test.resource import TEST_OUTPUT, DEFAULT_TESTDB
+
 from pytest import fixture
 import pytest
+
 from odbinfo.writer import new_site
 from odbinfo.core import generate_report
+from odbinfo.test.connect import start_office, oodocument
+from odbinfo.test.resource import TEST_OUTPUT, DEFAULT_TESTDB
 
 logger = logging.getLogger()
 logging.basicConfig()

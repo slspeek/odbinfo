@@ -1,13 +1,15 @@
 # pylint: disable=too-many-lines
 " parser tests "
-from test.resource import BASEDOCUMENTER
 from functools import partial
 from zipfile import ZipFile
+
 import pytest
-from odbinfo.reader import _parse_xml,  mapiflist
-from odbinfo.datatype import Module
+
 import odbinfo
+from odbinfo.datatype import Module
 from odbinfo.parser.basic import get_basic_tokens
+from odbinfo.reader import _parse_xml,  mapiflist
+from odbinfo.test.resource import BASEDOCUMENTER
 
 CODE = """
 dim number1, number2 as integer
@@ -53,7 +55,7 @@ def test_parse_module_statements():
     # print(tree.toStringTree())
 
 
-SELECT="""
+SELECT = """
 Sub Foo ()
     Select case Fop(a)
         case 1: a = Foo(0)
@@ -66,6 +68,7 @@ end sub
 def test_parse_select():
     " call parse select"
     parse(SELECT)
+
 
 def test_for_next():
     "for next loop parsing"
@@ -84,14 +87,14 @@ def _read_module(odbzip, library_name,  data) -> Module:
     return Module("BaseDocumenter", name, data["script:module"]["#text"])
 
 
-ADDNUMERIC="""
+ADDNUMERIC = """
 sub foo()
     pvdefault _AddNumeric()= Null
 end sub
 """
 
 
-ERRORMESSAGE1="""
+ERRORMESSAGE1 = """
 sub foo()
     i = Len(bar)-1
 end sub
@@ -108,7 +111,7 @@ def test_add_numeric():
     parse(ADDNUMERIC)
 
 
-REMHEADER="""
+REMHEADER = """
 REM =======================================================================================================================
 REM ===						The BaseDocumenter library is an extension to LibreOffice.									===
 REM ===			Full documentation is available on http://www.access2base.com/basedocumenter.html						===
@@ -131,7 +134,7 @@ def test_rem_header():
     parse(REMHEADER)
 
 
-TOKENSOURCECODE="""
+TOKENSOURCECODE = """
 rem procedure Foo
 sub Foo(a as String)
    print a
@@ -143,7 +146,6 @@ def test_get_basic_tokens():
     "test basic tokenizer"
     tokens = get_basic_tokens(TOKENSOURCECODE)
     assert len(tokens) == 21
-
 
 
 @pytest.mark.endless

@@ -3,6 +3,7 @@ python=$(libreoffice)/python
 unopkg=$(libreoffice)/unopkg
 antlr4=java -jar ../../../../odbinfo/parser/lib/antlr-4.9.1-complete.jar
 target=target
+testloc=odbinfo/test
 dist=$(target)/dist
 stage=$(dist)/odbinfo_oxt/
 lib=$(stage)/python/pythonpath
@@ -15,7 +16,7 @@ all: clean genparser info check itest
 
 prepare:
 	-mkdir -p $(build) $(test-output)
-	cp -r test odbinfo data $(build)
+	cp -r odbinfo data $(build)
 
 .ONESHELL:
 info: prepare
@@ -27,42 +28,42 @@ info: prepare
 .ONESHELL:
 itest: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not endless" test
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not endless" $(testloc)
 
 .ONESHELL:
 alltest: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv $(testloc)
 
 .ONESHELL:
 single: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test/${SINGLE}
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv $(testloc)/${SINGLE}
 
 
 .ONESHELL:
 fixture: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv test/fixture_reader.py
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv $(testloc)/fixture_reader.py
 
 
 .ONESHELL:
 unit: prepare
 	cd $(build)
-	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow and not endless" test
+	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow and not endless" $(testloc)
 	exit 0
 
 .ONESHELL:
 quick_view: clean prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest test/test_quick_view.py
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest $(testloc)/test_quick_view.py
 
 
 test: itest unit
 
 .ONESHELL:
 serve:
-	cd $(build)/test/resources/testdb/.odbinfo/testdb
+	cd $(build)$(testloc)/resources/testdb/.$(testloc)db
 	hugo server --layoutDir ../../../../../../../data/hugo-template/layouts
 
 format:
@@ -70,7 +71,7 @@ format:
 
 .ONESHELL:
 check: format
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pylint odbinfo test
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pylint odbinfo
 
 clean:
 	-@find . -type d -name __pycache__ -exec rm -rf '{}' \;
@@ -81,7 +82,7 @@ clean:
 .ONESHELL:
 open_test_db: prepare
 	cd $(build)
-	$(libreoffice)/soffice test/resources/testdb/testdb.odb
+	$(libreoffice)/soffice $(testloc)/resources/testdb/testdb.odb
 
 .ONESHELL:
 open_shell: prepare
@@ -96,6 +97,7 @@ oxt:
 	--ignore-installed --target $(lib)
 	cp main.py $(stage)/python
 	cp -r odbinfo data $(lib)
+	rm -rf $(lib)/odbinfo/test
 	cp -r oometadata/* $(stage)
 	cp LICENSE $(stage)
 	cd $(stage)
@@ -111,8 +113,8 @@ doc: prepare
 
 .ONESHELL:
 unziptestdb:
-	rm -rf test/resources/testdb/unzipped
-	cd test/resources/testdb && mkdir unzipped
+	rm -rf $(testloc)/resources/testdb/unzipped
+	cd $(testloc)/resources/testdb && mkdir unzipped
 	cd unzipped && unzip ../testdb.odb
 
 .ONESHELL:

@@ -1,11 +1,12 @@
 """ Quick view for the objects fixture """
 import pickle
 
-from test.resource import FIXTURE_DIR, TEST_OUTPUT
 import pytest
 from pytest import fixture
+
 from odbinfo.writer import make_site
 from odbinfo.core import process_metadata
+from odbinfo.test.resource import FIXTURE_DIR, TEST_OUTPUT
 
 
 def load_metadata():

@@ -1,5 +1,6 @@
 """ Facade fot the OOBasicParser """
-from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker
+from antlr4 import InputStream, CommonTokenStream,\
+    ParseTreeWalker
 from antlr4.error.ErrorListener import ErrorListener
 from antlr4.error.DiagnosticErrorListener import DiagnosticErrorListener
 from antlr4.atn.PredictionMode import PredictionMode
@@ -7,7 +8,7 @@ from odbinfo.parser.oobasic.OOBasicParser import OOBasicParser
 from odbinfo.parser.oobasic.OOBasicLexer import OOBasicLexer
 from odbinfo.parser.oobasic.OOBasicListener import\
     OOBasicListener
-from odbinfo.datatype import Callable
+from odbinfo.datatype import Callable, Token
 
 
 class BasicListener(OOBasicListener):
@@ -86,8 +87,24 @@ class ThrowingErrorListener(ErrorListener):
         raise RuntimeError("Parse failed")
 
 
-def parse(basiccode, library, module, diagnostic=False):
-    " Returns parsetree object "
+def get_basic_tokens(basiccode) -> [Token]:
+    "Tokenize `basiccode`"
+    input_stream = InputStream(basiccode)
+    lexer = OOBasicLexer(input_stream)
+    stream = CommonTokenStream(lexer)
+    tokens = []
+    for i in range(stream.getNumberOfOnChannelTokens()):
+        atoken = stream.get(i)
+        if atoken.type != -1:
+            tokens.append(Token(atoken.column,
+                                atoken.line,
+                                atoken.text,
+                                atoken.type))
+    return tokens
+
+
+def parse(basiccode, library, module, diagnostic=False) -> [Callable]:
+    " Returns callables "
     input_stream = InputStream(basiccode)
     lexer = OOBasicLexer(input_stream)
     stream = CommonTokenStream(lexer)

@@ -1,0 +1,14 @@
+Configuration
+-------------
+Want sensible defaults for all settings.
+
+Location of generated site
+Include/Exclude parts
+Database identifier in textdocuments
+
+See BaseDocumenter config too
+
+general
+-------
+
+read_text_documents: filter for database name minus extension

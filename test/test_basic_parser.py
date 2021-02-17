@@ -7,6 +7,7 @@ import pytest
 from odbinfo.reader import _parse_xml,  mapiflist
 from odbinfo.datatype import Module
 import odbinfo
+from odbinfo.parser.basic import get_basic_tokens
 
 CODE = """
 dim number1, number2 as integer
@@ -128,6 +129,21 @@ REM -----------------------------------------------------------------
 def test_rem_header():
     " REM header "
     parse(REMHEADER)
+
+
+TOKENSOURCECODE="""
+rem procedure Foo
+sub Foo(a as String)
+   print a
+end  ' sub foo
+"""
+
+
+def test_get_basic_tokens():
+    "test basic tokenizer"
+    tokens = get_basic_tokens(TOKENSOURCECODE)
+    assert len(tokens) == 21
+
 
 
 @pytest.mark.endless

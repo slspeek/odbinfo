@@ -40,6 +40,15 @@ def tohtml(code):
 
 
 @dataclass
+class Token:
+    "lexer token"
+    column: int
+    line: int
+    text: str
+    type: int
+
+
+@dataclass
 class DatabaseDisplay:
     " Field in TextDocument "
     database: str
@@ -88,6 +97,7 @@ class Callable:
     source: str
     callees: str = field(init=False, default_factory=set)
     title: str = field(init=False)
+    tokens: [Token] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         # self.source = tohtml(self.source)
@@ -102,6 +112,7 @@ class Module:
     source: str
     callables: [Callable] = field(init=False, default_factory=list)
     title: str = field(init=False)
+    tokens: [Token] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         # self.source = tohtml(self.source)

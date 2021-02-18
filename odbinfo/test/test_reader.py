@@ -54,4 +54,4 @@ def test_text_document():
 
 def test_read_text_documents():
     " find odts "
-    print(read_text_documents(path.dirname(DEFAULT_TESTDB)))
+    print(read_text_documents(path.dirname(DEFAULT_TESTDB), "testdb"))

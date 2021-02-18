@@ -63,15 +63,21 @@ def _database_displays(doc_path) -> [DatabaseDisplay]:
             )
     with ZipFile(doc_path) as file:
         body = _body_elem(file, "content.xml")["office:text"]
-        return list(map(partial(mapiflist, display),
-                        _collect_attribute(body, "text:database-display")))
+        return reduce(lambda x, y: x + y,
+                      list(map(partial(mapiflist, display),
+                               _collect_attribute(body, "text:database-display"))),
+                      [])
 
 
-def read_text_documents(dir_path) -> [TextDocument]:
+def read_text_documents(dir_path, dbname) -> [TextDocument]:
     " search odt, ott file and look for database-display fields"
     docs = []
     for doc_path in _text_documents(dir_path):
         displays = _database_displays(doc_path)
+        displays = list(filter(
+            lambda d: d.database == dbname,
+            displays
+        ))
         if len(displays) > 0:
             docs.append(
                 TextDocument(
@@ -314,6 +320,9 @@ def read_metadata(datasource, odbpath):
     """ reads all metadata """
     with open_connection(datasource) as con:
         with ZipFile(odbpath, "r") as odbzip:
+            dbname, _ = os.path.splitext(
+                os.path.basename(odbpath)
+            )
             return \
                 Metadata(read_tables(con),
                          read_views(con),
@@ -322,7 +331,7 @@ def read_metadata(datasource, odbpath):
                          read_reports(odbzip),
                          read_libraries(odbzip),
                          read_python_libraries(odbzip),
-                         read_text_documents(os.path.dirname(odbpath)))
+                         read_text_documents(os.path.dirname(odbpath), dbname))
 
 
 def read_views(connection) -> [View]:

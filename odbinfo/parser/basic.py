@@ -88,24 +88,105 @@ class ThrowingErrorListener(ErrorListener):
         raise RuntimeError("Parse failed")
 
 
+def scan_basic(basiccode) -> [str]:
+    " extract procedure names "
+    tokens = get_basic_tokens(basiccode)
+    # print(tokens)
+    index = 0
+    while True:
+        name, index, start, stop = _find_callable(tokens, index)
+        print(name, index, start, stop)
+        if name is None:
+            break
+
+
+def _proceed_visibility(tokens, index) -> int:
+    i = index
+    atoken = tokens[i]
+    if atoken.type in [OOBasicLexer.GLOBAL,
+                       OOBasicLexer.PUBLIC,
+                       OOBasicLexer.PRIVATE]:
+        i += 1
+        atoken = tokens[i]
+        if atoken.type == OOBasicLexer.WS:
+            return i + 1
+    return index
+
+
+def _proceed_static(tokens, index) -> int:
+    i = index
+    atoken = tokens[i]
+    if atoken.type == OOBasicLexer.STATIC:
+        i += 1
+        atoken = tokens[i]
+        if atoken.type == OOBasicLexer.WS:
+            return i + 1
+    return index
+
+
+def _proceed_callable(tokens, index) -> int:
+    i = index
+    atoken = tokens[i]
+    if atoken.type in [OOBasicLexer.SUB,
+                       OOBasicLexer.FUNCTION]:
+        i += 1
+        atoken = tokens[i]
+        if atoken.type == OOBasicLexer.WS:
+            i += 1
+            atoken = tokens[i]
+            if atoken.type == OOBasicLexer.IDENTIFIER:
+                name = atoken.text
+                # continue to NEWLINE to find body
+                found, i = _find(tokens, i, [OOBasicLexer.NEWLINE])
+                if not found:
+                    raise RuntimeError("Newline not found")
+                body_start = i
+                found, i = _find(tokens, i, [OOBasicLexer.END_SUB,
+                                             OOBasicLexer.END_FUNCTION])
+                if not found:
+                    raise RuntimeError("No callable end found")
+                body_end = i
+                return (name, i, body_start, body_end)
+
+    return (None, index, -1, -1)
+
+
+def _find(tokens, index, types: [int]) -> (bool, int):
+    for i in range(index, len(tokens)):
+        atoken = tokens[i]
+        if atoken.type in types:
+            return (True, i)
+    return (False, i)
+
+
+def _find_callable(tokens, index) -> (str, int):
+    for i in range(index, len(tokens)):
+        i = _proceed_visibility(tokens, i)
+        i = _proceed_static(tokens, i)
+        name, i, start, stop = _proceed_callable(tokens, i)
+        if name is not None:
+            return (name, i, start, stop)
+    return (None, i, -1, -1)
 
 
 def get_basic_tokens(basiccode) -> [Token]:
     "Tokenize `basiccode`"
     input_stream = InputStream(basiccode)
     lexer = OOBasicLexer(input_stream)
-    stream = CommonTokenStream(lexer, antlr4.Token.DEFAULT_CHANNEL)
+    stream = CommonTokenStream(lexer)
+    stream.setup()
+    stream.fill()
     tokens = []
     i = 0
-    id_eof = stream.getNumberOfOnChannelTokens()
-    while stream.nextTokenOnChannel(i, antlr4.Token.DEFAULT_CHANNEL) != id_eof:
+    while True:
         i = stream.nextTokenOnChannel(i, antlr4.Token.DEFAULT_CHANNEL)
-
         atoken = stream.get(i)
         tokens.append(Token(atoken.column,
                             atoken.line,
                             atoken.text,
                             atoken.type))
+        if atoken.type == antlr4.Token.EOF:
+            break
         i += 1
     return tokens
 

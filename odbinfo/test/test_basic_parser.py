@@ -7,7 +7,7 @@ import pytest
 
 import odbinfo
 from odbinfo.datatype import Module
-from odbinfo.parser.basic import get_basic_tokens
+from odbinfo.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.reader import _parse_xml,  mapiflist
 from odbinfo.test.resource import BASEDOCUMENTER
 
@@ -138,7 +138,11 @@ TOKENSOURCECODE = """
 rem procedure Foo
 sub Foo(a as String)
    print a
+   closedatabase()
 end sub ' sub foo
+
+public sub Bar()
+end sub
 """
 
 
@@ -147,7 +151,12 @@ def test_get_basic_tokens():
     tokens = get_basic_tokens(TOKENSOURCECODE)
     for tok in tokens:
         print(tok)
-    assert len(tokens) == 18
+    assert len(tokens) == 35
+
+
+def test_scan_basic():
+    "test scan_basic"
+    scan_basic(TOKENSOURCECODE)
 
 
 @pytest.mark.endless
@@ -177,4 +186,5 @@ def test_basedocumenter_sources():
                     """, _BD_UTF8(Replace(_BD_GetLabel("PREFERENCESTITLE"),"""
                     """ "%0", BaseDocumenterTitle)))"""
                 )
-            get_basic_tokens(module.source)
+            # get_basic_tokens(module.source)
+            scan_basic(module.source)

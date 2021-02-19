@@ -133,7 +133,6 @@ blockStmt
    | printStmt
    | putStmt
    | randomizeStmt
-   | COMMENT
    | redimStmt
    | resetStmt
    | resumeStmt

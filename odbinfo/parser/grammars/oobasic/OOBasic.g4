@@ -72,7 +72,7 @@ moduleOption
    ;
 
 moduleBody
-   : moduleBodyElement COMMENT? (NEWLINE + moduleBodyElement COMMENT?)*
+   : moduleBodyElement  (NEWLINE + moduleBodyElement )*
    ;
 
 moduleBodyElement
@@ -98,7 +98,7 @@ block
    ;
 
 blockLine
-   : blockStmt (WS? COLON WS? blockStmt)* COMMENT?
+   : blockStmt (WS? COLON WS? blockStmt)*
    ;
 
 blockStmt
@@ -214,7 +214,7 @@ forEachStmt
    ;
 
 forNextStmt
-   : FOR WS iCS_S_VariableOrProcedureCall typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt WS TO WS valueStmt (WS STEP WS valueStmt)? COMMENT? NEWLINE + (block NEWLINE +)? NEXT (WS ambiguousIdentifier typeHint?)?
+   : FOR WS iCS_S_VariableOrProcedureCall typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt WS TO WS valueStmt (WS STEP WS valueStmt)?  NEWLINE + (block NEWLINE +)? NEXT (WS ambiguousIdentifier typeHint?)?
    ;
 
 functionStmt
@@ -232,7 +232,7 @@ ifThenElseStmt
    ;
 
 ifBlockStmt
-   : IF WS ifConditionStmt WS THEN WS? COMMENT? NEWLINE + (block NEWLINE +)?
+   : IF WS ifConditionStmt WS THEN WS?  NEWLINE + (block NEWLINE +)?
    ;
 
 ifConditionStmt
@@ -240,11 +240,11 @@ ifConditionStmt
    ;
 
 ifElseIfBlockStmt
-   : ELSEIF WS ifConditionStmt WS THEN WS? COMMENT? NEWLINE + (block NEWLINE +)?
+   : ELSEIF WS ifConditionStmt WS THEN WS?  NEWLINE + (block NEWLINE +)?
    ;
 
 ifElseBlockStmt
-   : ELSE WS? COMMENT? NEWLINE + (block NEWLINE +)?
+   : ELSE WS?  NEWLINE + (block NEWLINE +)?
    ;
 
 inputStmt
@@ -339,7 +339,7 @@ rmdirStmt
    ;
 
 selectCaseStmt
-   : SELECT WS CASE WS valueStmt COMMENT? NEWLINE + sC_Case* WS? END_SELECT
+   : SELECT WS CASE WS valueStmt  NEWLINE + sC_Case* WS? END_SELECT
    ;
 
 sC_Case
@@ -385,7 +385,7 @@ typeStmt_Element
 
 // operator precedence is represented by rule order
 valueStmt
-   : LINE_CONTINUATION? WS? literal LINE_CONTINUATION?                                      # vsLiteral
+   : literal                                       # vsLiteral
    | LPAREN WS? valueStmt (WS? COMMA WS? valueStmt)* WS? RPAREN      # vsStruct
    | NEW WS valueStmt                                                # vsNew
    | implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt                # vsAssign
@@ -410,7 +410,7 @@ valueStmt
    | valueStmt WS? XOR WS? valueStmt                                 # vsXor
    | valueStmt WS? EQV WS? valueStmt                                 # vsEqv
    | valueStmt WS? IMP WS? valueStmt                                 # vsImp
-   | LINE_CONTINUATION? WS? implicitCallStmt_InStmt (WS|LINE_CONTINUATION)?                 # vsICS
+   | implicitCallStmt_InStmt                  # vsICS
    | midStmt                                                         # vsMid
    | msgBox                                                          # vsMsgBox
    ;
@@ -521,12 +521,12 @@ argsCall
    ;
 
 argCall
-   : ((BYVAL | BYREF ) WS)? valueStmt LINE_CONTINUATION?
+   : ((BYVAL | BYREF ) WS)? valueStmt
    ;
 
 // atomic rules for statements
 argList
-   : LPAREN (WS? arg LINE_CONTINUATION? (WS? COMMA WS? arg WS? LINE_CONTINUATION?)*)? WS? RPAREN
+   : LPAREN (WS? arg  (WS? COMMA WS? arg WS? )*)? WS? RPAREN
    ;
 
 arg
@@ -1481,7 +1481,7 @@ COLON
 
 
 COMMA
-   : ',' LINE_CONTINUATION?
+   : ','
    ;
 
 
@@ -1530,7 +1530,7 @@ LBRACE
 
 
 LPAREN
-   : '(' LINE_CONTINUATION?
+   : '('
    ;
 
 
@@ -1585,7 +1585,7 @@ RBRACE
 
 
 RPAREN
-   : ')' LINE_CONTINUATION?
+   : ')'
    ;
 
 
@@ -1656,7 +1656,7 @@ IDENTIFIER
 // whitespace, line breaks, comments, ...
 
 LINE_CONTINUATION
-   : ' ' '_' '\r'? '\n'
+   : ' ' '_' '\r'? '\n'  -> channel(HIDDEN)
    ;
 
 
@@ -1666,7 +1666,7 @@ NEWLINE
 
 
 COMMENT
-   : WS? ('\'' | COLON? REM (' '|'\t')) (LINE_CONTINUATION | ~ ('\n' | '\r'))*
+   : WS? ('\'' | COLON? REM (' '|'\t')) (LINE_CONTINUATION | ~ ('\n' | '\r'))* -> channel(HIDDEN)
    ;
 
 

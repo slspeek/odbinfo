@@ -88,19 +88,25 @@ class ThrowingErrorListener(ErrorListener):
         raise RuntimeError("Parse failed")
 
 
+
+
 def get_basic_tokens(basiccode) -> [Token]:
     "Tokenize `basiccode`"
     input_stream = InputStream(basiccode)
     lexer = OOBasicLexer(input_stream)
-    stream = CommonTokenStream(lexer)
+    stream = CommonTokenStream(lexer, antlr4.Token.DEFAULT_CHANNEL)
     tokens = []
-    for i in range(stream.getNumberOfOnChannelTokens()):
+    i = 0
+    id_eof = stream.getNumberOfOnChannelTokens()
+    while stream.nextTokenOnChannel(i, antlr4.Token.DEFAULT_CHANNEL) != id_eof:
+        i = stream.nextTokenOnChannel(i, antlr4.Token.DEFAULT_CHANNEL)
+
         atoken = stream.get(i)
-        if atoken.type != antlr4.Token.EOF:
-            tokens.append(Token(atoken.column,
-                                atoken.line,
-                                atoken.text,
-                                atoken.type))
+        tokens.append(Token(atoken.column,
+                            atoken.line,
+                            atoken.text,
+                            atoken.type))
+        i += 1
     return tokens
 
 

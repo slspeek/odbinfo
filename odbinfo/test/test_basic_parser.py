@@ -138,14 +138,16 @@ TOKENSOURCECODE = """
 rem procedure Foo
 sub Foo(a as String)
    print a
-end  ' sub foo
+end sub ' sub foo
 """
 
 
 def test_get_basic_tokens():
     "test basic tokenizer"
     tokens = get_basic_tokens(TOKENSOURCECODE)
-    assert len(tokens) == 21
+    for tok in tokens:
+        print(tok)
+    assert len(tokens) == 18
 
 
 @pytest.mark.endless
@@ -175,4 +177,4 @@ def test_basedocumenter_sources():
                     """, _BD_UTF8(Replace(_BD_GetLabel("PREFERENCESTITLE"),"""
                     """ "%0", BaseDocumenterTitle)))"""
                 )
-            parse(module.source)
+            get_basic_tokens(module.source)

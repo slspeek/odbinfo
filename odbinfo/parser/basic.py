@@ -118,18 +118,16 @@ def get_basic_tokens(basiccode) -> [Token]:
     input_stream = InputStream(basiccode)
     lexer = OOBasicLexer(input_stream)
     stream = CommonTokenStream(lexer)
-    stream.setup()
-    stream.fill()
     tokens = []
     i = 0
     while True:
         i = stream.nextTokenOnChannel(i, antlr4.Token.DEFAULT_CHANNEL)
         atoken = stream.get(i)
+        if atoken.type == antlr4.Token.EOF:
+            break
         tokens.append(Token(atoken.column,
                             atoken.line,
                             atoken.text,
                             atoken.type))
-        if atoken.type == antlr4.Token.EOF:
-            break
         i += 1
     return tokens

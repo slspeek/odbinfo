@@ -146,7 +146,7 @@ def test_get_basic_tokens():
     tokens = get_basic_tokens(TOKENSOURCECODE)
     for tok in tokens:
         print(tok)
-    assert len(tokens) == 35
+    assert len(tokens) == 34
 
 
 def test_scan_basic():

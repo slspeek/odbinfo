@@ -88,6 +88,7 @@ class PythonLibrary:
     modules: [PythonModule]
 
 
+# pylint:disable=too-many-instance-attributes
 @dataclass
 class Callable:
     " Basic sub or function "
@@ -95,9 +96,10 @@ class Callable:
     module: str
     name: str
     source: str
-    callees: str = field(init=False, default_factory=set)
-    title: str = field(init=False)
     tokens: [Token] = field(init=False, default_factory=list)
+    body_tokens: [Token] = field(init=False, default_factory=list)
+    body_source: str = field(init=False)
+    title: str = field(init=False)
 
     def __post_init__(self):
         # self.source = tohtml(self.source)

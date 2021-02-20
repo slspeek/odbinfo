@@ -20,8 +20,10 @@ def odbzip():
 def test_reports(odbzip):  # pylint: disable=redefined-outer-name
     " _reports  "
     info = _reports(odbzip)
-    for name, form in info:
-        print(name, json.dumps(form, indent=4))
+    for _, form in info:
+        # print(name,
+        json.dumps(form, indent=4)
+        # )
 
 
 def test_libraries(odbzip):  # pylint: disable=redefined-outer-name

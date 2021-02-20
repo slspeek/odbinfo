@@ -1,172 +1,116 @@
 """ Facade fot the OOBasicParser """
-from antlr4 import InputStream, CommonTokenStream,\
-    ParseTreeWalker
+from functools import reduce
+from antlr4 import InputStream, CommonTokenStream
 import antlr4
-from antlr4.error.ErrorListener import ErrorListener
-from antlr4.error.DiagnosticErrorListener import DiagnosticErrorListener
-from antlr4.atn.PredictionMode import PredictionMode
-from odbinfo.parser.oobasic.OOBasicParser import OOBasicParser
 from odbinfo.parser.oobasic.OOBasicLexer import OOBasicLexer
-from odbinfo.parser.oobasic.OOBasicListener import\
-    OOBasicListener
 from odbinfo.datatype import Callable, Token
 
 
-class BasicListener(OOBasicListener):
-    "Collect tablenames"
-
-    def __init__(self, library, module):
-        super().__init__()
-        self.library = library
-        self.module = module
-        self.callables = []
-        self.cur_callable = None
-
-    def _set_cur_callable(self, function):
-        self.cur_callable = function
-        if self.cur_callable is not None:
-            self.callables.append(function)
-
-    def enterFunctionStmt(self, ctx):
-        bcallable = Callable(self.library,
-                             self.module,
-                             ctx.ambiguousIdentifier().getText(),
-                             ctx.getText())
-        self._set_cur_callable(bcallable)
-
-    def exitFunctionStmt(self, ctx):
-        self._set_cur_callable(None)
-
-    def enterSubStmt(self, ctx):
-        self.enterFunctionStmt(ctx)
-
-    def exitSubStmt(self, ctx):
-        self.exitFunctionStmt(ctx)
-
-    def _add_call(self, callee):
-        if self.cur_callable is not None:
-            if self.cur_callable.name != callee:
-                self.cur_callable.callees.add(callee)
-
-    # call graph collection of callees
-    def enterECS_ProcedureCall(self, ctx):
-        self._add_call(ctx.ambiguousIdentifier().getText())
-
-    def enterECS_MemberProcedureCall(self, ctx):
-        self._add_call(ctx.ambiguousIdentifier().getText())
-
-    def enterICS_B_ProcedureCall(self, ctx):
-        self._add_call(ctx.certainIdentifier().getText())
-
-    def enterICS_B_MemberProcedureCall(self, ctx):
-        self._add_call(ctx.ambiguousIdentifier().getText())
-
-    def enterICS_S_VariableOrProcedureCall(self, ctx):
-        self._add_call(ctx.ambiguousIdentifier().getText())
-
-    def enterICS_S_NestedProcedureCall(self, ctx):
-        self._add_call(ctx.ambiguousIdentifier().getText())
-
-    def enterIcsAmbiguousIdentifier(self, ctx):
-        self._add_call(ctx.ambiguousIdentifier().getText())
-
-# pylint:disable=too-few-public-methods
-
-
-class ThrowingErrorListener(ErrorListener):
-    " An ErrorListeners that raises an Error"
-
-    # pylint:disable=too-many-arguments
-    # pylint:disable=invalid-name
-    # pylint:disable=no-self-use
-    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        "raise the error"
-        stack = recognizer.getRuleInvocationStack()
-        stack.reverse()
-        print("rule stack: ", str(stack))
-        print("line", line, ":", column, "at", offendingSymbol, ":", msg)
-        raise RuntimeError("Parse failed")
-
-
-def scan_basic(basiccode) -> [str]:
+def scan_basic(basiccode, library, module) -> [str]:
     " extract procedure names "
     tokens = get_basic_tokens(basiccode)
-    # print(tokens)
-    index = 0
-    while True:
-        name, index, start, stop = _find_callable(tokens, index)
-        print(name, index, start, stop)
-        if name is None:
-            break
+    scanner = BasicScanner(tokens, library, module)
+    return scanner.scan()
 
 
-def _proceed_visibility(tokens, index) -> int:
-    i = index
-    atoken = tokens[i]
-    if atoken.type in [OOBasicLexer.GLOBAL,
-                       OOBasicLexer.PUBLIC,
-                       OOBasicLexer.PRIVATE]:
-        i += 1
-        atoken = tokens[i]
-        if atoken.type == OOBasicLexer.WS:
-            return i + 1
-    return index
+# pylint:disable=too-few-public-methods
+class BasicScanner:
+    "scan for procedure names"
 
+    def __init__(self, tokens, library, module):
+        self.tokens = tokens
+        self.library = library
+        self.module = module
+        self.index = 0
+        self.callables = []
 
-def _proceed_static(tokens, index) -> int:
-    i = index
-    atoken = tokens[i]
-    if atoken.type == OOBasicLexer.STATIC:
-        i += 1
-        atoken = tokens[i]
-        if atoken.type == OOBasicLexer.WS:
-            return i + 1
-    return index
+    def _token(self) -> Token:
+        return self.tokens[self.index]
 
+    def _read(self, token: int) -> bool:
+        if self._token().type == token:
+            self.index += 1
+            return True
+        return False
 
-def _proceed_callable(tokens, index) -> int:
-    i = index
-    atoken = tokens[i]
-    if atoken.type in [OOBasicLexer.SUB,
-                       OOBasicLexer.FUNCTION]:
-        i += 1
-        atoken = tokens[i]
-        if atoken.type == OOBasicLexer.WS:
-            i += 1
-            atoken = tokens[i]
-            if atoken.type == OOBasicLexer.IDENTIFIER:
-                name = atoken.text
-                # continue to NEWLINE to find body
-                found, i = _find(tokens, i, [OOBasicLexer.NEWLINE])
-                if not found:
-                    raise RuntimeError("Newline not found")
-                body_start = i
-                found, i = _find(tokens, i, [OOBasicLexer.END_SUB,
-                                             OOBasicLexer.END_FUNCTION])
-                if not found:
-                    raise RuntimeError("No callable end found")
-                body_end = i
-                return (name, i, body_start, body_end)
+    def _read_seq_maybe(self, seq: [int]):
+        mark = self.index
+        for token in seq:
+            if not self._read(token):
+                self.index = mark
+                return
 
-    return (None, index, -1, -1)
+    def _read_or(self, ptokens: [int]) -> bool:
+        for token in ptokens:
+            if self._read(token):
+                return True
+        return False
 
+    def _find_or(self, types: [int]) -> bool:
+        mark = self.index
+        for i in range(self.index, len(self.tokens)):
+            self.index = i
+            if self._token().type in types:
+                return True
+        self.index = mark
+        return False
 
-def _find(tokens, index, types: [int]) -> (bool, int):
-    for i in range(index, len(tokens)):
-        atoken = tokens[i]
-        if atoken.type in types:
-            return (True, i)
-    return (False, i)
+    def _find_callable(self) -> Callable:
+        for index in range(self.index, len(self.tokens)):
+            self.index = index
+            start_callable = self.index
+            if self._read_or([OOBasicLexer.GLOBAL,
+                              OOBasicLexer.PUBLIC,
+                              OOBasicLexer.PRIVATE]):
+                if not self._read(OOBasicLexer.WS):
+                    continue
+            self._read_seq_maybe([OOBasicLexer.STATIC, OOBasicLexer.WS])
+            if self._read_or([OOBasicLexer.FUNCTION, OOBasicLexer.SUB]):
+                if not self._read(OOBasicLexer.WS):
+                    continue
+                if self._read(OOBasicLexer.IDENTIFIER):
+                    name = self.tokens[self.index - 1].text
+                    # continue to NEWLINE to find body
+                    if not self._find_or([OOBasicLexer.NEWLINE]):
+                        raise RuntimeError("Newline not found")
+                    body_start_after = self.index
+                    if not self._find_or([OOBasicLexer.END_SUB,
+                                          OOBasicLexer.END_FUNCTION]):
+                        raise RuntimeError("No callable end found")
+                    body_end_before = self.index
+                    source = reduce(lambda x, y: x + y,
+                                    map(lambda x: x.text,
+                                        self.tokens[start_callable:
+                                                    body_end_before + 1]),
+                                    "")
+                    result = Callable(self.library,
+                                      self.module,
+                                      name,
+                                      source)
+                    result.tokens =\
+                        self.tokens[start_callable:
+                                    body_end_before + 1]
+                    result.body_tokens =\
+                        self.tokens[body_start_after + 1:
+                                    body_end_before]
+                    result.body_source =\
+                        reduce(lambda x, y: x + y,
+                               map(lambda x: x.text,
+                                   result.body_tokens),
+                               "")
+                    return result
 
+        return None
 
-def _find_callable(tokens, index) -> (str, int):
-    for i in range(index, len(tokens)):
-        i = _proceed_visibility(tokens, i)
-        i = _proceed_static(tokens, i)
-        name, i, start, stop = _proceed_callable(tokens, i)
-        if name is not None:
-            return (name, i, start, stop)
-    return (None, i, -1, -1)
+    def scan(self):
+        "perform the scan"
+        while True:
+            acallable = self._find_callable()
+            if acallable is None:
+                break
+            self.callables.append(acallable)
+
+        return self.callables
 
 
 def get_basic_tokens(basiccode) -> [Token]:
@@ -189,24 +133,3 @@ def get_basic_tokens(basiccode) -> [Token]:
             break
         i += 1
     return tokens
-
-
-def parse(basiccode, library, module, diagnostic=False) -> [Callable]:
-    " Returns callables "
-    input_stream = InputStream(basiccode)
-    lexer = OOBasicLexer(input_stream)
-    stream = CommonTokenStream(lexer)
-    parser = OOBasicParser(stream)
-    parser.removeErrorListeners()
-    if diagnostic:
-        parser.addErrorListener(DiagnosticErrorListener())
-        # pylint:disable=protected-access
-        parser._interp.predictionMode = PredictionMode.LL_EXACT_AMBIG_DETECTION
-    else:
-        parser.addErrorListener(ThrowingErrorListener())
-    tree = parser.startRule()
-    walker = ParseTreeWalker()
-    listener = BasicListener(library, module)
-    walker.walk(listener, tree)
-
-    return listener.callables

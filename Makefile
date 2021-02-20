@@ -28,11 +28,6 @@ info: prepare
 .ONESHELL:
 itest: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not endless" $(testloc)
-
-.ONESHELL:
-alltest: prepare
-	cd $(build)
 	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv $(testloc)
 
 .ONESHELL:
@@ -50,7 +45,7 @@ fixture: prepare
 .ONESHELL:
 unit: prepare
 	cd $(build)
-	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow and not endless" $(testloc)
+	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow" $(testloc)
 	exit 0
 
 .ONESHELL:

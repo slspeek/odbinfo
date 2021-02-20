@@ -4,7 +4,7 @@ import shutil
 from urllib.parse import urlparse
 from odbinfo.writer import make_site
 from odbinfo.reader import read_metadata
-from odbinfo.parser.basic import parse, get_basic_tokens
+from odbinfo.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.datatype import Library, Module, Callable
 
 
@@ -12,7 +12,7 @@ def _process_library(library: Library):
     def parse_module(module: Module):
         # print("parsing: " + module.source)
         module.callables =\
-            parse(module.source, library.name, module.name)
+            scan_basic(module.source, library.name, module.name)
 
     list(map(parse_module, library.modules))
 

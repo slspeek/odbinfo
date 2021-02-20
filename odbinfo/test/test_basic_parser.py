@@ -5,7 +5,6 @@ from zipfile import ZipFile
 
 import pytest
 
-import odbinfo
 from odbinfo.datatype import Module
 from odbinfo.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.reader import _parse_xml,  mapiflist
@@ -28,10 +27,9 @@ console.writeline("the answer is "& answer)
 
 def parse(source):
     " wrap parse with default arguments "
-    return odbinfo.parser.basic.parse(source, "Standard", "Module")
+    return scan_basic(source, "Standard", "Module")
 
 
-@pytest.mark.slow
 def test_parse():
     " call parse "
     callables = parse("""
@@ -44,15 +42,12 @@ def test_parse():
         end function
         """)
     assert callables[0].name == "foo"
-    assert callables[0].callees == set(["a", "bar", "gnu", "baz", "graphics",
-                                        "kaleidos", "linux", "spooler"])
+    assert len(callables[0].body_tokens) == 50
 
 
-@pytest.mark.slow
 def test_parse_module_statements():
     " call parse "
     parse(CODE)
-    # print(tree.toStringTree())
 
 
 SELECT = """
@@ -156,10 +151,10 @@ def test_get_basic_tokens():
 
 def test_scan_basic():
     "test scan_basic"
-    scan_basic(TOKENSOURCECODE)
+    parse(TOKENSOURCECODE)
 
 
-@pytest.mark.endless
+@pytest.mark.slow
 def test_basedocumenter_sources():
     " parse all basedocumenter sources "
     with ZipFile(BASEDOCUMENTER, "r") as based:
@@ -187,4 +182,4 @@ def test_basedocumenter_sources():
                     """ "%0", BaseDocumenterTitle)))"""
                 )
             # get_basic_tokens(module.source)
-            scan_basic(module.source)
+            scan_basic(module.source, "BaseDocumenter", module.name)

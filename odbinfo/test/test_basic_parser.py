@@ -10,20 +10,6 @@ from odbinfo.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.reader import _parse_xml,  mapiflist
 from odbinfo.test.resource import BASEDOCUMENTER
 
-CODE = """
-dim number1, number2 as integer
-dim answer as integer
-
-Myfunction("go for it")
-console.writeline("enter first number")
-number1=int(console.readline())
-console.writeline("enter second number")
-number2=int(console.readline())
-total=number1+number2
-console.writeline("the answer is "& answer)
-
-"""
-
 
 def parse(source):
     " wrap parse with default arguments "
@@ -45,88 +31,27 @@ def test_parse():
     assert len(callables[0].body_tokens) == 50
 
 
-def test_parse_module_statements():
-    " call parse "
-    parse(CODE)
-
-
-SELECT = """
-Sub Foo ()
-    Select case Fop(a)
-        case 1: a = Foo(0)
-        case else
+BODY = """Select case Fop(a)
+    case 1: a = Foo(0)
+    case else
     end select
-end sub
+    """
+
+SELECT = f"""
+Sub Foo () {BODY} end sub
 """
 
 
 def test_parse_select():
     " call parse select"
-    parse(SELECT)
-
-
-def test_for_next():
-    "for next loop parsing"
-    parse("""
-    sub foo()
-        for i = 0 to 10
-            Print(i)
-        next i
-    end sub
-    """)
+    callables = parse(SELECT)
+    assert len(callables) == 1
 
 
 def _read_module(odbzip, library_name,  data) -> Module:
     name = data["@library:name"]
     data = _parse_xml(odbzip, f"{library_name}/{name}.xba")
     return Module("BaseDocumenter", name, data["script:module"]["#text"])
-
-
-ADDNUMERIC = """
-sub foo()
-    pvdefault _AddNumeric()= Null
-end sub
-"""
-
-
-ERRORMESSAGE1 = """
-sub foo()
-    i = Len(bar)-1
-end sub
-"""
-
-
-def test_error_message():
-    "error message"
-    parse(ERRORMESSAGE1)
-
-
-def test_add_numeric():
-    " add numeric"
-    parse(ADDNUMERIC)
-
-
-REMHEADER = """
-REM =======================================================================================================================
-REM ===						The BaseDocumenter library is an extension to LibreOffice.									===
-REM ===			Full documentation is available on http://www.access2base.com/basedocumenter.html						===
-REM =======================================================================================================================
-
-Option Explicit
-
-REM -----------------------------------------------------------------
-REM			BASEDOCUMENTER constants
-REM -----------------------------------------------------------------
-
-REM BaseDocumenter general constants
-REM -----------------------------------------------------------------
-
-"""
-
-
-def test_rem_header():
-    " REM header "
-    parse(REMHEADER)
 
 
 TOKENSOURCECODE = """
@@ -151,7 +76,8 @@ def test_get_basic_tokens():
 
 def test_scan_basic():
     "test scan_basic"
-    parse(TOKENSOURCECODE)
+    callables = parse(TOKENSOURCECODE)
+    assert len(callables) == 2
 
 
 @pytest.mark.slow

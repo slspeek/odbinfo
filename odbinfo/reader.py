@@ -127,8 +127,10 @@ def read_python_libraries(odbzip):
     libraries = []
     for entry in _manifest_fileentries(odbzip):
         fullpath = entry["@manifest:full-path"]
+        print(fullpath)
         if fullpath.startswith("Scripts/python")\
                 and entry["@manifest:media-type"] == "application/binary":
+            print(f"libs {fullpath}")
             libraries.append(
                 _read_python_library(odbzip, fullpath)
             )
@@ -136,20 +138,27 @@ def read_python_libraries(odbzip):
 
 
 def _read_python_library(odbzip, fullpath):
-    name = os.path.basename(fullpath)
+    name = os.path.basename(fullpath.rstrip("/"))
+    # if name == "python":
+    #     name = "DEFAULT"
     modules = []
     for entry in _manifest_fileentries(odbzip):
         entrypath = entry["@manifest:full-path"]
         if entrypath.startswith(fullpath)\
                 and entry["@manifest:media-type"] == "":
-            modules.append(_read_python_module(odbzip, entrypath))
+            modname = os.path.basename(entrypath)
+            if fullpath + modname == entrypath:
+                modules.append(_read_python_module(odbzip, entrypath, name))
     return PythonLibrary(name, modules)
 
 
-def _read_python_module(odbzip, fullpath):
-    return PythonModule(os.path.basename(fullpath),
-                        odbzip.read(fullpath)
-                        )
+def _read_python_module(odbzip, fullpath, library):
+    print("module " + fullpath)
+    return PythonModule(
+        library,
+        os.path.basename(fullpath),
+        odbzip.read(fullpath).decode()
+    )
 
 
 def _has_libraries(odbzip) -> bool:

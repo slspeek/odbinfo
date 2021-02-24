@@ -77,8 +77,13 @@ class Report:
 @dataclass
 class PythonModule:
     " Python Module "
+    library: str
     name: str
     source: str
+    title: str = field(init=False)
+
+    def __post_init__(self):
+        self.title = f"{self.library}.{self.name}"
 
 
 @dataclass
@@ -215,8 +220,7 @@ class Query:
     columns: [QueryColumn]
 
     def __post_init__(self):
-        self.command = format_sql(self.command).replace('\n', "<br/>")\
-            .replace(' ', "&nbsp;")
+        self.command = format_sql(self.command)
 
 
 View = Query
@@ -309,5 +313,12 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
         "collect all basic modules from libraries"
         result = []
         for lib in self.libraries:
+            result.extend(lib.modules)
+        return result
+
+    def pymodules(self) -> [PythonModule]:
+        "collect all python modules from libraries"
+        result = []
+        for lib in self.pythonlibraries:
             result.extend(lib.modules)
         return result

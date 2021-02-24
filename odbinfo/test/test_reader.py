@@ -7,7 +7,8 @@ import pytest
 
 from odbinfo.test.resource import DEFAULT_TESTDB
 from odbinfo.reader import read_libraries, _reports, _collect_attribute
-from odbinfo.reader import _text_documents, read_text_documents
+from odbinfo.reader import _text_documents, read_text_documents,\
+    read_python_libraries
 
 
 @pytest.fixture(scope="package")
@@ -29,6 +30,15 @@ def test_reports(odbzip):  # pylint: disable=redefined-outer-name
 def test_libraries(odbzip):  # pylint: disable=redefined-outer-name
     " libraries "
     print(read_libraries(odbzip))
+
+
+def test_pylibraries(odbzip):  # pylint: disable=redefined-outer-name
+    " libraries "
+    libs = read_python_libraries(odbzip)
+    print(libs)
+    assert len(libs) == 2
+    assert len(libs[0].modules) == 1
+    assert len(libs[1].modules) == 1
 
 
 def test_collect_attribute():

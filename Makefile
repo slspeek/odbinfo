@@ -58,8 +58,8 @@ test: itest unit
 
 .ONESHELL:
 serve:
-	cd $(build)$(testloc)/resources/testdb/.$(testloc)db
-	hugo server --layoutDir ../../../../../../../data/hugo-template/layouts
+	cd $(build)/$(testloc)/resources/testdb/.$(testloc)db
+	hugo server --layoutDir ../../../../../../../../data/hugo-template/layouts
 
 format:
 	autopep8 -ri --exclude="odbinfo/parser/sqlite/*,odbinfo/parser/oobasic/*" odbinfo/ main.py

@@ -61,6 +61,8 @@ def make_site(output_dir, name, metadata):
         _write_content("libraries", metadata.libraries)
         _write_content("modules", metadata.modules())
         _write_content("macros", metadata.callables())
+        _write_content("pylibs", metadata.pythonlibraries)
+        _write_content("pymodules", metadata.pymodules())
 
         exitcode = os.system("hugo")
         if exitcode != 0:
@@ -92,6 +94,12 @@ def _write_config(name):
                                      {"url": "/macros/index.html",
                                       "name": "macros",
                                       "weight": 7},
+                                     {"url": "/pylibs/index.html",
+                                      "name": "pylibs",
+                                      "weight": 8},
+                                     {"url": "/pymodules/index.html",
+                                      "name": "pymodules",
+                                      "weight": 9},
                                      {"url": "/",
                                       "name": "home",
                                       "weight": 1}

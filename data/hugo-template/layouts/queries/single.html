@@ -3,7 +3,7 @@
 <main>
     <h2>{{ .Params.name }}</h2>
     <div style="text-align:left; font-size: 150%;">
-        <code>{{ .Params.command |markdownify}}</code>
+      {{ highlight .Params.command "sql" ""}}
     </div>
 </main>
 

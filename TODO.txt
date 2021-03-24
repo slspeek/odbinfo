@@ -10,5 +10,40 @@ See BaseDocumenter config too
 
 general
 -------
+direct sql queries must be transformed to Query object
 
-read_text_documents: filter for database name minus extension
+installation check
+------------------
+See whether hugo and graphviz are executable
+
+dependencies representation
+---------------------------
+datatype must extend generic super dataclass
+with
+  title
+  shortname
+  uses
+  used_by
+  parent
+
+or make a list of triplets
+(Object1, Obj2, 'queries')
+object1 = ("EmployeeBenefits", "query")
+Obj2 = ("Employee", "table")
+
+dependency search matrix
+------------------------
+tables, queries in queries
+tables, queries in forms
+fields, tables, queries, macros(2x) in formcontrols
+tables, queries in reports
+fields, tables, queries in reports
+fields, tables, queries in textdocuments
+tables, queries in macros(2x)
+
+build
+-----
+Want test coverage over the code that permits that
+(no code that has to be run in oo-python-vm is not)
+
+So need two sets of Pipfile and Pipfile.lock

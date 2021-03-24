@@ -127,10 +127,8 @@ def read_python_libraries(odbzip):
     libraries = []
     for entry in _manifest_fileentries(odbzip):
         fullpath = entry["@manifest:full-path"]
-        print(fullpath)
         if fullpath.startswith("Scripts/python")\
                 and entry["@manifest:media-type"] == "application/binary":
-            print(f"libs {fullpath}")
             libraries.append(
                 _read_python_library(odbzip, fullpath)
             )
@@ -153,7 +151,6 @@ def _read_python_library(odbzip, fullpath):
 
 
 def _read_python_module(odbzip, fullpath, library):
-    print("module " + fullpath)
     return PythonModule(
         library,
         os.path.basename(fullpath),

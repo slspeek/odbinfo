@@ -2,13 +2,13 @@
 import os
 import logging
 
-from pytest import fixture
+
 import pytest
 
 from odbinfo.writer import new_site
 from odbinfo.core import generate_report
-from odbinfo.test.connect import start_office, oodocument
-from odbinfo.test.resource import TEST_OUTPUT, DEFAULT_TESTDB
+from odbinfo.test.connect import libreoffice, oodocument
+from odbinfo.test.resource import TEST_OUTPUT
 
 logger = logging.getLogger()
 logging.basicConfig()
@@ -28,13 +28,3 @@ def test_generate_report(libreoffice):  # pylint:disable=redefined-outer-name
     """ test generate-site """
     oodoc = oodocument()
     generate_report(oodoc)
-
-
-@fixture(scope="session")
-def libreoffice():
-    """ A libreoffice running on a test repository """
-    testdb = os.getenv("ODBINFO_TESTDB", DEFAULT_TESTDB)
-    office_proc = start_office(testdb)
-    yield office_proc
-    office_proc.terminate()
-    logger.debug("LibreOffice killed")

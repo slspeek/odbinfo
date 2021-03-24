@@ -9,6 +9,7 @@ stage=$(dist)/odbinfo_oxt/
 lib=$(stage)/python/pythonpath
 build=$(target)/build
 test-output=$(build)/test-output
+metadata=$(test-output)/metadata.pickle
 PYTHONPATH=.:$$(pipenv --venv)/lib/python3.7/site-packages
 
 all: clean genparser info check itest
@@ -39,7 +40,9 @@ single: prepare
 .ONESHELL:
 fixture: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv $(testloc)/fixture_reader.py
+	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv $(testloc)/fixture_writer.py
+	cd -
+	test -f $(metadata)
 
 
 .ONESHELL:

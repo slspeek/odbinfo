@@ -1,10 +1,13 @@
 """ LibreOffice starter and connecter test utilities """
 import time
 import logging
+import os
 import subprocess
 import shlex
-
+from pytest import fixture
 import uno
+
+from odbinfo.test.resource import DEFAULT_TESTDB
 
 logger = logging.getLogger(__name__)
 logging.basicConfig()
@@ -12,10 +15,20 @@ logger.setLevel(logging.DEBUG)
 
 # time out in seconds
 OFFICE_TIME_OUT = 20
-SOFFICE_CMD = '/opt/libreoffice6.4/program/soffice '\
+SOFFICE_CMD = '/tmp/program/soffice '\
               '--accept="socket,host=localhost,port=2002;urp;" '\
               '--norestore --nologo --nodefault  --headless'\
               ' {}'
+
+
+@fixture(scope="session")
+def libreoffice():
+    """ A libreoffice running on a test repository """
+    testdb = os.getenv("ODBINFO_TESTDB", DEFAULT_TESTDB)
+    office_proc = start_office(testdb)
+    yield office_proc
+    office_proc.terminate()
+    logger.debug("LibreOffice killed")
 
 
 def start_office(file):

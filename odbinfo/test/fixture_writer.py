@@ -12,6 +12,5 @@ def test_read_metadata(libreoffice):  # pylint:disable=redefined-outer-name
     """ make fixture """
     dsource = datasource()
     metadata = read_metadata(dsource, DEFAULT_TESTDB)
-    outdir = TEST_OUTPUT.format("")
-    with open(f"{outdir}/metadata.pickle", "wb") as out:
+    with open(TEST_OUTPUT.format("metadata.pickle"), "wb") as out:
         pickle.dump(metadata, out)

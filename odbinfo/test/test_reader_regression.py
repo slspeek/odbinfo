@@ -2,7 +2,7 @@
 import pickle
 import pytest
 
-from odbinfo.test.test_new_site import libreoffice  # pylint:disable=unused-import
+from odbinfo.test.connect import libreoffice  # pylint:disable=unused-import
 from odbinfo.test.connect import datasource
 from odbinfo.test.resource import DEFAULT_TESTDB, FIXTURE_DIR
 from odbinfo.reader import read_metadata

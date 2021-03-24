@@ -66,6 +66,7 @@ serve:
 
 format:
 	autopep8 -ri --exclude="odbinfo/parser/sqlite/*,odbinfo/parser/oobasic/*" odbinfo/ main.py
+	isort --sg="odbinfo/parser/sqlite/*,odbinfo/parser/oobasic/*" odbinfo/ main.py
 
 .ONESHELL:
 check: format

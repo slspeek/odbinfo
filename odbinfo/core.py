@@ -2,10 +2,11 @@
 import os
 import shutil
 from urllib.parse import urlparse
-from odbinfo.writer import make_site
-from odbinfo.reader import read_metadata
+
+from odbinfo.datatype import Callable, Library, Module
 from odbinfo.parser.basic import get_basic_tokens, scan_basic
-from odbinfo.datatype import Library, Module, Callable
+from odbinfo.reader import read_metadata
+from odbinfo.writer import make_site
 
 
 def _process_library(library: Library):

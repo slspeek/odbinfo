@@ -1,11 +1,12 @@
 """ Test the reader and create fixture(s) """
 import pickle
+
 import pytest
 
+from odbinfo.reader import read_metadata
 from odbinfo.test.connect import libreoffice  # pylint:disable=unused-import
 from odbinfo.test.connect import datasource
 from odbinfo.test.resource import DEFAULT_TESTDB, FIXTURE_DIR
-from odbinfo.reader import read_metadata
 
 
 # pylint:disable=unused-argument

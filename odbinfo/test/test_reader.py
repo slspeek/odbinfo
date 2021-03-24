@@ -5,10 +5,10 @@ from zipfile import ZipFile
 
 import pytest
 
+from odbinfo.reader import (_collect_attribute, _reports, _text_documents,
+                            read_libraries, read_python_libraries,
+                            read_text_documents)
 from odbinfo.test.resource import DEFAULT_TESTDB
-from odbinfo.reader import read_libraries, _reports, _collect_attribute
-from odbinfo.reader import _text_documents, read_text_documents,\
-    read_python_libraries
 
 
 @pytest.fixture(scope="package")

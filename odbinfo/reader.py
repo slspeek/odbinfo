@@ -1,14 +1,15 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
 import os
+from functools import partial, reduce
 from zipfile import ZipFile
-from functools import reduce
-from functools import partial
+
 import xmltodict
-from odbinfo.datatype import Metadata, View, Query, Table, Column, Index, Key
-from odbinfo.datatype import Form, SubForm, Control,\
-    Grid, ListBox, EventListener,\
-    Library, Module, QueryColumn, Report, DatabaseDisplay, TextDocument,\
-    PythonModule, PythonLibrary
+
+from odbinfo.datatype import (Column, Control, DatabaseDisplay, EventListener,
+                              Form, Grid, Index, Key, Library, ListBox,
+                              Metadata, Module, PythonLibrary, PythonModule,
+                              Query, QueryColumn, Report, SubForm, Table,
+                              TextDocument, View)
 from odbinfo.ooutil import open_connection
 
 

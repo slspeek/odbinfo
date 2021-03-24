@@ -1,5 +1,6 @@
 """ Defines the main datatypes used """
 from dataclasses import dataclass, field
+
 import uno
 from sql_formatter.core import format_sql
 

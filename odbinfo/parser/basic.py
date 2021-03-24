@@ -1,9 +1,11 @@
-""" Facade fot the OOBasicParser """
+""" Facade for the OOBasicParser """
 from functools import reduce
-from antlr4 import InputStream, CommonTokenStream
+
 import antlr4
-from odbinfo.parser.oobasic.OOBasicLexer import OOBasicLexer
+from antlr4 import CommonTokenStream, InputStream
+
 from odbinfo.datatype import Callable, Token
+from odbinfo.parser.oobasic.OOBasicLexer import OOBasicLexer
 
 
 def scan_basic(basiccode, library, module) -> [str]:

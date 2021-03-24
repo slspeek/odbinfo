@@ -1,11 +1,12 @@
 """ LibreOffice starter and connecter test utilities """
-import time
 import logging
 import os
-import subprocess
 import shlex
-from pytest import fixture
+import subprocess
+import time
+
 import uno
+from pytest import fixture
 
 from odbinfo.test.resource import DEFAULT_TESTDB
 

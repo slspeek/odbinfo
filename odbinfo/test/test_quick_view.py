@@ -4,9 +4,9 @@ import pickle
 import pytest
 from pytest import fixture
 
-from odbinfo.writer import make_site
 from odbinfo.core import process_metadata
 from odbinfo.test.resource import FIXTURE_DIR, TEST_OUTPUT
+from odbinfo.writer import make_site
 
 
 def load_metadata():

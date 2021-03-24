@@ -1,17 +1,17 @@
 """ Writing out to jekyll site format """
+import contextlib
+import dataclasses
 import os
-from os import path
+import pathlib
 import shlex
 import socket
 import subprocess
 import time
-import contextlib
-import dataclasses
 import webbrowser
-import pathlib
+from os import path
 
-import yaml
 import toml
+import yaml
 
 FRONT_MATTER_MARK = "---\n"
 

@@ -1,10 +1,11 @@
 """ Test the reader and create fixture(s) """
 import pickle
 
-from odbinfo.test.test_new_site import libreoffice  # pylint:disable=unused-import
-from odbinfo.test.connect import datasource
-from odbinfo.test.resource import TEST_OUTPUT, DEFAULT_TESTDB
 from odbinfo.reader import read_metadata
+from odbinfo.test.connect import datasource
+from odbinfo.test.resource import DEFAULT_TESTDB, TEST_OUTPUT
+from odbinfo.test.test_new_site import \
+    libreoffice  # pylint:disable=unused-import
 
 
 # pylint:disable=unused-argument

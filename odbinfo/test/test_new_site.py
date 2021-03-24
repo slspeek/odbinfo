@@ -7,7 +7,8 @@ import pytest
 
 from odbinfo.writer import new_site
 from odbinfo.core import generate_report
-from odbinfo.test.connect import libreoffice, oodocument
+from odbinfo.test.connect import libreoffice  # pylint:disable=unused-import
+from odbinfo.test.connect import oodocument
 from odbinfo.test.resource import TEST_OUTPUT
 
 logger = logging.getLogger()

@@ -8,6 +8,12 @@ Database identifier in textdocuments
 
 See BaseDocumenter config too
 
+GUI
+---
+Settings dialog
+Progress dialog
+
+
 general
 -------
 direct sql queries must be transformed to Query object

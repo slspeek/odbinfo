@@ -10,21 +10,27 @@ lib=$(stage)/python/pythonpath
 build=$(target)/build
 test-output=$(build)/test-output
 metadata=$(test-output)/metadata.pickle
-PYTHONPATH=.:$$(pipenv --venv)/lib/python3.7/site-packages
+PYTHONPATH=.:$$(cd ../../pipenvconf/oo || cd pipenvconf/oo && pipenv --venv)/lib/python3.7/site-packages
 
 all: clean genparser info check itest
 
 
 prepare:
-	-mkdir -p $(build) $(test-output)
-	cp -r odbinfo data $(build)
+	@echo prepare start
+	@-mkdir -p $(build) $(test-output)
+	@cp -r odbinfo data $(build)
+	@echo prepare done
 
 .ONESHELL:
 info: prepare
-	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m site
-	echo PATH=$$PATH
-	hugo version
+	@cd $(build)
+	echo python -m site
+	@PYTHONPATH=$(PYTHONPATH) $(python) -m site
+	@echo PATH=$$PATH
+	@echo
+	@hugo version
+	@echo
+	@dot -V
 
 .ONESHELL:
 itest: prepare

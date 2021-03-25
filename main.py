@@ -1,7 +1,7 @@
 """ Entrypoint for odbinfo extension """
 
 
-from odbinfo.core import generate_report
+from odbinfo.oo.core import generate_report
 
 
 def make_site():

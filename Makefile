@@ -10,7 +10,10 @@ lib=$(stage)/python/pythonpath
 build=$(target)/build
 test-output=$(build)/test-output
 metadata=$(test-output)/metadata.pickle
-PYTHONPATH=.:$$(cd ../../pipenvconf/oo 2> /dev/null || cd pipenvconf/oo && pipenv --venv)/lib/python3.7/site-packages
+oo=pipenvconf/oo
+pure=pipenvconf/pure
+OOPYTHONPATH=.:$$(cd ../../$(oo) 2> /dev/null || cd $(oo) && pipenv --venv)/lib/python3.7/site-packages
+PUREPYTHONPATH=.:$$(cd ../../$(pure) 2> /dev/null || cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
 
@@ -29,7 +32,7 @@ info: prepare
 	echo "|           Build information         |"
 	echo --------------------------------------
 	echo python -m site
-	@PYTHONPATH=$(PYTHONPATH) $(python) -m site
+	@PYTHONPATH=$(OOPYTHONPATH) $(python) -m site
 	@echo
 	@echo PATH=$$PATH
 	@echo
@@ -38,20 +41,25 @@ info: prepare
 	@dot -V
 
 .ONESHELL:
+coverage: prepare
+	cd $(build)
+	python -m pytest -svv --cov --cov-config=../../.coveragerc --cov-report html $(testloc)/pure
+
+.ONESHELL:
 itest: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(testloc)
 
 .ONESHELL:
 single: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv $(testloc)/${SINGLE}
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(testloc)/${SINGLE}
 
 
 .ONESHELL:
 fixture: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv $(testloc)/fixture_writer.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(testloc)/fixture_writer.py
 	cd -
 	test -f $(metadata)
 
@@ -59,13 +67,13 @@ fixture: prepare
 .ONESHELL:
 unit: prepare
 	cd $(build)
-	-PYTHONPATH=$(PYTHONPATH) $(python) -m pytest -svv -m "not slow" $(testloc)
+	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv -m "not slow" $(testloc)
 	exit 0
 
 .ONESHELL:
 quick_view: clean prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pytest $(testloc)/test_quick_view.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(testloc)/test_quick_view.py
 
 
 test: itest unit
@@ -81,7 +89,7 @@ format:
 
 .ONESHELL:
 check: format
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pylint odbinfo
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint odbinfo
 
 clean:
 	-@find . -type d -name __pycache__ -exec rm -rf '{}' \;
@@ -97,12 +105,12 @@ open_test_db: prepare
 .ONESHELL:
 open_shell: prepare
 	cd $(build)
-	PYTHONPATH=$(PYTHONPATH) rlwrap $(python) -i odbinfo/reader.py
+	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i odbinfo/reader.py
 
 .ONESHELL:
 oxt:
 	-mkdir -p $(lib) $(dist) $(build)
-	pipenv lock -r > /tmp/requirements.txt
+	(cd pipenvconf/oo && pipenv lock -r > /tmp/requirements.txt)
 	python -m pip install -r /tmp/requirements.txt \
 	--ignore-installed --target $(lib)
 	cp main.py $(stage)/python
@@ -119,7 +127,7 @@ install_oxt: oxt
 	$(unopkg) add -s $(dist)/odbinfo.oxt
 
 doc: prepare
-	PYTHONPATH=$(PYTHONPATH) $(python) -m pydoc -p 0
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pydoc -p 0
 
 .ONESHELL:
 unziptestdb:

@@ -1,35 +1,24 @@
 """ Defines the main datatypes used """
 from dataclasses import dataclass, field
 
-import uno
 from sql_formatter.core import format_sql
 
-_ooconst = uno.pyuno.getConstantByName
+# www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
+KEYTYPES = {1: "Primary",
+            2: "Unique",
+            3: "Foreign"}
 
+# www.openoffice.org/api/docs/common/ref/com/sun/star/sdbc/ColumnValue.html
+COLUMNVALUES = {0: "No_Nulls",
+                1: "Nullable",
+                2: "Nullable_Unknown"}
 
-def _consts(ooconst, values):
-    return\
-        {_ooconst(ooconst + name.upper()): name for name in
-            values}
-
-
-_SUNNAME = "com.sun.star."
-_KEYTYPE = _SUNNAME + "sdbcx.KeyType."
-""" www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html """
-KEYTYPES = _consts(_KEYTYPE, ["Unique", "Foreign", "Primary"])
-
-_COLUMNVALUE = _SUNNAME + "sdbc.ColumnValue."
-" www.openoffice.org/api/docs/common/ref/com/sun/star/sdbc/ColumnValue.html "
-COLUMNVALUES = _consts(_COLUMNVALUE, ["No_Nulls",
-                                      "Nullable",
-                                      "Nullable_Unknown"])
-_KEYRULE = _SUNNAME + "sdbc.KeyRule."
-" www.openoffice.org/api/docs/common/ref/com/sun/star/sdbc/KeyRule.html "
-KEYRULES = _consts(_KEYRULE, ["Cascade",
-                              "Restrict",
-                              "Set_Null",
-                              "No_Action",
-                              "Set_Default"])
+# www.openoffice.org/api/docs/common/ref/com/sun/star/sdbc/KeyRule.html
+KEYRULES = {0: "Cascade",
+            1: "Restrict",
+            2: "Set_Null",
+            3: "No_Action",
+            4: "Set_Default"}
 
 
 def tohtml(code):

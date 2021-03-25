@@ -4,7 +4,7 @@ import pickle
 import pytest
 from pytest import fixture
 
-from odbinfo.core import process_metadata
+from odbinfo.processor import process_metadata
 from odbinfo.test.resource import FIXTURE_DIR, TEST_OUTPUT
 from odbinfo.writer import make_site
 

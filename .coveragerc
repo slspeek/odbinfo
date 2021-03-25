@@ -1,0 +1,5 @@
+[run]
+source = odbinfo/pure
+
+[report]
+omit = odbinfo/pure/parser/*/*

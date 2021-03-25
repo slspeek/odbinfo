@@ -1,7 +1,7 @@
 libreoffice=/tmp/program
 python=$(libreoffice)/python
 unopkg=$(libreoffice)/unopkg
-antlr4=java -jar ../../../../odbinfo/parser/lib/antlr-4.9.1-complete.jar
+antlr4=java -jar ../../../../../$(antlrlocation)/antlr-4.9.1-complete.jar
 target=target
 testloc=odbinfo/test
 dist=$(target)/dist
@@ -10,10 +10,11 @@ lib=$(stage)/python/pythonpath
 build=$(target)/build
 test-output=$(build)/test-output
 metadata=$(test-output)/metadata.pickle
-PYTHONPATH=.:$$(cd ../../pipenvconf/oo || cd pipenvconf/oo && pipenv --venv)/lib/python3.7/site-packages
+PYTHONPATH=.:$$(cd ../../pipenvconf/oo 2> /dev/null || cd pipenvconf/oo && pipenv --venv)/lib/python3.7/site-packages
+parserlocation=odbinfo/pure/parser
+antlrlocation=$(parserlocation)/lib
 
 all: clean genparser info check itest
-
 
 prepare:
 	@echo prepare start
@@ -24,8 +25,12 @@ prepare:
 .ONESHELL:
 info: prepare
 	@cd $(build)
+	echo --------------------------------------
+	echo "|           Build information         |"
+	echo --------------------------------------
 	echo python -m site
 	@PYTHONPATH=$(PYTHONPATH) $(python) -m site
+	@echo
 	@echo PATH=$$PATH
 	@echo
 	@hugo version
@@ -71,8 +76,8 @@ serve:
 	hugo server --layoutDir ../../../../../../../../data/hugo-template/layouts
 
 format:
-	autopep8 -ri --exclude="odbinfo/parser/sqlite/*,odbinfo/parser/oobasic/*" odbinfo/ main.py
-	isort --sg="odbinfo/parser/sqlite/*,odbinfo/parser/oobasic/*" odbinfo/ main.py
+	isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
+	autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
 
 .ONESHELL:
 check: format
@@ -124,18 +129,21 @@ unziptestdb:
 
 .ONESHELL:
 genparser:
-	-rm -rf odbinfo/parser/sqlite
-	cd  odbinfo/parser/grammars/sqlite/ && \
+	-rm -rf $(parserlocation)/sqlite
+	cd  $(parserlocation)/grammars/sqlite/ && \
 	$(antlr4) -Dlanguage=Python3 -o ../../sqlite -package odbinfo.parser.sqlite \
 		 SQLiteLexer.g4 SQLiteParser.g4
 	cd -
-	-rm -rf odbinfo/parser/oobasic
-	cd odbinfo/parser/grammars/oobasic/ && \
+	-rm -rf $(parserlocation)/oobasic
+	cd $(parserlocation)/grammars/oobasic/ && \
 		$(antlr4) -Dlanguage=Python3 -o ../../oobasic -package odbinfo.parser.oobasic \
 	 	 OOBasic.g4
 
 .ONESHELL:
 installantlr:
-	-mkdir -p odbinfo/parser/lib
-	cd odbinfo/parser/lib
+	-mkdir -p $(antlrlocation)
+	cd $(antlrlocation)
 	curl -O https://www.antlr.org/download/antlr-4.9.1-complete.jar
+
+ctags:
+	ctags -R odbinfo

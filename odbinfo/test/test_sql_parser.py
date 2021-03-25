@@ -1,5 +1,5 @@
-" parser tests "
-from odbinfo.parser.sql import parse
+" sql parser tests "
+from odbinfo.pure.parser.sql import parse
 
 
 def test_parse():

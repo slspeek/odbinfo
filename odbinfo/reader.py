@@ -14,7 +14,8 @@ from odbinfo.ooutil import open_connection
 
 
 def mapiflist(function, maybelist):
-    " apply `function` on `maybelist` if `maybelist` is not a list"
+    """ apply `function` on singletonlist `maybelist`
+        if `maybelist` is not a list"""
     if not isinstance(maybelist, list):
         maybelist = [maybelist]
     return list(map(function, maybelist))

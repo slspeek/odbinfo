@@ -1,9 +1,10 @@
 """ Facade fot the SQLiteParser """
 from antlr4 import CommonTokenStream, InputStream, ParseTreeWalker
 
-from odbinfo.parser.sqlite.SQLiteLexer import SQLiteLexer
-from odbinfo.parser.sqlite.SQLiteParser import SQLiteParser
-from odbinfo.parser.sqlite.SQLiteParserListener import SQLiteParserListener
+from odbinfo.pure.parser.sqlite.SQLiteLexer import SQLiteLexer
+from odbinfo.pure.parser.sqlite.SQLiteParser import SQLiteParser
+from odbinfo.pure.parser.sqlite.SQLiteParserListener import \
+    SQLiteParserListener
 
 
 class SQLListener(SQLiteParserListener):

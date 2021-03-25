@@ -5,7 +5,7 @@ import antlr4
 from antlr4 import CommonTokenStream, InputStream
 
 from odbinfo.datatype import Callable, Token
-from odbinfo.parser.oobasic.OOBasicLexer import OOBasicLexer
+from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 
 
 def scan_basic(basiccode, library, module) -> [str]:

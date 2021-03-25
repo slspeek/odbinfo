@@ -1,2 +1,2 @@
 [MASTER]
-ignore=odbinfo/parser/sqlite,odbinfo/parser/oobasic
+ignore=odbinfo/pure/parser/sqlite,odbinfo/pure/parser/oobasic

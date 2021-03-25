@@ -6,7 +6,7 @@ from zipfile import ZipFile
 import pytest
 
 from odbinfo.datatype import Module
-from odbinfo.parser.basic import get_basic_tokens, scan_basic
+from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.reader import _parse_xml, mapiflist
 from odbinfo.test.resource import BASEDOCUMENTER
 

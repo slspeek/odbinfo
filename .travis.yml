@@ -11,7 +11,7 @@ before_install:
     - sudo bash ci/linux.bash
 install:
     - pip install pipenv
-    - cd pipenvconf/oo && PIPENV_IGNORE_VIRTUALENVS=1 pipenv install -d
-    - cd pipenvconf/pure && PIPENV_IGNORE_VIRTUALENVS=1 pipenv install -d
+    - (cd pipenvconf/oo && PIPENV_IGNORE_VIRTUALENVS=1 pipenv install -d)
+    - (cd pipenvconf/pure && PIPENV_IGNORE_VIRTUALENVS=1 pipenv install -d)
 script:
     - cd pipenvconf/oo && ODBINFO_NO_BROWSE=1 PIPENV_IGNORE_VIRTUALENVS=1 pipenv run make -C ../.. installantlr all

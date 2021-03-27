@@ -2,8 +2,8 @@
 import pickle
 
 from odbinfo.reader import read_metadata
-from odbinfo.test.connect import libreoffice  # pylint:disable=unused-import
-from odbinfo.test.connect import datasource
+from odbinfo.test.oo.connect import libreoffice  # pylint:disable=unused-import
+from odbinfo.test.oo.connect import datasource
 from odbinfo.test.resource import DEFAULT_TESTDB, TEST_OUTPUT
 
 

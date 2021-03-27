@@ -4,6 +4,8 @@ unopkg=$(libreoffice)/unopkg
 antlr4=java -jar ../../../../../$(antlrlocation)/antlr-4.9.1-complete.jar
 target=target
 testloc=odbinfo/test
+puretestloc=odbinfo/test/pure
+ootestloc=odbinfo/test/oo
 dist=$(target)/dist
 stage=$(dist)/odbinfo_oxt/
 lib=$(stage)/python/pythonpath
@@ -43,8 +45,7 @@ info: prepare
 .ONESHELL:
 coverage: prepare
 	cd $(build)
-	python -m pytest -svv --cov --cov-config=../../.coveragerc --cov-report html $(testloc)/pure
-
+	python -m pytest -svv --cov --cov-config=../../.coveragerc --cov-report html $(puretestloc)
 .ONESHELL:
 itest: prepare
 	cd $(build)

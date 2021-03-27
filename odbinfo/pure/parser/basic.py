@@ -4,7 +4,7 @@ from functools import reduce
 import antlr4
 from antlr4 import CommonTokenStream, InputStream
 
-from odbinfo.datatype import Callable, Token
+from odbinfo.pure.datatype import Callable, Token
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 
 

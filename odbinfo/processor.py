@@ -1,5 +1,5 @@
 """ Core module """
-from odbinfo.datatype import Callable, Library, Module
+from odbinfo.pure.datatype import Callable, Library, Module
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 
 

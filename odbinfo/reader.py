@@ -5,12 +5,13 @@ from zipfile import ZipFile
 
 import xmltodict
 
-from odbinfo.datatype import (Column, Control, DatabaseDisplay, EventListener,
-                              Form, Grid, Index, Key, Library, ListBox,
-                              Metadata, Module, PythonLibrary, PythonModule,
-                              Query, QueryColumn, Report, SubForm, Table,
-                              TextDocument, View)
 from odbinfo.ooutil import open_connection
+from odbinfo.pure.datatype import (Column, Control, DatabaseDisplay,
+                                   EventListener, Form, Grid, Index, Key,
+                                   Library, ListBox, Metadata, Module,
+                                   PythonLibrary, PythonModule, Query,
+                                   QueryColumn, Report, SubForm, Table,
+                                   TextDocument, View)
 
 
 def mapiflist(function, maybelist):

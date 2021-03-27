@@ -5,7 +5,7 @@ from zipfile import ZipFile
 
 import xmltodict
 
-from odbinfo.ooutil import open_connection
+from odbinfo.oo.ooutil import open_connection
 from odbinfo.pure.datatype import (Column, Control, DatabaseDisplay,
                                    EventListener, Form, Grid, Index, Key,
                                    Library, ListBox, Metadata, Module,

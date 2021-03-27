@@ -2,9 +2,9 @@
 import pytest
 
 from odbinfo.pure.processor import process_metadata
+from odbinfo.pure.writer import make_site
 from odbinfo.test.pure.fixtures import metadata  # pylint:disable=unused-import
 from odbinfo.test.resource import TEST_OUTPUT
-from odbinfo.writer import make_site
 
 
 # pylint:disable=redefined-outer-name

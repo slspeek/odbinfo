@@ -43,7 +43,8 @@ def new_site(output_dir, name):
         exitcode = os.system(f"hugo new site {name} > /dev/null")
         if exitcode != 0:
             raise RuntimeError(f"hugo new site failed to create site: {name}")
-        datapath = path.join(path.dirname(path.dirname(__file__)), "data")
+        datapath = path.join(path.dirname(
+            path.dirname(path.dirname(__file__))), "data")
         exitcode = os.system(f"cp -r {datapath}/hugo-template/* {name}")
         if exitcode != 0:
             raise RuntimeError("unable to copy additional site sources")

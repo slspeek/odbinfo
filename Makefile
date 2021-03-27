@@ -41,6 +41,7 @@ info: prepare
 	@hugo version
 	@echo
 	@dot -V
+	@echo
 
 .ONESHELL:
 coverage: prepare
@@ -60,7 +61,7 @@ single: prepare
 .ONESHELL:
 fixture: prepare
 	cd $(build)
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(testloc)/fixture_writer.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(ootestloc)/fixture_writer.py
 	cd -
 	test -f $(metadata)
 

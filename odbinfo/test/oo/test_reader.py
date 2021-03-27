@@ -5,9 +5,9 @@ from zipfile import ZipFile
 
 import pytest
 
-from odbinfo.reader import (_collect_attribute, _reports, _text_documents,
-                            read_libraries, read_python_libraries,
-                            read_text_documents)
+from odbinfo.oo.reader import (_collect_attribute, _reports, _text_documents,
+                               read_libraries, read_python_libraries,
+                               read_text_documents)
 from odbinfo.test.resource import DEFAULT_TESTDB
 
 

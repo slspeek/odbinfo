@@ -5,10 +5,10 @@ import os
 import pytest
 
 from odbinfo.oo.core import generate_report
+from odbinfo.pure.writer import new_site
 from odbinfo.test.oo.connect import libreoffice  # pylint:disable=unused-import
 from odbinfo.test.oo.connect import oodocument
 from odbinfo.test.resource import TEST_OUTPUT
-from odbinfo.writer import new_site
 
 logger = logging.getLogger()
 logging.basicConfig()

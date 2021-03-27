@@ -3,9 +3,9 @@ import os
 import shutil
 from urllib.parse import urlparse
 
+from odbinfo.oo.reader import read_metadata
 from odbinfo.pure.processor import process_metadata
-from odbinfo.reader import read_metadata
-from odbinfo.writer import make_site
+from odbinfo.pure.writer import make_site
 
 
 def generate_report(oodocument):

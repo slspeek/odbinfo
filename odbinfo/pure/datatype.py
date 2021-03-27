@@ -21,14 +21,6 @@ KEYRULES = {0: "Cascade",
             4: "Set_Default"}
 
 
-def tohtml(code):
-    "preserve spaces tabs and newlines"
-    return\
-        code.replace('\n', "<br/>")\
-            .replace(' ', "&nbsp;")\
-            .replace('\t', "&nbsp;&nbsp;&nbsp;&nbsp;")
-
-
 @dataclass
 class Token:
     "lexer token"

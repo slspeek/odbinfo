@@ -46,7 +46,7 @@ info: prepare
 .ONESHELL:
 coverage: prepare
 	cd $(build)
-	python -m pytest -svv --cov --cov-config=../../.coveragerc --cov-report html $(puretestloc)
+	python -m pytest -svv --cov --cov-fail-under=97 --cov-config=../../.coveragerc --cov-report html $(puretestloc)
 .ONESHELL:
 itest: prepare
 	cd $(build)

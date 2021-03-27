@@ -1,25 +1,10 @@
 """ Quick view for the objects fixture """
-import pickle
-
 import pytest
-from pytest import fixture
 
-from odbinfo.processor import process_metadata
-from odbinfo.test.resource import FIXTURE_DIR, TEST_OUTPUT
+from odbinfo.pure.processor import process_metadata
+from odbinfo.test.pure.fixtures import metadata  # pylint:disable=unused-import
+from odbinfo.test.resource import TEST_OUTPUT
 from odbinfo.writer import make_site
-
-
-def load_metadata():
-    """ Returns Metadata object from the test fixture """
-    with open(FIXTURE_DIR.format('metadata.pickle'), 'rb') as file:
-        meta = pickle.load(file)
-    return meta
-
-
-@fixture(scope="package")
-def metadata():
-    """ Array of all objects from repository """
-    yield load_metadata()
 
 
 # pylint:disable=redefined-outer-name

@@ -57,4 +57,3 @@ Want test coverage over the code that permits that
 So need two sets of Pipfile and Pipfile.lock
 
 errors in parser need improvement
-must isolate datapath from new_site

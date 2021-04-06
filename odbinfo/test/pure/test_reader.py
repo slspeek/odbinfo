@@ -3,8 +3,9 @@ import json
 from os import path
 
 from odbinfo.pure.reader import (_collect_attribute, _reports, _text_documents,
-                                 read_libraries, read_python_libraries,
-                                 read_text_documents, read_reports, read_forms)
+                                 read_forms, read_libraries,
+                                 read_python_libraries, read_reports,
+                                 read_text_documents)
 from odbinfo.test.pure.fixtures import odbzip  # pylint:disable=unused-import
 from odbinfo.test.resource import DEFAULT_TESTDB
 

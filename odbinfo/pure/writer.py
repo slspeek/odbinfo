@@ -28,6 +28,11 @@ def chdir(dirname=None):
         os.chdir(curdir)
 
 
+# We are at odbinfo/pure/writer.py and data resides besides odbinfo
+DATA_DIR = path.join(path.dirname(
+    path.dirname(path.dirname(__file__))), "data")
+
+
 def _frontmatter(adict, out):
     """ Writes `adict` to yaml and marks it as frontmatter """
     out.write(FRONT_MATTER_MARK)
@@ -36,19 +41,17 @@ def _frontmatter(adict, out):
 
 
 def new_site(output_dir, name):
-    """ Sets up a empty hugo site """
-    workingdir = output_dir
-    os.makedirs(workingdir, exist_ok=True)
-    with chdir(workingdir):
+    """ Sets up a empty hugo site with odbinfo templates """
+    os.makedirs(output_dir, exist_ok=True)
+    with chdir(output_dir):
         exitcode = os.system(f"hugo new site {name} > /dev/null")
         if exitcode != 0:
             raise RuntimeError(f"hugo new site failed to create site: {name}")
-        datapath = path.join(path.dirname(
-            path.dirname(path.dirname(__file__))), "data")
-        exitcode = os.system(f"cp -r {datapath}/hugo-template/* {name}")
+        exitcode = os.system(f"cp -r {DATA_DIR}/hugo-template/* {name}")
         if exitcode != 0:
-            raise RuntimeError("unable to copy additional site sources")
-        sitedir = os.path.join(workingdir, name)
+            raise RuntimeError("unable to copy additional site sources from "
+                               f"{DATA_DIR}")
+        sitedir = os.path.join(output_dir, name)
     return sitedir
 
 
@@ -71,40 +74,35 @@ def make_site(output_dir, name, metadata):
     return _convert_local(output_dir, name)
 
 
+def _menu(pairs):
+    name, weight = pairs
+    return \
+        {"url": f"/{name}/index.html",
+         "name": name,
+         "weight": weight}
+
+
 def _write_config(name):
+    menus_defs = [
+        ("tables", 2),
+        ("queries", 3),
+        ("views", 4),
+        ("libraries", 5),
+        ("modules", 6),
+        ("macros", 7),
+        ("pylibs", 8),
+        ("pymodules", 9)
+    ]
+    menus = list(map(_menu, menus_defs))
+    menus.append({"url": "/",
+                  "name": "home",
+                  "weight": 1})
     with open("config.toml", "w") as cfg:
         toml.dump({"title": name,
                    "baseURL": "http://example.com/",
                    "languageCode": "en-us",
                    "theme": "minimal",
-                   "menu": {"main": [{"url": "/tables/index.html",
-                                      "name": "tables",
-                                      "weight": 2},
-                                     {"url": "/queries/index.html",
-                                      "name": "queries",
-                                      "weight": 3},
-                                     {"url": "/views/index.html",
-                                      "name": "views",
-                                      "weight": 4},
-                                     {"url": "/libraries/index.html",
-                                      "name": "libraries",
-                                      "weight": 5},
-                                     {"url": "/modules/index.html",
-                                      "name": "modules",
-                                      "weight": 6},
-                                     {"url": "/macros/index.html",
-                                      "name": "macros",
-                                      "weight": 7},
-                                     {"url": "/pylibs/index.html",
-                                      "name": "pylibs",
-                                      "weight": 8},
-                                     {"url": "/pymodules/index.html",
-                                      "name": "pymodules",
-                                      "weight": 9},
-                                     {"url": "/",
-                                      "name": "home",
-                                      "weight": 1}
-                                     ],
+                   "menu": {"main": menus,
                             }
                    }, cfg)
 

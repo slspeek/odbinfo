@@ -74,11 +74,15 @@ class BasicScanner:
                     name = self.tokens[self.index - 1].text
                     # continue to NEWLINE to find body
                     if not self._find_or([OOBasicLexer.NEWLINE]):
-                        raise RuntimeError("Newline not found")
+                        raise RuntimeError(f"Newline not found in module: "
+                                           f"{self.module}"
+                                           f"library: {self.library}")
                     body_start_after = self.index
                     if not self._find_or([OOBasicLexer.END_SUB,
                                           OOBasicLexer.END_FUNCTION]):
-                        raise RuntimeError("No callable end found")
+                        raise RuntimeError("No callable end found in module: "
+                                           f"{self.module}"
+                                           f"library: {self.library}")
                     body_end_before = self.index
                     source = reduce(lambda x, y: x + y,
                                     map(lambda x: x.text,

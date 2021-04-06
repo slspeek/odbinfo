@@ -55,3 +55,6 @@ Want test coverage over the code that permits that
 (no code that has to be run in oo-python-vm is not)
 
 So need two sets of Pipfile and Pipfile.lock
+
+errors in parser need improvement
+must isolate datapath from new_site

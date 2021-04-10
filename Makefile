@@ -47,7 +47,7 @@ info: prepare
 coverage: clean prepare
 	cd $(build)
 	python -m pytest -svv --cov --cov-branch --cov-fail-under=96 --cov-config=../../.coveragerc --cov-report html $(puretestloc)
-	test ${ODBINFO_NO_BROWSE} -ne "0" || x-www-browser htmlcov/index.html
+	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 .ONESHELL:
 itest: prepare

@@ -8,6 +8,11 @@
             <value xml:lang="en-US">vnd.sun.star.script:odbinfo.oxt|python|main.py$make_site?language=Python&amp;location=user:uno_packages</value>
           </prop>
         </node>
+        <node oor:name="F6_SHIFT_MOD2" oor:op="replace">
+          <prop oor:name="Command">
+            <value xml:lang="en-US">vnd.sun.star.script:odbinfo.oxt|python|main.py$verify_installation?language=Python&amp;location=user:uno_packages</value>
+          </prop>
+        </node>
       </node>
     </node>
   </node>

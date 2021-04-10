@@ -10,3 +10,11 @@ def make_site():
     doc = XSCRIPTCONTEXT.getDocument()
     reportdir = generate_report(doc)
     print(f"ODBInfo: report written in {reportdir}")
+
+
+def verify_installation():
+    " verify installation "
+    # pylint: disable=redefined-outer-name
+    # pylint: disable=import-outside-toplevel
+    from odbinfo.pure.init import verify_installation
+    verify_installation()

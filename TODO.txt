@@ -20,8 +20,7 @@ direct sql queries must be transformed to Query object
 
 installation check
 ------------------
-See whether hugo and graphviz are executable
-graphviz.version()
+UI and suggestions
 
 
 dependencies representation

@@ -24,6 +24,20 @@
               <value>_self</value>
             </prop>
           </node>
+          <node oor:name="m002" oor:op="replace">
+            <prop oor:name="Context" oor:type="xs:string">
+              <value>com.sun.star.sdb.OfficeDatabaseDocument</value>
+            </prop>
+            <prop oor:name="URL" oor:type="xs:string">
+              <value>vnd.sun.star.script:odbinfo.oxt|python|main.py$verify_installation?language=Python&amp;location=user:uno_packages</value>
+            </prop>
+            <prop oor:name="Title" oor:type="xs:string">
+              <value>Verify installation of required components</value>
+            </prop>
+            <prop oor:name="Target" oor:type="xs:string">
+              <value>_self</value>
+            </prop>
+          </node>
         </node>
       </node>
     </node>

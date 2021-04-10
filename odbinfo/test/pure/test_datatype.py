@@ -23,8 +23,7 @@ def test_query():
 
 def test_column():
     " test __post_init__"
-    column = Column("id", None, "primary key identifier",
-                    True, 2, "", "", "", "")
+    column = Column("id", True, 2, "Plant", 2, "", "", "", "")
     assert column.nullable == "Nullable_Unknown"
 
 

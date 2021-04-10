@@ -174,22 +174,30 @@ class Grid:
 
 
 @dataclass
-class QueryColumn:  # pylint: disable=too-many-instance-attributes
+class BaseColumn:  # pylint: disable=too-many-instance-attributes
     "https://www.openhttps://www.openoffice.org/api/docs/"\
         "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
     name: str
+    title: str = field(init=False)
     autoincrement: bool
     nullable: object
     tablename: str
     typename: str
     precision: str
     scale: str
+
+    def __post_init__(self):
+        self.title = f"{self.tablename}.{self.name}"
+        self.nullable = COLUMNVALUES[self.nullable]
+
+
+@dataclass
+class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
+    "https://www.openhttps://www.openoffice.org/api/docs/"\
+        "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
     issigned: bool
     writable: bool
     readonly: bool
-
-    def __post_init__(self):
-        self.nullable = COLUMNVALUES[self.nullable]
 
 
 @dataclass
@@ -209,22 +217,12 @@ View = Query
 
 
 @dataclass
-class Column:  # pylint: disable=too-many-instance-attributes
+class Column(BaseColumn):  # pylint: disable=too-many-instance-attributes
     """ Column properties see:
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Column.html
     """
-    name: str
-    defaultvalue: str
     description: str
-    autoincrement: bool
-    nullable: object
-    tablename: str
-    typename: str
-    precision: str
-    scale: str
-
-    def __post_init__(self):
-        self.nullable = COLUMNVALUES[self.nullable]
+    defaultvalue: str
 
 
 @dataclass

@@ -1,5 +1,7 @@
 Configuration
 -------------
+start with config.xcs, config.xcu and programmatically write and read them
+
 Want sensible defaults for all settings.
 
 Location of generated site

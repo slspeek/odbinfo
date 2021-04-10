@@ -97,14 +97,14 @@ def _read_table(ootable) -> Table:
 def _read_column(oocolumn) -> Column:
     return \
         Column(oocolumn.Name,
-               oocolumn.DefaultValue,
-               oocolumn.HelpText,
                oocolumn.IsAutoIncrement,
                oocolumn.IsNullable,
                oocolumn.TableName,
                oocolumn.TypeName,
                oocolumn.Precision,
-               oocolumn.Scale
+               oocolumn.Scale,
+               oocolumn.HelpText,
+               oocolumn.DefaultValue
                )
 
 

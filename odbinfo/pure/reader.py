@@ -90,7 +90,10 @@ def read_text_documents(dir_path, dbname) -> [TextDocument]:
 
 
 def _reports(odbzip):
-    index = _body_elem(odbzip, "content.xml")["office:database"]["db:reports"]
+    index = _body_elem(odbzip, "content.xml")["office:database"]
+    if "db:reports" not in index:
+        return []
+    index = index["db:reports"]
     dbcomponent = index["db:component"]
 
     def report(rpt):
@@ -305,7 +308,12 @@ def _office_body(info):
 
 
 def _forms(odbzip):
-    index = _body_elem(odbzip, "content.xml")["office:database"]["db:forms"]
+    forms = []
+    index = _body_elem(odbzip, "content.xml")["office:database"]
+    if "db:forms" not in index:
+        return forms
+
+    index = index["db:forms"]
     dbcomponent = index["db:component"]
 
     def form(frm):

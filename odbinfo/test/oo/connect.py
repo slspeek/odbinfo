@@ -8,7 +8,7 @@ import time
 import uno
 from pytest import fixture
 
-from odbinfo.test.resource import DEFAULT_TESTDB
+from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
 
 logger = logging.getLogger(__name__)
 logging.basicConfig()
@@ -22,10 +22,20 @@ SOFFICE_CMD = '/tmp/program/soffice '\
               ' {}'
 
 
-@fixture(scope="session")
+@fixture(scope="function")
 def libreoffice():
-    """ A libreoffice running on a test repository """
+    """ A libreoffice running on a test database """
     testdb = os.getenv("ODBINFO_TESTDB", DEFAULT_TESTDB)
+    office_proc = start_office(testdb)
+    yield office_proc
+    office_proc.terminate()
+    logger.debug("LibreOffice killed")
+
+
+@fixture(scope="function")
+def empty_libreoffice():
+    """ A libreoffice running on a empty database """
+    testdb = EMPTYDB
     office_proc = start_office(testdb)
     yield office_proc
     office_proc.terminate()

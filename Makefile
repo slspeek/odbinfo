@@ -109,7 +109,7 @@ open_test_db: prepare
 .ONESHELL:
 open_shell: prepare
 	cd $(build)
-	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i odbinfo/reader.py
+	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i odbinfo/test/pure/fixtures.py
 
 .ONESHELL:
 oxt:

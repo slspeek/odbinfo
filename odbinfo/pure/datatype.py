@@ -285,7 +285,7 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
     forms: [Form]
     reports: [Report]
     libraries: [Library]
-    pythonlibraries: [PythonLibrary]
+    pylibs: [PythonLibrary]
     textdocuments: [TextDocument]
 
     def callables(self) -> [Callable]:
@@ -306,6 +306,6 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
     def pymodules(self) -> [PythonModule]:
         "collect all python modules from libraries"
         result = []
-        for lib in self.pythonlibraries:
+        for lib in self.pylibs:
             result.extend(lib.modules)
         return result

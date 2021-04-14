@@ -8,6 +8,7 @@ import socket
 import subprocess
 import time
 import webbrowser
+from inspect import ismethod
 from os import path
 
 import toml
@@ -58,7 +59,7 @@ def new_site(output_dir, name):
 def make_site(output_dir, name, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
     with chdir(new_site(output_dir, name)):
-        _write_config(name)
+        _write_config(name, metadata)
         _write_content("tables", metadata.tables)
         _write_content("views", metadata.views)
         _write_content("queries", metadata.queries)
@@ -66,8 +67,8 @@ def make_site(output_dir, name, metadata):
         _write_content("reports", metadata.reports)
         _write_content("libraries", metadata.libraries)
         _write_content("modules", metadata.modules())
-        _write_content("macros", metadata.callables())
-        _write_content("pylibs", metadata.pythonlibraries)
+        _write_content("callables", metadata.callables())
+        _write_content("pylibs", metadata.pylibs)
         _write_content("pymodules", metadata.pymodules())
 
         exitcode = os.system("hugo")
@@ -76,28 +77,31 @@ def make_site(output_dir, name, metadata):
     return _convert_local(output_dir, name)
 
 
-def _menu(pairs):
-    name, weight = pairs
-    return \
-        {"url": f"/{name}/index.html",
-         "name": name,
-         "weight": weight}
-
-
-def _write_config(name):
+def _write_config(name, metadata):
+    def _menu(pairs):
+        name, weight = pairs
+        meta_attribute = getattr(metadata, name)
+        if ismethod(meta_attribute):
+            meta_attribute = meta_attribute()
+        if len(meta_attribute) > 0:
+            return \
+                {"url": f"/{name}/index.html",
+                 "name": name,
+                 "weight": weight}
+        return None
     menus_defs = [
         ("tables", 2),
         ("queries", 3),
         ("views", 4),
+        ("forms", 5),
         ("reports", 6),
-        ("forms", 7),
         ("libraries", 8),
         ("modules", 9),
-        ("macros", 10),
+        ("callables", 10),
         ("pylibs", 11),
         ("pymodules", 12)
     ]
-    menus = list(map(_menu, menus_defs))
+    menus = list(filter(lambda x: x is not None, map(_menu, menus_defs)))
     menus.append({"url": "/",
                   "name": "home",
                   "weight": 1})

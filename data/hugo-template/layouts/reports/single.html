@@ -2,25 +2,27 @@
 
 <main>
     <div>
-        <h2>{{ .Params.name }}</h2>
+        <h2>Report: {{ .Params.name }}</h2>
         <table class="table table-bordered">
-    <tr>
+          <tr>
 
-    <th>Command</th>
-    <td>{{ .Params.command }}</td>
-  </tr>
-  <tr>
+            <th>Command</th>
+            <td>{{ .Params.command }}</td>
+          </tr>
+          <tr>
 
-    <th>Command type</th>
-    <td>{{ .Params.commandtype }}</td>
-  </tr>
-  <tr/>
-  {{ range .Params.formulas }}
-  <tr>
-    <th>Formula</th>
-    <td>{{ . }}</td>
-  </tr>
-  {{ end }}
+            <th>Command type</th>
+            <td>{{ .Params.commandtype }}</td>
+          </tr>
+          {{ $fcount := len .Params.formulas }}
+          {{ range $index, $val := .Params.formulas }}
+          <tr>
+            {{ if (eq $index 0) }}
+            <th rowspan="{{ $fcount }}">Formulas</th>
+            {{ end }}
+            <td>{{ $val }}</td>
+          </tr>
+          {{ end }}
         </table>
     </div>
 </main>

@@ -62,12 +62,13 @@ def make_site(output_dir, name, metadata):
         _write_content("tables", metadata.tables)
         _write_content("views", metadata.views)
         _write_content("queries", metadata.queries)
+        _write_content("forms", metadata.forms)
+        _write_content("reports", metadata.reports)
         _write_content("libraries", metadata.libraries)
         _write_content("modules", metadata.modules())
         _write_content("macros", metadata.callables())
         _write_content("pylibs", metadata.pythonlibraries)
         _write_content("pymodules", metadata.pymodules())
-        _write_content("reports", metadata.reports)
 
         exitcode = os.system("hugo")
         if exitcode != 0:
@@ -89,6 +90,7 @@ def _write_config(name):
         ("queries", 3),
         ("views", 4),
         ("reports", 6),
+        ("forms", 7),
         ("libraries", 8),
         ("modules", 9),
         ("macros", 10),

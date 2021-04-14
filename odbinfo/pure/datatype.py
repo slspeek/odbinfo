@@ -136,7 +136,7 @@ class SubForm:  # pylint: disable=too-many-instance-attributes
     command: str
     commandtype: str
     allowdeletes: str
-    allowinsertes: str
+    allowinserts: str
     allowupdates: str
     masterfields: str
     detailfields: str

@@ -70,6 +70,7 @@ def make_site(output_dir, name, metadata):
         _write_content("callables", metadata.callables())
         _write_content("pylibs", metadata.pylibs)
         _write_content("pymodules", metadata.pymodules())
+        _write_content("documents", metadata.documents)
 
         exitcode = os.system("hugo")
         if exitcode != 0:
@@ -99,7 +100,8 @@ def _write_config(name, metadata):
         ("modules", 9),
         ("callables", 10),
         ("pylibs", 11),
-        ("pymodules", 12)
+        ("pymodules", 12),
+        ("documents", 13)
     ]
     menus = list(filter(lambda x: x is not None, map(_menu, menus_defs)))
     menus.append({"url": "/",

@@ -286,7 +286,7 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
     reports: [Report]
     libraries: [Library]
     pylibs: [PythonLibrary]
-    textdocuments: [TextDocument]
+    documents: [TextDocument]
 
     def callables(self) -> [Callable]:
         "collect all callables from libraries"

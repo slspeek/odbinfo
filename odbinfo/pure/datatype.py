@@ -20,6 +20,12 @@ KEYRULES = {0: "Cascade",
             3: "No_Action",
             4: "Set_Default"}
 
+@dataclass
+class Identifier:
+    " Unique id for ooobjects "
+    object_type: str
+    local_id: str
+
 
 @dataclass
 class Token:
@@ -41,7 +47,7 @@ class DatabaseDisplay:
 
 @dataclass
 class TextDocument:
-    " ODT od OTT file metadata "
+    " ODT or OTT file metadata "
     name: str
     path: str
     fields: [DatabaseDisplay]

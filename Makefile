@@ -77,13 +77,13 @@ unit: prepare
 .ONESHELL:
 quick_view: clean prepare
 	cd $(build)
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(testloc)/test_quick_view.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_quick_view.py
 
 
 test: itest unit
 
 .ONESHELL:
-serve:
+serve: prepare
 	cd $(build)/$(testloc)/resources/testdb/.$(testloc)db
 	hugo server --layoutDir ../../../../../../../../data/hugo-template/layouts
 

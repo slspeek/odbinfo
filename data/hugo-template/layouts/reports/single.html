@@ -1,0 +1,28 @@
+{{ partial "header" . }}
+
+<main>
+    <div>
+        <h2>{{ .Params.name }}</h2>
+        <table class="table table-bordered">
+    <tr>
+
+    <th>Command</th>
+    <td>{{ .Params.command }}</td>
+  </tr>
+  <tr>
+
+    <th>Command type</th>
+    <td>{{ .Params.commandtype }}</td>
+  </tr>
+  <tr/>
+  {{ range .Params.formulas }}
+  <tr>
+    <th>Formula</th>
+    <td>{{ . }}</td>
+  </tr>
+  {{ end }}
+        </table>
+    </div>
+</main>
+
+{{ partial "footer" . }}

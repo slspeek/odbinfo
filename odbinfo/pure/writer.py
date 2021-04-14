@@ -67,6 +67,7 @@ def make_site(output_dir, name, metadata):
         _write_content("macros", metadata.callables())
         _write_content("pylibs", metadata.pythonlibraries)
         _write_content("pymodules", metadata.pymodules())
+        _write_content("reports", metadata.reports)
 
         exitcode = os.system("hugo")
         if exitcode != 0:
@@ -87,11 +88,12 @@ def _write_config(name):
         ("tables", 2),
         ("queries", 3),
         ("views", 4),
-        ("libraries", 5),
-        ("modules", 6),
-        ("macros", 7),
-        ("pylibs", 8),
-        ("pymodules", 9)
+        ("reports", 6),
+        ("libraries", 8),
+        ("modules", 9),
+        ("macros", 10),
+        ("pylibs", 11),
+        ("pymodules", 12)
     ]
     menus = list(map(_menu, menus_defs))
     menus.append({"url": "/",

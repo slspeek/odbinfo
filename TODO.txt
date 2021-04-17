@@ -1,3 +1,5 @@
+REM Comment from basic disappear from tokens
+
 Configuration
 -------------
 start with config.xcs, config.xcu and programmatically write and read them

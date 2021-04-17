@@ -16,9 +16,13 @@ def generate_report(oodocument):
     name, _ = os.path.splitext(os.path.basename(docpath))
     workingdir = os.path.join(docdir, ".odbinfo")
     reportdir = os.path.join(workingdir, name)
-    if os.path.isdir(reportdir) and os.path.exists(reportdir):
-        shutil.rmtree(reportdir)
-        shutil.rmtree(f"{reportdir}-local")
+
+    def rmtree(directory):
+        if os.path.isdir(directory) and os.path.exists(directory):
+            shutil.rmtree(directory)
+
+    rmtree(reportdir)
+    rmtree(f"{reportdir}-local")
     metadata = read_metadata(oodocument.DataSource, docpath)
     process_metadata(metadata)
     return make_site(workingdir, name, metadata)

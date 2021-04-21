@@ -1,4 +1,6 @@
-REM Comment from basic disappear from tokens
+REM Comment from basic disappear from tokens:
+FIX on the way, unittests needed to
+  scan_basic should use hidden=True, but should return with hidden_tokens
 
 Configuration
 -------------

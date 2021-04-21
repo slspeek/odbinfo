@@ -10,7 +10,7 @@ from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 
 def scan_basic(basiccode, library, module) -> [str]:
     " extract procedure names "
-    tokens = get_basic_tokens(basiccode)
+    tokens = get_basic_tokens(basiccode, hidden=True)
     scanner = BasicScanner(tokens, library, module)
     return scanner.scan()
 
@@ -119,21 +119,32 @@ class BasicScanner:
         return self.callables
 
 
-def get_basic_tokens(basiccode) -> [Token]:
+def get_basic_tokens(basiccode, hidden=False) -> [Token]:
     "Tokenize `basiccode`"
+    def convert_token(atoken) -> Token:
+        return\
+            Token(atoken.column,
+                  atoken.line,
+                  atoken.text,
+                  atoken.type)
+
     input_stream = InputStream(basiccode)
     lexer = OOBasicLexer(input_stream)
     stream = CommonTokenStream(lexer)
     tokens = []
     i = 0
     while True:
+        atokens = []
         i = stream.nextTokenOnChannel(i, antlr4.Token.DEFAULT_CHANNEL)
         atoken = stream.get(i)
         if atoken.type == antlr4.Token.EOF:
             break
-        tokens.append(Token(atoken.column,
-                            atoken.line,
-                            atoken.text,
-                            atoken.type))
+        if hidden:
+            hidden_tokens = stream.getHiddenTokensToLeft(i)
+            if hidden_tokens:
+                atokens.extend(hidden_tokens)
+        atokens.append(atoken)
+        tokens.extend(map(convert_token, atokens))
+
         i += 1
     return tokens

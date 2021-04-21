@@ -123,15 +123,20 @@ end sub ' sub foo
 
 public sub Bar()
 end sub
+rem end of file
 """
 
 
 def test_get_basic_tokens():
     "test basic tokenizer"
-    tokens = get_basic_tokens(TOKENSOURCECODE)
+    tokens = get_basic_tokens(TOKENSOURCECODE, True)
     for tok in tokens:
         print(tok)
-    assert len(tokens) == 34
+    assert len(tokens) == 38
+    tokens = get_basic_tokens(TOKENSOURCECODE, False)
+    for tok in tokens:
+        print(tok)
+    assert len(tokens) == 35
 
 
 def test_scan_basic():

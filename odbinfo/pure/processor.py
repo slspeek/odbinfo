@@ -15,11 +15,11 @@ def _process_library(library: Library):
 def _tokenize_library(library: Library):
     def tokenize_module(module: Module):
         module.tokens =\
-            get_basic_tokens(module.source)
+            get_basic_tokens(module.source, hidden=True)
 
         def tokenize_callable(acallable: Callable):
             acallable.tokens =\
-                get_basic_tokens(acallable.source)
+                get_basic_tokens(acallable.source, hidden=True)
         list(map(tokenize_callable, module.callables))
     list(map(tokenize_module, library.modules))
 

@@ -35,6 +35,7 @@ class Token:
     line: int
     text: str
     type: int
+    index: int
 
 
 @dataclass

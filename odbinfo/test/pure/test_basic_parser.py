@@ -23,7 +23,8 @@ def test_find_or_not_found():
     " test when something is not found "
     source = "function foo(arg)"
     tokens = get_basic_tokens(source)
-    scanner = BasicScanner(tokens, "Standard", "Module1")
+    alltokens = get_basic_tokens(source, True)
+    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
     assert not scanner._find_or([OOBasicLexer.GLOBAL])
     assert scanner.index == 0
 
@@ -32,7 +33,8 @@ def test_find_or_found():
     " test when something is not found "
     source = "function foo(arg)"
     tokens = get_basic_tokens(source)
-    scanner = BasicScanner(tokens, "Standard", "Module1")
+    alltokens = get_basic_tokens(source, True)
+    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
     assert scanner._find_or([OOBasicLexer.IDENTIFIER])
     assert scanner.index == 2
 
@@ -41,7 +43,8 @@ def test_newline_not_found():
     " test newline is not found "
     source = "function foo(arg)"
     tokens = get_basic_tokens(source)
-    scanner = BasicScanner(tokens, "Standard", "Module1")
+    alltokens = get_basic_tokens(source, True)
+    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
     with pytest.raises(RuntimeError):
         scanner._find_callable()
 
@@ -51,7 +54,8 @@ def test_end_fucntion_not_found():
     source = """function foo(arg)
                 end"""
     tokens = get_basic_tokens(source)
-    scanner = BasicScanner(tokens, "Standard", "Module1")
+    alltokens = get_basic_tokens(source, True)
+    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
     with pytest.raises(RuntimeError):
         scanner._find_callable()
 
@@ -61,8 +65,9 @@ def test_find_callable_continu1():
     source = """public function foo(arg)
                 end function"""
     tokens = get_basic_tokens(source)
+    alltokens = get_basic_tokens(source, True)
     del tokens[1]
-    scanner = BasicScanner(tokens, "Standard", "Module1")
+    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
     assert scanner._find_callable()
 
 
@@ -71,8 +76,9 @@ def test_find_callable_continu2():
     source = """public function foo(arg)
                 end function"""
     tokens = get_basic_tokens(source)
+    alltokens = get_basic_tokens(source, True)
     del tokens[3]
-    scanner = BasicScanner(tokens, "Standard", "Module1")
+    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
     assert not scanner._find_callable()
 
 
@@ -123,8 +129,7 @@ end sub ' sub foo
 
 public sub Bar()
 end sub
-rem end of file
-"""
+rem end of file"""
 
 
 def test_get_basic_tokens():
@@ -132,17 +137,31 @@ def test_get_basic_tokens():
     tokens = get_basic_tokens(TOKENSOURCECODE, True)
     for tok in tokens:
         print(tok)
-    assert len(tokens) == 38
+    assert len(tokens) == 37
     tokens = get_basic_tokens(TOKENSOURCECODE, False)
     for tok in tokens:
         print(tok)
-    assert len(tokens) == 35
+    assert len(tokens) == 34
 
 
 def test_scan_basic():
     "test scan_basic"
     callables = parse(TOKENSOURCECODE)
     assert len(callables) == 2
+    assert len(callables[1].body_tokens) == 0
+
+
+BARSOURCE = """
+sub Bar()
+rem nop
+end sub"""
+
+
+def test_scan_basic_empty_method():
+    "empty body_tokens"
+    callables = parse(BARSOURCE)
+    assert len(callables) == 1
+    assert len(callables[0].body_tokens) == 1
 
 
 @pytest.mark.slow

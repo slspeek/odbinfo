@@ -1,6 +1,9 @@
+test_basic_parser needs revision
+
 REM Comment from basic disappear from tokens:
 FIX on the way, unittests needed to
-  scan_basic should use hidden=True, but should return with hidden_tokens
+  scan_basic should use hidden=False, but should return with hidden_tokens
+  body_tokens without hidden
 
 Configuration
 -------------

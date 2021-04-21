@@ -10,8 +10,9 @@ from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 
 def scan_basic(basiccode, library, module) -> [str]:
     " extract procedure names "
-    tokens = get_basic_tokens(basiccode, hidden=True)
-    scanner = BasicScanner(tokens, library, module)
+    tokens = get_basic_tokens(basiccode, hidden=False)
+    alltokens = get_basic_tokens(basiccode, hidden=True)
+    scanner = BasicScanner(tokens, alltokens, library, module)
     return scanner.scan()
 
 
@@ -19,8 +20,9 @@ def scan_basic(basiccode, library, module) -> [str]:
 class BasicScanner:
     "scan for procedure names"
 
-    def __init__(self, tokens, library, module):
+    def __init__(self, tokens, alltokens, library, module):
         self.tokens = tokens
+        self.alltokens = alltokens
         self.library = library
         self.module = module
         self.index = 0
@@ -102,7 +104,9 @@ class BasicScanner:
                     result.body_source =\
                         reduce(lambda x, y: x + y,
                                map(lambda x: x.text,
-                                   result.body_tokens),
+                                   self.tokens[body_start_after + 1:
+                                               body_end_before]
+                                   ),
                                "")
                     return result
 
@@ -126,7 +130,9 @@ def get_basic_tokens(basiccode, hidden=False) -> [Token]:
             Token(atoken.column,
                   atoken.line,
                   atoken.text,
-                  atoken.type)
+                  atoken.type,
+                  atoken.tokenIndex
+                  )
 
     input_stream = InputStream(basiccode)
     lexer = OOBasicLexer(input_stream)
@@ -137,14 +143,14 @@ def get_basic_tokens(basiccode, hidden=False) -> [Token]:
         atokens = []
         i = stream.nextTokenOnChannel(i, antlr4.Token.DEFAULT_CHANNEL)
         atoken = stream.get(i)
-        if atoken.type == antlr4.Token.EOF:
-            break
         if hidden:
             hidden_tokens = stream.getHiddenTokensToLeft(i)
             if hidden_tokens:
                 atokens.extend(hidden_tokens)
-        atokens.append(atoken)
+        if not atoken.type == antlr4.Token.EOF:
+            atokens.append(atoken)
         tokens.extend(map(convert_token, atokens))
-
+        if atoken.type == antlr4.Token.EOF:
+            break
         i += 1
     return tokens

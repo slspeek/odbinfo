@@ -64,6 +64,7 @@ single: prepare
 fixture: prepare
 	cd $(build)
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(ootestloc)/fixture_writer.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(puretestloc)/fixture_writer.py
 	cd -
 	test -f $(metadata)
 

@@ -7,17 +7,24 @@ from pytest import fixture
 from odbinfo.test.resource import DEFAULT_TESTDB, FIXTURE_DIR
 
 
-def load_metadata():
+def load_metadata(processed=False):
     """ Returns Metadata object from the test fixture """
-    with open(FIXTURE_DIR.format('metadata.pickle'), 'rb') as file:
+    filename = 'metadata-processed.pickle' if processed else 'metadata.pickle'
+    with open(FIXTURE_DIR.format(filename), 'rb') as file:
         meta = pickle.load(file)
     return meta
 
 
-@fixture(scope="session")
+@fixture(scope="function")
 def metadata():
     """ Array of all objects from repository """
     yield load_metadata()
+
+
+@fixture(scope="function")
+def metadata_processed():
+    """ Array of all objects from repository """
+    yield load_metadata(processed=True)
 
 
 @fixture(scope="session")

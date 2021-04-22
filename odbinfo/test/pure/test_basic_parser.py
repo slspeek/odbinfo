@@ -19,12 +19,17 @@ def parse(source):
     return scan_basic(source, "Standard", "Module")
 
 
+def basicscanner(source: str) -> BasicScanner:
+    "Instantiates BasicScanner on `source`"
+    tokens = get_basic_tokens(source)
+    alltokens = get_basic_tokens(source, True)
+    return BasicScanner(tokens, alltokens, "Standard", "Module1")
+
+
 def test_find_or_not_found():
     " test when something is not found "
     source = "function foo(arg)"
-    tokens = get_basic_tokens(source)
-    alltokens = get_basic_tokens(source, True)
-    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
+    scanner = basicscanner(source)
     assert not scanner._find_or([OOBasicLexer.GLOBAL])
     assert scanner.index == 0
 
@@ -32,9 +37,7 @@ def test_find_or_not_found():
 def test_find_or_found():
     " test when something is not found "
     source = "function foo(arg)"
-    tokens = get_basic_tokens(source)
-    alltokens = get_basic_tokens(source, True)
-    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
+    scanner = basicscanner(source)
     assert scanner._find_or([OOBasicLexer.IDENTIFIER])
     assert scanner.index == 2
 
@@ -42,9 +45,7 @@ def test_find_or_found():
 def test_newline_not_found():
     " test newline is not found "
     source = "function foo(arg)"
-    tokens = get_basic_tokens(source)
-    alltokens = get_basic_tokens(source, True)
-    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
+    scanner = basicscanner(source)
     with pytest.raises(RuntimeError):
         scanner._find_callable()
 
@@ -53,9 +54,7 @@ def test_end_fucntion_not_found():
     " test newline is not found "
     source = """function foo(arg)
                 end"""
-    tokens = get_basic_tokens(source)
-    alltokens = get_basic_tokens(source, True)
-    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
+    scanner = basicscanner(source)
     with pytest.raises(RuntimeError):
         scanner._find_callable()
 

@@ -21,6 +21,7 @@ def search_callable_in_callable(callables: [Callable]) -> [UseCase]:
 
 def consider(caller: Callable, candidate_callee: Callable) -> [UseCase]:
     " find calls in `caller` to `candidate_callee`"
+    # print("Considering: ", caller.title, candidate_callee.title)
     calls = []
 
     def search_target():
@@ -37,5 +38,9 @@ def consider(caller: Callable, candidate_callee: Callable) -> [UseCase]:
                 callee_link,
                 "invokes")
             )
-            caller.tokens[caller.tokens.index(token)].link.append(callee_link)
+            # this if needs work, consider module local functions first,
+            # then library local, and then (possibly with more checks) other
+            # library functions
+            if token in caller.tokens:
+                caller.tokens[caller.tokens.index(token)].link.append(callee_link)
     return calls

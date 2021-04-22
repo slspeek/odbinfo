@@ -28,4 +28,4 @@ def _process_libraries(libraries: [Library]):
 def process_metadata(metadata):
     " preprocessing of the data before it is send to hugo "
     _process_libraries(metadata.libraries)
-    search_dependencies(metadata)
+    metadata.use_cases = search_dependencies(metadata)

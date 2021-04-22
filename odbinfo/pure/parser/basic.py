@@ -10,8 +10,8 @@ from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 
 def scan_basic(basiccode, library, module) -> [str]:
     " extract procedure names "
-    tokens = get_basic_tokens(basiccode, hidden=False)
-    alltokens = get_basic_tokens(basiccode, hidden=True)
+    tokens = get_basic_tokens(basiccode, include_hidden=False)
+    alltokens = get_basic_tokens(basiccode, include_hidden=True)
     scanner = BasicScanner(tokens, alltokens, library, module)
     return scanner.scan()
 
@@ -99,13 +99,12 @@ class BasicScanner:
                                       self.module,
                                       name,
                                       source)
+                    result.tokens = self.alltokens[start_callable_index:
+                                                   body_end_index + 1]
                     result.body_tokens =\
                         self.tokens[body_start_after + 1:
                                     body_end_before]
 
-                    result.tokens =\
-                        self.alltokens[start_callable_index:
-                                       body_end_index + 1]
                     result.body_source =\
                         reduce(lambda x, y: x + y,
                                map(lambda x: x.text,
@@ -128,7 +127,7 @@ class BasicScanner:
         return self.callables
 
 
-def get_basic_tokens(basiccode, hidden=False) -> [Token]:
+def get_basic_tokens(basiccode, include_hidden=False) -> [Token]:
     "Tokenize `basiccode`"
     def convert_token(atoken) -> Token:
         return\
@@ -148,7 +147,7 @@ def get_basic_tokens(basiccode, hidden=False) -> [Token]:
         atokens = []
         i = stream.nextTokenOnChannel(i, antlr4.Token.DEFAULT_CHANNEL)
         atoken = stream.get(i)
-        if hidden:
+        if include_hidden:
             hidden_tokens = stream.getHiddenTokensToLeft(i)
             if hidden_tokens:
                 atokens.extend(hidden_tokens)

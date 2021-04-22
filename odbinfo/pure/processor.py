@@ -1,5 +1,6 @@
 """ Core module """
-from odbinfo.pure.datatype import Callable, Library, Module
+from odbinfo.pure.datatype import Library, Module
+from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 
 
@@ -15,12 +16,7 @@ def _process_library(library: Library):
 def _tokenize_library(library: Library):
     def tokenize_module(module: Module):
         module.tokens =\
-            get_basic_tokens(module.source, hidden=True)
-
-        def tokenize_callable(acallable: Callable):
-            acallable.tokens =\
-                get_basic_tokens(acallable.source, hidden=True)
-        list(map(tokenize_callable, module.callables))
+            get_basic_tokens(module.source, include_hidden=True)
     list(map(tokenize_module, library.modules))
 
 
@@ -32,3 +28,4 @@ def _process_libraries(libraries: [Library]):
 def process_metadata(metadata):
     " preprocessing of the data before it is send to hugo "
     _process_libraries(metadata.libraries)
+    search_dependencies(metadata)

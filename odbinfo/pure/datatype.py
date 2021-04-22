@@ -28,6 +28,19 @@ class Identifier:
     local_id: str
 
 
+def get_identifier(dataobject) -> Identifier:
+    "returns Identifier for `dataobject`"
+    return Identifier(dataobject.__class__.__name__, dataobject.title)
+
+
+@dataclass
+class UseCase:
+    " `obj` uses `subject`"
+    obj: Identifier
+    subject: Identifier
+    type: str
+
+
 @dataclass
 class Token:
     "lexer token"
@@ -36,6 +49,7 @@ class Token:
     text: str
     type: int
     index: int
+    link: [Identifier] = field(init=False, default_factory=list)
 
 
 @dataclass
@@ -288,6 +302,7 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
     libraries: [Library]
     pylibs: [PythonLibrary]
     documents: [TextDocument]
+    use_cases: [UseCase] = field(init=False, default_factory=list)
 
     def callables(self) -> [Callable]:
         "collect all callables from libraries"

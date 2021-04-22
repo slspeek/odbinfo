@@ -86,26 +86,31 @@ class BasicScanner:
                                            f"{self.module}"
                                            f"library: {self.library}")
                     body_end_before = self.index
+                    start_callable_index = self.tokens[start_callable].index
+                    body_start_index = self.tokens[body_start_after].index
+                    body_end_index = self.tokens[body_end_before].index
+
                     source = reduce(lambda x, y: x + y,
                                     map(lambda x: x.text,
-                                        self.tokens[start_callable:
-                                                    body_end_before + 1]),
+                                        self.alltokens[start_callable_index:
+                                                       body_end_index + 1]),
                                     "")
                     result = Callable(self.library,
                                       self.module,
                                       name,
                                       source)
-                    result.tokens =\
-                        self.tokens[start_callable:
-                                    body_end_before + 1]
                     result.body_tokens =\
                         self.tokens[body_start_after + 1:
                                     body_end_before]
+
+                    result.tokens =\
+                        self.alltokens[start_callable_index:
+                                       body_end_index + 1]
                     result.body_source =\
                         reduce(lambda x, y: x + y,
                                map(lambda x: x.text,
-                                   self.tokens[body_start_after + 1:
-                                               body_end_before]
+                                   self.alltokens[body_start_index + 1:
+                                                  body_end_index]
                                    ),
                                "")
                     return result

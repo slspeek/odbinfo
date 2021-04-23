@@ -7,7 +7,6 @@
         <ol>
           {{ range .Params.modules }}
           {{ $url := partial "find-in-section" (dict "context" $dot "section" "modules" "title" .title)}}
-          {{ $url := strings.TrimRight " \n" $url }}
           <li><a href="{{$url}}">{{.title}}</a> </li>
           {{ end }}
         </ol>

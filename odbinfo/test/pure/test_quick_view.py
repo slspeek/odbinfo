@@ -3,17 +3,18 @@ import pytest
 
 from odbinfo.pure.processor import process_metadata
 from odbinfo.pure.writer import make_site
-from odbinfo.test.pure.fixtures import metadata  # pylint:disable=unused-import
+from odbinfo.test.pure.fixtures import (  # pylint:disable=unused-import
+    metadata, metadata_processed)
 from odbinfo.test.resource import TEST_OUTPUT
 
 
 # pylint:disable=redefined-outer-name
 @pytest.mark.slow
-def test_quick_view(metadata):
+def test_quick_view(metadata_processed):
     """ Run without database scan """
     name = "testdb"
     outdir = TEST_OUTPUT.format("")
-    make_site(outdir, name, metadata)
+    make_site(outdir, name, metadata_processed)
 
 
 # pylint:disable=redefined-outer-name

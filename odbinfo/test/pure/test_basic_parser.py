@@ -26,20 +26,20 @@ def basicscanner(source: str) -> BasicScanner:
     return BasicScanner(tokens, alltokens, "Standard", "Module1")
 
 
-def test_find_or_not_found():
+def test_find_oneof_not_found():
     " test when something is not found "
     source = "function foo(arg)"
     scanner = basicscanner(source)
-    assert not scanner._find_or([OOBasicLexer.GLOBAL])
+    assert not scanner._find_oneof([OOBasicLexer.GLOBAL])
     assert scanner.index == 0
 
 
-def test_find_or_found():
+def test_find_oneof_found():
     " test when something is not found "
     source = "function foo(arg)"
     scanner = basicscanner(source)
-    assert scanner._find_or([OOBasicLexer.IDENTIFIER])
-    assert scanner.index == 2
+    assert scanner._find_oneof([OOBasicLexer.IDENTIFIER])
+    assert scanner.index == 3
 
 
 def test_newline_not_found():
@@ -50,7 +50,7 @@ def test_newline_not_found():
         scanner._find_callable()
 
 
-def test_end_fucntion_not_found():
+def test_end_function_not_found():
     " test newline is not found "
     source = """function foo(arg)
                 end"""

@@ -104,10 +104,8 @@ class Callable:
     library: str
     module: str
     name: str
-    source: str
     tokens: [Token] = field(init=False, default_factory=list)
     body_tokens: [Token] = field(init=False, default_factory=list)
-    body_source: str = field(init=False)
     title: str = field(init=False)
 
     def __post_init__(self):

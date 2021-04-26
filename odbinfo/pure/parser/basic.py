@@ -1,7 +1,4 @@
 """ Facade for the OOBasicParser """
-import operator
-from functools import reduce
-
 import antlr4
 from antlr4 import CommonTokenStream, InputStream
 
@@ -27,35 +24,37 @@ class BasicScanner:
         self.library = library
         self.module = module
         self.index = 0
-        self.callables = []
 
     def _token(self) -> Token:
         return self.tokens[self.index]
 
-    def _read(self, token: int) -> bool:
-        if self._token().type == token:
+    def _read(self, token_type: int):
+        cur_token = self._token()
+        if cur_token.type == token_type:
+            value = cur_token.text
             self.index += 1
-            return True
-        return False
+            return value
+        return None
 
-    def _read_seq_maybe(self, seq: [int]):
+    def _maybe_seq(self, seq: [int]):
         mark = self.index
         for token in seq:
             if not self._read(token):
                 self.index = mark
                 return
 
-    def _read_or(self, ptokens: [int]) -> bool:
+    def _oneof(self, ptokens: [int]) -> bool:
         for token in ptokens:
             if self._read(token):
                 return True
         return False
 
-    def _find_or(self, types: [int]) -> bool:
+    def _find_oneof(self, types: [int]) -> bool:
         mark = self.index
         for i in range(self.index, len(self.tokens)):
             self.index = i
             if self._token().type in types:
+                self.index += 1
                 return True
         self.index = mark
         return False
@@ -64,68 +63,55 @@ class BasicScanner:
         for index in range(self.index, len(self.tokens)):
             self.index = index
             start_callable = self.index
-            if self._read_or([OOBasicLexer.GLOBAL,
-                              OOBasicLexer.PUBLIC,
-                              OOBasicLexer.PRIVATE]):
+            if self._oneof([OOBasicLexer.GLOBAL,
+                            OOBasicLexer.PUBLIC,
+                            OOBasicLexer.PRIVATE]):
                 if not self._read(OOBasicLexer.WS):
                     continue
-            self._read_seq_maybe([OOBasicLexer.STATIC, OOBasicLexer.WS])
-            if self._read_or([OOBasicLexer.FUNCTION, OOBasicLexer.SUB]):
+            self._maybe_seq([OOBasicLexer.STATIC, OOBasicLexer.WS])
+            if self._oneof([OOBasicLexer.FUNCTION, OOBasicLexer.SUB]):
                 if not self._read(OOBasicLexer.WS):
                     continue
-                if self._read(OOBasicLexer.IDENTIFIER):
-                    name = self.tokens[self.index - 1].text
+                name = self._read(OOBasicLexer.IDENTIFIER)
+                if name:
                     # continue to NEWLINE to find body
-                    if not self._find_or([OOBasicLexer.NEWLINE]):
+                    if not self._find_oneof([OOBasicLexer.NEWLINE]):
                         raise RuntimeError(f"Newline not found in module: "
                                            f"{self.module}"
                                            f"library: {self.library}")
-                    body_start_after = self.index
-                    if not self._find_or([OOBasicLexer.END_SUB,
-                                          OOBasicLexer.END_FUNCTION]):
+                    start_body = self.index
+                    if not self._find_oneof([OOBasicLexer.END_SUB,
+                                             OOBasicLexer.END_FUNCTION]):
                         raise RuntimeError("No callable end found in module: "
                                            f"{self.module}"
                                            f"library: {self.library}")
-                    body_end_before = self.index
+                    end_callable = self.index - 1
                     start_callable_index = self.tokens[start_callable].index
-                    body_start_index = self.tokens[body_start_after].index
-                    body_end_index = self.tokens[body_end_before].index
+                    end_callable_index = self.tokens[end_callable].index
 
-                    source = reduce(operator.add,
-                                    map(lambda x: x.text,
-                                        self.alltokens[start_callable_index:
-                                                       body_end_index + 1]),
-                                    "")
                     result = Callable(self.library,
                                       self.module,
-                                      name,
-                                      source)
+                                      name)
                     result.tokens = self.alltokens[start_callable_index:
-                                                   body_end_index + 1]
+                                                   end_callable_index + 1]
                     result.body_tokens =\
-                        self.tokens[body_start_after + 1:
-                                    body_end_before]
+                        self.tokens[start_body:
+                                    end_callable]
 
-                    result.body_source =\
-                        reduce(operator.add,
-                               map(lambda x: x.text,
-                                   self.alltokens[body_start_index + 1:
-                                                  body_end_index]
-                                   ),
-                               "")
                     return result
 
         return None
 
     def scan(self):
         "perform the scan"
+        callables = []
         while True:
             acallable = self._find_callable()
             if acallable is None:
                 break
-            self.callables.append(acallable)
+            callables.append(acallable)
 
-        return self.callables
+        return callables
 
 
 def get_basic_tokens(basiccode, include_hidden=False) -> [Token]:

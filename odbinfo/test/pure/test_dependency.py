@@ -1,10 +1,11 @@
 " tests for dependency search "
 import pytest
-from odbinfo.pure.datatype import UseCase
-from odbinfo.pure.dependency import (consider, get_identifier,
-                                     search_callable_in_callable, corresponding_token)
+
+from odbinfo.pure.datatype import Token, UseCase
+from odbinfo.pure.dependency import (consider, corresponding_token,
+                                     get_identifier,
+                                     search_callable_in_callable)
 from odbinfo.pure.parser.basic import scan_basic
-from odbinfo.pure.datatype import Token
 
 SOURCE_MODULEONE = """
 Sub Foo()

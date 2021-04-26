@@ -19,7 +19,7 @@ PUREPYTHONPATH=.:$$(cd ../../$(pure) 2> /dev/null || cd $(pure) && pipenv --venv
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
 
-all: clean genparser info check itest
+all: metric clean genparser info check itest
 
 prepare:
 	@echo prepare start
@@ -160,3 +160,8 @@ installantlr:
 
 ctags:
 	ctags -R odbinfo
+
+metric: clean
+	find -name \*.py -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* |xargs python -m radon cc -nb
+
+

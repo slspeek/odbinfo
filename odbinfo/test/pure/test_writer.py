@@ -4,7 +4,7 @@ import shutil
 
 import pytest
 
-from odbinfo.pure.writer import new_site, chdir
+from odbinfo.pure.writer import chdir, new_site
 from odbinfo.test.resource import TEST_OUTPUT
 
 

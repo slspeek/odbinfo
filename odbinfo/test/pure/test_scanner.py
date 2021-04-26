@@ -9,11 +9,13 @@ def new_scanner(source: str) -> Scanner:
     tokens = get_basic_tokens(source)
     return Scanner(tokens)
 
+
 def test_empty_input():
     " on [] "
     scanner = Scanner([])
     scanner.step()
     assert scanner.cursor == 0
+
 
 def test_find_oneof_not_found():
     " test when something is not found "

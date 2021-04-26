@@ -6,7 +6,8 @@ from odbinfo.pure.reader import (_collect_attribute, _reports, _text_documents,
                                  read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
-from odbinfo.test.pure.fixtures import odbzip, empty_odbzip  # pylint:disable=unused-import
+from odbinfo.test.pure.fixtures import (  # pylint:disable=unused-import
+    empty_odbzip, odbzip)
 from odbinfo.test.resource import DEFAULT_TESTDB
 
 
@@ -17,6 +18,7 @@ def test_reports(odbzip):  # pylint: disable=redefined-outer-name
         # print(name,
         json.dumps(form, indent=4)
         # )
+
 
 def test_reports_empty(empty_odbzip):  # pylint: disable=redefined-outer-name
     " _reports  "

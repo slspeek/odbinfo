@@ -43,9 +43,7 @@ def search_callable_in_callable(callables: [Callable]) -> [UseCase]:
             return not call.library == lib
 
         candidates = filter(partial(filter_other_library, lib), callables)
-        for candidate_callee in callables:
-            if candidate_callee == caller:
-                continue
+        for candidate_callee in candidates:
             calls.extend(consider(caller, candidate_callee))
     return calls
 

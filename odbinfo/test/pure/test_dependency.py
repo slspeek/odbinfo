@@ -1,9 +1,10 @@
 " tests for dependency search "
-
+import pytest
 from odbinfo.pure.datatype import UseCase
 from odbinfo.pure.dependency import (consider, get_identifier,
-                                     search_callable_in_callable)
+                                     search_callable_in_callable, corresponding_token)
 from odbinfo.pure.parser.basic import scan_basic
+from odbinfo.pure.datatype import Token
 
 SOURCE_MODULEONE = """
 Sub Foo()
@@ -25,6 +26,13 @@ End Sub
 Sub Bar()
 End Sub
 """
+
+
+def test_corresponding_token_fail():
+    " corresponding_token fail test"
+    token = Token(0, 0, "Foo", 1, 3)
+    with pytest.raises(ValueError):
+        corresponding_token([], token)
 
 
 def test_search_callable_in_callable():

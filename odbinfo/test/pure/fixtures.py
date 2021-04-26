@@ -4,7 +4,7 @@ from zipfile import ZipFile
 
 from pytest import fixture
 
-from odbinfo.test.resource import DEFAULT_TESTDB, FIXTURE_DIR
+from odbinfo.test.resource import EMPTYDB, DEFAULT_TESTDB, FIXTURE_DIR
 
 
 def load_metadata(processed=False):
@@ -32,3 +32,11 @@ def odbzip():
     " odb file open for reading "
     with ZipFile(DEFAULT_TESTDB, "r") as zipfile:
         yield zipfile
+
+
+@fixture(scope="session")
+def empty_odbzip():
+    " odb file open for reading "
+    with ZipFile(EMPTYDB, "r") as zipfile:
+        yield zipfile
+

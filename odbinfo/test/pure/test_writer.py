@@ -4,8 +4,16 @@ import shutil
 
 import pytest
 
-from odbinfo.pure.writer import new_site
+from odbinfo.pure.writer import new_site, chdir
 from odbinfo.test.resource import TEST_OUTPUT
+
+
+def test_chdir_none():
+    " test chdir on its default "
+    cur_dir = os.getcwd()
+    with chdir():
+        os.chdir("/")
+    assert os.getcwd() == cur_dir
 
 
 @pytest.mark.slow

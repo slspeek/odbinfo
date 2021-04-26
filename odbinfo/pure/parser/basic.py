@@ -4,6 +4,7 @@ from antlr4 import CommonTokenStream, InputStream
 
 from odbinfo.pure.datatype import Callable, Token
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
+from odbinfo.pure.parser.scanner import Scanner
 
 
 def scan_basic(basiccode, library, module) -> [str]:
@@ -15,77 +16,44 @@ def scan_basic(basiccode, library, module) -> [str]:
 
 
 # pylint:disable=too-few-public-methods
-class BasicScanner:
+class BasicScanner(Scanner):
     "scan for procedure names"
 
     def __init__(self, tokens, alltokens, library, module):
-        self.tokens = tokens
+        super().__init__(tokens)
         self.alltokens = alltokens
         self.library = library
         self.module = module
-        self.index = 0
-
-    def _token(self) -> Token:
-        return self.tokens[self.index]
-
-    def _read(self, token_type: int):
-        cur_token = self._token()
-        if cur_token.type == token_type:
-            value = cur_token.text
-            self.index += 1
-            return value
-        return None
-
-    def _maybe_seq(self, seq: [int]):
-        mark = self.index
-        for token in seq:
-            if not self._read(token):
-                self.index = mark
-                return
-
-    def _oneof(self, ptokens: [int]) -> bool:
-        for token in ptokens:
-            if self._read(token):
-                return True
-        return False
-
-    def _find_oneof(self, types: [int]) -> bool:
-        mark = self.index
-        for i in range(self.index, len(self.tokens)):
-            self.index = i
-            if self._token().type in types:
-                self.index += 1
-                return True
-        self.index = mark
-        return False
 
     def _find_callable(self) -> Callable:
-        for index in range(self.index, len(self.tokens)):
-            self.index = index
-            start_callable = self.index
-            if self._oneof([OOBasicLexer.GLOBAL,
-                            OOBasicLexer.PUBLIC,
-                            OOBasicLexer.PRIVATE]):
-                if not self._read(OOBasicLexer.WS):
+        for index in range(self.cursor, self.tokens_length):
+            self.set_cursor(index)
+            start_callable = index
+            if self.oneof([OOBasicLexer.GLOBAL,
+                           OOBasicLexer.PUBLIC,
+                           OOBasicLexer.PRIVATE]):
+                if not self.eat(OOBasicLexer.WS):
                     continue
-            self._maybe_seq([OOBasicLexer.STATIC, OOBasicLexer.WS])
-            if self._oneof([OOBasicLexer.FUNCTION, OOBasicLexer.SUB]):
-                if not self._read(OOBasicLexer.WS):
+            self.maybe_seq([OOBasicLexer.STATIC, OOBasicLexer.WS])
+            if self.oneof([OOBasicLexer.FUNCTION, OOBasicLexer.SUB]):
+                if not self.eat(OOBasicLexer.WS):
                     continue
-                name = self._read(OOBasicLexer.IDENTIFIER)
-                if name:
+                id_token = self.eat(OOBasicLexer.IDENTIFIER)
+                # print("Function id: ", id_token)
+                if id_token:
+                    name = id_token.text
                     # continue to NEWLINE to find body
-                    if not self._find_oneof([OOBasicLexer.NEWLINE]):
+                    if not self.find_oneof([OOBasicLexer.NEWLINE]):
                         raise RuntimeError(f"Newline not found in module: "
                                            f"{self.module}"
                                            f"library: {self.library}")
-                    start_body = self.index
-                    if not self._find_oneof([OOBasicLexer.END_SUB,
-                                             OOBasicLexer.END_FUNCTION]):
+                    start_body = self.cursor
+                    if not self.find_oneof([OOBasicLexer.END_SUB,
+                                            OOBasicLexer.END_FUNCTION]):
                         raise RuntimeError("No callable end found in module: "
                                            f"{self.module}"
                                            f"library: {self.library}")
-                    end_callable = self.index - 1
+                    end_callable = self.cursor - 1
                     start_callable_index = self.tokens[start_callable].index
                     end_callable_index = self.tokens[end_callable].index
 

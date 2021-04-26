@@ -1,17 +1,10 @@
 # pylint: disable=too-many-lines
 # pylint: disable=protected-access
 " parser tests "
-from functools import partial
-from zipfile import ZipFile
-
 import pytest
 
-from odbinfo.pure.datatype import Module
 from odbinfo.pure.parser.basic import (BasicScanner, get_basic_tokens,
                                        scan_basic)
-from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
-from odbinfo.pure.reader import _parse_xml, mapiflist
-from odbinfo.test.resource import BASEDOCUMENTER
 
 
 def parse(source):
@@ -26,20 +19,11 @@ def basicscanner(source: str) -> BasicScanner:
     return BasicScanner(tokens, alltokens, "Standard", "Module1")
 
 
-def test_find_oneof_not_found():
-    " test when something is not found "
-    source = "function foo(arg)"
+def test_callable_id_not_found():
+    " test id not found "
+    source = "private static function end function"
     scanner = basicscanner(source)
-    assert not scanner._find_oneof([OOBasicLexer.GLOBAL])
-    assert scanner.index == 0
-
-
-def test_find_oneof_found():
-    " test when something is not found "
-    source = "function foo(arg)"
-    scanner = basicscanner(source)
-    assert scanner._find_oneof([OOBasicLexer.IDENTIFIER])
-    assert scanner.index == 3
+    assert not scanner._find_callable()
 
 
 def test_newline_not_found():
@@ -113,12 +97,6 @@ def test_parse_select():
     assert len(callables) == 1
 
 
-def _read_module(odbzip, library_name,  data) -> Module:
-    name = data["@library:name"]
-    data = _parse_xml(odbzip, f"{library_name}/{name}.xba")
-    return Module("BaseDocumenter", name, data["script:module"]["#text"])
-
-
 TOKENSOURCECODE = """
 rem procedure Foo
 sub Foo(a as String)
@@ -161,34 +139,3 @@ def test_scan_basic_empty_method():
     callables = parse(BARSOURCE)
     assert len(callables) == 1
     assert len(callables[0].body_tokens) == 1
-
-
-@pytest.mark.slow
-def test_basedocumenter_sources():
-    " parse all basedocumenter sources "
-    with ZipFile(BASEDOCUMENTER, "r") as based:
-        xlb = _parse_xml(based, "BaseDocumenter/script.xlb")
-        data = xlb["library:library"]["library:element"]
-        read_module = partial(_read_module, based, "BaseDocumenter")
-        modules = mapiflist(read_module, data)
-        for module in modules:
-            print(f"Start parsing {module.name}")
-            if module.name == "BD_Utils":
-                module.source = module.source.replace(
-                    '.setDefaultName(vFile(1)\n',
-                    '.setDefaultName(vFile(1))\n')
-            if module.name == "BD_Settings":
-                module.source = module.source.replace(
-                    "Public Sub _BD_SetActualSettings(ByVal plDatabaseID As"
-                    " Long, ByRef psDatabaseName As String) As Variant",
-                    "Public Sub _BD_SetActualSettings(ByVal plDatabaseID As"
-                    " Long, ByRef psDatabaseName As String)")
-            if module.name == "BD_Html":
-                module.source = module.source.replace(
-                    """, _BD_UTF8(Replace(_BD_GetLabel("PREFERENCESTITLE"),"""
-                    """ "%0", BaseDocumenterTitle))""",
-                    """, _BD_UTF8(Replace(_BD_GetLabel("PREFERENCESTITLE"),"""
-                    """ "%0", BaseDocumenterTitle)))"""
-                )
-            # get_basic_tokens(module.source)
-            scan_basic(module.source, "BaseDocumenter", module.name)

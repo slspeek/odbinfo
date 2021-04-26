@@ -19,7 +19,7 @@ PUREPYTHONPATH=.:$$(cd ../../$(pure) 2> /dev/null || cd $(pure) && pipenv --venv
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
 
-all: metric clean genparser info check itest
+all: clean genparser info check itest
 
 prepare:
 	@echo prepare start

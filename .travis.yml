@@ -16,3 +16,4 @@ install:
 script:
     - (cd pipenvconf/oo && ODBINFO_NO_BROWSE=1 PIPENV_IGNORE_VIRTUALENVS=1 pipenv run make -C ../.. installantlr all)
     - (cd pipenvconf/pure && ODBINFO_NO_BROWSE=1 PIPENV_IGNORE_VIRTUALENVS=1 pipenv run make -C ../.. clean coverage)
+    - (cd pipenvconf/pure && ODBINFO_NO_BROWSE=1 PIPENV_IGNORE_VIRTUALENVS=1 pipenv run make -C ../.. metric)

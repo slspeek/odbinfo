@@ -1,4 +1,5 @@
 """ Facade for the OOBasicParser """
+import operator
 from functools import reduce
 
 import antlr4
@@ -90,7 +91,7 @@ class BasicScanner:
                     body_start_index = self.tokens[body_start_after].index
                     body_end_index = self.tokens[body_end_before].index
 
-                    source = reduce(lambda x, y: x + y,
+                    source = reduce(operator.add,
                                     map(lambda x: x.text,
                                         self.alltokens[start_callable_index:
                                                        body_end_index + 1]),
@@ -106,7 +107,7 @@ class BasicScanner:
                                     body_end_before]
 
                     result.body_source =\
-                        reduce(lambda x, y: x + y,
+                        reduce(operator.add,
                                map(lambda x: x.text,
                                    self.alltokens[body_start_index + 1:
                                                   body_end_index]

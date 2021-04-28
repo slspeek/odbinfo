@@ -41,23 +41,23 @@ def test_forms_empty(empty_odbzip):  # pylint: disable=redefined-outer-name
 
 def test_libraries(odbzip):  # pylint: disable=redefined-outer-name
     " libraries "
-    print(read_libraries(odbzip))
+    read_libraries(odbzip)
 
 
 def test_read_reports(odbzip):  # pylint: disable=redefined-outer-name
     " reports "
-    print(read_reports(odbzip))
+    read_reports(odbzip)
 
 
 def test_read_forms(odbzip):  # pylint: disable=redefined-outer-name
     " forms "
-    print(read_forms(odbzip))
+    read_forms(odbzip)
 
 
 def test_pylibraries(odbzip):  # pylint: disable=redefined-outer-name
     " libraries "
     libs = read_python_libraries(odbzip)
-    print(libs)
+    # print(libs)
     assert len(libs) == 2
     assert len(libs[0].modules) == 1
     assert len(libs[1].modules) == 1

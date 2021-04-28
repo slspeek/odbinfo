@@ -1,10 +1,9 @@
 # pylint: disable=too-many-lines
 # pylint: disable=protected-access
 " parser tests "
-import pytest
-
-from odbinfo.pure.parser.basic import (BasicScanner, get_basic_tokens,
-                                       scan_basic)
+from odbinfo.pure.parser.basic import (BasicScanner, allmacros,
+                                       get_basic_tokens, macro, maybe,
+                                       scan_basic, signature)
 
 
 def parse(source):
@@ -17,52 +16,6 @@ def basicscanner(source: str) -> BasicScanner:
     tokens = get_basic_tokens(source)
     alltokens = get_basic_tokens(source, True)
     return BasicScanner(tokens, alltokens, "Standard", "Module1")
-
-
-def test_callable_id_not_found():
-    " test id not found "
-    source = "private static function end function"
-    scanner = basicscanner(source)
-    assert not scanner._find_callable()
-
-
-def test_newline_not_found():
-    " test newline is not found "
-    source = "function foo(arg)"
-    scanner = basicscanner(source)
-    with pytest.raises(RuntimeError):
-        scanner._find_callable()
-
-
-def test_end_function_not_found():
-    " test newline is not found "
-    source = """function foo(arg)
-                end"""
-    scanner = basicscanner(source)
-    with pytest.raises(RuntimeError):
-        scanner._find_callable()
-
-
-def test_find_callable_continu1():
-    " test first continu "
-    source = """public function foo(arg)
-                end function"""
-    tokens = get_basic_tokens(source)
-    alltokens = get_basic_tokens(source, True)
-    del tokens[1]
-    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
-    assert scanner._find_callable()
-
-
-def test_find_callable_continu2():
-    " test first continu"
-    source = """public function foo(arg)
-                end function"""
-    tokens = get_basic_tokens(source)
-    alltokens = get_basic_tokens(source, True)
-    del tokens[3]
-    scanner = BasicScanner(tokens, alltokens, "Standard", "Module1")
-    assert not scanner._find_callable()
 
 
 def test_parse():
@@ -109,16 +62,56 @@ end sub
 rem end of file"""
 
 
+def test_allmacros():
+    " test allmacros"
+    scanner = basicscanner(TOKENSOURCECODE)
+    macros = allmacros(scanner)
+    print("All Macros: ", macros)
+
+
+def test_allmacros_empty():
+    " test allmacros"
+    scanner = basicscanner("")
+    macros = allmacros(scanner)
+    print("All Macros: ", macros)
+
+
+def test_signature():
+    " test signature"
+    scanner = basicscanner("public static sub foo()\n")
+    start, end, name = signature(scanner)
+    print(start, end, name)
+
+
+def test_macro():
+    " test macro"
+    scanner = basicscanner("sub foo()\nend sub\n")
+    amacro = macro(scanner)
+    print("Macro: ", amacro)
+
+
+def test_find_signature():
+    " test _signature"
+    scanner = basicscanner("public static sub sub foo()\n")
+    result = maybe(signature)(scanner)
+    print(result)
+
+
 def test_get_basic_tokens():
     "test basic tokenizer"
     tokens = get_basic_tokens(TOKENSOURCECODE, True)
-    for tok in tokens:
-        print(tok)
+    # for tok in tokens:
+    #     print(tok)
     assert len(tokens) == 37
     tokens = get_basic_tokens(TOKENSOURCECODE, False)
-    for tok in tokens:
-        print(tok)
+    # for tok in tokens:
+    #     print(tok)
     assert len(tokens) == 34
+
+
+def test_scan_basic_empty():
+    "test scan_basic"
+    assert parse("") == []
 
 
 def test_scan_basic():

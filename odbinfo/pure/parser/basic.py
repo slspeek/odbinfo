@@ -4,7 +4,8 @@ from antlr4 import CommonTokenStream, InputStream
 
 from odbinfo.pure.datatype import Callable, Token
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
-from odbinfo.pure.parser.scanner import Scanner
+from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find, maybe, skip,
+                                         someof)
 
 
 def scan_basic(basiccode, library, module) -> [str]:
@@ -25,103 +26,62 @@ class BasicScanner(Scanner):
         self.library = library
         self.module = module
 
-    def whitespace(self):
-        " eat whitespace "
-        return self.eat(OOBasicLexer.WS)
+    # pylint: disable=too-many-arguments
+    def _callable(self, start, bodystart, bodyend, end, name):
+        acallable = Callable(self.library, self.module, name)
+        acallable.body_tokens = self.tokens[bodystart:bodyend]
 
-    # def _signature(self) -> (str, [Token]):
-    #     result = []
-    #     modifier = self.oneof([OOBasicLexer.GLOBAL,
-    #                            OOBasicLexer.PUBLIC,
-    #                            OOBasicLexer.PRIVATE])
-    #     result.extend(modifier)
-    #     if modifier:
-    #         whitespace = self.whitespace()
-    #         if not whitespace:
-    #             return (None, [])  # fail
-    #         result.extend(whitespace)
-    #
-    #     result.extend(self.maybe_seq([OOBasicLexer.STATIC, OOBasicLexer.WS]))
-    #     keyword = self.oneof([OOBasicLexer.FUNCTION, OOBasicLexer.SUB])
-    #     if keyword:
-    #         result.extend(keyword)
-    #         whitespace = self.whitespace()
-    #         if not whitespace:
-    #             return (None, [])  # fail
-    #         result.extend(whitespace)
-    #         id_token = self.eat(OOBasicLexer.IDENTIFIER)
-    #         # print("Function id: ", id_token)
-    #         if id_token:
-    #             result.append(id_token)
-    #             name = id_token.text
-    #             # continue to NEWLINE to find body
-    #             until_newline = self.find_oneof([OOBasicLexer.NEWLINE])
-    #             if not until_newline:
-    #                 raise RuntimeError(f"Newline not found in module: "
-    #                                    f"{self.module}"
-    #                                    f"library: {self.library}")
-    #             result.extend(until_newline)
-    #         else:
-    #             return (None, [])  # fail
-    #     else:
-    #         return (None, [])  # fail
-    #     return (name, result)
-
-    def _find_callable(self) -> Callable:
-        for index in range(self.cursor, self.tokens_length):
-            self.set_cursor(index)
-            start_callable = index
-            if self.oneof([OOBasicLexer.GLOBAL,
-                           OOBasicLexer.PUBLIC,
-                           OOBasicLexer.PRIVATE]):
-                if not self.eat(OOBasicLexer.WS):
-                    continue
-            self.maybe_seq([OOBasicLexer.STATIC, OOBasicLexer.WS])
-            if self.oneof([OOBasicLexer.FUNCTION, OOBasicLexer.SUB]):
-                if not self.eat(OOBasicLexer.WS):
-                    continue
-                id_token = self.eat(OOBasicLexer.IDENTIFIER)
-                # print("Function id: ", id_token)
-                if id_token:
-                    name = id_token.text
-                    # continue to NEWLINE to find body
-                    if not self.find_oneof([OOBasicLexer.NEWLINE]):
-                        raise RuntimeError(f"Newline not found in module: "
-                                           f"{self.module}"
-                                           f"library: {self.library}")
-                    start_body = self.cursor
-                    if not self.find_oneof([OOBasicLexer.END_SUB,
-                                            OOBasicLexer.END_FUNCTION]):
-                        raise RuntimeError("No callable end found in module: "
-                                           f"{self.module}"
-                                           f"library: {self.library}")
-                    end_callable = self.cursor - 1
-                    start_callable_index = self.tokens[start_callable].index
-                    end_callable_index = self.tokens[end_callable].index
-
-                    result = Callable(self.library,
-                                      self.module,
-                                      name)
-                    result.tokens = self.alltokens[start_callable_index:
-                                                   end_callable_index + 1]
-                    result.body_tokens =\
-                        self.tokens[start_body:
-                                    end_callable]
-
-                    return result
-
-        return None
+        start_index = self.tokens[start].index
+        end_index = self.tokens[end - 1].index
+        acallable.tokens = self.alltokens[start_index:end_index + 1]
+        return acallable
 
     def scan(self):
         "perform the scan"
         callables = []
-        while True:
-            acallable = self._find_callable()
-            if acallable is None:
-                break
-            callables.append(acallable)
-
+        callable_infos = allmacros(self)
+        if callable_infos:
+            for callable_info in callable_infos:
+                # start, bodystart, bodyend, end, name = callable_info
+                acallable = self._callable(*callable_info)
+                callables.append(acallable)
         return callables
+
+
+def signature(parser) -> (int, int, [Token]):
+    " recognize macro signature "
+    start = parser.cursor
+    result = a(skip(maybe(anyof(OOBasicLexer.GLOBAL,
+                                OOBasicLexer.PUBLIC,
+                                OOBasicLexer.PRIVATE), OOBasicLexer.WS)),
+               skip(maybe(OOBasicLexer.STATIC, OOBasicLexer.WS)),
+               skip(anyof(OOBasicLexer.FUNCTION, OOBasicLexer.SUB)),
+               skip(OOBasicLexer.WS),
+               OOBasicLexer.IDENTIFIER,
+               skip(find(OOBasicLexer.NEWLINE)))(parser)
+    # if not result:
+    #     raise ParserError
+    id_token = result[0]
+    end = parser.cursor
+    return start, end, id_token.text
+
+
+def macro(parser) -> (int, int, int, int, str):
+    " recognize callable "
+
+    amacro = a(signature, skip(find(anyof(OOBasicLexer.END_FUNCTION,
+                                          OOBasicLexer.END_SUB))))(parser)
+    end = parser.cursor
+    # if not amacro:
+    #     raise ParserError
+    start, sigend, name = amacro[0]
+    return start, sigend, end - 1, end, name
+
+
+def allmacros(parser) -> [(int, int, int, int, str)]:
+    " find all macros "
+    macros = maybe(someof(find(macro)))(parser)
+    return macros
 
 
 def get_basic_tokens(basiccode, include_hidden=False) -> [Token]:

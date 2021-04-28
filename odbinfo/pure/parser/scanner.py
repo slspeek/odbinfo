@@ -32,41 +32,6 @@ class Scanner:
             self.cursor += 1
             self.set_cursor(self.cursor)
 
-    def maybe_seq(self, seq: [int]) -> [Token]:
-        " Read whole `seq` maybe"
-        rtokens = []
-        mark = self.cursor
-        for token in seq:
-            rtoken = self.eat(token)
-            if rtoken:
-                rtokens.append(rtoken)
-            else:
-                self.set_cursor(mark)
-        return rtokens
-
-    def oneof(self, ptokens: [int]) -> [Token]:
-        " Read one of `ptokens`"
-        rtokens = []
-        for token in ptokens:
-            rtoken = self.eat(token)
-            if rtoken:
-                rtokens.append(rtoken)
-        return rtokens
-
-    def find_oneof(self, types: [int]) -> [Token]:
-        " seek until one of `types` token is seen"
-        rtokens = []
-        mark = self.cursor
-        for i in range(self.cursor, len(self.tokens)):
-            self.set_cursor(i)
-            rtokens.append(self.cur_token)
-            if self.cur_token.type in types:
-                self.step()
-                return rtokens
-
-        self.set_cursor(mark)
-        return []
-
 
 class ParserError(Exception):
     "Parser error"
@@ -140,8 +105,7 @@ def a(*args):
         for arg in args:
             if isinstance(arg, int):
                 arg = just(arg)
-            if callable(arg):
-                arg = arg(parser)
+            arg = arg(parser)
             if arg is not None:
                 if not isinstance(arg, list):
                     result.append(arg)

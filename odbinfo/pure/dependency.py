@@ -15,11 +15,10 @@ def search_callable_in_callable(callables: [Callable]) -> [UseCase]:
     " find calls from one to another "
     calls = []
     for caller in callables:
-        # next for is not good enough,
         lib = caller.library
         module = caller.module
-        # callables in own module first
 
+        # callables in own module first
         def filter_own_module(lib: str, mod: str, call: Callable):
             return call.module == mod and call.library == lib
 
@@ -38,7 +37,7 @@ def search_callable_in_callable(callables: [Callable]) -> [UseCase]:
         for candidate in candidates:
             calls.extend(consider(caller, candidate))
 
-        # callables in own library
+        # callables in other libraries
         def filter_other_library(lib: str, call: Callable):
             return not call.library == lib
 

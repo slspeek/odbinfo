@@ -25,6 +25,48 @@ class BasicScanner(Scanner):
         self.library = library
         self.module = module
 
+    def whitespace(self):
+        " eat whitespace "
+        return self.eat(OOBasicLexer.WS)
+
+    # def _signature(self) -> (str, [Token]):
+    #     result = []
+    #     modifier = self.oneof([OOBasicLexer.GLOBAL,
+    #                            OOBasicLexer.PUBLIC,
+    #                            OOBasicLexer.PRIVATE])
+    #     result.extend(modifier)
+    #     if modifier:
+    #         whitespace = self.whitespace()
+    #         if not whitespace:
+    #             return (None, [])  # fail
+    #         result.extend(whitespace)
+    #
+    #     result.extend(self.maybe_seq([OOBasicLexer.STATIC, OOBasicLexer.WS]))
+    #     keyword = self.oneof([OOBasicLexer.FUNCTION, OOBasicLexer.SUB])
+    #     if keyword:
+    #         result.extend(keyword)
+    #         whitespace = self.whitespace()
+    #         if not whitespace:
+    #             return (None, [])  # fail
+    #         result.extend(whitespace)
+    #         id_token = self.eat(OOBasicLexer.IDENTIFIER)
+    #         # print("Function id: ", id_token)
+    #         if id_token:
+    #             result.append(id_token)
+    #             name = id_token.text
+    #             # continue to NEWLINE to find body
+    #             until_newline = self.find_oneof([OOBasicLexer.NEWLINE])
+    #             if not until_newline:
+    #                 raise RuntimeError(f"Newline not found in module: "
+    #                                    f"{self.module}"
+    #                                    f"library: {self.library}")
+    #             result.extend(until_newline)
+    #         else:
+    #             return (None, [])  # fail
+    #     else:
+    #         return (None, [])  # fail
+    #     return (name, result)
+
     def _find_callable(self) -> Callable:
         for index in range(self.cursor, self.tokens_length):
             self.set_cursor(index)

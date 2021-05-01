@@ -16,7 +16,7 @@ def _process_library(library: Library):
 def _tokenize_library(library: Library):
     def tokenize_module(module: Module):
         module.tokens =\
-            get_basic_tokens(module.source, include_hidden=True)
+            get_basic_tokens(module.source)
     list(map(tokenize_module, library.modules))
 
 

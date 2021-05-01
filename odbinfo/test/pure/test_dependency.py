@@ -31,7 +31,7 @@ End Sub
 
 def test_corresponding_token_fail():
     " corresponding_token fail test"
-    token = Token(0, 0, "Foo", 1, 3)
+    token = Token(0, 0, "Foo", 1, 3, False)
     with pytest.raises(ValueError):
         corresponding_token([], token)
 

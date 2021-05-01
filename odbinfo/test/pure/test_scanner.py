@@ -7,9 +7,14 @@ from odbinfo.pure.parser.scanner import (ParserError, Scanner, a, anyof, find,
                                          just, maybe)
 
 
+def get_token(text: str, token_type: int):
+    "Constructs a token with some defaults "
+    return Token(1, 0, text, token_type, 0, False)
+
+
 def test_just():
     " test just combinator "
-    token = Token(1, 0, "Sub", 0, 0)
+    token = get_token("Sub", 0)
     tokens = [token]
     scanner = Scanner(tokens)
     result = just(0)(scanner)
@@ -18,8 +23,8 @@ def test_just():
 
 def test_a():
     " test just combinator "
-    token0 = Token(1, 0, "Sub", 0, 0)
-    token1 = Token(1, 3, "Foo", 1, 1)
+    token0 = get_token("Sub", 0)
+    token1 = get_token("Foo", 1)
     tokens = [token0, token1]
     scanner = Scanner(tokens)
     result = a(0, 1)(scanner)
@@ -39,9 +44,9 @@ def test_a():
 
 def test_find_found():
     "test find"
-    token0 = Token(1, 0, " ", 2, 0)
-    token1 = Token(1, 1, "Sub", 0, 1)
-    token2 = Token(1, 4, "Foo", 1, 2)
+    token0 = get_token(" ", 2)
+    token1 = get_token("Sub", 0)
+    token2 = get_token("Foo", 1)
     tokens = [token0, token1, token2]
     scanner = Scanner(tokens)
 

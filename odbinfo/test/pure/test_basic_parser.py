@@ -1,9 +1,10 @@
 # pylint: disable=too-many-lines
 # pylint: disable=protected-access
 " parser tests "
-from odbinfo.pure.parser.basic import (BasicScanner, allmacros,
-                                       get_basic_tokens, macro, maybe,
-                                       scan_basic, signature)
+from odbinfo.pure.parser.basic import (BasicScanner, BodyScanner,
+                                       all_functioncalls, allmacros,
+                                       functioncall, get_basic_tokens, macro,
+                                       maybe, scan_basic, signature)
 
 
 def parse(source):
@@ -13,9 +14,15 @@ def parse(source):
 
 def basicscanner(source: str) -> BasicScanner:
     "Instantiates BasicScanner on `source`"
-    tokens = get_basic_tokens(source)
-    alltokens = get_basic_tokens(source, True)
+    alltokens = get_basic_tokens(source)
+    tokens = list(filter(lambda x: not x.hidden, alltokens))
     return BasicScanner(tokens, alltokens, "Standard", "Module1")
+
+
+def bodyscanner(source: str) -> BodyScanner:
+    "Instantiates bodyscanner"
+    tokens = get_basic_tokens(source)
+    return BodyScanner(tokens)
 
 
 def test_parse():
@@ -76,6 +83,34 @@ def test_allmacros_empty():
     print("All Macros: ", macros)
 
 
+def test_functioncall():
+    " test functioncall"
+    scanner = bodyscanner("ModuleFoo.Foo()")
+    calls = functioncall(scanner)
+    assert calls[0].text == "ModuleFoo"
+    assert calls[1].text == "Foo"
+
+
+def test_allfunctioncalls():
+    " test functioncall"
+    scanner = bodyscanner("ModuleFoo.Foo()")
+    calls = all_functioncalls(scanner)
+    assert calls[0][0].text == "ModuleFoo"
+    assert calls[0][1].text == "Foo"
+
+
+def test_allfunctioncalls_multiple_calls():
+    " test functioncall"
+    scanner = bodyscanner("ModuleFoo.Foo() Unqualified() NoCall")
+    calls = all_functioncalls(scanner)
+    assert calls[0][0].text == "ModuleFoo"
+    assert calls[0][1].text == "Foo"
+    assert calls[1][0].text == "Unqualified"
+    assert len(calls) == 2
+    scanner = bodyscanner("ModuleFoo.Foo() Unqualified() NoCall")
+    assert scanner.functioncalls() == calls
+
+
 def test_signature():
     " test signature"
     scanner = basicscanner("public static sub foo()\n")
@@ -99,11 +134,11 @@ def test_find_signature():
 
 def test_get_basic_tokens():
     "test basic tokenizer"
-    tokens = get_basic_tokens(TOKENSOURCECODE, True)
+    tokens = get_basic_tokens(TOKENSOURCECODE)
     # for tok in tokens:
-    #     print(tok)
+    #      print(tok)
     assert len(tokens) == 37
-    tokens = get_basic_tokens(TOKENSOURCECODE, False)
+    tokens = list(filter(lambda x: not x.hidden, tokens))
     # for tok in tokens:
     #     print(tok)
     assert len(tokens) == 34

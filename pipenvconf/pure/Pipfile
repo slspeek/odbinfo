@@ -12,7 +12,8 @@ xmltodict = "*"
 antlr4-python3-runtime = "4.7.2"
 
 [dev-packages]
-radon = "*"
+xenon = "*"
+wily = "*"
 pylint = "*"
 pytest = "*"
 autopep8 = "*"

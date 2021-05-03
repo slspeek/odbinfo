@@ -35,8 +35,7 @@ def libreoffice():
 @fixture(scope="function")
 def empty_libreoffice():
     """ A libreoffice running on a empty database """
-    testdb = EMPTYDB
-    office_proc = start_office(testdb)
+    office_proc = start_office(EMPTYDB)
     yield office_proc
     office_proc.terminate()
     logger.debug("LibreOffice killed")

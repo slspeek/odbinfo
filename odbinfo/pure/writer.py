@@ -17,6 +17,13 @@ import yaml
 FRONT_MATTER_MARK = "---\n"
 
 
+def run_checked(cmd, error_mesg):
+    " run os `cmd` and raise RuntimeError with `error_mesg`"
+    exit_code = os.system(cmd)
+    if exit_code != 0:
+        raise RuntimeError(error_mesg)
+
+
 @contextlib.contextmanager
 def chdir(dirname=None):
     """ Change directory and back """
@@ -45,13 +52,10 @@ def new_site(output_dir, name):
     """ Sets up a empty hugo site with odbinfo templates """
     os.makedirs(output_dir, exist_ok=True)
     with chdir(output_dir):
-        exitcode = os.system(f"hugo new site {name} > /dev/null")
-        if exitcode != 0:
-            raise RuntimeError(f"hugo new site failed to create site: {name}")
-        exitcode = os.system(f"cp -r {DATA_DIR}/hugo-template/* {name}")
-        if exitcode != 0:
-            raise RuntimeError("unable to copy additional site sources from "
-                               f"{DATA_DIR}")
+        run_checked(f"hugo new site {name} > /dev/null",
+                    f"hugo new site failed to create site: {name}")
+        run_checked(f"cp -r {DATA_DIR}/hugo-template/* {name}",
+                    f"unable to copy additional site sources from {DATA_DIR}")
         sitedir = os.path.join(output_dir, name)
     return sitedir
 
@@ -72,9 +76,7 @@ def make_site(output_dir, name, metadata):
         _write_content("pymodules", metadata.pymodules())
         _write_content("documents", metadata.documents)
 
-        exitcode = os.system("hugo")
-        if exitcode != 0:
-            raise RuntimeError("unable to build hugo site")
+        run_checked("hugo", "unable to build hugo site")
     return _convert_local(output_dir, name)
 
 
@@ -155,8 +157,14 @@ def _convert_local(output_dir, name):
                       f" http://localhost:{port}/ > /dev/null 2>&1")
 
             webserver_proc.kill()
-            if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":
-                pwd = path.join(os.getcwd(), localsite)
-                uri = pathlib.Path(pwd).as_uri()
-                webbrowser.open(f"{uri}/index.html")
+            if os.getenv("ODBINFO_NO_BROWSE",
+                         default="0") == "0":  # pragma: no cover
+                _open_browser(webbrowser,
+                              os.getcwd(), localsite)  # pragma: no cover
     return f"{result}-local"
+
+
+def _open_browser(browser, cwd, site_dir):
+    site_abs_path = path.join(cwd, site_dir, "index.html")
+    site_uri = pathlib.Path(site_abs_path).as_uri()
+    browser.open(site_uri)

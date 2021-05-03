@@ -2,7 +2,6 @@
 from functools import partial
 
 from odbinfo.pure.datatype import Callable, Metadata, UseCase, get_identifier
-from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 
 
 def search_dependencies(metadata: Metadata) -> [UseCase]:
@@ -49,19 +48,26 @@ def search_callable_in_callable(callables: [Callable]) -> [UseCase]:
 def consider(caller: Callable, candidate_callee: Callable) -> [UseCase]:
     " find calls in `caller` to `candidate_callee`"
     # print("Considering: ", caller.title, candidate_callee.title)
-    calls = []
-    identifiers = list(filter(lambda tok: tok.type == OOBasicLexer.IDENTIFIER,
-                              caller.body_tokens))
-    for token in identifiers:
+    linked_calls = []
+
+    for acall in caller.calls:
+        if len(acall) == 2:  # qualified call
+            mod_token, token = acall
+            module_name = mod_token.text
+
+            if module_name.upper() != candidate_callee.module.upper():
+                continue
+        else:
+            token = acall[0]
         if token.text.upper() == candidate_callee.name.upper():
-            callee_link = get_identifier(candidate_callee)
 
             # See if not linked yet
             if len(token.link) == 0:
-                calls.append(UseCase(
+                callee_link = get_identifier(candidate_callee)
+                linked_calls.append(UseCase(
                     get_identifier(caller),
                     callee_link,
                     "invokes")
                 )
                 token.link.append(callee_link)
-    return calls
+    return linked_calls

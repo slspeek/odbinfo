@@ -293,8 +293,8 @@ def _read_listbox(data) -> ListBox:
 
 def _read_grid_control(column):
     for elem in column.keys():
-        if elem == "form:properties":
-            continue
+        # if elem == "form:properties":
+        #     continue
         if elem.startswith("form:"):
             control = _read_control(column[elem])
     control.name = column["@form:name"]

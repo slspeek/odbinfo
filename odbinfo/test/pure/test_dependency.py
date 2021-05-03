@@ -28,7 +28,7 @@ End Sub
 
 def test_search_callable_in_callable():
     " total search test"
-    callables = scan_basic(SOURCE_MODULEONE, "BarBar", "LibBar")
+    callables = scan_basic(SOURCE_MODULEONE, "ModuleBarBar", "LibBars")
     cases = search_callable_in_callable(callables)
     print(cases)
     assert len(cases) == 1

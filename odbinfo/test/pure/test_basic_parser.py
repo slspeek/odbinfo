@@ -1,10 +1,12 @@
 # pylint: disable=too-many-lines
 # pylint: disable=protected-access
 " parser tests "
+from odbinfo.pure.datatype import Callable
 from odbinfo.pure.parser.basic import (BasicScanner, BodyScanner,
                                        all_functioncalls, allmacros,
-                                       functioncall, get_basic_tokens, macro,
-                                       maybe, scan_basic, signature)
+                                       extract_stringliterals, functioncall,
+                                       get_basic_tokens, macro, maybe,
+                                       scan_basic, signature)
 
 
 def parse(source):
@@ -83,6 +85,17 @@ def test_allmacros_empty():
     print("All Macros: ", macros)
 
 
+def test_extract_stringliterals():
+    " test extract_stringliterals"
+    tokens = get_basic_tokens("""ModuleFoo.Foo("Hello world!")""")
+    print(tokens)
+    acallable = Callable("methodName", "ModuleName", "LibName")
+    acallable.body_tokens = tokens
+    strings = extract_stringliterals(acallable)
+    assert len(strings) == 1
+    assert strings[0].text == "\"Hello world!\""
+
+
 def test_functioncall():
     " test functioncall"
     scanner = bodyscanner("ModuleFoo.Foo()")
@@ -92,7 +105,7 @@ def test_functioncall():
 
 
 def test_allfunctioncalls():
-    " test functioncall"
+    " test all_functioncalls"
     scanner = bodyscanner("ModuleFoo.Foo()")
     calls = all_functioncalls(scanner)
     assert calls[0][0].text == "ModuleFoo"
@@ -100,15 +113,19 @@ def test_allfunctioncalls():
 
 
 def test_allfunctioncalls_multiple_calls():
-    " test functioncall"
+    " test all_functioncalls"
     scanner = bodyscanner("ModuleFoo.Foo() Unqualified() NoCall")
     calls = all_functioncalls(scanner)
     assert calls[0][0].text == "ModuleFoo"
     assert calls[0][1].text == "Foo"
     assert calls[1][0].text == "Unqualified"
     assert len(calls) == 2
+
+
+def test_allfunctioncalls_method():
+    " test functioncalls method"
     scanner = bodyscanner("ModuleFoo.Foo() Unqualified() NoCall")
-    assert scanner.functioncalls() == calls
+    assert len(scanner.functioncalls()) == 2
 
 
 def test_signature():

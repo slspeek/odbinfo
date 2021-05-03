@@ -17,6 +17,26 @@ def scan_basic(basiccode, library, module) -> [str]:
     return scanner.scan()
 
 
+def analyze_callable(acallable: Callable):
+    "Extract and store functioncalls and stringliterals from the body"
+    acallable.calls = extract_functioncalls(acallable)
+    acallable.strings = extract_stringliterals(acallable)
+
+
+def extract_functioncalls(acallable: Callable):
+    "Extract functioncalls"
+    return BodyScanner(acallable.body_tokens).functioncalls()
+
+
+def extract_stringliterals(acallable: Callable) -> [str]:
+    "Extract and store stringliterals"
+    return list(
+        filter(
+            lambda t: t.type == OOBasicLexer.STRINGLITERAL,
+            acallable.body_tokens)
+    )
+
+
 # pylint:disable=too-few-public-methods
 class BasicScanner(Scanner):
     "scan for procedure names"
@@ -32,18 +52,11 @@ class BasicScanner(Scanner):
         acallable = Callable(self.library, self.module, name)
         acallable.body_tokens = self.tokens[bodystart:bodyend]
 
-        bodyscanner = BodyScanner(acallable.body_tokens)
-        acallable.calls = bodyscanner.functioncalls()
-
-        acallable.strings = list(
-            filter(
-                lambda t: t.type == OOBasicLexer.STRINGLITERAL,
-                acallable.body_tokens)
-        )
-
         start_index = self.tokens[start].index
         end_index = self.tokens[end - 1].index
         acallable.tokens = self.alltokens[start_index:end_index + 1]
+
+        analyze_callable(acallable)
         return acallable
 
     def scan(self):
@@ -112,9 +125,7 @@ def functioncall(parser):
                skip(maybe(OOBasicLexer.WS), OOBasicLexer.LPAREN))(parser)
     if len(tokens) == 2:
         return (tokens[0], tokens[1])
-    if tokens:
-        return (tokens[0], )
-    return None
+    return (tokens[0], )
 
 
 def get_basic_tokens(basiccode) -> [Token]:

@@ -108,7 +108,7 @@ class Callable:
     tokens: [Token] = field(init=False, default_factory=list)
     body_tokens: [Token] = field(init=False, repr=False, default_factory=list)
     calls: [] = field(init=False, default_factory=list)
-    strings: [] = field(init=False, repr=False,  default_factory=list)
+    strings: [Token] = field(init=False, repr=False,  default_factory=list)
     title: str = field(init=False)
 
     def __post_init__(self):

@@ -47,7 +47,7 @@ info: prepare
 coverage: clean prepare
 	cd $(build)
 	python -m pytest -svv --cov --cov-branch --cov-fail-under=96 --cov-config=../../.coveragerc --cov-report html $(puretestloc)
-	test "${ODBINFO_NO_BROWSE}" -ne "0" || x-www-browser htmlcov/index.html
+	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 .ONESHELL:
 itest: prepare
@@ -58,7 +58,6 @@ itest: prepare
 single: prepare
 	cd $(build)
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(testloc)/${SINGLE}
-
 
 .ONESHELL:
 fixture: prepare
@@ -92,9 +91,16 @@ format:
 	isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
 	autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
 
+
+check: check_main check_test
+
 .ONESHELL:
-check: format
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint odbinfo
+check_main: format
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="odbinfo/test/pure,odbinfo/test/oo" odbinfo
+
+.ONESHELL:
+check_test: format
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest odbinfo/test
 
 clean:
 	-@find . -type d -name __pycache__ -exec rm -rf '{}' \;

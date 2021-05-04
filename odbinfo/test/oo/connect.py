@@ -44,6 +44,7 @@ def empty_libreoffice():
 def start_office(file):
     """ Start LibreOffice on `file`. Returns the process """
     args = shlex.split(SOFFICE_CMD.format(file))
+    # pylint:disable=consider-using-with
     office_proc = subprocess.Popen(args, shell=False)
     logger.debug("LibreOffice started with %s ", file)
     return office_proc

@@ -57,10 +57,12 @@ def maybe(*args):
     " maybe read `args`"
     def inner(parser):
         mark = parser.cursor
+        result = None
         try:
-            return unify(*args)(parser)
+            result = unify(*args)(parser)
         except ParserError:
             parser.set_cursor(mark)
+        return result
     return inner
 
 

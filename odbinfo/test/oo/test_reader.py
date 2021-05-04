@@ -1,1 +1,0 @@
-""" Reader oo tests """

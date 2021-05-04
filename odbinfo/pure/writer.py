@@ -147,6 +147,7 @@ def _convert_local(output_dir, name):
         port = 1313
         args = shlex.split("hugo server --disableLiveReload --watch=false "
                            "  2> /dev/null 1>&2")
+        # pylint:disable=consider-using-with
         webserver_proc = subprocess.Popen(args)
         with chdir(".."):
             localsite = f"{name}-local"
@@ -157,14 +158,16 @@ def _convert_local(output_dir, name):
                       f" http://localhost:{port}/ > /dev/null 2>&1")
 
             webserver_proc.kill()
-            if os.getenv("ODBINFO_NO_BROWSE",
-                         default="0") == "0":  # pragma: no cover
-                _open_browser(webbrowser,
-                              os.getcwd(), localsite)  # pragma: no cover
+            _open_browser(localsite)
     return f"{result}-local"
 
 
-def _open_browser(browser, cwd, site_dir):
-    site_abs_path = path.join(cwd, site_dir, "index.html")
-    site_uri = pathlib.Path(site_abs_path).as_uri()
-    browser.open(site_uri)
+def _open_browser(site_dir,
+                  cwd=os.getcwd(),
+                  open_browser=webbrowser.open,
+                  env_info=os.getenv("ODBINFO_NO_BROWSE", default="0")
+                  ):
+    if env_info == "0":
+        site_abs_path = path.join(cwd, site_dir, "index.html")
+        site_uri = pathlib.Path(site_abs_path).as_uri()
+        open_browser(site_uri)

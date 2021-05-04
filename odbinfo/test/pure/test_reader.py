@@ -6,12 +6,11 @@ from odbinfo.pure.reader import (_collect_attribute, _reports, _text_documents,
                                  read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
-from odbinfo.test.pure.fixtures import (  # pylint:disable=unused-import
-    empty_odbzip, odbzip)
+from odbinfo.test.pure.fixtures import empty_odbzip, odbzip
 from odbinfo.test.resource import DEFAULT_TESTDB
 
 
-def test_reports(odbzip):  # pylint: disable=redefined-outer-name
+def test_reports(odbzip):
     " _reports  "
     info = _reports(odbzip)
     for _, form in info:
@@ -20,7 +19,7 @@ def test_reports(odbzip):  # pylint: disable=redefined-outer-name
         # )
 
 
-def test_reports_empty(empty_odbzip):  # pylint: disable=redefined-outer-name
+def test_reports_empty(empty_odbzip):
     " _reports  "
     info = _reports(empty_odbzip)
     for _, form in info:
@@ -29,32 +28,32 @@ def test_reports_empty(empty_odbzip):  # pylint: disable=redefined-outer-name
         # )
 
 
-def test_libraries_empty(empty_odbzip):  # pylint: disable=redefined-outer-name
+def test_libraries_empty(empty_odbzip):
     " no libraries  "
     read_libraries(empty_odbzip)
 
 
-def test_forms_empty(empty_odbzip):  # pylint: disable=redefined-outer-name
+def test_forms_empty(empty_odbzip):
     " no forms  "
     read_forms(empty_odbzip)
 
 
-def test_libraries(odbzip):  # pylint: disable=redefined-outer-name
+def test_libraries(odbzip):
     " libraries "
     read_libraries(odbzip)
 
 
-def test_read_reports(odbzip):  # pylint: disable=redefined-outer-name
+def test_read_reports(odbzip):
     " reports "
     read_reports(odbzip)
 
 
-def test_read_forms(odbzip):  # pylint: disable=redefined-outer-name
+def test_read_forms(odbzip):
     " forms "
     read_forms(odbzip)
 
 
-def test_pylibraries(odbzip):  # pylint: disable=redefined-outer-name
+def test_pylibraries(odbzip):
     " libraries "
     libs = read_python_libraries(odbzip)
     # print(libs)

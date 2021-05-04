@@ -1,28 +1,23 @@
 """ test site creation """
-import logging
-
 import pytest
 
 from odbinfo.oo.core import generate_report
-from odbinfo.test.oo.connect import (  # pylint:disable=unused-import
-    empty_libreoffice, libreoffice, oodocument)
-
-logger = logging.getLogger()
-logging.basicConfig()
-logger.setLevel(logging.DEBUG)
+from odbinfo.test.oo.connect import empty_libreoffice, libreoffice, oodocument
 
 
 @pytest.mark.slow
-# pylint:disable=unused-argument
-def test_generate_report(libreoffice):  # pylint:disable=redefined-outer-name
+def test_generate_report(libreoffice):
     """ test generate-site """
-    oodoc = oodocument()
-    generate_report(oodoc)
+    generate_report_test()
 
 
 @pytest.mark.slow
-# pylint:disable=unused-argument
-def test_generate_report_empty(empty_libreoffice):  # pylint:disable=redefined-outer-name
+def test_generate_report_empty(empty_libreoffice):
     """ test generate-site """
+    generate_report_test()
+
+
+def generate_report_test():
+    " generate report "
     oodoc = oodocument()
     generate_report(oodoc)

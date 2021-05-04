@@ -25,20 +25,16 @@ def test_new_site():
 
 def test_open_browser():
     " test the _open_browser function "
-    # pylint:disable=missing-class-docstring
-    class Browser:
-        # pylint:disable=missing-function-docstring
-        # pylint:disable=too-few-public-methods
-        def open(self, uri):
-            pass
-    browser = Browser()
-    browser.open = MagicMock()
+    open_browser = MagicMock()
+    _open_browser("site", cwd="/home", env_info="0", open_browser=open_browser)
+    open_browser.assert_called_with("file:///home/site/index.html")
 
-    cwd = "/home"
-    site_dir = "site"
-    _open_browser(browser, cwd, site_dir)
 
-    browser.open.assert_called_with("file:///home/site/index.html")
+def test_open_browser_nop():
+    " test the _open_browser function doing nothing"
+    open_browser = MagicMock()
+    _open_browser("site", cwd="/home", env_info="1", open_browser=open_browser)
+    open_browser.assert_not_called()
 
 
 def test_run_checked():

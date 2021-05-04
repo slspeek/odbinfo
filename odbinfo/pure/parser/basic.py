@@ -9,9 +9,8 @@ from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find, maybe, skip,
                                          someof)
 
 
-def scan_basic(basiccode, library, module) -> [str]:
+def scan_basic(alltokens, library, module) -> [str]:
     " extract procedure names "
-    alltokens = get_basic_tokens(basiccode)
     tokens = list(filter(lambda x: not x.hidden, alltokens))
     scanner = BasicScanner(tokens, alltokens, library, module)
     return scanner.scan()

@@ -1,4 +1,4 @@
-""" Writing out to jekyll site format """
+""" Writing out to hugo site format """
 import contextlib
 import dataclasses
 import os
@@ -8,11 +8,14 @@ import socket
 import subprocess
 import time
 import webbrowser
+from functools import partial
 from inspect import ismethod
 from os import path
 
 import toml
 import yaml
+
+from odbinfo.pure.datatype import Metadata
 
 FRONT_MATTER_MARK = "---\n"
 
@@ -37,8 +40,12 @@ def chdir(dirname=None):
 
 
 # We are at odbinfo/pure/writer.py and data resides besides odbinfo
-DATA_DIR = path.join(path.dirname(
-    path.dirname(path.dirname(__file__))), "data")
+DATA_DIR = path.join(path.dirname(path.dirname(path.dirname(__file__))),
+                     "data")
+
+
+METADATA_CONTENT = ["tables", "queries", "views", "forms", "reports",
+                    "libraries", "modules", "callables", "pylibs", "pymodules", "documents"]
 
 
 def _frontmatter(adict, out):
@@ -64,33 +71,28 @@ def make_site(output_dir, name, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
     with chdir(new_site(output_dir, name)):
         _write_config(name, metadata)
-        _write_content("tables", metadata.tables)
-        _write_content("views", metadata.views)
-        _write_content("queries", metadata.queries)
-        _write_content("forms", metadata.forms)
-        _write_content("reports", metadata.reports)
-        _write_content("libraries", metadata.libraries)
-        _write_content("modules", metadata.modules())
-        _write_content("callables", metadata.callables())
-        _write_content("pylibs", metadata.pylibs)
-        _write_content("pymodules", metadata.pymodules())
-        _write_content("documents", metadata.documents)
+
+        list(map(partial(_write_content, metadata), METADATA_CONTENT))
 
         run_checked("hugo", "unable to build hugo site")
     return _convert_local(output_dir, name)
 
 
+def _get_metadata_attr(metadata: Metadata, attribute: str):
+    meta_attribute = getattr(metadata, attribute)
+    if ismethod(meta_attribute):
+        meta_attribute = meta_attribute()
+    return meta_attribute
+
+
 def _write_config(name, metadata):
     def _menu(pairs):
         name, weight = pairs
-        meta_attribute = getattr(metadata, name)
-        if ismethod(meta_attribute):
-            meta_attribute = meta_attribute()
+        meta_attribute = _get_metadata_attr(metadata, name)
         if len(meta_attribute) > 0:
-            return \
-                {"url": f"/{name}/index.html",
-                 "name": name,
-                 "weight": weight}
+            return {"url": f"/{name}/index.html",
+                    "name": name,
+                    "weight": weight}
         return None
     menus_defs = [
         ("tables", 2),
@@ -119,7 +121,9 @@ def _write_config(name, metadata):
                    }, cfg)
 
 
-def _write_content(name, contentlist):
+def _write_content(metadata: Metadata, name):
+    contentlist = _get_metadata_attr(metadata, name)
+
     def basename(content):
         if hasattr(content, "title"):
             return content.title
@@ -158,12 +162,12 @@ def _convert_local(output_dir, name):
                       f" http://localhost:{port}/ > /dev/null 2>&1")
 
             webserver_proc.kill()
-            _open_browser(localsite)
+            _open_browser(localsite, os.getcwd())
     return f"{result}-local"
 
 
 def _open_browser(site_dir,
-                  cwd=os.getcwd(),
+                  cwd,
                   open_browser=webbrowser.open,
                   env_info=os.getenv("ODBINFO_NO_BROWSE", default="0")
                   ):

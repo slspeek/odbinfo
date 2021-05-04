@@ -1,9 +1,11 @@
+SHELL=/bin/bash
 libreoffice=/tmp/program
 python=$(libreoffice)/python
 unopkg=$(libreoffice)/unopkg
 antlr4=java -jar ../../../../../$(antlrlocation)/antlr-4.9.1-complete.jar
 target=target
 testloc=odbinfo/test
+fixtureloc=$(testloc)/resources/fixtures
 puretestloc=odbinfo/test/pure
 ootestloc=odbinfo/test/oo
 dist=$(target)/dist
@@ -60,13 +62,18 @@ single: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(testloc)/${SINGLE}
 
 .ONESHELL:
-fixture: prepare
+fixtures: prepare
 	cd $(build)
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(ootestloc)/fixture_writer.py
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(puretestloc)/fixture_writer.py
-	cd -
-	test -f $(metadata)
+	ODBINFO_NO_BROWSE=1 PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(puretestloc)/test_quick_view.py
 
+.ONESHELL:
+write_fixtures: clean fixtures
+		rm -rf $(fixtureloc)/*
+		mkdir -p $(fixtureloc)/writer_fixtures
+		cp -rv $(test-output)/{test,empty}db{,-local} $(fixtureloc)/writer_fixtures/
+		cp -rv $(test-output)/*.pickle $(fixtureloc)/
 
 .ONESHELL:
 unit: prepare

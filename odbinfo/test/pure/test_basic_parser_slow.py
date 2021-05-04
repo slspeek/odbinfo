@@ -7,7 +7,7 @@ from zipfile import ZipFile
 import pytest
 
 from odbinfo.pure.datatype import Module
-from odbinfo.pure.parser.basic import scan_basic
+from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.reader import _parse_xml, mapiflist
 from odbinfo.test.resource import BASEDOCUMENTER
 
@@ -45,5 +45,6 @@ def test_basedocumenter_sources():
                     """, _BD_UTF8(Replace(_BD_GetLabel("PREFERENCESTITLE"),"""
                     """ "%0", BaseDocumenterTitle)))"""
                 )
-            # get_basic_tokens(module.source)
-            scan_basic(module.source, "BaseDocumenter", module.name)
+            #
+            scan_basic(get_basic_tokens(module.source),
+                       "BaseDocumenter", module.name)

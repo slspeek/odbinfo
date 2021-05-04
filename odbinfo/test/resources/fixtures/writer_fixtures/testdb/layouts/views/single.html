@@ -1,0 +1,10 @@
+{{ partial "header" . }}
+
+<main>
+    <h2>{{ .Params.name }}</h2>
+    <div style="text-align:left; font-size: 150%;">
+      {{ highlight .Params.command "SQL" ""}}
+    </div>
+</main>
+
+{{ partial "footer" . }}

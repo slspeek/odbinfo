@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://example.com/documents/untitled.odt/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/forms/family/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/forms/formulier1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/forms/plant-invoeren/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/forms/plant/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/forms/plantlistbox/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/forms/related-subform/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/forms/view1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/libraries/library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/libraries/standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/pylibs/bibliotheek/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/pylibs/python/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/queries/familylookup/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/queries/vwplant/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/reports/family/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/reports/vwplant/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tables/family/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tables/persoon/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tables/plant/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/views/view1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/pymodules/bibliotheek.module.py/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/documents/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/forms/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tables/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/libraries/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/modules/library1.module1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/library1.module1.calleesub/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/library1.module1.callerotherlib/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/library1.module1.callershadowedcallee/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/library1.module1.callersub/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/library1.module1.callertwo/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/library1.module1.main/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/library1.module1.shadowedcallee/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/modules/library1.module2/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/library1.module2.calleesub/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/library1.module2.calleetwosub/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/modules/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/pylibs/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/pymodules/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/queries/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/reports/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/modules/standard.module1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/standard.module1.calleeotherlib/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/standard.module1.shadowedcallee/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/modules/standard.module2/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/callables/standard.module2.main/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/views/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/pymodules/python.pymodule.py/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.com/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

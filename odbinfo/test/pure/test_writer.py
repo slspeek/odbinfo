@@ -5,7 +5,7 @@ from unittest.mock import MagicMock
 import pytest
 
 from odbinfo.pure.writer import _open_browser, chdir, new_site, run_checked
-from odbinfo.test.resource import TEST_OUTPUT
+from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 
 def test_chdir_none():
@@ -19,21 +19,21 @@ def test_chdir_none():
 @pytest.mark.slow
 def test_new_site():
     """ test new site scaffolding """
-    result = new_site(TEST_OUTPUT.format(""), "test-site")
-    assert result == os.path.join(TEST_OUTPUT.format(""), "test-site")
+    result = new_site(TEST_OUTPUT_TPL.format(""), "test-site")
+    assert result == os.path.join(TEST_OUTPUT_TPL.format(""), "test-site")
 
 
 def test_open_browser():
     " test the _open_browser function "
     open_browser = MagicMock()
-    _open_browser("site", cwd="/home", env_info="0", open_browser=open_browser)
+    _open_browser("site", "/home", env_info="0", open_browser=open_browser)
     open_browser.assert_called_with("file:///home/site/index.html")
 
 
 def test_open_browser_nop():
     " test the _open_browser function doing nothing"
     open_browser = MagicMock()
-    _open_browser("site", cwd="/home", env_info="1", open_browser=open_browser)
+    _open_browser("site", "/home", env_info="1", open_browser=open_browser)
     open_browser.assert_not_called()
 
 

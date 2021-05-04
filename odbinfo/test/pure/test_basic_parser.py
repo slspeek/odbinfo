@@ -11,7 +11,7 @@ from odbinfo.pure.parser.basic import (BasicScanner, BodyScanner,
 
 def parse(source):
     " wrap parse with default arguments "
-    return scan_basic(source, "Standard", "Module")
+    return scan_basic(get_basic_tokens(source), "Standard", "Module")
 
 
 def basicscanner(source: str) -> BasicScanner:

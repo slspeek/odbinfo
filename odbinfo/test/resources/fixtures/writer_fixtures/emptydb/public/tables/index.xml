@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Index of database tables on emptydb</title>
+    <link>http://example.com/tables/</link>
+    <description>Recent content in Index of database tables on emptydb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://example.com/tables/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

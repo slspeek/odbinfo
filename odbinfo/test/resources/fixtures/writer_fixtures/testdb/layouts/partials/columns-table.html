@@ -1,0 +1,44 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Default value</th>
+    <th>Description</th>
+    <th>Auto increment</th>
+    <th>Nullable</th>
+    <th>Typename</th>
+    <th>Precision</th>
+    <th>Scale</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{ range .Params.Columns }}
+   <tr>
+      <td>
+      {{  .name }}
+      </td>
+      <td>
+      {{  .defaultvalue }}
+      </td>
+      <td>
+      {{ .description }}
+      </td>
+      <td>
+      {{  .autoincrement }}
+      </td>
+      <td>
+        {{ .nullable }}
+      </td>
+      <td>
+      {{  .typename }}
+      </td>
+      <td>
+      {{  .precision }}
+      </td>
+      <td>
+      {{  .scale }}
+      </td>
+    </tr>
+{{ end }}
+</tbody>
+</table>

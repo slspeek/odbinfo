@@ -4,7 +4,7 @@ from zipfile import ZipFile
 
 from pytest import fixture
 
-from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB, FIXTURE_DIR
+from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB, FIXTURE_DIR_TPL
 
 
 def load_metadata(processed=False, empty=False):
@@ -15,7 +15,7 @@ def load_metadata(processed=False, empty=False):
     if processed:
         postfix = "-processed"
     filename = f"{prefix}metadata{postfix}.pickle"
-    with open(FIXTURE_DIR.format(filename), 'rb') as file:
+    with open(FIXTURE_DIR_TPL.format(filename), 'rb') as file:
         meta = pickle.load(file)
     return meta
 

@@ -1,1 +1,0 @@
-{{ if .token.link }}{{$link:=index .token.link 0}}{{$url:=partial "find-in-section" (dict "context" .context "section" "callables" "title" $link.local_id)}}<a href="{{$url}}">{{.token.text}}</a>{{else}}{{.token.text}}{{end}}

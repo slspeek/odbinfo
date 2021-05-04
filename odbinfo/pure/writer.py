@@ -122,18 +122,19 @@ def _write_config(name, metadata):
 
 
 def _write_content(metadata: Metadata, name):
-    contentlist = _get_metadata_attr(metadata, name)
 
     def basename(content):
         if hasattr(content, "title"):
             return content.title
         return content.name
 
-    targetpath = f"content/{name}"
-    os.makedirs(targetpath, exist_ok=True)
-    for content in contentlist:
-        with open(f"{targetpath}/{basename(content)}.md", "w") as out:
-            _frontmatter(dataclasses.asdict(content), out)
+    contentlist = _get_metadata_attr(metadata, name)
+    if len(contentlist) > 0:
+        targetpath = f"content/{name}"
+        os.makedirs(targetpath, exist_ok=True)
+        for content in contentlist:
+            with open(f"{targetpath}/{basename(content)}.md", "w") as out:
+                _frontmatter(dataclasses.asdict(content), out)
 
 
 def _is_port_open(port):

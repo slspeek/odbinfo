@@ -40,12 +40,22 @@ def chdir(dirname=None):
 
 
 # We are at odbinfo/pure/writer.py and data resides besides odbinfo
+# so we go up three times, and then into 'data'
 DATA_DIR = path.join(path.dirname(path.dirname(path.dirname(__file__))),
                      "data")
 
 
-METADATA_CONTENT = ["tables", "queries", "views", "forms", "reports",
-                    "libraries", "modules", "callables", "pylibs", "pymodules", "documents"]
+METADATA_CONTENT = ["tables",
+                    "queries",
+                    "views",
+                    "forms",
+                    "reports",
+                    "libraries",
+                    "modules",
+                    "callables",
+                    "pylibs",
+                    "pymodules",
+                    "documents"]
 
 
 def _frontmatter(adict, out):
@@ -63,19 +73,23 @@ def new_site(output_dir, name):
                     f"hugo new site failed to create site: {name}")
         run_checked(f"cp -r {DATA_DIR}/hugo-template/* {name}",
                     f"unable to copy additional site sources from {DATA_DIR}")
-        sitedir = os.path.join(output_dir, name)
-    return sitedir
 
 
 def make_site(output_dir, name, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
-    with chdir(new_site(output_dir, name)):
-        _write_config(name, metadata)
+    new_site(output_dir, name)
 
-        list(map(partial(_write_content, metadata), METADATA_CONTENT))
-
+    with chdir(os.path.join(output_dir, name)):
+        _write_metadata(name, metadata)
         run_checked("hugo", "unable to build hugo site")
-    return _convert_local(output_dir, name)
+    _convert_local(output_dir, name)
+    localsite = f"{output_dir}/{name}-local"
+    _open_browser(localsite, os.getcwd())
+
+
+def _write_metadata(name, metadata: Metadata):
+    _write_config(name, metadata)
+    list(map(partial(_write_content, metadata), METADATA_CONTENT))
 
 
 def _get_metadata_attr(metadata: Metadata, attribute: str):
@@ -85,7 +99,7 @@ def _get_metadata_attr(metadata: Metadata, attribute: str):
     return meta_attribute
 
 
-def _write_config(name, metadata):
+def _write_config(site_name, metadata):
     def _menu(pairs):
         name, weight = pairs
         meta_attribute = _get_metadata_attr(metadata, name)
@@ -94,25 +108,14 @@ def _write_config(name, metadata):
                     "name": name,
                     "weight": weight}
         return None
-    menus_defs = [
-        ("tables", 2),
-        ("queries", 3),
-        ("views", 4),
-        ("forms", 5),
-        ("reports", 6),
-        ("libraries", 8),
-        ("modules", 9),
-        ("callables", 10),
-        ("pylibs", 11),
-        ("pymodules", 12),
-        ("documents", 13)
-    ]
+    menus_defs = list(
+        zip(METADATA_CONTENT, range(2, len(METADATA_CONTENT) + 2)))
     menus = list(filter(lambda x: x is not None, map(_menu, menus_defs)))
     menus.append({"url": "/",
                   "name": "home",
                   "weight": 1})
     with open("config.toml", "w") as cfg:
-        toml.dump({"title": name,
+        toml.dump({"title": site_name,
                    "baseURL": "http://example.com/",
                    "languageCode": "en-us",
                    "theme": "minimal",
@@ -163,8 +166,7 @@ def _convert_local(output_dir, name):
                       f" http://localhost:{port}/ > /dev/null 2>&1")
 
             webserver_proc.kill()
-            _open_browser(localsite, os.getcwd())
-    return f"{result}-local"
+            #_open_browser(localsite, os.getcwd())
 
 
 def _open_browser(site_dir,

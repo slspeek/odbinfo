@@ -32,32 +32,32 @@ weight = 6
 [[menu.main]]
 url = "/libraries/index.html"
 name = "libraries"
-weight = 8
+weight = 7
 
 [[menu.main]]
 url = "/modules/index.html"
 name = "modules"
-weight = 9
+weight = 8
 
 [[menu.main]]
 url = "/callables/index.html"
 name = "callables"
-weight = 10
+weight = 9
 
 [[menu.main]]
 url = "/pylibs/index.html"
 name = "pylibs"
-weight = 11
+weight = 10
 
 [[menu.main]]
 url = "/pymodules/index.html"
 name = "pymodules"
-weight = 12
+weight = 11
 
 [[menu.main]]
 url = "/documents/index.html"
 name = "documents"
-weight = 13
+weight = 12
 
 [[menu.main]]
 url = "/"

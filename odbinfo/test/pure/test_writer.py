@@ -19,8 +19,8 @@ def test_chdir_none():
 @pytest.mark.slow
 def test_new_site():
     """ test new site scaffolding """
-    result = new_site(TEST_OUTPUT_TPL.format(""), "test-site")
-    assert result == os.path.join(TEST_OUTPUT_TPL.format(""), "test-site")
+    new_site(TEST_OUTPUT_TPL.format(""), "test-site")
+    assert os.path.exists(TEST_OUTPUT_TPL.format("test-site"))
 
 
 def test_open_browser():

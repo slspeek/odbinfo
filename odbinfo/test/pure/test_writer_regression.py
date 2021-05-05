@@ -10,7 +10,7 @@ from odbinfo.test.resource import FIXTURE_DIR_TPL, TEST_OUTPUT_TPL
 
 
 @pytest.mark.slow
-def test_quick_view(metadata_processed):
+def test_site_regression(metadata_processed):
     """ Run without database scan """
     name = "testdb"
     make_site_regression_test(name, metadata_processed,
@@ -18,7 +18,7 @@ def test_quick_view(metadata_processed):
 
 
 @pytest.mark.slow
-def test_quick_view_empty(empty_metadata_processed):
+def test_site_regression_empty(empty_metadata_processed):
     """ Run without database scan """
     name = "emptydb"
     make_site_regression_test(name, empty_metadata_processed,
@@ -28,8 +28,8 @@ def test_quick_view_empty(empty_metadata_processed):
 def make_site_regression_test(name, metadata, fixture_name: str):
     " generate report and verify"
     outdir = TEST_OUTPUT_TPL.format("")
-    site_dir_local = make_site(outdir, name, metadata)
-    site_dir = site_dir_local[:-6]
+    make_site(outdir, name, metadata)
+    site_dir = os.path.join(outdir, name)
     assert os.system(f"diff -r {fixture_name}/content {site_dir}/content") == 0
 
     assert os.system(f"diff -r {fixture_name}/config.toml"

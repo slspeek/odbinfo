@@ -66,14 +66,14 @@ fixtures: prepare
 	cd $(build)
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(ootestloc)/fixture_writer.py
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(puretestloc)/fixture_writer.py
-	ODBINFO_NO_BROWSE=1 PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(puretestloc)/test_writer_regression.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(puretestloc)/writer_fixture_writer.py
 
 .ONESHELL:
 write_fixtures: clean fixtures
 		# rm -rf $(fixtureloc)/*
 		mkdir -p $(fixtureloc)/writer_fixtures
-		cp -rv $(test-output)/emptydb/{content,config.toml} $(fixtureloc)/writer_fixtures/emptydb
-		cp -rv $(test-output)/testdb/{content,config.toml} $(fixtureloc)/writer_fixtures/testdb
+		cp -rv $(test-output)/emptydb $(fixtureloc)/writer_fixtures/
+		cp -rv $(test-output)/testdb $(fixtureloc)/writer_fixtures/
 		cp -rv $(test-output)/*.pickle $(fixtureloc)/
 
 .ONESHELL:

@@ -35,6 +35,7 @@ callables:
   library: Library1
   module: Module1
   name: Main
+  name_token_index: 5
   strings:
   - column: 7
     hidden: false
@@ -218,6 +219,7 @@ callables:
   library: Library1
   module: Module1
   name: CallerSub
+  name_token_index: 16
   strings: []
   title: Library1.Module1.CallerSub
   tokens:
@@ -381,6 +383,7 @@ callables:
   library: Library1
   module: Module1
   name: CalleeSub
+  name_token_index: 35
   strings:
   - column: 7
     hidden: false
@@ -517,6 +520,7 @@ callables:
   library: Library1
   module: Module1
   name: CallerTwo
+  name_token_index: 48
   strings: []
   title: Library1.Module1.CallerTwo
   tokens:
@@ -709,6 +713,7 @@ callables:
   library: Library1
   module: Module1
   name: CallerOtherLib
+  name_token_index: 61
   strings: []
   title: Library1.Module1.CallerOtherLib
   tokens:
@@ -884,6 +889,7 @@ callables:
   library: Library1
   module: Module1
   name: CallerShadowedCallee
+  name_token_index: 80
   strings: []
   title: Library1.Module1.CallerShadowedCallee
   tokens:
@@ -1003,6 +1009,7 @@ callables:
   library: Library1
   module: Module1
   name: ShadowedCallee
+  name_token_index: 93
   strings:
   - column: 7
     hidden: false

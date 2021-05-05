@@ -1,7 +1,8 @@
 " Dependency searcher for metadata "
 from functools import partial
 
-from odbinfo.pure.datatype import Callable, Metadata, UseCase, get_identifier
+from odbinfo.pure.datatype import (Callable, Metadata, Token, UseCase,
+                                   get_identifier)
 
 
 def search_dependencies(metadata: Metadata) -> [UseCase]:
@@ -45,29 +46,36 @@ def search_callable_in_callable(callables: [Callable]) -> [UseCase]:
     return calls
 
 
+def link_token(token: Token, acallable: Callable):
+    "link `token` to `acallable`"
+    token.link.append(get_identifier(acallable))
+
+
 def consider(caller: Callable, candidate_callee: Callable) -> [UseCase]:
     " find calls in `caller` to `candidate_callee`"
     # print("Considering: ", caller.title, candidate_callee.title)
-    linked_calls = []
 
-    for acall in caller.calls:
+    def match_and_not_linked(acall):
         if len(acall) == 2:  # qualified call
-            mod_token, token = acall
+            mod_token, name_token = acall
             module_name = mod_token.text
 
             if module_name.upper() != candidate_callee.module.upper():
-                continue
+                return False, name_token
         else:
-            token = acall[0]
-        if token.text.upper() == candidate_callee.name.upper():
+            name_token = acall[0]
+        return (name_token.text.upper() == candidate_callee.name.upper()
+                and len(name_token.link) == 0, name_token)
 
-            # See if not linked yet
-            if len(token.link) == 0:
-                callee_link = get_identifier(candidate_callee)
-                linked_calls.append(UseCase(
-                    get_identifier(caller),
-                    callee_link,
-                    "invokes")
-                )
-                token.link.append(callee_link)
-    return linked_calls
+    def make_use_case(name_token):
+        link_token(name_token, candidate_callee)
+        return UseCase(
+            get_identifier(caller),
+            get_identifier(candidate_callee),
+            "invokes")
+
+    use_cases = []
+    for match, ntoken in map(match_and_not_linked, caller.calls):
+        if match:
+            use_cases.append(make_use_case(ntoken))
+    return use_cases

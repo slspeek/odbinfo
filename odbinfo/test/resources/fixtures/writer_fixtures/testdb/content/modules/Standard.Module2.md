@@ -35,6 +35,7 @@ callables:
   library: Standard
   module: Module2
   name: Main
+  name_token_index: 5
   strings:
   - column: 7
     hidden: false

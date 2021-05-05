@@ -46,6 +46,7 @@ calls:
 library: Library1
 module: Module1
 name: CallerShadowedCallee
+name_token_index: 80
 strings: []
 title: Library1.Module1.CallerShadowedCallee
 tokens:

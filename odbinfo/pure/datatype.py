@@ -105,6 +105,7 @@ class Callable:
     library: str
     module: str
     name: str
+    name_token_index: int = field(init=False)
     tokens: [Token] = field(init=False, default_factory=list)
     body_tokens: [Token] = field(init=False, repr=False, default_factory=list)
     calls: [] = field(init=False, default_factory=list)

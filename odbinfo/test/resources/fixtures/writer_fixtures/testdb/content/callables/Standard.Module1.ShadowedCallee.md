@@ -34,6 +34,7 @@ calls: []
 library: Standard
 module: Module1
 name: ShadowedCallee
+name_token_index: 16
 strings:
 - column: 7
   hidden: false

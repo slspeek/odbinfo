@@ -107,6 +107,7 @@ calls:
 library: Library1
 module: Module1
 name: CallerOtherLib
+name_token_index: 61
 strings: []
 title: Library1.Module1.CallerOtherLib
 tokens:

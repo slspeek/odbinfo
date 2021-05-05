@@ -28,7 +28,7 @@ def extract_functioncalls(acallable: Callable):
 
 
 def extract_stringliterals(acallable: Callable) -> [str]:
-    "Extract and store stringliterals"
+    "Extract stringliterals"
     return list(
         filter(
             lambda t: t.type == OOBasicLexer.STRINGLITERAL,
@@ -47,9 +47,10 @@ class BasicScanner(Scanner):
         self.module = module
 
     # pylint: disable=too-many-arguments
-    def _callable(self, start, bodystart, bodyend, end, name):
-        acallable = Callable(self.library, self.module, name)
+    def _callable(self, start, bodystart, bodyend, end, name_token):
+        acallable = Callable(self.library, self.module, name_token.text)
         acallable.body_tokens = self.tokens[bodystart:bodyend]
+        acallable.name_token_index = name_token.index
 
         start_index = self.tokens[start].index
         end_index = self.tokens[end - 1].index
@@ -82,20 +83,20 @@ def signature(parser) -> (int, int, [Token]):
                skip(find(OOBasicLexer.NEWLINE)))(parser)
     id_token = result[0]
     end = parser.cursor
-    return start, end, id_token.text
+    return start, end, id_token
 
 
-def macro(parser) -> (int, int, int, int, str):
+def macro(parser) -> (int, int, int, int, Token):
     " recognize callable "
 
     amacro = a(signature, skip(find(anyof(OOBasicLexer.END_FUNCTION,
                                           OOBasicLexer.END_SUB))))(parser)
     end = parser.cursor
-    start, sigend, name = amacro[0]
-    return start, sigend, end - 1, end, name
+    start, sigend, name_token = amacro[0]
+    return start, sigend, end - 1, end, name_token
 
 
-def allmacros(parser) -> [(int, int, int, int, str)]:
+def allmacros(parser) -> [(int, int, int, int, Token)]:
     " find all macros "
     macros = maybe(someof(find(macro)))(parser)
     return macros
@@ -137,13 +138,12 @@ def get_basic_tokens(basiccode) -> [Token]:
     atokens = stream.tokens[:-1]
 
     def convert_token(atoken) -> Token:
-        hidden = atoken.channel == antlr4.Token.HIDDEN_CHANNEL
         return\
             Token(atoken.column,
                   atoken.line,
                   atoken.text,
                   atoken.type,
                   atoken.tokenIndex,
-                  hidden
+                  atoken.channel == antlr4.Token.HIDDEN_CHANNEL
                   )
     return list(map(convert_token, atokens))

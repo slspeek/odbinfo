@@ -34,6 +34,7 @@ calls: []
 library: Library1
 module: Module1
 name: CalleeSub
+name_token_index: 35
 strings:
 - column: 7
   hidden: false

@@ -107,6 +107,7 @@ calls:
 library: Library1
 module: Module1
 name: CallerSub
+name_token_index: 16
 strings: []
 title: Library1.Module1.CallerSub
 tokens:

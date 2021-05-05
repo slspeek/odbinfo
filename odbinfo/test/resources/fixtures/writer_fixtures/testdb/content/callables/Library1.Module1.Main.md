@@ -34,6 +34,7 @@ calls: []
 library: Library1
 module: Module1
 name: Main
+name_token_index: 5
 strings:
 - column: 7
   hidden: false

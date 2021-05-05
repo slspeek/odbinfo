@@ -46,6 +46,7 @@ calls:
 library: Library1
 module: Module1
 name: CallerTwo
+name_token_index: 48
 strings: []
 title: Library1.Module1.CallerTwo
 tokens:

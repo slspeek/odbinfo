@@ -131,8 +131,10 @@ def test_allfunctioncalls_method():
 def test_signature():
     " test signature"
     scanner = basicscanner("public static sub foo()\n")
-    start, end, name = signature(scanner)
-    print(start, end, name)
+    start, end, name_token = signature(scanner)
+
+    print(start, end, name_token)
+    assert name_token.text == "foo"
 
 
 def test_macro():

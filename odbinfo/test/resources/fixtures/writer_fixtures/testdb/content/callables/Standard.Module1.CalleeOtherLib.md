@@ -34,6 +34,7 @@ calls: []
 library: Standard
 module: Module1
 name: CalleeOtherLib
+name_token_index: 5
 strings:
 - column: 7
   hidden: false

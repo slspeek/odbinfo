@@ -36,6 +36,7 @@ modules:
     library: Standard
     module: Module1
     name: CalleeOtherLib
+    name_token_index: 5
     strings:
     - column: 7
       hidden: false
@@ -146,6 +147,7 @@ modules:
     library: Standard
     module: Module1
     name: ShadowedCallee
+    name_token_index: 16
     strings:
     - column: 7
       hidden: false
@@ -465,6 +467,7 @@ modules:
     library: Standard
     module: Module2
     name: Main
+    name_token_index: 5
     strings:
     - column: 7
       hidden: false

@@ -133,6 +133,7 @@ class Module:
     callables: [Callable] = field(init=False, default_factory=list)
     title: str = field(init=False)
     tokens: [Token] = field(init=False, default_factory=list)
+    name_indexes: [int] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         # self.source = tohtml(self.source)

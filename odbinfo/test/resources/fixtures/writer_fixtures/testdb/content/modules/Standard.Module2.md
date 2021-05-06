@@ -113,6 +113,8 @@ callables:
     type: 44
 library: Standard
 name: Module2
+name_indexes:
+- 5
 source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
 title: Standard.Module2
 tokens:

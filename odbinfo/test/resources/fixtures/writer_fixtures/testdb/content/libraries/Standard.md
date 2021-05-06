@@ -239,6 +239,9 @@ modules:
       type: 44
   library: Standard
   name: Module1
+  name_indexes:
+  - 5
+  - 16
   source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
     \nEnd Sub\n\nSub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\
     \nEnd Sub"
@@ -545,6 +548,8 @@ modules:
       type: 44
   library: Standard
   name: Module2
+  name_indexes:
+  - 5
   source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
   title: Standard.Module2
   tokens:

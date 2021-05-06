@@ -11,6 +11,8 @@ def _process_library(library: Library):
             get_basic_tokens(module.source)
         module.callables =\
             scan_basic(module.tokens, library.name, module.name)
+        module.name_indexes =\
+            list(map(lambda c: c.name_token_index, module.callables))
 
     list(map(parse_module, library.modules))
 

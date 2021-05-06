@@ -1107,6 +1107,14 @@ callables:
     type: 44
 library: Library1
 name: Module1
+name_indexes:
+- 5
+- 16
+- 35
+- 48
+- 61
+- 80
+- 93
 source: "REM  *****  BASIC  *****\n\nSub Main\n\tError \"Mijn fout\"\nEnd Sub\n\n\
   Sub CallerSub()\n\tCalleeSub()\n\tModule2.CalleeSub()\nEnd Sub\n\nSub CalleeSub()\n\
   \tprint \"Module1.CalleeSub\"\nEnd Sub\n\nsub CallerTwo()\n\tCalleeTwoSub()\nEnd\

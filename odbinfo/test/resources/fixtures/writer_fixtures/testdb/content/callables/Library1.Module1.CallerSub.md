@@ -77,8 +77,9 @@ body_tokens:
     '
   type: 183
 calls:
-- !!python/tuple
-  - column: 1
+- module_token: null
+  name_token:
+    column: 1
     hidden: false
     index: 20
     line: 8
@@ -87,15 +88,16 @@ calls:
       object_type: Callable
     text: CalleeSub
     type: 181
-- !!python/tuple
-  - column: 1
+- module_token:
+    column: 1
     hidden: false
     index: 24
     line: 9
     link: []
     text: Module2
     type: 181
-  - column: 9
+  name_token:
+    column: 9
     hidden: false
     index: 26
     line: 9

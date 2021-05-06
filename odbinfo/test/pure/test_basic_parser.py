@@ -99,26 +99,26 @@ def test_extract_stringliterals():
 def test_functioncall():
     " test functioncall"
     scanner = bodyscanner("ModuleFoo.Foo()")
-    calls = functioncall(scanner)
-    assert calls[0].text == "ModuleFoo"
-    assert calls[1].text == "Foo"
+    call = functioncall(scanner)
+    assert call.module_token.text == "ModuleFoo"
+    assert call.name_token.text == "Foo"
 
 
 def test_allfunctioncalls():
     " test all_functioncalls"
     scanner = bodyscanner("ModuleFoo.Foo()")
     calls = all_functioncalls(scanner)
-    assert calls[0][0].text == "ModuleFoo"
-    assert calls[0][1].text == "Foo"
+    assert calls[0].module_token.text == "ModuleFoo"
+    assert calls[0].name_token.text == "Foo"
 
 
 def test_allfunctioncalls_multiple_calls():
     " test all_functioncalls"
     scanner = bodyscanner("ModuleFoo.Foo() Unqualified() NoCall")
     calls = all_functioncalls(scanner)
-    assert calls[0][0].text == "ModuleFoo"
-    assert calls[0][1].text == "Foo"
-    assert calls[1][0].text == "Unqualified"
+    assert calls[0].module_token.text == "ModuleFoo"
+    assert calls[0].name_token.text == "Foo"
+    assert calls[1].name_token.text == "Unqualified"
     assert len(calls) == 2
 
 

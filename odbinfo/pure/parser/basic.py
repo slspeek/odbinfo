@@ -3,7 +3,7 @@
 import antlr4
 from antlr4 import CommonTokenStream, InputStream
 
-from odbinfo.pure.datatype import Callable, Token
+from odbinfo.pure.datatype import BasicCall, Callable, Token
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find, maybe, skip,
                                          someof)
@@ -124,8 +124,8 @@ def functioncall(parser):
                OOBasicLexer.IDENTIFIER,
                skip(maybe(OOBasicLexer.WS), OOBasicLexer.LPAREN))(parser)
     if len(tokens) == 2:
-        return (tokens[0], tokens[1])
-    return (tokens[0], )
+        return BasicCall(tokens[1], tokens[0])
+    return BasicCall(tokens[0], None)
 
 
 def get_basic_tokens(basiccode) -> [Token]:

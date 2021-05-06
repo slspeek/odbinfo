@@ -189,8 +189,9 @@ callables:
       '
     type: 183
   calls:
-  - !!python/tuple
-    - column: 1
+  - module_token: null
+    name_token:
+      column: 1
       hidden: false
       index: 20
       line: 8
@@ -199,15 +200,16 @@ callables:
         object_type: Callable
       text: CalleeSub
       type: 181
-  - !!python/tuple
-    - column: 1
+  - module_token:
+      column: 1
       hidden: false
       index: 24
       line: 9
       link: []
       text: Module2
       type: 181
-    - column: 9
+    name_token:
+      column: 9
       hidden: false
       index: 26
       line: 9
@@ -507,8 +509,9 @@ callables:
       '
     type: 183
   calls:
-  - !!python/tuple
-    - column: 1
+  - module_token: null
+    name_token:
+      column: 1
       hidden: false
       index: 52
       line: 17
@@ -683,8 +686,9 @@ callables:
       '
     type: 183
   calls:
-  - !!python/tuple
-    - column: 1
+  - module_token: null
+    name_token:
+      column: 1
       hidden: false
       index: 65
       line: 21
@@ -693,15 +697,16 @@ callables:
         object_type: Callable
       text: CalleeOtherLib
       type: 181
-  - !!python/tuple
-    - column: 1
+  - module_token:
+      column: 1
       hidden: false
       index: 69
       line: 22
       link: []
       text: Module1
       type: 181
-    - column: 9
+    name_token:
+      column: 9
       hidden: false
       index: 71
       line: 22
@@ -876,8 +881,9 @@ callables:
       '
     type: 183
   calls:
-  - !!python/tuple
-    - column: 1
+  - module_token: null
+    name_token:
+      column: 1
       hidden: false
       index: 84
       line: 26

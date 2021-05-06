@@ -21,6 +21,7 @@ PUREPYTHONPATH=.:$$(cd ../../$(pure) 2> /dev/null || cd $(pure) && pipenv --venv
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
 
+
 all: clean genparser info check itest
 
 prepare:
@@ -48,25 +49,25 @@ info: prepare
 .ONESHELL:
 coverage: clean prepare
 	cd $(build)
-	ODBINFO_NO_BROWSE=1 python -m pytest -svv --cov --cov-branch --cov-fail-under=96 --cov-config=../../.coveragerc --cov-report html $(puretestloc)
+	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS}  --cov --cov-branch --cov-fail-under=96 --cov-config=../../.coveragerc --cov-report html $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 .ONESHELL:
 itest: prepare
 	cd $(build)
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)
 
 .ONESHELL:
 single: prepare
 	cd $(build)
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(testloc)/${SINGLE}
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)/${SINGLE}
 
 .ONESHELL:
 fixtures: prepare
 	cd $(build)
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(ootestloc)/fixture_writer.py
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(puretestloc)/fixture_writer.py
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv $(puretestloc)/writer_fixture_writer.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(ootestloc)/fixture_writer.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(puretestloc)/fixture_writer.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(puretestloc)/writer_fixture_writer.py
 
 .ONESHELL:
 write_fixtures: clean fixtures
@@ -79,7 +80,7 @@ write_fixtures: clean fixtures
 .ONESHELL:
 unit: prepare
 	cd $(build)
-	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest -svv -m "not slow" $(testloc)
+	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  -m "not slow" $(testloc)
 	exit 0
 
 .ONESHELL:

@@ -33,8 +33,9 @@ body_tokens:
     '
   type: 183
 calls:
-- !!python/tuple
-  - column: 1
+- module_token: null
+  name_token:
+    column: 1
     hidden: false
     index: 84
     line: 26

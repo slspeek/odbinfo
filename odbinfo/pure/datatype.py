@@ -98,6 +98,13 @@ class PythonLibrary:
     modules: [PythonModule]
 
 
+@dataclass
+class BasicCall:
+    " a function or procedure call in parsed basic code"
+    name_token: Token
+    module_token: Token
+
+
 # pylint:disable=too-many-instance-attributes
 @dataclass
 class Callable:
@@ -108,7 +115,7 @@ class Callable:
     name_token_index: int = field(init=False)
     tokens: [Token] = field(init=False, default_factory=list)
     body_tokens: [Token] = field(init=False, repr=False, default_factory=list)
-    calls: [] = field(init=False, default_factory=list)
+    calls: [BasicCall] = field(init=False, default_factory=list)
     strings: [Token] = field(init=False, repr=False,  default_factory=list)
     title: str = field(init=False)
 

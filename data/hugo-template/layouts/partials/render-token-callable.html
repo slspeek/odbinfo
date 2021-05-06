@@ -2,7 +2,7 @@
 -->{{$link:=index .token.link 0}}<!--
   -->{{$argdict:=dict "context" .context "section" "callables" "title" $link.local_id}}<!--
   -->{{$url:=partial "find-in-section" $argdict}}<!--
-  --><span><a href="{{$url}}">{{.token.text}}</a></span>!--
+  --><span><a href="{{$url}}">{{.token.text}}</a></span><!--
 -->{{else}}<!--
     --><span>{{.token.text}}</span><!--
 -->{{end}}

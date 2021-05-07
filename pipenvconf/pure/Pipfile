@@ -17,6 +17,8 @@ wily = "*"
 pylint = "*"
 pylint-pytest = "*"
 pytest = "*"
+pytest-datadir = "*"
+pytest-regressions = "*"
 autopep8 = "*"
 pytest-cov = "*"
 

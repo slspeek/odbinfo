@@ -8,14 +8,17 @@ from odbinfo.pure.processor import process_metadata
 from odbinfo.pure.writer import make_site
 
 
-def generate_report(oodocument):
+def generate_report(oodocument, output_dir=None):
     """ Make report """
     docurl = oodocument.URL
     docpath = urlparse(docurl).path
+
     docdir = os.path.dirname(docpath)
     name, _ = os.path.splitext(os.path.basename(docpath))
-    workingdir = os.path.join(docdir, ".odbinfo")
-    reportdir = os.path.join(workingdir, name)
+    if not output_dir:
+        output_dir = os.path.join(docdir, ".odbinfo")
+
+    reportdir = os.path.join(output_dir, name)
 
     def rmtree(directory):
         if os.path.isdir(directory) and os.path.exists(directory):
@@ -25,4 +28,4 @@ def generate_report(oodocument):
     rmtree(f"{reportdir}-local")
     metadata = read_metadata(oodocument.DataSource, docpath)
     process_metadata(metadata)
-    return make_site(workingdir, name, metadata)
+    return make_site(output_dir, name, metadata)

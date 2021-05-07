@@ -6,7 +6,7 @@ antlr4jar=antlr-4.9.2-complete.jar
 antlr4=java -jar ../../../../../$(antlrlocation)/$(antlr4jar)
 target=target
 testloc=odbinfo/test
-fixtureloc=$(testloc)/resources/fixtures
+fixtureloc=$(testloc)/oo/data
 puretestloc=odbinfo/test/pure
 ootestloc=odbinfo/test/oo
 dist=$(target)/dist
@@ -30,12 +30,10 @@ travis: installantlr clean genparser info check itest
 prepare:
 	@echo prepare start
 	@-mkdir -p $(build) $(test-output)
-	@cp -r odbinfo data $(build)
 	@echo prepare done
 
 .ONESHELL:
-info: prepare
-	@cd $(build)
+info:
 	echo --------------------------------------
 	echo "|           Build information         |"
 	echo --------------------------------------
@@ -50,24 +48,21 @@ info: prepare
 	@echo
 
 .ONESHELL:
-coverage: clean prepare
+coverage: clean
 	cd $(build)
 	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS}  --cov --cov-branch --cov-fail-under=96 --cov-config=../../.coveragerc --cov-report html $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 .ONESHELL:
-itest: prepare
-	cd $(build)
+itest:
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)
 
 .ONESHELL:
 single: prepare
-	cd $(build)
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)/${SINGLE}
 
 .ONESHELL:
 fixtures: prepare
-	cd $(build)
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(ootestloc)/fixture_writer.py
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(puretestloc)/fixture_writer.py
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(puretestloc)/writer_fixture_writer.py
@@ -79,17 +74,12 @@ write_fixtures: clean fixtures
 		cp -rv $(test-output)/emptydb $(fixtureloc)/writer_fixtures/
 		cp -rv $(test-output)/testdb $(fixtureloc)/writer_fixtures/
 		cp -rv $(test-output)/*.pickle $(fixtureloc)/
+		cp -rv $(test-output)/*.pickle $(fixtureloc)/../../pure/data
+		cp -rv $(fixtureloc)/writer_fixtures $(fixtureloc)/../../pure/data
 
 .ONESHELL:
-unit: prepare
-	cd $(build)
-	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  -m "not slow" $(testloc)
-	exit 0
-
-.ONESHELL:
-quick_view: clean prepare
-	cd $(build)
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_quick_view.py
+unit:
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  -m "not slow" $(testloc)
 
 
 test: itest unit
@@ -121,13 +111,7 @@ clean:
 	@echo $(target) was removed
 
 .ONESHELL:
-open_test_db: prepare
-	cd $(build)
-	$(libreoffice)/soffice $(testloc)/resources/testdb/testdb.odb
-
-.ONESHELL:
 open_shell: prepare
-	cd $(build)
 	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i odbinfo/test/pure/fixtures.py
 
 .ONESHELL:

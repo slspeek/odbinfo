@@ -1,4 +1,7 @@
+
 # Byte-compiled / optimized / DLL files
+.odbinfo
+test-output
 wily-report.html
 logje
 __pycache__/

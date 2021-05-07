@@ -19,9 +19,10 @@ def _read_module(odbzip, library_name,  data) -> Module:
 
 
 @pytest.mark.slow
-def test_basedocumenter_sources():
+def test_basedocumenter_sources(shared_datadir):
     " parse all basedocumenter sources "
-    with ZipFile(BASEDOCUMENTER, "r") as based:
+    with ZipFile((shared_datadir / "basedocumenter" / BASEDOCUMENTER),
+                 "r") as based:
         xlb = _parse_xml(based, "BaseDocumenter/script.xlb")
         data = xlb["library:library"]["library:element"]
         read_module = partial(_read_module, based, "BaseDocumenter")

@@ -1,6 +1,7 @@
 """ Test configuration """
-TEST_OUTPUT_TPL = "./test-output/{}"
+
+TEST_OUTPUT_TPL = "./target/build/test-output/{}"
 FIXTURE_DIR_TPL = "./odbinfo/test/resources/fixtures/{}"
-DEFAULT_TESTDB = './odbinfo/test/resources/testdb/testdb.odb'
-EMPTYDB = './odbinfo/test/resources/testdb/emptydb.odb'
-BASEDOCUMENTER = './odbinfo/test/resources/basedocumenter/BaseDocumenter.oxt'
+DEFAULT_TESTDB = './odbinfo/test/oo/data/testdb.odb'
+EMPTYDB = './odbinfo/test/oo/data/emptydb.odb'
+BASEDOCUMENTER = 'BaseDocumenter.oxt'

@@ -1,6 +1,5 @@
 """ LibreOffice starter and connecter test utilities """
 import logging
-import os
 import shlex
 import subprocess
 import time
@@ -8,7 +7,7 @@ import time
 import uno
 from pytest import fixture
 
-from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
+from odbinfo.test.resource import EMPTYDB
 
 logger = logging.getLogger(__name__)
 logging.basicConfig()
@@ -23,10 +22,11 @@ SOFFICE_CMD = '/tmp/program/soffice '\
 
 
 @fixture(scope="function")
-def libreoffice():
+def libreoffice(shared_datadir):
     """ A libreoffice running on a test database """
-    testdb = os.getenv("ODBINFO_TESTDB", DEFAULT_TESTDB)
-    office_proc = start_office(testdb)
+    # testdb = os.getenv("ODBINFO_TESTDB", DEFAULT_TESTDB)
+    url = str(shared_datadir / "testdb.odb")
+    office_proc = start_office(url)
     yield office_proc
     office_proc.terminate()
     logger.debug("LibreOffice killed")

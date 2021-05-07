@@ -2,7 +2,8 @@ SHELL=/bin/bash
 libreoffice=/tmp/program
 python=$(libreoffice)/python
 unopkg=$(libreoffice)/unopkg
-antlr4=java -jar ../../../../../$(antlrlocation)/antlr-4.9.1-complete.jar
+antlr4jar=antlr-4.9.2-complete.jar
+antlr4=java -jar ../../../../../$(antlrlocation)/$(antlr4jar)
 target=target
 testloc=odbinfo/test
 fixtureloc=$(testloc)/resources/fixtures
@@ -173,7 +174,7 @@ genparser:
 installantlr:
 	-mkdir -p $(antlrlocation)
 	cd $(antlrlocation)
-	curl -O https://www.antlr.org/download/antlr-4.9.1-complete.jar
+	curl -O https://www.antlr.org/download/$(antlr4jar)
 
 ctags:
 	ctags -R odbinfo

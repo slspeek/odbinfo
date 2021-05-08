@@ -7,6 +7,8 @@ import time
 import uno
 from pytest import fixture
 
+from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
+
 logger = logging.getLogger(__name__)
 logging.basicConfig()
 logger.setLevel(logging.DEBUG)
@@ -15,25 +17,13 @@ logger.setLevel(logging.DEBUG)
 OFFICE_TIME_OUT = 20
 SOFFICE_CMD = '/tmp/program/soffice '\
               '--accept="socket,host=localhost,port=2002;urp;" '\
-              '--norestore --nologo --nodefault  --headless'\
-              ' {}'
+              '--norestore --nologo --nodefault  --headless'
 
 
-@fixture(scope="function")
-def libreoffice(shared_datadir):
+@fixture(scope="session")
+def libreoffice():
     """ A libreoffice running on a test database """
-    # testdb = os.getenv("ODBINFO_TESTDB", DEFAULT_TESTDB)
-    url = str(shared_datadir / "databases/testdb.odb")
-    office_proc = start_office(url)
-    yield office_proc
-    office_proc.terminate()
-    logger.debug("LibreOffice killed")
-
-
-@fixture(scope="function")
-def empty_libreoffice(shared_datadir):
-    """ A libreoffice running on a empty database """
-    office_proc = start_office(str(shared_datadir / "databases/emptydb.odb"))
+    office_proc = start_office("")
     yield office_proc
     office_proc.terminate()
     logger.debug("LibreOffice killed")
@@ -41,11 +31,38 @@ def empty_libreoffice(shared_datadir):
 
 def start_office(file):
     """ Start LibreOffice on `file`. Returns the process """
-    args = shlex.split(SOFFICE_CMD.format(file))
+    # args = shlex.split(SOFFICE_CMD.format(file))
+    args = shlex.split(SOFFICE_CMD)
     # pylint:disable=consider-using-with
     office_proc = subprocess.Popen(args, shell=False)
     logger.debug("LibreOffice started with %s ", file)
     return office_proc
+
+
+# pylint:disable=redefined-outer-name
+# pylint:disable=unused-argument
+@fixture(scope="function")
+def testdb_doc(libreoffice, shared_datadir):
+    " libreoffice document 'testdb.odb' "
+    filename = (shared_datadir / DEFAULT_TESTDB).as_uri()
+
+    adesktop = desktop()
+    doc = adesktop.loadComponentFromURL(filename, "_blank", 0, ())
+    yield doc
+    doc.close(True)
+
+
+# pylint:disable=redefined-outer-name
+# pylint:disable=unused-argument
+@fixture(scope="function")
+def emptydb_doc(libreoffice, shared_datadir):
+    " libreoffice document 'emptydb.odb' "
+    filename = (shared_datadir / EMPTYDB).as_uri()
+
+    adesktop = desktop()
+    doc = adesktop.loadComponentFromURL(filename, "_blank", 0, ())
+    yield doc
+    doc.close(True)
 
 
 def get_context():

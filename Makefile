@@ -22,9 +22,11 @@ PUREPYTHONPATH=.:$$(cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
 
-all: clean itest
+build: clean itest
 
-travis: installantlr clean genparser info check itest
+travis: installantlr clean genparser info check alltest
+
+all: travis install_oxt fixtures
 
 prepare:
 	@echo prepare start
@@ -52,7 +54,7 @@ coverage: clean prepare
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 itest: prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} -m "not veryslow" $(testloc)
 
 single: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)/${SINGLE}
@@ -81,7 +83,8 @@ unit:
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  -m "not slow" $(testloc)
 
 
-test: itest unit
+alltest: prepare
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}   $(testloc)
 
 .ONESHELL:
 serve: prepare
@@ -92,12 +95,15 @@ format:
 	isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
 	autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
 
-check: check_main check_test
+pycompile:
+	 python -m py_compile odbinfo/**/**.py odbinfo/test/**/*.py
 
-check_main: format
+check: pycompile check_main check_test
+
+check_main: pycompile format
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="odbinfo/test/pure,odbinfo/test/oo" odbinfo
 
-check_test: format
+check_test: pycompile format
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest odbinfo/test
 
 clean:

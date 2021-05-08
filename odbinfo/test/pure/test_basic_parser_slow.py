@@ -18,6 +18,7 @@ def _read_module(odbzip, library_name,  data) -> Module:
     return Module("BaseDocumenter", name, data["script:module"]["#text"])
 
 
+@pytest.mark.veryslow
 @pytest.mark.slow
 def test_basedocumenter_sources(shared_datadir):
     " parse all basedocumenter sources "

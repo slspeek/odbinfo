@@ -1,5 +1,6 @@
 
 # Byte-compiled / optimized / DLL files
+odbinfo/test/pure/data
 .odbinfo
 test-output
 wily-report.html

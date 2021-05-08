@@ -17,17 +17,17 @@ test-output=$(build)/test-output
 metadata=$(test-output)/metadata.pickle
 oo=pipenvconf/oo
 pure=pipenvconf/pure
-OOPYTHONPATH=.:$$(cd ../../$(oo) 2> /dev/null || cd $(oo) && pipenv --venv)/lib/python3.7/site-packages
-PUREPYTHONPATH=.:$$(cd ../../$(pure) 2> /dev/null || cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
+OOPYTHONPATH=.:$$(cd $(oo) && pipenv --venv)/lib/python3.7/site-packages
+PUREPYTHONPATH=.:$$(cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
 
-all: clean check itest
+all: clean itest
 
 travis: installantlr clean genparser info check itest
 
-
 prepare:
+	if [ ! -d odbinfo/test/pure/data ]; then (cd odbinfo/test/pure && ln -s ../oo/data) fi
 	@echo prepare start
 	@-mkdir -p $(build) $(test-output)
 	@echo prepare done
@@ -47,37 +47,36 @@ info:
 	@dot -V
 	@echo
 
-.ONESHELL:
-coverage: clean
-	cd $(build)
-	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS}  --cov --cov-branch --cov-fail-under=96 --cov-config=../../.coveragerc --cov-report html $(puretestloc)
+coverage: clean prepare
+	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS}  --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
-.ONESHELL:
 itest:
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)
 
-.ONESHELL:
 single: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)/${SINGLE}
 
-.ONESHELL:
-fixtures: prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(ootestloc)/fixture_writer.py
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(puretestloc)/fixture_writer.py
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(puretestloc)/writer_fixture_writer.py
+metadata_fixture: prepare
+	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(ootestloc)/test_reader_regression.py
+	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(ootestloc)/test_reader_regression.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest  $(ootestloc)/test_reader_regression.py
+	cp -v odbinfo/test/oo/test_reader_regression/*.pickle odbinfo/test/oo/data
 
-.ONESHELL:
-write_fixtures: clean fixtures
-		# rm -rf $(fixtureloc)/*
-		mkdir -p $(fixtureloc)/writer_fixtures
-		cp -rv $(test-output)/emptydb $(fixtureloc)/writer_fixtures/
-		cp -rv $(test-output)/testdb $(fixtureloc)/writer_fixtures/
-		cp -rv $(test-output)/*.pickle $(fixtureloc)/
-		cp -rv $(test-output)/*.pickle $(fixtureloc)/../../pure/data
-		cp -rv $(fixtureloc)/writer_fixtures $(fixtureloc)/../../pure/data
+processor_fixture: metadata_fixture
+	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py
+	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py
+	cp -v odbinfo/test/pure/test_processor_regression/*.pickle odbinfo/test/oo/data
 
-.ONESHELL:
+writer_fixture: processor_fixture
+	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py
+	cp -rv $(test-output)/test_writer_regression/emptydb $(fixtureloc)/writer_fixtures/
+	cp -rv $(test-output)/test_writer_regression/testdb $(fixtureloc)/writer_fixtures/
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py
+
+fixtures: writer_fixture
+
 unit:
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  -m "not slow" $(testloc)
 
@@ -93,14 +92,11 @@ format:
 	isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
 	autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
 
-
 check: check_main check_test
 
-.ONESHELL:
 check_main: format
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="odbinfo/test/pure,odbinfo/test/oo" odbinfo
 
-.ONESHELL:
 check_test: format
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest odbinfo/test
 
@@ -110,7 +106,6 @@ clean:
 	#-@rm -rf src/test/resources/output_dir/graphs
 	@echo $(target) was removed
 
-.ONESHELL:
 open_shell: prepare
 	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i odbinfo/test/pure/fixtures.py
 

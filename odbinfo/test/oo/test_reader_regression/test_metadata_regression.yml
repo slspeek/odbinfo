@@ -1,0 +1,759 @@
+documents:
+- fields:
+  - column: naam
+    database: testdb
+    table: vwPlant
+    tabletype: query
+  name: Untitled.odt
+  path: ./Untitled.odt
+forms:
+- name: Family
+  subforms:
+  - allowdeletes: 'true'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: Family
+    commandtype: table
+    controls:
+    - columns:
+      - controlid: control2
+        convertemptytonull: 'true'
+        datafield: FamlilyID
+        eventlisteners: []
+        formfor: ''
+        inputrequired: 'false'
+        label: FamlilyID
+        name: FamlilyID
+        type: ooo:FormattedField
+      - controlid: control3
+        convertemptytonull: 'true'
+        datafield: Name
+        eventlisteners: []
+        formfor: ''
+        inputrequired: 'false'
+        label: Name
+        name: Name
+        type: ooo:TextField
+      - controlid: control4
+        convertemptytonull: 'true'
+        datafield: Desc
+        eventlisteners: []
+        formfor: ''
+        inputrequired: 'false'
+        label: Desc
+        name: Desc
+        type: ooo:TextField
+      name: MainForm_Grid
+    detailfields: ''
+    masterfields: ''
+    name: MainForm
+- name: Formulier1
+  subforms:
+  - allowdeletes: 'true'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: ''
+    commandtype: table
+    controls:
+    - allowdeletes: 'true'
+      allowinserts: 'true'
+      allowupdates: 'true'
+      command: ''
+      commandtype: table
+      controls: []
+      detailfields: ''
+      masterfields: ''
+      name: Formulier2
+    detailfields: ''
+    masterfields: ''
+    name: Formulier
+  - allowdeletes: 'true'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: ''
+    commandtype: table
+    controls: []
+    detailfields: ''
+    masterfields: ''
+    name: Formulier 1
+- name: Plant
+  subforms:
+  - allowdeletes: 'true'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: Plant
+    commandtype: table
+    controls:
+    - controlid: control1
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control2
+      inputrequired: ''
+      label: id
+      name: lblid
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control2
+      convertemptytonull: 'true'
+      datafield: id
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'true'
+      label: ''
+      name: fmtid
+      type: ooo:com.sun.star.form.component.FormattedField
+    - controlid: control6
+      convertemptytonull: 'true'
+      datafield: RFamliyID
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: fmtRFamliyID
+      type: ooo:com.sun.star.form.component.FormattedField
+    - controlid: control4
+      convertemptytonull: 'true'
+      datafield: naam
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: txtnaam
+      type: ooo:com.sun.star.form.component.TextField
+    detailfields: ''
+    masterfields: ''
+    name: MainForm
+- name: Plant invoeren
+  subforms:
+  - allowdeletes: 'true'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: vwPlant
+    commandtype: query
+    controls:
+    - columns:
+      - controlid: control2
+        convertemptytonull: 'true'
+        datafield: id
+        eventlisteners: []
+        formfor: ''
+        inputrequired: 'false'
+        label: id
+        name: id
+        type: ooo:FormattedField
+      - controlid: control3
+        convertemptytonull: 'true'
+        datafield: naam
+        eventlisteners: []
+        formfor: ''
+        inputrequired: 'false'
+        label: naam
+        name: naam
+        type: ooo:TextField
+      name: MainForm_Grid
+    detailfields: ''
+    masterfields: ''
+    name: MainForm
+- name: PlantListbox
+  subforms:
+  - allowdeletes: 'false'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: Plant
+    commandtype: table
+    controls:
+    - controlid: control1
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control2
+      inputrequired: ''
+      label: id
+      name: lblid
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control2
+      convertemptytonull: 'true'
+      datafield: id
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'true'
+      label: ''
+      name: fmtid
+      type: ooo:com.sun.star.form.component.FormattedField
+    - controlid: control4
+      convertemptytonull: 'true'
+      datafield: naam
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: txtnaam
+      type: ooo:com.sun.star.form.component.TextField
+    - boundcolumn: '1'
+      controlid: control6
+      convertemptytonull: ''
+      datafield: RFamliyID
+      dropdown: 'true'
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'true'
+      label: ''
+      listsource: FamilyLookup
+      listsourcetype: query
+      name: fmtRFamliyID
+      type: ooo:com.sun.star.form.component.ListBox
+    - controlid: control7
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners:
+      - event: form:performaction
+        script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
+      formfor: ''
+      inputrequired: ''
+      label: Say hello
+      name: Knop 1
+      type: ooo:com.sun.star.form.component.CommandButton
+    - controlid: control8
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: ''
+      inputrequired: ''
+      label: Knop
+      name: Knop 2
+      type: ooo:com.sun.star.form.component.CommandButton
+    - controlid: control9
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners:
+      - event: form:performaction
+        script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
+      - event: form:approveaction
+        script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
+      formfor: ''
+      inputrequired: ''
+      label: Call to script
+      name: Knop 3
+      type: ooo:com.sun.star.form.component.CommandButton
+    detailfields: ''
+    masterfields: ''
+    name: MainForm
+- name: Related subform
+  subforms:
+  - allowdeletes: 'true'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: Plant
+    commandtype: table
+    controls:
+    - allowdeletes: 'true'
+      allowinserts: 'true'
+      allowupdates: 'true'
+      command: Family
+      commandtype: table
+      controls:
+      - controlid: control1
+        convertemptytonull: ''
+        datafield: ''
+        eventlisteners: []
+        formfor: control2
+        inputrequired: ''
+        label: FamilyID
+        name: lblFamilyID
+        type: ooo:com.sun.star.form.component.FixedText
+      - controlid: control3
+        convertemptytonull: ''
+        datafield: ''
+        eventlisteners: []
+        formfor: control4
+        inputrequired: ''
+        label: Name
+        name: lblName
+        type: ooo:com.sun.star.form.component.FixedText
+      - controlid: control5
+        convertemptytonull: ''
+        datafield: ''
+        eventlisteners: []
+        formfor: control6
+        inputrequired: ''
+        label: Desc
+        name: lblDesc
+        type: ooo:com.sun.star.form.component.FixedText
+      - controlid: control2
+        convertemptytonull: 'true'
+        datafield: FamilyID
+        eventlisteners: []
+        formfor: ''
+        inputrequired: 'true'
+        label: ''
+        name: fmtFamilyID
+        type: ooo:com.sun.star.form.component.FormattedField
+      - controlid: control4
+        convertemptytonull: 'true'
+        datafield: Name
+        eventlisteners: []
+        formfor: ''
+        inputrequired: 'false'
+        label: ''
+        name: txtName
+        type: ooo:com.sun.star.form.component.TextField
+      - controlid: control6
+        convertemptytonull: 'true'
+        datafield: Desc
+        eventlisteners: []
+        formfor: ''
+        inputrequired: 'false'
+        label: ''
+        name: txtDesc
+        type: ooo:com.sun.star.form.component.TextField
+      detailfields: '"FamilyID"'
+      masterfields: '"RFamliyID"'
+      name: SubForm
+    - controlid: control7
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control8
+      inputrequired: ''
+      label: id
+      name: lblid
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control9
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control10
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control11
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control12
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control8
+      convertemptytonull: 'true'
+      datafield: id
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'true'
+      label: ''
+      name: fmtid
+      type: ooo:com.sun.star.form.component.FormattedField
+    - controlid: control12
+      convertemptytonull: 'true'
+      datafield: RFamliyID
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: fmtRFamliyID
+      type: ooo:com.sun.star.form.component.FormattedField
+    - controlid: control10
+      convertemptytonull: 'true'
+      datafield: naam
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: txtnaam
+      type: ooo:com.sun.star.form.component.TextField
+    detailfields: ''
+    masterfields: ''
+    name: MainForm
+- name: view1
+  subforms:
+  - allowdeletes: 'true'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: view1
+    commandtype: table
+    controls:
+    - controlid: control1
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control2
+      inputrequired: ''
+      label: id
+      name: lblid
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control2
+      convertemptytonull: 'true'
+      datafield: id
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: fmtid
+      type: ooo:com.sun.star.form.component.FormattedField
+    detailfields: ''
+    masterfields: ''
+    name: MainForm
+libraries:
+- modules:
+  - callables: []
+    library: Standard
+    name: Module1
+    name_indexes: []
+    source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
+      \nEnd Sub\n\nSub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\
+      \nEnd Sub"
+    title: Standard.Module1
+    tokens: []
+  - callables: []
+    library: Standard
+    name: Module2
+    name_indexes: []
+    source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
+    title: Standard.Module2
+    tokens: []
+  name: Standard
+- modules:
+  - callables: []
+    library: Library1
+    name: Module1
+    name_indexes: []
+    source: "REM  *****  BASIC  *****\n\nSub Main\n\tError \"Mijn fout\"\nEnd Sub\n\
+      \nSub CallerSub()\n\tCalleeSub()\n\tModule2.CalleeSub()\nEnd Sub\n\nSub CalleeSub()\n\
+      \tprint \"Module1.CalleeSub\"\nEnd Sub\n\nsub CallerTwo()\n\tCalleeTwoSub()\n\
+      End Sub\n\nSub CallerOtherLib()\n\tCalleeOtherLib()\n\tModule1.CalleeOtherLib()\n\
+      End Sub\n\nSub CallerShadowedCallee()\n\tShadowedCallee()\nEnd Sub\n\nSub ShadowedCallee()\n\
+      \tprint \"Library1.Module1.ShadowedCallee\"\nEnd Sub"
+    title: Library1.Module1
+    tokens: []
+  - callables: []
+    library: Library1
+    name: Module2
+    name_indexes: []
+    source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
+      \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
+    title: Library1.Module2
+    tokens: []
+  name: Library1
+pylibs:
+- modules:
+  - library: Bibliotheek
+    name: Module.py
+    source: "# coding: utf-8\nfrom __future__ import unicode_literals\n\ndef script():\n\
+      \tprint(\"Hello\")\n"
+    title: Bibliotheek.Module.py
+  name: Bibliotheek
+- modules:
+  - library: python
+    name: pymodule.py
+    source: "# coding: utf-8\n\ndef main():\n\tprint(\"Hello from testdb.odb\")\n\n\
+      \n"
+    title: python.pymodule.py
+  name: python
+queries:
+- columns:
+  - autoincrement: false
+    issigned: false
+    name: Name
+    nullable: Nullable
+    precision: 2147483647
+    readonly: false
+    scale: 0
+    tablename: Family
+    title: Family.Name
+    typename: VARCHAR
+    writable: true
+  - autoincrement: false
+    issigned: true
+    name: FamilyID
+    nullable: No_Nulls
+    precision: 10
+    readonly: false
+    scale: 0
+    tablename: Family
+    title: Family.FamilyID
+    typename: INTEGER
+    writable: true
+  command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
+  name: FamilyLookup
+- columns:
+  - autoincrement: false
+    issigned: true
+    name: id
+    nullable: No_Nulls
+    precision: 100
+    readonly: false
+    scale: 0
+    tablename: Plant
+    title: Plant.id
+    typename: NUMERIC
+    writable: true
+  - autoincrement: false
+    issigned: false
+    name: naam
+    nullable: Nullable
+    precision: 2147483647
+    readonly: false
+    scale: 0
+    tablename: Plant
+    title: Plant.naam
+    typename: VARCHAR
+    writable: true
+  - autoincrement: false
+    issigned: true
+    name: RFamliyID
+    nullable: Nullable
+    precision: 10
+    readonly: false
+    scale: 0
+    tablename: Plant
+    title: Plant.RFamliyID
+    typename: INTEGER
+    writable: true
+  command: 'SELECT *
+
+    FROM   "Plant"'
+  name: vwPlant
+reports:
+- command: Family
+  commandtype: table
+  formulas:
+  - field:[FamlilyID]
+  - field:[Name]
+  - field:[Desc]
+  name: Family
+- command: vwPlant
+  commandtype: query
+  formulas:
+  - field:[id]
+  - field:[naam]
+  - field:[RFamliyID]
+  name: vwPlant
+tables:
+- columns:
+  - autoincrement: false
+    defaultvalue: ''
+    description: null
+    name: FamilyID
+    nullable: No_Nulls
+    precision: 0
+    scale: 0
+    tablename: Family
+    title: Family.FamilyID
+    typename: INTEGER
+  - autoincrement: false
+    defaultvalue: ''
+    description: null
+    name: Name
+    nullable: Nullable
+    precision: 100
+    scale: 0
+    tablename: Family
+    title: Family.Name
+    typename: VARCHAR
+  - autoincrement: false
+    defaultvalue: ''
+    description: null
+    name: Desc
+    nullable: Nullable
+    precision: 0
+    scale: 0
+    tablename: Family
+    title: Family.Desc
+    typename: LONGVARCHAR
+  description: ''
+  indexes:
+  - catalog: ''
+    clustered: false
+    columns:
+    - FamilyID
+    name: SYS_IDX_48
+    primary: false
+    unique: true
+  keys:
+  - columns:
+    - FamilyID
+    delete_rule: Cascade
+    name: SYS_PK_49
+    referenced_table: ''
+    relatedcolumns:
+    - ''
+    typename: Primary
+    update_rule: Cascade
+  name: Family
+- columns:
+  - autoincrement: false
+    defaultvalue: ''
+    description: null
+    name: Naam
+    nullable: No_Nulls
+    precision: 100
+    scale: 0
+    tablename: Persoon
+    title: Persoon.Naam
+    typename: VARCHAR
+  - autoincrement: false
+    defaultvalue: ''
+    description: Woonadres
+    name: Adres
+    nullable: No_Nulls
+    precision: 100
+    scale: 0
+    tablename: Persoon
+    title: Persoon.Adres
+    typename: VARCHAR
+  - autoincrement: false
+    defaultvalue: ''
+    description: null
+    name: Leeftijd
+    nullable: Nullable
+    precision: 0
+    scale: 0
+    tablename: Persoon
+    title: Persoon.Leeftijd
+    typename: INTEGER
+  description: ''
+  indexes:
+  - catalog: ''
+    clustered: false
+    columns:
+    - Naam
+    - Adres
+    name: SYS_IDX_50
+    primary: false
+    unique: true
+  keys:
+  - columns:
+    - Adres
+    - Naam
+    delete_rule: Cascade
+    name: SYS_PK_51
+    referenced_table: ''
+    relatedcolumns:
+    - ''
+    - ''
+    typename: Primary
+    update_rule: Cascade
+  name: Persoon
+- columns:
+  - autoincrement: false
+    defaultvalue: ''
+    description: Unique key for the plant
+    name: id
+    nullable: No_Nulls
+    precision: 100
+    scale: 0
+    tablename: Plant
+    title: Plant.id
+    typename: NUMERIC
+  - autoincrement: false
+    defaultvalue: ''
+    description: Naam aan de plant gegeven
+    name: naam
+    nullable: Nullable
+    precision: 100
+    scale: 0
+    tablename: Plant
+    title: Plant.naam
+    typename: VARCHAR
+  - autoincrement: false
+    defaultvalue: ''
+    description: null
+    name: RFamliyID
+    nullable: Nullable
+    precision: 0
+    scale: 0
+    tablename: Plant
+    title: Plant.RFamliyID
+    typename: INTEGER
+  description: ''
+  indexes:
+  - catalog: ''
+    clustered: false
+    columns:
+    - id
+    name: SYS_IDX_46
+    primary: false
+    unique: true
+  - catalog: ''
+    clustered: false
+    columns:
+    - RFamliyID
+    name: SYS_IDX_80
+    primary: false
+    unique: false
+  keys:
+  - columns:
+    - id
+    delete_rule: Cascade
+    name: SYS_PK_47
+    referenced_table: ''
+    relatedcolumns:
+    - ''
+    typename: Primary
+    update_rule: Cascade
+  - columns:
+    - RFamliyID
+    delete_rule: No_Action
+    name: SYS_FK_79
+    referenced_table: Family
+    relatedcolumns:
+    - FamilyID
+    typename: Foreign
+    update_rule: No_Action
+  name: Plant
+use_cases: []
+views:
+- columns:
+  - autoincrement: false
+    issigned: true
+    name: id
+    nullable: No_Nulls
+    precision: 100
+    readonly: false
+    scale: 0
+    tablename: Plant
+    title: Plant.id
+    typename: NUMERIC
+    writable: true
+  command: 'SELECT "id"
+
+    FROM   "Plant"'
+  name: view1

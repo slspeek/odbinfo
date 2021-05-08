@@ -4,6 +4,8 @@ from zipfile import ZipFile
 
 from pytest import fixture
 
+from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
+
 
 def load_metadata(shared_datadir, processed=False, empty=False):
     """ Returns Metadata object from the test fixture """
@@ -47,12 +49,12 @@ def empty_metadata_processed(shared_datadir):
 def odbzip(shared_datadir):
     " odb file open for reading "
 
-    with ZipFile(shared_datadir / "testdb.odb", "r") as zipfile:
+    with ZipFile(shared_datadir / DEFAULT_TESTDB, "r") as zipfile:
         yield zipfile
 
 
 @fixture(scope="function")
 def empty_odbzip(shared_datadir):
     " odb file open for reading "
-    with ZipFile(shared_datadir / "emptydb.odb", "r") as zipfile:
+    with ZipFile(shared_datadir / EMPTYDB, "r") as zipfile:
         yield zipfile

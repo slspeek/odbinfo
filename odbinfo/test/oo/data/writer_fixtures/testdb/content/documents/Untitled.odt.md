@@ -5,5 +5,5 @@ fields:
   table: vwPlant
   tabletype: query
 name: Untitled.odt
-path: ./odbinfo/test/oo/data/Untitled.odt
+path: ./Untitled.odt
 ---

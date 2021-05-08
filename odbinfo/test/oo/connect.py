@@ -7,8 +7,6 @@ import time
 import uno
 from pytest import fixture
 
-from odbinfo.test.resource import EMPTYDB
-
 logger = logging.getLogger(__name__)
 logging.basicConfig()
 logger.setLevel(logging.DEBUG)
@@ -25,7 +23,7 @@ SOFFICE_CMD = '/tmp/program/soffice '\
 def libreoffice(shared_datadir):
     """ A libreoffice running on a test database """
     # testdb = os.getenv("ODBINFO_TESTDB", DEFAULT_TESTDB)
-    url = str(shared_datadir / "testdb.odb")
+    url = str(shared_datadir / "databases/testdb.odb")
     office_proc = start_office(url)
     yield office_proc
     office_proc.terminate()
@@ -33,9 +31,9 @@ def libreoffice(shared_datadir):
 
 
 @fixture(scope="function")
-def empty_libreoffice():
+def empty_libreoffice(shared_datadir):
     """ A libreoffice running on a empty database """
-    office_proc = start_office(EMPTYDB)
+    office_proc = start_office(str(shared_datadir / "databases/emptydb.odb"))
     yield office_proc
     office_proc.terminate()
     logger.debug("LibreOffice killed")

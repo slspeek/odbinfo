@@ -80,11 +80,13 @@ def test_collect_element():
     assert _collect_attribute(data, "foo") == [{}]
 
 
-def test_text_document():
+def test_text_document(shared_datadir):
     " find odts "
-    assert len(_text_documents(path.dirname(DEFAULT_TESTDB))) == 3
+    directory = path.dirname(shared_datadir / DEFAULT_TESTDB)
+    assert len(_text_documents(directory)) == 3
 
 
-def test_read_text_documents():
+def test_read_text_documents(shared_datadir):
     " find odts "
-    print(read_text_documents(path.dirname(DEFAULT_TESTDB), "testdb"))
+    directory = path.dirname(shared_datadir / DEFAULT_TESTDB)
+    print(read_text_documents(directory, "testdb"))

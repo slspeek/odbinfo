@@ -27,8 +27,8 @@ all: clean itest
 travis: installantlr clean genparser info check itest
 
 prepare:
-	if [ ! -d odbinfo/test/pure/data ]; then (cd odbinfo/test/pure && ln -s ../oo/data) fi
 	@echo prepare start
+	if [ ! -d odbinfo/test/pure/data ]; then (cd odbinfo/test/pure && ln -s ../oo/data) fi
 	@-mkdir -p $(build) $(test-output)
 	@echo prepare done
 
@@ -51,7 +51,7 @@ coverage: clean prepare
 	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS}  --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
-itest:
+itest: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)
 
 single: prepare

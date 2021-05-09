@@ -5,8 +5,9 @@ body_tokens:
   index: 52
   line: 17
   link:
-  - local_id: Library1.Module2.CalleeTwoSub
-    object_type: Callable
+  - bookmark: null
+    local_id: Library1.Module2.CalleeTwoSub
+    object_type: callables
   text: CalleeTwoSub
   type: 181
 - column: 13
@@ -40,8 +41,9 @@ calls:
     index: 52
     line: 17
     link:
-    - local_id: Library1.Module2.CalleeTwoSub
-      object_type: Callable
+    - bookmark: null
+      local_id: Library1.Module2.CalleeTwoSub
+      object_type: callables
     text: CalleeTwoSub
     type: 181
 library: Library1
@@ -98,8 +100,9 @@ tokens:
   index: 52
   line: 17
   link:
-  - local_id: Library1.Module2.CalleeTwoSub
-    object_type: Callable
+  - bookmark: null
+    local_id: Library1.Module2.CalleeTwoSub
+    object_type: callables
   text: CalleeTwoSub
   type: 181
 - column: 13

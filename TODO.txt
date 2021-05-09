@@ -1,20 +1,11 @@
-shared_datadir problems: two packages pure and oo, make soft-link? I want one shared dir.
-Joining back packages? SOFTLINK SEEMS TO WORK
 
 
+look at Identifier construction at dependency.py:37
 
-file-fixtures (*.pickle) are dependend, so Makefile should have three dependend
-subgoals for fixture.
-1) test_reader_regression (metadata_fixture)
-2) 
 
-fix: odb files touched in source tree
-test_core: monkeypatch.chdir in generate_report, to avoid /tmp/.. paths
+refactor core.py
 
 test_basic_parser_slow.py: parametrize and regression
-
-not libreoffice but  a doc should be the fixture,
-libreoffice fixtures should be session scope
 
 Configuration
 -------------

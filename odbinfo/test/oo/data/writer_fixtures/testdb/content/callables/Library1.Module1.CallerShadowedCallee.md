@@ -5,8 +5,9 @@ body_tokens:
   index: 84
   line: 26
   link:
-  - local_id: Library1.Module1.ShadowedCallee
-    object_type: Callable
+  - bookmark: null
+    local_id: Library1.Module1.ShadowedCallee
+    object_type: callables
   text: ShadowedCallee
   type: 181
 - column: 15
@@ -40,8 +41,9 @@ calls:
     index: 84
     line: 26
     link:
-    - local_id: Library1.Module1.ShadowedCallee
-      object_type: Callable
+    - bookmark: null
+      local_id: Library1.Module1.ShadowedCallee
+      object_type: callables
     text: ShadowedCallee
     type: 181
 library: Library1
@@ -98,8 +100,9 @@ tokens:
   index: 84
   line: 26
   link:
-  - local_id: Library1.Module1.ShadowedCallee
-    object_type: Callable
+  - bookmark: null
+    local_id: Library1.Module1.ShadowedCallee
+    object_type: callables
   text: ShadowedCallee
   type: 181
 - column: 15

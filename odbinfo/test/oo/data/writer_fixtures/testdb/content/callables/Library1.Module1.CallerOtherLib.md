@@ -5,8 +5,9 @@ body_tokens:
   index: 65
   line: 21
   link:
-  - local_id: Standard.Module1.CalleeOtherLib
-    object_type: Callable
+  - bookmark: null
+    local_id: Standard.Module1.CalleeOtherLib
+    object_type: callables
   text: CalleeOtherLib
   type: 181
 - column: 15
@@ -49,8 +50,9 @@ body_tokens:
   index: 71
   line: 22
   link:
-  - local_id: Standard.Module1.CalleeOtherLib
-    object_type: Callable
+  - bookmark: null
+    local_id: Standard.Module1.CalleeOtherLib
+    object_type: callables
   text: CalleeOtherLib
   type: 181
 - column: 23
@@ -84,8 +86,9 @@ calls:
     index: 65
     line: 21
     link:
-    - local_id: Standard.Module1.CalleeOtherLib
-      object_type: Callable
+    - bookmark: null
+      local_id: Standard.Module1.CalleeOtherLib
+      object_type: callables
     text: CalleeOtherLib
     type: 181
 - module_token:
@@ -102,8 +105,9 @@ calls:
     index: 71
     line: 22
     link:
-    - local_id: Standard.Module1.CalleeOtherLib
-      object_type: Callable
+    - bookmark: null
+      local_id: Standard.Module1.CalleeOtherLib
+      object_type: callables
     text: CalleeOtherLib
     type: 181
 library: Library1
@@ -160,8 +164,9 @@ tokens:
   index: 65
   line: 21
   link:
-  - local_id: Standard.Module1.CalleeOtherLib
-    object_type: Callable
+  - bookmark: null
+    local_id: Standard.Module1.CalleeOtherLib
+    object_type: callables
   text: CalleeOtherLib
   type: 181
 - column: 15
@@ -204,8 +209,9 @@ tokens:
   index: 71
   line: 22
   link:
-  - local_id: Standard.Module1.CalleeOtherLib
-    object_type: Callable
+  - bookmark: null
+    local_id: Standard.Module1.CalleeOtherLib
+    object_type: callables
   text: CalleeOtherLib
   type: 181
 - column: 23

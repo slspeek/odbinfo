@@ -1,0 +1,8 @@
+<!--
+-->{{$argdict:=dict "context" .context "section" .link.object_type "title" .link.local_id}}<!--
+-->{{$bareurl:=partial "find-in-section" $argdict}}<!--
+-->{{ if .link.bookmark }}<!--
+  -->{{ $bareurl }}#{{ .link.bookmark }}<!--
+-->{{ else }}<!--
+  -->{{$bareurl }}<!--
+-->{{ end }}

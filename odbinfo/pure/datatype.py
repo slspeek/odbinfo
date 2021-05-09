@@ -26,11 +26,12 @@ class Identifier:
     " Unique id for ooobjects "
     object_type: str
     local_id: str
+    bookmark: str = field(init=False, default=None)
 
 
 def get_identifier(dataobject) -> Identifier:
     "returns Identifier for `dataobject`"
-    return Identifier(dataobject.__class__.__name__, dataobject.title)
+    return Identifier(dataobject.__class__.__name__.lower()+"s", dataobject.title)
 
 
 @dataclass

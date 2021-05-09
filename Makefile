@@ -88,8 +88,8 @@ alltest: prepare
 
 .ONESHELL:
 serve: prepare
-	cd $(build)/$(testloc)/resources/testdb/.$(testloc)db
-	hugo server --layoutDir ../../../../../../../../data/hugo-template/layouts
+	cd $(test-output)/test_core/testdb
+	hugo server --layoutDir ../../../../../data/hugo-template/layouts
 
 format:
 	isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py

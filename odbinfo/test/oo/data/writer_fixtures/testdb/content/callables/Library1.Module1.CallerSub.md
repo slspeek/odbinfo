@@ -5,8 +5,9 @@ body_tokens:
   index: 20
   line: 8
   link:
-  - local_id: Library1.Module1.CalleeSub
-    object_type: Callable
+  - bookmark: null
+    local_id: Library1.Module1.CalleeSub
+    object_type: callables
   text: CalleeSub
   type: 181
 - column: 10
@@ -49,8 +50,9 @@ body_tokens:
   index: 26
   line: 9
   link:
-  - local_id: Library1.Module2.CalleeSub
-    object_type: Callable
+  - bookmark: null
+    local_id: Library1.Module2.CalleeSub
+    object_type: callables
   text: CalleeSub
   type: 181
 - column: 18
@@ -84,8 +86,9 @@ calls:
     index: 20
     line: 8
     link:
-    - local_id: Library1.Module1.CalleeSub
-      object_type: Callable
+    - bookmark: null
+      local_id: Library1.Module1.CalleeSub
+      object_type: callables
     text: CalleeSub
     type: 181
 - module_token:
@@ -102,8 +105,9 @@ calls:
     index: 26
     line: 9
     link:
-    - local_id: Library1.Module2.CalleeSub
-      object_type: Callable
+    - bookmark: null
+      local_id: Library1.Module2.CalleeSub
+      object_type: callables
     text: CalleeSub
     type: 181
 library: Library1
@@ -160,8 +164,9 @@ tokens:
   index: 20
   line: 8
   link:
-  - local_id: Library1.Module1.CalleeSub
-    object_type: Callable
+  - bookmark: null
+    local_id: Library1.Module1.CalleeSub
+    object_type: callables
   text: CalleeSub
   type: 181
 - column: 10
@@ -204,8 +209,9 @@ tokens:
   index: 26
   line: 9
   link:
-  - local_id: Library1.Module2.CalleeSub
-    object_type: Callable
+  - bookmark: null
+    local_id: Library1.Module2.CalleeSub
+    object_type: callables
   text: CalleeSub
   type: 181
 - column: 18

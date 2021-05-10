@@ -1,6 +1,5 @@
 """ Hand crafted scanner on the the tokones of OOBasicLexer """
 
-import antlr4
 from antlr4 import CommonTokenStream, InputStream
 
 from odbinfo.pure.datatype import BasicCall, Callable, Token

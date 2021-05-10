@@ -2,116 +2,116 @@
 body_tokens:
 - column: 1
   hidden: false
-  index: 20
-  line: 8
+  index: 9
+  line: 4
   link: []
   text: print
   type: 100
 - column: 6
   hidden: false
-  index: 21
-  line: 8
+  index: 10
+  line: 4
   link: []
   text: ' '
   type: 185
 - column: 7
   hidden: false
-  index: 22
-  line: 8
+  index: 11
+  line: 4
   link: []
-  text: '"Standard.Module1.ShadowedCallee"'
+  text: '"Module2.CalleeSub"'
   type: 172
-- column: 40
+- column: 26
   hidden: false
-  index: 23
-  line: 8
+  index: 12
+  line: 4
   link: []
   text: '
 
     '
   type: 183
 calls: []
-library: Standard
-module: Module1
-name: ShadowedCallee
-name_token_index: 16
+library: Library1
+module: Module2
+name: CalleeSub
+name_token_index: 5
 strings:
 - column: 7
   hidden: false
-  index: 22
-  line: 8
+  index: 11
+  line: 4
   link: []
-  text: '"Standard.Module1.ShadowedCallee"'
+  text: '"Module2.CalleeSub"'
   type: 172
-title: Standard.Module1.ShadowedCallee
+title: CalleeSub.Module2.Library1
 tokens:
 - column: 0
   hidden: false
-  index: 14
-  line: 7
+  index: 3
+  line: 3
   link: []
   text: Sub
   type: 125
 - column: 3
   hidden: false
-  index: 15
-  line: 7
+  index: 4
+  line: 3
   link: []
   text: ' '
   type: 185
 - column: 4
   hidden: false
-  index: 16
-  line: 7
+  index: 5
+  line: 3
   link: []
-  text: ShadowedCallee
+  text: CalleeSub
   type: 181
-- column: 18
+- column: 13
   hidden: false
-  index: 17
-  line: 7
+  index: 6
+  line: 3
   link: []
   text: (
   type: 157
-- column: 19
+- column: 14
   hidden: false
-  index: 18
-  line: 7
+  index: 7
+  line: 3
   link: []
   text: )
   type: 168
-- column: 20
+- column: 15
   hidden: false
-  index: 19
-  line: 7
+  index: 8
+  line: 3
   link: []
   text: "\n\t"
   type: 183
 - column: 1
   hidden: false
-  index: 20
-  line: 8
+  index: 9
+  line: 4
   link: []
   text: print
   type: 100
 - column: 6
   hidden: false
-  index: 21
-  line: 8
+  index: 10
+  line: 4
   link: []
   text: ' '
   type: 185
 - column: 7
   hidden: false
-  index: 22
-  line: 8
+  index: 11
+  line: 4
   link: []
-  text: '"Standard.Module1.ShadowedCallee"'
+  text: '"Module2.CalleeSub"'
   type: 172
-- column: 40
+- column: 26
   hidden: false
-  index: 23
-  line: 8
+  index: 12
+  line: 4
   link: []
   text: '
 
@@ -119,8 +119,8 @@ tokens:
   type: 183
 - column: 0
   hidden: false
-  index: 24
-  line: 9
+  index: 13
+  line: 5
   link: []
   text: End Sub
   type: 44

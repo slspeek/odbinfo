@@ -73,6 +73,7 @@ processor_fixture: metadata_fixture
 
 writer_fixture: processor_fixture
 	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py
+	-rm -rf $(fixtureloc)/writer_fixtures/*
 	cp -rv $(test-output)/test_writer_regression/emptydb $(fixtureloc)/writer_fixtures/
 	cp -rv $(test-output)/test_writer_regression/testdb $(fixtureloc)/writer_fixtures/
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py
@@ -106,7 +107,11 @@ check_main: pycompile format
 check_test: pycompile format
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest odbinfo/test
 
+.PHONY:
 clean:
+	-@if [ -f wily-report.html ]; then rm wily-report.html; fi
+	-@if [ -d htmlcov ]; then rm -rf htmlcov; fi
+	-@if [ -f logje ]; then rm logje; fi
 	-@find . -type d -name __pycache__ -exec rm -rf '{}' \;
 	-@rm -rf $(target)
 	#-@rm -rf src/test/resources/output_dir/graphs

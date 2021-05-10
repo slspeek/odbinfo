@@ -6,7 +6,7 @@ body_tokens:
   line: 17
   link:
   - bookmark: null
-    local_id: Library1.Module2.CalleeTwoSub
+    local_id: CalleeTwoSub.Module2.Library1
     object_type: callables
   text: CalleeTwoSub
   type: 181
@@ -42,7 +42,7 @@ calls:
     line: 17
     link:
     - bookmark: null
-      local_id: Library1.Module2.CalleeTwoSub
+      local_id: CalleeTwoSub.Module2.Library1
       object_type: callables
     text: CalleeTwoSub
     type: 181
@@ -51,7 +51,7 @@ module: Module1
 name: CallerTwo
 name_token_index: 48
 strings: []
-title: Library1.Module1.CallerTwo
+title: CallerTwo.Module1.Library1
 tokens:
 - column: 0
   hidden: false
@@ -101,7 +101,7 @@ tokens:
   line: 17
   link:
   - bookmark: null
-    local_id: Library1.Module2.CalleeTwoSub
+    local_id: CalleeTwoSub.Module2.Library1
     object_type: callables
   text: CalleeTwoSub
   type: 181

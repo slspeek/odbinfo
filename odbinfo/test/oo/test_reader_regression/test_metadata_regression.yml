@@ -440,14 +440,14 @@ libraries:
     source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
       \nEnd Sub\n\nSub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\
       \nEnd Sub"
-    title: Standard.Module1
+    title: Module1.Standard
     tokens: []
   - callables: []
     library: Standard
     name: Module2
     name_indexes: []
     source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
-    title: Standard.Module2
+    title: Module2.Standard
     tokens: []
   name: Standard
 - modules:
@@ -461,7 +461,7 @@ libraries:
       End Sub\n\nSub CallerOtherLib()\n\tCalleeOtherLib()\n\tModule1.CalleeOtherLib()\n\
       End Sub\n\nSub CallerShadowedCallee()\n\tShadowedCallee()\nEnd Sub\n\nSub ShadowedCallee()\n\
       \tprint \"Library1.Module1.ShadowedCallee\"\nEnd Sub"
-    title: Library1.Module1
+    title: Module1.Library1
     tokens: []
   - callables: []
     library: Library1
@@ -469,7 +469,7 @@ libraries:
     name_indexes: []
     source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
       \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
-    title: Library1.Module2
+    title: Module2.Library1
     tokens: []
   name: Library1
 pylibs:

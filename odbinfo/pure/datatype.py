@@ -122,7 +122,7 @@ class Callable:
 
     def __post_init__(self):
         # self.source = tohtml(self.source)
-        self.title = f"{self.library}.{self.module}.{self.name}"
+        self.title = f"{self.name}.{self.module}.{self.library}"
 
 
 @dataclass
@@ -138,7 +138,7 @@ class Module:
 
     def __post_init__(self):
         # self.source = tohtml(self.source)
-        self.title = f"{self.library}.{self.name}"
+        self.title = f"{self.name}.{self.library}"
 
 
 @dataclass

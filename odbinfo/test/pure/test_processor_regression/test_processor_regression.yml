@@ -478,7 +478,7 @@ libraries:
         link: []
         text: '"Standard.Module1.CalleeOtherLib"'
         type: 172
-      title: Standard.Module1.CalleeOtherLib
+      title: CalleeOtherLib.Module1.Standard
       tokens:
       - column: 0
         hidden: false
@@ -589,7 +589,7 @@ libraries:
         link: []
         text: '"Standard.Module1.ShadowedCallee"'
         type: 172
-      title: Standard.Module1.ShadowedCallee
+      title: ShadowedCallee.Module1.Standard
       tokens:
       - column: 0
         hidden: false
@@ -678,7 +678,7 @@ libraries:
     source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
       \nEnd Sub\n\nSub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\
       \nEnd Sub"
-    title: Standard.Module1
+    title: Module1.Standard
     tokens:
     - column: 0
       hidden: true
@@ -725,7 +725,7 @@ libraries:
       line: 3
       link:
       - bookmark: null
-        local_id: Standard.Module1.CalleeOtherLib
+        local_id: CalleeOtherLib.Module1.Standard
         object_type: callables
       text: CalleeOtherLib
       type: 181
@@ -811,7 +811,7 @@ libraries:
       line: 7
       link:
       - bookmark: null
-        local_id: Standard.Module1.ShadowedCallee
+        local_id: ShadowedCallee.Module1.Standard
         object_type: callables
       text: ShadowedCallee
       type: 181
@@ -918,7 +918,7 @@ libraries:
         link: []
         text: '"hello world"'
         type: 172
-      title: Standard.Module2.Main
+      title: Main.Module2.Standard
       tokens:
       - column: 0
         hidden: false
@@ -990,7 +990,7 @@ libraries:
     name_indexes:
     - 5
     source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
-    title: Standard.Module2
+    title: Module2.Standard
     tokens:
     - column: 0
       hidden: true
@@ -1037,7 +1037,7 @@ libraries:
       line: 3
       link:
       - bookmark: null
-        local_id: Standard.Module2.Main
+        local_id: Main.Module2.Standard
         object_type: callables
       text: Main
       type: 181
@@ -1132,7 +1132,7 @@ libraries:
         link: []
         text: '"Mijn fout"'
         type: 172
-      title: Library1.Module1.Main
+      title: Main.Module1.Library1
       tokens:
       - column: 0
         hidden: false
@@ -1206,7 +1206,7 @@ libraries:
         line: 8
         link:
         - bookmark: null
-          local_id: Library1.Module1.CalleeSub
+          local_id: CalleeSub.Module1.Library1
           object_type: callables
         text: CalleeSub
         type: 181
@@ -1251,7 +1251,7 @@ libraries:
         line: 9
         link:
         - bookmark: null
-          local_id: Library1.Module2.CalleeSub
+          local_id: CalleeSub.Module2.Library1
           object_type: callables
         text: CalleeSub
         type: 181
@@ -1287,7 +1287,7 @@ libraries:
           line: 8
           link:
           - bookmark: null
-            local_id: Library1.Module1.CalleeSub
+            local_id: CalleeSub.Module1.Library1
             object_type: callables
           text: CalleeSub
           type: 181
@@ -1306,7 +1306,7 @@ libraries:
           line: 9
           link:
           - bookmark: null
-            local_id: Library1.Module2.CalleeSub
+            local_id: CalleeSub.Module2.Library1
             object_type: callables
           text: CalleeSub
           type: 181
@@ -1315,7 +1315,7 @@ libraries:
       name: CallerSub
       name_token_index: 16
       strings: []
-      title: Library1.Module1.CallerSub
+      title: CallerSub.Module1.Library1
       tokens:
       - column: 0
         hidden: false
@@ -1365,7 +1365,7 @@ libraries:
         line: 8
         link:
         - bookmark: null
-          local_id: Library1.Module1.CalleeSub
+          local_id: CalleeSub.Module1.Library1
           object_type: callables
         text: CalleeSub
         type: 181
@@ -1410,7 +1410,7 @@ libraries:
         line: 9
         link:
         - bookmark: null
-          local_id: Library1.Module2.CalleeSub
+          local_id: CalleeSub.Module2.Library1
           object_type: callables
         text: CalleeSub
         type: 181
@@ -1488,7 +1488,7 @@ libraries:
         link: []
         text: '"Module1.CalleeSub"'
         type: 172
-      title: Library1.Module1.CalleeSub
+      title: CalleeSub.Module1.Library1
       tokens:
       - column: 0
         hidden: false
@@ -1576,7 +1576,7 @@ libraries:
         line: 17
         link:
         - bookmark: null
-          local_id: Library1.Module2.CalleeTwoSub
+          local_id: CalleeTwoSub.Module2.Library1
           object_type: callables
         text: CalleeTwoSub
         type: 181
@@ -1612,7 +1612,7 @@ libraries:
           line: 17
           link:
           - bookmark: null
-            local_id: Library1.Module2.CalleeTwoSub
+            local_id: CalleeTwoSub.Module2.Library1
             object_type: callables
           text: CalleeTwoSub
           type: 181
@@ -1621,7 +1621,7 @@ libraries:
       name: CallerTwo
       name_token_index: 48
       strings: []
-      title: Library1.Module1.CallerTwo
+      title: CallerTwo.Module1.Library1
       tokens:
       - column: 0
         hidden: false
@@ -1671,7 +1671,7 @@ libraries:
         line: 17
         link:
         - bookmark: null
-          local_id: Library1.Module2.CalleeTwoSub
+          local_id: CalleeTwoSub.Module2.Library1
           object_type: callables
         text: CalleeTwoSub
         type: 181
@@ -1712,7 +1712,7 @@ libraries:
         line: 21
         link:
         - bookmark: null
-          local_id: Standard.Module1.CalleeOtherLib
+          local_id: CalleeOtherLib.Module1.Standard
           object_type: callables
         text: CalleeOtherLib
         type: 181
@@ -1757,7 +1757,7 @@ libraries:
         line: 22
         link:
         - bookmark: null
-          local_id: Standard.Module1.CalleeOtherLib
+          local_id: CalleeOtherLib.Module1.Standard
           object_type: callables
         text: CalleeOtherLib
         type: 181
@@ -1793,7 +1793,7 @@ libraries:
           line: 21
           link:
           - bookmark: null
-            local_id: Standard.Module1.CalleeOtherLib
+            local_id: CalleeOtherLib.Module1.Standard
             object_type: callables
           text: CalleeOtherLib
           type: 181
@@ -1812,7 +1812,7 @@ libraries:
           line: 22
           link:
           - bookmark: null
-            local_id: Standard.Module1.CalleeOtherLib
+            local_id: CalleeOtherLib.Module1.Standard
             object_type: callables
           text: CalleeOtherLib
           type: 181
@@ -1821,7 +1821,7 @@ libraries:
       name: CallerOtherLib
       name_token_index: 61
       strings: []
-      title: Library1.Module1.CallerOtherLib
+      title: CallerOtherLib.Module1.Library1
       tokens:
       - column: 0
         hidden: false
@@ -1871,7 +1871,7 @@ libraries:
         line: 21
         link:
         - bookmark: null
-          local_id: Standard.Module1.CalleeOtherLib
+          local_id: CalleeOtherLib.Module1.Standard
           object_type: callables
         text: CalleeOtherLib
         type: 181
@@ -1916,7 +1916,7 @@ libraries:
         line: 22
         link:
         - bookmark: null
-          local_id: Standard.Module1.CalleeOtherLib
+          local_id: CalleeOtherLib.Module1.Standard
           object_type: callables
         text: CalleeOtherLib
         type: 181
@@ -1957,7 +1957,7 @@ libraries:
         line: 26
         link:
         - bookmark: null
-          local_id: Library1.Module1.ShadowedCallee
+          local_id: ShadowedCallee.Module1.Library1
           object_type: callables
         text: ShadowedCallee
         type: 181
@@ -1993,7 +1993,7 @@ libraries:
           line: 26
           link:
           - bookmark: null
-            local_id: Library1.Module1.ShadowedCallee
+            local_id: ShadowedCallee.Module1.Library1
             object_type: callables
           text: ShadowedCallee
           type: 181
@@ -2002,7 +2002,7 @@ libraries:
       name: CallerShadowedCallee
       name_token_index: 80
       strings: []
-      title: Library1.Module1.CallerShadowedCallee
+      title: CallerShadowedCallee.Module1.Library1
       tokens:
       - column: 0
         hidden: false
@@ -2052,7 +2052,7 @@ libraries:
         line: 26
         link:
         - bookmark: null
-          local_id: Library1.Module1.ShadowedCallee
+          local_id: ShadowedCallee.Module1.Library1
           object_type: callables
         text: ShadowedCallee
         type: 181
@@ -2130,7 +2130,7 @@ libraries:
         link: []
         text: '"Library1.Module1.ShadowedCallee"'
         type: 172
-      title: Library1.Module1.ShadowedCallee
+      title: ShadowedCallee.Module1.Library1
       tokens:
       - column: 0
         hidden: false
@@ -2227,7 +2227,7 @@ libraries:
       End Sub\n\nSub CallerOtherLib()\n\tCalleeOtherLib()\n\tModule1.CalleeOtherLib()\n\
       End Sub\n\nSub CallerShadowedCallee()\n\tShadowedCallee()\nEnd Sub\n\nSub ShadowedCallee()\n\
       \tprint \"Library1.Module1.ShadowedCallee\"\nEnd Sub"
-    title: Library1.Module1
+    title: Module1.Library1
     tokens:
     - column: 0
       hidden: true
@@ -2274,7 +2274,7 @@ libraries:
       line: 3
       link:
       - bookmark: null
-        local_id: Library1.Module1.Main
+        local_id: Main.Module1.Library1
         object_type: callables
       text: Main
       type: 181
@@ -2360,7 +2360,7 @@ libraries:
       line: 7
       link:
       - bookmark: null
-        local_id: Library1.Module1.CallerSub
+        local_id: CallerSub.Module1.Library1
         object_type: callables
       text: CallerSub
       type: 181
@@ -2390,8 +2390,8 @@ libraries:
       index: 20
       line: 8
       link:
-      - bookmark: CalleeSub
-        local_id: Library1.Module1
+      - bookmark: Library1
+        local_id: Module1.CalleeSub
         object_type: modules
       text: CalleeSub
       type: 181
@@ -2435,8 +2435,8 @@ libraries:
       index: 26
       line: 9
       link:
-      - bookmark: CalleeSub
-        local_id: Library1.Module2
+      - bookmark: Library1
+        local_id: Module2.CalleeSub
         object_type: modules
       text: CalleeSub
       type: 181
@@ -2508,7 +2508,7 @@ libraries:
       line: 12
       link:
       - bookmark: null
-        local_id: Library1.Module1.CalleeSub
+        local_id: CalleeSub.Module1.Library1
         object_type: callables
       text: CalleeSub
       type: 181
@@ -2608,7 +2608,7 @@ libraries:
       line: 16
       link:
       - bookmark: null
-        local_id: Library1.Module1.CallerTwo
+        local_id: CallerTwo.Module1.Library1
         object_type: callables
       text: CallerTwo
       type: 181
@@ -2638,8 +2638,8 @@ libraries:
       index: 52
       line: 17
       link:
-      - bookmark: CalleeTwoSub
-        local_id: Library1.Module2
+      - bookmark: Library1
+        local_id: Module2.CalleeTwoSub
         object_type: modules
       text: CalleeTwoSub
       type: 181
@@ -2711,7 +2711,7 @@ libraries:
       line: 20
       link:
       - bookmark: null
-        local_id: Library1.Module1.CallerOtherLib
+        local_id: CallerOtherLib.Module1.Library1
         object_type: callables
       text: CallerOtherLib
       type: 181
@@ -2741,8 +2741,8 @@ libraries:
       index: 65
       line: 21
       link:
-      - bookmark: CalleeOtherLib
-        local_id: Standard.Module1
+      - bookmark: Standard
+        local_id: Module1.CalleeOtherLib
         object_type: modules
       text: CalleeOtherLib
       type: 181
@@ -2786,8 +2786,8 @@ libraries:
       index: 71
       line: 22
       link:
-      - bookmark: CalleeOtherLib
-        local_id: Standard.Module1
+      - bookmark: Standard
+        local_id: Module1.CalleeOtherLib
         object_type: modules
       text: CalleeOtherLib
       type: 181
@@ -2859,7 +2859,7 @@ libraries:
       line: 25
       link:
       - bookmark: null
-        local_id: Library1.Module1.CallerShadowedCallee
+        local_id: CallerShadowedCallee.Module1.Library1
         object_type: callables
       text: CallerShadowedCallee
       type: 181
@@ -2889,8 +2889,8 @@ libraries:
       index: 84
       line: 26
       link:
-      - bookmark: ShadowedCallee
-        local_id: Library1.Module1
+      - bookmark: Library1
+        local_id: Module1.ShadowedCallee
         object_type: modules
       text: ShadowedCallee
       type: 181
@@ -2962,7 +2962,7 @@ libraries:
       line: 29
       link:
       - bookmark: null
-        local_id: Library1.Module1.ShadowedCallee
+        local_id: ShadowedCallee.Module1.Library1
         object_type: callables
       text: ShadowedCallee
       type: 181
@@ -3069,7 +3069,7 @@ libraries:
         link: []
         text: '"Module2.CalleeSub"'
         type: 172
-      title: Library1.Module2.CalleeSub
+      title: CalleeSub.Module2.Library1
       tokens:
       - column: 0
         hidden: false
@@ -3194,7 +3194,7 @@ libraries:
         link: []
         text: '"Module2.CalleeTwoSub"'
         type: 172
-      title: Library1.Module2.CalleeTwoSub
+      title: CalleeTwoSub.Module2.Library1
       tokens:
       - column: 0
         hidden: false
@@ -3282,7 +3282,7 @@ libraries:
     - 18
     source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
       \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
-    title: Library1.Module2
+    title: Module2.Library1
     tokens:
     - column: 0
       hidden: true
@@ -3329,7 +3329,7 @@ libraries:
       line: 3
       link:
       - bookmark: null
-        local_id: Library1.Module2.CalleeSub
+        local_id: CalleeSub.Module2.Library1
         object_type: callables
       text: CalleeSub
       type: 181
@@ -3429,7 +3429,7 @@ libraries:
       line: 7
       link:
       - bookmark: null
-        local_id: Library1.Module2.CalleeTwoSub
+        local_id: CalleeTwoSub.Module2.Library1
         object_type: callables
       text: CalleeTwoSub
       type: 181
@@ -3762,56 +3762,56 @@ tables:
 use_cases:
 - obj:
     bookmark: null
-    local_id: Library1.Module1.CallerSub
+    local_id: CallerSub.Module1.Library1
     object_type: callables
   subject:
     bookmark: null
-    local_id: Library1.Module1.CalleeSub
+    local_id: CalleeSub.Module1.Library1
     object_type: callables
   type: invokes
 - obj:
     bookmark: null
-    local_id: Library1.Module1.CallerSub
+    local_id: CallerSub.Module1.Library1
     object_type: callables
   subject:
     bookmark: null
-    local_id: Library1.Module2.CalleeSub
+    local_id: CalleeSub.Module2.Library1
     object_type: callables
   type: invokes
 - obj:
     bookmark: null
-    local_id: Library1.Module1.CallerTwo
+    local_id: CallerTwo.Module1.Library1
     object_type: callables
   subject:
     bookmark: null
-    local_id: Library1.Module2.CalleeTwoSub
+    local_id: CalleeTwoSub.Module2.Library1
     object_type: callables
   type: invokes
 - obj:
     bookmark: null
-    local_id: Library1.Module1.CallerOtherLib
+    local_id: CallerOtherLib.Module1.Library1
     object_type: callables
   subject:
     bookmark: null
-    local_id: Standard.Module1.CalleeOtherLib
+    local_id: CalleeOtherLib.Module1.Standard
     object_type: callables
   type: invokes
 - obj:
     bookmark: null
-    local_id: Library1.Module1.CallerOtherLib
+    local_id: CallerOtherLib.Module1.Library1
     object_type: callables
   subject:
     bookmark: null
-    local_id: Standard.Module1.CalleeOtherLib
+    local_id: CalleeOtherLib.Module1.Standard
     object_type: callables
   type: invokes
 - obj:
     bookmark: null
-    local_id: Library1.Module1.CallerShadowedCallee
+    local_id: CallerShadowedCallee.Module1.Library1
     object_type: callables
   subject:
     bookmark: null
-    local_id: Library1.Module1.ShadowedCallee
+    local_id: ShadowedCallee.Module1.Library1
     object_type: callables
   type: invokes
 views:

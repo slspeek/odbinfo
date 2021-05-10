@@ -45,7 +45,7 @@ modules:
       link: []
       text: '"Standard.Module1.CalleeOtherLib"'
       type: 172
-    title: Standard.Module1.CalleeOtherLib
+    title: CalleeOtherLib.Module1.Standard
     tokens:
     - column: 0
       hidden: false
@@ -156,7 +156,7 @@ modules:
       link: []
       text: '"Standard.Module1.ShadowedCallee"'
       type: 172
-    title: Standard.Module1.ShadowedCallee
+    title: ShadowedCallee.Module1.Standard
     tokens:
     - column: 0
       hidden: false
@@ -245,7 +245,7 @@ modules:
   source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
     \nEnd Sub\n\nSub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\
     \nEnd Sub"
-  title: Standard.Module1
+  title: Module1.Standard
   tokens:
   - column: 0
     hidden: true
@@ -292,7 +292,7 @@ modules:
     line: 3
     link:
     - bookmark: null
-      local_id: Standard.Module1.CalleeOtherLib
+      local_id: CalleeOtherLib.Module1.Standard
       object_type: callables
     text: CalleeOtherLib
     type: 181
@@ -378,7 +378,7 @@ modules:
     line: 7
     link:
     - bookmark: null
-      local_id: Standard.Module1.ShadowedCallee
+      local_id: ShadowedCallee.Module1.Standard
       object_type: callables
     text: ShadowedCallee
     type: 181
@@ -485,7 +485,7 @@ modules:
       link: []
       text: '"hello world"'
       type: 172
-    title: Standard.Module2.Main
+    title: Main.Module2.Standard
     tokens:
     - column: 0
       hidden: false
@@ -557,7 +557,7 @@ modules:
   name_indexes:
   - 5
   source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
-  title: Standard.Module2
+  title: Module2.Standard
   tokens:
   - column: 0
     hidden: true
@@ -604,7 +604,7 @@ modules:
     line: 3
     link:
     - bookmark: null
-      local_id: Standard.Module2.Main
+      local_id: Main.Module2.Standard
       object_type: callables
     text: Main
     type: 181

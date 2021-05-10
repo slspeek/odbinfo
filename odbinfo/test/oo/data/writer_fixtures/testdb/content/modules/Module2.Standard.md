@@ -44,7 +44,7 @@ callables:
     link: []
     text: '"hello world"'
     type: 172
-  title: Standard.Module2.Main
+  title: Main.Module2.Standard
   tokens:
   - column: 0
     hidden: false
@@ -116,7 +116,7 @@ name: Module2
 name_indexes:
 - 5
 source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
-title: Standard.Module2
+title: Module2.Standard
 tokens:
 - column: 0
   hidden: true
@@ -163,7 +163,7 @@ tokens:
   line: 3
   link:
   - bookmark: null
-    local_id: Standard.Module2.Main
+    local_id: Main.Module2.Standard
     object_type: callables
   text: Main
   type: 181

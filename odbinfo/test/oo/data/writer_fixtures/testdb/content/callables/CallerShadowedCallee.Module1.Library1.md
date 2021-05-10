@@ -6,7 +6,7 @@ body_tokens:
   line: 26
   link:
   - bookmark: null
-    local_id: Library1.Module1.ShadowedCallee
+    local_id: ShadowedCallee.Module1.Library1
     object_type: callables
   text: ShadowedCallee
   type: 181
@@ -42,7 +42,7 @@ calls:
     line: 26
     link:
     - bookmark: null
-      local_id: Library1.Module1.ShadowedCallee
+      local_id: ShadowedCallee.Module1.Library1
       object_type: callables
     text: ShadowedCallee
     type: 181
@@ -51,7 +51,7 @@ module: Module1
 name: CallerShadowedCallee
 name_token_index: 80
 strings: []
-title: Library1.Module1.CallerShadowedCallee
+title: CallerShadowedCallee.Module1.Library1
 tokens:
 - column: 0
   hidden: false
@@ -101,7 +101,7 @@ tokens:
   line: 26
   link:
   - bookmark: null
-    local_id: Library1.Module1.ShadowedCallee
+    local_id: ShadowedCallee.Module1.Library1
     object_type: callables
   text: ShadowedCallee
   type: 181

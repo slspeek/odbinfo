@@ -5,8 +5,8 @@ body_tokens:
   index: 7
   line: 4
   link: []
-  text: Error
-  type: 49
+  text: Print
+  type: 100
 - column: 6
   hidden: false
   index: 8
@@ -19,9 +19,9 @@ body_tokens:
   index: 9
   line: 4
   link: []
-  text: '"Mijn fout"'
+  text: '"hello world"'
   type: 172
-- column: 18
+- column: 20
   hidden: false
   index: 10
   line: 4
@@ -31,8 +31,8 @@ body_tokens:
     '
   type: 183
 calls: []
-library: Library1
-module: Module1
+library: Standard
+module: Module2
 name: Main
 name_token_index: 5
 strings:
@@ -41,9 +41,9 @@ strings:
   index: 9
   line: 4
   link: []
-  text: '"Mijn fout"'
+  text: '"hello world"'
   type: 172
-title: Library1.Module1.Main
+title: Main.Module2.Standard
 tokens:
 - column: 0
   hidden: false
@@ -78,8 +78,8 @@ tokens:
   index: 7
   line: 4
   link: []
-  text: Error
-  type: 49
+  text: Print
+  type: 100
 - column: 6
   hidden: false
   index: 8
@@ -92,9 +92,9 @@ tokens:
   index: 9
   line: 4
   link: []
-  text: '"Mijn fout"'
+  text: '"hello world"'
   type: 172
-- column: 18
+- column: 20
   hidden: false
   index: 10
   line: 4

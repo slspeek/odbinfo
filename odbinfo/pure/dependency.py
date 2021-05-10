@@ -2,6 +2,7 @@
 import dataclasses
 import operator
 from functools import partial, reduce
+from itertools import starmap
 
 from odbinfo.pure.datatype import (BasicCall, Callable, Identifier, Metadata,
                                    Module, Token, UseCase, get_identifier)
@@ -49,6 +50,12 @@ def _rewrite_module_token_links(modules):
     list(map(rewrite_module, modules))
 
 
+def _link_name_tokens(module: Module):
+    def _link_name(index: int, acallable: Callable):
+        link_token(module.tokens[index], acallable)
+    list(starmap(_link_name, zip(module.name_indexes, module.callables)))
+
+
 def search_callable_in_callable(callables: [Callable],
                                 modules: [Module]) -> [UseCase]:
     """ dependency search amoung the basic callables and linking the
@@ -58,6 +65,7 @@ def search_callable_in_callable(callables: [Callable],
     use_cases = find_callable_in_callable(callables)
     _copy_module_tokens(modules)
     _rewrite_module_token_links(modules)
+    list(map(_link_name_tokens, modules))
 
     return use_cases
 

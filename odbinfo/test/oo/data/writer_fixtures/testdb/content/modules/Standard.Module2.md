@@ -161,7 +161,10 @@ tokens:
   hidden: false
   index: 5
   line: 3
-  link: []
+  link:
+  - bookmark: null
+    local_id: Standard.Module2.Main
+    object_type: callables
   text: Main
   type: 181
 - column: 8

@@ -1,15 +1,7 @@
-{{ if .token.link }}<!--
--->{{ $link:=index .token.link 0 }}<!--
-  -->{{$url:=partial "link2url" (dict "context" .context "link" $link)}}<!--
-  --><span><a href="{{$url}}">{{.token.text}}</a></span><!--
-
--->{{else}}<!--
-  -->{{ if in .context.Params.name_indexes (string .token.index)}}<!--
-  -->{{$local_id:=(print .context.Params.library "." .context.Params.name "." .token.text)}}<!--
-   -->{{$argdict:=dict "context" .context "section" "callables" "title" $local_id}}<!--
-   -->{{$url2:=partial "find-in-section" $argdict}}<!--
-    --><span  class=link id="{{.token.text}}"><a href="{{$url2}}">{{.token.text}}</a></span><!--
-    -->{{ else}}<!--
-    --><span>{{.token.text}}</span><!--
-  -->{{end}}<!--
--->{{end}}
+<!---->{{ if in .context.Params.name_indexes (string .token.index)}}<!--
+      --><span  class=link id="{{.token.text}}"><!--
+    -->{{ else }}<!--
+    - --><span><!--
+    -->{{end}}<!--
+    -->{{ partial "render-token-text" (dict "context" .context "token" .token) }}<!--
+    --></span>

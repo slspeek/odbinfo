@@ -290,7 +290,10 @@ modules:
     hidden: false
     index: 5
     line: 3
-    link: []
+    link:
+    - bookmark: null
+      local_id: Standard.Module1.CalleeOtherLib
+      object_type: callables
     text: CalleeOtherLib
     type: 181
   - column: 18
@@ -373,7 +376,10 @@ modules:
     hidden: false
     index: 16
     line: 7
-    link: []
+    link:
+    - bookmark: null
+      local_id: Standard.Module1.ShadowedCallee
+      object_type: callables
     text: ShadowedCallee
     type: 181
   - column: 18
@@ -596,7 +602,10 @@ modules:
     hidden: false
     index: 5
     line: 3
-    link: []
+    link:
+    - bookmark: null
+      local_id: Standard.Module2.Main
+      object_type: callables
     text: Main
     type: 181
   - column: 8

@@ -1,0 +1,7 @@
+<!---->{{ if .token.link }}<!--
+      -->{{ $link:=index .token.link 0 }}<!--
+      -->{{$url:=partial "link2url" (dict "context" .context "link" $link) }}<!--
+      --><a href="{{$url}}">{{ .token.text }}</a><!--
+    -->{{ else }}<!--
+  ---->{{ .token.text}}<!--
+    -->{{ end }}

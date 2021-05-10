@@ -1184,7 +1184,10 @@ tokens:
   hidden: false
   index: 5
   line: 3
-  link: []
+  link:
+  - bookmark: null
+    local_id: Library1.Module1.Main
+    object_type: callables
   text: Main
   type: 181
 - column: 8
@@ -1267,7 +1270,10 @@ tokens:
   hidden: false
   index: 16
   line: 7
-  link: []
+  link:
+  - bookmark: null
+    local_id: Library1.Module1.CallerSub
+    object_type: callables
   text: CallerSub
   type: 181
 - column: 13
@@ -1412,7 +1418,10 @@ tokens:
   hidden: false
   index: 35
   line: 12
-  link: []
+  link:
+  - bookmark: null
+    local_id: Library1.Module1.CalleeSub
+    object_type: callables
   text: CalleeSub
   type: 181
 - column: 13
@@ -1509,7 +1518,10 @@ tokens:
   hidden: false
   index: 48
   line: 16
-  link: []
+  link:
+  - bookmark: null
+    local_id: Library1.Module1.CallerTwo
+    object_type: callables
   text: CallerTwo
   type: 181
 - column: 13
@@ -1609,7 +1621,10 @@ tokens:
   hidden: false
   index: 61
   line: 20
-  link: []
+  link:
+  - bookmark: null
+    local_id: Library1.Module1.CallerOtherLib
+    object_type: callables
   text: CallerOtherLib
   type: 181
 - column: 18
@@ -1754,7 +1769,10 @@ tokens:
   hidden: false
   index: 80
   line: 25
-  link: []
+  link:
+  - bookmark: null
+    local_id: Library1.Module1.CallerShadowedCallee
+    object_type: callables
   text: CallerShadowedCallee
   type: 181
 - column: 24
@@ -1854,7 +1872,10 @@ tokens:
   hidden: false
   index: 93
   line: 29
-  link: []
+  link:
+  - bookmark: null
+    local_id: Library1.Module1.ShadowedCallee
+    object_type: callables
   text: ShadowedCallee
   type: 181
 - column: 18

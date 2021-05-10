@@ -1,6 +1,7 @@
 """ Facade fot the SQLiteParser """
 from antlr4 import CommonTokenStream, InputStream, ParseTreeWalker
 
+from odbinfo.pure.parser.scanner import convert_token
 from odbinfo.pure.parser.sqlite.SQLiteLexer import SQLiteLexer
 from odbinfo.pure.parser.sqlite.SQLiteParser import SQLiteParser
 from odbinfo.pure.parser.sqlite.SQLiteParserListener import \
@@ -16,7 +17,7 @@ class SQLListener(SQLiteParserListener):
 
     def enterTable_name(self, ctx):
         self.tablenames.append(
-            (ctx.getText(), ctx.start.line, ctx.start.column)
+            convert_token(ctx.start)
         )
 
 
@@ -29,7 +30,7 @@ def parse(sqlcommand):
     tree = parser.parse()
     walker = ParseTreeWalker()
     listener = SQLListener()
+
     walker.walk(listener, tree)
 
-    print(listener.tablenames)
-    return tree
+    return listener.tablenames

@@ -37,4 +37,12 @@ command: 'SELECT *
 
   FROM   "Plant"'
 name: vwPlant
+table_tokens:
+- column: 7
+  hidden: false
+  index: 8
+  line: 2
+  link: []
+  text: '"Plant"'
+  type: 184
 ---

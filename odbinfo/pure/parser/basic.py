@@ -5,8 +5,8 @@ from antlr4 import CommonTokenStream, InputStream
 
 from odbinfo.pure.datatype import BasicCall, Callable, Token
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
-from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find, maybe, skip,
-                                         someof)
+from odbinfo.pure.parser.scanner import (Scanner, a, anyof, convert_token,
+                                         find, maybe, skip, someof)
 
 
 def scan_basic(alltokens, library, module) -> [str]:
@@ -137,13 +137,4 @@ def get_basic_tokens(basiccode) -> [Token]:
     # exclude EOF token, by leaving the last token out
     atokens = stream.tokens[:-1]
 
-    def convert_token(atoken) -> Token:
-        return\
-            Token(atoken.column,
-                  atoken.line,
-                  atoken.text,
-                  atoken.type,
-                  atoken.tokenIndex,
-                  atoken.channel == antlr4.Token.HIDDEN_CHANNEL
-                  )
     return list(map(convert_token, atokens))

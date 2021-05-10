@@ -241,6 +241,7 @@ class Query:
     name: str
     command: str
     columns: [QueryColumn]
+    table_tokens: [Token] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         self.command = format_sql(self.command)

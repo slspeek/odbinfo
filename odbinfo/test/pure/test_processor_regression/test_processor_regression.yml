@@ -3533,6 +3533,14 @@ queries:
     writable: true
   command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
   name: FamilyLookup
+  table_tokens:
+  - column: 7
+    hidden: false
+    index: 18
+    line: 3
+    link: []
+    text: '"Family"'
+    type: 184
 - columns:
   - autoincrement: false
     issigned: true
@@ -3571,6 +3579,14 @@ queries:
 
     FROM   "Plant"'
   name: vwPlant
+  table_tokens:
+  - column: 7
+    hidden: false
+    index: 8
+    line: 2
+    link: []
+    text: '"Plant"'
+    type: 184
 reports:
 - command: Family
   commandtype: table
@@ -3831,3 +3847,4 @@ views:
 
     FROM   "Plant"'
   name: view1
+  table_tokens: []

@@ -24,4 +24,12 @@ columns:
   writable: true
 command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
 name: FamilyLookup
+table_tokens:
+- column: 7
+  hidden: false
+  index: 18
+  line: 3
+  link: []
+  text: '"Family"'
+  type: 184
 ---

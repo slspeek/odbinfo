@@ -1,5 +1,19 @@
 """ Generic token scanner """
+import antlr4
+
 from odbinfo.pure.datatype import Token
+
+
+def convert_token(atoken) -> Token:
+    " convert antlr4 token to Token "
+    return\
+        Token(atoken.column,
+              atoken.line,
+              atoken.text,
+              atoken.type,
+              atoken.tokenIndex,
+              atoken.channel == antlr4.Token.HIDDEN_CHANNEL
+              )
 
 
 class Scanner:

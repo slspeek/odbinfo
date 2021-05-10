@@ -15,4 +15,5 @@ command: 'SELECT "id"
 
   FROM   "Plant"'
 name: view1
+table_tokens: []
 ---

@@ -513,6 +513,7 @@ queries:
     writable: true
   command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
   name: FamilyLookup
+  table_tokens: []
 - columns:
   - autoincrement: false
     issigned: true
@@ -551,6 +552,7 @@ queries:
 
     FROM   "Plant"'
   name: vwPlant
+  table_tokens: []
 reports:
 - command: Family
   commandtype: table
@@ -757,3 +759,4 @@ views:
 
     FROM   "Plant"'
   name: view1
+  table_tokens: []

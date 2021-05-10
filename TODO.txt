@@ -1,7 +1,12 @@
+give thought to parent relationships
+
+make e2e test (BaseDocumenter2dot example)
+
 scroll down little bit after bookmark link in modules (see basedocumenter2dot)
 
 look at Identifier construction at dependency.py:37
 
+color highlight strings in render-token templates
 
 refactor core.py
 
@@ -57,14 +62,14 @@ fields, tables, queries, macros(2x) in formcontrols
 tables, queries in reports
 fields, tables, queries in reports
 fields, tables, queries in textdocuments
-tables, queries in macros(2x)
-macros in macros
+tables, queries, reports in macros(2x)
+basic in basic (done)
+python in python (nice to have)
 
 errors in parser need improvement
 
 better description of the extension
 
-make e2e test (BaseDocumenter2dot example)
 
 Limitations
 -----------

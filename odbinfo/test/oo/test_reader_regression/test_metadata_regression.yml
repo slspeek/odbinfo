@@ -514,6 +514,7 @@ queries:
   command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
   name: FamilyLookup
   table_tokens: []
+  tokens: []
 - columns:
   - autoincrement: false
     issigned: true
@@ -553,6 +554,7 @@ queries:
     FROM   "Plant"'
   name: vwPlant
   table_tokens: []
+  tokens: []
 reports:
 - command: Family
   commandtype: table
@@ -760,3 +762,4 @@ views:
     FROM   "Plant"'
   name: view1
   table_tokens: []
+  tokens: []

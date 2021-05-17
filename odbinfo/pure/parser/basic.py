@@ -1,11 +1,10 @@
-""" Hand crafted scanner on the the tokones of OOBasicLexer """
+""" Hand crafted scanner on the the tokens provided by OOBasicLexer """
 
-from antlr4 import CommonTokenStream, InputStream
 
 from odbinfo.pure.datatype import BasicCall, Callable, Token
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
-from odbinfo.pure.parser.scanner import (Scanner, a, anyof, convert_token,
-                                         find, maybe, skip, someof)
+from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find, get_tokens,
+                                         maybe, skip, someof)
 
 
 def scan_basic(alltokens, library, module) -> [str]:
@@ -128,12 +127,5 @@ def functioncall(parser):
 
 
 def get_basic_tokens(basiccode) -> [Token]:
-    "Tokenize `basiccode`"
-    input_stream = InputStream(basiccode)
-    lexer = OOBasicLexer(input_stream)
-    stream = CommonTokenStream(lexer)
-    stream.fill()
-    # exclude EOF token, by leaving the last token out
-    atokens = stream.tokens[:-1]
-
-    return list(map(convert_token, atokens))
+    " Tokenize `basiccode` "
+    return get_tokens(basiccode, OOBasicLexer)

@@ -1,7 +1,20 @@
 """ Generic token scanner """
 import antlr4
+from antlr4 import CommonTokenStream, InputStream
 
 from odbinfo.pure.datatype import Token
+
+
+def get_tokens(source_code, lexer):
+    "Tokenize `source_code` with antlr4 `lexer`"
+    input_stream = InputStream(source_code)
+    lexer = lexer(input_stream)
+    stream = CommonTokenStream(lexer)
+    stream.fill()
+    # exclude EOF token, by leaving the last token out
+    atokens = stream.tokens[:-1]
+
+    return list(map(convert_token, atokens))
 
 
 def convert_token(atoken) -> Token:

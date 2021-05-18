@@ -3,8 +3,9 @@
 
 from odbinfo.pure.datatype import BasicCall, Callable, Token
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
-from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find, get_tokens,
-                                         maybe, skip, someof)
+from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find,
+                                         get_token_stream, get_tokens, maybe,
+                                         skip, someof)
 
 
 def scan_basic(alltokens, library, module) -> [str]:
@@ -128,4 +129,4 @@ def functioncall(parser):
 
 def get_basic_tokens(basiccode) -> [Token]:
     " Tokenize `basiccode` "
-    return get_tokens(basiccode, OOBasicLexer)
+    return get_tokens(get_token_stream(basiccode, OOBasicLexer))

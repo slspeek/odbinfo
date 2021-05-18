@@ -45,5 +45,70 @@ table_tokens:
   link: []
   text: '"Plant"'
   type: 184
-tokens: []
+tokens:
+- column: 0
+  hidden: false
+  index: 0
+  line: 1
+  link: []
+  text: SELECT
+  type: 129
+- column: 6
+  hidden: true
+  index: 1
+  line: 1
+  link: []
+  text: ' '
+  type: 191
+- column: 7
+  hidden: false
+  index: 2
+  line: 1
+  link: []
+  text: '*'
+  type: 7
+- column: 8
+  hidden: true
+  index: 3
+  line: 1
+  link: []
+  text: '
+
+    '
+  type: 191
+- column: 0
+  hidden: false
+  index: 4
+  line: 2
+  link: []
+  text: FROM
+  type: 75
+- column: 4
+  hidden: true
+  index: 5
+  line: 2
+  link: []
+  text: ' '
+  type: 191
+- column: 5
+  hidden: true
+  index: 6
+  line: 2
+  link: []
+  text: ' '
+  type: 191
+- column: 6
+  hidden: true
+  index: 7
+  line: 2
+  link: []
+  text: ' '
+  type: 191
+- column: 7
+  hidden: false
+  index: 8
+  line: 2
+  link: []
+  text: '"Plant"'
+  type: 184
 ---

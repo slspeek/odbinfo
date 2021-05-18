@@ -23,7 +23,7 @@ def _process_libraries(libraries: [Library]):
 
 
 def _process_query(query: Query):
-    query.table_tokens = parse(query.command)
+    query.table_tokens, query.tokens = parse(query.command)
 
 
 def process_metadata(metadata):

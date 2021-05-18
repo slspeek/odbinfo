@@ -5,11 +5,15 @@ from antlr4 import CommonTokenStream, InputStream
 from odbinfo.pure.datatype import Token
 
 
-def get_tokens(source_code, lexer):
-    "Tokenize `source_code` with antlr4 `lexer`"
+def get_token_stream(source_code, lexer) -> CommonTokenStream:
+    " return antlr4.CommonTokenStream on `source_code` with `lexer`"
     input_stream = InputStream(source_code)
     lexer = lexer(input_stream)
-    stream = CommonTokenStream(lexer)
+    return CommonTokenStream(lexer)
+
+
+def get_tokens(stream) -> [Token]:
+    "Read `stream` and return the tokens"
     stream.fill()
     # exclude EOF token, by leaving the last token out
     atokens = stream.tokens[:-1]

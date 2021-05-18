@@ -88,8 +88,10 @@ alltest: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}   $(testloc)
 
 .ONESHELL:
-serve: prepare
+serve: clean prepare
+	SINGLE=oo/test_core.py::test_generate_report make single
 	cd $(test-output)/test_core/testdb
+	x-www-browser http://localhost:1313/ &
 	hugo server --layoutDir ../../../../../data/hugo-template/layouts
 
 format:

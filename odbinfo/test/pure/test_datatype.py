@@ -4,7 +4,7 @@ from odbinfo.pure.datatype import Column, Key, PythonModule, Query, QueryColumn
 
 def test_python_module():
     " test __post_init__"
-    pmodule = PythonModule("Standard", "Module1", "")
+    pmodule = PythonModule("Module1", "Standard",  "")
     assert pmodule.title == "Standard.Module1"
 
 

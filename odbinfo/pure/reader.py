@@ -1,6 +1,6 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
 import os
-from functools import partial, reduce
+from functools import partial
 from zipfile import ZipFile
 
 import xmltodict
@@ -35,7 +35,7 @@ def _collect_attribute(data, attribute):
                 continue
             values.extend(_collect_attribute(value, attribute))
         return values
-    return reduce(lambda x, y: x + y, mapiflist(collect_attr, data), [])
+    return sum(mapiflist(collect_attr, data), [])
 
 
 def _body_elem(oozip, path):
@@ -63,10 +63,8 @@ def _database_displays(doc_path) -> [DatabaseDisplay]:
             )
     with ZipFile(doc_path) as file:
         body = _body_elem(file, "content.xml")["office:text"]
-        return reduce(lambda x, y: x + y,
-                      list(map(partial(mapiflist, display),
-                               _collect_attribute(body, "text:database-display"))),
-                      [])
+        return sum(map(partial(mapiflist, display),
+                       _collect_attribute(body, "text:database-display")), [])
 
 
 def read_text_documents(dir_path, dbname) -> [TextDocument]:
@@ -155,8 +153,8 @@ def _read_python_library(odbzip, fullpath):
 
 def _read_python_module(odbzip, fullpath, library):
     return PythonModule(
-        library,
         os.path.basename(fullpath),
+        library,
         odbzip.read(fullpath).decode()
     )
 
@@ -190,7 +188,7 @@ def _read_library(odbzip, data) -> Library:
 def _read_module(odbzip, library_name,  data) -> Module:
     name = data["@library:name"]
     data = _parse_xml(odbzip, f"Basic/{library_name}/{name}.xml")
-    return Module(library_name, name, data["script:module"]["#text"])
+    return Module(name, library_name, data["script:module"]["#text"])
 
 
 def read_forms(odbzip):

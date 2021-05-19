@@ -1,16 +1,22 @@
 " Dependency searcher for metadata "
 import dataclasses
-import operator
-from functools import partial, reduce
+from functools import partial
 from itertools import starmap
 
 from odbinfo.pure.datatype import (BasicCall, Callable, Identifier, Metadata,
-                                   Module, Token, UseCase, get_identifier)
+                                   Module, Query, Table, Token, UseCase,
+                                   get_identifier)
 
 
 def search_dependencies(metadata: Metadata) -> [UseCase]:
     " dependency search in `metadata`"
-    return search_callable_in_callable(metadata.callables(), metadata.modules())
+
+    return (search_callable_in_callable(metadata.callables(), metadata.modules()) +
+            search_tables_in_queries(metadata.tables, metadata.queries))
+
+#
+# Callable in Callable
+#
 
 
 def _copy_module_tokens(modules):
@@ -92,10 +98,9 @@ def find_callable_in_callable(callables: [Callable]) -> [UseCase]:
                       list(filter(filter_own_library, callables)) +
                       list(filter(filter_other_library, callables)))
         consider_caller = partial(consider, caller)
-        return reduce(operator.add,
-                      map(consider_caller, candidates), [])
+        return sum(map(consider_caller, candidates), [])
 
-    return reduce(operator.add, map(search_in_one, callables), [])
+    return sum(map(search_in_one, callables), [])
 
 
 def link_token(token: Token, acallable: Callable):
@@ -127,3 +132,27 @@ def consider(caller: Callable, candidate_callee: Callable) -> [UseCase]:
         if match:
             use_cases.append(process_match(ntoken))
     return use_cases
+
+#
+# Tables in Queries
+#
+
+
+def search_tables_in_queries(tables: [Table], queries: [Query]) -> [UseCase]:
+    " find uses of tables in queries "
+    def find_tables_in_query(query: Query) -> [UseCase]:
+        " find table uses in `query` "
+        def find_table_in_query(table: Table) -> [UseCase]:
+            def find_table_in_token(token: Token) -> [UseCase]:
+                use_cases = []
+                if token.text[1:-1] == table.name:
+                    link_token(token, table)
+                    use_cases.append(UseCase(get_identifier(query),
+                                             get_identifier(table),
+                                             "queries"))
+                return use_cases
+
+            return sum(map(find_table_in_token, query.table_tokens), [])
+        return sum(map(find_table_in_query, tables), [])
+
+    return sum(map(find_tables_in_query, queries), [])

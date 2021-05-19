@@ -47,7 +47,7 @@ class BasicScanner(Scanner):
 
     # pylint: disable=too-many-arguments
     def _callable(self, start, bodystart, bodyend, end, name_token):
-        acallable = Callable(self.library, self.module, name_token.text)
+        acallable = Callable(name_token.text, self.library, self.module)
         acallable.body_tokens = self.tokens[bodystart:bodyend]
         acallable.name_token_index = name_token.index
 

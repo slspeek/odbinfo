@@ -6,4 +6,5 @@ fields:
   tabletype: query
 name: Untitled.odt
 path: ./Untitled.odt
+title: Untitled.odt
 ---

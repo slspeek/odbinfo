@@ -50,4 +50,5 @@ keys:
   typename: Primary
   update_rule: Cascade
 name: Family
+title: Family
 ---

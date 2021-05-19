@@ -66,4 +66,5 @@ keys:
   typename: Foreign
   update_rule: No_Action
 name: Plant
+title: Plant
 ---

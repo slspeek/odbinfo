@@ -28,4 +28,5 @@ subforms:
   detailfields: ''
   masterfields: ''
   name: Formulier 1
+title: Formulier1
 ---

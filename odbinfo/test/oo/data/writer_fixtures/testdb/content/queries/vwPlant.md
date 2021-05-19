@@ -42,9 +42,13 @@ table_tokens:
   hidden: false
   index: 8
   line: 2
-  link: []
+  link:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
   text: '"Plant"'
   type: 184
+title: vwPlant
 tokens:
 - column: 0
   hidden: false
@@ -108,7 +112,10 @@ tokens:
   hidden: false
   index: 8
   line: 2
-  link: []
+  link:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
   text: '"Plant"'
   type: 184
 ---

@@ -125,18 +125,12 @@ def _write_config(site_name, metadata):
 
 
 def _write_content(metadata: Metadata, name):
-
-    def basename(content):
-        if hasattr(content, "title"):
-            return content.title
-        return content.name
-
     contentlist = _get_metadata_attr(metadata, name)
     if len(contentlist) > 0:
         targetpath = f"content/{name}"
         os.makedirs(targetpath, exist_ok=True)
         for content in contentlist:
-            with open(f"{targetpath}/{basename(content)}.md", "w") as out:
+            with open(f"{targetpath}/{content.title}.md", "w") as out:
                 _frontmatter(dataclasses.asdict(content), out)
 
 

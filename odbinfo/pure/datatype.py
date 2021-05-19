@@ -22,6 +22,16 @@ KEYRULES = {0: "Cascade",
 
 
 @dataclass
+class DataObject:
+    " Super class of the data objects that have a page of their own "
+    name: str
+    title: str = field(init=False)
+
+    def __post_init__(self):
+        self.title = self.name
+
+
+@dataclass
 class Identifier:
     " Unique id for ooobjects "
     object_type: str
@@ -31,7 +41,8 @@ class Identifier:
 
 def get_identifier(dataobject) -> Identifier:
     "returns Identifier for `dataobject`"
-    return Identifier(dataobject.__class__.__name__.lower()+"s", dataobject.title)
+    return Identifier(dataobject.__class__.__name__.lower()+"s",
+                      dataobject.title)
 
 
 @dataclass
@@ -64,38 +75,33 @@ class DatabaseDisplay:
 
 
 @dataclass
-class TextDocument:
+class TextDocument(DataObject):
     " ODT or OTT file metadata "
-    name: str
     path: str
     fields: [DatabaseDisplay]
 
 
 @dataclass
-class Report:
+class Report(DataObject):
     " Report metadata "
-    name: str
     command: str
     commandtype: str
     formulas: [str]
 
 
 @dataclass
-class PythonModule:
+class PythonModule(DataObject):
     " Python Module "
     library: str
-    name: str
     source: str
-    title: str = field(init=False)
 
     def __post_init__(self):
         self.title = f"{self.library}.{self.name}"
 
 
 @dataclass
-class PythonLibrary:
+class PythonLibrary(DataObject):
     " Python library "
-    name: str
     modules: [PythonModule]
 
 
@@ -108,11 +114,10 @@ class BasicCall:
 
 # pylint:disable=too-many-instance-attributes
 @dataclass
-class Callable:
+class Callable(DataObject):
     " Basic sub or function "
     library: str
     module: str
-    name: str
     name_token_index: int = field(init=False)
     tokens: [Token] = field(init=False, default_factory=list)
     body_tokens: [Token] = field(init=False, repr=False, default_factory=list)
@@ -126,10 +131,9 @@ class Callable:
 
 
 @dataclass
-class Module:
+class Module(DataObject):
     " Basic module"
     library: str
-    name: str
     source: str
     callables: [Callable] = field(init=False, default_factory=list)
     title: str = field(init=False)
@@ -142,9 +146,8 @@ class Module:
 
 
 @dataclass
-class Library:
+class Library(DataObject):
     " Basic library"
-    name: str
     modules: [Module]
 
 
@@ -170,9 +173,8 @@ class SubForm:  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Form:
+class Form(DataObject):
     " Toplevel form "
-    name: str
     subforms: [SubForm]
 
 
@@ -234,11 +236,10 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Query:
+class Query(DataObject):
     " View properties see:"\
         " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
         " QueryDefinition.html"
-    name: str
     command: str
     columns: [QueryColumn]
 
@@ -246,6 +247,7 @@ class Query:
     table_tokens: [Token] = field(init=False, default_factory=list)
 
     def __post_init__(self):
+        super().__post_init__()
         self.command = format_sql(self.command)
 
 
@@ -294,11 +296,10 @@ class Index:
 
 
 @dataclass
-class Table:
+class Table(DataObject):
     """ Table properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Table.html
     """
-    name: str
     description: str
     keys: [Key]
     columns: [Column]

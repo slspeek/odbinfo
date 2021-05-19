@@ -127,4 +127,5 @@ subforms:
   detailfields: ''
   masterfields: ''
   name: MainForm
+title: Related subform
 ---

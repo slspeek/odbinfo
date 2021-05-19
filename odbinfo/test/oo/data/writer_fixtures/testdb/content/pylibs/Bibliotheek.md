@@ -6,4 +6,5 @@ modules:
     \tprint(\"Hello\")\n"
   title: Bibliotheek.Module.py
 name: Bibliotheek
+title: Bibliotheek
 ---

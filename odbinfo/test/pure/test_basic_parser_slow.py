@@ -15,7 +15,7 @@ from odbinfo.test.resource import BASEDOCUMENTER
 def _read_module(odbzip, library_name,  data) -> Module:
     name = data["@library:name"]
     data = _parse_xml(odbzip, f"{library_name}/{name}.xba")
-    return Module("BaseDocumenter", name, data["script:module"]["#text"])
+    return Module(name, "BaseDocumenter", data["script:module"]["#text"])
 
 
 @pytest.mark.veryslow

@@ -6,6 +6,7 @@ documents:
     tabletype: query
   name: Untitled.odt
   path: ./Untitled.odt
+  title: Untitled.odt
 forms:
 - name: Family
   subforms:
@@ -47,6 +48,7 @@ forms:
     detailfields: ''
     masterfields: ''
     name: MainForm
+  title: Family
 - name: Formulier1
   subforms:
   - allowdeletes: 'true'
@@ -76,6 +78,7 @@ forms:
     detailfields: ''
     masterfields: ''
     name: Formulier 1
+  title: Formulier1
 - name: Plant
   subforms:
   - allowdeletes: 'true'
@@ -141,6 +144,7 @@ forms:
     detailfields: ''
     masterfields: ''
     name: MainForm
+  title: Plant
 - name: Plant invoeren
   subforms:
   - allowdeletes: 'true'
@@ -172,6 +176,7 @@ forms:
     detailfields: ''
     masterfields: ''
     name: MainForm
+  title: Plant invoeren
 - name: PlantListbox
   subforms:
   - allowdeletes: 'false'
@@ -274,6 +279,7 @@ forms:
     detailfields: ''
     masterfields: ''
     name: MainForm
+  title: PlantListbox
 - name: Related subform
   subforms:
   - allowdeletes: 'true'
@@ -402,6 +408,7 @@ forms:
     detailfields: ''
     masterfields: ''
     name: MainForm
+  title: Related subform
 - name: view1
   subforms:
   - allowdeletes: 'true'
@@ -431,6 +438,7 @@ forms:
     detailfields: ''
     masterfields: ''
     name: MainForm
+  title: view1
 libraries:
 - modules:
   - callables: []
@@ -450,6 +458,7 @@ libraries:
     title: Module2.Standard
     tokens: []
   name: Standard
+  title: Standard
 - modules:
   - callables: []
     library: Library1
@@ -472,6 +481,7 @@ libraries:
     title: Module2.Library1
     tokens: []
   name: Library1
+  title: Library1
 pylibs:
 - modules:
   - library: Bibliotheek
@@ -480,6 +490,7 @@ pylibs:
       \tprint(\"Hello\")\n"
     title: Bibliotheek.Module.py
   name: Bibliotheek
+  title: Bibliotheek
 - modules:
   - library: python
     name: pymodule.py
@@ -487,6 +498,7 @@ pylibs:
       \n"
     title: python.pymodule.py
   name: python
+  title: python
 queries:
 - columns:
   - autoincrement: false
@@ -514,6 +526,7 @@ queries:
   command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
   name: FamilyLookup
   table_tokens: []
+  title: FamilyLookup
   tokens: []
 - columns:
   - autoincrement: false
@@ -554,6 +567,7 @@ queries:
     FROM   "Plant"'
   name: vwPlant
   table_tokens: []
+  title: vwPlant
   tokens: []
 reports:
 - command: Family
@@ -563,6 +577,7 @@ reports:
   - field:[Name]
   - field:[Desc]
   name: Family
+  title: Family
 - command: vwPlant
   commandtype: query
   formulas:
@@ -570,6 +585,7 @@ reports:
   - field:[naam]
   - field:[RFamliyID]
   name: vwPlant
+  title: vwPlant
 tables:
 - columns:
   - autoincrement: false
@@ -622,6 +638,7 @@ tables:
     typename: Primary
     update_rule: Cascade
   name: Family
+  title: Family
 - columns:
   - autoincrement: false
     defaultvalue: ''
@@ -676,6 +693,7 @@ tables:
     typename: Primary
     update_rule: Cascade
   name: Persoon
+  title: Persoon
 - columns:
   - autoincrement: false
     defaultvalue: ''
@@ -743,6 +761,7 @@ tables:
     typename: Foreign
     update_rule: No_Action
   name: Plant
+  title: Plant
 use_cases: []
 views:
 - columns:
@@ -762,4 +781,5 @@ views:
     FROM   "Plant"'
   name: view1
   table_tokens: []
+  title: view1
   tokens: []

@@ -30,4 +30,5 @@ def process_metadata(metadata):
     " preprocessing of the data before it is send to hugo "
     _process_libraries(metadata.libraries)
     list(map(_process_query, metadata.queries))
+    list(map(_process_query, metadata.views))
     metadata.use_cases = search_dependencies(metadata)

@@ -15,7 +15,85 @@ command: 'SELECT "id"
 
   FROM   "Plant"'
 name: view1
-table_tokens: []
+table_tokens:
+- column: 7
+  hidden: false
+  index: 8
+  line: 2
+  link:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
+  text: '"Plant"'
+  type: 184
 title: view1
-tokens: []
+tokens:
+- column: 0
+  hidden: false
+  index: 0
+  line: 1
+  link: []
+  text: SELECT
+  type: 129
+- column: 6
+  hidden: true
+  index: 1
+  line: 1
+  link: []
+  text: ' '
+  type: 191
+- column: 7
+  hidden: false
+  index: 2
+  line: 1
+  link: []
+  text: '"id"'
+  type: 184
+- column: 11
+  hidden: true
+  index: 3
+  line: 1
+  link: []
+  text: '
+
+    '
+  type: 191
+- column: 0
+  hidden: false
+  index: 4
+  line: 2
+  link: []
+  text: FROM
+  type: 75
+- column: 4
+  hidden: true
+  index: 5
+  line: 2
+  link: []
+  text: ' '
+  type: 191
+- column: 5
+  hidden: true
+  index: 6
+  line: 2
+  link: []
+  text: ' '
+  type: 191
+- column: 6
+  hidden: true
+  index: 7
+  line: 2
+  link: []
+  text: ' '
+  type: 191
+- column: 7
+  hidden: false
+  index: 8
+  line: 2
+  link:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
+  text: '"Plant"'
+  type: 184
 ---

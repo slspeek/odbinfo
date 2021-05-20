@@ -3,16 +3,21 @@ import dataclasses
 from functools import partial
 from itertools import starmap
 
-from odbinfo.pure.datatype import (BasicCall, Callable, Identifier, Metadata,
-                                   Module, Query, Table, Token, UseCase,
-                                   get_identifier)
+from odbinfo.pure.datatype import (BasicCall, Callable, DataObject, Identifier,
+                                   Metadata, Module, Query, Table, Token,
+                                   UseCase, get_identifier)
 
 
 def search_dependencies(metadata: Metadata) -> [UseCase]:
     " dependency search in `metadata`"
 
     return (search_callable_in_callable(metadata.callables(), metadata.modules()) +
-            search_tables_in_queries(metadata.tables, metadata.queries))
+            search_deps_in_queries(metadata.tables, metadata.queries) +
+            search_deps_in_queries(metadata.views, metadata.queries) +
+            search_deps_in_queries(metadata.queries, metadata.queries) +
+            search_deps_in_queries(metadata.tables, metadata.views) +
+            search_deps_in_queries(metadata.views, metadata.views)
+            )
 
 #
 # Callable in Callable
@@ -134,12 +139,12 @@ def consider(caller: Callable, candidate_callee: Callable) -> [UseCase]:
     return use_cases
 
 #
-# Tables in Queries
+# dataobject in Queries
 #
 
 
-def search_tables_in_queries(tables: [Table], queries: [Query]) -> [UseCase]:
-    " find uses of tables in queries "
+def search_deps_in_queries(dataobject: [DataObject], queries: [Query]) -> [UseCase]:
+    " find uses of dataobject in queries "
     def find_tables_in_query(query: Query) -> [UseCase]:
         " find table uses in `query` "
         def find_table_in_query(table: Table) -> [UseCase]:
@@ -153,6 +158,6 @@ def search_tables_in_queries(tables: [Table], queries: [Query]) -> [UseCase]:
                 return use_cases
 
             return sum(map(find_table_in_token, query.table_tokens), [])
-        return sum(map(find_table_in_query, tables), [])
+        return sum(map(find_table_in_query, dataobject), [])
 
     return sum(map(find_tables_in_query, queries), [])

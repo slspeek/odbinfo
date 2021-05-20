@@ -50,13 +50,14 @@ with
 
 dependency search matrix
 ------------------------
-tables, queries in queries
+tables, views in views (done)
+tables, queries, views in queries (done)
 tables, queries in forms
-fields, tables, queries, macros(2x) in formcontrols
-tables, queries in reports
-fields, tables, queries in reports
-fields, tables, queries in textdocuments
-tables, queries, reports in macros(2x)
+fields, tables, queries, views, macros(2x) in formcontrols
+tables, queries, views in reports
+fields, tables, queries, views in reports
+fields, tables, views, queries in textdocuments
+tables, queries,views, reports in macros(2x)
 basic in basic (done)
 python in python (nice to have)
 

@@ -4,7 +4,8 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from odbinfo.pure.writer import _open_browser, chdir, new_site, run_checked
+from odbinfo.pure.writer import (_open_browser, chdir, clean_old_site,
+                                 new_site, run_checked)
 from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 
@@ -14,6 +15,14 @@ def test_chdir_none():
     with chdir():
         os.chdir("/")
     assert os.getcwd() == cur_dir
+
+
+def test_clean_old_site(tmpdir):
+    " test cleaning old site "
+    output_dir = str(tmpdir)
+    os.makedirs(tmpdir / "exampledb")
+    os.makedirs(tmpdir / "exampledb-local")
+    clean_old_site(output_dir, "exampledb")
 
 
 @pytest.mark.slow

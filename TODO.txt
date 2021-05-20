@@ -8,8 +8,6 @@ look at Identifier construction at dependency.py:37
 
 color highlight strings in render-token templates
 
-refactor core.py
-
 test_basic_parser_slow.py: parametrize and regression
 
 Configuration
@@ -49,10 +47,6 @@ with
   used_by
   parent
 
-or make a list of triplets
-(Object1, Obj2, 'queries')
-object1 = ("EmployeeBenefits", "query")
-Obj2 = ("Employee", "table")
 
 dependency search matrix
 ------------------------

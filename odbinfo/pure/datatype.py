@@ -41,7 +41,12 @@ class Identifier:
 
 def get_identifier(dataobject) -> Identifier:
     "returns Identifier for `dataobject`"
-    return Identifier(dataobject.__class__.__name__.lower()+"s",
+    classname = dataobject.__class__.__name__.lower()
+    if classname == "query":
+        plural = "queries"
+    else:
+        plural = classname + "s"
+    return Identifier(plural,
                       dataobject.title)
 
 

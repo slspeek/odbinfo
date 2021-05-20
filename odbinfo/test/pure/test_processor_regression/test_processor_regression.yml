@@ -4068,7 +4068,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: FamilyLookup
-    object_type: querys
+    object_type: queries
   subject:
     bookmark: null
     local_id: Family
@@ -4077,7 +4077,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: vwPlant
-    object_type: querys
+    object_type: queries
   subject:
     bookmark: null
     local_id: Plant

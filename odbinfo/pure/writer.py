@@ -4,6 +4,7 @@ import dataclasses
 import os
 import pathlib
 import shlex
+import shutil
 import socket
 import subprocess
 import time
@@ -65,8 +66,21 @@ def _frontmatter(adict, out):
     out.write(FRONT_MATTER_MARK)
 
 
+def clean_old_site(output_dir, name):
+    " remove previous generated site if it exits "
+    reportdir = os.path.join(output_dir, name)
+
+    def rmtree(directory):
+        if os.path.isdir(directory) and os.path.exists(directory):
+            shutil.rmtree(directory)
+
+    rmtree(reportdir)
+    rmtree(f"{reportdir}-local")
+
+
 def new_site(output_dir, name):
     """ Sets up a empty hugo site with odbinfo templates """
+    clean_old_site(output_dir, name)
     os.makedirs(output_dir, exist_ok=True)
     with chdir(output_dir):
         run_checked(f"hugo new site {name} > /dev/null",

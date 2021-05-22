@@ -1,6 +1,7 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
 import os
 from functools import partial
+from itertools import starmap
 from typing import List
 from zipfile import ZipFile
 
@@ -206,8 +207,19 @@ def _read_subforms(data) -> List[SubForm]:
     return mapiflist(_read_subform, data)
 
 
+def _read_form_controls(name, value) -> List[Control]:
+    if name == "form:form":
+        return mapiflist(_read_subform, value)
+    if name == "form:grid":
+        return mapiflist(_read_grid, value)
+    if name == "form:listbox":
+        return mapiflist(_read_listbox, value)
+    if name.startswith("form:"):
+        return mapiflist(_read_control, value)
+    return []
+
+
 def _read_subform(data):
-    controls = []
     subformname = data["@form:name"]
     command = data.get("@form:command", "")
     commandtype = data.get("@form:command-type", "")
@@ -216,20 +228,10 @@ def _read_subform(data):
     allowinsertes = data.get("@form:allow-inserts", "true")
     masterfields = data.get("@form:master-fields", "")
     detailfields = data.get("@form:detail-fields", "")
-    for name in data.keys():
-        collected_controls = []
-        value = data[name]
-        if name == "form:properties":
-            continue
-        if name == "form:form":
-            collected_controls = mapiflist(_read_subform, value)
-        elif name == "form:grid":
-            collected_controls = mapiflist(_read_grid, value)
-        elif name == "form:listbox":
-            collected_controls = mapiflist(_read_listbox, value)
-        elif name.startswith("form:"):
-            collected_controls = mapiflist(_read_control, value)
-        controls.extend(collected_controls)
+    controls = sum(
+        starmap(_read_form_controls,
+                filter(lambda x: not(x[0] == "form:properties"), data.items())),
+        [])
     return SubForm(subformname,
                    command,
                    commandtype,

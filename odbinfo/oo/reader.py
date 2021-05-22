@@ -1,6 +1,7 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
 import os
 from functools import partial
+from typing import List
 from zipfile import ZipFile
 
 from odbinfo.oo.ooutil import open_connection
@@ -29,7 +30,7 @@ def read_metadata(datasource, odbpath):
                          read_text_documents(os.path.dirname(odbpath), dbname))
 
 
-def read_views(connection) -> [View]:
+def read_views(connection) -> List[View]:
     """ Reads view metadata from `connection` """
     return [_read_view(connection, ooview) for ooview in connection.Views]
 
@@ -52,7 +53,7 @@ def _read_query(connection, ooquery):
                  _read_query_columns(connection, ooquery.Command))
 
 
-def _read_query_columns(connection, command) -> [QueryColumn]:
+def _read_query_columns(connection, command) -> List[QueryColumn]:
     cols = []
     stmt = connection.createStatement()
     resultset = stmt.executeQuery(command)
@@ -73,7 +74,7 @@ def _read_query_columns(connection, command) -> [QueryColumn]:
     return cols
 
 
-def read_tables(connection) -> [Table]:
+def read_tables(connection) -> List[Table]:
     """ Reads table metadata from `connection` """
     result = []
     # have to filter out Views

@@ -1,5 +1,7 @@
 """ Defines the main datatypes used """
+import typing
 from dataclasses import dataclass, field
+from typing import List, Optional
 
 from sql_formatter.core import format_sql
 
@@ -36,7 +38,7 @@ class Identifier:
     " Unique id for ooobjects "
     object_type: str
     local_id: str
-    bookmark: str = field(init=False, default=None)
+    bookmark: Optional[str] = field(init=False, default=None)
 
 
 def get_identifier(dataobject) -> Identifier:
@@ -67,7 +69,7 @@ class Token:
     type: int
     index: int
     hidden: bool
-    link: [Identifier] = field(init=False, default_factory=list)
+    link: List[Identifier] = field(init=False, default_factory=list)
 
 
 @dataclass
@@ -83,7 +85,7 @@ class DatabaseDisplay:
 class TextDocument(DataObject):
     " ODT or OTT file metadata "
     path: str
-    fields: [DatabaseDisplay]
+    fields: List[DatabaseDisplay]
 
 
 @dataclass
@@ -91,7 +93,7 @@ class Report(DataObject):
     " Report metadata "
     command: str
     commandtype: str
-    formulas: [str]
+    formulas: List[str]
 
 
 @dataclass
@@ -107,7 +109,7 @@ class PythonModule(DataObject):
 @dataclass
 class PythonLibrary(DataObject):
     " Python library "
-    modules: [PythonModule]
+    modules: List[PythonModule]
 
 
 @dataclass
@@ -124,10 +126,11 @@ class Callable(DataObject):
     library: str
     module: str
     name_token_index: int = field(init=False)
-    tokens: [Token] = field(init=False, default_factory=list)
-    body_tokens: [Token] = field(init=False, repr=False, default_factory=list)
-    calls: [BasicCall] = field(init=False, default_factory=list)
-    strings: [Token] = field(init=False, repr=False,  default_factory=list)
+    tokens: List[Token] = field(init=False, default_factory=list)
+    body_tokens: List[Token] = field(
+        init=False, repr=False, default_factory=list)
+    calls: List[BasicCall] = field(init=False, default_factory=list)
+    strings: List[Token] = field(init=False, repr=False,  default_factory=list)
     title: str = field(init=False)
 
     def __post_init__(self):
@@ -140,10 +143,10 @@ class Module(DataObject):
     " Basic module"
     library: str
     source: str
-    callables: [Callable] = field(init=False, default_factory=list)
+    callables: List[Callable] = field(init=False, default_factory=list)
     title: str = field(init=False)
-    tokens: [Token] = field(init=False, default_factory=list)
-    name_indexes: [int] = field(init=False, default_factory=list)
+    tokens: List[Token] = field(init=False, default_factory=list)
+    name_indexes: List[int] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         # self.source = tohtml(self.source)
@@ -153,7 +156,7 @@ class Module(DataObject):
 @dataclass
 class Library(DataObject):
     " Basic library"
-    modules: [Module]
+    modules: List[Module]
 
 
 @dataclass
@@ -174,13 +177,13 @@ class SubForm:  # pylint: disable=too-many-instance-attributes
     allowupdates: str
     masterfields: str
     detailfields: str
-    controls: [object]
+    controls: List[typing.Any]
 
 
 @dataclass
 class Form(DataObject):
     " Toplevel form "
-    subforms: [SubForm]
+    subforms: List[SubForm]
 
 
 @dataclass
@@ -194,7 +197,7 @@ class Control:  # pylint: disable=too-many-instance-attributes
     label: str
     formfor: str
     type: str
-    eventlisteners: [EventListener]
+    eventlisteners: List[EventListener]
 
 
 @dataclass
@@ -210,7 +213,7 @@ class ListBox(Control):
 class Grid:
     " Table view control"
     name: str
-    columns: [Control]
+    columns: List[Control]
 
 
 @dataclass
@@ -246,10 +249,10 @@ class Query(DataObject):
         " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
         " QueryDefinition.html"
     command: str
-    columns: [QueryColumn]
+    columns: List[QueryColumn]
 
-    tokens: [Token] = field(init=False, default_factory=list)
-    table_tokens: [Token] = field(init=False, default_factory=list)
+    tokens: List[Token] = field(init=False, default_factory=list)
+    table_tokens: List[Token] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         super().__post_init__()
@@ -274,8 +277,8 @@ class Key:  # pylint: disable=too-many-instance-attributes
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
     name: str
-    columns: [str]
-    relatedcolumns: [str]
+    columns: List[str]
+    relatedcolumns: List[str]
     referenced_table: str
     typename: object
     delete_rule: object
@@ -297,7 +300,7 @@ class Index:
     unique: bool
     primary: bool
     clustered: bool
-    columns: [str]
+    columns: List[str]
 
 
 @dataclass
@@ -306,25 +309,25 @@ class Table(DataObject):
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Table.html
     """
     description: str
-    keys: [Key]
-    columns: [Column]
-    indexes: [Index]
+    keys: List[Key]
+    columns: List[Column]
+    indexes: List[Index]
 
 
 @dataclass
 class Metadata:  # pylint: disable=too-many-instance-attributes
     """ Collector class for all metadata read from the odb-file """
-    tables: [Table]
-    views: [View]
-    queries: [Query]
-    forms: [Form]
-    reports: [Report]
-    libraries: [Library]
-    pylibs: [PythonLibrary]
-    documents: [TextDocument]
-    use_cases: [UseCase] = field(init=False, default_factory=list)
+    tables: List[Table]
+    views: List[View]
+    queries: List[Query]
+    forms: List[Form]
+    reports: List[Report]
+    libraries: List[Library]
+    pylibs: List[PythonLibrary]
+    documents: List[TextDocument]
+    use_cases: List[UseCase] = field(init=False, default_factory=list)
 
-    def callables(self) -> [Callable]:
+    def callables(self) -> List[Callable]:
         "collect all callables from libraries"
         result = []
         for lib in self.libraries:
@@ -332,14 +335,14 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
                 result.extend(module.callables)
         return result
 
-    def modules(self) -> [Module]:
+    def modules(self) -> List[Module]:
         "collect all basic modules from libraries"
         result = []
         for lib in self.libraries:
             result.extend(lib.modules)
         return result
 
-    def pymodules(self) -> [PythonModule]:
+    def pymodules(self) -> List[PythonModule]:
         "collect all python modules from libraries"
         result = []
         for lib in self.pylibs:

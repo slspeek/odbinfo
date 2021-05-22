@@ -1,4 +1,6 @@
 """ Core module """
+from typing import Sequence
+
 from odbinfo.pure.datatype import Library, Module, Query
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
@@ -18,7 +20,7 @@ def _process_library(library: Library):
     list(map(parse_module, library.modules))
 
 
-def _process_libraries(libraries: [Library]):
+def _process_libraries(libraries: Sequence[Library]):
     list(map(_process_library, libraries))
 
 

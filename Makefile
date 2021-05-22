@@ -174,4 +174,6 @@ ctags:
 metric: clean
 	find -name \*.py -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* |xargs python -m radon cc -s -nb
 
+mypy:
+	find -name \*.py -and -not -ipath ./target/\* -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* |xargs mypy --show-error-codes --disable-error-code import
 

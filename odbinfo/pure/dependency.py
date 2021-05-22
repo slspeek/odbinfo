@@ -2,13 +2,14 @@
 import dataclasses
 from functools import partial
 from itertools import starmap
+from typing import List, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, Callable, DataObject, Identifier,
-                                   Metadata, Module, Query, Table, Token,
-                                   UseCase, get_identifier)
+                                   Metadata, Module, Query, Token, UseCase,
+                                   get_identifier)
 
 
-def search_dependencies(metadata: Metadata) -> [UseCase]:
+def search_dependencies(metadata: Metadata) -> List[UseCase]:
     " dependency search in `metadata`"
 
     return (search_callable_in_callable(metadata.callables(), metadata.modules()) +
@@ -67,8 +68,8 @@ def _link_name_tokens(module: Module):
     list(starmap(_link_name, zip(module.name_indexes, module.callables)))
 
 
-def search_callable_in_callable(callables: [Callable],
-                                modules: [Module]) -> [UseCase]:
+def search_callable_in_callable(callables: Sequence[Callable],
+                                modules: Sequence[Module]) -> List[UseCase]:
     """ dependency search amoung the basic callables and linking the
         parsed tokens to the targets
         the callable tokens are linked during search
@@ -81,7 +82,7 @@ def search_callable_in_callable(callables: [Callable],
     return use_cases
 
 
-def find_callable_in_callable(callables: [Callable]) -> [UseCase]:
+def find_callable_in_callable(callables: Sequence[Callable]) -> List[UseCase]:
     " find calls from one to another "
     def search_in_one(caller: Callable):
         # caller's module
@@ -108,12 +109,12 @@ def find_callable_in_callable(callables: [Callable]) -> [UseCase]:
     return sum(map(search_in_one, callables), [])
 
 
-def link_token(token: Token, acallable: Callable):
+def link_token(token: Token, referand: DataObject):
     "link `token` to `acallable`"
-    token.link.append(get_identifier(acallable))
+    token.link.append(get_identifier(referand))
 
 
-def consider(caller: Callable, candidate_callee: Callable) -> [UseCase]:
+def consider(caller: Callable, candidate_callee: Callable) -> List[UseCase]:
     " find calls in `caller` to `candidate_callee`"
     # print("Considering: ", caller.title, candidate_callee.title)
 
@@ -143,12 +144,13 @@ def consider(caller: Callable, candidate_callee: Callable) -> [UseCase]:
 #
 
 
-def search_deps_in_queries(dataobject: [DataObject], queries: [Query]) -> [UseCase]:
+def search_deps_in_queries(dataobject: Sequence[DataObject],
+                           queries: Sequence[Query]) -> List[UseCase]:
     " find uses of dataobject in queries "
-    def find_tables_in_query(query: Query) -> [UseCase]:
+    def find_tables_in_query(query: Query) -> List[UseCase]:
         " find table uses in `query` "
-        def find_table_in_query(table: Table) -> [UseCase]:
-            def find_table_in_token(token: Token) -> [UseCase]:
+        def find_table_in_query(table: DataObject) -> List[UseCase]:
+            def find_table_in_token(token: Token) -> List[UseCase]:
                 use_cases = []
                 if token.text[1:-1] == table.name:
                     link_token(token, table)

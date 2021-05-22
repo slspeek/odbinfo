@@ -1,4 +1,6 @@
 """ Generic token scanner """
+from typing import List, Optional, Sequence
+
 import antlr4
 from antlr4 import CommonTokenStream, InputStream
 
@@ -12,7 +14,7 @@ def get_token_stream(source_code, lexer) -> CommonTokenStream:
     return CommonTokenStream(lexer)
 
 
-def get_tokens(stream) -> [Token]:
+def get_tokens(stream) -> List[Token]:
     "Read `stream` and return the tokens"
     stream.fill()
     # exclude EOF token, by leaving the last token out
@@ -36,11 +38,11 @@ def convert_token(atoken) -> Token:
 class Scanner:
     " Holds position "
 
-    def __init__(self, tokens: [Token]):
+    def __init__(self, tokens: Sequence[Token]):
         self.tokens = tokens
         self.tokens_length = len(tokens)
         self.cursor = 0
-        self.cur_token = None
+        self.cur_token: Optional[Token] = None
         self.set_cursor(0)
 
     def eat(self, token_type):

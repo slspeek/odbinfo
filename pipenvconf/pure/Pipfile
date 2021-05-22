@@ -21,6 +21,7 @@ pytest-datadir = "*"
 pytest-regressions = "*"
 autopep8 = "*"
 pytest-cov = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.7"

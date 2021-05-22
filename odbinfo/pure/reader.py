@@ -1,6 +1,7 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
 import os
 from functools import partial
+from typing import List
 from zipfile import ZipFile
 
 import xmltodict
@@ -43,7 +44,7 @@ def _body_elem(oozip, path):
     return _office_body(content)
 
 
-def _text_documents(dir_path) -> [str]:
+def _text_documents(dir_path) -> List[str]:
     docs = []
     for root, _, files in os.walk(dir_path):
         for file in files:
@@ -52,7 +53,7 @@ def _text_documents(dir_path) -> [str]:
     return docs
 
 
-def _database_displays(doc_path) -> [DatabaseDisplay]:
+def _database_displays(doc_path) -> List[DatabaseDisplay]:
     def display(data):
         return \
             DatabaseDisplay(
@@ -67,7 +68,7 @@ def _database_displays(doc_path) -> [DatabaseDisplay]:
                        _collect_attribute(body, "text:database-display")), [])
 
 
-def read_text_documents(dir_path, dbname) -> [TextDocument]:
+def read_text_documents(dir_path, dbname) -> List[TextDocument]:
     " search odt, ott file and look for database-display fields"
     docs = []
     for doc_path in _text_documents(dir_path):
@@ -102,7 +103,7 @@ def _reports(odbzip):
     return mapiflist(report, dbcomponent)
 
 
-def read_reports(odbzip) -> [Report]:
+def read_reports(odbzip) -> List[Report]:
     " Read reports from odb file "
     reports = []
     for name, info in _reports(odbzip):
@@ -114,7 +115,7 @@ def read_reports(odbzip) -> [Report]:
     return reports
 
 
-def _read_report_formulas(info) -> [str]:
+def _read_report_formulas(info) -> List[str]:
     return _collect_attribute(info, "@rpt:formula")
 
 
@@ -166,7 +167,7 @@ def _has_libraries(odbzip) -> bool:
     return False
 
 
-def read_libraries(odbzip) -> [Library]:
+def read_libraries(odbzip) -> List[Library]:
     " Reads Basic libraries "
     libraries = []
     if _has_libraries(odbzip):
@@ -200,7 +201,7 @@ def read_forms(odbzip):
     return forms
 
 
-def _read_subforms(data) -> [SubForm]:
+def _read_subforms(data) -> List[SubForm]:
     data = data["form:form"]
     return mapiflist(_read_subform, data)
 
@@ -246,7 +247,7 @@ def _read_grid(data):
     return Grid(gridname, controls)
 
 
-def _read_eventlisteners(data) -> [EventListener]:
+def _read_eventlisteners(data) -> List[EventListener]:
     def read_listener(oolistn):
         return \
             EventListener(oolistn["@script:event-name"],

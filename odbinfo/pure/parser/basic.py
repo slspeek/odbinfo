@@ -1,5 +1,5 @@
 """ Hand crafted scanner on the the tokens provided by OOBasicLexer """
-
+from typing import List, Tuple
 
 from odbinfo.pure.datatype import BasicCall, Callable, Token
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
@@ -8,7 +8,7 @@ from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find,
                                          skip, someof)
 
 
-def scan_basic(alltokens, library, module) -> [str]:
+def scan_basic(alltokens, library, module) -> List[Callable]:
     " extract procedure names "
     tokens = list(filter(lambda x: not x.hidden, alltokens))
     scanner = BasicScanner(tokens, alltokens, library, module)
@@ -26,7 +26,7 @@ def extract_functioncalls(acallable: Callable):
     return BodyScanner(acallable.body_tokens).functioncalls()
 
 
-def extract_stringliterals(acallable: Callable) -> [str]:
+def extract_stringliterals(acallable: Callable) -> List[Token]:
     "Extract stringliterals"
     return list(
         filter(
@@ -69,7 +69,7 @@ class BasicScanner(Scanner):
         return callables
 
 
-def signature(parser) -> (int, int, [Token]):
+def signature(parser) -> Tuple[int, int, List[Token]]:
     " recognize macro signature "
     start = parser.cursor
     result = a(skip(maybe(anyof(OOBasicLexer.GLOBAL,
@@ -85,7 +85,7 @@ def signature(parser) -> (int, int, [Token]):
     return start, end, id_token
 
 
-def macro(parser) -> (int, int, int, int, Token):
+def macro(parser) -> Tuple[int, int, int, int, Token]:
     " recognize callable "
 
     amacro = a(signature, skip(find(anyof(OOBasicLexer.END_FUNCTION,
@@ -95,7 +95,7 @@ def macro(parser) -> (int, int, int, int, Token):
     return start, sigend, end - 1, end, name_token
 
 
-def allmacros(parser) -> [(int, int, int, int, Token)]:
+def allmacros(parser) -> List[Tuple[int, int, int, int, Token]]:
     " find all macros "
     macros = maybe(someof(find(macro)))(parser)
     return macros
@@ -127,6 +127,6 @@ def functioncall(parser):
     return BasicCall(tokens[0], None)
 
 
-def get_basic_tokens(basiccode) -> [Token]:
+def get_basic_tokens(basiccode) -> List[Token]:
     " Tokenize `basiccode` "
     return get_tokens(get_token_stream(basiccode, OOBasicLexer))

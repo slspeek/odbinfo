@@ -1302,8 +1302,8 @@ tokens:
   index: 20
   line: 8
   link:
-  - bookmark: Library1
-    local_id: Module1.CalleeSub
+  - bookmark: CalleeSub
+    local_id: Module1.Library1
     object_type: modules
   text: CalleeSub
   type: 181
@@ -1347,8 +1347,8 @@ tokens:
   index: 26
   line: 9
   link:
-  - bookmark: Library1
-    local_id: Module2.CalleeSub
+  - bookmark: CalleeSub
+    local_id: Module2.Library1
     object_type: modules
   text: CalleeSub
   type: 181
@@ -1550,8 +1550,8 @@ tokens:
   index: 52
   line: 17
   link:
-  - bookmark: Library1
-    local_id: Module2.CalleeTwoSub
+  - bookmark: CalleeTwoSub
+    local_id: Module2.Library1
     object_type: modules
   text: CalleeTwoSub
   type: 181
@@ -1653,8 +1653,8 @@ tokens:
   index: 65
   line: 21
   link:
-  - bookmark: Standard
-    local_id: Module1.CalleeOtherLib
+  - bookmark: CalleeOtherLib
+    local_id: Module1.Standard
     object_type: modules
   text: CalleeOtherLib
   type: 181
@@ -1698,8 +1698,8 @@ tokens:
   index: 71
   line: 22
   link:
-  - bookmark: Standard
-    local_id: Module1.CalleeOtherLib
+  - bookmark: CalleeOtherLib
+    local_id: Module1.Standard
     object_type: modules
   text: CalleeOtherLib
   type: 181
@@ -1801,8 +1801,8 @@ tokens:
   index: 84
   line: 26
   link:
-  - bookmark: Library1
-    local_id: Module1.ShadowedCallee
+  - bookmark: ShadowedCallee
+    local_id: Module1.Library1
     object_type: modules
   text: ShadowedCallee
   type: 181

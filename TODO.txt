@@ -1,10 +1,12 @@
+testdb with query, view dependencies
+
 give thought to parent relationships
 
 make e2e test (BaseDocumenter2dot example)
 
 scroll down little bit after bookmark link in modules (see basedocumenter2dot)
 
-look at Identifier construction at dependency.py:37
+look at Identifier construction at dependency.py:49
 
 color highlight strings in render-token templates
 

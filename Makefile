@@ -60,23 +60,23 @@ single: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)/${SINGLE}
 
 metadata_fixture: prepare
-	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(ootestloc)/test_reader_regression.py
-	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(ootestloc)/test_reader_regression.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(ootestloc)/test_reader_regression.py ||$\
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(ootestloc)/test_reader_regression.py ||$\
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest  $(ootestloc)/test_reader_regression.py
 	cp -v odbinfo/test/oo/test_reader_regression/*.pickle odbinfo/test/oo/data
 
 processor_fixture: metadata_fixture
-	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py
-	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py ||$\
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py ||$\
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py
 	cp -v odbinfo/test/pure/test_processor_regression/*.pickle odbinfo/test/oo/data
 
 writer_fixture: processor_fixture
-	-PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py
-	-rm -rf $(fixtureloc)/writer_fixtures/*
-	cp -rv $(test-output)/test_writer_regression/emptydb $(fixtureloc)/writer_fixtures/
-	cp -rv $(test-output)/test_writer_regression/testdb $(fixtureloc)/writer_fixtures/
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py ||$\
+	(rm -rf $(fixtureloc)/writer_fixtures/* &&$\
+	cp -rv $(test-output)/test_writer_regression/emptydb $(fixtureloc)/writer_fixtures/ &&$\
+	cp -rv $(test-output)/test_writer_regression/testdb $(fixtureloc)/writer_fixtures/  &&$\
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py )
 
 fixtures: writer_fixture
 

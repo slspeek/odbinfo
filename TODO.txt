@@ -1,5 +1,3 @@
-Makefile fixtures more efficient
-
 give thought to parent relationships
 
 make e2e test (BaseDocumenter2dot example)

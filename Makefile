@@ -22,7 +22,7 @@ PUREPYTHONPATH=.:$$(cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
 
-build: clean itest
+build: mypy metric itest
 
 travis: installantlr clean genparser info check alltest
 
@@ -172,7 +172,7 @@ ctags:
 	ctags -R odbinfo
 
 metric: clean
-	find -name \*.py -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* |xargs python -m radon cc -s -nb
+	find -name \*.py -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* |xargs python -m xenon -b A -m A -a A
 
 mypy:
 	find -name \*.py -and -not -ipath ./target/\* -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* |xargs mypy --show-error-codes --disable-error-code import

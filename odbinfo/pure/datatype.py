@@ -245,7 +245,7 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 @dataclass
 class Query(DataObject):
-    " View properties see:"\
+    " Query properties see:"\
         " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
         " QueryDefinition.html"
     command: str
@@ -259,7 +259,9 @@ class Query(DataObject):
         self.command = format_sql(self.command)
 
 
-View = Query
+@dataclass
+class View(Query):
+    " View properties "
 
 
 @dataclass

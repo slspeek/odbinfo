@@ -469,7 +469,9 @@ libraries:
       \tprint \"Module1.CalleeSub\"\nEnd Sub\n\nsub CallerTwo()\n\tCalleeTwoSub()\n\
       End Sub\n\nSub CallerOtherLib()\n\tCalleeOtherLib()\n\tModule1.CalleeOtherLib()\n\
       End Sub\n\nSub CallerShadowedCallee()\n\tShadowedCallee()\nEnd Sub\n\nSub ShadowedCallee()\n\
-      \tprint \"Library1.Module1.ShadowedCallee\"\nEnd Sub"
+      \tprint \"Library1.Module1.ShadowedCallee\"\nEnd Sub\n\nSub ReferToTable()\n\
+      \tprint \"Plant\"\nEnd Sub\n\nSub ReferToView()\n\tprint \"view1\"\nEnd Sub\n\
+      \nSub ReferToQuery()\n\tprint \"FamilyLookup\"\nEnd Sub"
     title: Module1.Library1
     tokens: []
   - callables: []
@@ -500,6 +502,80 @@ pylibs:
   name: python
   title: python
 queries:
+- columns:
+  - autoincrement: false
+    issigned: false
+    name: Name
+    nullable: Nullable
+    precision: 2147483647
+    readonly: false
+    scale: 0
+    tablename: SYSTEM_SUBQUERY
+    title: SYSTEM_SUBQUERY.Name
+    typename: VARCHAR
+    writable: true
+  - autoincrement: false
+    issigned: true
+    name: FamilyID
+    nullable: Nullable
+    precision: 10
+    readonly: false
+    scale: 0
+    tablename: SYSTEM_SUBQUERY
+    title: SYSTEM_SUBQUERY.FamilyID
+    typename: INTEGER
+    writable: true
+  - autoincrement: false
+    issigned: true
+    name: id
+    nullable: Nullable
+    precision: 100
+    readonly: false
+    scale: 0
+    tablename: SYSTEM_SUBQUERY
+    title: SYSTEM_SUBQUERY.id
+    typename: NUMERIC
+    writable: true
+  - autoincrement: false
+    issigned: false
+    name: naam
+    nullable: Nullable
+    precision: 2147483647
+    readonly: false
+    scale: 0
+    tablename: SYSTEM_SUBQUERY
+    title: SYSTEM_SUBQUERY.naam
+    typename: VARCHAR
+    writable: true
+  - autoincrement: false
+    issigned: true
+    name: RFamliyID
+    nullable: Nullable
+    precision: 10
+    readonly: false
+    scale: 0
+    tablename: SYSTEM_SUBQUERY
+    title: SYSTEM_SUBQUERY.RFamliyID
+    typename: INTEGER
+    writable: true
+  - autoincrement: false
+    issigned: true
+    name: id
+    nullable: Nullable
+    precision: 100
+    readonly: false
+    scale: 0
+    tablename: SYSTEM_SUBQUERY
+    title: SYSTEM_SUBQUERY.id
+    typename: NUMERIC
+    writable: true
+  command: 'SELECT *
+
+    FROM   "FamilyLookup", "vwPlant", "view1"'
+  name: DependendQuery
+  table_tokens: []
+  title: DependendQuery
+  tokens: []
 - columns:
   - autoincrement: false
     issigned: false
@@ -764,6 +840,25 @@ tables:
   title: Plant
 use_cases: []
 views:
+- columns:
+  - autoincrement: false
+    issigned: true
+    name: id
+    nullable: Nullable
+    precision: 100
+    readonly: false
+    scale: 0
+    tablename: SYSTEM_SUBQUERY
+    title: SYSTEM_SUBQUERY.id
+    typename: NUMERIC
+    writable: true
+  command: 'SELECT "view1"."id"
+
+    FROM   "view1"'
+  name: DependendView
+  table_tokens: []
+  title: DependendView
+  tokens: []
 - columns:
   - autoincrement: false
     issigned: true

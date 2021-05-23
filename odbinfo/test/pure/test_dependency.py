@@ -36,7 +36,7 @@ def _scan_basic(source, lib, module):
 def test_search_callable_in_callable():
     " total search test"
     callables = _scan_basic(SOURCE_MODULEONE, "LibBars", "ModuleBarBar")
-    cases = search_callable_in_callable(callables, [])
+    cases = search_callable_in_callable(callables)
     print(cases)
     assert len(cases) == 1
 
@@ -45,7 +45,7 @@ def test_search_callable_in_callable_shadowing():
     " total search test"
     callables_one = _scan_basic(SOURCE_MODULEONE,  "Lib", "ModuleOne",)
     callables_two = _scan_basic(SOURCE_MODULETWO,  "Lib", "ModuleTwo")
-    cases = search_callable_in_callable(callables_one + callables_two, [])
+    cases = search_callable_in_callable(callables_one + callables_two)
     usecase = UseCase(
         get_identifier(callables_two[0]),
         get_identifier(callables_one[0]),

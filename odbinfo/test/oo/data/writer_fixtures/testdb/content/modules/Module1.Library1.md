@@ -1123,6 +1123,408 @@ callables:
     link: []
     text: End Sub
     type: 44
+- body_tokens:
+  - column: 1
+    hidden: false
+    index: 110
+    line: 34
+    link: []
+    text: print
+    type: 100
+  - column: 6
+    hidden: false
+    index: 111
+    line: 34
+    link: []
+    text: ' '
+    type: 185
+  - column: 7
+    hidden: false
+    index: 112
+    line: 34
+    link:
+    - bookmark: null
+      local_id: Plant
+      object_type: tables
+    text: '"Plant"'
+    type: 172
+  - column: 14
+    hidden: false
+    index: 113
+    line: 34
+    link: []
+    text: '
+
+      '
+    type: 183
+  calls: []
+  library: Library1
+  module: Module1
+  name: ReferToTable
+  name_token_index: 106
+  strings:
+  - column: 7
+    hidden: false
+    index: 112
+    line: 34
+    link:
+    - bookmark: null
+      local_id: Plant
+      object_type: tables
+    text: '"Plant"'
+    type: 172
+  title: ReferToTable.Module1.Library1
+  tokens:
+  - column: 0
+    hidden: false
+    index: 104
+    line: 33
+    link: []
+    text: Sub
+    type: 125
+  - column: 3
+    hidden: false
+    index: 105
+    line: 33
+    link: []
+    text: ' '
+    type: 185
+  - column: 4
+    hidden: false
+    index: 106
+    line: 33
+    link: []
+    text: ReferToTable
+    type: 181
+  - column: 16
+    hidden: false
+    index: 107
+    line: 33
+    link: []
+    text: (
+    type: 157
+  - column: 17
+    hidden: false
+    index: 108
+    line: 33
+    link: []
+    text: )
+    type: 168
+  - column: 18
+    hidden: false
+    index: 109
+    line: 33
+    link: []
+    text: "\n\t"
+    type: 183
+  - column: 1
+    hidden: false
+    index: 110
+    line: 34
+    link: []
+    text: print
+    type: 100
+  - column: 6
+    hidden: false
+    index: 111
+    line: 34
+    link: []
+    text: ' '
+    type: 185
+  - column: 7
+    hidden: false
+    index: 112
+    line: 34
+    link:
+    - bookmark: null
+      local_id: Plant
+      object_type: tables
+    text: '"Plant"'
+    type: 172
+  - column: 14
+    hidden: false
+    index: 113
+    line: 34
+    link: []
+    text: '
+
+      '
+    type: 183
+  - column: 0
+    hidden: false
+    index: 114
+    line: 35
+    link: []
+    text: End Sub
+    type: 44
+- body_tokens:
+  - column: 1
+    hidden: false
+    index: 123
+    line: 38
+    link: []
+    text: print
+    type: 100
+  - column: 6
+    hidden: false
+    index: 124
+    line: 38
+    link: []
+    text: ' '
+    type: 185
+  - column: 7
+    hidden: false
+    index: 125
+    line: 38
+    link:
+    - bookmark: null
+      local_id: view1
+      object_type: views
+    text: '"view1"'
+    type: 172
+  - column: 14
+    hidden: false
+    index: 126
+    line: 38
+    link: []
+    text: '
+
+      '
+    type: 183
+  calls: []
+  library: Library1
+  module: Module1
+  name: ReferToView
+  name_token_index: 119
+  strings:
+  - column: 7
+    hidden: false
+    index: 125
+    line: 38
+    link:
+    - bookmark: null
+      local_id: view1
+      object_type: views
+    text: '"view1"'
+    type: 172
+  title: ReferToView.Module1.Library1
+  tokens:
+  - column: 0
+    hidden: false
+    index: 117
+    line: 37
+    link: []
+    text: Sub
+    type: 125
+  - column: 3
+    hidden: false
+    index: 118
+    line: 37
+    link: []
+    text: ' '
+    type: 185
+  - column: 4
+    hidden: false
+    index: 119
+    line: 37
+    link: []
+    text: ReferToView
+    type: 181
+  - column: 15
+    hidden: false
+    index: 120
+    line: 37
+    link: []
+    text: (
+    type: 157
+  - column: 16
+    hidden: false
+    index: 121
+    line: 37
+    link: []
+    text: )
+    type: 168
+  - column: 17
+    hidden: false
+    index: 122
+    line: 37
+    link: []
+    text: "\n\t"
+    type: 183
+  - column: 1
+    hidden: false
+    index: 123
+    line: 38
+    link: []
+    text: print
+    type: 100
+  - column: 6
+    hidden: false
+    index: 124
+    line: 38
+    link: []
+    text: ' '
+    type: 185
+  - column: 7
+    hidden: false
+    index: 125
+    line: 38
+    link:
+    - bookmark: null
+      local_id: view1
+      object_type: views
+    text: '"view1"'
+    type: 172
+  - column: 14
+    hidden: false
+    index: 126
+    line: 38
+    link: []
+    text: '
+
+      '
+    type: 183
+  - column: 0
+    hidden: false
+    index: 127
+    line: 39
+    link: []
+    text: End Sub
+    type: 44
+- body_tokens:
+  - column: 1
+    hidden: false
+    index: 136
+    line: 42
+    link: []
+    text: print
+    type: 100
+  - column: 6
+    hidden: false
+    index: 137
+    line: 42
+    link: []
+    text: ' '
+    type: 185
+  - column: 7
+    hidden: false
+    index: 138
+    line: 42
+    link:
+    - bookmark: null
+      local_id: FamilyLookup
+      object_type: queries
+    text: '"FamilyLookup"'
+    type: 172
+  - column: 21
+    hidden: false
+    index: 139
+    line: 42
+    link: []
+    text: '
+
+      '
+    type: 183
+  calls: []
+  library: Library1
+  module: Module1
+  name: ReferToQuery
+  name_token_index: 132
+  strings:
+  - column: 7
+    hidden: false
+    index: 138
+    line: 42
+    link:
+    - bookmark: null
+      local_id: FamilyLookup
+      object_type: queries
+    text: '"FamilyLookup"'
+    type: 172
+  title: ReferToQuery.Module1.Library1
+  tokens:
+  - column: 0
+    hidden: false
+    index: 130
+    line: 41
+    link: []
+    text: Sub
+    type: 125
+  - column: 3
+    hidden: false
+    index: 131
+    line: 41
+    link: []
+    text: ' '
+    type: 185
+  - column: 4
+    hidden: false
+    index: 132
+    line: 41
+    link: []
+    text: ReferToQuery
+    type: 181
+  - column: 16
+    hidden: false
+    index: 133
+    line: 41
+    link: []
+    text: (
+    type: 157
+  - column: 17
+    hidden: false
+    index: 134
+    line: 41
+    link: []
+    text: )
+    type: 168
+  - column: 18
+    hidden: false
+    index: 135
+    line: 41
+    link: []
+    text: "\n\t"
+    type: 183
+  - column: 1
+    hidden: false
+    index: 136
+    line: 42
+    link: []
+    text: print
+    type: 100
+  - column: 6
+    hidden: false
+    index: 137
+    line: 42
+    link: []
+    text: ' '
+    type: 185
+  - column: 7
+    hidden: false
+    index: 138
+    line: 42
+    link:
+    - bookmark: null
+      local_id: FamilyLookup
+      object_type: queries
+    text: '"FamilyLookup"'
+    type: 172
+  - column: 21
+    hidden: false
+    index: 139
+    line: 42
+    link: []
+    text: '
+
+      '
+    type: 183
+  - column: 0
+    hidden: false
+    index: 140
+    line: 43
+    link: []
+    text: End Sub
+    type: 44
 library: Library1
 name: Module1
 name_indexes:
@@ -1133,12 +1535,17 @@ name_indexes:
 - 61
 - 80
 - 93
+- 106
+- 119
+- 132
 source: "REM  *****  BASIC  *****\n\nSub Main\n\tError \"Mijn fout\"\nEnd Sub\n\n\
   Sub CallerSub()\n\tCalleeSub()\n\tModule2.CalleeSub()\nEnd Sub\n\nSub CalleeSub()\n\
   \tprint \"Module1.CalleeSub\"\nEnd Sub\n\nsub CallerTwo()\n\tCalleeTwoSub()\nEnd\
   \ Sub\n\nSub CallerOtherLib()\n\tCalleeOtherLib()\n\tModule1.CalleeOtherLib()\n\
   End Sub\n\nSub CallerShadowedCallee()\n\tShadowedCallee()\nEnd Sub\n\nSub ShadowedCallee()\n\
-  \tprint \"Library1.Module1.ShadowedCallee\"\nEnd Sub"
+  \tprint \"Library1.Module1.ShadowedCallee\"\nEnd Sub\n\nSub ReferToTable()\n\tprint\
+  \ \"Plant\"\nEnd Sub\n\nSub ReferToView()\n\tprint \"view1\"\nEnd Sub\n\nSub ReferToQuery()\n\
+  \tprint \"FamilyLookup\"\nEnd Sub"
 title: Module1.Library1
 tokens:
 - column: 0
@@ -1933,6 +2340,315 @@ tokens:
   hidden: false
   index: 101
   line: 31
+  link: []
+  text: End Sub
+  type: 44
+- column: 7
+  hidden: false
+  index: 102
+  line: 31
+  link: []
+  text: '
+
+    '
+  type: 183
+- column: 0
+  hidden: false
+  index: 103
+  line: 32
+  link: []
+  text: '
+
+    '
+  type: 183
+- column: 0
+  hidden: false
+  index: 104
+  line: 33
+  link: []
+  text: Sub
+  type: 125
+- column: 3
+  hidden: false
+  index: 105
+  line: 33
+  link: []
+  text: ' '
+  type: 185
+- column: 4
+  hidden: false
+  index: 106
+  line: 33
+  link:
+  - bookmark: null
+    local_id: ReferToTable.Module1.Library1
+    object_type: callables
+  text: ReferToTable
+  type: 181
+- column: 16
+  hidden: false
+  index: 107
+  line: 33
+  link: []
+  text: (
+  type: 157
+- column: 17
+  hidden: false
+  index: 108
+  line: 33
+  link: []
+  text: )
+  type: 168
+- column: 18
+  hidden: false
+  index: 109
+  line: 33
+  link: []
+  text: "\n\t"
+  type: 183
+- column: 1
+  hidden: false
+  index: 110
+  line: 34
+  link: []
+  text: print
+  type: 100
+- column: 6
+  hidden: false
+  index: 111
+  line: 34
+  link: []
+  text: ' '
+  type: 185
+- column: 7
+  hidden: false
+  index: 112
+  line: 34
+  link:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
+  text: '"Plant"'
+  type: 172
+- column: 14
+  hidden: false
+  index: 113
+  line: 34
+  link: []
+  text: '
+
+    '
+  type: 183
+- column: 0
+  hidden: false
+  index: 114
+  line: 35
+  link: []
+  text: End Sub
+  type: 44
+- column: 7
+  hidden: false
+  index: 115
+  line: 35
+  link: []
+  text: '
+
+    '
+  type: 183
+- column: 0
+  hidden: false
+  index: 116
+  line: 36
+  link: []
+  text: '
+
+    '
+  type: 183
+- column: 0
+  hidden: false
+  index: 117
+  line: 37
+  link: []
+  text: Sub
+  type: 125
+- column: 3
+  hidden: false
+  index: 118
+  line: 37
+  link: []
+  text: ' '
+  type: 185
+- column: 4
+  hidden: false
+  index: 119
+  line: 37
+  link:
+  - bookmark: null
+    local_id: ReferToView.Module1.Library1
+    object_type: callables
+  text: ReferToView
+  type: 181
+- column: 15
+  hidden: false
+  index: 120
+  line: 37
+  link: []
+  text: (
+  type: 157
+- column: 16
+  hidden: false
+  index: 121
+  line: 37
+  link: []
+  text: )
+  type: 168
+- column: 17
+  hidden: false
+  index: 122
+  line: 37
+  link: []
+  text: "\n\t"
+  type: 183
+- column: 1
+  hidden: false
+  index: 123
+  line: 38
+  link: []
+  text: print
+  type: 100
+- column: 6
+  hidden: false
+  index: 124
+  line: 38
+  link: []
+  text: ' '
+  type: 185
+- column: 7
+  hidden: false
+  index: 125
+  line: 38
+  link:
+  - bookmark: null
+    local_id: view1
+    object_type: views
+  text: '"view1"'
+  type: 172
+- column: 14
+  hidden: false
+  index: 126
+  line: 38
+  link: []
+  text: '
+
+    '
+  type: 183
+- column: 0
+  hidden: false
+  index: 127
+  line: 39
+  link: []
+  text: End Sub
+  type: 44
+- column: 7
+  hidden: false
+  index: 128
+  line: 39
+  link: []
+  text: '
+
+    '
+  type: 183
+- column: 0
+  hidden: false
+  index: 129
+  line: 40
+  link: []
+  text: '
+
+    '
+  type: 183
+- column: 0
+  hidden: false
+  index: 130
+  line: 41
+  link: []
+  text: Sub
+  type: 125
+- column: 3
+  hidden: false
+  index: 131
+  line: 41
+  link: []
+  text: ' '
+  type: 185
+- column: 4
+  hidden: false
+  index: 132
+  line: 41
+  link:
+  - bookmark: null
+    local_id: ReferToQuery.Module1.Library1
+    object_type: callables
+  text: ReferToQuery
+  type: 181
+- column: 16
+  hidden: false
+  index: 133
+  line: 41
+  link: []
+  text: (
+  type: 157
+- column: 17
+  hidden: false
+  index: 134
+  line: 41
+  link: []
+  text: )
+  type: 168
+- column: 18
+  hidden: false
+  index: 135
+  line: 41
+  link: []
+  text: "\n\t"
+  type: 183
+- column: 1
+  hidden: false
+  index: 136
+  line: 42
+  link: []
+  text: print
+  type: 100
+- column: 6
+  hidden: false
+  index: 137
+  line: 42
+  link: []
+  text: ' '
+  type: 185
+- column: 7
+  hidden: false
+  index: 138
+  line: 42
+  link:
+  - bookmark: null
+    local_id: FamilyLookup
+    object_type: queries
+  text: '"FamilyLookup"'
+  type: 172
+- column: 21
+  hidden: false
+  index: 139
+  line: 42
+  link: []
+  text: '
+
+    '
+  type: 183
+- column: 0
+  hidden: false
+  index: 140
+  line: 43
   link: []
   text: End Sub
   type: 44

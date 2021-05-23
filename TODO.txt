@@ -1,4 +1,4 @@
-testdb with query, view dependencies
+Makefile fixtures more efficient
 
 give thought to parent relationships
 

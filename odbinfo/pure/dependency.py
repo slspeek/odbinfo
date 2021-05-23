@@ -12,7 +12,12 @@ from odbinfo.pure.datatype import (BasicCall, Callable, DataObject, Identifier,
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
     " dependency search in `metadata`"
 
-    return (search_callable_in_callable(metadata.callables(), metadata.modules()) +
+    return (search_callable_in_callable(metadata.callables()) +
+            search_string_refs_in_callables(metadata.tables, metadata.callables()) +
+            search_string_refs_in_callables(metadata.views, metadata.callables()) +
+            search_string_refs_in_callables(metadata.queries, metadata.callables()) +
+            search_string_refs_in_callables(metadata.reports, metadata.callables()) +
+            rewrite_module_callable_links(metadata.modules()) +
             search_deps_in_queries(metadata.tables, metadata.queries) +
             search_deps_in_queries(metadata.views, metadata.queries) +
             search_deps_in_queries(metadata.queries, metadata.queries) +
@@ -46,6 +51,8 @@ def _rewrite_module_token_links(modules):
         def rewrite_token(token: Token):
 
             def rewrite_link(link: Identifier):
+                if not link.object_type == "callables":
+                    return
                 lmacro, lmodule, llib = link.local_id.split('.')
                 new_link = Identifier("modules", f"{lmodule}.{llib}")
                 new_link.bookmark = lmacro
@@ -68,16 +75,22 @@ def _link_name_tokens(module: Module):
     list(starmap(_link_name, zip(module.name_indexes, module.callables)))
 
 
+def rewrite_module_callable_links(modules: Sequence[Module]) -> List[UseCase]:
+    """ links to callables are rewritten to links to callables in
+        modules (using #bookmarks)"""
+    _copy_module_tokens(modules)
+    _rewrite_module_token_links(modules)
+    list(map(_link_name_tokens, modules))
+    return []
+
+
 def search_callable_in_callable(callables: Sequence[Callable],
-                                modules: Sequence[Module]) -> List[UseCase]:
+                                ) -> List[UseCase]:
     """ dependency search amoung the basic callables and linking the
         parsed tokens to the targets
         the callable tokens are linked during search
         the module tokens links are rewritten afterwards """
     use_cases = find_callable_in_callable(callables)
-    _copy_module_tokens(modules)
-    _rewrite_module_token_links(modules)
-    list(map(_link_name_tokens, modules))
 
     return use_cases
 
@@ -138,6 +151,30 @@ def consider(caller: Callable, candidate_callee: Callable) -> List[UseCase]:
         if match:
             use_cases.append(process_match(ntoken))
     return use_cases
+
+#
+# Tables, Views, Queries, Reports in Callables
+#
+
+
+def search_string_refs_in_callables(dataobjects: Sequence[DataObject],
+                                    callables: Sequence[Callable]) -> List[UseCase]:
+    """ search for references to table, views, queries or reports
+        in callable string literals """
+    def search_refs_in_one(acallable: Callable) -> List[UseCase]:
+        def ref_in_one(dataobject: DataObject) -> List[UseCase]:
+            def compare_ref(string_token: Token) -> List[UseCase]:
+                if dataobject.name == string_token.text[1:-1]:
+                    link_token(string_token, dataobject)
+                    return [UseCase(get_identifier(acallable),
+                                    get_identifier(dataobject),
+                                    "string refers")]
+                return []
+            return sum(map(compare_ref, acallable.strings), [])
+        return sum(map(ref_in_one, dataobjects), [])
+
+    return sum(map(search_refs_in_one, callables), [])
+
 
 #
 # dataobject in Queries

@@ -25,7 +25,7 @@ table_tokens:
     local_id: Plant
     object_type: tables
   text: '"Plant"'
-  type: 184
+  type: 197
 title: view1
 tokens:
 - column: 0
@@ -41,14 +41,14 @@ tokens:
   line: 1
   link: []
   text: ' '
-  type: 191
+  type: 204
 - column: 7
   hidden: false
   index: 2
   line: 1
   link: []
   text: '"id"'
-  type: 184
+  type: 197
 - column: 11
   hidden: true
   index: 3
@@ -57,7 +57,7 @@ tokens:
   text: '
 
     '
-  type: 191
+  type: 204
 - column: 0
   hidden: false
   index: 4
@@ -71,21 +71,21 @@ tokens:
   line: 2
   link: []
   text: ' '
-  type: 191
+  type: 204
 - column: 5
   hidden: true
   index: 6
   line: 2
   link: []
   text: ' '
-  type: 191
+  type: 204
 - column: 6
   hidden: true
   index: 7
   line: 2
   link: []
   text: ' '
-  type: 191
+  type: 204
 - column: 7
   hidden: false
   index: 8
@@ -95,5 +95,5 @@ tokens:
     local_id: Plant
     object_type: tables
   text: '"Plant"'
-  type: 184
+  type: 197
 ---

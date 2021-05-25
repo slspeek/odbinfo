@@ -245,6 +245,10 @@ expr:
 	) expr
 	| expr AND expr
 	| expr OR expr
+  | TRIM '(' (BOTH | TRAILING | LEADING)? FROM expr ')'
+  | EXTRACT '(' (YEAR|MONTH|DAY|HOUR|MINUTE|SECOND) FROM expr ')'
+  | POSITION '(' expr IN expr ')'
+  | SUBSTRING '(' expr FROM expr (FOR expr)? ')'
 	| function_name '(' ((DISTINCT? expr ( ',' expr)*) | '*')? ')' filter_clause? over_clause?
 	| '(' expr (',' expr)* ')'
 	| CAST '(' expr AS type_name ')'
@@ -464,7 +468,7 @@ frame_clause: (RANGE | ROWS | GROUPS) (
 		| BETWEEN frame_left AND frame_right
 	);
 simple_function_invocation:
-	simple_func '(' ((expr (',' expr)*) | '*') ')';
+  simple_func '(' ((expr (',' expr)*) | '*') ')';
 
 aggregate_function_invocation:
 	aggregate_func '(' ((DISTINCT? expr (',' expr)*) | '*')? ')' filter_clause?;

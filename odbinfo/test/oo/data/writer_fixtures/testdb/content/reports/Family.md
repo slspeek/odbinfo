@@ -1,5 +1,10 @@
 ---
-command: Family
+command:
+  link:
+    bookmark: null
+    local_id: Family
+    object_type: tables
+  text: Family
 commandtype: table
 formulas:
 - field:[FamlilyID]

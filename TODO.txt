@@ -58,14 +58,21 @@ dependency search matrix
 ------------------------
 tables, views in views (done)
 tables, queries, views in queries (done)
-tables, queries in forms
-fields, tables, queries, views, macros(2x) in formcontrols
+tables, queries, views in forms
+tables, queries, views, macros(2x) in formcontrols
 tables, queries, views in reports
-fields, tables, queries, views in reports
-fields, tables, views, queries in textdocuments
+(fields, )tables, queries, views in reports
+(fields, )tables, views, queries in textdocuments
 tables, queries,views, reports in macros(2x)
 basic in basic (done)
+tables, queries,views, reports in basic (done)
 python in python (nice to have)
+
+field are done last as they are nice to have
+
+Both macros and queries are parsed and have more detailed dependencies,
+in the sense that they are referenced by a token. Use cases should include this
+token.
 
 errors in parser need improvement
 

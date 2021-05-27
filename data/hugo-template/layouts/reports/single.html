@@ -7,7 +7,7 @@
           <tr>
 
             <th>Command</th>
-            <td>{{ .Params.command }}</td>
+            <td>{{ partial "render-linked-string" (dict "linked_string" .Params.command "context" .) }}</td>
           </tr>
           <tr>
 

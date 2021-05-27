@@ -646,7 +646,9 @@ queries:
   title: vwPlant
   tokens: []
 reports:
-- command: Family
+- command:
+    link: null
+    text: Family
   commandtype: table
   formulas:
   - field:[FamlilyID]
@@ -654,7 +656,9 @@ reports:
   - field:[Desc]
   name: Family
   title: Family
-- command: vwPlant
+- command:
+    link: null
+    text: vwPlant
   commandtype: query
   formulas:
   - field:[id]

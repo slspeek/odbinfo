@@ -5,8 +5,8 @@ from itertools import starmap
 from typing import List, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, Callable, DataObject, Identifier,
-                                   Metadata, Module, Query, Token, UseCase,
-                                   get_identifier)
+                                   Metadata, Module, Query, Report, Token,
+                                   UseCase, get_identifier)
 
 
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
@@ -22,7 +22,11 @@ def search_dependencies(metadata: Metadata) -> List[UseCase]:
             search_deps_in_queries(metadata.views, metadata.queries) +
             search_deps_in_queries(metadata.queries, metadata.queries) +
             search_deps_in_queries(metadata.tables, metadata.views) +
-            search_deps_in_queries(metadata.views, metadata.views)
+            search_deps_in_queries(metadata.views, metadata.views) +
+            search_deps_in_reports(metadata.tables,
+                                   metadata.reports) +
+            search_deps_in_reports(metadata.views, metadata.reports) +
+            search_deps_in_reports(metadata.queries, metadata.reports)
             )
 
 #
@@ -200,3 +204,27 @@ def search_deps_in_queries(dataobject: Sequence[DataObject],
         return sum(map(find_table_in_query, dataobject), [])
 
     return sum(map(find_tables_in_query, queries), [])
+
+#
+# DataObject (query, view, table) in Report
+#
+
+
+def search_deps_in_reports(dataobjects: Sequence[DataObject],
+                           reports: Sequence[Report]) -> List[UseCase]:
+    " find uses of dataobject in report"
+    def find_deps_in_report(report: Report) -> List[UseCase]:
+        " find dependency uses in `report` "
+        def find_one_dep(dependency: DataObject) -> List[UseCase]:
+            use_cases = []
+            if report.command.text == dependency.name:
+                dependency_id = get_identifier(dependency)
+                report.command.link = dependency_id
+                use_cases.append(UseCase(get_identifier(report),
+                                         dependency_id,
+                                         "queries"))
+            return use_cases
+
+        return sum(map(find_one_dep, dataobjects), [])
+
+    return sum(map(find_deps_in_report, reports), [])

@@ -4754,7 +4754,12 @@ queries:
     text: '"Plant"'
     type: 197
 reports:
-- command: Family
+- command:
+    link:
+      bookmark: null
+      local_id: Family
+      object_type: tables
+    text: Family
   commandtype: table
   formulas:
   - field:[FamlilyID]
@@ -4762,7 +4767,12 @@ reports:
   - field:[Desc]
   name: Family
   title: Family
-- command: vwPlant
+- command:
+    link:
+      bookmark: null
+      local_id: vwPlant
+      object_type: queries
+    text: vwPlant
   commandtype: query
   formulas:
   - field:[id]
@@ -5099,6 +5109,24 @@ use_cases:
     bookmark: null
     local_id: view1
     object_type: views
+  type: queries
+- obj:
+    bookmark: null
+    local_id: Family
+    object_type: reports
+  subject:
+    bookmark: null
+    local_id: Family
+    object_type: tables
+  type: queries
+- obj:
+    bookmark: null
+    local_id: vwPlant
+    object_type: reports
+  subject:
+    bookmark: null
+    local_id: vwPlant
+    object_type: queries
   type: queries
 views:
 - columns:

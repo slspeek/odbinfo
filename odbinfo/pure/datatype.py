@@ -53,6 +53,13 @@ def get_identifier(dataobject) -> Identifier:
 
 
 @dataclass
+class LinkedString:
+    " a string referencing a dataobject "
+    text: str
+    link: Optional[Identifier] = field(init=False, default=None)
+
+
+@dataclass
 class UseCase:
     " `obj` uses `subject`"
     obj: Identifier
@@ -91,7 +98,7 @@ class TextDocument(DataObject):
 @dataclass
 class Report(DataObject):
     " Report metadata "
-    command: str
+    command: LinkedString
     commandtype: str
     formulas: List[str]
 

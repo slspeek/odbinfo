@@ -1,5 +1,10 @@
 ---
-command: vwPlant
+command:
+  link:
+    bookmark: null
+    local_id: vwPlant
+    object_type: queries
+  text: vwPlant
 commandtype: query
 formulas:
 - field:[id]

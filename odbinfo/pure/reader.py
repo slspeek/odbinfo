@@ -8,8 +8,8 @@ from zipfile import ZipFile
 import xmltodict
 
 from odbinfo.pure.datatype import (Control, DatabaseDisplay, EventListener,
-                                   Form, Grid, Library, ListBox, Module,
-                                   PythonLibrary, PythonModule, Report,
+                                   Form, Grid, Library, LinkedString, ListBox,
+                                   Module, PythonLibrary, PythonModule, Report,
                                    SubForm, TextDocument)
 
 
@@ -109,7 +109,7 @@ def read_reports(odbzip) -> List[Report]:
     reports = []
     for name, info in _reports(odbzip):
         reports.append(Report(name,
-                              info["@rpt:command"],
+                              LinkedString(info["@rpt:command"]),
                               info["@rpt:command-type"],
                               _read_report_formulas(info))
                        )

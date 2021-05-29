@@ -11,5 +11,6 @@ formulas:
 - field:[Name]
 - field:[Desc]
 name: Family
+output_type: application/vnd.oasis.opendocument.text
 title: Family
 ---

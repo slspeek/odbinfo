@@ -35,22 +35,28 @@ def read_views(connection) -> List[View]:
     return [_read_view(connection, ooview) for ooview in connection.Views]
 
 
-def _read_view(connection, ooview):
+def _read_view(connection, ooview) -> View:
     return View(ooview.Name,
                 ooview.Command,
                 _read_query_columns(connection, ooview.Command))
 
 
-def read_queries(connection, datasource):
+def read_queries(connection, datasource) -> List[Query]:
     """ Reads query metadata from `datasource` """
-    read_query = partial(_read_query, connection)
-    return list(map(read_query, datasource.QueryDefinitions))
+    read_query_func = partial(_read_query, connection)
+    return list(map(read_query_func, datasource.QueryDefinitions))
 
 
-def _read_query(connection, ooquery):
-    return Query(ooquery.Name,
-                 ooquery.Command,
-                 _read_query_columns(connection, ooquery.Command))
+def _read_query(connection, ooquery) -> Query:
+    return read_query(connection, ooquery.Name,
+                      ooquery.Command)
+
+
+def read_query(connection, name: str, command: str) -> Query:
+    " read query columns "
+    return Query(name,
+                 command,
+                 _read_query_columns(connection, command))
 
 
 def _read_query_columns(connection, command) -> List[QueryColumn]:

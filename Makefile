@@ -146,8 +146,8 @@ doc: prepare
 
 .ONESHELL:
 unziptestdb:
-	rm -rf $(testloc)/resources/testdb/unzipped
-	cd $(testloc)/resources/testdb && mkdir unzipped
+	-rm -rf $(ootestloc)/data/databases/unzipped
+	cd $(ootestloc)/data/databases && mkdir unzipped
 	cd unzipped && unzip ../testdb.odb
 
 .ONESHELL:

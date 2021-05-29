@@ -110,7 +110,8 @@ def read_reports(odbzip) -> List[Report]:
     for name, info in _reports(odbzip):
         reports.append(Report(name,
                               LinkedString(info["@rpt:command"]),
-                              info["@rpt:command-type"],
+                              info.get("@rpt:command-type", "command"),
+                              info.get("@office:mimetype", ""),
                               _read_report_formulas(info))
                        )
     return reports

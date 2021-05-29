@@ -2,7 +2,7 @@
 import dataclasses
 from functools import partial
 from itertools import starmap
-from typing import List, Sequence
+from typing import List, Optional, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, Callable, DataObject, Identifier,
                                    Metadata, Module, Query, Report, Token,
@@ -185,7 +185,7 @@ def search_string_refs_in_callables(dataobjects: Sequence[DataObject],
 #
 
 
-def search_deps_in_queries(dataobject: Sequence[DataObject],
+def search_deps_in_queries(dataobjects: Sequence[DataObject],
                            queries: Sequence[Query]) -> List[UseCase]:
     " find uses of dataobject in queries "
     def find_tables_in_query(query: Query) -> List[UseCase]:
@@ -201,7 +201,7 @@ def search_deps_in_queries(dataobject: Sequence[DataObject],
                 return use_cases
 
             return sum(map(find_table_in_token, query.table_tokens), [])
-        return sum(map(find_table_in_query, dataobject), [])
+        return sum(map(find_table_in_query, dataobjects), [])
 
     return sum(map(find_tables_in_query, queries), [])
 
@@ -215,16 +215,16 @@ def search_deps_in_reports(dataobjects: Sequence[DataObject],
     " find uses of dataobject in report"
     def find_deps_in_report(report: Report) -> List[UseCase]:
         " find dependency uses in `report` "
-        def find_one_dep(dependency: DataObject) -> List[UseCase]:
-            use_cases = []
+        def find_one_dep(dependency: DataObject) -> Optional[UseCase]:
             if report.command.text == dependency.name:
                 dependency_id = get_identifier(dependency)
                 report.command.link = dependency_id
-                use_cases.append(UseCase(get_identifier(report),
-                                         dependency_id,
-                                         "queries"))
-            return use_cases
+                return UseCase(get_identifier(report),
+                               dependency_id,
+                               "queries")
 
-        return sum(map(find_one_dep, dataobjects), [])
+            return None
+
+        return [obj for obj in map(find_one_dep, dataobjects) if obj is not None]
 
     return sum(map(find_deps_in_report, reports), [])

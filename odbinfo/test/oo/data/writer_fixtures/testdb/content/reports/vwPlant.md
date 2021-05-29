@@ -11,5 +11,6 @@ formulas:
 - field:[naam]
 - field:[RFamliyID]
 name: vwPlant
+output_type: application/vnd.oasis.opendocument.text
 title: vwPlant
 ---

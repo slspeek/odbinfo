@@ -655,7 +655,18 @@ reports:
   - field:[Name]
   - field:[Desc]
   name: Family
+  output_type: application/vnd.oasis.opendocument.text
   title: Family
+- command:
+    link: null
+    text: select * from "Plant";
+  commandtype: command
+  formulas:
+  - field:[id]
+  - field:[naam]
+  name: ReportCommandTypeSQL
+  output_type: application/vnd.oasis.opendocument.text
+  title: ReportCommandTypeSQL
 - command:
     link: null
     text: vwPlant
@@ -665,6 +676,7 @@ reports:
   - field:[naam]
   - field:[RFamliyID]
   name: vwPlant
+  output_type: application/vnd.oasis.opendocument.text
   title: vwPlant
 tables:
 - columns:

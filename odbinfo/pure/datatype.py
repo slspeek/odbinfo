@@ -100,6 +100,7 @@ class Report(DataObject):
     " Report metadata "
     command: LinkedString
     commandtype: str
+    output_type: str
     formulas: List[str]
 
 

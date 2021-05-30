@@ -6,6 +6,7 @@ command:
     object_type: queries
   text: vwPlant
 commandtype: query
+embedded_query: null
 formulas:
 - field:[id]
 - field:[naam]

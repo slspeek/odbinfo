@@ -46,8 +46,10 @@ forms:
         type: ooo:TextField
       name: MainForm_Grid
     detailfields: ''
+    embedded_query: null
     masterfields: ''
     name: MainForm
+    title: MainForm
   title: Family
 - name: Formulier1
   subforms:
@@ -64,11 +66,15 @@ forms:
       commandtype: table
       controls: []
       detailfields: ''
+      embedded_query: null
       masterfields: ''
       name: Formulier2
+      title: Formulier2
     detailfields: ''
+    embedded_query: null
     masterfields: ''
     name: Formulier
+    title: Formulier
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
@@ -76,8 +82,10 @@ forms:
     commandtype: table
     controls: []
     detailfields: ''
+    embedded_query: null
     masterfields: ''
     name: Formulier 1
+    title: Formulier 1
   title: Formulier1
 - name: Plant
   subforms:
@@ -142,8 +150,10 @@ forms:
       name: txtnaam
       type: ooo:com.sun.star.form.component.TextField
     detailfields: ''
+    embedded_query: null
     masterfields: ''
     name: MainForm
+    title: MainForm
   title: Plant
 - name: Plant invoeren
   subforms:
@@ -174,8 +184,10 @@ forms:
         type: ooo:TextField
       name: MainForm_Grid
     detailfields: ''
+    embedded_query: null
     masterfields: ''
     name: MainForm
+    title: MainForm
   title: Plant invoeren
 - name: PlantListbox
   subforms:
@@ -277,8 +289,10 @@ forms:
       name: Knop 3
       type: ooo:com.sun.star.form.component.CommandButton
     detailfields: ''
+    embedded_query: null
     masterfields: ''
     name: MainForm
+    title: MainForm
   title: PlantListbox
 - name: Related subform
   subforms:
@@ -349,8 +363,10 @@ forms:
         name: txtDesc
         type: ooo:com.sun.star.form.component.TextField
       detailfields: '"FamilyID"'
+      embedded_query: null
       masterfields: '"RFamliyID"'
       name: SubForm
+      title: SubForm
     - controlid: control7
       convertemptytonull: ''
       datafield: ''
@@ -406,8 +422,10 @@ forms:
       name: txtnaam
       type: ooo:com.sun.star.form.component.TextField
     detailfields: ''
+    embedded_query: null
     masterfields: ''
     name: MainForm
+    title: MainForm
   title: Related subform
 - name: view1
   subforms:
@@ -436,8 +454,10 @@ forms:
       name: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
     detailfields: ''
+    embedded_query: null
     masterfields: ''
     name: MainForm
+    title: MainForm
   title: view1
 libraries:
 - modules:
@@ -4753,6 +4773,132 @@ queries:
       object_type: tables
     text: '"Plant"'
     type: 197
+- columns:
+  - autoincrement: false
+    issigned: true
+    name: id
+    nullable: No_Nulls
+    precision: 100
+    readonly: false
+    scale: 0
+    tablename: Plant
+    title: Plant.id
+    typename: NUMERIC
+    writable: true
+  - autoincrement: false
+    issigned: false
+    name: naam
+    nullable: Nullable
+    precision: 2147483647
+    readonly: false
+    scale: 0
+    tablename: Plant
+    title: Plant.naam
+    typename: VARCHAR
+    writable: true
+  - autoincrement: false
+    issigned: true
+    name: RFamliyID
+    nullable: Nullable
+    precision: 10
+    readonly: false
+    scale: 0
+    tablename: Plant
+    title: Plant.RFamliyID
+    typename: INTEGER
+    writable: true
+  command: 'SELECT *
+
+    FROM   "Plant";'
+  name: ReportCommandTypeSQL.Command
+  table_tokens:
+  - column: 7
+    hidden: false
+    index: 8
+    line: 2
+    link:
+    - bookmark: null
+      local_id: Plant
+      object_type: tables
+    text: '"Plant"'
+    type: 197
+  title: ReportCommandTypeSQL.Command
+  tokens:
+  - column: 0
+    hidden: false
+    index: 0
+    line: 1
+    link: []
+    text: SELECT
+    type: 129
+  - column: 6
+    hidden: true
+    index: 1
+    line: 1
+    link: []
+    text: ' '
+    type: 204
+  - column: 7
+    hidden: false
+    index: 2
+    line: 1
+    link: []
+    text: '*'
+    type: 7
+  - column: 8
+    hidden: true
+    index: 3
+    line: 1
+    link: []
+    text: '
+
+      '
+    type: 204
+  - column: 0
+    hidden: false
+    index: 4
+    line: 2
+    link: []
+    text: FROM
+    type: 75
+  - column: 4
+    hidden: true
+    index: 5
+    line: 2
+    link: []
+    text: ' '
+    type: 204
+  - column: 5
+    hidden: true
+    index: 6
+    line: 2
+    link: []
+    text: ' '
+    type: 204
+  - column: 6
+    hidden: true
+    index: 7
+    line: 2
+    link: []
+    text: ' '
+    type: 204
+  - column: 7
+    hidden: false
+    index: 8
+    line: 2
+    link:
+    - bookmark: null
+      local_id: Plant
+      object_type: tables
+    text: '"Plant"'
+    type: 197
+  - column: 14
+    hidden: false
+    index: 9
+    line: 2
+    link: []
+    text: ;
+    type: 1
 reports:
 - command:
     link:
@@ -4761,6 +4907,7 @@ reports:
       object_type: tables
     text: Family
   commandtype: table
+  embedded_query: null
   formulas:
   - field:[FamlilyID]
   - field:[Name]
@@ -4772,6 +4919,133 @@ reports:
     link: null
     text: select * from "Plant";
   commandtype: command
+  embedded_query:
+    columns:
+    - autoincrement: false
+      issigned: true
+      name: id
+      nullable: No_Nulls
+      precision: 100
+      readonly: false
+      scale: 0
+      tablename: Plant
+      title: Plant.id
+      typename: NUMERIC
+      writable: true
+    - autoincrement: false
+      issigned: false
+      name: naam
+      nullable: Nullable
+      precision: 2147483647
+      readonly: false
+      scale: 0
+      tablename: Plant
+      title: Plant.naam
+      typename: VARCHAR
+      writable: true
+    - autoincrement: false
+      issigned: true
+      name: RFamliyID
+      nullable: Nullable
+      precision: 10
+      readonly: false
+      scale: 0
+      tablename: Plant
+      title: Plant.RFamliyID
+      typename: INTEGER
+      writable: true
+    command: 'SELECT *
+
+      FROM   "Plant";'
+    name: ReportCommandTypeSQL.Command
+    table_tokens:
+    - column: 7
+      hidden: false
+      index: 8
+      line: 2
+      link:
+      - bookmark: null
+        local_id: Plant
+        object_type: tables
+      text: '"Plant"'
+      type: 197
+    title: ReportCommandTypeSQL.Command
+    tokens:
+    - column: 0
+      hidden: false
+      index: 0
+      line: 1
+      link: []
+      text: SELECT
+      type: 129
+    - column: 6
+      hidden: true
+      index: 1
+      line: 1
+      link: []
+      text: ' '
+      type: 204
+    - column: 7
+      hidden: false
+      index: 2
+      line: 1
+      link: []
+      text: '*'
+      type: 7
+    - column: 8
+      hidden: true
+      index: 3
+      line: 1
+      link: []
+      text: '
+
+        '
+      type: 204
+    - column: 0
+      hidden: false
+      index: 4
+      line: 2
+      link: []
+      text: FROM
+      type: 75
+    - column: 4
+      hidden: true
+      index: 5
+      line: 2
+      link: []
+      text: ' '
+      type: 204
+    - column: 5
+      hidden: true
+      index: 6
+      line: 2
+      link: []
+      text: ' '
+      type: 204
+    - column: 6
+      hidden: true
+      index: 7
+      line: 2
+      link: []
+      text: ' '
+      type: 204
+    - column: 7
+      hidden: false
+      index: 8
+      line: 2
+      link:
+      - bookmark: null
+        local_id: Plant
+        object_type: tables
+      text: '"Plant"'
+      type: 197
+    - column: 14
+      hidden: false
+      index: 9
+      line: 2
+      link: []
+      text: ;
+      type: 1
   formulas:
   - field:[id]
   - field:[naam]
@@ -4785,6 +5059,7 @@ reports:
       object_type: queries
     text: vwPlant
   commandtype: query
+  embedded_query: null
   formulas:
   - field:[id]
   - field:[naam]
@@ -5062,6 +5337,15 @@ use_cases:
 - obj:
     bookmark: null
     local_id: vwPlant
+    object_type: queries
+  subject:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
+  type: queries
+- obj:
+    bookmark: null
+    local_id: ReportCommandTypeSQL.Command
     object_type: queries
   subject:
     bookmark: null

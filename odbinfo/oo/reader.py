@@ -1,12 +1,12 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
 import os
 from functools import partial
-from typing import List
+from typing import List, Sequence
 from zipfile import ZipFile
 
 from odbinfo.oo.ooutil import open_connection
-from odbinfo.pure.datatype import (Column, Index, Key, Metadata, Query,
-                                   QueryColumn, Table, View)
+from odbinfo.pure.datatype import (Column, CommandDriven, Index, Key, Metadata,
+                                   Query, QueryColumn, Report, Table, View)
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
@@ -16,15 +16,14 @@ def read_metadata(datasource, odbpath):
     """ reads all metadata """
     with open_connection(datasource) as con:
         with ZipFile(odbpath, "r") as odbzip:
-            dbname, _ = os.path.splitext(
-                os.path.basename(odbpath)
-            )
+            dbname, _ = os.path.splitext(os.path.basename(odbpath))
+            reports: List[Report] = read_reports(odbzip)
             return \
                 Metadata(read_tables(con),
                          read_views(con),
-                         read_queries(con, datasource),
+                         read_queries(con, datasource, reports),
                          read_forms(odbzip),
-                         read_reports(odbzip),
+                         reports,
                          read_libraries(odbzip),
                          read_python_libraries(odbzip),
                          read_text_documents(os.path.dirname(odbpath), dbname))
@@ -36,27 +35,36 @@ def read_views(connection) -> List[View]:
 
 
 def _read_view(connection, ooview) -> View:
-    return View(ooview.Name,
-                ooview.Command,
-                _read_query_columns(connection, ooview.Command))
+    view = View(ooview.Name, ooview.Command)
+    read_query_columns(connection, view)
+    return view
 
 
-def read_queries(connection, datasource) -> List[Query]:
+def extract_queries(reports: Sequence[CommandDriven]) -> List[Query]:
+    " Make queries from embedded sqlcommands in reports"
+    queries: List[Query] = []
+    for report in reports:
+        if report.commandtype == "command":
+            query = Query(f"{report.name}.Command", report.command.text)
+            report.embedded_query = query
+            queries.append(query)
+    return queries
+
+
+def read_queries(connection, datasource, reports: List[Report]) -> List[Query]:
     """ Reads query metadata from `datasource` """
-    read_query_func = partial(_read_query, connection)
-    return list(map(read_query_func, datasource.QueryDefinitions))
+    embedded_queries: List[Query] = extract_queries(reports)
+    queries: List[Query] = [Query(ooquery.Name, ooquery.Command) for ooquery in
+                            datasource.QueryDefinitions]
+
+    read_query_func = partial(read_query_columns, connection)
+    return list(map(read_query_func, queries + embedded_queries))
 
 
-def _read_query(connection, ooquery) -> Query:
-    return read_query(connection, ooquery.Name,
-                      ooquery.Command)
-
-
-def read_query(connection, name: str, command: str) -> Query:
+def read_query_columns(connection, query: Query) -> Query:
     " read query columns "
-    return Query(name,
-                 command,
-                 _read_query_columns(connection, command))
+    query.columns = _read_query_columns(connection, query.command)
+    return query
 
 
 def _read_query_columns(connection, command) -> List[QueryColumn]:

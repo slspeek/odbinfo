@@ -26,7 +26,9 @@ subforms:
     name: fmtid
     type: ooo:com.sun.star.form.component.FormattedField
   detailfields: ''
+  embedded_query: null
   masterfields: ''
   name: MainForm
+  title: MainForm
 title: view1
 ---

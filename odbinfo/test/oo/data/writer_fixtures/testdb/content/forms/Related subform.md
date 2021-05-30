@@ -68,8 +68,10 @@ subforms:
       name: txtDesc
       type: ooo:com.sun.star.form.component.TextField
     detailfields: '"FamilyID"'
+    embedded_query: null
     masterfields: '"RFamliyID"'
     name: SubForm
+    title: SubForm
   - controlid: control7
     convertemptytonull: ''
     datafield: ''
@@ -125,7 +127,9 @@ subforms:
     name: txtnaam
     type: ooo:com.sun.star.form.component.TextField
   detailfields: ''
+  embedded_query: null
   masterfields: ''
   name: MainForm
+  title: MainForm
 title: Related subform
 ---

@@ -99,7 +99,9 @@ subforms:
     name: Knop 3
     type: ooo:com.sun.star.form.component.CommandButton
   detailfields: ''
+  embedded_query: null
   masterfields: ''
   name: MainForm
+  title: MainForm
 title: PlantListbox
 ---

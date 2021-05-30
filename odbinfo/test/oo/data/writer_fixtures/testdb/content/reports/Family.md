@@ -6,6 +6,7 @@ command:
     object_type: tables
   text: Family
 commandtype: table
+embedded_query: null
 formulas:
 - field:[FamlilyID]
 - field:[Name]

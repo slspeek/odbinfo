@@ -6,7 +6,13 @@
         <table class="table table-bordered">
           <tr>
             <th>Command</th>
-            <td>{{ partial "render-linked-string" (dict "linked_string" .Params.command "context" .) }}</td>
+            <td>
+              {{ if (eq .Params.commandtype "command") }}
+                {{ partial "render-query-command" (dict "context" . "query" .Params.embedded_query )}}
+              {{ else }}
+                {{ partial "render-linked-string" (dict "linked_string" .Params.command "context" .) }}
+              {{ end }}
+            </td>
           </tr>
           <tr>
             <th>Command type</th>

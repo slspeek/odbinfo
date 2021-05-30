@@ -62,7 +62,9 @@ subforms:
     name: txtnaam
     type: ooo:com.sun.star.form.component.TextField
   detailfields: ''
+  embedded_query: null
   masterfields: ''
   name: MainForm
+  title: MainForm
 title: Plant
 ---

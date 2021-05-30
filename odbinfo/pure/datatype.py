@@ -24,6 +24,33 @@ KEYRULES = {0: "Cascade",
 
 
 @dataclass
+class Identifier:
+    " Unique id for ooobjects "
+    object_type: str
+    local_id: str
+    bookmark: Optional[str] = field(init=False, default=None)
+
+
+@dataclass
+class Token:
+    "lexer token"
+    column: int
+    line: int
+    text: str
+    type: int
+    index: int
+    hidden: bool
+    link: List[Identifier] = field(init=False, default_factory=list)
+
+
+@dataclass
+class LinkedString:
+    " a string referencing a dataobject "
+    text: str
+    link: Optional[Identifier] = field(init=False, default=None)
+
+
+@dataclass
 class DataObject:
     " Super class of the data objects that have a page of their own "
     name: str
@@ -34,11 +61,55 @@ class DataObject:
 
 
 @dataclass
-class Identifier:
-    " Unique id for ooobjects "
-    object_type: str
-    local_id: str
-    bookmark: Optional[str] = field(init=False, default=None)
+class BaseColumn:  # pylint: disable=too-many-instance-attributes
+    "https://www.openhttps://www.openoffice.org/api/docs/"\
+        "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
+    name: str
+    title: str = field(init=False)
+    autoincrement: bool
+    nullable: object
+    tablename: str
+    typename: str
+    precision: str
+    scale: str
+
+    def __post_init__(self):
+        self.title = f"{self.tablename}.{self.name}"
+        self.nullable = COLUMNVALUES[self.nullable]
+
+
+@dataclass
+class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
+    "https://www.openhttps://www.openoffice.org/api/docs/"\
+        "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
+    issigned: bool
+    writable: bool
+    readonly: bool
+
+
+@dataclass
+class Query(DataObject):
+    " Query properties see:"\
+        " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
+        " QueryDefinition.html"
+    command: str
+    columns: List[QueryColumn] = field(init=False, default_factory=list)
+
+    tokens: List[Token] = field(init=False, default_factory=list)
+    table_tokens: List[Token] = field(init=False, default_factory=list)
+
+    def __post_init__(self):
+        super().__post_init__()
+        self.command = format_sql(self.command)
+
+
+@dataclass
+class CommandDriven(DataObject):
+    " Has a command and commandtype "
+    command: LinkedString
+    commandtype: str
+    # Only if commandtype == "command"
+    embedded_query: Optional[Query] = field(init=False, default=None)
 
 
 def get_identifier(dataobject) -> Identifier:
@@ -53,30 +124,11 @@ def get_identifier(dataobject) -> Identifier:
 
 
 @dataclass
-class LinkedString:
-    " a string referencing a dataobject "
-    text: str
-    link: Optional[Identifier] = field(init=False, default=None)
-
-
-@dataclass
 class UseCase:
     " `obj` uses `subject`"
     obj: Identifier
     subject: Identifier
     type: str
-
-
-@dataclass
-class Token:
-    "lexer token"
-    column: int
-    line: int
-    text: str
-    type: int
-    index: int
-    hidden: bool
-    link: List[Identifier] = field(init=False, default_factory=list)
 
 
 @dataclass
@@ -93,15 +145,6 @@ class TextDocument(DataObject):
     " ODT or OTT file metadata "
     path: str
     fields: List[DatabaseDisplay]
-
-
-@dataclass
-class Report(DataObject):
-    " Report metadata "
-    command: LinkedString
-    commandtype: str
-    output_type: str
-    formulas: List[str]
 
 
 @dataclass
@@ -175,11 +218,8 @@ class EventListener:
 
 
 @dataclass
-class SubForm:  # pylint: disable=too-many-instance-attributes
+class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
     " Database subform "
-    name: str
-    command: str
-    commandtype: str
     allowdeletes: str
     allowinserts: str
     allowupdates: str
@@ -225,49 +265,6 @@ class Grid:
 
 
 @dataclass
-class BaseColumn:  # pylint: disable=too-many-instance-attributes
-    "https://www.openhttps://www.openoffice.org/api/docs/"\
-        "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
-    name: str
-    title: str = field(init=False)
-    autoincrement: bool
-    nullable: object
-    tablename: str
-    typename: str
-    precision: str
-    scale: str
-
-    def __post_init__(self):
-        self.title = f"{self.tablename}.{self.name}"
-        self.nullable = COLUMNVALUES[self.nullable]
-
-
-@dataclass
-class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
-    "https://www.openhttps://www.openoffice.org/api/docs/"\
-        "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
-    issigned: bool
-    writable: bool
-    readonly: bool
-
-
-@dataclass
-class Query(DataObject):
-    " Query properties see:"\
-        " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
-        " QueryDefinition.html"
-    command: str
-    columns: List[QueryColumn]
-
-    tokens: List[Token] = field(init=False, default_factory=list)
-    table_tokens: List[Token] = field(init=False, default_factory=list)
-
-    def __post_init__(self):
-        super().__post_init__()
-        self.command = format_sql(self.command)
-
-
-@dataclass
 class View(Query):
     " View properties "
 
@@ -279,6 +276,13 @@ class Column(BaseColumn):  # pylint: disable=too-many-instance-attributes
     """
     description: str
     defaultvalue: str
+
+
+@dataclass
+class Report(CommandDriven):
+    " Report metadata "
+    output_type: str
+    formulas: List[str]
 
 
 @dataclass

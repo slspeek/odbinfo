@@ -37,7 +37,9 @@ subforms:
       type: ooo:TextField
     name: MainForm_Grid
   detailfields: ''
+  embedded_query: null
   masterfields: ''
   name: MainForm
+  title: MainForm
 title: Family
 ---

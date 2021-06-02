@@ -1,7 +1,6 @@
 """ Defines the main datatypes used """
-import typing
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from sql_formatter.core import format_sql
 
@@ -218,23 +217,6 @@ class EventListener:
 
 
 @dataclass
-class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
-    " Database subform "
-    allowdeletes: str
-    allowinserts: str
-    allowupdates: str
-    masterfields: str
-    detailfields: str
-    controls: List[typing.Any]
-
-
-@dataclass
-class Form(DataObject):
-    " Toplevel form "
-    subforms: List[SubForm]
-
-
-@dataclass
 class Control:  # pylint: disable=too-many-instance-attributes
     " Form control "
     name: str
@@ -262,6 +244,24 @@ class Grid:
     " Table view control"
     name: str
     columns: List[Control]
+
+
+@dataclass
+class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
+    " Database subform "
+    allowdeletes: str
+    allowinserts: str
+    allowupdates: str
+    masterfields: str
+    detailfields: str
+    controls: List[Union[Control, Grid]]
+    subforms: List['SubForm']
+
+
+@dataclass
+class Form(DataObject):
+    " Toplevel form "
+    subforms: List[SubForm]
 
 
 @dataclass

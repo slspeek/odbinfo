@@ -40,6 +40,7 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
+  subforms: []
   title: MainForm
 title: Family
 ---

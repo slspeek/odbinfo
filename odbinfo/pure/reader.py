@@ -196,16 +196,11 @@ def _read_module(odbzip, library_name,  data) -> Module:
 
 def read_forms(odbzip):
     """ Reads form metadata from `odbzip` """
-    forms = []
-    for name, data in _forms(odbzip):
-        form = Form(name, _read_subforms(data))
-        forms.append(form)
-    return forms
+    return [Form(name, _read_subforms(data)) for name, data in _forms(odbzip)]
 
 
 def _read_subforms(data) -> List[SubForm]:
-    data = data["form:form"]
-    return mapiflist(_read_subform, data)
+    return mapiflist(_read_subform, data["form:form"])
 
 
 def _read_form_controls(name, value) -> List[Control]:
@@ -215,33 +210,29 @@ def _read_form_controls(name, value) -> List[Control]:
         return mapiflist(_read_grid, value)
     if name == "form:listbox":
         return mapiflist(_read_listbox, value)
-    if name.startswith("form:"):
-        return mapiflist(_read_control, value)
-    return []
+    return mapiflist(_read_control, value)
 
 
 def _read_subform(data):
-    subformname = data["@form:name"]
-    command = data.get("@form:command", "")
-    commandtype = data.get("@form:command-type", "")
-    allowdeletes = data.get("@form:allow-deletes", "true")
-    allowupdates = data.get("@form:allow-updates", "true")
-    allowinsertes = data.get("@form:allow-inserts", "true")
-    masterfields = data.get("@form:master-fields", "")
-    detailfields = data.get("@form:detail-fields", "")
     controls = sum(
         starmap(_read_form_controls,
-                filter(lambda x: not(x[0] == "form:properties"), data.items())),
+                filter(lambda x: x[0].startswith("form:") and
+                       not(x[0] == "form:properties") and
+                       not(x[0] == "form:form"), data.items())),
         [])
-    return SubForm(subformname,
-                   command,
-                   commandtype,
-                   allowdeletes,
-                   allowinsertes,
-                   allowupdates,
-                   masterfields,
-                   detailfields,
-                   controls)
+    subforms = []
+    if "form:form" in data.keys():
+        subforms.extend(mapiflist(_read_subform, data["form:form"]))
+    return SubForm(data["@form:name"],
+                   data.get("@form:command", ""),
+                   data.get("@form:command-type", ""),
+                   data.get("@form:allow-deletes", "true"),
+                   data.get("@form:allow-updates", "true"),
+                   data.get("@form:allow-inserts", "true"),
+                   data.get("@form:master-fields", ""),
+                   data.get("@form:detail-fields", ""),
+                   controls,
+                   subforms)
 
 
 def _read_grid(data):

@@ -1,6 +1,4 @@
-dcLid query analizeren, waarom geen tabletokens? testcase maken
-parser trips over TRIM(FROM), add to grammar? yep
-EXTRACT, POSITION, SUBSTRING
+BasicCall module_token Optional? Why no mypy warning?
 
 layout: tables index shorter
 

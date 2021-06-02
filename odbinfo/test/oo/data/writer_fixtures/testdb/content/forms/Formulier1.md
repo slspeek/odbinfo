@@ -6,7 +6,12 @@ subforms:
   allowupdates: 'true'
   command: ''
   commandtype: table
-  controls:
+  controls: []
+  detailfields: ''
+  embedded_query: null
+  masterfields: ''
+  name: Formulier
+  subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
@@ -17,11 +22,8 @@ subforms:
     embedded_query: null
     masterfields: ''
     name: Formulier2
+    subforms: []
     title: Formulier2
-  detailfields: ''
-  embedded_query: null
-  masterfields: ''
-  name: Formulier
   title: Formulier
 - allowdeletes: 'true'
   allowinserts: 'true'
@@ -33,6 +35,7 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: Formulier 1
+  subforms: []
   title: Formulier 1
 title: Formulier1
 ---

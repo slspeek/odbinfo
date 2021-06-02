@@ -204,8 +204,6 @@ def _read_subforms(data) -> List[SubForm]:
 
 
 def _read_form_controls(name, value) -> List[Control]:
-    if name == "form:form":
-        return mapiflist(_read_subform, value)
     if name == "form:grid":
         return mapiflist(_read_grid, value)
     if name == "form:listbox":

@@ -61,6 +61,7 @@ subforms:
     label: ''
     name: txtnaam
     type: ooo:com.sun.star.form.component.TextField
+  depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''
@@ -126,6 +127,7 @@ subforms:
       label: ''
       name: txtDesc
       type: ooo:com.sun.star.form.component.TextField
+    depth: 1
     detailfields: '"FamilyID"'
     embedded_query: null
     masterfields: '"RFamliyID"'

@@ -7,6 +7,7 @@ subforms:
   command: ''
   commandtype: table
   controls: []
+  depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''
@@ -18,6 +19,7 @@ subforms:
     command: ''
     commandtype: table
     controls: []
+    depth: 1
     detailfields: ''
     embedded_query: null
     masterfields: ''
@@ -31,6 +33,7 @@ subforms:
   command: ''
   commandtype: table
   controls: []
+  depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''

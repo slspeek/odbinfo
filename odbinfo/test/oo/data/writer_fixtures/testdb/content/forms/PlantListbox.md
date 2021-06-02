@@ -98,6 +98,7 @@ subforms:
     label: Call to script
     name: Knop 3
     type: ooo:com.sun.star.form.component.CommandButton
+  depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''

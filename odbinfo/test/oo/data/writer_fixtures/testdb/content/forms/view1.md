@@ -25,6 +25,7 @@ subforms:
     label: ''
     name: fmtid
     type: ooo:com.sun.star.form.component.FormattedField
+  depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''

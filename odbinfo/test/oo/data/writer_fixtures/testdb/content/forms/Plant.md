@@ -61,6 +61,7 @@ subforms:
     label: ''
     name: txtnaam
     type: ooo:com.sun.star.form.component.TextField
+  depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''

@@ -45,6 +45,7 @@ forms:
         name: Desc
         type: ooo:TextField
       name: MainForm_Grid
+    depth: 0
     detailfields: ''
     embedded_query: null
     masterfields: ''
@@ -60,6 +61,7 @@ forms:
     command: ''
     commandtype: table
     controls: []
+    depth: 0
     detailfields: ''
     embedded_query: null
     masterfields: ''
@@ -71,6 +73,7 @@ forms:
       command: ''
       commandtype: table
       controls: []
+      depth: 1
       detailfields: ''
       embedded_query: null
       masterfields: ''
@@ -84,6 +87,7 @@ forms:
     command: ''
     commandtype: table
     controls: []
+    depth: 0
     detailfields: ''
     embedded_query: null
     masterfields: ''
@@ -153,6 +157,7 @@ forms:
       label: ''
       name: txtnaam
       type: ooo:com.sun.star.form.component.TextField
+    depth: 0
     detailfields: ''
     embedded_query: null
     masterfields: ''
@@ -188,6 +193,7 @@ forms:
         name: naam
         type: ooo:TextField
       name: MainForm_Grid
+    depth: 0
     detailfields: ''
     embedded_query: null
     masterfields: ''
@@ -294,6 +300,7 @@ forms:
       label: Call to script
       name: Knop 3
       type: ooo:com.sun.star.form.component.CommandButton
+    depth: 0
     detailfields: ''
     embedded_query: null
     masterfields: ''
@@ -363,6 +370,7 @@ forms:
       label: ''
       name: txtnaam
       type: ooo:com.sun.star.form.component.TextField
+    depth: 0
     detailfields: ''
     embedded_query: null
     masterfields: ''
@@ -428,6 +436,7 @@ forms:
         label: ''
         name: txtDesc
         type: ooo:com.sun.star.form.component.TextField
+      depth: 1
       detailfields: '"FamilyID"'
       embedded_query: null
       masterfields: '"RFamliyID"'
@@ -462,6 +471,7 @@ forms:
       label: ''
       name: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
+    depth: 0
     detailfields: ''
     embedded_query: null
     masterfields: ''

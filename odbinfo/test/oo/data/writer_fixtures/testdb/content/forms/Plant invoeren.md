@@ -27,6 +27,7 @@ subforms:
       name: naam
       type: ooo:TextField
     name: MainForm_Grid
+  depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''

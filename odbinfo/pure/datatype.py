@@ -256,6 +256,7 @@ class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
     detailfields: str
     controls: List[Union[Control, Grid]]
     subforms: List['SubForm']
+    depth: Optional[int] = field(init=False, default=None)
 
 
 @dataclass

@@ -2,7 +2,8 @@
 from functools import partial
 from typing import Sequence, Union
 
-from odbinfo.pure.datatype import Form, Library, Module, Query, SubForm, Control, Grid
+from odbinfo.pure.datatype import (Control, Form, Grid, Library, Module, Query,
+                                   SubForm)
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.parser.sql import parse
@@ -48,6 +49,7 @@ def set_form_height(form: Form) -> None:
 
 
 def process_subform(subform: SubForm) -> None:
+    " simplifies control.type for all (nested) controls "
     def process_control(control: Union[Control, Grid]) -> None:
         if isinstance(control, Grid):
             return

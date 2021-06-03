@@ -5,7 +5,12 @@ subforms:
 - allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: Plant
+  command:
+    link:
+      bookmark: null
+      local_id: Plant
+      object_type: tables
+    text: Plant
   commandtype: table
   controls:
   - controlid: control7
@@ -71,7 +76,12 @@ subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Family
+    command:
+      link:
+        bookmark: null
+        local_id: Family
+        object_type: tables
+      text: Family
     commandtype: table
     controls:
     - controlid: control1

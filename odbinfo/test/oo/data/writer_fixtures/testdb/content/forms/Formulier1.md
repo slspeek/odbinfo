@@ -5,7 +5,9 @@ subforms:
 - allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: ''
+  command:
+    link: null
+    text: ''
   commandtype: table
   controls: []
   depth: 0
@@ -17,7 +19,9 @@ subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: ''
+    command:
+      link: null
+      text: ''
     commandtype: table
     controls: []
     depth: 1
@@ -31,7 +35,9 @@ subforms:
 - allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: ''
+  command:
+    link: null
+    text: ''
   commandtype: table
   controls: []
   depth: 0

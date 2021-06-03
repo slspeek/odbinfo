@@ -1,4 +1,5 @@
   {{ $depth:=.subform.depth }}
+  {{ $context := .context }}
   <thead>
       {{ if (gt $depth 0 ) }}
       <th colspan={{$depth}}></th>
@@ -18,7 +19,7 @@
       <td colspan={{$depth}}></td>
       {{ end }}
       <td>{{ .subform.name }}</td>
-      <td>{{ .subform.command }}</td>
+      <td>{{ partial "render-linked-string" (dict "context" $context "linked_string" .subform.command) }}</td>
       <td>{{ .subform.commandtype }}</td>
       <td>{{ .subform.allowdeletes }}</td>
       <td>{{ .subform.allowinserts }}</td>
@@ -55,7 +56,7 @@
   {{ end }}
   </tbody>
   {{ range .subform.subforms }}
-    {{ partial "render-subform" (dict "subform" .) }}
+    {{ partial "render-subform" (dict "subform" . "context" $context) }}
   {{ end }}
 
   {{ end }}

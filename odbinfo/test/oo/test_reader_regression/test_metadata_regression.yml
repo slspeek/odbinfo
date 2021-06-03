@@ -14,7 +14,9 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Family
+    command:
+      link: null
+      text: Family
     commandtype: table
     controls:
     - columns:
@@ -60,7 +62,9 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: ''
+    command:
+      link: null
+      text: ''
     commandtype: table
     controls: []
     depth: null
@@ -72,7 +76,9 @@ forms:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command: ''
+      command:
+        link: null
+        text: ''
       commandtype: table
       controls: []
       depth: null
@@ -86,7 +92,9 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: ''
+    command:
+      link: null
+      text: ''
     commandtype: table
     controls: []
     depth: null
@@ -103,7 +111,9 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
+    command:
+      link: null
+      text: Plant
     commandtype: table
     controls:
     - controlid: control1
@@ -174,7 +184,9 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: vwPlant
+    command:
+      link: null
+      text: vwPlant
     commandtype: query
     controls:
     - columns:
@@ -211,7 +223,9 @@ forms:
   - allowdeletes: 'false'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
+    command:
+      link: null
+      text: Plant
     commandtype: table
     controls:
     - controlid: control1
@@ -319,7 +333,9 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
+    command:
+      link: null
+      text: Plant
     commandtype: table
     controls:
     - controlid: control7
@@ -385,7 +401,9 @@ forms:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command: Family
+      command:
+        link: null
+        text: Family
       commandtype: table
       controls:
       - controlid: control1
@@ -457,7 +475,9 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: view1
+    command:
+      link: null
+      text: view1
     commandtype: table
     controls:
     - controlid: control1

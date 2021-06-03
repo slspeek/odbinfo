@@ -1,5 +1,5 @@
 {{ partial "header" . }}
-
+{{ $context:=. }}
 <main>
     <div>
         <h2>Form: {{ .Params.name }}</h2>
@@ -7,7 +7,7 @@
         <table class="table table-bordered">
 
           {{ range .Params.subforms }}
-            {{ partial "render-subform" (dict "subform" .)}}
+            {{ partial "render-subform" (dict "subform" . "context" $context)}}
           {{ end }}
 
         </table>

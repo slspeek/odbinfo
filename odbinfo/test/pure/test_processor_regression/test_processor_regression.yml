@@ -14,7 +14,12 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Family
+    command:
+      link:
+        bookmark: null
+        local_id: Family
+        object_type: tables
+      text: Family
     commandtype: table
     controls:
     - columns:
@@ -60,7 +65,9 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: ''
+    command:
+      link: null
+      text: ''
     commandtype: table
     controls: []
     depth: 0
@@ -72,7 +79,9 @@ forms:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command: ''
+      command:
+        link: null
+        text: ''
       commandtype: table
       controls: []
       depth: 1
@@ -86,7 +95,9 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: ''
+    command:
+      link: null
+      text: ''
     commandtype: table
     controls: []
     depth: 0
@@ -103,7 +114,12 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
+    command:
+      link:
+        bookmark: null
+        local_id: Plant
+        object_type: tables
+      text: Plant
     commandtype: table
     controls:
     - controlid: control1
@@ -174,7 +190,12 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: vwPlant
+    command:
+      link:
+        bookmark: null
+        local_id: vwPlant
+        object_type: queries
+      text: vwPlant
     commandtype: query
     controls:
     - columns:
@@ -211,7 +232,12 @@ forms:
   - allowdeletes: 'false'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
+    command:
+      link:
+        bookmark: null
+        local_id: Plant
+        object_type: tables
+      text: Plant
     commandtype: table
     controls:
     - controlid: control1
@@ -319,7 +345,12 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
+    command:
+      link:
+        bookmark: null
+        local_id: Plant
+        object_type: tables
+      text: Plant
     commandtype: table
     controls:
     - controlid: control7
@@ -385,7 +416,12 @@ forms:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command: Family
+      command:
+        link:
+          bookmark: null
+          local_id: Family
+          object_type: tables
+        text: Family
       commandtype: table
       controls:
       - controlid: control1
@@ -457,7 +493,12 @@ forms:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: view1
+    command:
+      link:
+        bookmark: null
+        local_id: view1
+        object_type: views
+      text: view1
     commandtype: table
     controls:
     - controlid: control1
@@ -5446,6 +5487,69 @@ use_cases:
     bookmark: null
     local_id: vwPlant
     object_type: reports
+  subject:
+    bookmark: null
+    local_id: vwPlant
+    object_type: queries
+  type: queries
+- obj:
+    bookmark: null
+    local_id: MainForm
+    object_type: subforms
+  subject:
+    bookmark: null
+    local_id: Family
+    object_type: tables
+  type: queries
+- obj:
+    bookmark: null
+    local_id: MainForm
+    object_type: subforms
+  subject:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
+  type: queries
+- obj:
+    bookmark: null
+    local_id: MainForm
+    object_type: subforms
+  subject:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
+  type: queries
+- obj:
+    bookmark: null
+    local_id: MainForm
+    object_type: subforms
+  subject:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
+  type: queries
+- obj:
+    bookmark: null
+    local_id: SubForm
+    object_type: subforms
+  subject:
+    bookmark: null
+    local_id: Family
+    object_type: tables
+  type: queries
+- obj:
+    bookmark: null
+    local_id: MainForm
+    object_type: subforms
+  subject:
+    bookmark: null
+    local_id: view1
+    object_type: views
+  type: queries
+- obj:
+    bookmark: null
+    local_id: MainForm
+    object_type: subforms
   subject:
     bookmark: null
     local_id: vwPlant

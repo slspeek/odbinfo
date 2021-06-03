@@ -5,7 +5,12 @@ subforms:
 - allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: view1
+  command:
+    link:
+      bookmark: null
+      local_id: view1
+      object_type: views
+    text: view1
   commandtype: table
   controls:
   - controlid: control1

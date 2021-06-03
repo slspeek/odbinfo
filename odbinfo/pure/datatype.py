@@ -367,4 +367,13 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
 
     def subforms(self) -> List[SubForm]:
         " collect all subforms from the forms and subforms "
-        return []
+        def collect_subforms(subform: SubForm) -> List[SubForm]:
+            result = [subform]
+            result.extend(sum([collect_subforms(sf)
+                          for sf in subform.subforms], []))
+            return result
+
+        def collect_subforms_from_form(form: Form) -> List[SubForm]:
+            return sum([collect_subforms(sf) for sf in form.subforms], [])
+
+        return sum([collect_subforms_from_form(f) for f in self.forms], [])

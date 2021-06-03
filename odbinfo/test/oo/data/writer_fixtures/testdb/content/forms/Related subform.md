@@ -1,4 +1,5 @@
 ---
+height: 1
 name: Related subform
 subforms:
 - allowdeletes: 'true'

@@ -1,4 +1,5 @@
 ---
+height: 0
 name: Family
 subforms:
 - allowdeletes: 'true'

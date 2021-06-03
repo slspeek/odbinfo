@@ -1,4 +1,5 @@
 ---
+height: 0
 name: view1
 subforms:
 - allowdeletes: 'true'

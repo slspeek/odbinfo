@@ -8,7 +8,8 @@ documents:
   path: ./Untitled.odt
   title: Untitled.odt
 forms:
-- name: Family
+- height: 0
+  name: Family
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -53,7 +54,8 @@ forms:
     subforms: []
     title: MainForm
   title: Family
-- name: Formulier1
+- height: 1
+  name: Formulier1
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -95,7 +97,8 @@ forms:
     subforms: []
     title: Formulier 1
   title: Formulier1
-- name: Plant
+- height: 0
+  name: Plant
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -165,7 +168,8 @@ forms:
     subforms: []
     title: MainForm
   title: Plant
-- name: Plant invoeren
+- height: 0
+  name: Plant invoeren
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -201,7 +205,8 @@ forms:
     subforms: []
     title: MainForm
   title: Plant invoeren
-- name: PlantListbox
+- height: 0
+  name: PlantListbox
   subforms:
   - allowdeletes: 'false'
     allowinserts: 'true'
@@ -308,7 +313,8 @@ forms:
     subforms: []
     title: MainForm
   title: PlantListbox
-- name: Related subform
+- height: 1
+  name: Related subform
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -445,7 +451,8 @@ forms:
       title: SubForm
     title: MainForm
   title: Related subform
-- name: view1
+- height: 0
+  name: view1
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'

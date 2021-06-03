@@ -1,4 +1,5 @@
 ---
+height: 0
 name: Plant invoeren
 subforms:
 - allowdeletes: 'true'

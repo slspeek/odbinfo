@@ -35,9 +35,22 @@ def set_depth(depth: int, subform: SubForm) -> None:
     list(map(partial(set_depth, depth + 1), subform.subforms))
 
 
+def height(subform: SubForm) -> int:
+    " max path length to a leaf subform "
+    if subform.subforms:
+        return max(height(sf) for sf in subform.subforms) + 1
+    return 0
+
+
+def set_form_height(form: Form) -> None:
+    " set the max height into the `form` "
+    form.height = max([height(sf) for sf in form.subforms])
+
+
 def process_form(form: Form) -> None:
     " calculate depth for its subforms "
     list(map(partial(set_depth, 0), form.subforms))
+    set_form_height(form)
 
 
 def process_metadata(metadata):

@@ -1,4 +1,5 @@
 ---
+height: 0
 name: PlantListbox
 subforms:
 - allowdeletes: 'false'

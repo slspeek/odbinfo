@@ -263,6 +263,7 @@ class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
 class Form(DataObject):
     " Toplevel form "
     subforms: List[SubForm]
+    height: Optional[int] = field(init=False, default=None)
 
 
 @dataclass

@@ -16,7 +16,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
-    type: ooo:com.sun.star.form.component.FixedText
+    type: FixedText
   - controlid: control2
     convertemptytonull: 'true'
     datafield: id
@@ -25,7 +25,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtid
-    type: ooo:com.sun.star.form.component.FormattedField
+    type: FormattedField
   depth: 0
   detailfields: ''
   embedded_query: null

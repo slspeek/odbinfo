@@ -16,7 +16,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
-    type: ooo:com.sun.star.form.component.FixedText
+    type: FixedText
   - controlid: control3
     convertemptytonull: ''
     datafield: ''
@@ -25,7 +25,7 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
-    type: ooo:com.sun.star.form.component.FixedText
+    type: FixedText
   - controlid: control5
     convertemptytonull: ''
     datafield: ''
@@ -34,7 +34,7 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
-    type: ooo:com.sun.star.form.component.FixedText
+    type: FixedText
   - controlid: control2
     convertemptytonull: 'true'
     datafield: id
@@ -43,7 +43,7 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
-    type: ooo:com.sun.star.form.component.FormattedField
+    type: FormattedField
   - controlid: control6
     convertemptytonull: 'true'
     datafield: RFamliyID
@@ -52,7 +52,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtRFamliyID
-    type: ooo:com.sun.star.form.component.FormattedField
+    type: FormattedField
   - controlid: control4
     convertemptytonull: 'true'
     datafield: naam
@@ -61,7 +61,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
-    type: ooo:com.sun.star.form.component.TextField
+    type: TextField
   depth: 0
   detailfields: ''
   embedded_query: null

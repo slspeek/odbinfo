@@ -364,3 +364,7 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
         for lib in self.pylibs:
             result.extend(lib.modules)
         return result
+
+    def subforms(self) -> List[SubForm]:
+        " collect all subforms from the forms and subforms "
+        return []

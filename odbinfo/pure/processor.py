@@ -1,8 +1,8 @@
 """ Core module """
 from functools import partial
-from typing import Sequence
+from typing import Sequence, Union
 
-from odbinfo.pure.datatype import Form, Library, Module, Query, SubForm
+from odbinfo.pure.datatype import Form, Library, Module, Query, SubForm, Control, Grid
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.parser.sql import parse
@@ -47,9 +47,19 @@ def set_form_height(form: Form) -> None:
     form.height = max([height(sf) for sf in form.subforms])
 
 
+def process_subform(subform: SubForm) -> None:
+    def process_control(control: Union[Control, Grid]) -> None:
+        if isinstance(control, Grid):
+            return
+        control.type = control.type.split(".")[-1]
+    list(map(process_control, subform.controls))
+    list(map(process_subform, subform.subforms))
+
+
 def process_form(form: Form) -> None:
     " calculate depth for its subforms "
     list(map(partial(set_depth, 0), form.subforms))
+    list(map(process_subform, form.subforms))
     set_form_height(form)
 
 

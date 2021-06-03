@@ -114,7 +114,7 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control3
       convertemptytonull: ''
       datafield: ''
@@ -123,7 +123,7 @@ forms:
       inputrequired: ''
       label: naam
       name: lblnaam
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control5
       convertemptytonull: ''
       datafield: ''
@@ -132,7 +132,7 @@ forms:
       inputrequired: ''
       label: RFamliyID
       name: lblRFamliyID
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -141,7 +141,7 @@ forms:
       inputrequired: 'true'
       label: ''
       name: fmtid
-      type: ooo:com.sun.star.form.component.FormattedField
+      type: FormattedField
     - controlid: control6
       convertemptytonull: 'true'
       datafield: RFamliyID
@@ -150,7 +150,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: fmtRFamliyID
-      type: ooo:com.sun.star.form.component.FormattedField
+      type: FormattedField
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -159,7 +159,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: txtnaam
-      type: ooo:com.sun.star.form.component.TextField
+      type: TextField
     depth: 0
     detailfields: ''
     embedded_query: null
@@ -222,7 +222,7 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control3
       convertemptytonull: ''
       datafield: ''
@@ -231,7 +231,7 @@ forms:
       inputrequired: ''
       label: naam
       name: lblnaam
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control5
       convertemptytonull: ''
       datafield: ''
@@ -240,7 +240,7 @@ forms:
       inputrequired: ''
       label: RFamliyID
       name: lblRFamliyID
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -249,7 +249,7 @@ forms:
       inputrequired: 'true'
       label: ''
       name: fmtid
-      type: ooo:com.sun.star.form.component.FormattedField
+      type: FormattedField
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -258,7 +258,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: txtnaam
-      type: ooo:com.sun.star.form.component.TextField
+      type: TextField
     - boundcolumn: '1'
       controlid: control6
       convertemptytonull: ''
@@ -271,7 +271,7 @@ forms:
       listsource: FamilyLookup
       listsourcetype: query
       name: fmtRFamliyID
-      type: ooo:com.sun.star.form.component.ListBox
+      type: ListBox
     - controlid: control7
       convertemptytonull: ''
       datafield: ''
@@ -282,7 +282,7 @@ forms:
       inputrequired: ''
       label: Say hello
       name: Knop 1
-      type: ooo:com.sun.star.form.component.CommandButton
+      type: CommandButton
     - controlid: control8
       convertemptytonull: ''
       datafield: ''
@@ -291,7 +291,7 @@ forms:
       inputrequired: ''
       label: Knop
       name: Knop 2
-      type: ooo:com.sun.star.form.component.CommandButton
+      type: CommandButton
     - controlid: control9
       convertemptytonull: ''
       datafield: ''
@@ -304,7 +304,7 @@ forms:
       inputrequired: ''
       label: Call to script
       name: Knop 3
-      type: ooo:com.sun.star.form.component.CommandButton
+      type: CommandButton
     depth: 0
     detailfields: ''
     embedded_query: null
@@ -330,7 +330,7 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control9
       convertemptytonull: ''
       datafield: ''
@@ -339,7 +339,7 @@ forms:
       inputrequired: ''
       label: naam
       name: lblnaam
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control11
       convertemptytonull: ''
       datafield: ''
@@ -348,7 +348,7 @@ forms:
       inputrequired: ''
       label: RFamliyID
       name: lblRFamliyID
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control8
       convertemptytonull: 'true'
       datafield: id
@@ -357,7 +357,7 @@ forms:
       inputrequired: 'true'
       label: ''
       name: fmtid
-      type: ooo:com.sun.star.form.component.FormattedField
+      type: FormattedField
     - controlid: control12
       convertemptytonull: 'true'
       datafield: RFamliyID
@@ -366,7 +366,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: fmtRFamliyID
-      type: ooo:com.sun.star.form.component.FormattedField
+      type: FormattedField
     - controlid: control10
       convertemptytonull: 'true'
       datafield: naam
@@ -375,7 +375,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: txtnaam
-      type: ooo:com.sun.star.form.component.TextField
+      type: TextField
     depth: 0
     detailfields: ''
     embedded_query: null
@@ -396,7 +396,7 @@ forms:
         inputrequired: ''
         label: FamilyID
         name: lblFamilyID
-        type: ooo:com.sun.star.form.component.FixedText
+        type: FixedText
       - controlid: control3
         convertemptytonull: ''
         datafield: ''
@@ -405,7 +405,7 @@ forms:
         inputrequired: ''
         label: Name
         name: lblName
-        type: ooo:com.sun.star.form.component.FixedText
+        type: FixedText
       - controlid: control5
         convertemptytonull: ''
         datafield: ''
@@ -414,7 +414,7 @@ forms:
         inputrequired: ''
         label: Desc
         name: lblDesc
-        type: ooo:com.sun.star.form.component.FixedText
+        type: FixedText
       - controlid: control2
         convertemptytonull: 'true'
         datafield: FamilyID
@@ -423,7 +423,7 @@ forms:
         inputrequired: 'true'
         label: ''
         name: fmtFamilyID
-        type: ooo:com.sun.star.form.component.FormattedField
+        type: FormattedField
       - controlid: control4
         convertemptytonull: 'true'
         datafield: Name
@@ -432,7 +432,7 @@ forms:
         inputrequired: 'false'
         label: ''
         name: txtName
-        type: ooo:com.sun.star.form.component.TextField
+        type: TextField
       - controlid: control6
         convertemptytonull: 'true'
         datafield: Desc
@@ -441,7 +441,7 @@ forms:
         inputrequired: 'false'
         label: ''
         name: txtDesc
-        type: ooo:com.sun.star.form.component.TextField
+        type: TextField
       depth: 1
       detailfields: '"FamilyID"'
       embedded_query: null
@@ -468,7 +468,7 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
-      type: ooo:com.sun.star.form.component.FixedText
+      type: FixedText
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -477,7 +477,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: fmtid
-      type: ooo:com.sun.star.form.component.FormattedField
+      type: FormattedField
     depth: 0
     detailfields: ''
     embedded_query: null

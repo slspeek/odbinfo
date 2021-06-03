@@ -6,7 +6,7 @@ from typing import List, Optional, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, Callable, DataObject, Identifier,
                                    Metadata, Module, Query, Report, Token,
-                                   UseCase, get_identifier)
+                                   UseCase, get_identifier, CommandDriven)
 
 
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
@@ -23,10 +23,10 @@ def search_dependencies(metadata: Metadata) -> List[UseCase]:
             search_deps_in_queries(metadata.queries, metadata.queries) +
             search_deps_in_queries(metadata.tables, metadata.views) +
             search_deps_in_queries(metadata.views, metadata.views) +
-            search_deps_in_reports(metadata.tables,
+            search_deps_in_commanddriven(metadata.tables,
                                    metadata.reports) +
-            search_deps_in_reports(metadata.views, metadata.reports) +
-            search_deps_in_reports(metadata.queries, metadata.reports)
+            search_deps_in_commanddriven(metadata.views, metadata.reports) +
+            search_deps_in_commanddriven(metadata.queries, metadata.reports)
             )
 
 #
@@ -210,10 +210,10 @@ def search_deps_in_queries(dataobjects: Sequence[DataObject],
 #
 
 
-def search_deps_in_reports(dataobjects: Sequence[DataObject],
-                           reports: Sequence[Report]) -> List[UseCase]:
+def search_deps_in_commanddriven(dataobjects: Sequence[DataObject],
+                           reports: Sequence[CommandDriven]) -> List[UseCase]:
     " find uses of dataobject in report"
-    def find_deps_in_report(report: Report) -> List[UseCase]:
+    def find_deps_in_report(report: CommandDriven) -> List[UseCase]:
         " find dependency uses in `report` "
         def find_one_dep(dependency: DataObject) -> Optional[UseCase]:
             if report.command.text == dependency.name:

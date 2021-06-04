@@ -1,6 +1,6 @@
 """ Defines the main datatypes used """
 from dataclasses import dataclass, field
-from typing import List, Optional, Union
+from typing import List, Optional, Sequence, Union
 
 from sql_formatter.core import format_sql
 
@@ -176,8 +176,8 @@ class Callable(DataObject):
     library: str
     module: str
     name_token_index: int = field(init=False)
-    tokens: List[Token] = field(init=False, default_factory=list)
-    body_tokens: List[Token] = field(
+    tokens: Sequence[Token] = field(init=False, default_factory=list)
+    body_tokens: Sequence[Token] = field(
         init=False, repr=False, default_factory=list)
     calls: List[BasicCall] = field(init=False, default_factory=list)
     strings: List[Token] = field(init=False, repr=False,  default_factory=list)

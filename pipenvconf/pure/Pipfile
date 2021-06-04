@@ -22,6 +22,7 @@ pytest-regressions = "*"
 autopep8 = "*"
 pytest-cov = "*"
 mypy = "*"
+lxml = "*"
 
 [requires]
 python_version = "3.7"

@@ -21,6 +21,7 @@ OOPYTHONPATH=.:$$(cd $(oo) && pipenv --venv)/lib/python3.7/site-packages
 PUREPYTHONPATH=.:$$(cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
+pythonsources=$$(find -name \*.py -and -not -ipath ./target/\* -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* )
 
 build: mypy metric itest
 
@@ -172,8 +173,8 @@ ctags:
 	ctags -R odbinfo
 
 metric: clean
-	find -name \*.py -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* |xargs python -m xenon -b A -m A -a A
+	python -m xenon -b A -m A -a A  $(pythonsources)
 
 mypy:
-	find -name \*.py -and -not -ipath ./target/\* -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* |xargs mypy --show-error-codes --disable-error-code import
+	mypy --show-error-codes --disable-error-code  import --html-report mypy-report $(pythonsources)
 

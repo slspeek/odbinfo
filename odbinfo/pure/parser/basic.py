@@ -8,7 +8,7 @@ from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find,
                                          skip, someof)
 
 
-def scan_basic(alltokens, library, module) -> List[Callable]:
+def scan_basic(alltokens: List[Token], library: str, module: str) -> List[Callable]:
     " extract procedure names "
     tokens = list(filter(lambda x: not x.hidden, alltokens))
     scanner = BasicScanner(tokens, alltokens, library, module)
@@ -39,14 +39,15 @@ def extract_stringliterals(acallable: Callable) -> List[Token]:
 class BasicScanner(Scanner):
     "scan for procedure names"
 
-    def __init__(self, tokens, alltokens, library, module):
+    def __init__(self, tokens: List[Token], alltokens: List[Token], library: str, module: str):
         super().__init__(tokens)
-        self.alltokens = alltokens
+        self.alltokens: List[Token] = alltokens
         self.library = library
         self.module = module
 
     # pylint: disable=too-many-arguments
-    def _callable(self, start, bodystart, bodyend, end, name_token):
+    def _callable(self, start: int, bodystart: int,
+                  bodyend: int, end: int, name_token: Token) -> Callable:
         acallable = Callable(name_token.text, self.library, self.module)
         acallable.body_tokens = self.tokens[bodystart:bodyend]
         acallable.name_token_index = name_token.index
@@ -58,7 +59,7 @@ class BasicScanner(Scanner):
         analyze_callable(acallable)
         return acallable
 
-    def scan(self):
+    def scan(self) -> List[Callable]:
         "perform the scan"
         callables = []
         callable_infos = allmacros(self)

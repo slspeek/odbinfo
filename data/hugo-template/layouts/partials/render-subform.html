@@ -10,8 +10,10 @@
       <th>Allow deletes</th>
       <th>Allow inserts</th>
       <th>Allow updates</th>
+      {{ if (gt $depth 0 ) }}
       <th>Master fields</th>
       <th>Detail fields</th>
+      {{ end }}
   </thead>
   <tbody>
     <tr>
@@ -24,8 +26,10 @@
       <td>{{ .subform.allowdeletes }}</td>
       <td>{{ .subform.allowinserts }}</td>
       <td>{{ .subform.allowupdates }}</td>
+      {{ if (gt $depth 0 ) }}
       <td>{{ .subform.masterfields }}</td>
       <td>{{ .subform.detailfields }}</td>
+      {{ end }}
     </tr>
   </tbody>
   {{ if .subform.controls }}

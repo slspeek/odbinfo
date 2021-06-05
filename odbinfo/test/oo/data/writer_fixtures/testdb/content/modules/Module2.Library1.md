@@ -305,7 +305,7 @@ tokens:
   link:
   - bookmark: null
     local_id: CalleeSub.Module2.Library1
-    object_type: callables
+    object_type: basicfunctions
   text: CalleeSub
   type: 181
 - column: 13
@@ -405,7 +405,7 @@ tokens:
   link:
   - bookmark: null
     local_id: CalleeTwoSub.Module2.Library1
-    object_type: callables
+    object_type: basicfunctions
   text: CalleeTwoSub
   type: 181
 - column: 16

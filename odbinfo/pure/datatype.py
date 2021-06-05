@@ -171,7 +171,7 @@ class BasicCall:
 
 # pylint:disable=too-many-instance-attributes
 @dataclass
-class Callable(DataObject):
+class BasicFunction(DataObject):
     " Basic sub or function "
     library: str
     module: str
@@ -193,7 +193,7 @@ class Module(DataObject):
     " Basic module"
     library: str
     source: str
-    callables: List[Callable] = field(init=False, default_factory=list)
+    callables: List[BasicFunction] = field(init=False, default_factory=list)
     title: str = field(init=False)
     tokens: List[Token] = field(init=False, default_factory=list)
     name_indexes: List[int] = field(init=False, default_factory=list)
@@ -343,7 +343,7 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
     documents: List[TextDocument]
     use_cases: List[UseCase] = field(init=False, default_factory=list)
 
-    def callables(self) -> List[Callable]:
+    def callables(self) -> List[BasicFunction]:
         "collect all callables from libraries"
         result = []
         for lib in self.libraries:

@@ -1,32 +1,32 @@
 """ Hand crafted scanner on the the tokens provided by OOBasicLexer """
 from typing import List, Tuple
 
-from odbinfo.pure.datatype import BasicCall, Callable, Token
+from odbinfo.pure.datatype import BasicCall, BasicFunction, Token
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find,
                                          get_token_stream, get_tokens, maybe,
                                          skip, someof)
 
 
-def scan_basic(alltokens: List[Token], library: str, module: str) -> List[Callable]:
+def scan_basic(alltokens: List[Token], library: str, module: str) -> List[BasicFunction]:
     " extract procedure names "
     tokens = list(filter(lambda x: not x.hidden, alltokens))
     scanner = BasicScanner(tokens, alltokens, library, module)
     return scanner.scan()
 
 
-def analyze_callable(acallable: Callable):
+def analyze_callable(acallable: BasicFunction):
     "Extract and store functioncalls and stringliterals from the body"
     acallable.calls = extract_functioncalls(acallable)
     acallable.strings = extract_stringliterals(acallable)
 
 
-def extract_functioncalls(acallable: Callable):
+def extract_functioncalls(acallable: BasicFunction):
     "Extract functioncalls"
     return BodyScanner(acallable.body_tokens).functioncalls()
 
 
-def extract_stringliterals(acallable: Callable) -> List[Token]:
+def extract_stringliterals(acallable: BasicFunction) -> List[Token]:
     "Extract stringliterals"
     return list(
         filter(
@@ -47,8 +47,8 @@ class BasicScanner(Scanner):
 
     # pylint: disable=too-many-arguments
     def _callable(self, start: int, bodystart: int,
-                  bodyend: int, end: int, name_token: Token) -> Callable:
-        acallable = Callable(name_token.text, self.library, self.module)
+                  bodyend: int, end: int, name_token: Token) -> BasicFunction:
+        acallable = BasicFunction(name_token.text, self.library, self.module)
         acallable.body_tokens = self.tokens[bodystart:bodyend]
         acallable.name_token_index = name_token.index
 
@@ -59,7 +59,7 @@ class BasicScanner(Scanner):
         analyze_callable(acallable)
         return acallable
 
-    def scan(self) -> List[Callable]:
+    def scan(self) -> List[BasicFunction]:
         "perform the scan"
         callables = []
         callable_infos = allmacros(self)

@@ -164,7 +164,7 @@ tokens:
   link:
   - bookmark: null
     local_id: Main.Module2.Standard
-    object_type: callables
+    object_type: basicfunctions
   text: Main
   type: 181
 - column: 8

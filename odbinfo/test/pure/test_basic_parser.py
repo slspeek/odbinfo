@@ -1,7 +1,7 @@
 # pylint: disable=too-many-lines
 # pylint: disable=protected-access
 " parser tests "
-from odbinfo.pure.datatype import Callable
+from odbinfo.pure.datatype import BasicFunction
 from odbinfo.pure.parser.basic import (BasicScanner, BodyScanner,
                                        all_functioncalls, allmacros,
                                        extract_stringliterals, functioncall,
@@ -89,7 +89,7 @@ def test_extract_stringliterals():
     " test extract_stringliterals"
     tokens = get_basic_tokens("""ModuleFoo.Foo("Hello world!")""")
     print(tokens)
-    acallable = Callable("methodName", "ModuleName", "LibName")
+    acallable = BasicFunction("methodName", "ModuleName", "LibName")
     acallable.body_tokens = tokens
     strings = extract_stringliterals(acallable)
     assert len(strings) == 1

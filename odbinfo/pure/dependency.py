@@ -4,7 +4,7 @@ from functools import partial
 from itertools import starmap
 from typing import List, Optional, Sequence
 
-from odbinfo.pure.datatype import (BasicCall, Callable, CommandDriven,
+from odbinfo.pure.datatype import (BasicCall, BasicFunction, CommandDriven,
                                    DatabaseDisplay, DataObject, Identifier,
                                    Metadata, Module, Query, TextDocument,
                                    Token, UseCase, get_identifier)
@@ -38,7 +38,7 @@ def search_dependencies(metadata: Metadata) -> List[UseCase]:
             )
 
 #
-# Callable in Callable
+# BasicFunction in BasicFunction
 #
 
 
@@ -56,7 +56,7 @@ def _rewrite_module_token_links(modules):
     " scan module tokens for links"
     # process module source tokens to support callable links at module level
     # e.g /Lib1.Mod1/#macro
-    # By rewriting Identifier(type="Callable" local_id="Lib1.Mod1.call")
+    # By rewriting Identifier(type="BasicFunction" local_id="Lib1.Mod1.call")
     # to Identifier("Module", "Lib1.Mod1", bookmark="call")
     def rewrite_module(module: Module):
 
@@ -82,7 +82,7 @@ def _rewrite_module_token_links(modules):
 
 
 def _link_name_tokens(module: Module):
-    def _link_name(index: int, acallable: Callable):
+    def _link_name(index: int, acallable: BasicFunction):
         link_token(module.tokens[index], acallable)
     list(starmap(_link_name, zip(module.name_indexes, module.callables)))
 
@@ -96,7 +96,7 @@ def rewrite_module_callable_links(modules: Sequence[Module]) -> List[UseCase]:
     return []
 
 
-def search_callable_in_callable(callables: Sequence[Callable],
+def search_callable_in_callable(callables: Sequence[BasicFunction],
                                 ) -> List[UseCase]:
     """ dependency search amoung the basic callables and linking the
         parsed tokens to the targets
@@ -107,21 +107,21 @@ def search_callable_in_callable(callables: Sequence[Callable],
     return use_cases
 
 
-def find_callable_in_callable(callables: Sequence[Callable]) -> List[UseCase]:
+def find_callable_in_callable(callables: Sequence[BasicFunction]) -> List[UseCase]:
     " find calls from one to another "
-    def search_in_one(caller: Callable):
+    def search_in_one(caller: BasicFunction):
         # caller's module
-        def filter_own_module(call: Callable):
+        def filter_own_module(call: BasicFunction):
             return (call.module == caller.module and
                     call.library == caller.library)
 
         # callables in own library
-        def filter_own_library(call: Callable):
+        def filter_own_library(call: BasicFunction):
             return (not (call.module == caller.module) and
                     call.library == caller.library)
 
         # callables in other libraries
-        def filter_other_library(call: Callable):
+        def filter_other_library(call: BasicFunction):
             return not call.library == caller.library
 
         # the order is crucial as it represents scope in OOBasic
@@ -139,7 +139,7 @@ def link_token(token: Token, referand: DataObject):
     token.link.append(get_identifier(referand))
 
 
-def consider(caller: Callable, candidate_callee: Callable) -> List[UseCase]:
+def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> List[UseCase]:
     " find calls in `caller` to `candidate_callee`"
     # print("Considering: ", caller.title, candidate_callee.title)
 
@@ -170,10 +170,10 @@ def consider(caller: Callable, candidate_callee: Callable) -> List[UseCase]:
 
 
 def search_string_refs_in_callables(dataobjects: Sequence[DataObject],
-                                    callables: Sequence[Callable]) -> List[UseCase]:
+                                    callables: Sequence[BasicFunction]) -> List[UseCase]:
     """ search for references to table, views, queries or reports
         in callable string literals """
-    def search_refs_in_one(acallable: Callable) -> List[UseCase]:
+    def search_refs_in_one(acallable: BasicFunction) -> List[UseCase]:
         def ref_in_one(dataobject: DataObject) -> List[UseCase]:
             def compare_ref(string_token: Token) -> List[UseCase]:
                 if dataobject.name == string_token.text[1:-1]:

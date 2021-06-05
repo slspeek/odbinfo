@@ -120,7 +120,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeSub.Module1.Library1
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeSub
       type: 181
     - column: 10
@@ -165,7 +165,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeSub.Module2.Library1
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeSub
       type: 181
     - column: 18
@@ -201,7 +201,7 @@ modules:
         link:
         - bookmark: null
           local_id: CalleeSub.Module1.Library1
-          object_type: callables
+          object_type: basicfunctions
         text: CalleeSub
         type: 181
     - module_token:
@@ -220,7 +220,7 @@ modules:
         link:
         - bookmark: null
           local_id: CalleeSub.Module2.Library1
-          object_type: callables
+          object_type: basicfunctions
         text: CalleeSub
         type: 181
     library: Library1
@@ -279,7 +279,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeSub.Module1.Library1
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeSub
       type: 181
     - column: 10
@@ -324,7 +324,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeSub.Module2.Library1
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeSub
       type: 181
     - column: 18
@@ -490,7 +490,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeTwoSub.Module2.Library1
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeTwoSub
       type: 181
     - column: 13
@@ -526,7 +526,7 @@ modules:
         link:
         - bookmark: null
           local_id: CalleeTwoSub.Module2.Library1
-          object_type: callables
+          object_type: basicfunctions
         text: CalleeTwoSub
         type: 181
     library: Library1
@@ -585,7 +585,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeTwoSub.Module2.Library1
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeTwoSub
       type: 181
     - column: 13
@@ -626,7 +626,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeOtherLib.Module1.Standard
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeOtherLib
       type: 181
     - column: 15
@@ -671,7 +671,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeOtherLib.Module1.Standard
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeOtherLib
       type: 181
     - column: 23
@@ -707,7 +707,7 @@ modules:
         link:
         - bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
-          object_type: callables
+          object_type: basicfunctions
         text: CalleeOtherLib
         type: 181
     - module_token:
@@ -726,7 +726,7 @@ modules:
         link:
         - bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
-          object_type: callables
+          object_type: basicfunctions
         text: CalleeOtherLib
         type: 181
     library: Library1
@@ -785,7 +785,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeOtherLib.Module1.Standard
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeOtherLib
       type: 181
     - column: 15
@@ -830,7 +830,7 @@ modules:
       link:
       - bookmark: null
         local_id: CalleeOtherLib.Module1.Standard
-        object_type: callables
+        object_type: basicfunctions
       text: CalleeOtherLib
       type: 181
     - column: 23
@@ -871,7 +871,7 @@ modules:
       link:
       - bookmark: null
         local_id: ShadowedCallee.Module1.Library1
-        object_type: callables
+        object_type: basicfunctions
       text: ShadowedCallee
       type: 181
     - column: 15
@@ -907,7 +907,7 @@ modules:
         link:
         - bookmark: null
           local_id: ShadowedCallee.Module1.Library1
-          object_type: callables
+          object_type: basicfunctions
         text: ShadowedCallee
         type: 181
     library: Library1
@@ -966,7 +966,7 @@ modules:
       link:
       - bookmark: null
         local_id: ShadowedCallee.Module1.Library1
-        object_type: callables
+        object_type: basicfunctions
       text: ShadowedCallee
       type: 181
     - column: 15
@@ -1595,7 +1595,7 @@ modules:
     link:
     - bookmark: null
       local_id: Main.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: Main
     type: 181
   - column: 8
@@ -1681,7 +1681,7 @@ modules:
     link:
     - bookmark: null
       local_id: CallerSub.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: CallerSub
     type: 181
   - column: 13
@@ -1710,9 +1710,9 @@ modules:
     index: 20
     line: 8
     link:
-    - bookmark: CalleeSub
-      local_id: Module1.Library1
-      object_type: modules
+    - bookmark: null
+      local_id: CalleeSub.Module1.Library1
+      object_type: basicfunctions
     text: CalleeSub
     type: 181
   - column: 10
@@ -1755,9 +1755,9 @@ modules:
     index: 26
     line: 9
     link:
-    - bookmark: CalleeSub
-      local_id: Module2.Library1
-      object_type: modules
+    - bookmark: null
+      local_id: CalleeSub.Module2.Library1
+      object_type: basicfunctions
     text: CalleeSub
     type: 181
   - column: 18
@@ -1829,7 +1829,7 @@ modules:
     link:
     - bookmark: null
       local_id: CalleeSub.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: CalleeSub
     type: 181
   - column: 13
@@ -1929,7 +1929,7 @@ modules:
     link:
     - bookmark: null
       local_id: CallerTwo.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: CallerTwo
     type: 181
   - column: 13
@@ -1958,9 +1958,9 @@ modules:
     index: 52
     line: 17
     link:
-    - bookmark: CalleeTwoSub
-      local_id: Module2.Library1
-      object_type: modules
+    - bookmark: null
+      local_id: CalleeTwoSub.Module2.Library1
+      object_type: basicfunctions
     text: CalleeTwoSub
     type: 181
   - column: 13
@@ -2032,7 +2032,7 @@ modules:
     link:
     - bookmark: null
       local_id: CallerOtherLib.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: CallerOtherLib
     type: 181
   - column: 18
@@ -2061,9 +2061,9 @@ modules:
     index: 65
     line: 21
     link:
-    - bookmark: CalleeOtherLib
-      local_id: Module1.Standard
-      object_type: modules
+    - bookmark: null
+      local_id: CalleeOtherLib.Module1.Standard
+      object_type: basicfunctions
     text: CalleeOtherLib
     type: 181
   - column: 15
@@ -2106,9 +2106,9 @@ modules:
     index: 71
     line: 22
     link:
-    - bookmark: CalleeOtherLib
-      local_id: Module1.Standard
-      object_type: modules
+    - bookmark: null
+      local_id: CalleeOtherLib.Module1.Standard
+      object_type: basicfunctions
     text: CalleeOtherLib
     type: 181
   - column: 23
@@ -2180,7 +2180,7 @@ modules:
     link:
     - bookmark: null
       local_id: CallerShadowedCallee.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: CallerShadowedCallee
     type: 181
   - column: 24
@@ -2209,9 +2209,9 @@ modules:
     index: 84
     line: 26
     link:
-    - bookmark: ShadowedCallee
-      local_id: Module1.Library1
-      object_type: modules
+    - bookmark: null
+      local_id: ShadowedCallee.Module1.Library1
+      object_type: basicfunctions
     text: ShadowedCallee
     type: 181
   - column: 15
@@ -2283,7 +2283,7 @@ modules:
     link:
     - bookmark: null
       local_id: ShadowedCallee.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: ShadowedCallee
     type: 181
   - column: 18
@@ -2383,7 +2383,7 @@ modules:
     link:
     - bookmark: null
       local_id: ReferToTable.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: ReferToTable
     type: 181
   - column: 16
@@ -2486,7 +2486,7 @@ modules:
     link:
     - bookmark: null
       local_id: ReferToView.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: ReferToView
     type: 181
   - column: 15
@@ -2589,7 +2589,7 @@ modules:
     link:
     - bookmark: null
       local_id: ReferToQuery.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: ReferToQuery
     type: 181
   - column: 16
@@ -2959,7 +2959,7 @@ modules:
     link:
     - bookmark: null
       local_id: CalleeSub.Module2.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: CalleeSub
     type: 181
   - column: 13
@@ -3059,7 +3059,7 @@ modules:
     link:
     - bookmark: null
       local_id: CalleeTwoSub.Module2.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: CalleeTwoSub
     type: 181
   - column: 16

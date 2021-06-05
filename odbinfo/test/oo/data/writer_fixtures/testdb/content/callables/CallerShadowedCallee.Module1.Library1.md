@@ -7,7 +7,7 @@ body_tokens:
   link:
   - bookmark: null
     local_id: ShadowedCallee.Module1.Library1
-    object_type: callables
+    object_type: basicfunctions
   text: ShadowedCallee
   type: 181
 - column: 15
@@ -43,7 +43,7 @@ calls:
     link:
     - bookmark: null
       local_id: ShadowedCallee.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: ShadowedCallee
     type: 181
 library: Library1
@@ -102,7 +102,7 @@ tokens:
   link:
   - bookmark: null
     local_id: ShadowedCallee.Module1.Library1
-    object_type: callables
+    object_type: basicfunctions
   text: ShadowedCallee
   type: 181
 - column: 15

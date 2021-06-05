@@ -292,7 +292,7 @@ tokens:
   link:
   - bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
-    object_type: callables
+    object_type: basicfunctions
   text: CalleeOtherLib
   type: 181
 - column: 18
@@ -378,7 +378,7 @@ tokens:
   link:
   - bookmark: null
     local_id: ShadowedCallee.Module1.Standard
-    object_type: callables
+    object_type: basicfunctions
   text: ShadowedCallee
   type: 181
 - column: 18

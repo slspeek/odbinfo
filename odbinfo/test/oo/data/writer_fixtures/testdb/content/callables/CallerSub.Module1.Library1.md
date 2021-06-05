@@ -7,7 +7,7 @@ body_tokens:
   link:
   - bookmark: null
     local_id: CalleeSub.Module1.Library1
-    object_type: callables
+    object_type: basicfunctions
   text: CalleeSub
   type: 181
 - column: 10
@@ -52,7 +52,7 @@ body_tokens:
   link:
   - bookmark: null
     local_id: CalleeSub.Module2.Library1
-    object_type: callables
+    object_type: basicfunctions
   text: CalleeSub
   type: 181
 - column: 18
@@ -88,7 +88,7 @@ calls:
     link:
     - bookmark: null
       local_id: CalleeSub.Module1.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: CalleeSub
     type: 181
 - module_token:
@@ -107,7 +107,7 @@ calls:
     link:
     - bookmark: null
       local_id: CalleeSub.Module2.Library1
-      object_type: callables
+      object_type: basicfunctions
     text: CalleeSub
     type: 181
 library: Library1
@@ -166,7 +166,7 @@ tokens:
   link:
   - bookmark: null
     local_id: CalleeSub.Module1.Library1
-    object_type: callables
+    object_type: basicfunctions
   text: CalleeSub
   type: 181
 - column: 10
@@ -211,7 +211,7 @@ tokens:
   link:
   - bookmark: null
     local_id: CalleeSub.Module2.Library1
-    object_type: callables
+    object_type: basicfunctions
   text: CalleeSub
   type: 181
 - column: 18

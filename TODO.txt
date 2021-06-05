@@ -1,7 +1,7 @@
-Rename Callable to BasicFunction
+look into GoHugo submenus
 
 Demonstation database Herbarium
-------------------------------------
+-------------------------------
 Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,
 Attributes, Observations, Locations
 Macros that open browser on interesting Plant sites

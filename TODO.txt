@@ -1,3 +1,11 @@
+Rename Callable to BasicFunction
+
+Demonstation database Herbarium
+------------------------------------
+Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,
+Attributes, Observations, Locations
+Macros that open browser on interesting Plant sites
+
 Macro calls in controls (eventlisteners)
 
 SubForm command type is command
@@ -69,7 +77,7 @@ tables, queries,views, reports in basic (done)
 basic in basic (done)
 tables, queries, views in forms (subforms)
 tables, queries, views, macros in formcontrols
-tables, views, queries in textdocuments
+tables, views, queries in textdocuments (done)
 python in python (nice to have)
 others in python (nice to have)
 field are done last as they are nice to have

@@ -2,7 +2,12 @@ documents:
 - fields:
   - column: naam
     database: testdb
-    table: vwPlant
+    table:
+      link:
+        bookmark: null
+        local_id: vwPlant
+        object_type: queries
+      text: vwPlant
     tabletype: query
   name: Untitled.odt
   path: ./Untitled.odt
@@ -5550,6 +5555,15 @@ use_cases:
     bookmark: null
     local_id: MainForm
     object_type: subforms
+  subject:
+    bookmark: null
+    local_id: vwPlant
+    object_type: queries
+  type: queries
+- obj:
+    bookmark: null
+    local_id: Untitled.odt
+    object_type: textdocuments
   subject:
     bookmark: null
     local_id: vwPlant

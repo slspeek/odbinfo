@@ -59,7 +59,7 @@ def _database_displays(doc_path) -> List[DatabaseDisplay]:
         return \
             DatabaseDisplay(
                 data["@text:database-name"],
-                data["@text:table-name"],
+                LinkedString(data["@text:table-name"]),
                 data["@text:table-type"],
                 data["@text:column-name"]
             )

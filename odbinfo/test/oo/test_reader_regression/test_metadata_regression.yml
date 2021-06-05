@@ -2,7 +2,9 @@ documents:
 - fields:
   - column: naam
     database: testdb
-    table: vwPlant
+    table:
+      link: null
+      text: vwPlant
     tabletype: query
   name: Untitled.odt
   path: ./Untitled.odt

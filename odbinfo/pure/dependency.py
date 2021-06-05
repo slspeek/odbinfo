@@ -5,8 +5,9 @@ from itertools import starmap
 from typing import List, Optional, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, Callable, CommandDriven,
-                                   DataObject, Identifier, Metadata, Module,
-                                   Query, Token, UseCase, get_identifier)
+                                   DatabaseDisplay, DataObject, Identifier,
+                                   Metadata, Module, Query, TextDocument,
+                                   Token, UseCase, get_identifier)
 
 
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
@@ -30,7 +31,10 @@ def search_dependencies(metadata: Metadata) -> List[UseCase]:
             search_deps_in_commanddriven(metadata.tables,
                                          metadata.subforms()) +
             search_deps_in_commanddriven(metadata.views, metadata.subforms()) +
-            search_deps_in_commanddriven(metadata.queries, metadata.subforms())
+            search_deps_in_commanddriven(metadata.queries, metadata.subforms()) +
+            search_deps_in_documents(metadata.tables, metadata.documents) +
+            search_deps_in_documents(metadata.views, metadata.documents) +
+            search_deps_in_documents(metadata.queries, metadata.documents)
             )
 
 #
@@ -232,3 +236,24 @@ def search_deps_in_commanddriven(dataobjects: Sequence[DataObject],
         return [obj for obj in map(find_one_dep, dataobjects) if obj is not None]
 
     return sum(map(find_deps_in_report, reports), [])
+
+
+def search_deps_in_documents(dataobjects: Sequence[DataObject],
+                             documents: Sequence[TextDocument]) -> List[UseCase]:
+    " find uses of dataobject in document"
+    def find_deps_in_doc(document: TextDocument) -> List[UseCase]:
+        " find dependency uses in `report` "
+        def find_one_dep(dependency: DataObject) -> List[UseCase]:
+
+            def find_in_databasedisplay(display: DatabaseDisplay) -> Optional[UseCase]:
+                if display.table.text == dependency.name:
+                    dependency_id = get_identifier(dependency)
+                    display.table.link = dependency_id
+                    return UseCase(get_identifier(document),
+                                   dependency_id,
+                                   "queries")
+
+                return None
+            return [obj for obj in map(find_in_databasedisplay, document.fields) if obj is not None]
+        return sum(map(find_one_dep, dataobjects), [])
+    return sum(map(find_deps_in_doc, documents), [])

@@ -2,7 +2,12 @@
 fields:
 - column: naam
   database: testdb
-  table: vwPlant
+  table:
+    link:
+      bookmark: null
+      local_id: vwPlant
+      object_type: queries
+    text: vwPlant
   tabletype: query
 name: Untitled.odt
 path: ./Untitled.odt

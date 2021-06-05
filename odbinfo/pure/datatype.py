@@ -134,7 +134,7 @@ class UseCase:
 class DatabaseDisplay:
     " Field in TextDocument "
     database: str
-    table: str
+    table: LinkedString
     tabletype: str
     column: str
 

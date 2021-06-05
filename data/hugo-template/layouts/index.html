@@ -1,0 +1,15 @@
+{{ partial "header" . }}
+
+<main>
+    <h1>{{ .Title }}</h1>
+    <h2>Index</h2>
+    <ul>
+      {{ range (.Paginator 10).Pages }}
+      <li><h3><a href="{{.URL}}">{{ .Params.Title }}({{ .Section }})</a></h3>
+      </li>
+      {{ end }}
+    </ul>
+</main>
+
+{{ partial "paginator" . }}
+{{ partial "footer" . }}

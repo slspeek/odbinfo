@@ -1,13 +1,17 @@
 {{ partial "header" . }}
 
 <main>
+
     <h2>{{ .Title }}</h2>
-    <ol>
-    {{ range .Pages }}
-      <li><h3><a href="{{.URL}}">{{.Params.title}}</a></h3>
-      </li>
+<ol>
+
+    {{ range (.Paginator 10).Pages }}
+    <li><h3><a href="{{.URL}}">{{ .Params.Title }}</a></h3>
+    </li>
     {{ end }}
-    </ol>
+  </ol>
+
 </main>
 
+{{ partial "paginator" . }}
 {{ partial "footer" . }}

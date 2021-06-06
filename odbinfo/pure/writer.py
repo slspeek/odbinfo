@@ -53,7 +53,7 @@ METADATA_CONTENT = ["tables",
                     "reports",
                     "libraries",
                     "modules",
-                    "callables",
+                    "basicfunctions",
                     "pylibs",
                     "pymodules",
                     "documents"]

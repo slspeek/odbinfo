@@ -126,6 +126,7 @@ def get_identifier(dataobject) -> Identifier:
 class UseCase:
     " `obj` uses `subject`"
     obj: Identifier
+    # ref_location: Union[None, Token, LinkedString]
     subject: Identifier
     type: str
 
@@ -343,7 +344,7 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
     documents: List[TextDocument]
     use_cases: List[UseCase] = field(init=False, default_factory=list)
 
-    def callables(self) -> List[BasicFunction]:
+    def basicfunctions(self) -> List[BasicFunction]:
         "collect all callables from libraries"
         result = []
         for lib in self.libraries:

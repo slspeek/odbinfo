@@ -13,11 +13,11 @@ from odbinfo.pure.datatype import (BasicCall, BasicFunction, CommandDriven,
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
     " dependency search in `metadata`"
 
-    return (search_callable_in_callable(metadata.callables()) +
-            search_string_refs_in_callables(metadata.tables, metadata.callables()) +
-            search_string_refs_in_callables(metadata.views, metadata.callables()) +
-            search_string_refs_in_callables(metadata.queries, metadata.callables()) +
-            search_string_refs_in_callables(metadata.reports, metadata.callables()) +
+    return (search_callable_in_callable(metadata.basicfunctions()) +
+            search_string_refs_in_callables(metadata.tables, metadata.basicfunctions()) +
+            search_string_refs_in_callables(metadata.views, metadata.basicfunctions()) +
+            search_string_refs_in_callables(metadata.queries, metadata.basicfunctions()) +
+            search_string_refs_in_callables(metadata.reports, metadata.basicfunctions()) +
             rewrite_module_callable_links(metadata.modules()) +
             search_deps_in_queries(metadata.tables, metadata.queries) +
             search_deps_in_queries(metadata.views, metadata.queries) +
@@ -242,7 +242,7 @@ def search_deps_in_documents(dataobjects: Sequence[DataObject],
                              documents: Sequence[TextDocument]) -> List[UseCase]:
     " find uses of dataobject in document"
     def find_deps_in_doc(document: TextDocument) -> List[UseCase]:
-        " find dependency uses in `report` "
+
         def find_one_dep(dependency: DataObject) -> List[UseCase]:
 
             def find_in_databasedisplay(display: DatabaseDisplay) -> Optional[UseCase]:
@@ -252,8 +252,11 @@ def search_deps_in_documents(dataobjects: Sequence[DataObject],
                     return UseCase(get_identifier(document),
                                    dependency_id,
                                    "queries")
-
                 return None
-            return [obj for obj in map(find_in_databasedisplay, document.fields) if obj is not None]
+
+            return [obj for obj in map(find_in_databasedisplay, document.fields)
+                    if obj is not None]
+
         return sum(map(find_one_dep, dataobjects), [])
+
     return sum(map(find_deps_in_doc, documents), [])

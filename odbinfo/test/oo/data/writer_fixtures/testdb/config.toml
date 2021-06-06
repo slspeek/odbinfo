@@ -40,8 +40,8 @@ name = "modules"
 weight = 8
 
 [[menu.main]]
-url = "/callables/index.html"
-name = "callables"
+url = "/basicfunctions/index.html"
+name = "basicfunctions"
 weight = 9
 
 [[menu.main]]

@@ -1,3 +1,15 @@
+UseCase gets a refering location field (Union[Token, LinkedString, None])
+
+token.link List -> Optional
+
+datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
+
+make Metadata.usecases a set?
+
+update minimal theme
+
+make typing more complete (lot of work)
+
 look into GoHugo submenus
 
 Demonstation database Herbarium

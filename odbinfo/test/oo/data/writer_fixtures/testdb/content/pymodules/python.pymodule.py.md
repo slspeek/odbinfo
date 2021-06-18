@@ -4,7 +4,7 @@ name: pymodule.py
 parent_link:
   bookmark: null
   local_id: python
-  object_type: pythonlibrarys
+  object_type: pythonlibraries
 source: "# coding: utf-8\n\ndef main():\n\tprint(\"Hello from testdb.odb\")\n\n\n"
 title: python.pymodule.py
 used_by: []

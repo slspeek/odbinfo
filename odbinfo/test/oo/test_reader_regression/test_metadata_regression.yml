@@ -776,7 +776,7 @@ libraries:
   uses: []
 name: ./testdb.odb
 parent_link: null
-pylibs:
+pythonlibraries:
 - modules:
   - library: Bibliotheek
     name: Module.py

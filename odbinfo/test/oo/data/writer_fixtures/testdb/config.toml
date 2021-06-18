@@ -45,8 +45,8 @@ name = "basicfunctions"
 weight = 9
 
 [[menu.main]]
-url = "/pylibs/index.html"
-name = "pylibs"
+url = "/pythonlibraries/index.html"
+name = "pythonlibraries"
 weight = 10
 
 [[menu.main]]

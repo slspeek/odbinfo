@@ -270,7 +270,7 @@ name_indexes:
 parent_link:
   bookmark: null
   local_id: Library1
-  object_type: librarys
+  object_type: libraries
 source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
   \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
 title: Module2.Library1

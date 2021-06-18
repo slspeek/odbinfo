@@ -3,7 +3,7 @@ forms: []
 libraries: []
 name: ./emptydb.odb
 parent_link: null
-pylibs: []
+pythonlibraries: []
 queries: []
 reports: []
 tables: []

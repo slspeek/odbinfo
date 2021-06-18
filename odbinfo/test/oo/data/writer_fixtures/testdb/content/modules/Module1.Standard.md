@@ -256,7 +256,7 @@ name_indexes:
 parent_link:
   bookmark: null
   local_id: Standard
-  object_type: librarys
+  object_type: libraries
 source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
   \nEnd Sub\n\nSub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\n\
   End Sub"

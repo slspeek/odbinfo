@@ -145,10 +145,9 @@ class CommandDriven(DataObject):
 def get_identifier(dataobject) -> Identifier:
     "returns Identifier for `dataobject`"
     classname = dataobject.__class__.__name__.lower()
-    if classname == "query":
-        plural = "queries"
-    else:
-        plural = classname + "s"
+    plurals = {"query": "queries", "pythonlibrary": "pythonlibraries",
+               "library": "libraries"}
+    plural = plurals.get(classname, classname + "s")
     return Identifier(plural,
                       dataobject.title)
 
@@ -391,7 +390,7 @@ class Metadata(DataObject):  # pylint: disable=too-many-instance-attributes
     forms: List[Form]
     reports: List[Report]
     libraries: List[Library]
-    pylibs: List[PythonLibrary]
+    pythonlibraries: List[PythonLibrary]
     documents: List[TextDocument]
     use_cases: List[UseCase] = field(init=False, default_factory=list)
 
@@ -413,7 +412,7 @@ class Metadata(DataObject):  # pylint: disable=too-many-instance-attributes
     def pymodules(self) -> List[PythonModule]:
         "collect all python modules from libraries"
         result = []
-        for lib in self.pylibs:
+        for lib in self.pythonlibraries:
             result.extend(lib.modules)
         return result
 
@@ -439,7 +438,7 @@ class Metadata(DataObject):  # pylint: disable=too-many-instance-attributes
             cast(List['DataObject'], self.forms) +
             cast(List['DataObject'], self.reports) +
             cast(List['DataObject'], self.libraries) +
-            cast(List['DataObject'], self.pylibs) +
+            cast(List['DataObject'], self.pythonlibraries) +
             cast(List['DataObject'], self.documents)
 
         )

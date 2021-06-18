@@ -1,0 +1,3 @@
+{{ if (ne .link.object_type "metadatas") }}
+<a href='{{ partial "link2url" (dict "link" .link "context" .context) }}'>{{ .link.local_id }}</a>
+{{ end }}

@@ -5,6 +5,7 @@
     <div style="text-align:left; font-size: 150%;">
         {{ highlight .Params.source "python3" "linenos=table"}}
     </div>
+    {{ partial "parent_link" (dict "context" . "link" .Params.parent_link) }}
 </main>
 
 {{ partial "footer" . }}

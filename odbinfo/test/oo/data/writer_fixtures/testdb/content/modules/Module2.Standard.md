@@ -124,7 +124,7 @@ name_indexes:
 parent_link:
   bookmark: null
   local_id: Standard
-  object_type: librarys
+  object_type: libraries
 source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
 title: Module2.Standard
 tokens:

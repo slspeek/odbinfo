@@ -1,7 +1,10 @@
 ---
 height: 0
 name: PlantListbox
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 subforms:
 - allowdeletes: 'false'
   allowinserts: 'true'
@@ -22,7 +25,10 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: lblid
     type: FixedText
     used_by: []
@@ -35,7 +41,10 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: lblnaam
     type: FixedText
     used_by: []
@@ -48,7 +57,10 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: lblRFamliyID
     type: FixedText
     used_by: []
@@ -61,7 +73,10 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: fmtid
     type: FormattedField
     used_by: []
@@ -74,7 +89,10 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: txtnaam
     type: TextField
     used_by: []
@@ -91,7 +109,10 @@ subforms:
     listsource: FamilyLookup
     listsourcetype: query
     name: fmtRFamliyID
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: fmtRFamliyID
     type: ListBox
     used_by: []
@@ -106,7 +127,10 @@ subforms:
     inputrequired: ''
     label: Say hello
     name: Knop 1
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: Knop 1
     type: CommandButton
     used_by: []
@@ -119,7 +143,10 @@ subforms:
     inputrequired: ''
     label: Knop
     name: Knop 2
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: Knop 2
     type: CommandButton
     used_by: []
@@ -136,7 +163,10 @@ subforms:
     inputrequired: ''
     label: Call to script
     name: Knop 3
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: Knop 3
     type: CommandButton
     used_by: []
@@ -146,7 +176,10 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: PlantListbox
+    object_type: forms
   subforms: []
   title: MainForm
   used_by: []

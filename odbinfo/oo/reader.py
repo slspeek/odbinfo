@@ -19,7 +19,8 @@ def read_metadata(datasource, odbpath):
             dbname, _ = os.path.splitext(os.path.basename(odbpath))
             reports: List[Report] = read_reports(odbzip)
             return \
-                Metadata(read_tables(con),
+                Metadata(odbpath,
+                         read_tables(con),
                          read_views(con),
                          read_queries(con, datasource, reports),
                          read_forms(odbzip),

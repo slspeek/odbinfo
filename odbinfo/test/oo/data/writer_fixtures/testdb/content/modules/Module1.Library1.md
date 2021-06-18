@@ -36,7 +36,10 @@ callables:
   module: Module1
   name: Main
   name_token_index: 5
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -229,7 +232,10 @@ callables:
   module: Module1
   name: CallerSub
   name_token_index: 16
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings: []
   title: CallerSub.Module1.Library1
   tokens:
@@ -398,7 +404,10 @@ callables:
   module: Module1
   name: CalleeSub
   name_token_index: 35
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -541,7 +550,10 @@ callables:
   module: Module1
   name: CallerTwo
   name_token_index: 48
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings: []
   title: CallerTwo.Module1.Library1
   tokens:
@@ -744,7 +756,10 @@ callables:
   module: Module1
   name: CallerOtherLib
   name_token_index: 61
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings: []
   title: CallerOtherLib.Module1.Library1
   tokens:
@@ -928,7 +943,10 @@ callables:
   module: Module1
   name: CallerShadowedCallee
   name_token_index: 80
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings: []
   title: CallerShadowedCallee.Module1.Library1
   tokens:
@@ -1052,7 +1070,10 @@ callables:
   module: Module1
   name: ShadowedCallee
   name_token_index: 93
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -1183,7 +1204,10 @@ callables:
   module: Module1
   name: ReferToTable
   name_token_index: 106
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -1320,7 +1344,10 @@ callables:
   module: Module1
   name: ReferToView
   name_token_index: 119
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -1457,7 +1484,10 @@ callables:
   module: Module1
   name: ReferToQuery
   name_token_index: 132
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Library1
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -1568,7 +1598,10 @@ name_indexes:
 - 106
 - 119
 - 132
-parent: null
+parent_link:
+  bookmark: null
+  local_id: Library1
+  object_type: librarys
 source: "REM  *****  BASIC  *****\n\nSub Main\n\tError \"Mijn fout\"\nEnd Sub\n\n\
   Sub CallerSub()\n\tCalleeSub()\n\tModule2.CalleeSub()\nEnd Sub\n\nSub CalleeSub()\n\
   \tprint \"Module1.CalleeSub\"\nEnd Sub\n\nsub CallerTwo()\n\tCalleeTwoSub()\nEnd\

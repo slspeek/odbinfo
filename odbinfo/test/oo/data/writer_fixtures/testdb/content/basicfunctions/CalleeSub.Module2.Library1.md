@@ -35,7 +35,10 @@ library: Library1
 module: Module2
 name: CalleeSub
 name_token_index: 5
-parent: null
+parent_link:
+  bookmark: null
+  local_id: Module2.Library1
+  object_type: modules
 strings:
 - column: 7
   hidden: false

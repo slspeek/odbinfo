@@ -1,7 +1,10 @@
 ---
 height: 0
 name: view1
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 subforms:
 - allowdeletes: 'true'
   allowinserts: 'true'
@@ -22,7 +25,10 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: lblid
     type: FixedText
     used_by: []
@@ -35,7 +41,10 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtid
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: fmtid
     type: FormattedField
     used_by: []
@@ -45,7 +54,10 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: view1
+    object_type: forms
   subforms: []
   title: MainForm
   used_by: []

@@ -3,7 +3,7 @@ fields:
 - column: naam
   database: testdb
   name: naam
-  parent: null
+  parent_link: null
   table:
     link:
       bookmark: null
@@ -15,7 +15,10 @@ fields:
   used_by: []
   uses: []
 name: Untitled.odt
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 path: ./Untitled.odt
 title: Untitled.odt
 used_by: []

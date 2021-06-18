@@ -1,7 +1,10 @@
 ---
 library: Bibliotheek
 name: Module.py
-parent: null
+parent_link:
+  bookmark: null
+  local_id: Bibliotheek
+  object_type: pythonlibrarys
 source: "# coding: utf-8\nfrom __future__ import unicode_literals\n\ndef script():\n\
   \tprint(\"Hello\")\n"
 title: Bibliotheek.Module.py

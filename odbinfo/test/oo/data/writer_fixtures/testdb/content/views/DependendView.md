@@ -4,7 +4,10 @@ columns:
   issigned: true
   name: id
   nullable: Nullable
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: DependendView
+    object_type: views
   precision: 100
   readonly: false
   scale: 0
@@ -18,7 +21,10 @@ command: 'SELECT "view1"."id"
 
   FROM   "view1"'
 name: DependendView
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 table_tokens:
 - column: 7
   hidden: false

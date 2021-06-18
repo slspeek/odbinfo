@@ -1,7 +1,10 @@
 ---
 height: 1
 name: Related subform
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 subforms:
 - allowdeletes: 'true'
   allowinserts: 'true'
@@ -22,7 +25,10 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: lblid
     type: FixedText
     used_by: []
@@ -35,7 +41,10 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: lblnaam
     type: FixedText
     used_by: []
@@ -48,7 +57,10 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: lblRFamliyID
     type: FixedText
     used_by: []
@@ -61,7 +73,10 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: fmtid
     type: FormattedField
     used_by: []
@@ -74,7 +89,10 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtRFamliyID
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: fmtRFamliyID
     type: FormattedField
     used_by: []
@@ -87,7 +105,10 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: txtnaam
     type: TextField
     used_by: []
@@ -97,7 +118,10 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Related subform
+    object_type: forms
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -118,7 +142,10 @@ subforms:
       inputrequired: ''
       label: FamilyID
       name: lblFamilyID
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: SubForm
+        object_type: subforms
       title: lblFamilyID
       type: FixedText
       used_by: []
@@ -131,7 +158,10 @@ subforms:
       inputrequired: ''
       label: Name
       name: lblName
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: SubForm
+        object_type: subforms
       title: lblName
       type: FixedText
       used_by: []
@@ -144,7 +174,10 @@ subforms:
       inputrequired: ''
       label: Desc
       name: lblDesc
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: SubForm
+        object_type: subforms
       title: lblDesc
       type: FixedText
       used_by: []
@@ -157,7 +190,10 @@ subforms:
       inputrequired: 'true'
       label: ''
       name: fmtFamilyID
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: SubForm
+        object_type: subforms
       title: fmtFamilyID
       type: FormattedField
       used_by: []
@@ -170,7 +206,10 @@ subforms:
       inputrequired: 'false'
       label: ''
       name: txtName
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: SubForm
+        object_type: subforms
       title: txtName
       type: TextField
       used_by: []
@@ -183,7 +222,10 @@ subforms:
       inputrequired: 'false'
       label: ''
       name: txtDesc
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: SubForm
+        object_type: subforms
       title: txtDesc
       type: TextField
       used_by: []
@@ -193,7 +235,10 @@ subforms:
     embedded_query: null
     masterfields: '"RFamliyID"'
     name: SubForm
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     subforms: []
     title: SubForm
     used_by: []

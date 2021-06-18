@@ -1,7 +1,10 @@
 ---
 height: 0
 name: Plant invoeren
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 subforms:
 - allowdeletes: 'true'
   allowinserts: 'true'
@@ -23,7 +26,10 @@ subforms:
       inputrequired: 'false'
       label: id
       name: id
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: MainForm_Grid
+        object_type: grids
       title: ''
       type: ooo:FormattedField
       used_by: []
@@ -36,13 +42,19 @@ subforms:
       inputrequired: 'false'
       label: naam
       name: naam
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: MainForm_Grid
+        object_type: grids
       title: ''
       type: ooo:TextField
       used_by: []
       uses: []
     name: MainForm_Grid
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: MainForm_Grid
     used_by: []
     uses: []
@@ -51,7 +63,10 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Plant invoeren
+    object_type: forms
   subforms: []
   title: MainForm
   used_by: []

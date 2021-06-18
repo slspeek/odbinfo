@@ -5,7 +5,7 @@ columns:
   description: null
   name: Naam
   nullable: No_Nulls
-  parent: null
+  parent_link: null
   precision: 100
   scale: 0
   tablename: Persoon
@@ -18,7 +18,7 @@ columns:
   description: Woonadres
   name: Adres
   nullable: No_Nulls
-  parent: null
+  parent_link: null
   precision: 100
   scale: 0
   tablename: Persoon
@@ -31,7 +31,7 @@ columns:
   description: null
   name: Leeftijd
   nullable: Nullable
-  parent: null
+  parent_link: null
   precision: 0
   scale: 0
   tablename: Persoon
@@ -62,7 +62,10 @@ keys:
   typename: Primary
   update_rule: Cascade
 name: Persoon
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 title: Persoon
 used_by: []
 uses: []

@@ -1,7 +1,10 @@
 ---
 height: 1
 name: Formulier1
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 subforms:
 - allowdeletes: 'true'
   allowinserts: 'true'
@@ -16,7 +19,10 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: Formulier
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Formulier1
+    object_type: forms
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -31,7 +37,10 @@ subforms:
     embedded_query: null
     masterfields: ''
     name: Formulier2
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: Formulier
+      object_type: subforms
     subforms: []
     title: Formulier2
     used_by: []
@@ -52,7 +61,10 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: Formulier 1
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Formulier1
+    object_type: forms
   subforms: []
   title: Formulier 1
   used_by: []

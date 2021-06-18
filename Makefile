@@ -27,7 +27,7 @@ build: mypy metric itest
 
 travis: installantlr clean genparser info check alltest
 
-all: travis install_oxt fixtures
+all: travis install_oxt fixtures mypy_report metric
 
 prepare:
 	@echo prepare start
@@ -175,6 +175,10 @@ ctags:
 metric: clean
 	python -m xenon -b A -m A -a A  $(pythonsources)
 
-mypy:
+mypy_report:
 	mypy --show-error-codes --disable-error-code  import --html-report mypy-report $(pythonsources)
+
+
+mypy:
+		mypy --show-error-codes --disable-error-code  import $(pythonsources)
 

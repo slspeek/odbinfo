@@ -5,7 +5,7 @@ columns:
   description: Unique key for the plant
   name: id
   nullable: No_Nulls
-  parent: null
+  parent_link: null
   precision: 100
   scale: 0
   tablename: Plant
@@ -18,7 +18,7 @@ columns:
   description: Naam aan de plant gegeven
   name: naam
   nullable: Nullable
-  parent: null
+  parent_link: null
   precision: 100
   scale: 0
   tablename: Plant
@@ -31,7 +31,7 @@ columns:
   description: null
   name: RFamliyID
   nullable: Nullable
-  parent: null
+  parent_link: null
   precision: 0
   scale: 0
   tablename: Plant
@@ -75,7 +75,10 @@ keys:
   typename: Foreign
   update_rule: No_Action
 name: Plant
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 title: Plant
 used_by: []
 uses: []

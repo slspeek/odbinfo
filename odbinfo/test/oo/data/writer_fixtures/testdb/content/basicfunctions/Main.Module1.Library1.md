@@ -35,7 +35,10 @@ library: Library1
 module: Module1
 name: Main
 name_token_index: 5
-parent: null
+parent_link:
+  bookmark: null
+  local_id: Module1.Library1
+  object_type: modules
 strings:
 - column: 7
   hidden: false

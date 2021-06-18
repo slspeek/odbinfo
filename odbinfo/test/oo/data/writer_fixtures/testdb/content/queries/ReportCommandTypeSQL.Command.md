@@ -4,7 +4,10 @@ columns:
   issigned: true
   name: id
   nullable: No_Nulls
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: ReportCommandTypeSQL.Command
+    object_type: queries
   precision: 100
   readonly: false
   scale: 0
@@ -18,7 +21,10 @@ columns:
   issigned: false
   name: naam
   nullable: Nullable
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: ReportCommandTypeSQL.Command
+    object_type: queries
   precision: 2147483647
   readonly: false
   scale: 0
@@ -32,7 +38,10 @@ columns:
   issigned: true
   name: RFamliyID
   nullable: Nullable
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: ReportCommandTypeSQL.Command
+    object_type: queries
   precision: 10
   readonly: false
   scale: 0
@@ -46,7 +55,10 @@ command: 'SELECT *
 
   FROM   "Plant";'
 name: ReportCommandTypeSQL.Command
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 table_tokens:
 - column: 7
   hidden: false

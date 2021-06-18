@@ -37,7 +37,10 @@ modules:
     module: Module1
     name: CalleeOtherLib
     name_token_index: 5
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: Module1.Standard
+      object_type: modules
     strings:
     - column: 7
       hidden: false
@@ -151,7 +154,10 @@ modules:
     module: Module1
     name: ShadowedCallee
     name_token_index: 16
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: Module1.Standard
+      object_type: modules
     strings:
     - column: 7
       hidden: false
@@ -248,7 +254,10 @@ modules:
   name_indexes:
   - 5
   - 16
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Standard
+    object_type: librarys
   source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
     \nEnd Sub\n\nSub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\
     \nEnd Sub"
@@ -486,7 +495,10 @@ modules:
     module: Module2
     name: Main
     name_token_index: 5
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: Module2.Standard
+      object_type: modules
     strings:
     - column: 7
       hidden: false
@@ -568,7 +580,10 @@ modules:
   name: Module2
   name_indexes:
   - 5
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Standard
+    object_type: librarys
   source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
   title: Module2.Standard
   tokens:
@@ -668,7 +683,10 @@ modules:
   used_by: []
   uses: []
 name: Standard
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 title: Standard
 used_by: []
 uses: []

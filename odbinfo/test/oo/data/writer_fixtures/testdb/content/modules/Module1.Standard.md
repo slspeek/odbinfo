@@ -36,7 +36,10 @@ callables:
   module: Module1
   name: CalleeOtherLib
   name_token_index: 5
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Standard
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -150,7 +153,10 @@ callables:
   module: Module1
   name: ShadowedCallee
   name_token_index: 16
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module1.Standard
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -247,7 +253,10 @@ name: Module1
 name_indexes:
 - 5
 - 16
-parent: null
+parent_link:
+  bookmark: null
+  local_id: Standard
+  object_type: librarys
 source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
   \nEnd Sub\n\nSub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\n\
   End Sub"

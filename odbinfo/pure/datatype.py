@@ -1,6 +1,6 @@
 """ Defines the main datatypes used """
 from dataclasses import dataclass, field
-from typing import List, Optional, Sequence, Union
+from typing import List, Optional, Sequence, Union, cast
 
 from sql_formatter.core import format_sql
 
@@ -50,31 +50,45 @@ class LinkedString:
 
 
 @dataclass
-class Node:
+class DataObject:
     " A node in the graph representation "\
         " Super class of the data objects that have a node of their own "
     name: str
     title: str = field(init=False)
-    uses: List['Node'] = field(init=False, repr=False, default_factory=list)
-    used_by: List['Node'] = field(init=False, repr=False, default_factory=list)
-    parent: Optional['Node'] = field(init=False, repr=False, default=None)
+    uses: List['DataObject'] = field(
+        init=False, repr=False, default_factory=list)
+    used_by: List['DataObject'] = field(
+        init=False, repr=False, default_factory=list)
+    # parent: Optional['DataObject'] = field(
+    #     init=False, repr=False, default=None)
+    parent_link: Optional['Identifier'] = field(init=False, default=None)
 
     def __post_init__(self) -> None:
         self.title = self.name
 
-    def children(self) -> List['Node']:  # pylint:disable=no-self-use
+    def children(self) -> List['DataObject']:  # pylint:disable=no-self-use
         " returns a list of child nodes "
         return []
 
+    def all_objects(self) -> List['DataObject']:
+        " returns all dataobjects for the graph "
+        return_value: List['DataObject'] = [self]
+        for child in self.children():
+            return_value += cast(List['DataObject'], child.all_objects())
 
-@dataclass
-class DataObject(Node):
-    " objects with page of their own "
+        return return_value
+
+    def set_parents(self, parent: Optional['DataObject']) -> None:
+        " recursively set parents "
+        if parent:
+            self.parent_link = get_identifier(parent)
+        for child in self.children():
+            child.set_parents(self)
 
 
 # pylint: disable=too-many-instance-attributes
 @dataclass
-class BaseColumn(Node):
+class BaseColumn(DataObject):
     "https://www.openhttps://www.openoffice.org/api/docs/"\
         "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
     name: str
@@ -115,6 +129,9 @@ class Query(DataObject):
         super().__post_init__()
         self.command = format_sql(self.command)
 
+    def children(self) -> List[DataObject]:
+        return cast(List[DataObject], self.columns)
+
 
 @dataclass
 class CommandDriven(DataObject):
@@ -146,7 +163,7 @@ class UseCase:
 
 
 @dataclass
-class DatabaseDisplay(Node):
+class DatabaseDisplay(DataObject):
     " Field in TextDocument "
     database: str
     table: LinkedString
@@ -178,6 +195,9 @@ class PythonModule(DataObject):
 class PythonLibrary(DataObject):
     " Python library "
     modules: List[PythonModule]
+
+    def children(self) -> List[DataObject]:
+        return cast(List[DataObject], self.modules)
 
 
 @dataclass
@@ -220,11 +240,17 @@ class Module(DataObject):
         # self.source = tohtml(self.source)
         self.title = f"{self.name}.{self.library}"
 
+    def children(self) -> List[DataObject]:
+        return cast(List[DataObject], self.callables)
+
 
 @dataclass
 class Library(DataObject):
     " Basic library"
     modules: List[Module]
+
+    def children(self) -> List[DataObject]:
+        return cast(List[DataObject], self.modules)
 
 
 @dataclass
@@ -235,7 +261,7 @@ class EventListener:
 
 
 @dataclass
-class Control(Node):  # pylint: disable=too-many-instance-attributes
+class Control(DataObject):  # pylint: disable=too-many-instance-attributes
     " Form control "
     name: str
     controlid: str
@@ -258,9 +284,12 @@ class ListBox(Control):
 
 
 @dataclass
-class Grid(Node):
+class Grid(DataObject):
     " Table view control"
     columns: List[Control]
+
+    def children(self) -> List[DataObject]:
+        return cast(List[DataObject], self.columns)
 
 
 @dataclass
@@ -275,12 +304,18 @@ class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
     subforms: List['SubForm']
     depth: Optional[int] = field(init=False, default=None)
 
+    def children(self) -> List[DataObject]:
+        return cast(List[DataObject], self.controls) + cast(List[DataObject], self.subforms)
+
 
 @dataclass
 class Form(DataObject):
     " Toplevel form "
     subforms: List[SubForm]
     height: Optional[int] = field(init=False, default=None)
+
+    def children(self) -> List[DataObject]:
+        return cast(List[DataObject], self.subforms)
 
 
 @dataclass
@@ -348,7 +383,7 @@ class Table(DataObject):
 
 
 @dataclass
-class Metadata:  # pylint: disable=too-many-instance-attributes
+class Metadata(DataObject):  # pylint: disable=too-many-instance-attributes
     """ Collector class for all metadata read from the odb-file """
     tables: List[Table]
     views: List[View]
@@ -394,3 +429,17 @@ class Metadata:  # pylint: disable=too-many-instance-attributes
             return sum([collect_subforms(sf) for sf in form.subforms], [])
 
         return sum([collect_subforms_from_form(f) for f in self.forms], [])
+
+    def children(self) -> List[DataObject]:
+        return (
+
+            cast(List['DataObject'], self.tables) +
+            cast(List['DataObject'], self.views) +
+            cast(List['DataObject'], self.queries) +
+            cast(List['DataObject'], self.forms) +
+            cast(List['DataObject'], self.reports) +
+            cast(List['DataObject'], self.libraries) +
+            cast(List['DataObject'], self.pylibs) +
+            cast(List['DataObject'], self.documents)
+
+        )

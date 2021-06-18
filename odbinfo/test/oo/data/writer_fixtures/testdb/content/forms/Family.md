@@ -1,7 +1,10 @@
 ---
 height: 0
 name: Family
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 subforms:
 - allowdeletes: 'true'
   allowinserts: 'true'
@@ -23,7 +26,10 @@ subforms:
       inputrequired: 'false'
       label: FamlilyID
       name: FamlilyID
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: MainForm_Grid
+        object_type: grids
       title: ''
       type: ooo:FormattedField
       used_by: []
@@ -36,7 +42,10 @@ subforms:
       inputrequired: 'false'
       label: Name
       name: Name
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: MainForm_Grid
+        object_type: grids
       title: ''
       type: ooo:TextField
       used_by: []
@@ -49,13 +58,19 @@ subforms:
       inputrequired: 'false'
       label: Desc
       name: Desc
-      parent: null
+      parent_link:
+        bookmark: null
+        local_id: MainForm_Grid
+        object_type: grids
       title: ''
       type: ooo:TextField
       used_by: []
       uses: []
     name: MainForm_Grid
-    parent: null
+    parent_link:
+      bookmark: null
+      local_id: MainForm
+      object_type: subforms
     title: MainForm_Grid
     used_by: []
     uses: []
@@ -64,7 +79,10 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Family
+    object_type: forms
   subforms: []
   title: MainForm
   used_by: []

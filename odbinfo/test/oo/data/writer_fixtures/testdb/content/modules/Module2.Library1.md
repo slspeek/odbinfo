@@ -36,7 +36,10 @@ callables:
   module: Module2
   name: CalleeSub
   name_token_index: 5
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module2.Library1
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -164,7 +167,10 @@ callables:
   module: Module2
   name: CalleeTwoSub
   name_token_index: 18
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: Module2.Library1
+    object_type: modules
   strings:
   - column: 7
     hidden: false
@@ -261,7 +267,10 @@ name: Module2
 name_indexes:
 - 5
 - 18
-parent: null
+parent_link:
+  bookmark: null
+  local_id: Library1
+  object_type: librarys
 source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
   \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
 title: Module2.Library1

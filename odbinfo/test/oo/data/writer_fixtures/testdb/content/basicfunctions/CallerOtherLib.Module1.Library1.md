@@ -114,7 +114,10 @@ library: Library1
 module: Module1
 name: CallerOtherLib
 name_token_index: 61
-parent: null
+parent_link:
+  bookmark: null
+  local_id: Module1.Library1
+  object_type: modules
 strings: []
 title: CallerOtherLib.Module1.Library1
 tokens:

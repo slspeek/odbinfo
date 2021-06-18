@@ -4,7 +4,10 @@ columns:
   issigned: false
   name: Name
   nullable: Nullable
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: FamilyLookup
+    object_type: queries
   precision: 2147483647
   readonly: false
   scale: 0
@@ -18,7 +21,10 @@ columns:
   issigned: true
   name: FamilyID
   nullable: No_Nulls
-  parent: null
+  parent_link:
+    bookmark: null
+    local_id: FamilyLookup
+    object_type: queries
   precision: 10
   readonly: false
   scale: 0
@@ -30,7 +36,10 @@ columns:
   writable: true
 command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
 name: FamilyLookup
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 table_tokens:
 - column: 7
   hidden: false

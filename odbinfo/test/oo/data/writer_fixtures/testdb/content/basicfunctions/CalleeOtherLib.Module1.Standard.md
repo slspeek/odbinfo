@@ -35,7 +35,10 @@ library: Standard
 module: Module1
 name: CalleeOtherLib
 name_token_index: 5
-parent: null
+parent_link:
+  bookmark: null
+  local_id: Module1.Standard
+  object_type: modules
 strings:
 - column: 7
   hidden: false

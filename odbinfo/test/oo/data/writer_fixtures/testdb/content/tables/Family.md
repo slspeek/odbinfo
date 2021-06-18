@@ -5,7 +5,7 @@ columns:
   description: null
   name: FamilyID
   nullable: No_Nulls
-  parent: null
+  parent_link: null
   precision: 0
   scale: 0
   tablename: Family
@@ -18,7 +18,7 @@ columns:
   description: null
   name: Name
   nullable: Nullable
-  parent: null
+  parent_link: null
   precision: 100
   scale: 0
   tablename: Family
@@ -31,7 +31,7 @@ columns:
   description: null
   name: Desc
   nullable: Nullable
-  parent: null
+  parent_link: null
   precision: 0
   scale: 0
   tablename: Family
@@ -59,7 +59,10 @@ keys:
   typename: Primary
   update_rule: Cascade
 name: Family
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 title: Family
 used_by: []
 uses: []

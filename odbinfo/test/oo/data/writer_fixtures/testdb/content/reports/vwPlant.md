@@ -13,7 +13,10 @@ formulas:
 - field:[RFamliyID]
 name: vwPlant
 output_type: application/vnd.oasis.opendocument.text
-parent: null
+parent_link:
+  bookmark: null
+  local_id: ./testdb.odb
+  object_type: metadatas
 title: vwPlant
 used_by: []
 uses: []

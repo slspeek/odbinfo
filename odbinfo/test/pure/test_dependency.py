@@ -1,7 +1,6 @@
 " tests for dependency search "
 from odbinfo.pure.datatype import UseCase
-from odbinfo.pure.dependency import (consider, get_identifier,
-                                     search_callable_in_callable)
+from odbinfo.pure.dependency import consider, search_callable_in_callable
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 
 SOURCE_MODULEONE = """
@@ -47,8 +46,8 @@ def test_search_callable_in_callable_shadowing():
     callables_two = _scan_basic(SOURCE_MODULETWO,  "Lib", "ModuleTwo")
     cases = search_callable_in_callable(callables_one + callables_two)
     usecase = UseCase(
-        get_identifier(callables_two[0]),
-        get_identifier(callables_one[0]),
+        callables_two[0],
+        callables_one[0],
         "invokes"
     )
     assert len(cases) == 3

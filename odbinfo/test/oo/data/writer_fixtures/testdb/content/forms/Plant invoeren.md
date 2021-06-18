@@ -22,6 +22,7 @@ subforms:
       inputrequired: 'false'
       label: id
       name: id
+      title: ''
       type: ooo:FormattedField
     - controlid: control3
       convertemptytonull: 'true'
@@ -31,8 +32,10 @@ subforms:
       inputrequired: 'false'
       label: naam
       name: naam
+      title: ''
       type: ooo:TextField
     name: MainForm_Grid
+    title: MainForm_Grid
   depth: 0
   detailfields: ''
   embedded_query: null

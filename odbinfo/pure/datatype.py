@@ -50,23 +50,34 @@ class LinkedString:
 
 
 @dataclass
-class DataObject:
-    " Super class of the data objects that have a page of their own "
+class Node:
+    " A node in the graph representation "\
+        " Super class of the data objects that have a node of their own "
     name: str
     title: str = field(init=False)
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         self.title = self.name
+
+    def children(self) -> List['Node']:  # pylint:disable=no-self-use
+        " returns a list of child nodes "
+        return []
 
 
 @dataclass
-class BaseColumn:  # pylint: disable=too-many-instance-attributes
+class DataObject(Node):
+    " objects with page of their own "
+
+
+# pylint: disable=too-many-instance-attributes
+@dataclass
+class BaseColumn(Node):
     "https://www.openhttps://www.openoffice.org/api/docs/"\
         "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
     name: str
     title: str = field(init=False)
     autoincrement: bool
-    nullable: object
+    nullable: Union[str, int]
     tablename: str
     typename: str
     precision: str
@@ -125,19 +136,22 @@ def get_identifier(dataobject) -> Identifier:
 @dataclass
 class UseCase:
     " `obj` uses `subject`"
-    obj: Identifier
+    obj: DataObject
     # ref_location: Union[None, Token, LinkedString]
-    subject: Identifier
+    subject: DataObject
     type: str
 
 
 @dataclass
-class DatabaseDisplay:
+class DatabaseDisplay(Node):
     " Field in TextDocument "
     database: str
     table: LinkedString
     tabletype: str
     column: str
+
+    def __post_init__(self) -> None:
+        self.title = f"{self.table.text}.{self.column}"
 
 
 @dataclass
@@ -218,7 +232,7 @@ class EventListener:
 
 
 @dataclass
-class Control:  # pylint: disable=too-many-instance-attributes
+class Control(Node):  # pylint: disable=too-many-instance-attributes
     " Form control "
     name: str
     controlid: str
@@ -241,9 +255,8 @@ class ListBox(Control):
 
 
 @dataclass
-class Grid:
+class Grid(Node):
     " Table view control"
-    name: str
     columns: List[Control]
 
 

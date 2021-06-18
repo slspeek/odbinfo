@@ -2,10 +2,12 @@ documents:
 - fields:
   - column: naam
     database: testdb
+    name: naam
     table:
       link: null
       text: vwPlant
     tabletype: query
+    title: vwPlant.naam
   name: Untitled.odt
   path: ./Untitled.odt
   title: Untitled.odt
@@ -30,6 +32,7 @@ forms:
         inputrequired: 'false'
         label: FamlilyID
         name: FamlilyID
+        title: ''
         type: ooo:FormattedField
       - controlid: control3
         convertemptytonull: 'true'
@@ -39,6 +42,7 @@ forms:
         inputrequired: 'false'
         label: Name
         name: Name
+        title: ''
         type: ooo:TextField
       - controlid: control4
         convertemptytonull: 'true'
@@ -48,8 +52,10 @@ forms:
         inputrequired: 'false'
         label: Desc
         name: Desc
+        title: ''
         type: ooo:TextField
       name: MainForm_Grid
+      title: MainForm_Grid
     depth: null
     detailfields: ''
     embedded_query: null
@@ -126,6 +132,7 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
+      title: lblid
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control3
       convertemptytonull: ''
@@ -135,6 +142,7 @@ forms:
       inputrequired: ''
       label: naam
       name: lblnaam
+      title: lblnaam
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control5
       convertemptytonull: ''
@@ -144,6 +152,7 @@ forms:
       inputrequired: ''
       label: RFamliyID
       name: lblRFamliyID
+      title: lblRFamliyID
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
@@ -153,6 +162,7 @@ forms:
       inputrequired: 'true'
       label: ''
       name: fmtid
+      title: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control6
       convertemptytonull: 'true'
@@ -162,6 +172,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: fmtRFamliyID
+      title: fmtRFamliyID
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control4
       convertemptytonull: 'true'
@@ -171,6 +182,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: txtnaam
+      title: txtnaam
       type: ooo:com.sun.star.form.component.TextField
     depth: null
     detailfields: ''
@@ -200,6 +212,7 @@ forms:
         inputrequired: 'false'
         label: id
         name: id
+        title: ''
         type: ooo:FormattedField
       - controlid: control3
         convertemptytonull: 'true'
@@ -209,8 +222,10 @@ forms:
         inputrequired: 'false'
         label: naam
         name: naam
+        title: ''
         type: ooo:TextField
       name: MainForm_Grid
+      title: MainForm_Grid
     depth: null
     detailfields: ''
     embedded_query: null
@@ -238,6 +253,7 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
+      title: lblid
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control3
       convertemptytonull: ''
@@ -247,6 +263,7 @@ forms:
       inputrequired: ''
       label: naam
       name: lblnaam
+      title: lblnaam
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control5
       convertemptytonull: ''
@@ -256,6 +273,7 @@ forms:
       inputrequired: ''
       label: RFamliyID
       name: lblRFamliyID
+      title: lblRFamliyID
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
@@ -265,6 +283,7 @@ forms:
       inputrequired: 'true'
       label: ''
       name: fmtid
+      title: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control4
       convertemptytonull: 'true'
@@ -274,6 +293,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: txtnaam
+      title: txtnaam
       type: ooo:com.sun.star.form.component.TextField
     - boundcolumn: '1'
       controlid: control6
@@ -287,6 +307,7 @@ forms:
       listsource: FamilyLookup
       listsourcetype: query
       name: fmtRFamliyID
+      title: fmtRFamliyID
       type: ooo:com.sun.star.form.component.ListBox
     - controlid: control7
       convertemptytonull: ''
@@ -298,6 +319,7 @@ forms:
       inputrequired: ''
       label: Say hello
       name: Knop 1
+      title: Knop 1
       type: ooo:com.sun.star.form.component.CommandButton
     - controlid: control8
       convertemptytonull: ''
@@ -307,6 +329,7 @@ forms:
       inputrequired: ''
       label: Knop
       name: Knop 2
+      title: Knop 2
       type: ooo:com.sun.star.form.component.CommandButton
     - controlid: control9
       convertemptytonull: ''
@@ -320,6 +343,7 @@ forms:
       inputrequired: ''
       label: Call to script
       name: Knop 3
+      title: Knop 3
       type: ooo:com.sun.star.form.component.CommandButton
     depth: null
     detailfields: ''
@@ -348,6 +372,7 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
+      title: lblid
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control9
       convertemptytonull: ''
@@ -357,6 +382,7 @@ forms:
       inputrequired: ''
       label: naam
       name: lblnaam
+      title: lblnaam
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control11
       convertemptytonull: ''
@@ -366,6 +392,7 @@ forms:
       inputrequired: ''
       label: RFamliyID
       name: lblRFamliyID
+      title: lblRFamliyID
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control8
       convertemptytonull: 'true'
@@ -375,6 +402,7 @@ forms:
       inputrequired: 'true'
       label: ''
       name: fmtid
+      title: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control12
       convertemptytonull: 'true'
@@ -384,6 +412,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: fmtRFamliyID
+      title: fmtRFamliyID
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control10
       convertemptytonull: 'true'
@@ -393,6 +422,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: txtnaam
+      title: txtnaam
       type: ooo:com.sun.star.form.component.TextField
     depth: null
     detailfields: ''
@@ -416,6 +446,7 @@ forms:
         inputrequired: ''
         label: FamilyID
         name: lblFamilyID
+        title: lblFamilyID
         type: ooo:com.sun.star.form.component.FixedText
       - controlid: control3
         convertemptytonull: ''
@@ -425,6 +456,7 @@ forms:
         inputrequired: ''
         label: Name
         name: lblName
+        title: lblName
         type: ooo:com.sun.star.form.component.FixedText
       - controlid: control5
         convertemptytonull: ''
@@ -434,6 +466,7 @@ forms:
         inputrequired: ''
         label: Desc
         name: lblDesc
+        title: lblDesc
         type: ooo:com.sun.star.form.component.FixedText
       - controlid: control2
         convertemptytonull: 'true'
@@ -443,6 +476,7 @@ forms:
         inputrequired: 'true'
         label: ''
         name: fmtFamilyID
+        title: fmtFamilyID
         type: ooo:com.sun.star.form.component.FormattedField
       - controlid: control4
         convertemptytonull: 'true'
@@ -452,6 +486,7 @@ forms:
         inputrequired: 'false'
         label: ''
         name: txtName
+        title: txtName
         type: ooo:com.sun.star.form.component.TextField
       - controlid: control6
         convertemptytonull: 'true'
@@ -461,6 +496,7 @@ forms:
         inputrequired: 'false'
         label: ''
         name: txtDesc
+        title: txtDesc
         type: ooo:com.sun.star.form.component.TextField
       depth: null
       detailfields: '"FamilyID"'
@@ -490,6 +526,7 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
+      title: lblid
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
@@ -499,6 +536,7 @@ forms:
       inputrequired: 'false'
       label: ''
       name: fmtid
+      title: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
     depth: null
     detailfields: ''

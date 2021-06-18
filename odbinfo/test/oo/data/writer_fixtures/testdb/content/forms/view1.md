@@ -21,6 +21,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
+    title: lblid
     type: FixedText
   - controlid: control2
     convertemptytonull: 'true'
@@ -30,6 +31,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtid
+    title: fmtid
     type: FormattedField
   depth: 0
   detailfields: ''

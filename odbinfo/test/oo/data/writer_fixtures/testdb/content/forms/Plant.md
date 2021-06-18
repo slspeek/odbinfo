@@ -21,6 +21,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
+    title: lblid
     type: FixedText
   - controlid: control3
     convertemptytonull: ''
@@ -30,6 +31,7 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
+    title: lblnaam
     type: FixedText
   - controlid: control5
     convertemptytonull: ''
@@ -39,6 +41,7 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
+    title: lblRFamliyID
     type: FixedText
   - controlid: control2
     convertemptytonull: 'true'
@@ -48,6 +51,7 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
+    title: fmtid
     type: FormattedField
   - controlid: control6
     convertemptytonull: 'true'
@@ -57,6 +61,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtRFamliyID
+    title: fmtRFamliyID
     type: FormattedField
   - controlid: control4
     convertemptytonull: 'true'
@@ -66,6 +71,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
+    title: txtnaam
     type: TextField
   depth: 0
   detailfields: ''

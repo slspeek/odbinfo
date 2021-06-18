@@ -21,6 +21,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
+    title: lblid
     type: FixedText
   - controlid: control9
     convertemptytonull: ''
@@ -30,6 +31,7 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
+    title: lblnaam
     type: FixedText
   - controlid: control11
     convertemptytonull: ''
@@ -39,6 +41,7 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
+    title: lblRFamliyID
     type: FixedText
   - controlid: control8
     convertemptytonull: 'true'
@@ -48,6 +51,7 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
+    title: fmtid
     type: FormattedField
   - controlid: control12
     convertemptytonull: 'true'
@@ -57,6 +61,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtRFamliyID
+    title: fmtRFamliyID
     type: FormattedField
   - controlid: control10
     convertemptytonull: 'true'
@@ -66,6 +71,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
+    title: txtnaam
     type: TextField
   depth: 0
   detailfields: ''
@@ -92,6 +98,7 @@ subforms:
       inputrequired: ''
       label: FamilyID
       name: lblFamilyID
+      title: lblFamilyID
       type: FixedText
     - controlid: control3
       convertemptytonull: ''
@@ -101,6 +108,7 @@ subforms:
       inputrequired: ''
       label: Name
       name: lblName
+      title: lblName
       type: FixedText
     - controlid: control5
       convertemptytonull: ''
@@ -110,6 +118,7 @@ subforms:
       inputrequired: ''
       label: Desc
       name: lblDesc
+      title: lblDesc
       type: FixedText
     - controlid: control2
       convertemptytonull: 'true'
@@ -119,6 +128,7 @@ subforms:
       inputrequired: 'true'
       label: ''
       name: fmtFamilyID
+      title: fmtFamilyID
       type: FormattedField
     - controlid: control4
       convertemptytonull: 'true'
@@ -128,6 +138,7 @@ subforms:
       inputrequired: 'false'
       label: ''
       name: txtName
+      title: txtName
       type: TextField
     - controlid: control6
       convertemptytonull: 'true'
@@ -137,6 +148,7 @@ subforms:
       inputrequired: 'false'
       label: ''
       name: txtDesc
+      title: txtDesc
       type: TextField
     depth: 1
     detailfields: '"FamilyID"'

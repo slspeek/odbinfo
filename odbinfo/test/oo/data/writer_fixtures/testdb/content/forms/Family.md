@@ -22,6 +22,7 @@ subforms:
       inputrequired: 'false'
       label: FamlilyID
       name: FamlilyID
+      title: ''
       type: ooo:FormattedField
     - controlid: control3
       convertemptytonull: 'true'
@@ -31,6 +32,7 @@ subforms:
       inputrequired: 'false'
       label: Name
       name: Name
+      title: ''
       type: ooo:TextField
     - controlid: control4
       convertemptytonull: 'true'
@@ -40,8 +42,10 @@ subforms:
       inputrequired: 'false'
       label: Desc
       name: Desc
+      title: ''
       type: ooo:TextField
     name: MainForm_Grid
+    title: MainForm_Grid
   depth: 0
   detailfields: ''
   embedded_query: null

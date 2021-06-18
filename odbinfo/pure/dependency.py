@@ -154,8 +154,8 @@ def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> List[Use
     def process_match(acall: BasicCall):
         link_token(acall.name_token, candidate_callee)
         return UseCase(
-            get_identifier(caller),
-            get_identifier(candidate_callee),
+            caller,
+            candidate_callee,
             "invokes")
 
     use_cases = []
@@ -178,8 +178,8 @@ def search_string_refs_in_callables(dataobjects: Sequence[DataObject],
             def compare_ref(string_token: Token) -> List[UseCase]:
                 if dataobject.name == string_token.text[1:-1]:
                     link_token(string_token, dataobject)
-                    return [UseCase(get_identifier(acallable),
-                                    get_identifier(dataobject),
+                    return [UseCase(acallable,
+                                    dataobject,
                                     "string refers")]
                 return []
             return sum(map(compare_ref, acallable.strings), [])
@@ -203,8 +203,8 @@ def search_deps_in_queries(dataobjects: Sequence[DataObject],
                 use_cases = []
                 if token.text[1:-1] == table.name:
                     link_token(token, table)
-                    use_cases.append(UseCase(get_identifier(query),
-                                             get_identifier(table),
+                    use_cases.append(UseCase(query,
+                                             table,
                                              "queries"))
                 return use_cases
 
@@ -225,10 +225,9 @@ def search_deps_in_commanddriven(dataobjects: Sequence[DataObject],
         " find dependency uses in `report` "
         def find_one_dep(dependency: DataObject) -> Optional[UseCase]:
             if report.command.text == dependency.name:
-                dependency_id = get_identifier(dependency)
-                report.command.link = dependency_id
-                return UseCase(get_identifier(report),
-                               dependency_id,
+                report.command.link = get_identifier(dependency)
+                return UseCase(report,
+                               dependency,
                                "queries")
 
             return None
@@ -247,10 +246,9 @@ def search_deps_in_documents(dataobjects: Sequence[DataObject],
 
             def find_in_databasedisplay(display: DatabaseDisplay) -> Optional[UseCase]:
                 if display.table.text == dependency.name:
-                    dependency_id = get_identifier(dependency)
-                    display.table.link = dependency_id
-                    return UseCase(get_identifier(document),
-                                   dependency_id,
+                    display.table.link = get_identifier(dependency)
+                    return UseCase(document,
+                                   dependency,
                                    "queries")
                 return None
 

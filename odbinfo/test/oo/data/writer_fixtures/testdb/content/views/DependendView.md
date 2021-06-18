@@ -4,24 +4,28 @@ columns:
   issigned: true
   name: id
   nullable: Nullable
+  parent: null
   precision: 100
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
   title: SYSTEM_SUBQUERY.id
   typename: NUMERIC
+  used_by: []
+  uses: []
   writable: true
 command: 'SELECT "view1"."id"
 
   FROM   "view1"'
 name: DependendView
+parent: null
 table_tokens:
 - column: 7
   hidden: false
   index: 2
   line: 1
   link:
-  - bookmark: null
+    bookmark: null
     local_id: view1
     object_type: views
   text: '"view1"'
@@ -31,7 +35,7 @@ table_tokens:
   index: 10
   line: 2
   link:
-  - bookmark: null
+    bookmark: null
     local_id: view1
     object_type: views
   text: '"view1"'
@@ -42,14 +46,14 @@ tokens:
   hidden: false
   index: 0
   line: 1
-  link: []
+  link: null
   text: SELECT
   type: 129
 - column: 6
   hidden: true
   index: 1
   line: 1
-  link: []
+  link: null
   text: ' '
   type: 204
 - column: 7
@@ -57,7 +61,7 @@ tokens:
   index: 2
   line: 1
   link:
-  - bookmark: null
+    bookmark: null
     local_id: view1
     object_type: views
   text: '"view1"'
@@ -66,21 +70,21 @@ tokens:
   hidden: false
   index: 3
   line: 1
-  link: []
+  link: null
   text: .
   type: 2
 - column: 15
   hidden: false
   index: 4
   line: 1
-  link: []
+  link: null
   text: '"id"'
   type: 197
 - column: 19
   hidden: true
   index: 5
   line: 1
-  link: []
+  link: null
   text: '
 
     '
@@ -89,28 +93,28 @@ tokens:
   hidden: false
   index: 6
   line: 2
-  link: []
+  link: null
   text: FROM
   type: 75
 - column: 4
   hidden: true
   index: 7
   line: 2
-  link: []
+  link: null
   text: ' '
   type: 204
 - column: 5
   hidden: true
   index: 8
   line: 2
-  link: []
+  link: null
   text: ' '
   type: 204
 - column: 6
   hidden: true
   index: 9
   line: 2
-  link: []
+  link: null
   text: ' '
   type: 204
 - column: 7
@@ -118,9 +122,11 @@ tokens:
   index: 10
   line: 2
   link:
-  - bookmark: null
+    bookmark: null
     local_id: view1
     object_type: views
   text: '"view1"'
   type: 197
+used_by: []
+uses: []
 ---

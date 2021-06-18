@@ -39,7 +39,7 @@ class Token:
     type: int
     index: int
     hidden: bool
-    link: List[Identifier] = field(init=False, default_factory=list)
+    link: Optional[Identifier] = field(init=False, default=None)
 
 
 @dataclass
@@ -55,6 +55,9 @@ class Node:
         " Super class of the data objects that have a node of their own "
     name: str
     title: str = field(init=False)
+    uses: List['Node'] = field(init=False, repr=False, default_factory=list)
+    used_by: List['Node'] = field(init=False, repr=False, default_factory=list)
+    parent: Optional['Node'] = field(init=False, repr=False, default=None)
 
     def __post_init__(self) -> None:
         self.title = self.name

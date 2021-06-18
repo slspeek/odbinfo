@@ -5,31 +5,40 @@ columns:
   description: null
   name: Naam
   nullable: No_Nulls
+  parent: null
   precision: 100
   scale: 0
   tablename: Persoon
   title: Persoon.Naam
   typename: VARCHAR
+  used_by: []
+  uses: []
 - autoincrement: false
   defaultvalue: ''
   description: Woonadres
   name: Adres
   nullable: No_Nulls
+  parent: null
   precision: 100
   scale: 0
   tablename: Persoon
   title: Persoon.Adres
   typename: VARCHAR
+  used_by: []
+  uses: []
 - autoincrement: false
   defaultvalue: ''
   description: null
   name: Leeftijd
   nullable: Nullable
+  parent: null
   precision: 0
   scale: 0
   tablename: Persoon
   title: Persoon.Leeftijd
   typename: INTEGER
+  used_by: []
+  uses: []
 description: ''
 indexes:
 - catalog: ''
@@ -53,5 +62,8 @@ keys:
   typename: Primary
   update_rule: Cascade
 name: Persoon
+parent: null
 title: Persoon
+used_by: []
+uses: []
 ---

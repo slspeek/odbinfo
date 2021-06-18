@@ -3,17 +3,24 @@ documents:
   - column: naam
     database: testdb
     name: naam
+    parent: null
     table:
       link: null
       text: vwPlant
     tabletype: query
     title: vwPlant.naam
+    used_by: []
+    uses: []
   name: Untitled.odt
+  parent: null
   path: ./Untitled.odt
   title: Untitled.odt
+  used_by: []
+  uses: []
 forms:
 - height: null
   name: Family
+  parent: null
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -32,8 +39,11 @@ forms:
         inputrequired: 'false'
         label: FamlilyID
         name: FamlilyID
+        parent: null
         title: ''
         type: ooo:FormattedField
+        used_by: []
+        uses: []
       - controlid: control3
         convertemptytonull: 'true'
         datafield: Name
@@ -42,8 +52,11 @@ forms:
         inputrequired: 'false'
         label: Name
         name: Name
+        parent: null
         title: ''
         type: ooo:TextField
+        used_by: []
+        uses: []
       - controlid: control4
         convertemptytonull: 'true'
         datafield: Desc
@@ -52,20 +65,32 @@ forms:
         inputrequired: 'false'
         label: Desc
         name: Desc
+        parent: null
         title: ''
         type: ooo:TextField
+        used_by: []
+        uses: []
       name: MainForm_Grid
+      parent: null
       title: MainForm_Grid
+      used_by: []
+      uses: []
     depth: null
     detailfields: ''
     embedded_query: null
     masterfields: ''
     name: MainForm
+    parent: null
     subforms: []
     title: MainForm
+    used_by: []
+    uses: []
   title: Family
+  used_by: []
+  uses: []
 - height: null
   name: Formulier1
+  parent: null
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -80,6 +105,7 @@ forms:
     embedded_query: null
     masterfields: ''
     name: Formulier
+    parent: null
     subforms:
     - allowdeletes: 'true'
       allowinserts: 'true'
@@ -94,9 +120,14 @@ forms:
       embedded_query: null
       masterfields: ''
       name: Formulier2
+      parent: null
       subforms: []
       title: Formulier2
+      used_by: []
+      uses: []
     title: Formulier
+    used_by: []
+    uses: []
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
@@ -110,11 +141,17 @@ forms:
     embedded_query: null
     masterfields: ''
     name: Formulier 1
+    parent: null
     subforms: []
     title: Formulier 1
+    used_by: []
+    uses: []
   title: Formulier1
+  used_by: []
+  uses: []
 - height: null
   name: Plant
+  parent: null
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -132,8 +169,11 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
+      parent: null
       title: lblid
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control3
       convertemptytonull: ''
       datafield: ''
@@ -142,8 +182,11 @@ forms:
       inputrequired: ''
       label: naam
       name: lblnaam
+      parent: null
       title: lblnaam
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control5
       convertemptytonull: ''
       datafield: ''
@@ -152,8 +195,11 @@ forms:
       inputrequired: ''
       label: RFamliyID
       name: lblRFamliyID
+      parent: null
       title: lblRFamliyID
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -162,8 +208,11 @@ forms:
       inputrequired: 'true'
       label: ''
       name: fmtid
+      parent: null
       title: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
+      used_by: []
+      uses: []
     - controlid: control6
       convertemptytonull: 'true'
       datafield: RFamliyID
@@ -172,8 +221,11 @@ forms:
       inputrequired: 'false'
       label: ''
       name: fmtRFamliyID
+      parent: null
       title: fmtRFamliyID
       type: ooo:com.sun.star.form.component.FormattedField
+      used_by: []
+      uses: []
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -182,18 +234,27 @@ forms:
       inputrequired: 'false'
       label: ''
       name: txtnaam
+      parent: null
       title: txtnaam
       type: ooo:com.sun.star.form.component.TextField
+      used_by: []
+      uses: []
     depth: null
     detailfields: ''
     embedded_query: null
     masterfields: ''
     name: MainForm
+    parent: null
     subforms: []
     title: MainForm
+    used_by: []
+    uses: []
   title: Plant
+  used_by: []
+  uses: []
 - height: null
   name: Plant invoeren
+  parent: null
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -212,8 +273,11 @@ forms:
         inputrequired: 'false'
         label: id
         name: id
+        parent: null
         title: ''
         type: ooo:FormattedField
+        used_by: []
+        uses: []
       - controlid: control3
         convertemptytonull: 'true'
         datafield: naam
@@ -222,20 +286,32 @@ forms:
         inputrequired: 'false'
         label: naam
         name: naam
+        parent: null
         title: ''
         type: ooo:TextField
+        used_by: []
+        uses: []
       name: MainForm_Grid
+      parent: null
       title: MainForm_Grid
+      used_by: []
+      uses: []
     depth: null
     detailfields: ''
     embedded_query: null
     masterfields: ''
     name: MainForm
+    parent: null
     subforms: []
     title: MainForm
+    used_by: []
+    uses: []
   title: Plant invoeren
+  used_by: []
+  uses: []
 - height: null
   name: PlantListbox
+  parent: null
   subforms:
   - allowdeletes: 'false'
     allowinserts: 'true'
@@ -253,8 +329,11 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
+      parent: null
       title: lblid
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control3
       convertemptytonull: ''
       datafield: ''
@@ -263,8 +342,11 @@ forms:
       inputrequired: ''
       label: naam
       name: lblnaam
+      parent: null
       title: lblnaam
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control5
       convertemptytonull: ''
       datafield: ''
@@ -273,8 +355,11 @@ forms:
       inputrequired: ''
       label: RFamliyID
       name: lblRFamliyID
+      parent: null
       title: lblRFamliyID
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -283,8 +368,11 @@ forms:
       inputrequired: 'true'
       label: ''
       name: fmtid
+      parent: null
       title: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
+      used_by: []
+      uses: []
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -293,8 +381,11 @@ forms:
       inputrequired: 'false'
       label: ''
       name: txtnaam
+      parent: null
       title: txtnaam
       type: ooo:com.sun.star.form.component.TextField
+      used_by: []
+      uses: []
     - boundcolumn: '1'
       controlid: control6
       convertemptytonull: ''
@@ -307,8 +398,11 @@ forms:
       listsource: FamilyLookup
       listsourcetype: query
       name: fmtRFamliyID
+      parent: null
       title: fmtRFamliyID
       type: ooo:com.sun.star.form.component.ListBox
+      used_by: []
+      uses: []
     - controlid: control7
       convertemptytonull: ''
       datafield: ''
@@ -319,8 +413,11 @@ forms:
       inputrequired: ''
       label: Say hello
       name: Knop 1
+      parent: null
       title: Knop 1
       type: ooo:com.sun.star.form.component.CommandButton
+      used_by: []
+      uses: []
     - controlid: control8
       convertemptytonull: ''
       datafield: ''
@@ -329,8 +426,11 @@ forms:
       inputrequired: ''
       label: Knop
       name: Knop 2
+      parent: null
       title: Knop 2
       type: ooo:com.sun.star.form.component.CommandButton
+      used_by: []
+      uses: []
     - controlid: control9
       convertemptytonull: ''
       datafield: ''
@@ -343,18 +443,27 @@ forms:
       inputrequired: ''
       label: Call to script
       name: Knop 3
+      parent: null
       title: Knop 3
       type: ooo:com.sun.star.form.component.CommandButton
+      used_by: []
+      uses: []
     depth: null
     detailfields: ''
     embedded_query: null
     masterfields: ''
     name: MainForm
+    parent: null
     subforms: []
     title: MainForm
+    used_by: []
+    uses: []
   title: PlantListbox
+  used_by: []
+  uses: []
 - height: null
   name: Related subform
+  parent: null
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -372,8 +481,11 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
+      parent: null
       title: lblid
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control9
       convertemptytonull: ''
       datafield: ''
@@ -382,8 +494,11 @@ forms:
       inputrequired: ''
       label: naam
       name: lblnaam
+      parent: null
       title: lblnaam
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control11
       convertemptytonull: ''
       datafield: ''
@@ -392,8 +507,11 @@ forms:
       inputrequired: ''
       label: RFamliyID
       name: lblRFamliyID
+      parent: null
       title: lblRFamliyID
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control8
       convertemptytonull: 'true'
       datafield: id
@@ -402,8 +520,11 @@ forms:
       inputrequired: 'true'
       label: ''
       name: fmtid
+      parent: null
       title: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
+      used_by: []
+      uses: []
     - controlid: control12
       convertemptytonull: 'true'
       datafield: RFamliyID
@@ -412,8 +533,11 @@ forms:
       inputrequired: 'false'
       label: ''
       name: fmtRFamliyID
+      parent: null
       title: fmtRFamliyID
       type: ooo:com.sun.star.form.component.FormattedField
+      used_by: []
+      uses: []
     - controlid: control10
       convertemptytonull: 'true'
       datafield: naam
@@ -422,13 +546,17 @@ forms:
       inputrequired: 'false'
       label: ''
       name: txtnaam
+      parent: null
       title: txtnaam
       type: ooo:com.sun.star.form.component.TextField
+      used_by: []
+      uses: []
     depth: null
     detailfields: ''
     embedded_query: null
     masterfields: ''
     name: MainForm
+    parent: null
     subforms:
     - allowdeletes: 'true'
       allowinserts: 'true'
@@ -446,8 +574,11 @@ forms:
         inputrequired: ''
         label: FamilyID
         name: lblFamilyID
+        parent: null
         title: lblFamilyID
         type: ooo:com.sun.star.form.component.FixedText
+        used_by: []
+        uses: []
       - controlid: control3
         convertemptytonull: ''
         datafield: ''
@@ -456,8 +587,11 @@ forms:
         inputrequired: ''
         label: Name
         name: lblName
+        parent: null
         title: lblName
         type: ooo:com.sun.star.form.component.FixedText
+        used_by: []
+        uses: []
       - controlid: control5
         convertemptytonull: ''
         datafield: ''
@@ -466,8 +600,11 @@ forms:
         inputrequired: ''
         label: Desc
         name: lblDesc
+        parent: null
         title: lblDesc
         type: ooo:com.sun.star.form.component.FixedText
+        used_by: []
+        uses: []
       - controlid: control2
         convertemptytonull: 'true'
         datafield: FamilyID
@@ -476,8 +613,11 @@ forms:
         inputrequired: 'true'
         label: ''
         name: fmtFamilyID
+        parent: null
         title: fmtFamilyID
         type: ooo:com.sun.star.form.component.FormattedField
+        used_by: []
+        uses: []
       - controlid: control4
         convertemptytonull: 'true'
         datafield: Name
@@ -486,8 +626,11 @@ forms:
         inputrequired: 'false'
         label: ''
         name: txtName
+        parent: null
         title: txtName
         type: ooo:com.sun.star.form.component.TextField
+        used_by: []
+        uses: []
       - controlid: control6
         convertemptytonull: 'true'
         datafield: Desc
@@ -496,19 +639,30 @@ forms:
         inputrequired: 'false'
         label: ''
         name: txtDesc
+        parent: null
         title: txtDesc
         type: ooo:com.sun.star.form.component.TextField
+        used_by: []
+        uses: []
       depth: null
       detailfields: '"FamilyID"'
       embedded_query: null
       masterfields: '"RFamliyID"'
       name: SubForm
+      parent: null
       subforms: []
       title: SubForm
+      used_by: []
+      uses: []
     title: MainForm
+    used_by: []
+    uses: []
   title: Related subform
+  used_by: []
+  uses: []
 - height: null
   name: view1
+  parent: null
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -526,8 +680,11 @@ forms:
       inputrequired: ''
       label: id
       name: lblid
+      parent: null
       title: lblid
       type: ooo:com.sun.star.form.component.FixedText
+      used_by: []
+      uses: []
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -536,41 +693,59 @@ forms:
       inputrequired: 'false'
       label: ''
       name: fmtid
+      parent: null
       title: fmtid
       type: ooo:com.sun.star.form.component.FormattedField
+      used_by: []
+      uses: []
     depth: null
     detailfields: ''
     embedded_query: null
     masterfields: ''
     name: MainForm
+    parent: null
     subforms: []
     title: MainForm
+    used_by: []
+    uses: []
   title: view1
+  used_by: []
+  uses: []
 libraries:
 - modules:
   - callables: []
     library: Standard
     name: Module1
     name_indexes: []
+    parent: null
     source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
       \nEnd Sub\n\nSub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\
       \nEnd Sub"
     title: Module1.Standard
     tokens: []
+    used_by: []
+    uses: []
   - callables: []
     library: Standard
     name: Module2
     name_indexes: []
+    parent: null
     source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
     title: Module2.Standard
     tokens: []
+    used_by: []
+    uses: []
   name: Standard
+  parent: null
   title: Standard
+  used_by: []
+  uses: []
 - modules:
   - callables: []
     library: Library1
     name: Module1
     name_indexes: []
+    parent: null
     source: "REM  *****  BASIC  *****\n\nSub Main\n\tError \"Mijn fout\"\nEnd Sub\n\
       \nSub CallerSub()\n\tCalleeSub()\n\tModule2.CalleeSub()\nEnd Sub\n\nSub CalleeSub()\n\
       \tprint \"Module1.CalleeSub\"\nEnd Sub\n\nsub CallerTwo()\n\tCalleeTwoSub()\n\
@@ -581,218 +756,292 @@ libraries:
       \nSub ReferToQuery()\n\tprint \"FamilyLookup\"\nEnd Sub"
     title: Module1.Library1
     tokens: []
+    used_by: []
+    uses: []
   - callables: []
     library: Library1
     name: Module2
     name_indexes: []
+    parent: null
     source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
       \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
     title: Module2.Library1
     tokens: []
+    used_by: []
+    uses: []
   name: Library1
+  parent: null
   title: Library1
+  used_by: []
+  uses: []
 pylibs:
 - modules:
   - library: Bibliotheek
     name: Module.py
+    parent: null
     source: "# coding: utf-8\nfrom __future__ import unicode_literals\n\ndef script():\n\
       \tprint(\"Hello\")\n"
     title: Bibliotheek.Module.py
+    used_by: []
+    uses: []
   name: Bibliotheek
+  parent: null
   title: Bibliotheek
+  used_by: []
+  uses: []
 - modules:
   - library: python
     name: pymodule.py
+    parent: null
     source: "# coding: utf-8\n\ndef main():\n\tprint(\"Hello from testdb.odb\")\n\n\
       \n"
     title: python.pymodule.py
+    used_by: []
+    uses: []
   name: python
+  parent: null
   title: python
+  used_by: []
+  uses: []
 queries:
 - columns:
   - autoincrement: false
     issigned: false
     name: Name
     nullable: Nullable
+    parent: null
     precision: 2147483647
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
     title: SYSTEM_SUBQUERY.Name
     typename: VARCHAR
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: true
     name: FamilyID
     nullable: Nullable
+    parent: null
     precision: 10
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
     title: SYSTEM_SUBQUERY.FamilyID
     typename: INTEGER
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: true
     name: id
     nullable: Nullable
+    parent: null
     precision: 100
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
     title: SYSTEM_SUBQUERY.id
     typename: NUMERIC
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: false
     name: naam
     nullable: Nullable
+    parent: null
     precision: 2147483647
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
     title: SYSTEM_SUBQUERY.naam
     typename: VARCHAR
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: true
     name: RFamliyID
     nullable: Nullable
+    parent: null
     precision: 10
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
     title: SYSTEM_SUBQUERY.RFamliyID
     typename: INTEGER
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: true
     name: id
     nullable: Nullable
+    parent: null
     precision: 100
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
     title: SYSTEM_SUBQUERY.id
     typename: NUMERIC
+    used_by: []
+    uses: []
     writable: true
   command: 'SELECT *
 
     FROM   "FamilyLookup", "vwPlant", "view1"'
   name: DependendQuery
+  parent: null
   table_tokens: []
   title: DependendQuery
   tokens: []
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     issigned: false
     name: Name
     nullable: Nullable
+    parent: null
     precision: 2147483647
     readonly: false
     scale: 0
     tablename: Family
     title: Family.Name
     typename: VARCHAR
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: true
     name: FamilyID
     nullable: No_Nulls
+    parent: null
     precision: 10
     readonly: false
     scale: 0
     tablename: Family
     title: Family.FamilyID
     typename: INTEGER
+    used_by: []
+    uses: []
     writable: true
   command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
   name: FamilyLookup
+  parent: null
   table_tokens: []
   title: FamilyLookup
   tokens: []
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     issigned: true
     name: id
     nullable: No_Nulls
+    parent: null
     precision: 100
     readonly: false
     scale: 0
     tablename: Plant
     title: Plant.id
     typename: NUMERIC
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: false
     name: naam
     nullable: Nullable
+    parent: null
     precision: 2147483647
     readonly: false
     scale: 0
     tablename: Plant
     title: Plant.naam
     typename: VARCHAR
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: true
     name: RFamliyID
     nullable: Nullable
+    parent: null
     precision: 10
     readonly: false
     scale: 0
     tablename: Plant
     title: Plant.RFamliyID
     typename: INTEGER
+    used_by: []
+    uses: []
     writable: true
   command: 'SELECT *
 
     FROM   "Plant"'
   name: vwPlant
+  parent: null
   table_tokens: []
   title: vwPlant
   tokens: []
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     issigned: true
     name: id
     nullable: No_Nulls
+    parent: null
     precision: 100
     readonly: false
     scale: 0
     tablename: Plant
     title: Plant.id
     typename: NUMERIC
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: false
     name: naam
     nullable: Nullable
+    parent: null
     precision: 2147483647
     readonly: false
     scale: 0
     tablename: Plant
     title: Plant.naam
     typename: VARCHAR
+    used_by: []
+    uses: []
     writable: true
   - autoincrement: false
     issigned: true
     name: RFamliyID
     nullable: Nullable
+    parent: null
     precision: 10
     readonly: false
     scale: 0
     tablename: Plant
     title: Plant.RFamliyID
     typename: INTEGER
+    used_by: []
+    uses: []
     writable: true
   command: 'SELECT *
 
     FROM   "Plant";'
   name: ReportCommandTypeSQL.Command
+  parent: null
   table_tokens: []
   title: ReportCommandTypeSQL.Command
   tokens: []
+  used_by: []
+  uses: []
 reports:
 - command:
     link: null
@@ -805,7 +1054,10 @@ reports:
   - field:[Desc]
   name: Family
   output_type: application/vnd.oasis.opendocument.text
+  parent: null
   title: Family
+  used_by: []
+  uses: []
 - command:
     link: null
     text: select * from "Plant";
@@ -816,48 +1068,63 @@ reports:
       issigned: true
       name: id
       nullable: No_Nulls
+      parent: null
       precision: 100
       readonly: false
       scale: 0
       tablename: Plant
       title: Plant.id
       typename: NUMERIC
+      used_by: []
+      uses: []
       writable: true
     - autoincrement: false
       issigned: false
       name: naam
       nullable: Nullable
+      parent: null
       precision: 2147483647
       readonly: false
       scale: 0
       tablename: Plant
       title: Plant.naam
       typename: VARCHAR
+      used_by: []
+      uses: []
       writable: true
     - autoincrement: false
       issigned: true
       name: RFamliyID
       nullable: Nullable
+      parent: null
       precision: 10
       readonly: false
       scale: 0
       tablename: Plant
       title: Plant.RFamliyID
       typename: INTEGER
+      used_by: []
+      uses: []
       writable: true
     command: 'SELECT *
 
       FROM   "Plant";'
     name: ReportCommandTypeSQL.Command
+    parent: null
     table_tokens: []
     title: ReportCommandTypeSQL.Command
     tokens: []
+    used_by: []
+    uses: []
   formulas:
   - field:[id]
   - field:[naam]
   name: ReportCommandTypeSQL
   output_type: application/vnd.oasis.opendocument.text
+  parent: null
   title: ReportCommandTypeSQL
+  used_by: []
+  uses: []
 - command:
     link: null
     text: vwPlant
@@ -869,7 +1136,10 @@ reports:
   - field:[RFamliyID]
   name: vwPlant
   output_type: application/vnd.oasis.opendocument.text
+  parent: null
   title: vwPlant
+  used_by: []
+  uses: []
 tables:
 - columns:
   - autoincrement: false
@@ -877,31 +1147,40 @@ tables:
     description: null
     name: FamilyID
     nullable: No_Nulls
+    parent: null
     precision: 0
     scale: 0
     tablename: Family
     title: Family.FamilyID
     typename: INTEGER
+    used_by: []
+    uses: []
   - autoincrement: false
     defaultvalue: ''
     description: null
     name: Name
     nullable: Nullable
+    parent: null
     precision: 100
     scale: 0
     tablename: Family
     title: Family.Name
     typename: VARCHAR
+    used_by: []
+    uses: []
   - autoincrement: false
     defaultvalue: ''
     description: null
     name: Desc
     nullable: Nullable
+    parent: null
     precision: 0
     scale: 0
     tablename: Family
     title: Family.Desc
     typename: LONGVARCHAR
+    used_by: []
+    uses: []
   description: ''
   indexes:
   - catalog: ''
@@ -922,38 +1201,50 @@ tables:
     typename: Primary
     update_rule: Cascade
   name: Family
+  parent: null
   title: Family
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     defaultvalue: ''
     description: null
     name: Naam
     nullable: No_Nulls
+    parent: null
     precision: 100
     scale: 0
     tablename: Persoon
     title: Persoon.Naam
     typename: VARCHAR
+    used_by: []
+    uses: []
   - autoincrement: false
     defaultvalue: ''
     description: Woonadres
     name: Adres
     nullable: No_Nulls
+    parent: null
     precision: 100
     scale: 0
     tablename: Persoon
     title: Persoon.Adres
     typename: VARCHAR
+    used_by: []
+    uses: []
   - autoincrement: false
     defaultvalue: ''
     description: null
     name: Leeftijd
     nullable: Nullable
+    parent: null
     precision: 0
     scale: 0
     tablename: Persoon
     title: Persoon.Leeftijd
     typename: INTEGER
+    used_by: []
+    uses: []
   description: ''
   indexes:
   - catalog: ''
@@ -977,38 +1268,50 @@ tables:
     typename: Primary
     update_rule: Cascade
   name: Persoon
+  parent: null
   title: Persoon
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     defaultvalue: ''
     description: Unique key for the plant
     name: id
     nullable: No_Nulls
+    parent: null
     precision: 100
     scale: 0
     tablename: Plant
     title: Plant.id
     typename: NUMERIC
+    used_by: []
+    uses: []
   - autoincrement: false
     defaultvalue: ''
     description: Naam aan de plant gegeven
     name: naam
     nullable: Nullable
+    parent: null
     precision: 100
     scale: 0
     tablename: Plant
     title: Plant.naam
     typename: VARCHAR
+    used_by: []
+    uses: []
   - autoincrement: false
     defaultvalue: ''
     description: null
     name: RFamliyID
     nullable: Nullable
+    parent: null
     precision: 0
     scale: 0
     tablename: Plant
     title: Plant.RFamliyID
     typename: INTEGER
+    used_by: []
+    uses: []
   description: ''
   indexes:
   - catalog: ''
@@ -1045,7 +1348,10 @@ tables:
     typename: Foreign
     update_rule: No_Action
   name: Plant
+  parent: null
   title: Plant
+  used_by: []
+  uses: []
 use_cases: []
 views:
 - columns:
@@ -1053,36 +1359,48 @@ views:
     issigned: true
     name: id
     nullable: Nullable
+    parent: null
     precision: 100
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
     title: SYSTEM_SUBQUERY.id
     typename: NUMERIC
+    used_by: []
+    uses: []
     writable: true
   command: 'SELECT "view1"."id"
 
     FROM   "view1"'
   name: DependendView
+  parent: null
   table_tokens: []
   title: DependendView
   tokens: []
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     issigned: true
     name: id
     nullable: No_Nulls
+    parent: null
     precision: 100
     readonly: false
     scale: 0
     tablename: Plant
     title: Plant.id
     typename: NUMERIC
+    used_by: []
+    uses: []
     writable: true
   command: 'SELECT "id"
 
     FROM   "Plant"'
   name: view1
+  parent: null
   table_tokens: []
   title: view1
   tokens: []
+  used_by: []
+  uses: []

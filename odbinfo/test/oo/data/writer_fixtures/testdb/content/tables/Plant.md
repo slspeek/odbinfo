@@ -5,31 +5,40 @@ columns:
   description: Unique key for the plant
   name: id
   nullable: No_Nulls
+  parent: null
   precision: 100
   scale: 0
   tablename: Plant
   title: Plant.id
   typename: NUMERIC
+  used_by: []
+  uses: []
 - autoincrement: false
   defaultvalue: ''
   description: Naam aan de plant gegeven
   name: naam
   nullable: Nullable
+  parent: null
   precision: 100
   scale: 0
   tablename: Plant
   title: Plant.naam
   typename: VARCHAR
+  used_by: []
+  uses: []
 - autoincrement: false
   defaultvalue: ''
   description: null
   name: RFamliyID
   nullable: Nullable
+  parent: null
   precision: 0
   scale: 0
   tablename: Plant
   title: Plant.RFamliyID
   typename: INTEGER
+  used_by: []
+  uses: []
 description: ''
 indexes:
 - catalog: ''
@@ -66,5 +75,8 @@ keys:
   typename: Foreign
   update_rule: No_Action
 name: Plant
+parent: null
 title: Plant
+used_by: []
+uses: []
 ---

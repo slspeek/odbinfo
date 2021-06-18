@@ -12,8 +12,6 @@ children method.
 UseCase gets a refering location field (Union[Token, LinkedString, None])
 This location should get an #id in the templates for refering back (used by)
 
-token.link List -> Optional
-
 datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
 
 make Metadata.usecases a set?
@@ -33,6 +31,7 @@ Macros that open browser on interesting Plant sites
 Macro calls in controls (eventlisteners)
 
 SubForm command type is command
+ListBox command type is command
 
 Grid rendering like Subform
 
@@ -90,7 +89,7 @@ with
   shortname
   uses
   used_by
-  parent
+  parent 
 
 
 dependency search matrix
@@ -105,6 +104,7 @@ tables, queries, views, macros in formcontrols
 tables, views, queries in textdocuments (done)
 python in python (nice to have)
 others in python (nice to have)
+tables, views, queries in ListBox
 field are done last as they are nice to have
 
 Both macros and queries are parsed and have more detailed dependencies,

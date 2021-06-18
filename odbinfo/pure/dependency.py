@@ -46,7 +46,7 @@ def _copy_module_tokens(modules):
     def copy_tokens(module):
         def copy_token(token):
             new_token = dataclasses.replace(token)
-            new_token.link = token.link.copy()
+            new_token.link = token.link
             return new_token
         module.tokens = list(map(copy_token, module.tokens))
     list(map(copy_tokens, modules))
@@ -63,18 +63,15 @@ def _rewrite_module_token_links(modules):
         def rewrite_token(token: Token):
 
             def rewrite_link(link: Identifier):
-                if not link.object_type == "callables":
+                if not link.object_type == "basicfunctions":
                     return
                 lmacro, lmodule, llib = link.local_id.split('.')
                 new_link = Identifier("modules", f"{lmodule}.{llib}")
                 new_link.bookmark = lmacro
-                token.link.clear()
-                token.link.append(new_link)
+                token.link = new_link
 
-            if len(token.link) > 0:
-                # breakpoint()
-                identifier = token.link[0]
-                rewrite_link(identifier)
+            if token.link:
+                rewrite_link(token.link)
 
         list(map(rewrite_token, module.tokens))
 
@@ -136,7 +133,7 @@ def find_callable_in_callable(callables: Sequence[BasicFunction]) -> List[UseCas
 
 def link_token(token: Token, referand: DataObject):
     "link `token` to `acallable`"
-    token.link.append(get_identifier(referand))
+    token.link = get_identifier(referand)
 
 
 def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> List[UseCase]:
@@ -149,7 +146,7 @@ def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> List[Use
                 return False, acall
 
         return (acall.name_token.text.upper() == candidate_callee.name.upper()
-                and len(acall.name_token.link) == 0, acall)
+                and acall.name_token.link is None, acall)
 
     def process_match(acall: BasicCall):
         link_token(acall.name_token, candidate_callee)

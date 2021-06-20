@@ -127,8 +127,8 @@ class Query(DataObject):
         super().__post_init__()
         self.command = format_sql(self.command)
 
-    def children(self) -> List[DataObject]:
-        return cast(List[DataObject], self.columns)
+    def children(self) -> Sequence[DataObject]:
+        return self.columns
 
 
 @dataclass
@@ -194,8 +194,8 @@ class PythonLibrary(DataObject):
     " Python library "
     modules: List[PythonModule]
 
-    def children(self) -> List[DataObject]:
-        return cast(List[DataObject], self.modules)
+    def children(self) -> Sequence[DataObject]:
+        return self.modules
 
 
 @dataclass
@@ -238,8 +238,8 @@ class Module(DataObject):
         # self.source = tohtml(self.source)
         self.title = f"{self.name}.{self.library}"
 
-    def children(self) -> List[DataObject]:
-        return cast(List[DataObject], self.callables)
+    def children(self) -> Sequence[DataObject]:
+        return self.callables
 
 
 @dataclass
@@ -247,8 +247,8 @@ class Library(DataObject):
     " Basic library"
     modules: List[Module]
 
-    def children(self) -> List[DataObject]:
-        return cast(List[DataObject], self.modules)
+    def children(self) -> Sequence[DataObject]:
+        return self.modules
 
 
 @dataclass
@@ -286,8 +286,8 @@ class Grid(DataObject):
     " Table view control"
     columns: List[Control]
 
-    def children(self) -> List[DataObject]:
-        return cast(List[DataObject], self.columns)
+    def children(self) -> Sequence[DataObject]:
+        return self.columns
 
 
 @dataclass
@@ -302,7 +302,7 @@ class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
     subforms: List['SubForm']
     depth: Optional[int] = field(init=False, default=None)
 
-    def children(self) -> List[DataObject]:
+    def children(self) -> Sequence[DataObject]:
         return (cast(List[DataObject], self.controls) +
                 cast(List[DataObject], self.subforms))
 
@@ -313,8 +313,8 @@ class Form(DataObject):
     subforms: List[SubForm]
     height: Optional[int] = field(init=False, default=None)
 
-    def children(self) -> List[DataObject]:
-        return cast(List[DataObject], self.subforms)
+    def children(self) -> Sequence[DataObject]:
+        return self.subforms
 
 
 @dataclass

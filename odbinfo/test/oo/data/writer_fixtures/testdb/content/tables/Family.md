@@ -53,11 +53,20 @@ keys:
   - FamilyID
   delete_rule: Cascade
   name: SYS_PK_49
-  referenced_table: ''
+  parent_link:
+    bookmark: null
+    local_id: Family
+    object_type: tables
+  referenced_table:
+    link: null
+    text: ''
   relatedcolumns:
   - ''
+  title: SYS_PK_49
   typename: Primary
   update_rule: Cascade
+  used_by: []
+  uses: []
 name: Family
 parent_link:
   bookmark: null

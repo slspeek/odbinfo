@@ -5,8 +5,9 @@ from typing import List, Sequence
 from zipfile import ZipFile
 
 from odbinfo.oo.ooutil import open_connection
-from odbinfo.pure.datatype import (Column, CommandDriven, Index, Key, Metadata,
-                                   Query, QueryColumn, Report, Table, View)
+from odbinfo.pure.datatype import (Column, CommandDriven, Index, Key,
+                                   LinkedString, Metadata, Query, QueryColumn,
+                                   Report, Table, View)
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
@@ -129,7 +130,7 @@ def _read_key(ookey) -> Key:
         Key(ookey.Name,
             list(ookey.Columns.ElementNames),
             [col.RelatedColumn for col in ookey.Columns],
-            ookey.ReferencedTable,
+            LinkedString(ookey.ReferencedTable),
             ookey.Type,
             ookey.DeleteRule,
             ookey.UpdateRule

@@ -1,3 +1,5 @@
+datatype must become a package
+
 Weave in Configuration
 
 class Dependend for DataObject s that possible use another object?
@@ -16,6 +18,8 @@ datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Repo
 
 make Metadata.usecases a set?
 
+database (driver) information retrieval
+
 update minimal theme
 
 make typing more complete (lot of work)
@@ -28,10 +32,6 @@ Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,
 Attributes, Observations, Locations
 Macros that open browser on interesting Plant sites
 
-Macro calls in controls (eventlisteners)
-
-SubForm command type is command
-ListBox command type is command
 
 Grid rendering like Subform
 
@@ -47,7 +47,7 @@ make e2e test (BaseDocumenter2dot example)
 
 scroll down little bit after bookmark link in modules (see basedocumenter2dot)
 
-look at Identifier construction at dependency.py:49
+look at Identifier construction at dependency.py:69
 
 color highlight strings in render-token templates
 
@@ -89,11 +89,16 @@ with
   shortname
   uses
   used_by
-  parent 
+  parent
 
+Macro calls in controls (eventlisteners)
+
+SubForm command type is command
+ListBox command type is command
 
 dependency search matrix
 ------------------------
+tables in tables (via its keys)
 tables, views in views (done)
 tables, queries, views in queries (done)
 tables, queries, views in reports (done, except commandtype=command)
@@ -110,6 +115,7 @@ field are done last as they are nice to have
 Both macros and queries are parsed and have more detailed dependencies,
 in the sense that they are referenced by a token. Use cases should include this
 token.
+Forms are special too in this respect
 
 errors in parser need improvement
 

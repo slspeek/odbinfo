@@ -55,12 +55,21 @@ keys:
   - Naam
   delete_rule: Cascade
   name: SYS_PK_51
-  referenced_table: ''
+  parent_link:
+    bookmark: null
+    local_id: Persoon
+    object_type: tables
+  referenced_table:
+    link: null
+    text: ''
   relatedcolumns:
   - ''
   - ''
+  title: SYS_PK_51
   typename: Primary
   update_rule: Cascade
+  used_by: []
+  uses: []
 name: Persoon
 parent_link:
   bookmark: null

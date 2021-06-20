@@ -66,11 +66,11 @@ class DataObject:
     def __post_init__(self) -> None:
         self.title = self.name
 
-    def children(self) -> List['DataObject']:  # pylint:disable=no-self-use
+    def children(self) -> Sequence['DataObject']:  # pylint:disable=no-self-use
         " returns a list of child nodes "
         return []
 
-    def all_objects(self) -> List['DataObject']:
+    def all_objects(self) -> Sequence['DataObject']:
         " returns all dataobjects for the graph "
         return_value: List['DataObject'] = [self]
         for child in self.children():
@@ -91,8 +91,6 @@ class DataObject:
 class BaseColumn(DataObject):
     "https://www.openhttps://www.openoffice.org/api/docs/"\
         "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
-    name: str
-    title: str = field(init=False)
     autoincrement: bool
     nullable: Union[str, int]
     tablename: str
@@ -145,7 +143,8 @@ class CommandDriven(DataObject):
 def get_identifier(dataobject) -> Identifier:
     "returns Identifier for `dataobject`"
     classname = dataobject.__class__.__name__.lower()
-    plurals = {"query": "queries", "pythonlibrary": "pythonlibraries",
+    plurals = {"query": "queries",
+               "pythonlibrary": "pythonlibraries",
                "library": "libraries"}
     plural = plurals.get(classname, classname + "s")
     return Identifier(plural,
@@ -304,7 +303,8 @@ class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
     depth: Optional[int] = field(init=False, default=None)
 
     def children(self) -> List[DataObject]:
-        return cast(List[DataObject], self.controls) + cast(List[DataObject], self.subforms)
+        return (cast(List[DataObject], self.controls) +
+                cast(List[DataObject], self.subforms))
 
 
 @dataclass
@@ -339,19 +339,19 @@ class Report(CommandDriven):
 
 
 @dataclass
-class Key:  # pylint: disable=too-many-instance-attributes
+class Key(DataObject):  # pylint: disable=too-many-instance-attributes
     """ Database key properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
-    name: str
     columns: List[str]
     relatedcolumns: List[str]
-    referenced_table: str
+    referenced_table: LinkedString
     typename: object
     delete_rule: object
     update_rule: object
 
     def __post_init__(self):
+        super().__post_init__()
         self.typename = KEYTYPES[self.typename]
         self.update_rule = KEYRULES[self.update_rule]
         self.delete_rule = KEYRULES[self.delete_rule]
@@ -379,6 +379,9 @@ class Table(DataObject):
     keys: List[Key]
     columns: List[Column]
     indexes: List[Index]
+
+    def children(self) -> Sequence[DataObject]:
+        return self.keys
 
 
 @dataclass

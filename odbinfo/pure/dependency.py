@@ -6,14 +6,16 @@ from typing import List, Optional, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, CommandDriven,
                                    DatabaseDisplay, DataObject, Identifier,
-                                   Metadata, Module, Query, TextDocument,
-                                   Token, UseCase, get_identifier)
+                                   Key, Metadata, Module, Query, Table,
+                                   TextDocument, Token, UseCase,
+                                   get_identifier)
 
 
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
     " dependency search in `metadata`"
 
-    return (search_callable_in_callable(metadata.basicfunctions()) +
+    return (search_tables_in_tables(metadata.tables) +
+            search_callable_in_callable(metadata.basicfunctions()) +
             search_string_refs_in_callables(metadata.tables, metadata.basicfunctions()) +
             search_string_refs_in_callables(metadata.views, metadata.basicfunctions()) +
             search_string_refs_in_callables(metadata.queries, metadata.basicfunctions()) +
@@ -56,8 +58,8 @@ def _rewrite_module_token_links(modules):
     " scan module tokens for links"
     # process module source tokens to support callable links at module level
     # e.g /Lib1.Mod1/#macro
-    # By rewriting Identifier(type="BasicFunction" local_id="Lib1.Mod1.call")
-    # to Identifier("Module", "Lib1.Mod1", bookmark="call")
+    # By rewriting Identifier(type="BasicFunction" local_id="call.Mod1.Lib1")
+    # to Identifier("Module", "Mod1.Lib1", bookmark="call")
     def rewrite_module(module: Module):
 
         def rewrite_token(token: Token):
@@ -93,19 +95,13 @@ def rewrite_module_callable_links(modules: Sequence[Module]) -> List[UseCase]:
     return []
 
 
-def search_callable_in_callable(callables: Sequence[BasicFunction],
-                                ) -> List[UseCase]:
+def search_callable_in_callable(callables: Sequence[BasicFunction]) -> List[UseCase]:
     """ dependency search amoung the basic callables and linking the
-        parsed tokens to the targets
-        the callable tokens are linked during search
-        the module tokens links are rewritten afterwards """
-    use_cases = find_callable_in_callable(callables)
+    parsed tokens to the targets
+    the callable tokens are linked during search
+    the module tokens links are rewritten afterwards
+    find calls from one to another """
 
-    return use_cases
-
-
-def find_callable_in_callable(callables: Sequence[BasicFunction]) -> List[UseCase]:
-    " find calls from one to another "
     def search_in_one(caller: BasicFunction):
         # caller's module
         def filter_own_module(call: BasicFunction):
@@ -138,7 +134,6 @@ def link_token(token: Token, referand: DataObject):
 
 def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> List[UseCase]:
     " find calls in `caller` to `candidate_callee`"
-    # print("Considering: ", caller.title, candidate_callee.title)
 
     def match_and_not_linked(acall: BasicCall):
         if acall.module_token:
@@ -220,7 +215,7 @@ def search_deps_in_commanddriven(dataobjects: Sequence[DataObject],
     " find uses of dataobject in report"
     def find_deps_in_report(report: CommandDriven) -> List[UseCase]:
         " find dependency uses in `report` "
-        def find_one_dep(dependency: DataObject) -> Optional[UseCase]:
+        def match_one_dep(dependency: DataObject) -> Optional[UseCase]:
             if report.command.text == dependency.name:
                 report.command.link = get_identifier(dependency)
                 return UseCase(report,
@@ -229,7 +224,7 @@ def search_deps_in_commanddriven(dataobjects: Sequence[DataObject],
 
             return None
 
-        return [obj for obj in map(find_one_dep, dataobjects) if obj is not None]
+        return [obj for obj in map(match_one_dep, dataobjects) if obj is not None]
 
     return sum(map(find_deps_in_report, reports), [])
 
@@ -255,3 +250,26 @@ def search_deps_in_documents(dataobjects: Sequence[DataObject],
         return sum(map(find_one_dep, dataobjects), [])
 
     return sum(map(find_deps_in_doc, documents), [])
+
+#
+# Tables in Tables
+#
+
+
+def search_tables_in_tables(tables: Sequence[Table]) -> List[UseCase]:
+    " search for foreign key references amoung tables "
+    def search_in_one_table(atable: Table) -> List[UseCase]:
+
+        def search_one_key(key: Key) -> List[UseCase]:
+
+            def match_table(othertable: Table) -> Optional[UseCase]:
+                if key.referenced_table.text == othertable.name:
+                    key.referenced_table.link = get_identifier(othertable)
+                    return UseCase(atable, othertable, "references")
+                return None
+
+            return [obj for obj in map(match_table, tables) if obj is not None]
+
+        return sum([obj for obj in map(search_one_key, atable.keys) if obj is not None], [])
+
+    return sum(map(search_in_one_table, tables), [])

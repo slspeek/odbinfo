@@ -1197,11 +1197,17 @@ tables:
     - FamilyID
     delete_rule: Cascade
     name: SYS_PK_49
-    referenced_table: ''
+    parent_link: null
+    referenced_table:
+      link: null
+      text: ''
     relatedcolumns:
     - ''
+    title: SYS_PK_49
     typename: Primary
     update_rule: Cascade
+    used_by: []
+    uses: []
   name: Family
   parent_link: null
   title: Family
@@ -1263,12 +1269,18 @@ tables:
     - Naam
     delete_rule: Cascade
     name: SYS_PK_51
-    referenced_table: ''
+    parent_link: null
+    referenced_table:
+      link: null
+      text: ''
     relatedcolumns:
     - ''
     - ''
+    title: SYS_PK_51
     typename: Primary
     update_rule: Cascade
+    used_by: []
+    uses: []
   name: Persoon
   parent_link: null
   title: Persoon
@@ -1335,20 +1347,32 @@ tables:
     - id
     delete_rule: Cascade
     name: SYS_PK_47
-    referenced_table: ''
+    parent_link: null
+    referenced_table:
+      link: null
+      text: ''
     relatedcolumns:
     - ''
+    title: SYS_PK_47
     typename: Primary
     update_rule: Cascade
+    used_by: []
+    uses: []
   - columns:
     - RFamliyID
     delete_rule: No_Action
     name: SYS_FK_79
-    referenced_table: Family
+    parent_link: null
+    referenced_table:
+      link: null
+      text: Family
     relatedcolumns:
     - FamilyID
+    title: SYS_FK_79
     typename: Foreign
     update_rule: No_Action
+    used_by: []
+    uses: []
   name: Plant
   parent_link: null
   title: Plant

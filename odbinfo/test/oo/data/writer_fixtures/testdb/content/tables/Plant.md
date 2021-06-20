@@ -60,20 +60,41 @@ keys:
   - id
   delete_rule: Cascade
   name: SYS_PK_47
-  referenced_table: ''
+  parent_link:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
+  referenced_table:
+    link: null
+    text: ''
   relatedcolumns:
   - ''
+  title: SYS_PK_47
   typename: Primary
   update_rule: Cascade
+  used_by: []
+  uses: []
 - columns:
   - RFamliyID
   delete_rule: No_Action
   name: SYS_FK_79
-  referenced_table: Family
+  parent_link:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
+  referenced_table:
+    link:
+      bookmark: null
+      local_id: Family
+      object_type: tables
+    text: Family
   relatedcolumns:
   - FamilyID
+  title: SYS_FK_79
   typename: Foreign
   update_rule: No_Action
+  used_by: []
+  uses: []
 name: Plant
 parent_link:
   bookmark: null

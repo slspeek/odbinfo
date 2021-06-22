@@ -4,6 +4,7 @@ columns:
   issigned: false
   name: Name
   nullable: Nullable
+  obj_id: 26
   parent_link:
     bookmark: null
     local_id: DependendQuery
@@ -21,6 +22,7 @@ columns:
   issigned: true
   name: FamilyID
   nullable: Nullable
+  obj_id: 27
   parent_link:
     bookmark: null
     local_id: DependendQuery
@@ -38,6 +40,7 @@ columns:
   issigned: true
   name: id
   nullable: Nullable
+  obj_id: 28
   parent_link:
     bookmark: null
     local_id: DependendQuery
@@ -55,6 +58,7 @@ columns:
   issigned: false
   name: naam
   nullable: Nullable
+  obj_id: 29
   parent_link:
     bookmark: null
     local_id: DependendQuery
@@ -72,6 +76,7 @@ columns:
   issigned: true
   name: RFamliyID
   nullable: Nullable
+  obj_id: 30
   parent_link:
     bookmark: null
     local_id: DependendQuery
@@ -89,6 +94,7 @@ columns:
   issigned: true
   name: id
   nullable: Nullable
+  obj_id: 31
   parent_link:
     bookmark: null
     local_id: DependendQuery
@@ -106,6 +112,7 @@ command: 'SELECT *
 
   FROM   "FamilyLookup", "vwPlant", "view1"'
 name: DependendQuery
+obj_id: 25
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

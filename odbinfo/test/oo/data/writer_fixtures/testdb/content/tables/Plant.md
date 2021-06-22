@@ -5,7 +5,11 @@ columns:
   description: Unique key for the plant
   name: id
   nullable: No_Nulls
-  parent_link: null
+  obj_id: 18
+  parent_link:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
   precision: 100
   scale: 0
   tablename: Plant
@@ -18,7 +22,11 @@ columns:
   description: Naam aan de plant gegeven
   name: naam
   nullable: Nullable
-  parent_link: null
+  obj_id: 19
+  parent_link:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
   precision: 100
   scale: 0
   tablename: Plant
@@ -31,7 +39,11 @@ columns:
   description: null
   name: RFamliyID
   nullable: Nullable
-  parent_link: null
+  obj_id: 20
+  parent_link:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
   precision: 0
   scale: 0
   tablename: Plant
@@ -46,20 +58,37 @@ indexes:
   columns:
   - id
   name: SYS_IDX_46
+  obj_id: 16
+  parent_link:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
   primary: false
+  title: SYS_IDX_46
   unique: true
+  used_by: []
+  uses: []
 - catalog: ''
   clustered: false
   columns:
   - RFamliyID
   name: SYS_IDX_80
+  obj_id: 17
+  parent_link:
+    bookmark: null
+    local_id: Plant
+    object_type: tables
   primary: false
+  title: SYS_IDX_80
   unique: false
+  used_by: []
+  uses: []
 keys:
 - columns:
   - id
   delete_rule: Cascade
   name: SYS_PK_47
+  obj_id: 14
   parent_link:
     bookmark: null
     local_id: Plant
@@ -78,6 +107,7 @@ keys:
   - RFamliyID
   delete_rule: No_Action
   name: SYS_FK_79
+  obj_id: 15
   parent_link:
     bookmark: null
     local_id: Plant
@@ -96,6 +126,7 @@ keys:
   used_by: []
   uses: []
 name: Plant
+obj_id: 13
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

@@ -1,6 +1,7 @@
 ---
 height: 0
 name: PlantListbox
+obj_id: 66
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -25,6 +26,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
+    obj_id: 68
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -41,6 +43,7 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
+    obj_id: 69
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -57,6 +60,7 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
+    obj_id: 70
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -73,6 +77,7 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
+    obj_id: 71
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -89,6 +94,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
+    obj_id: 72
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -109,6 +115,7 @@ subforms:
     listsource: FamilyLookup
     listsourcetype: query
     name: fmtRFamliyID
+    obj_id: 73
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -127,6 +134,7 @@ subforms:
     inputrequired: ''
     label: Say hello
     name: Knop 1
+    obj_id: 74
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -143,6 +151,7 @@ subforms:
     inputrequired: ''
     label: Knop
     name: Knop 2
+    obj_id: 75
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -163,6 +172,7 @@ subforms:
     inputrequired: ''
     label: Call to script
     name: Knop 3
+    obj_id: 76
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -176,6 +186,7 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
+  obj_id: 67
   parent_link:
     bookmark: null
     local_id: PlantListbox

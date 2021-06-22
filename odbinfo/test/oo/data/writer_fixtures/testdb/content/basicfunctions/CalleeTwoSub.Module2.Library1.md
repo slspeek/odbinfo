@@ -35,6 +35,7 @@ library: Library1
 module: Module2
 name: CalleeTwoSub
 name_token_index: 18
+obj_id: 119
 parent_link:
   bookmark: null
   local_id: Module2.Library1

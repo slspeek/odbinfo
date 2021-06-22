@@ -35,6 +35,7 @@ library: Standard
 module: Module1
 name: ShadowedCallee
 name_token_index: 16
+obj_id: 102
 parent_link:
   bookmark: null
   local_id: Module1.Standard

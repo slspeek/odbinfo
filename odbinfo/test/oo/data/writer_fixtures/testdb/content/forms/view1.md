@@ -1,6 +1,7 @@
 ---
 height: 0
 name: view1
+obj_id: 92
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -25,6 +26,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
+    obj_id: 94
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -41,6 +43,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtid
+    obj_id: 95
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -54,6 +57,7 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
+  obj_id: 93
   parent_link:
     bookmark: null
     local_id: view1

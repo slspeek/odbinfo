@@ -1,6 +1,6 @@
 " Tabular like datatypes "
 from dataclasses import dataclass, field
-from typing import List, Sequence, Union
+from typing import List, Sequence, Union, cast
 
 from sql_formatter.core import format_sql
 
@@ -38,6 +38,7 @@ class BaseColumn(DataObject):
     scale: str
 
     def __post_init__(self):
+        super().__post_init__()
         self.title = f"{self.tablename}.{self.name}"
         self.nullable = COLUMNVALUES[self.nullable]
 
@@ -104,11 +105,10 @@ class Key(DataObject):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Index:
+class Index(DataObject):
     """ Index properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Index.html
     """
-    name: str
     catalog: str
     unique: bool
     primary: bool
@@ -127,4 +127,6 @@ class Table(DataObject):
     indexes: List[Index]
 
     def children(self) -> Sequence[DataObject]:
-        return self.keys
+        return cast(List[DataObject], self.keys) + \
+            cast(List[DataObject], self.indexes) + \
+            cast(List[DataObject], self.columns)

@@ -36,6 +36,7 @@ callables:
   module: Module2
   name: Main
   name_token_index: 5
+  obj_id: 104
   parent_link:
     bookmark: null
     local_id: Module2.Standard
@@ -121,6 +122,7 @@ library: Standard
 name: Module2
 name_indexes:
 - 5
+obj_id: 103
 parent_link:
   bookmark: null
   local_id: Standard

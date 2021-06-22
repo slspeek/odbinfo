@@ -36,6 +36,7 @@ callables:
   module: Module1
   name: CalleeOtherLib
   name_token_index: 5
+  obj_id: 101
   parent_link:
     bookmark: null
     local_id: Module1.Standard
@@ -153,6 +154,7 @@ callables:
   module: Module1
   name: ShadowedCallee
   name_token_index: 16
+  obj_id: 102
   parent_link:
     bookmark: null
     local_id: Module1.Standard
@@ -253,6 +255,7 @@ name: Module1
 name_indexes:
 - 5
 - 16
+obj_id: 100
 parent_link:
   bookmark: null
   local_id: Standard

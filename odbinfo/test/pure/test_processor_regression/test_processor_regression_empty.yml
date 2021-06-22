@@ -2,6 +2,7 @@ documents: []
 forms: []
 libraries: []
 name: ./emptydb.odb
+obj_id: 0
 parent_link: null
 pythonlibraries: []
 queries: []

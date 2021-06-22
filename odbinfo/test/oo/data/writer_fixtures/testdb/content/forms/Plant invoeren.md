@@ -1,6 +1,7 @@
 ---
 height: 0
 name: Plant invoeren
+obj_id: 61
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -26,6 +27,7 @@ subforms:
       inputrequired: 'false'
       label: id
       name: id
+      obj_id: 64
       parent_link:
         bookmark: null
         local_id: MainForm_Grid
@@ -42,6 +44,7 @@ subforms:
       inputrequired: 'false'
       label: naam
       name: naam
+      obj_id: 65
       parent_link:
         bookmark: null
         local_id: MainForm_Grid
@@ -51,6 +54,7 @@ subforms:
       used_by: []
       uses: []
     name: MainForm_Grid
+    obj_id: 63
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -63,6 +67,7 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
+  obj_id: 62
   parent_link:
     bookmark: null
     local_id: Plant invoeren

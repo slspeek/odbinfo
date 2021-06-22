@@ -24,6 +24,7 @@ class DatabaseDisplay(DataObject):
     column: str
 
     def __post_init__(self) -> None:
+        super().__post_init__()
         self.title = f"{self.table.text}.{self.column}"
 
 
@@ -32,6 +33,9 @@ class TextDocument(DataObject):
     " ODT or OTT file metadata "
     path: str
     fields: List[DatabaseDisplay]
+
+    def children(self) -> Sequence[DataObject]:
+        return self.fields
 
 
 @dataclass

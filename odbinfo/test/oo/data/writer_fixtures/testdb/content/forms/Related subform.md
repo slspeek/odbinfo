@@ -1,6 +1,7 @@
 ---
 height: 1
 name: Related subform
+obj_id: 77
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -25,6 +26,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
+    obj_id: 79
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -41,6 +43,7 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
+    obj_id: 80
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -57,6 +60,7 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
+    obj_id: 81
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -73,6 +77,7 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
+    obj_id: 82
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -89,6 +94,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtRFamliyID
+    obj_id: 83
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -105,6 +111,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
+    obj_id: 84
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -118,6 +125,7 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
+  obj_id: 78
   parent_link:
     bookmark: null
     local_id: Related subform
@@ -142,6 +150,7 @@ subforms:
       inputrequired: ''
       label: FamilyID
       name: lblFamilyID
+      obj_id: 86
       parent_link:
         bookmark: null
         local_id: SubForm
@@ -158,6 +167,7 @@ subforms:
       inputrequired: ''
       label: Name
       name: lblName
+      obj_id: 87
       parent_link:
         bookmark: null
         local_id: SubForm
@@ -174,6 +184,7 @@ subforms:
       inputrequired: ''
       label: Desc
       name: lblDesc
+      obj_id: 88
       parent_link:
         bookmark: null
         local_id: SubForm
@@ -190,6 +201,7 @@ subforms:
       inputrequired: 'true'
       label: ''
       name: fmtFamilyID
+      obj_id: 89
       parent_link:
         bookmark: null
         local_id: SubForm
@@ -206,6 +218,7 @@ subforms:
       inputrequired: 'false'
       label: ''
       name: txtName
+      obj_id: 90
       parent_link:
         bookmark: null
         local_id: SubForm
@@ -222,6 +235,7 @@ subforms:
       inputrequired: 'false'
       label: ''
       name: txtDesc
+      obj_id: 91
       parent_link:
         bookmark: null
         local_id: SubForm
@@ -235,6 +249,7 @@ subforms:
     embedded_query: null
     masterfields: '"RFamliyID"'
     name: SubForm
+    obj_id: 85
     parent_link:
       bookmark: null
       local_id: MainForm

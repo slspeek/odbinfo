@@ -4,6 +4,7 @@ columns:
   issigned: false
   name: Name
   nullable: Nullable
+  obj_id: 33
   parent_link:
     bookmark: null
     local_id: FamilyLookup
@@ -21,6 +22,7 @@ columns:
   issigned: true
   name: FamilyID
   nullable: No_Nulls
+  obj_id: 34
   parent_link:
     bookmark: null
     local_id: FamilyLookup
@@ -36,6 +38,7 @@ columns:
   writable: true
 command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
 name: FamilyLookup
+obj_id: 32
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

@@ -4,6 +4,7 @@ columns:
   issigned: true
   name: id
   nullable: Nullable
+  obj_id: 22
   parent_link:
     bookmark: null
     local_id: DependendView
@@ -21,6 +22,7 @@ command: 'SELECT "view1"."id"
 
   FROM   "view1"'
 name: DependendView
+obj_id: 21
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

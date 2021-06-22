@@ -37,6 +37,7 @@ modules:
     module: Module1
     name: CalleeOtherLib
     name_token_index: 5
+    obj_id: 101
     parent_link:
       bookmark: null
       local_id: Module1.Standard
@@ -154,6 +155,7 @@ modules:
     module: Module1
     name: ShadowedCallee
     name_token_index: 16
+    obj_id: 102
     parent_link:
       bookmark: null
       local_id: Module1.Standard
@@ -254,6 +256,7 @@ modules:
   name_indexes:
   - 5
   - 16
+  obj_id: 100
   parent_link:
     bookmark: null
     local_id: Standard
@@ -495,6 +498,7 @@ modules:
     module: Module2
     name: Main
     name_token_index: 5
+    obj_id: 104
     parent_link:
       bookmark: null
       local_id: Module2.Standard
@@ -580,6 +584,7 @@ modules:
   name: Module2
   name_indexes:
   - 5
+  obj_id: 103
   parent_link:
     bookmark: null
     local_id: Standard
@@ -683,6 +688,7 @@ modules:
   used_by: []
   uses: []
 name: Standard
+obj_id: 99
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

@@ -1,6 +1,7 @@
 ---
 height: 0
 name: Plant
+obj_id: 53
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -25,6 +26,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
+    obj_id: 55
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -41,6 +43,7 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
+    obj_id: 56
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -57,6 +60,7 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
+    obj_id: 57
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -73,6 +77,7 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
+    obj_id: 58
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -89,6 +94,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtRFamliyID
+    obj_id: 59
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -105,6 +111,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
+    obj_id: 60
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -118,6 +125,7 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
+  obj_id: 54
   parent_link:
     bookmark: null
     local_id: Plant

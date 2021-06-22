@@ -1,6 +1,7 @@
 ---
 library: python
 name: pymodule.py
+obj_id: 123
 parent_link:
   bookmark: null
   local_id: python

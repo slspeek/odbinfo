@@ -4,6 +4,7 @@ columns:
   issigned: true
   name: id
   nullable: No_Nulls
+  obj_id: 24
   parent_link:
     bookmark: null
     local_id: view1
@@ -21,6 +22,7 @@ command: 'SELECT "id"
 
   FROM   "Plant"'
 name: view1
+obj_id: 23
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

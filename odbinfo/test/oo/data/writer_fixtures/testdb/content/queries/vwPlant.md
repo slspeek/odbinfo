@@ -4,6 +4,7 @@ columns:
   issigned: true
   name: id
   nullable: No_Nulls
+  obj_id: 36
   parent_link:
     bookmark: null
     local_id: vwPlant
@@ -21,6 +22,7 @@ columns:
   issigned: false
   name: naam
   nullable: Nullable
+  obj_id: 37
   parent_link:
     bookmark: null
     local_id: vwPlant
@@ -38,6 +40,7 @@ columns:
   issigned: true
   name: RFamliyID
   nullable: Nullable
+  obj_id: 38
   parent_link:
     bookmark: null
     local_id: vwPlant
@@ -55,6 +58,7 @@ command: 'SELECT *
 
   FROM   "Plant"'
 name: vwPlant
+obj_id: 35
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

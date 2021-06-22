@@ -37,6 +37,7 @@ modules:
     module: Module1
     name: Main
     name_token_index: 5
+    obj_id: 107
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -233,6 +234,7 @@ modules:
     module: Module1
     name: CallerSub
     name_token_index: 16
+    obj_id: 108
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -405,6 +407,7 @@ modules:
     module: Module1
     name: CalleeSub
     name_token_index: 35
+    obj_id: 109
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -551,6 +554,7 @@ modules:
     module: Module1
     name: CallerTwo
     name_token_index: 48
+    obj_id: 110
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -757,6 +761,7 @@ modules:
     module: Module1
     name: CallerOtherLib
     name_token_index: 61
+    obj_id: 111
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -944,6 +949,7 @@ modules:
     module: Module1
     name: CallerShadowedCallee
     name_token_index: 80
+    obj_id: 112
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -1071,6 +1077,7 @@ modules:
     module: Module1
     name: ShadowedCallee
     name_token_index: 93
+    obj_id: 113
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -1205,6 +1212,7 @@ modules:
     module: Module1
     name: ReferToTable
     name_token_index: 106
+    obj_id: 114
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -1345,6 +1353,7 @@ modules:
     module: Module1
     name: ReferToView
     name_token_index: 119
+    obj_id: 115
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -1485,6 +1494,7 @@ modules:
     module: Module1
     name: ReferToQuery
     name_token_index: 132
+    obj_id: 116
     parent_link:
       bookmark: null
       local_id: Module1.Library1
@@ -1599,6 +1609,7 @@ modules:
   - 106
   - 119
   - 132
+  obj_id: 106
   parent_link:
     bookmark: null
     local_id: Library1
@@ -2756,6 +2767,7 @@ modules:
     module: Module2
     name: CalleeSub
     name_token_index: 5
+    obj_id: 118
     parent_link:
       bookmark: null
       local_id: Module2.Library1
@@ -2887,6 +2899,7 @@ modules:
     module: Module2
     name: CalleeTwoSub
     name_token_index: 18
+    obj_id: 119
     parent_link:
       bookmark: null
       local_id: Module2.Library1
@@ -2987,6 +3000,7 @@ modules:
   name_indexes:
   - 5
   - 18
+  obj_id: 117
   parent_link:
     bookmark: null
     local_id: Library1
@@ -3205,6 +3219,7 @@ modules:
   used_by: []
   uses: []
 name: Library1
+obj_id: 105
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

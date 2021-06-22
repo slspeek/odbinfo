@@ -9,6 +9,7 @@ embedded_query:
     issigned: true
     name: id
     nullable: No_Nulls
+    obj_id: 40
     parent_link:
       bookmark: null
       local_id: ReportCommandTypeSQL.Command
@@ -26,6 +27,7 @@ embedded_query:
     issigned: false
     name: naam
     nullable: Nullable
+    obj_id: 41
     parent_link:
       bookmark: null
       local_id: ReportCommandTypeSQL.Command
@@ -43,6 +45,7 @@ embedded_query:
     issigned: true
     name: RFamliyID
     nullable: Nullable
+    obj_id: 42
     parent_link:
       bookmark: null
       local_id: ReportCommandTypeSQL.Command
@@ -60,6 +63,7 @@ embedded_query:
 
     FROM   "Plant";'
   name: ReportCommandTypeSQL.Command
+  obj_id: 39
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
@@ -158,6 +162,7 @@ formulas:
 - field:[id]
 - field:[naam]
 name: ReportCommandTypeSQL
+obj_id: 97
 output_type: application/vnd.oasis.opendocument.text
 parent_link:
   bookmark: null

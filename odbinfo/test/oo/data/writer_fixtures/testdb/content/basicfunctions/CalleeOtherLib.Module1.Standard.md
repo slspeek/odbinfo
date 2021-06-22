@@ -35,6 +35,7 @@ library: Standard
 module: Module1
 name: CalleeOtherLib
 name_token_index: 5
+obj_id: 101
 parent_link:
   bookmark: null
   local_id: Module1.Standard

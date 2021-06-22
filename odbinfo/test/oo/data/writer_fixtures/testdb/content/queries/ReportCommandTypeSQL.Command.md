@@ -4,6 +4,7 @@ columns:
   issigned: true
   name: id
   nullable: No_Nulls
+  obj_id: 40
   parent_link:
     bookmark: null
     local_id: ReportCommandTypeSQL.Command
@@ -21,6 +22,7 @@ columns:
   issigned: false
   name: naam
   nullable: Nullable
+  obj_id: 41
   parent_link:
     bookmark: null
     local_id: ReportCommandTypeSQL.Command
@@ -38,6 +40,7 @@ columns:
   issigned: true
   name: RFamliyID
   nullable: Nullable
+  obj_id: 42
   parent_link:
     bookmark: null
     local_id: ReportCommandTypeSQL.Command
@@ -55,6 +58,7 @@ command: 'SELECT *
 
   FROM   "Plant";'
 name: ReportCommandTypeSQL.Command
+obj_id: 39
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

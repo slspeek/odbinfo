@@ -114,6 +114,7 @@ library: Library1
 module: Module1
 name: CallerOtherLib
 name_token_index: 61
+obj_id: 111
 parent_link:
   bookmark: null
   local_id: Module1.Library1

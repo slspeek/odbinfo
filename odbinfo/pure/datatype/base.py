@@ -36,6 +36,7 @@ class DataObject:
         " Super class of the data objects that have a node of their own "
     name: str
     title: str = field(init=False)
+    obj_id: int = field(init=False, default=-1)
     uses: List['DataObject'] = field(
         init=False, repr=False, default_factory=list)
     used_by: List['DataObject'] = field(

@@ -23,6 +23,8 @@ def test_processor_regression_empty(empty_metadata, data_regression,
 def process_and_check(unprocessed, filename, data_regression, file_regression):
     " do processing and check"
     process_metadata(unprocessed)  # changes `unprocessed`
+    # pylint:disable=protected-access
+    # unprocessed._reset_obj_ids()
     data_regression.check(dataclasses.asdict(unprocessed))
     file_regression.check(pickle.dumps(unprocessed), binary=True,
                           basename=filename, extension=".pickle")

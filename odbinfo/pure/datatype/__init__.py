@@ -1,5 +1,6 @@
 """ Defines the main datatype MetaData """
 from dataclasses import dataclass, field
+from itertools import starmap
 from typing import List, Optional, Sequence, Union, cast
 
 from odbinfo.pure.datatype.base import (DataObject, Identifier, LinkedString,
@@ -75,6 +76,15 @@ class Metadata(DataObject):
             cast(List['DataObject'], self.documents)
 
         )
+
+    def set_obj_ids(self) -> None:
+        " numbers all contained objects "
+        all_objs = self.all_objects()
+
+        def set_id(vid, data: DataObject):
+            data.obj_id = vid
+
+        list(starmap(set_id, zip(range(len(all_objs)), all_objs)))
 
 
 __all__ = [

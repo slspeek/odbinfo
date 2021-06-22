@@ -2,6 +2,7 @@
 modules:
 - library: python
   name: pymodule.py
+  obj_id: 123
   parent_link:
     bookmark: null
     local_id: python
@@ -11,6 +12,7 @@ modules:
   used_by: []
   uses: []
 name: python
+obj_id: 122
 parent_link:
   bookmark: null
   local_id: ./testdb.odb

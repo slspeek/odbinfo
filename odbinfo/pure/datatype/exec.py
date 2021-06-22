@@ -12,6 +12,7 @@ class PythonModule(DataObject):
     source: str
 
     def __post_init__(self):
+        super().__post_init__()
         self.title = f"{self.library}.{self.name}"
 
 
@@ -46,7 +47,7 @@ class BasicFunction(DataObject):
     title: str = field(init=False)
 
     def __post_init__(self):
-        # self.source = tohtml(self.source)
+        super().__post_init__()
         self.title = f"{self.name}.{self.module}.{self.library}"
 
 
@@ -61,7 +62,7 @@ class Module(DataObject):
     name_indexes: List[int] = field(init=False, default_factory=list)
 
     def __post_init__(self):
-        # self.source = tohtml(self.source)
+        super().__post_init__()
         self.title = f"{self.name}.{self.library}"
 
     def children(self) -> Sequence[DataObject]:

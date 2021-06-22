@@ -35,6 +35,7 @@ library: Library1
 module: Module1
 name: Main
 name_token_index: 5
+obj_id: 107
 parent_link:
   bookmark: null
   local_id: Module1.Library1

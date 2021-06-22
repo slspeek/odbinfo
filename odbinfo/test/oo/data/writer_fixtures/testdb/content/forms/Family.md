@@ -1,6 +1,7 @@
 ---
 height: 0
 name: Family
+obj_id: 43
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -26,6 +27,7 @@ subforms:
       inputrequired: 'false'
       label: FamlilyID
       name: FamlilyID
+      obj_id: 46
       parent_link:
         bookmark: null
         local_id: MainForm_Grid
@@ -42,6 +44,7 @@ subforms:
       inputrequired: 'false'
       label: Name
       name: Name
+      obj_id: 47
       parent_link:
         bookmark: null
         local_id: MainForm_Grid
@@ -58,6 +61,7 @@ subforms:
       inputrequired: 'false'
       label: Desc
       name: Desc
+      obj_id: 48
       parent_link:
         bookmark: null
         local_id: MainForm_Grid
@@ -67,6 +71,7 @@ subforms:
       used_by: []
       uses: []
     name: MainForm_Grid
+    obj_id: 45
     parent_link:
       bookmark: null
       local_id: MainForm
@@ -79,6 +84,7 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: MainForm
+  obj_id: 44
   parent_link:
     bookmark: null
     local_id: Family

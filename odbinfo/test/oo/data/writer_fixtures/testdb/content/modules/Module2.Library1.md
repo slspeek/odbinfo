@@ -36,6 +36,7 @@ callables:
   module: Module2
   name: CalleeSub
   name_token_index: 5
+  obj_id: 118
   parent_link:
     bookmark: null
     local_id: Module2.Library1
@@ -167,6 +168,7 @@ callables:
   module: Module2
   name: CalleeTwoSub
   name_token_index: 18
+  obj_id: 119
   parent_link:
     bookmark: null
     local_id: Module2.Library1
@@ -267,6 +269,7 @@ name: Module2
 name_indexes:
 - 5
 - 18
+obj_id: 117
 parent_link:
   bookmark: null
   local_id: Library1

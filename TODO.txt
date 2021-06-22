@@ -1,5 +1,3 @@
-datatype must become a package
-
 Weave in Configuration
 
 class Dependend for DataObject s that possible use another object?

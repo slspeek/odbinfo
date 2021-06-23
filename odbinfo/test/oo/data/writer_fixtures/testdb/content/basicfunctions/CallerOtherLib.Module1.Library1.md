@@ -8,6 +8,8 @@ body_tokens:
     bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
     object_type: basicfunctions
+  name: token65
+  obj_id: '308'
   text: CalleeOtherLib
   type: 181
 - column: 15
@@ -15,6 +17,8 @@ body_tokens:
   index: 66
   line: 21
   link: null
+  name: token66
+  obj_id: '309'
   text: (
   type: 157
 - column: 16
@@ -22,6 +26,8 @@ body_tokens:
   index: 67
   line: 21
   link: null
+  name: token67
+  obj_id: '310'
   text: )
   type: 168
 - column: 17
@@ -29,6 +35,8 @@ body_tokens:
   index: 68
   line: 21
   link: null
+  name: token68
+  obj_id: '311'
   text: "\n\t"
   type: 183
 - column: 1
@@ -36,6 +44,8 @@ body_tokens:
   index: 69
   line: 22
   link: null
+  name: token69
+  obj_id: '312'
   text: Module1
   type: 181
 - column: 8
@@ -43,6 +53,8 @@ body_tokens:
   index: 70
   line: 22
   link: null
+  name: token70
+  obj_id: '313'
   text: .
   type: 150
 - column: 9
@@ -53,6 +65,8 @@ body_tokens:
     bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
     object_type: basicfunctions
+  name: token71
+  obj_id: '314'
   text: CalleeOtherLib
   type: 181
 - column: 23
@@ -60,6 +74,8 @@ body_tokens:
   index: 72
   line: 22
   link: null
+  name: token72
+  obj_id: '315'
   text: (
   type: 157
 - column: 24
@@ -67,6 +83,8 @@ body_tokens:
   index: 73
   line: 22
   link: null
+  name: token73
+  obj_id: '316'
   text: )
   type: 168
 - column: 25
@@ -74,6 +92,8 @@ body_tokens:
   index: 74
   line: 22
   link: null
+  name: token74
+  obj_id: '317'
   text: '
 
     '
@@ -89,6 +109,8 @@ calls:
       bookmark: null
       local_id: CalleeOtherLib.Module1.Standard
       object_type: basicfunctions
+    name: token65
+    obj_id: '308'
     text: CalleeOtherLib
     type: 181
 - module_token:
@@ -97,6 +119,8 @@ calls:
     index: 69
     line: 22
     link: null
+    name: token69
+    obj_id: '312'
     text: Module1
     type: 181
   name_token:
@@ -108,13 +132,15 @@ calls:
       bookmark: null
       local_id: CalleeOtherLib.Module1.Standard
       object_type: basicfunctions
+    name: token71
+    obj_id: '314'
     text: CalleeOtherLib
     type: 181
 library: Library1
 module: Module1
 name: CallerOtherLib
 name_token_index: 61
-obj_id: 111
+obj_id: '301'
 parent_link:
   bookmark: null
   local_id: Module1.Library1
@@ -127,6 +153,8 @@ tokens:
   index: 59
   line: 20
   link: null
+  name: token59
+  obj_id: '302'
   text: Sub
   type: 125
 - column: 3
@@ -134,6 +162,8 @@ tokens:
   index: 60
   line: 20
   link: null
+  name: token60
+  obj_id: '303'
   text: ' '
   type: 185
 - column: 4
@@ -141,6 +171,8 @@ tokens:
   index: 61
   line: 20
   link: null
+  name: token61
+  obj_id: '304'
   text: CallerOtherLib
   type: 181
 - column: 18
@@ -148,6 +180,8 @@ tokens:
   index: 62
   line: 20
   link: null
+  name: token62
+  obj_id: '305'
   text: (
   type: 157
 - column: 19
@@ -155,6 +189,8 @@ tokens:
   index: 63
   line: 20
   link: null
+  name: token63
+  obj_id: '306'
   text: )
   type: 168
 - column: 20
@@ -162,6 +198,8 @@ tokens:
   index: 64
   line: 20
   link: null
+  name: token64
+  obj_id: '307'
   text: "\n\t"
   type: 183
 - column: 1
@@ -172,6 +210,8 @@ tokens:
     bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
     object_type: basicfunctions
+  name: token65
+  obj_id: '308'
   text: CalleeOtherLib
   type: 181
 - column: 15
@@ -179,6 +219,8 @@ tokens:
   index: 66
   line: 21
   link: null
+  name: token66
+  obj_id: '309'
   text: (
   type: 157
 - column: 16
@@ -186,6 +228,8 @@ tokens:
   index: 67
   line: 21
   link: null
+  name: token67
+  obj_id: '310'
   text: )
   type: 168
 - column: 17
@@ -193,6 +237,8 @@ tokens:
   index: 68
   line: 21
   link: null
+  name: token68
+  obj_id: '311'
   text: "\n\t"
   type: 183
 - column: 1
@@ -200,6 +246,8 @@ tokens:
   index: 69
   line: 22
   link: null
+  name: token69
+  obj_id: '312'
   text: Module1
   type: 181
 - column: 8
@@ -207,6 +255,8 @@ tokens:
   index: 70
   line: 22
   link: null
+  name: token70
+  obj_id: '313'
   text: .
   type: 150
 - column: 9
@@ -217,6 +267,8 @@ tokens:
     bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
     object_type: basicfunctions
+  name: token71
+  obj_id: '314'
   text: CalleeOtherLib
   type: 181
 - column: 23
@@ -224,6 +276,8 @@ tokens:
   index: 72
   line: 22
   link: null
+  name: token72
+  obj_id: '315'
   text: (
   type: 157
 - column: 24
@@ -231,6 +285,8 @@ tokens:
   index: 73
   line: 22
   link: null
+  name: token73
+  obj_id: '316'
   text: )
   type: 168
 - column: 25
@@ -238,6 +294,8 @@ tokens:
   index: 74
   line: 22
   link: null
+  name: token74
+  obj_id: '317'
   text: '
 
     '
@@ -247,8 +305,8 @@ tokens:
   index: 75
   line: 23
   link: null
+  name: token75
+  obj_id: '318'
   text: End Sub
   type: 44
-used_by: []
-uses: []
 ---

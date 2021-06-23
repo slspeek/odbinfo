@@ -4,61 +4,40 @@ columns:
   issigned: true
   name: id
   nullable: No_Nulls
-  obj_id: 36
-  parent_link:
-    bookmark: null
-    local_id: vwPlant
-    object_type: queries
+  obj_id: '90'
   precision: 100
   readonly: false
   scale: 0
   tablename: Plant
-  title: Plant.id
   typename: NUMERIC
-  used_by: []
-  uses: []
   writable: true
 - autoincrement: false
   issigned: false
   name: naam
   nullable: Nullable
-  obj_id: 37
-  parent_link:
-    bookmark: null
-    local_id: vwPlant
-    object_type: queries
+  obj_id: '91'
   precision: 2147483647
   readonly: false
   scale: 0
   tablename: Plant
-  title: Plant.naam
   typename: VARCHAR
-  used_by: []
-  uses: []
   writable: true
 - autoincrement: false
   issigned: true
   name: RFamliyID
   nullable: Nullable
-  obj_id: 38
-  parent_link:
-    bookmark: null
-    local_id: vwPlant
-    object_type: queries
+  obj_id: '92'
   precision: 10
   readonly: false
   scale: 0
   tablename: Plant
-  title: Plant.RFamliyID
   typename: INTEGER
-  used_by: []
-  uses: []
   writable: true
 command: 'SELECT *
 
   FROM   "Plant"'
 name: vwPlant
-obj_id: 35
+obj_id: '89'
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -72,6 +51,8 @@ table_tokens:
     bookmark: null
     local_id: Plant
     object_type: tables
+  name: token8
+  obj_id: '101'
   text: '"Plant"'
   type: 197
 title: vwPlant
@@ -81,6 +62,8 @@ tokens:
   index: 0
   line: 1
   link: null
+  name: token0
+  obj_id: '93'
   text: SELECT
   type: 129
 - column: 6
@@ -88,6 +71,8 @@ tokens:
   index: 1
   line: 1
   link: null
+  name: token1
+  obj_id: '94'
   text: ' '
   type: 204
 - column: 7
@@ -95,6 +80,8 @@ tokens:
   index: 2
   line: 1
   link: null
+  name: token2
+  obj_id: '95'
   text: '*'
   type: 7
 - column: 8
@@ -102,6 +89,8 @@ tokens:
   index: 3
   line: 1
   link: null
+  name: token3
+  obj_id: '96'
   text: '
 
     '
@@ -111,6 +100,8 @@ tokens:
   index: 4
   line: 2
   link: null
+  name: token4
+  obj_id: '97'
   text: FROM
   type: 75
 - column: 4
@@ -118,6 +109,8 @@ tokens:
   index: 5
   line: 2
   link: null
+  name: token5
+  obj_id: '98'
   text: ' '
   type: 204
 - column: 5
@@ -125,6 +118,8 @@ tokens:
   index: 6
   line: 2
   link: null
+  name: token6
+  obj_id: '99'
   text: ' '
   type: 204
 - column: 6
@@ -132,6 +127,8 @@ tokens:
   index: 7
   line: 2
   link: null
+  name: token7
+  obj_id: '100'
   text: ' '
   type: 204
 - column: 7
@@ -142,8 +139,8 @@ tokens:
     bookmark: null
     local_id: Plant
     object_type: tables
+  name: token8
+  obj_id: '101'
   text: '"Plant"'
   type: 197
-used_by: []
-uses: []
 ---

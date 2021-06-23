@@ -1,7 +1,7 @@
 ---
 height: 1
 name: Formulier1
-obj_id: 49
+obj_id: '122'
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -20,7 +20,7 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: Formulier
-  obj_id: 50
+  obj_id: '123'
   parent_link:
     bookmark: null
     local_id: Formulier1
@@ -39,18 +39,14 @@ subforms:
     embedded_query: null
     masterfields: ''
     name: Formulier2
-    obj_id: 51
+    obj_id: '124'
     parent_link:
       bookmark: null
       local_id: Formulier
       object_type: subforms
     subforms: []
     title: Formulier2
-    used_by: []
-    uses: []
   title: Formulier
-  used_by: []
-  uses: []
 - allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
@@ -64,16 +60,12 @@ subforms:
   embedded_query: null
   masterfields: ''
   name: Formulier 1
-  obj_id: 52
+  obj_id: '125'
   parent_link:
     bookmark: null
     local_id: Formulier1
     object_type: forms
   subforms: []
   title: Formulier 1
-  used_by: []
-  uses: []
 title: Formulier1
-used_by: []
-uses: []
 ---

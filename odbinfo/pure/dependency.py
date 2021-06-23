@@ -5,10 +5,10 @@ from itertools import starmap
 from typing import List, Optional, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, CommandDriven,
-                                   DatabaseDisplay, DataObject, Identifier,
-                                   Key, Metadata, Module, Query, Table,
+                                   DatabaseDisplay, Identifier, Key, Metadata,
+                                   Module, PageOwner, Query, Table,
                                    TextDocument, Token, UseCase,
-                                   get_identifier)
+                                   get_identifier, use_case)
 
 
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
@@ -127,7 +127,7 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> List[UseC
     return sum(map(search_in_one, callables), [])
 
 
-def link_token(token: Token, referand: DataObject):
+def link_token(token: Token, referand: PageOwner):
     "link `token` to `acallable`"
     token.link = get_identifier(referand)
 
@@ -145,8 +145,9 @@ def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> List[Use
 
     def process_match(acall: BasicCall):
         link_token(acall.name_token, candidate_callee)
-        return UseCase(
+        return use_case(
             caller,
+            acall.name_token,
             candidate_callee,
             "invokes")
 
@@ -161,18 +162,19 @@ def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> List[Use
 #
 
 
-def search_string_refs_in_callables(dataobjects: Sequence[DataObject],
+def search_string_refs_in_callables(dataobjects: Sequence[PageOwner],
                                     callables: Sequence[BasicFunction]) -> List[UseCase]:
     """ search for references to table, views, queries or reports
         in callable string literals """
     def search_refs_in_one(acallable: BasicFunction) -> List[UseCase]:
-        def ref_in_one(dataobject: DataObject) -> List[UseCase]:
+        def ref_in_one(dataobject: PageOwner) -> List[UseCase]:
             def compare_ref(string_token: Token) -> List[UseCase]:
                 if dataobject.name == string_token.text[1:-1]:
                     link_token(string_token, dataobject)
-                    return [UseCase(acallable,
-                                    dataobject,
-                                    "string refers")]
+                    return [use_case(acallable,
+                                     string_token,
+                                     dataobject,
+                                     "string refers")]
                 return []
             return sum(map(compare_ref, acallable.strings), [])
         return sum(map(ref_in_one, dataobjects), [])
@@ -185,19 +187,20 @@ def search_string_refs_in_callables(dataobjects: Sequence[DataObject],
 #
 
 
-def search_deps_in_queries(dataobjects: Sequence[DataObject],
+def search_deps_in_queries(dataobjects: Sequence[PageOwner],
                            queries: Sequence[Query]) -> List[UseCase]:
     " find uses of dataobject in queries "
     def find_tables_in_query(query: Query) -> List[UseCase]:
         " find table uses in `query` "
-        def find_table_in_query(table: DataObject) -> List[UseCase]:
+        def find_table_in_query(table: PageOwner) -> List[UseCase]:
             def find_table_in_token(token: Token) -> List[UseCase]:
                 use_cases = []
                 if token.text[1:-1] == table.name:
                     link_token(token, table)
-                    use_cases.append(UseCase(query,
-                                             table,
-                                             "queries"))
+                    use_cases.append(use_case(query,
+                                              token,
+                                              table,
+                                              "queries"))
                 return use_cases
 
             return sum(map(find_table_in_token, query.table_tokens), [])
@@ -210,17 +213,18 @@ def search_deps_in_queries(dataobjects: Sequence[DataObject],
 #
 
 
-def search_deps_in_commanddriven(dataobjects: Sequence[DataObject],
+def search_deps_in_commanddriven(dataobjects: Sequence[PageOwner],
                                  reports: Sequence[CommandDriven]) -> List[UseCase]:
     " find uses of dataobject in report"
     def find_deps_in_report(report: CommandDriven) -> List[UseCase]:
         " find dependency uses in `report` "
-        def match_one_dep(dependency: DataObject) -> Optional[UseCase]:
+        def match_one_dep(dependency: PageOwner) -> Optional[UseCase]:
             if report.command.text == dependency.name:
                 report.command.link = get_identifier(dependency)
-                return UseCase(report,
-                               dependency,
-                               "queries")
+                return use_case(report,
+                                None,
+                                dependency,
+                                "queries")
 
             return None
 
@@ -229,19 +233,20 @@ def search_deps_in_commanddriven(dataobjects: Sequence[DataObject],
     return sum(map(find_deps_in_report, reports), [])
 
 
-def search_deps_in_documents(dataobjects: Sequence[DataObject],
+def search_deps_in_documents(dataobjects: Sequence[PageOwner],
                              documents: Sequence[TextDocument]) -> List[UseCase]:
     " find uses of dataobject in document"
     def find_deps_in_doc(document: TextDocument) -> List[UseCase]:
 
-        def find_one_dep(dependency: DataObject) -> List[UseCase]:
+        def find_one_dep(dependency: PageOwner) -> List[UseCase]:
 
             def find_in_databasedisplay(display: DatabaseDisplay) -> Optional[UseCase]:
                 if display.table.text == dependency.name:
                     display.table.link = get_identifier(dependency)
-                    return UseCase(document,
-                                   dependency,
-                                   "queries")
+                    return use_case(document,
+                                    display,
+                                    dependency,
+                                    "queries")
                 return None
 
             return [obj for obj in map(find_in_databasedisplay, document.fields)
@@ -265,7 +270,7 @@ def search_tables_in_tables(tables: Sequence[Table]) -> List[UseCase]:
             def match_table(othertable: Table) -> Optional[UseCase]:
                 if key.referenced_table.text == othertable.name:
                     key.referenced_table.link = get_identifier(othertable)
-                    return UseCase(atable, othertable, "references")
+                    return use_case(atable, key, othertable, "references")
                 return None
 
             return [obj for obj in map(match_table, tables) if obj is not None]

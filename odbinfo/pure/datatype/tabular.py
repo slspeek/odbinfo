@@ -1,10 +1,10 @@
 " Tabular like datatypes "
 from dataclasses import dataclass, field
-from typing import List, Sequence, Union, cast
+from typing import List, Union
 
 from sql_formatter.core import format_sql
 
-from odbinfo.pure.datatype.base import DataObject, LinkedString, Token
+from odbinfo.pure.datatype.base import LinkedString, Node, PageOwner, Token
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 KEYTYPES = {1: "Primary",
@@ -27,7 +27,7 @@ KEYRULES = {0: "Cascade",
 
 
 @dataclass
-class BaseColumn(DataObject):
+class BaseColumn(Node):
     "https://www.openhttps://www.openoffice.org/api/docs/"\
         "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
     autoincrement: bool
@@ -38,7 +38,7 @@ class BaseColumn(DataObject):
     scale: str
 
     def __post_init__(self):
-        super().__post_init__()
+        # super().__post_init__()
         self.title = f"{self.tablename}.{self.name}"
         self.nullable = COLUMNVALUES[self.nullable]
 
@@ -53,7 +53,7 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Query(DataObject):
+class Query(PageOwner):
     " Query properties see:"\
         " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
         " QueryDefinition.html"
@@ -67,8 +67,8 @@ class Query(DataObject):
         super().__post_init__()
         self.command = format_sql(self.command)
 
-    def children(self) -> Sequence[DataObject]:
-        return self.columns
+    def children(self):
+        return self.columns + self.tokens
 
 
 @dataclass
@@ -86,7 +86,7 @@ class Column(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Key(DataObject):  # pylint: disable=too-many-instance-attributes
+class Key(Node):  # pylint: disable=too-many-instance-attributes
     """ Database key properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
@@ -98,14 +98,14 @@ class Key(DataObject):  # pylint: disable=too-many-instance-attributes
     update_rule: object
 
     def __post_init__(self):
-        super().__post_init__()
+        # super().__post_init__()
         self.typename = KEYTYPES[self.typename]
         self.update_rule = KEYRULES[self.update_rule]
         self.delete_rule = KEYRULES[self.delete_rule]
 
 
 @dataclass
-class Index(DataObject):
+class Index(Node):
     """ Index properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Index.html
     """
@@ -117,7 +117,7 @@ class Index(DataObject):
 
 
 @dataclass
-class Table(DataObject):
+class Table(PageOwner):
     """ Table properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Table.html
     """
@@ -126,7 +126,7 @@ class Table(DataObject):
     columns: List[Column]
     indexes: List[Index]
 
-    def children(self) -> Sequence[DataObject]:
-        return cast(List[DataObject], self.keys) + \
-            cast(List[DataObject], self.indexes) + \
-            cast(List[DataObject], self.columns)
+    def children(self):
+        return self.keys + \
+            self.indexes + \
+            self.columns

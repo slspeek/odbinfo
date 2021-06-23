@@ -2,7 +2,7 @@ documents: []
 forms: []
 libraries: []
 name: ./emptydb.odb
-obj_id: -1
+obj_id: not-set
 parent_link: null
 pythonlibraries: []
 queries: []
@@ -10,6 +10,4 @@ reports: []
 tables: []
 title: ./emptydb.odb
 use_cases: []
-used_by: []
-uses: []
 views: []

@@ -4,41 +4,27 @@ columns:
   issigned: false
   name: Name
   nullable: Nullable
-  obj_id: 33
-  parent_link:
-    bookmark: null
-    local_id: FamilyLookup
-    object_type: queries
+  obj_id: '68'
   precision: 2147483647
   readonly: false
   scale: 0
   tablename: Family
-  title: Family.Name
   typename: VARCHAR
-  used_by: []
-  uses: []
   writable: true
 - autoincrement: false
   issigned: true
   name: FamilyID
   nullable: No_Nulls
-  obj_id: 34
-  parent_link:
-    bookmark: null
-    local_id: FamilyLookup
-    object_type: queries
+  obj_id: '69'
   precision: 10
   readonly: false
   scale: 0
   tablename: Family
-  title: Family.FamilyID
   typename: INTEGER
-  used_by: []
-  uses: []
   writable: true
 command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
 name: FamilyLookup
-obj_id: 32
+obj_id: '67'
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -52,6 +38,8 @@ table_tokens:
     bookmark: null
     local_id: Family
     object_type: tables
+  name: token18
+  obj_id: '88'
   text: '"Family"'
   type: 197
 title: FamilyLookup
@@ -61,6 +49,8 @@ tokens:
   index: 0
   line: 1
   link: null
+  name: token0
+  obj_id: '70'
   text: SELECT
   type: 129
 - column: 6
@@ -68,6 +58,8 @@ tokens:
   index: 1
   line: 1
   link: null
+  name: token1
+  obj_id: '71'
   text: ' '
   type: 204
 - column: 7
@@ -75,6 +67,8 @@ tokens:
   index: 2
   line: 1
   link: null
+  name: token2
+  obj_id: '72'
   text: '"Name"'
   type: 197
 - column: 13
@@ -82,6 +76,8 @@ tokens:
   index: 3
   line: 1
   link: null
+  name: token3
+  obj_id: '73'
   text: ','
   type: 5
 - column: 14
@@ -89,6 +85,8 @@ tokens:
   index: 4
   line: 1
   link: null
+  name: token4
+  obj_id: '74'
   text: '
 
     '
@@ -98,6 +96,8 @@ tokens:
   index: 5
   line: 2
   link: null
+  name: token5
+  obj_id: '75'
   text: ' '
   type: 204
 - column: 1
@@ -105,6 +105,8 @@ tokens:
   index: 6
   line: 2
   link: null
+  name: token6
+  obj_id: '76'
   text: ' '
   type: 204
 - column: 2
@@ -112,6 +114,8 @@ tokens:
   index: 7
   line: 2
   link: null
+  name: token7
+  obj_id: '77'
   text: ' '
   type: 204
 - column: 3
@@ -119,6 +123,8 @@ tokens:
   index: 8
   line: 2
   link: null
+  name: token8
+  obj_id: '78'
   text: ' '
   type: 204
 - column: 4
@@ -126,6 +132,8 @@ tokens:
   index: 9
   line: 2
   link: null
+  name: token9
+  obj_id: '79'
   text: ' '
   type: 204
 - column: 5
@@ -133,6 +141,8 @@ tokens:
   index: 10
   line: 2
   link: null
+  name: token10
+  obj_id: '80'
   text: ' '
   type: 204
 - column: 6
@@ -140,6 +150,8 @@ tokens:
   index: 11
   line: 2
   link: null
+  name: token11
+  obj_id: '81'
   text: ' '
   type: 204
 - column: 7
@@ -147,6 +159,8 @@ tokens:
   index: 12
   line: 2
   link: null
+  name: token12
+  obj_id: '82'
   text: '"FamilyID"'
   type: 197
 - column: 17
@@ -154,6 +168,8 @@ tokens:
   index: 13
   line: 2
   link: null
+  name: token13
+  obj_id: '83'
   text: '
 
     '
@@ -163,6 +179,8 @@ tokens:
   index: 14
   line: 3
   link: null
+  name: token14
+  obj_id: '84'
   text: FROM
   type: 75
 - column: 4
@@ -170,6 +188,8 @@ tokens:
   index: 15
   line: 3
   link: null
+  name: token15
+  obj_id: '85'
   text: ' '
   type: 204
 - column: 5
@@ -177,6 +197,8 @@ tokens:
   index: 16
   line: 3
   link: null
+  name: token16
+  obj_id: '86'
   text: ' '
   type: 204
 - column: 6
@@ -184,6 +206,8 @@ tokens:
   index: 17
   line: 3
   link: null
+  name: token17
+  obj_id: '87'
   text: ' '
   type: 204
 - column: 7
@@ -194,8 +218,8 @@ tokens:
     bookmark: null
     local_id: Family
     object_type: tables
+  name: token18
+  obj_id: '88'
   text: '"Family"'
   type: 197
-used_by: []
-uses: []
 ---

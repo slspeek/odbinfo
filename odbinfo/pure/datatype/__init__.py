@@ -3,8 +3,10 @@ from dataclasses import dataclass, field
 from itertools import starmap
 from typing import List, Optional, Sequence, Union, cast
 
-from odbinfo.pure.datatype.base import (DataObject, Identifier, LinkedString,
-                                        Token, UseCase, get_identifier)
+from odbinfo.pure.datatype.base import (Identifier, LinkedString, PageOwner,
+                                        SourceIdentifier, Token, UseCase,
+                                        get_content_type, get_identifier,
+                                        use_case)
 from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, Library,
                                         Module, PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import (Column, Index, Key, Query,
@@ -16,7 +18,7 @@ from odbinfo.pure.datatype.ui import (CommandDriven, Control, DatabaseDisplay,
 
 # pylint: disable=too-many-instance-attributes
 @dataclass
-class Metadata(DataObject):
+class Metadata(PageOwner):
     """ Collector class for all metadata read from the odb-file """
     tables: List[Table]
     views: List[View]
@@ -63,17 +65,17 @@ class Metadata(DataObject):
 
         return sum([collect_subforms_from_form(f) for f in self.forms], [])
 
-    def children(self) -> List[DataObject]:
+    def children(self):
         return (
 
-            cast(List['DataObject'], self.tables) +
-            cast(List['DataObject'], self.views) +
-            cast(List['DataObject'], self.queries) +
-            cast(List['DataObject'], self.forms) +
-            cast(List['DataObject'], self.reports) +
-            cast(List['DataObject'], self.libraries) +
-            cast(List['DataObject'], self.pythonlibraries) +
-            cast(List['DataObject'], self.documents)
+            self.tables +
+            self.views +
+            self.queries +
+            self.forms +
+            self.reports +
+            self.libraries +
+            self.pythonlibraries +
+            self.documents
 
         )
 
@@ -81,8 +83,8 @@ class Metadata(DataObject):
         " numbers all contained objects "
         all_objs = self.all_objects()
 
-        def set_id(vid, data: DataObject):
-            data.obj_id = vid
+        def set_id(vid, data):
+            data.obj_id = str(vid)
 
         list(starmap(set_id, zip(range(len(all_objs)), all_objs)))
 
@@ -95,6 +97,7 @@ __all__ = [
     "Control",
     "DatabaseDisplay",
     "EventListener",
+    "get_content_type",
     "get_identifier",
     "Grid",
     "Identifier",
@@ -105,7 +108,9 @@ __all__ = [
     "Metadata",
     "Query",
     "QueryColumn",
+    "SourceIdentifier",
     "Table",
     "UseCase",
+    "use_case",
     "View"
 ]

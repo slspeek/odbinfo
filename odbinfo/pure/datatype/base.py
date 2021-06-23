@@ -1,6 +1,6 @@
 " super classes of the datatypes and reference types "
 from dataclasses import dataclass, field
-from typing import List, Optional, Sequence, cast
+from typing import List, Optional
 
 
 @dataclass
@@ -12,15 +12,29 @@ class Identifier:
 
 
 @dataclass
-class Token:
-    "lexer token"
-    column: int
-    line: int
-    text: str
-    type: int
-    index: int
-    hidden: bool
-    link: Optional[Identifier] = field(init=False, default=None)
+class SourceIdentifier(Identifier):
+    " source location identifier for back linking "
+    location_id: str
+
+
+@dataclass
+class Node:
+    " DataObject without children "
+    name: str
+    obj_id: str = field(init=False, default="not-set")
+
+    # pylint:disable=no-self-use
+    def children(self):
+        " returns a list of child nodes "
+        return []
+
+    def all_objects(self):
+        " returns all dataobjects for the graph "
+        return_value = [self]
+        for child in self.children():
+            return_value += child.all_objects()
+
+        return return_value
 
 
 @dataclass
@@ -31,58 +45,77 @@ class LinkedString:
 
 
 @dataclass
-class DataObject:
-    " A node in the graph representation "\
-        " Super class of the data objects that have a node of their own "
-    name: str
+class PageOwner(Node):
+    " has its own page, thus title attribute "\
+        " an object with a parent_link "
     title: str = field(init=False)
-    obj_id: int = field(init=False, default=-1)
-    uses: List['DataObject'] = field(
-        init=False, repr=False, default_factory=list)
-    used_by: List['DataObject'] = field(
-        init=False, repr=False, default_factory=list)
-    # parent: Optional['DataObject'] = field(
-    #     init=False, repr=False, default=None)
     parent_link: Optional['Identifier'] = field(init=False, default=None)
 
-    def __post_init__(self) -> None:
-        self.title = self.name
-
-    def children(self) -> Sequence['DataObject']:  # pylint:disable=no-self-use
-        " returns a list of child nodes "
-        return []
-
-    def all_objects(self) -> Sequence['DataObject']:
-        " returns all dataobjects for the graph "
-        return_value: List['DataObject'] = [self]
-        for child in self.children():
-            return_value += cast(List['DataObject'], child.all_objects())
-
-        return return_value
-
-    def set_parents(self, parent: Optional['DataObject']) -> None:
+    def set_parents(self, parent: Optional['PageOwner']) -> None:
         " recursively set parents "
-        if parent:
+        if isinstance(parent, PageOwner):
             self.parent_link = get_identifier(parent)
         for child in self.children():
-            child.set_parents(self)
+            if isinstance(child, PageOwner):
+                child.set_parents(self)
+
+    def __post_init__(self):
+        self.title = self.name
 
 
-def get_identifier(dataobject) -> Identifier:
-    "returns Identifier for `dataobject`"
-    classname = dataobject.__class__.__name__.lower()
+@dataclass
+class Aggregator:
+    " aggregates uses and used_by "
+    uses: List['Identifier'] = field(
+        init=False, repr=False, default_factory=list)
+    used_by: List['SourceIdentifier'] = field(
+        init=False, repr=False, default_factory=list)
+
+
+def get_content_type(obj):
+    " returns classname in plural in lowercase "
+    classname = obj.__class__.__name__.lower()
     plurals = {"query": "queries",
                "pythonlibrary": "pythonlibraries",
                "library": "libraries"}
-    plural = plurals.get(classname, classname + "s")
-    return Identifier(plural,
-                      dataobject.title)
+    return plurals.get(classname, classname + "s")
+
+
+def get_identifier(page: PageOwner) -> Identifier:
+    "returns Identifier for `dataobject`"
+    return Identifier(get_content_type(page),
+                      page.title)
+
+
+def get_source_identifier(source: PageOwner, location: Optional[Node]) -> SourceIdentifier:
+    " creates a SourceIdentifier "
+    source_id = "" if not location else location.obj_id
+    return SourceIdentifier(get_content_type(source), source.title, source_id)
 
 
 @dataclass
 class UseCase:
     " `obj` uses `subject`"
-    obj: DataObject
-    # ref_location: Union[None, Token, LinkedString]
-    subject: DataObject
+    obj: SourceIdentifier
+    subject: Identifier
     type: str
+
+
+def use_case(source: PageOwner,
+             location: Optional[Node],
+             target: PageOwner,
+             ref_type: str) -> UseCase:
+    " creates a usecase from `source` and `location` to `target`"
+    return UseCase(get_source_identifier(source, location), get_identifier(target), ref_type)
+
+
+@dataclass
+class Token(Node):
+    "lexer token"
+    column: int
+    line: int
+    text: str
+    type: int
+    index: int
+    hidden: bool
+    link: Optional[Identifier] = field(init=False, default=None)

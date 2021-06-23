@@ -9,61 +9,40 @@ embedded_query:
     issigned: true
     name: id
     nullable: No_Nulls
-    obj_id: 40
-    parent_link:
-      bookmark: null
-      local_id: ReportCommandTypeSQL.Command
-      object_type: queries
+    obj_id: '103'
     precision: 100
     readonly: false
     scale: 0
     tablename: Plant
-    title: Plant.id
     typename: NUMERIC
-    used_by: []
-    uses: []
     writable: true
   - autoincrement: false
     issigned: false
     name: naam
     nullable: Nullable
-    obj_id: 41
-    parent_link:
-      bookmark: null
-      local_id: ReportCommandTypeSQL.Command
-      object_type: queries
+    obj_id: '104'
     precision: 2147483647
     readonly: false
     scale: 0
     tablename: Plant
-    title: Plant.naam
     typename: VARCHAR
-    used_by: []
-    uses: []
     writable: true
   - autoincrement: false
     issigned: true
     name: RFamliyID
     nullable: Nullable
-    obj_id: 42
-    parent_link:
-      bookmark: null
-      local_id: ReportCommandTypeSQL.Command
-      object_type: queries
+    obj_id: '105'
     precision: 10
     readonly: false
     scale: 0
     tablename: Plant
-    title: Plant.RFamliyID
     typename: INTEGER
-    used_by: []
-    uses: []
     writable: true
   command: 'SELECT *
 
     FROM   "Plant";'
   name: ReportCommandTypeSQL.Command
-  obj_id: 39
+  obj_id: '102'
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
@@ -77,6 +56,8 @@ embedded_query:
       bookmark: null
       local_id: Plant
       object_type: tables
+    name: token8
+    obj_id: '114'
     text: '"Plant"'
     type: 197
   title: ReportCommandTypeSQL.Command
@@ -86,6 +67,8 @@ embedded_query:
     index: 0
     line: 1
     link: null
+    name: token0
+    obj_id: '106'
     text: SELECT
     type: 129
   - column: 6
@@ -93,6 +76,8 @@ embedded_query:
     index: 1
     line: 1
     link: null
+    name: token1
+    obj_id: '107'
     text: ' '
     type: 204
   - column: 7
@@ -100,6 +85,8 @@ embedded_query:
     index: 2
     line: 1
     link: null
+    name: token2
+    obj_id: '108'
     text: '*'
     type: 7
   - column: 8
@@ -107,6 +94,8 @@ embedded_query:
     index: 3
     line: 1
     link: null
+    name: token3
+    obj_id: '109'
     text: '
 
       '
@@ -116,6 +105,8 @@ embedded_query:
     index: 4
     line: 2
     link: null
+    name: token4
+    obj_id: '110'
     text: FROM
     type: 75
   - column: 4
@@ -123,6 +114,8 @@ embedded_query:
     index: 5
     line: 2
     link: null
+    name: token5
+    obj_id: '111'
     text: ' '
     type: 204
   - column: 5
@@ -130,6 +123,8 @@ embedded_query:
     index: 6
     line: 2
     link: null
+    name: token6
+    obj_id: '112'
     text: ' '
     type: 204
   - column: 6
@@ -137,6 +132,8 @@ embedded_query:
     index: 7
     line: 2
     link: null
+    name: token7
+    obj_id: '113'
     text: ' '
     type: 204
   - column: 7
@@ -147,6 +144,8 @@ embedded_query:
       bookmark: null
       local_id: Plant
       object_type: tables
+    name: token8
+    obj_id: '114'
     text: '"Plant"'
     type: 197
   - column: 14
@@ -154,21 +153,19 @@ embedded_query:
     index: 9
     line: 2
     link: null
+    name: token9
+    obj_id: '115'
     text: ;
     type: 1
-  used_by: []
-  uses: []
 formulas:
 - field:[id]
 - field:[naam]
 name: ReportCommandTypeSQL
-obj_id: 97
+obj_id: '173'
 output_type: application/vnd.oasis.opendocument.text
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
   object_type: metadatas
 title: ReportCommandTypeSQL
-used_by: []
-uses: []
 ---

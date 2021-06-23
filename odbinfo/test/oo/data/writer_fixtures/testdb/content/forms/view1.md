@@ -1,7 +1,7 @@
 ---
 height: 0
 name: view1
-obj_id: 92
+obj_id: '168'
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -26,15 +26,8 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
-    obj_id: 94
-    parent_link:
-      bookmark: null
-      local_id: MainForm
-      object_type: subforms
-    title: lblid
+    obj_id: '170'
     type: FixedText
-    used_by: []
-    uses: []
   - controlid: control2
     convertemptytonull: 'true'
     datafield: id
@@ -43,30 +36,19 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtid
-    obj_id: 95
-    parent_link:
-      bookmark: null
-      local_id: MainForm
-      object_type: subforms
-    title: fmtid
+    obj_id: '171'
     type: FormattedField
-    used_by: []
-    uses: []
   depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''
   name: MainForm
-  obj_id: 93
+  obj_id: '169'
   parent_link:
     bookmark: null
     local_id: view1
     object_type: forms
   subforms: []
   title: MainForm
-  used_by: []
-  uses: []
 title: view1
-used_by: []
-uses: []
 ---

@@ -5,6 +5,8 @@ body_tokens:
   index: 7
   line: 4
   link: null
+  name: token7
+  obj_id: '254'
   text: Error
   type: 49
 - column: 6
@@ -12,6 +14,8 @@ body_tokens:
   index: 8
   line: 4
   link: null
+  name: token8
+  obj_id: '255'
   text: ' '
   type: 185
 - column: 7
@@ -19,6 +23,8 @@ body_tokens:
   index: 9
   line: 4
   link: null
+  name: token9
+  obj_id: '256'
   text: '"Mijn fout"'
   type: 172
 - column: 18
@@ -26,6 +32,8 @@ body_tokens:
   index: 10
   line: 4
   link: null
+  name: token10
+  obj_id: '257'
   text: '
 
     '
@@ -35,7 +43,7 @@ library: Library1
 module: Module1
 name: Main
 name_token_index: 5
-obj_id: 107
+obj_id: '249'
 parent_link:
   bookmark: null
   local_id: Module1.Library1
@@ -46,6 +54,8 @@ strings:
   index: 9
   line: 4
   link: null
+  name: token9
+  obj_id: '256'
   text: '"Mijn fout"'
   type: 172
 title: Main.Module1.Library1
@@ -55,6 +65,8 @@ tokens:
   index: 3
   line: 3
   link: null
+  name: token3
+  obj_id: '250'
   text: Sub
   type: 125
 - column: 3
@@ -62,6 +74,8 @@ tokens:
   index: 4
   line: 3
   link: null
+  name: token4
+  obj_id: '251'
   text: ' '
   type: 185
 - column: 4
@@ -69,6 +83,8 @@ tokens:
   index: 5
   line: 3
   link: null
+  name: token5
+  obj_id: '252'
   text: Main
   type: 181
 - column: 8
@@ -76,6 +92,8 @@ tokens:
   index: 6
   line: 3
   link: null
+  name: token6
+  obj_id: '253'
   text: "\n\t"
   type: 183
 - column: 1
@@ -83,6 +101,8 @@ tokens:
   index: 7
   line: 4
   link: null
+  name: token7
+  obj_id: '254'
   text: Error
   type: 49
 - column: 6
@@ -90,6 +110,8 @@ tokens:
   index: 8
   line: 4
   link: null
+  name: token8
+  obj_id: '255'
   text: ' '
   type: 185
 - column: 7
@@ -97,6 +119,8 @@ tokens:
   index: 9
   line: 4
   link: null
+  name: token9
+  obj_id: '256'
   text: '"Mijn fout"'
   type: 172
 - column: 18
@@ -104,6 +128,8 @@ tokens:
   index: 10
   line: 4
   link: null
+  name: token10
+  obj_id: '257'
   text: '
 
     '
@@ -113,8 +139,8 @@ tokens:
   index: 11
   line: 5
   link: null
+  name: token11
+  obj_id: '258'
   text: End Sub
   type: 44
-used_by: []
-uses: []
 ---

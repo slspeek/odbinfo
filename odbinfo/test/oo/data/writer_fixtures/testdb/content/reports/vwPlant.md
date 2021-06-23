@@ -12,13 +12,11 @@ formulas:
 - field:[naam]
 - field:[RFamliyID]
 name: vwPlant
-obj_id: 98
+obj_id: '174'
 output_type: application/vnd.oasis.opendocument.text
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
   object_type: metadatas
 title: vwPlant
-used_by: []
-uses: []
 ---

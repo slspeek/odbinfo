@@ -243,7 +243,7 @@ def _read_grid(data):
 def _read_eventlisteners(data) -> List[EventListener]:
     def read_listener(oolistn):
         return \
-            EventListener(oolistn["@script:event-name"],
+            EventListener("", oolistn["@script:event-name"],
                           oolistn["@xlink:href"])
     eventlisteners = []
     if "office:event-listeners" in data.keys():

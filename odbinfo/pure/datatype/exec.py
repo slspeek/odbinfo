@@ -2,11 +2,11 @@
 from dataclasses import dataclass, field
 from typing import List, Sequence
 
-from odbinfo.pure.datatype.base import DataObject, Token
+from odbinfo.pure.datatype.base import PageOwner, Token
 
 
 @dataclass
-class PythonModule(DataObject):
+class PythonModule(PageOwner):
     " Python Module "
     library: str
     source: str
@@ -17,11 +17,11 @@ class PythonModule(DataObject):
 
 
 @dataclass
-class PythonLibrary(DataObject):
+class PythonLibrary(PageOwner):
     " Python library "
     modules: List[PythonModule]
 
-    def children(self) -> Sequence[DataObject]:
+    def children(self):
         return self.modules
 
 
@@ -34,7 +34,7 @@ class BasicCall:
 
 # pylint:disable=too-many-instance-attributes
 @dataclass
-class BasicFunction(DataObject):
+class BasicFunction(PageOwner):
     " Basic sub or function "
     library: str
     module: str
@@ -50,9 +50,12 @@ class BasicFunction(DataObject):
         super().__post_init__()
         self.title = f"{self.name}.{self.module}.{self.library}"
 
+    def children(self):
+        return self.tokens
+
 
 @dataclass
-class Module(DataObject):
+class Module(PageOwner):
     " Basic module"
     library: str
     source: str
@@ -65,14 +68,14 @@ class Module(DataObject):
         super().__post_init__()
         self.title = f"{self.name}.{self.library}"
 
-    def children(self) -> Sequence[DataObject]:
-        return self.callables
+    def children(self):
+        return self.callables + self.tokens
 
 
 @dataclass
-class Library(DataObject):
+class Library(PageOwner):
     " Basic library"
     modules: List[Module]
 
-    def children(self) -> Sequence[DataObject]:
+    def children(self):
         return self.modules

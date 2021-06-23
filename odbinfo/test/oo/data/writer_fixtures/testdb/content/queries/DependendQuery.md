@@ -4,115 +4,73 @@ columns:
   issigned: false
   name: Name
   nullable: Nullable
-  obj_id: 26
-  parent_link:
-    bookmark: null
-    local_id: DependendQuery
-    object_type: queries
+  obj_id: '46'
   precision: 2147483647
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: SYSTEM_SUBQUERY.Name
   typename: VARCHAR
-  used_by: []
-  uses: []
   writable: true
 - autoincrement: false
   issigned: true
   name: FamilyID
   nullable: Nullable
-  obj_id: 27
-  parent_link:
-    bookmark: null
-    local_id: DependendQuery
-    object_type: queries
+  obj_id: '47'
   precision: 10
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: SYSTEM_SUBQUERY.FamilyID
   typename: INTEGER
-  used_by: []
-  uses: []
   writable: true
 - autoincrement: false
   issigned: true
   name: id
   nullable: Nullable
-  obj_id: 28
-  parent_link:
-    bookmark: null
-    local_id: DependendQuery
-    object_type: queries
+  obj_id: '48'
   precision: 100
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: SYSTEM_SUBQUERY.id
   typename: NUMERIC
-  used_by: []
-  uses: []
   writable: true
 - autoincrement: false
   issigned: false
   name: naam
   nullable: Nullable
-  obj_id: 29
-  parent_link:
-    bookmark: null
-    local_id: DependendQuery
-    object_type: queries
+  obj_id: '49'
   precision: 2147483647
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: SYSTEM_SUBQUERY.naam
   typename: VARCHAR
-  used_by: []
-  uses: []
   writable: true
 - autoincrement: false
   issigned: true
   name: RFamliyID
   nullable: Nullable
-  obj_id: 30
-  parent_link:
-    bookmark: null
-    local_id: DependendQuery
-    object_type: queries
+  obj_id: '50'
   precision: 10
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: SYSTEM_SUBQUERY.RFamliyID
   typename: INTEGER
-  used_by: []
-  uses: []
   writable: true
 - autoincrement: false
   issigned: true
   name: id
   nullable: Nullable
-  obj_id: 31
-  parent_link:
-    bookmark: null
-    local_id: DependendQuery
-    object_type: queries
+  obj_id: '51'
   precision: 100
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: SYSTEM_SUBQUERY.id
   typename: NUMERIC
-  used_by: []
-  uses: []
   writable: true
 command: 'SELECT *
 
   FROM   "FamilyLookup", "vwPlant", "view1"'
 name: DependendQuery
-obj_id: 25
+obj_id: '45'
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -126,6 +84,8 @@ table_tokens:
     bookmark: null
     local_id: FamilyLookup
     object_type: queries
+  name: token8
+  obj_id: '60'
   text: '"FamilyLookup"'
   type: 197
 - column: 23
@@ -136,6 +96,8 @@ table_tokens:
     bookmark: null
     local_id: vwPlant
     object_type: queries
+  name: token11
+  obj_id: '63'
   text: '"vwPlant"'
   type: 197
 - column: 34
@@ -146,6 +108,8 @@ table_tokens:
     bookmark: null
     local_id: view1
     object_type: views
+  name: token14
+  obj_id: '66'
   text: '"view1"'
   type: 197
 title: DependendQuery
@@ -155,6 +119,8 @@ tokens:
   index: 0
   line: 1
   link: null
+  name: token0
+  obj_id: '52'
   text: SELECT
   type: 129
 - column: 6
@@ -162,6 +128,8 @@ tokens:
   index: 1
   line: 1
   link: null
+  name: token1
+  obj_id: '53'
   text: ' '
   type: 204
 - column: 7
@@ -169,6 +137,8 @@ tokens:
   index: 2
   line: 1
   link: null
+  name: token2
+  obj_id: '54'
   text: '*'
   type: 7
 - column: 8
@@ -176,6 +146,8 @@ tokens:
   index: 3
   line: 1
   link: null
+  name: token3
+  obj_id: '55'
   text: '
 
     '
@@ -185,6 +157,8 @@ tokens:
   index: 4
   line: 2
   link: null
+  name: token4
+  obj_id: '56'
   text: FROM
   type: 75
 - column: 4
@@ -192,6 +166,8 @@ tokens:
   index: 5
   line: 2
   link: null
+  name: token5
+  obj_id: '57'
   text: ' '
   type: 204
 - column: 5
@@ -199,6 +175,8 @@ tokens:
   index: 6
   line: 2
   link: null
+  name: token6
+  obj_id: '58'
   text: ' '
   type: 204
 - column: 6
@@ -206,6 +184,8 @@ tokens:
   index: 7
   line: 2
   link: null
+  name: token7
+  obj_id: '59'
   text: ' '
   type: 204
 - column: 7
@@ -216,6 +196,8 @@ tokens:
     bookmark: null
     local_id: FamilyLookup
     object_type: queries
+  name: token8
+  obj_id: '60'
   text: '"FamilyLookup"'
   type: 197
 - column: 21
@@ -223,6 +205,8 @@ tokens:
   index: 9
   line: 2
   link: null
+  name: token9
+  obj_id: '61'
   text: ','
   type: 5
 - column: 22
@@ -230,6 +214,8 @@ tokens:
   index: 10
   line: 2
   link: null
+  name: token10
+  obj_id: '62'
   text: ' '
   type: 204
 - column: 23
@@ -240,6 +226,8 @@ tokens:
     bookmark: null
     local_id: vwPlant
     object_type: queries
+  name: token11
+  obj_id: '63'
   text: '"vwPlant"'
   type: 197
 - column: 32
@@ -247,6 +235,8 @@ tokens:
   index: 12
   line: 2
   link: null
+  name: token12
+  obj_id: '64'
   text: ','
   type: 5
 - column: 33
@@ -254,6 +244,8 @@ tokens:
   index: 13
   line: 2
   link: null
+  name: token13
+  obj_id: '65'
   text: ' '
   type: 204
 - column: 34
@@ -264,8 +256,8 @@ tokens:
     bookmark: null
     local_id: view1
     object_type: views
+  name: token14
+  obj_id: '66'
   text: '"view1"'
   type: 197
-used_by: []
-uses: []
 ---

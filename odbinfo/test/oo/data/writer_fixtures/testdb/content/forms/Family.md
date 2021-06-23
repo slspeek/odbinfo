@@ -1,7 +1,7 @@
 ---
 height: 0
 name: Family
-obj_id: 43
+obj_id: '116'
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -27,15 +27,8 @@ subforms:
       inputrequired: 'false'
       label: FamlilyID
       name: FamlilyID
-      obj_id: 46
-      parent_link:
-        bookmark: null
-        local_id: MainForm_Grid
-        object_type: grids
-      title: ''
+      obj_id: '119'
       type: ooo:FormattedField
-      used_by: []
-      uses: []
     - controlid: control3
       convertemptytonull: 'true'
       datafield: Name
@@ -44,15 +37,8 @@ subforms:
       inputrequired: 'false'
       label: Name
       name: Name
-      obj_id: 47
-      parent_link:
-        bookmark: null
-        local_id: MainForm_Grid
-        object_type: grids
-      title: ''
+      obj_id: '120'
       type: ooo:TextField
-      used_by: []
-      uses: []
     - controlid: control4
       convertemptytonull: 'true'
       datafield: Desc
@@ -61,39 +47,21 @@ subforms:
       inputrequired: 'false'
       label: Desc
       name: Desc
-      obj_id: 48
-      parent_link:
-        bookmark: null
-        local_id: MainForm_Grid
-        object_type: grids
-      title: ''
+      obj_id: '121'
       type: ooo:TextField
-      used_by: []
-      uses: []
     name: MainForm_Grid
-    obj_id: 45
-    parent_link:
-      bookmark: null
-      local_id: MainForm
-      object_type: subforms
-    title: MainForm_Grid
-    used_by: []
-    uses: []
+    obj_id: '118'
   depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''
   name: MainForm
-  obj_id: 44
+  obj_id: '117'
   parent_link:
     bookmark: null
     local_id: Family
     object_type: forms
   subforms: []
   title: MainForm
-  used_by: []
-  uses: []
 title: Family
-used_by: []
-uses: []
 ---

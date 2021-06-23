@@ -1,13 +1,13 @@
 " Graphical User Interface datatypes "
 from dataclasses import dataclass, field
-from typing import List, Optional, Sequence, Union, cast
+from typing import List, Optional, Union
 
-from odbinfo.pure.datatype.base import DataObject, LinkedString
+from odbinfo.pure.datatype.base import LinkedString, Node, PageOwner
 from odbinfo.pure.datatype.tabular import Query
 
 
 @dataclass
-class CommandDriven(DataObject):
+class CommandDriven(PageOwner):
     " Has a command and commandtype "
     command: LinkedString
     commandtype: str
@@ -16,30 +16,30 @@ class CommandDriven(DataObject):
 
 
 @dataclass
-class DatabaseDisplay(DataObject):
+class DatabaseDisplay(Node):
     " Field in TextDocument "
     database: str
     table: LinkedString
     tabletype: str
     column: str
 
-    def __post_init__(self) -> None:
-        super().__post_init__()
+    def __post_init__(self):
+        # super().__post_init__()
         self.title = f"{self.table.text}.{self.column}"
 
 
 @dataclass
-class TextDocument(DataObject):
+class TextDocument(PageOwner):
     " ODT or OTT file metadata "
     path: str
     fields: List[DatabaseDisplay]
 
-    def children(self) -> Sequence[DataObject]:
+    def children(self):
         return self.fields
 
 
 @dataclass
-class EventListener:
+class EventListener(Node):
     " Control eventlistener "
     event: str
     script: str
@@ -47,7 +47,7 @@ class EventListener:
 
 # pylint: disable=too-many-instance-attributes
 @dataclass
-class Control(DataObject):
+class Control(Node):
     " Form control "
     name: str
     controlid: str
@@ -58,6 +58,9 @@ class Control(DataObject):
     formfor: str
     type: str
     eventlisteners: List[EventListener]
+
+    def children(self):
+        return self.eventlisteners
 
 
 @dataclass
@@ -70,11 +73,11 @@ class ListBox(Control):
 
 
 @dataclass
-class Grid(DataObject):
+class Grid(Node):
     " Table view control"
     columns: List[Control]
 
-    def children(self) -> Sequence[DataObject]:
+    def children(self):
         return self.columns
 
 
@@ -90,18 +93,17 @@ class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
     subforms: List['SubForm']
     depth: Optional[int] = field(init=False, default=None)
 
-    def children(self) -> Sequence[DataObject]:
-        return (cast(List[DataObject], self.controls) +
-                cast(List[DataObject], self.subforms))
+    def children(self):
+        return self.controls + self.subforms
 
 
 @dataclass
-class Form(DataObject):
+class Form(PageOwner):
     " Toplevel form "
     subforms: List[SubForm]
     height: Optional[int] = field(init=False, default=None)
 
-    def children(self) -> Sequence[DataObject]:
+    def children(self):
         return self.subforms
 
 

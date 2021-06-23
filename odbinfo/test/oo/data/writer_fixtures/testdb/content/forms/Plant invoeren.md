@@ -1,7 +1,7 @@
 ---
 height: 0
 name: Plant invoeren
-obj_id: 61
+obj_id: '134'
 parent_link:
   bookmark: null
   local_id: ./testdb.odb
@@ -27,15 +27,8 @@ subforms:
       inputrequired: 'false'
       label: id
       name: id
-      obj_id: 64
-      parent_link:
-        bookmark: null
-        local_id: MainForm_Grid
-        object_type: grids
-      title: ''
+      obj_id: '137'
       type: ooo:FormattedField
-      used_by: []
-      uses: []
     - controlid: control3
       convertemptytonull: 'true'
       datafield: naam
@@ -44,39 +37,21 @@ subforms:
       inputrequired: 'false'
       label: naam
       name: naam
-      obj_id: 65
-      parent_link:
-        bookmark: null
-        local_id: MainForm_Grid
-        object_type: grids
-      title: ''
+      obj_id: '138'
       type: ooo:TextField
-      used_by: []
-      uses: []
     name: MainForm_Grid
-    obj_id: 63
-    parent_link:
-      bookmark: null
-      local_id: MainForm
-      object_type: subforms
-    title: MainForm_Grid
-    used_by: []
-    uses: []
+    obj_id: '136'
   depth: 0
   detailfields: ''
   embedded_query: null
   masterfields: ''
   name: MainForm
-  obj_id: 62
+  obj_id: '135'
   parent_link:
     bookmark: null
     local_id: Plant invoeren
     object_type: forms
   subforms: []
   title: MainForm
-  used_by: []
-  uses: []
 title: Plant invoeren
-used_by: []
-uses: []
 ---

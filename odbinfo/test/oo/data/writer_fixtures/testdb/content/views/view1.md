@@ -29,7 +29,6 @@ table_tokens:
     bookmark: null
     local_id: Plant
     object_type: tables
-  name: token8
   obj_id: '44'
   text: '"Plant"'
   type: 197
@@ -40,7 +39,6 @@ tokens:
   index: 0
   line: 1
   link: null
-  name: token0
   obj_id: '36'
   text: SELECT
   type: 129
@@ -49,7 +47,6 @@ tokens:
   index: 1
   line: 1
   link: null
-  name: token1
   obj_id: '37'
   text: ' '
   type: 204
@@ -58,7 +55,6 @@ tokens:
   index: 2
   line: 1
   link: null
-  name: token2
   obj_id: '38'
   text: '"id"'
   type: 197
@@ -67,7 +63,6 @@ tokens:
   index: 3
   line: 1
   link: null
-  name: token3
   obj_id: '39'
   text: '
 
@@ -78,7 +73,6 @@ tokens:
   index: 4
   line: 2
   link: null
-  name: token4
   obj_id: '40'
   text: FROM
   type: 75
@@ -87,7 +81,6 @@ tokens:
   index: 5
   line: 2
   link: null
-  name: token5
   obj_id: '41'
   text: ' '
   type: 204
@@ -96,7 +89,6 @@ tokens:
   index: 6
   line: 2
   link: null
-  name: token6
   obj_id: '42'
   text: ' '
   type: 204
@@ -105,7 +97,6 @@ tokens:
   index: 7
   line: 2
   link: null
-  name: token7
   obj_id: '43'
   text: ' '
   type: 204
@@ -117,7 +108,6 @@ tokens:
     bookmark: null
     local_id: Plant
     object_type: tables
-  name: token8
   obj_id: '44'
   text: '"Plant"'
   type: 197

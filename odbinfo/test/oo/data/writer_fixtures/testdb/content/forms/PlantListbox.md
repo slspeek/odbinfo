@@ -87,7 +87,6 @@ subforms:
     datafield: ''
     eventlisteners:
     - event: form:performaction
-      name: ''
       obj_id: '148'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''
@@ -111,11 +110,9 @@ subforms:
     datafield: ''
     eventlisteners:
     - event: form:performaction
-      name: ''
       obj_id: '151'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     - event: form:approveaction
-      name: ''
       obj_id: '152'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''

@@ -58,7 +58,6 @@ def _database_displays(doc_path) -> List[DatabaseDisplay]:
     def display(data):
         return \
             DatabaseDisplay(
-                data["@text:column-name"],
                 data["@text:database-name"],
                 LinkedString(data["@text:table-name"]),
                 data["@text:table-type"],
@@ -243,7 +242,7 @@ def _read_grid(data):
 def _read_eventlisteners(data) -> List[EventListener]:
     def read_listener(oolistn):
         return \
-            EventListener("", oolistn["@script:event-name"],
+            EventListener(oolistn["@script:event-name"],
                           oolistn["@xlink:href"])
     eventlisteners = []
     if "office:event-listeners" in data.keys():

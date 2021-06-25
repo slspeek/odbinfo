@@ -26,8 +26,7 @@ def get_tokens(stream) -> List[Token]:
 def convert_token(atoken) -> Token:
     " convert antlr4 token to Token "
     return\
-        Token(f"token{atoken.tokenIndex}",
-              atoken.column,
+        Token(atoken.column,
               atoken.line,
               atoken.text,
               atoken.type,

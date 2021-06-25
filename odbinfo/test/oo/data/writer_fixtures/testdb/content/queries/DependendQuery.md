@@ -84,7 +84,6 @@ table_tokens:
     bookmark: null
     local_id: FamilyLookup
     object_type: queries
-  name: token8
   obj_id: '60'
   text: '"FamilyLookup"'
   type: 197
@@ -96,7 +95,6 @@ table_tokens:
     bookmark: null
     local_id: vwPlant
     object_type: queries
-  name: token11
   obj_id: '63'
   text: '"vwPlant"'
   type: 197
@@ -108,7 +106,6 @@ table_tokens:
     bookmark: null
     local_id: view1
     object_type: views
-  name: token14
   obj_id: '66'
   text: '"view1"'
   type: 197
@@ -119,7 +116,6 @@ tokens:
   index: 0
   line: 1
   link: null
-  name: token0
   obj_id: '52'
   text: SELECT
   type: 129
@@ -128,7 +124,6 @@ tokens:
   index: 1
   line: 1
   link: null
-  name: token1
   obj_id: '53'
   text: ' '
   type: 204
@@ -137,7 +132,6 @@ tokens:
   index: 2
   line: 1
   link: null
-  name: token2
   obj_id: '54'
   text: '*'
   type: 7
@@ -146,7 +140,6 @@ tokens:
   index: 3
   line: 1
   link: null
-  name: token3
   obj_id: '55'
   text: '
 
@@ -157,7 +150,6 @@ tokens:
   index: 4
   line: 2
   link: null
-  name: token4
   obj_id: '56'
   text: FROM
   type: 75
@@ -166,7 +158,6 @@ tokens:
   index: 5
   line: 2
   link: null
-  name: token5
   obj_id: '57'
   text: ' '
   type: 204
@@ -175,7 +166,6 @@ tokens:
   index: 6
   line: 2
   link: null
-  name: token6
   obj_id: '58'
   text: ' '
   type: 204
@@ -184,7 +174,6 @@ tokens:
   index: 7
   line: 2
   link: null
-  name: token7
   obj_id: '59'
   text: ' '
   type: 204
@@ -196,7 +185,6 @@ tokens:
     bookmark: null
     local_id: FamilyLookup
     object_type: queries
-  name: token8
   obj_id: '60'
   text: '"FamilyLookup"'
   type: 197
@@ -205,7 +193,6 @@ tokens:
   index: 9
   line: 2
   link: null
-  name: token9
   obj_id: '61'
   text: ','
   type: 5
@@ -214,7 +201,6 @@ tokens:
   index: 10
   line: 2
   link: null
-  name: token10
   obj_id: '62'
   text: ' '
   type: 204
@@ -226,7 +212,6 @@ tokens:
     bookmark: null
     local_id: vwPlant
     object_type: queries
-  name: token11
   obj_id: '63'
   text: '"vwPlant"'
   type: 197
@@ -235,7 +220,6 @@ tokens:
   index: 12
   line: 2
   link: null
-  name: token12
   obj_id: '64'
   text: ','
   type: 5
@@ -244,7 +228,6 @@ tokens:
   index: 13
   line: 2
   link: null
-  name: token13
   obj_id: '65'
   text: ' '
   type: 204
@@ -256,7 +239,6 @@ tokens:
     bookmark: null
     local_id: view1
     object_type: views
-  name: token14
   obj_id: '66'
   text: '"view1"'
   type: 197

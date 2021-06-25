@@ -6,7 +6,6 @@ callables:
     index: 7
     line: 4
     link: null
-    name: token7
     obj_id: '230'
     text: Print
     type: 100
@@ -15,7 +14,6 @@ callables:
     index: 8
     line: 4
     link: null
-    name: token8
     obj_id: '231'
     text: ' '
     type: 185
@@ -24,7 +22,6 @@ callables:
     index: 9
     line: 4
     link: null
-    name: token9
     obj_id: '232'
     text: '"hello world"'
     type: 172
@@ -33,7 +30,6 @@ callables:
     index: 10
     line: 4
     link: null
-    name: token10
     obj_id: '233'
     text: '
 
@@ -55,7 +51,6 @@ callables:
     index: 9
     line: 4
     link: null
-    name: token9
     obj_id: '232'
     text: '"hello world"'
     type: 172
@@ -66,7 +61,6 @@ callables:
     index: 3
     line: 3
     link: null
-    name: token3
     obj_id: '226'
     text: Sub
     type: 125
@@ -75,7 +69,6 @@ callables:
     index: 4
     line: 3
     link: null
-    name: token4
     obj_id: '227'
     text: ' '
     type: 185
@@ -84,7 +77,6 @@ callables:
     index: 5
     line: 3
     link: null
-    name: token5
     obj_id: '228'
     text: Main
     type: 181
@@ -93,7 +85,6 @@ callables:
     index: 6
     line: 3
     link: null
-    name: token6
     obj_id: '229'
     text: "\n\t"
     type: 183
@@ -102,7 +93,6 @@ callables:
     index: 7
     line: 4
     link: null
-    name: token7
     obj_id: '230'
     text: Print
     type: 100
@@ -111,7 +101,6 @@ callables:
     index: 8
     line: 4
     link: null
-    name: token8
     obj_id: '231'
     text: ' '
     type: 185
@@ -120,7 +109,6 @@ callables:
     index: 9
     line: 4
     link: null
-    name: token9
     obj_id: '232'
     text: '"hello world"'
     type: 172
@@ -129,7 +117,6 @@ callables:
     index: 10
     line: 4
     link: null
-    name: token10
     obj_id: '233'
     text: '
 
@@ -140,7 +127,6 @@ callables:
     index: 11
     line: 5
     link: null
-    name: token11
     obj_id: '234'
     text: End Sub
     type: 44
@@ -161,7 +147,6 @@ tokens:
   index: 0
   line: 1
   link: null
-  name: token0
   obj_id: '235'
   text: REM  *****  BASIC  *****
   type: 184
@@ -170,7 +155,6 @@ tokens:
   index: 1
   line: 1
   link: null
-  name: token1
   obj_id: '236'
   text: '
 
@@ -181,7 +165,6 @@ tokens:
   index: 2
   line: 2
   link: null
-  name: token2
   obj_id: '237'
   text: '
 
@@ -192,7 +175,6 @@ tokens:
   index: 3
   line: 3
   link: null
-  name: token3
   obj_id: '238'
   text: Sub
   type: 125
@@ -201,7 +183,6 @@ tokens:
   index: 4
   line: 3
   link: null
-  name: token4
   obj_id: '239'
   text: ' '
   type: 185
@@ -213,7 +194,6 @@ tokens:
     bookmark: null
     local_id: Main.Module2.Standard
     object_type: basicfunctions
-  name: token5
   obj_id: '240'
   text: Main
   type: 181
@@ -222,7 +202,6 @@ tokens:
   index: 6
   line: 3
   link: null
-  name: token6
   obj_id: '241'
   text: "\n\t"
   type: 183
@@ -231,7 +210,6 @@ tokens:
   index: 7
   line: 4
   link: null
-  name: token7
   obj_id: '242'
   text: Print
   type: 100
@@ -240,7 +218,6 @@ tokens:
   index: 8
   line: 4
   link: null
-  name: token8
   obj_id: '243'
   text: ' '
   type: 185
@@ -249,7 +226,6 @@ tokens:
   index: 9
   line: 4
   link: null
-  name: token9
   obj_id: '244'
   text: '"hello world"'
   type: 172
@@ -258,7 +234,6 @@ tokens:
   index: 10
   line: 4
   link: null
-  name: token10
   obj_id: '245'
   text: '
 
@@ -269,7 +244,6 @@ tokens:
   index: 11
   line: 5
   link: null
-  name: token11
   obj_id: '246'
   text: End Sub
   type: 44

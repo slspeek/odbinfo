@@ -38,7 +38,6 @@ table_tokens:
     bookmark: null
     local_id: Family
     object_type: tables
-  name: token18
   obj_id: '88'
   text: '"Family"'
   type: 197
@@ -49,7 +48,6 @@ tokens:
   index: 0
   line: 1
   link: null
-  name: token0
   obj_id: '70'
   text: SELECT
   type: 129
@@ -58,7 +56,6 @@ tokens:
   index: 1
   line: 1
   link: null
-  name: token1
   obj_id: '71'
   text: ' '
   type: 204
@@ -67,7 +64,6 @@ tokens:
   index: 2
   line: 1
   link: null
-  name: token2
   obj_id: '72'
   text: '"Name"'
   type: 197
@@ -76,7 +72,6 @@ tokens:
   index: 3
   line: 1
   link: null
-  name: token3
   obj_id: '73'
   text: ','
   type: 5
@@ -85,7 +80,6 @@ tokens:
   index: 4
   line: 1
   link: null
-  name: token4
   obj_id: '74'
   text: '
 
@@ -96,7 +90,6 @@ tokens:
   index: 5
   line: 2
   link: null
-  name: token5
   obj_id: '75'
   text: ' '
   type: 204
@@ -105,7 +98,6 @@ tokens:
   index: 6
   line: 2
   link: null
-  name: token6
   obj_id: '76'
   text: ' '
   type: 204
@@ -114,7 +106,6 @@ tokens:
   index: 7
   line: 2
   link: null
-  name: token7
   obj_id: '77'
   text: ' '
   type: 204
@@ -123,7 +114,6 @@ tokens:
   index: 8
   line: 2
   link: null
-  name: token8
   obj_id: '78'
   text: ' '
   type: 204
@@ -132,7 +122,6 @@ tokens:
   index: 9
   line: 2
   link: null
-  name: token9
   obj_id: '79'
   text: ' '
   type: 204
@@ -141,7 +130,6 @@ tokens:
   index: 10
   line: 2
   link: null
-  name: token10
   obj_id: '80'
   text: ' '
   type: 204
@@ -150,7 +138,6 @@ tokens:
   index: 11
   line: 2
   link: null
-  name: token11
   obj_id: '81'
   text: ' '
   type: 204
@@ -159,7 +146,6 @@ tokens:
   index: 12
   line: 2
   link: null
-  name: token12
   obj_id: '82'
   text: '"FamilyID"'
   type: 197
@@ -168,7 +154,6 @@ tokens:
   index: 13
   line: 2
   link: null
-  name: token13
   obj_id: '83'
   text: '
 
@@ -179,7 +164,6 @@ tokens:
   index: 14
   line: 3
   link: null
-  name: token14
   obj_id: '84'
   text: FROM
   type: 75
@@ -188,7 +172,6 @@ tokens:
   index: 15
   line: 3
   link: null
-  name: token15
   obj_id: '85'
   text: ' '
   type: 204
@@ -197,7 +180,6 @@ tokens:
   index: 16
   line: 3
   link: null
-  name: token16
   obj_id: '86'
   text: ' '
   type: 204
@@ -206,7 +188,6 @@ tokens:
   index: 17
   line: 3
   link: null
-  name: token17
   obj_id: '87'
   text: ' '
   type: 204
@@ -218,7 +199,6 @@ tokens:
     bookmark: null
     local_id: Family
     object_type: tables
-  name: token18
   obj_id: '88'
   text: '"Family"'
   type: 197

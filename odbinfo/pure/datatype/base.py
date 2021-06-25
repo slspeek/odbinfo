@@ -20,7 +20,6 @@ class SourceIdentifier(Identifier):
 @dataclass
 class Node:
     " DataObject without children "
-    name: str
     obj_id: str = field(init=False, default="not-set")
 
     # pylint:disable=no-self-use
@@ -38,6 +37,12 @@ class Node:
 
 
 @dataclass
+class NamedNode(Node):
+    "Has a name"
+    name: str
+
+
+@dataclass
 class LinkedString:
     " a string referencing a dataobject "
     text: str
@@ -45,7 +50,7 @@ class LinkedString:
 
 
 @dataclass
-class PageOwner(Node):
+class PageOwner(NamedNode):
     " has its own page, thus title attribute "\
         " an object with a parent_link "
     title: str = field(init=False)

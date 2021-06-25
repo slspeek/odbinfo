@@ -5,7 +5,6 @@ body_tokens:
   index: 39
   line: 13
   link: null
-  name: token39
   obj_id: '284'
   text: print
   type: 100
@@ -14,7 +13,6 @@ body_tokens:
   index: 40
   line: 13
   link: null
-  name: token40
   obj_id: '285'
   text: ' '
   type: 185
@@ -23,7 +21,6 @@ body_tokens:
   index: 41
   line: 13
   link: null
-  name: token41
   obj_id: '286'
   text: '"Module1.CalleeSub"'
   type: 172
@@ -32,7 +29,6 @@ body_tokens:
   index: 42
   line: 13
   link: null
-  name: token42
   obj_id: '287'
   text: '
 
@@ -54,7 +50,6 @@ strings:
   index: 41
   line: 13
   link: null
-  name: token41
   obj_id: '286'
   text: '"Module1.CalleeSub"'
   type: 172
@@ -65,7 +60,6 @@ tokens:
   index: 33
   line: 12
   link: null
-  name: token33
   obj_id: '278'
   text: Sub
   type: 125
@@ -74,7 +68,6 @@ tokens:
   index: 34
   line: 12
   link: null
-  name: token34
   obj_id: '279'
   text: ' '
   type: 185
@@ -83,7 +76,6 @@ tokens:
   index: 35
   line: 12
   link: null
-  name: token35
   obj_id: '280'
   text: CalleeSub
   type: 181
@@ -92,7 +84,6 @@ tokens:
   index: 36
   line: 12
   link: null
-  name: token36
   obj_id: '281'
   text: (
   type: 157
@@ -101,7 +92,6 @@ tokens:
   index: 37
   line: 12
   link: null
-  name: token37
   obj_id: '282'
   text: )
   type: 168
@@ -110,7 +100,6 @@ tokens:
   index: 38
   line: 12
   link: null
-  name: token38
   obj_id: '283'
   text: "\n\t"
   type: 183
@@ -119,7 +108,6 @@ tokens:
   index: 39
   line: 13
   link: null
-  name: token39
   obj_id: '284'
   text: print
   type: 100
@@ -128,7 +116,6 @@ tokens:
   index: 40
   line: 13
   link: null
-  name: token40
   obj_id: '285'
   text: ' '
   type: 185
@@ -137,7 +124,6 @@ tokens:
   index: 41
   line: 13
   link: null
-  name: token41
   obj_id: '286'
   text: '"Module1.CalleeSub"'
   type: 172
@@ -146,7 +132,6 @@ tokens:
   index: 42
   line: 13
   link: null
-  name: token42
   obj_id: '287'
   text: '
 
@@ -157,7 +142,6 @@ tokens:
   index: 43
   line: 14
   link: null
-  name: token43
   obj_id: '288'
   text: End Sub
   type: 44

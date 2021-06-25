@@ -4,7 +4,8 @@ from typing import List, Union
 
 from sql_formatter.core import format_sql
 
-from odbinfo.pure.datatype.base import LinkedString, Node, PageOwner, Token
+from odbinfo.pure.datatype.base import (LinkedString, NamedNode, PageOwner,
+                                        Token)
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 KEYTYPES = {1: "Primary",
@@ -27,7 +28,7 @@ KEYRULES = {0: "Cascade",
 
 
 @dataclass
-class BaseColumn(Node):
+class BaseColumn(NamedNode):
     "https://www.openhttps://www.openoffice.org/api/docs/"\
         "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
     autoincrement: bool
@@ -86,7 +87,7 @@ class Column(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Key(Node):  # pylint: disable=too-many-instance-attributes
+class Key(NamedNode):  # pylint: disable=too-many-instance-attributes
     """ Database key properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
@@ -105,7 +106,7 @@ class Key(Node):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Index(Node):
+class Index(NamedNode):
     """ Index properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Index.html
     """

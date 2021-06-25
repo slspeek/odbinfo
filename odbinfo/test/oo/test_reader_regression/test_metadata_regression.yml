@@ -2,7 +2,6 @@ documents:
 - fields:
   - column: naam
     database: testdb
-    name: naam
     obj_id: not-set
     table:
       link: null
@@ -338,7 +337,6 @@ forms:
       datafield: ''
       eventlisteners:
       - event: form:performaction
-        name: ''
         obj_id: not-set
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       formfor: ''
@@ -362,11 +360,9 @@ forms:
       datafield: ''
       eventlisteners:
       - event: form:performaction
-        name: ''
         obj_id: not-set
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       - event: form:approveaction
-        name: ''
         obj_id: not-set
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       formfor: ''

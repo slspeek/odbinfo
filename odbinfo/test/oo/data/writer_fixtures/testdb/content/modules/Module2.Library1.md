@@ -6,7 +6,6 @@ callables:
     index: 9
     line: 4
     link: null
-    name: token9
     obj_id: '528'
     text: print
     type: 100
@@ -15,7 +14,6 @@ callables:
     index: 10
     line: 4
     link: null
-    name: token10
     obj_id: '529'
     text: ' '
     type: 185
@@ -24,7 +22,6 @@ callables:
     index: 11
     line: 4
     link: null
-    name: token11
     obj_id: '530'
     text: '"Module2.CalleeSub"'
     type: 172
@@ -33,7 +30,6 @@ callables:
     index: 12
     line: 4
     link: null
-    name: token12
     obj_id: '531'
     text: '
 
@@ -55,7 +51,6 @@ callables:
     index: 11
     line: 4
     link: null
-    name: token11
     obj_id: '530'
     text: '"Module2.CalleeSub"'
     type: 172
@@ -66,7 +61,6 @@ callables:
     index: 3
     line: 3
     link: null
-    name: token3
     obj_id: '522'
     text: Sub
     type: 125
@@ -75,7 +69,6 @@ callables:
     index: 4
     line: 3
     link: null
-    name: token4
     obj_id: '523'
     text: ' '
     type: 185
@@ -84,7 +77,6 @@ callables:
     index: 5
     line: 3
     link: null
-    name: token5
     obj_id: '524'
     text: CalleeSub
     type: 181
@@ -93,7 +85,6 @@ callables:
     index: 6
     line: 3
     link: null
-    name: token6
     obj_id: '525'
     text: (
     type: 157
@@ -102,7 +93,6 @@ callables:
     index: 7
     line: 3
     link: null
-    name: token7
     obj_id: '526'
     text: )
     type: 168
@@ -111,7 +101,6 @@ callables:
     index: 8
     line: 3
     link: null
-    name: token8
     obj_id: '527'
     text: "\n\t"
     type: 183
@@ -120,7 +109,6 @@ callables:
     index: 9
     line: 4
     link: null
-    name: token9
     obj_id: '528'
     text: print
     type: 100
@@ -129,7 +117,6 @@ callables:
     index: 10
     line: 4
     link: null
-    name: token10
     obj_id: '529'
     text: ' '
     type: 185
@@ -138,7 +125,6 @@ callables:
     index: 11
     line: 4
     link: null
-    name: token11
     obj_id: '530'
     text: '"Module2.CalleeSub"'
     type: 172
@@ -147,7 +133,6 @@ callables:
     index: 12
     line: 4
     link: null
-    name: token12
     obj_id: '531'
     text: '
 
@@ -158,7 +143,6 @@ callables:
     index: 13
     line: 5
     link: null
-    name: token13
     obj_id: '532'
     text: End Sub
     type: 44
@@ -168,7 +152,6 @@ callables:
     index: 22
     line: 8
     link: null
-    name: token22
     obj_id: '540'
     text: print
     type: 100
@@ -177,7 +160,6 @@ callables:
     index: 23
     line: 8
     link: null
-    name: token23
     obj_id: '541'
     text: ' '
     type: 185
@@ -186,7 +168,6 @@ callables:
     index: 24
     line: 8
     link: null
-    name: token24
     obj_id: '542'
     text: '"Module2.CalleeTwoSub"'
     type: 172
@@ -195,7 +176,6 @@ callables:
     index: 25
     line: 8
     link: null
-    name: token25
     obj_id: '543'
     text: '
 
@@ -217,7 +197,6 @@ callables:
     index: 24
     line: 8
     link: null
-    name: token24
     obj_id: '542'
     text: '"Module2.CalleeTwoSub"'
     type: 172
@@ -228,7 +207,6 @@ callables:
     index: 16
     line: 7
     link: null
-    name: token16
     obj_id: '534'
     text: Sub
     type: 125
@@ -237,7 +215,6 @@ callables:
     index: 17
     line: 7
     link: null
-    name: token17
     obj_id: '535'
     text: ' '
     type: 185
@@ -246,7 +223,6 @@ callables:
     index: 18
     line: 7
     link: null
-    name: token18
     obj_id: '536'
     text: CalleeTwoSub
     type: 181
@@ -255,7 +231,6 @@ callables:
     index: 19
     line: 7
     link: null
-    name: token19
     obj_id: '537'
     text: (
     type: 157
@@ -264,7 +239,6 @@ callables:
     index: 20
     line: 7
     link: null
-    name: token20
     obj_id: '538'
     text: )
     type: 168
@@ -273,7 +247,6 @@ callables:
     index: 21
     line: 7
     link: null
-    name: token21
     obj_id: '539'
     text: "\n\t"
     type: 183
@@ -282,7 +255,6 @@ callables:
     index: 22
     line: 8
     link: null
-    name: token22
     obj_id: '540'
     text: print
     type: 100
@@ -291,7 +263,6 @@ callables:
     index: 23
     line: 8
     link: null
-    name: token23
     obj_id: '541'
     text: ' '
     type: 185
@@ -300,7 +271,6 @@ callables:
     index: 24
     line: 8
     link: null
-    name: token24
     obj_id: '542'
     text: '"Module2.CalleeTwoSub"'
     type: 172
@@ -309,7 +279,6 @@ callables:
     index: 25
     line: 8
     link: null
-    name: token25
     obj_id: '543'
     text: '
 
@@ -320,7 +289,6 @@ callables:
     index: 26
     line: 9
     link: null
-    name: token26
     obj_id: '544'
     text: End Sub
     type: 44
@@ -343,7 +311,6 @@ tokens:
   index: 0
   line: 1
   link: null
-  name: token0
   obj_id: '545'
   text: REM  *****  BASIC  *****
   type: 184
@@ -352,7 +319,6 @@ tokens:
   index: 1
   line: 1
   link: null
-  name: token1
   obj_id: '546'
   text: '
 
@@ -363,7 +329,6 @@ tokens:
   index: 2
   line: 2
   link: null
-  name: token2
   obj_id: '547'
   text: '
 
@@ -374,7 +339,6 @@ tokens:
   index: 3
   line: 3
   link: null
-  name: token3
   obj_id: '548'
   text: Sub
   type: 125
@@ -383,7 +347,6 @@ tokens:
   index: 4
   line: 3
   link: null
-  name: token4
   obj_id: '549'
   text: ' '
   type: 185
@@ -395,7 +358,6 @@ tokens:
     bookmark: null
     local_id: CalleeSub.Module2.Library1
     object_type: basicfunctions
-  name: token5
   obj_id: '550'
   text: CalleeSub
   type: 181
@@ -404,7 +366,6 @@ tokens:
   index: 6
   line: 3
   link: null
-  name: token6
   obj_id: '551'
   text: (
   type: 157
@@ -413,7 +374,6 @@ tokens:
   index: 7
   line: 3
   link: null
-  name: token7
   obj_id: '552'
   text: )
   type: 168
@@ -422,7 +382,6 @@ tokens:
   index: 8
   line: 3
   link: null
-  name: token8
   obj_id: '553'
   text: "\n\t"
   type: 183
@@ -431,7 +390,6 @@ tokens:
   index: 9
   line: 4
   link: null
-  name: token9
   obj_id: '554'
   text: print
   type: 100
@@ -440,7 +398,6 @@ tokens:
   index: 10
   line: 4
   link: null
-  name: token10
   obj_id: '555'
   text: ' '
   type: 185
@@ -449,7 +406,6 @@ tokens:
   index: 11
   line: 4
   link: null
-  name: token11
   obj_id: '556'
   text: '"Module2.CalleeSub"'
   type: 172
@@ -458,7 +414,6 @@ tokens:
   index: 12
   line: 4
   link: null
-  name: token12
   obj_id: '557'
   text: '
 
@@ -469,7 +424,6 @@ tokens:
   index: 13
   line: 5
   link: null
-  name: token13
   obj_id: '558'
   text: End Sub
   type: 44
@@ -478,7 +432,6 @@ tokens:
   index: 14
   line: 5
   link: null
-  name: token14
   obj_id: '559'
   text: '
 
@@ -489,7 +442,6 @@ tokens:
   index: 15
   line: 6
   link: null
-  name: token15
   obj_id: '560'
   text: '
 
@@ -500,7 +452,6 @@ tokens:
   index: 16
   line: 7
   link: null
-  name: token16
   obj_id: '561'
   text: Sub
   type: 125
@@ -509,7 +460,6 @@ tokens:
   index: 17
   line: 7
   link: null
-  name: token17
   obj_id: '562'
   text: ' '
   type: 185
@@ -521,7 +471,6 @@ tokens:
     bookmark: null
     local_id: CalleeTwoSub.Module2.Library1
     object_type: basicfunctions
-  name: token18
   obj_id: '563'
   text: CalleeTwoSub
   type: 181
@@ -530,7 +479,6 @@ tokens:
   index: 19
   line: 7
   link: null
-  name: token19
   obj_id: '564'
   text: (
   type: 157
@@ -539,7 +487,6 @@ tokens:
   index: 20
   line: 7
   link: null
-  name: token20
   obj_id: '565'
   text: )
   type: 168
@@ -548,7 +495,6 @@ tokens:
   index: 21
   line: 7
   link: null
-  name: token21
   obj_id: '566'
   text: "\n\t"
   type: 183
@@ -557,7 +503,6 @@ tokens:
   index: 22
   line: 8
   link: null
-  name: token22
   obj_id: '567'
   text: print
   type: 100
@@ -566,7 +511,6 @@ tokens:
   index: 23
   line: 8
   link: null
-  name: token23
   obj_id: '568'
   text: ' '
   type: 185
@@ -575,7 +519,6 @@ tokens:
   index: 24
   line: 8
   link: null
-  name: token24
   obj_id: '569'
   text: '"Module2.CalleeTwoSub"'
   type: 172
@@ -584,7 +527,6 @@ tokens:
   index: 25
   line: 8
   link: null
-  name: token25
   obj_id: '570'
   text: '
 
@@ -595,7 +537,6 @@ tokens:
   index: 26
   line: 9
   link: null
-  name: token26
   obj_id: '571'
   text: End Sub
   type: 44

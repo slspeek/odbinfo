@@ -29,7 +29,6 @@ table_tokens:
     bookmark: null
     local_id: view1
     object_type: views
-  name: token2
   obj_id: '25'
   text: '"view1"'
   type: 197
@@ -41,7 +40,6 @@ table_tokens:
     bookmark: null
     local_id: view1
     object_type: views
-  name: token10
   obj_id: '33'
   text: '"view1"'
   type: 197
@@ -52,7 +50,6 @@ tokens:
   index: 0
   line: 1
   link: null
-  name: token0
   obj_id: '23'
   text: SELECT
   type: 129
@@ -61,7 +58,6 @@ tokens:
   index: 1
   line: 1
   link: null
-  name: token1
   obj_id: '24'
   text: ' '
   type: 204
@@ -73,7 +69,6 @@ tokens:
     bookmark: null
     local_id: view1
     object_type: views
-  name: token2
   obj_id: '25'
   text: '"view1"'
   type: 197
@@ -82,7 +77,6 @@ tokens:
   index: 3
   line: 1
   link: null
-  name: token3
   obj_id: '26'
   text: .
   type: 2
@@ -91,7 +85,6 @@ tokens:
   index: 4
   line: 1
   link: null
-  name: token4
   obj_id: '27'
   text: '"id"'
   type: 197
@@ -100,7 +93,6 @@ tokens:
   index: 5
   line: 1
   link: null
-  name: token5
   obj_id: '28'
   text: '
 
@@ -111,7 +103,6 @@ tokens:
   index: 6
   line: 2
   link: null
-  name: token6
   obj_id: '29'
   text: FROM
   type: 75
@@ -120,7 +111,6 @@ tokens:
   index: 7
   line: 2
   link: null
-  name: token7
   obj_id: '30'
   text: ' '
   type: 204
@@ -129,7 +119,6 @@ tokens:
   index: 8
   line: 2
   link: null
-  name: token8
   obj_id: '31'
   text: ' '
   type: 204
@@ -138,7 +127,6 @@ tokens:
   index: 9
   line: 2
   link: null
-  name: token9
   obj_id: '32'
   text: ' '
   type: 204
@@ -150,7 +138,6 @@ tokens:
     bookmark: null
     local_id: view1
     object_type: views
-  name: token10
   obj_id: '33'
   text: '"view1"'
   type: 197

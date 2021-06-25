@@ -5,7 +5,6 @@ body_tokens:
   index: 7
   line: 4
   link: null
-  name: token7
   obj_id: '254'
   text: Error
   type: 49
@@ -14,7 +13,6 @@ body_tokens:
   index: 8
   line: 4
   link: null
-  name: token8
   obj_id: '255'
   text: ' '
   type: 185
@@ -23,7 +21,6 @@ body_tokens:
   index: 9
   line: 4
   link: null
-  name: token9
   obj_id: '256'
   text: '"Mijn fout"'
   type: 172
@@ -32,7 +29,6 @@ body_tokens:
   index: 10
   line: 4
   link: null
-  name: token10
   obj_id: '257'
   text: '
 
@@ -54,7 +50,6 @@ strings:
   index: 9
   line: 4
   link: null
-  name: token9
   obj_id: '256'
   text: '"Mijn fout"'
   type: 172
@@ -65,7 +60,6 @@ tokens:
   index: 3
   line: 3
   link: null
-  name: token3
   obj_id: '250'
   text: Sub
   type: 125
@@ -74,7 +68,6 @@ tokens:
   index: 4
   line: 3
   link: null
-  name: token4
   obj_id: '251'
   text: ' '
   type: 185
@@ -83,7 +76,6 @@ tokens:
   index: 5
   line: 3
   link: null
-  name: token5
   obj_id: '252'
   text: Main
   type: 181
@@ -92,7 +84,6 @@ tokens:
   index: 6
   line: 3
   link: null
-  name: token6
   obj_id: '253'
   text: "\n\t"
   type: 183
@@ -101,7 +92,6 @@ tokens:
   index: 7
   line: 4
   link: null
-  name: token7
   obj_id: '254'
   text: Error
   type: 49
@@ -110,7 +100,6 @@ tokens:
   index: 8
   line: 4
   link: null
-  name: token8
   obj_id: '255'
   text: ' '
   type: 185
@@ -119,7 +108,6 @@ tokens:
   index: 9
   line: 4
   link: null
-  name: token9
   obj_id: '256'
   text: '"Mijn fout"'
   type: 172
@@ -128,7 +116,6 @@ tokens:
   index: 10
   line: 4
   link: null
-  name: token10
   obj_id: '257'
   text: '
 
@@ -139,7 +126,6 @@ tokens:
   index: 11
   line: 5
   link: null
-  name: token11
   obj_id: '258'
   text: End Sub
   type: 44

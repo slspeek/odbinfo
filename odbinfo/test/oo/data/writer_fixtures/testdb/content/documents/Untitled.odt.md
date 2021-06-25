@@ -2,7 +2,6 @@
 fields:
 - column: naam
   database: testdb
-  name: naam
   obj_id: '577'
   table:
     link:

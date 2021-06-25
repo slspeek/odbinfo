@@ -6,7 +6,6 @@ callables:
     index: 7
     line: 4
     link: null
-    name: token7
     obj_id: '182'
     text: print
     type: 100
@@ -15,7 +14,6 @@ callables:
     index: 8
     line: 4
     link: null
-    name: token8
     obj_id: '183'
     text: ' '
     type: 185
@@ -24,7 +22,6 @@ callables:
     index: 9
     line: 4
     link: null
-    name: token9
     obj_id: '184'
     text: '"Standard.Module1.CalleeOtherLib"'
     type: 172
@@ -33,7 +30,6 @@ callables:
     index: 10
     line: 4
     link: null
-    name: token10
     obj_id: '185'
     text: '
 
@@ -55,7 +51,6 @@ callables:
     index: 9
     line: 4
     link: null
-    name: token9
     obj_id: '184'
     text: '"Standard.Module1.CalleeOtherLib"'
     type: 172
@@ -66,7 +61,6 @@ callables:
     index: 3
     line: 3
     link: null
-    name: token3
     obj_id: '178'
     text: Sub
     type: 125
@@ -75,7 +69,6 @@ callables:
     index: 4
     line: 3
     link: null
-    name: token4
     obj_id: '179'
     text: ' '
     type: 185
@@ -84,7 +77,6 @@ callables:
     index: 5
     line: 3
     link: null
-    name: token5
     obj_id: '180'
     text: CalleeOtherLib
     type: 181
@@ -93,7 +85,6 @@ callables:
     index: 6
     line: 3
     link: null
-    name: token6
     obj_id: '181'
     text: "\n\t"
     type: 183
@@ -102,7 +93,6 @@ callables:
     index: 7
     line: 4
     link: null
-    name: token7
     obj_id: '182'
     text: print
     type: 100
@@ -111,7 +101,6 @@ callables:
     index: 8
     line: 4
     link: null
-    name: token8
     obj_id: '183'
     text: ' '
     type: 185
@@ -120,7 +109,6 @@ callables:
     index: 9
     line: 4
     link: null
-    name: token9
     obj_id: '184'
     text: '"Standard.Module1.CalleeOtherLib"'
     type: 172
@@ -129,7 +117,6 @@ callables:
     index: 10
     line: 4
     link: null
-    name: token10
     obj_id: '185'
     text: '
 
@@ -140,7 +127,6 @@ callables:
     index: 11
     line: 5
     link: null
-    name: token11
     obj_id: '186'
     text: End Sub
     type: 44
@@ -150,7 +136,6 @@ callables:
     index: 20
     line: 8
     link: null
-    name: token20
     obj_id: '194'
     text: print
     type: 100
@@ -159,7 +144,6 @@ callables:
     index: 21
     line: 8
     link: null
-    name: token21
     obj_id: '195'
     text: ' '
     type: 185
@@ -168,7 +152,6 @@ callables:
     index: 22
     line: 8
     link: null
-    name: token22
     obj_id: '196'
     text: '"Standard.Module1.ShadowedCallee"'
     type: 172
@@ -177,7 +160,6 @@ callables:
     index: 23
     line: 8
     link: null
-    name: token23
     obj_id: '197'
     text: '
 
@@ -199,7 +181,6 @@ callables:
     index: 22
     line: 8
     link: null
-    name: token22
     obj_id: '196'
     text: '"Standard.Module1.ShadowedCallee"'
     type: 172
@@ -210,7 +191,6 @@ callables:
     index: 14
     line: 7
     link: null
-    name: token14
     obj_id: '188'
     text: Sub
     type: 125
@@ -219,7 +199,6 @@ callables:
     index: 15
     line: 7
     link: null
-    name: token15
     obj_id: '189'
     text: ' '
     type: 185
@@ -228,7 +207,6 @@ callables:
     index: 16
     line: 7
     link: null
-    name: token16
     obj_id: '190'
     text: ShadowedCallee
     type: 181
@@ -237,7 +215,6 @@ callables:
     index: 17
     line: 7
     link: null
-    name: token17
     obj_id: '191'
     text: (
     type: 157
@@ -246,7 +223,6 @@ callables:
     index: 18
     line: 7
     link: null
-    name: token18
     obj_id: '192'
     text: )
     type: 168
@@ -255,7 +231,6 @@ callables:
     index: 19
     line: 7
     link: null
-    name: token19
     obj_id: '193'
     text: "\n\t"
     type: 183
@@ -264,7 +239,6 @@ callables:
     index: 20
     line: 8
     link: null
-    name: token20
     obj_id: '194'
     text: print
     type: 100
@@ -273,7 +247,6 @@ callables:
     index: 21
     line: 8
     link: null
-    name: token21
     obj_id: '195'
     text: ' '
     type: 185
@@ -282,7 +255,6 @@ callables:
     index: 22
     line: 8
     link: null
-    name: token22
     obj_id: '196'
     text: '"Standard.Module1.ShadowedCallee"'
     type: 172
@@ -291,7 +263,6 @@ callables:
     index: 23
     line: 8
     link: null
-    name: token23
     obj_id: '197'
     text: '
 
@@ -302,7 +273,6 @@ callables:
     index: 24
     line: 9
     link: null
-    name: token24
     obj_id: '198'
     text: End Sub
     type: 44
@@ -326,7 +296,6 @@ tokens:
   index: 0
   line: 1
   link: null
-  name: token0
   obj_id: '199'
   text: REM  *****  BASIC  *****
   type: 184
@@ -335,7 +304,6 @@ tokens:
   index: 1
   line: 1
   link: null
-  name: token1
   obj_id: '200'
   text: '
 
@@ -346,7 +314,6 @@ tokens:
   index: 2
   line: 2
   link: null
-  name: token2
   obj_id: '201'
   text: '
 
@@ -357,7 +324,6 @@ tokens:
   index: 3
   line: 3
   link: null
-  name: token3
   obj_id: '202'
   text: Sub
   type: 125
@@ -366,7 +332,6 @@ tokens:
   index: 4
   line: 3
   link: null
-  name: token4
   obj_id: '203'
   text: ' '
   type: 185
@@ -378,7 +343,6 @@ tokens:
     bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
     object_type: basicfunctions
-  name: token5
   obj_id: '204'
   text: CalleeOtherLib
   type: 181
@@ -387,7 +351,6 @@ tokens:
   index: 6
   line: 3
   link: null
-  name: token6
   obj_id: '205'
   text: "\n\t"
   type: 183
@@ -396,7 +359,6 @@ tokens:
   index: 7
   line: 4
   link: null
-  name: token7
   obj_id: '206'
   text: print
   type: 100
@@ -405,7 +367,6 @@ tokens:
   index: 8
   line: 4
   link: null
-  name: token8
   obj_id: '207'
   text: ' '
   type: 185
@@ -414,7 +375,6 @@ tokens:
   index: 9
   line: 4
   link: null
-  name: token9
   obj_id: '208'
   text: '"Standard.Module1.CalleeOtherLib"'
   type: 172
@@ -423,7 +383,6 @@ tokens:
   index: 10
   line: 4
   link: null
-  name: token10
   obj_id: '209'
   text: '
 
@@ -434,7 +393,6 @@ tokens:
   index: 11
   line: 5
   link: null
-  name: token11
   obj_id: '210'
   text: End Sub
   type: 44
@@ -443,7 +401,6 @@ tokens:
   index: 12
   line: 5
   link: null
-  name: token12
   obj_id: '211'
   text: '
 
@@ -454,7 +411,6 @@ tokens:
   index: 13
   line: 6
   link: null
-  name: token13
   obj_id: '212'
   text: '
 
@@ -465,7 +421,6 @@ tokens:
   index: 14
   line: 7
   link: null
-  name: token14
   obj_id: '213'
   text: Sub
   type: 125
@@ -474,7 +429,6 @@ tokens:
   index: 15
   line: 7
   link: null
-  name: token15
   obj_id: '214'
   text: ' '
   type: 185
@@ -486,7 +440,6 @@ tokens:
     bookmark: null
     local_id: ShadowedCallee.Module1.Standard
     object_type: basicfunctions
-  name: token16
   obj_id: '215'
   text: ShadowedCallee
   type: 181
@@ -495,7 +448,6 @@ tokens:
   index: 17
   line: 7
   link: null
-  name: token17
   obj_id: '216'
   text: (
   type: 157
@@ -504,7 +456,6 @@ tokens:
   index: 18
   line: 7
   link: null
-  name: token18
   obj_id: '217'
   text: )
   type: 168
@@ -513,7 +464,6 @@ tokens:
   index: 19
   line: 7
   link: null
-  name: token19
   obj_id: '218'
   text: "\n\t"
   type: 183
@@ -522,7 +472,6 @@ tokens:
   index: 20
   line: 8
   link: null
-  name: token20
   obj_id: '219'
   text: print
   type: 100
@@ -531,7 +480,6 @@ tokens:
   index: 21
   line: 8
   link: null
-  name: token21
   obj_id: '220'
   text: ' '
   type: 185
@@ -540,7 +488,6 @@ tokens:
   index: 22
   line: 8
   link: null
-  name: token22
   obj_id: '221'
   text: '"Standard.Module1.ShadowedCallee"'
   type: 172
@@ -549,7 +496,6 @@ tokens:
   index: 23
   line: 8
   link: null
-  name: token23
   obj_id: '222'
   text: '
 
@@ -560,7 +506,6 @@ tokens:
   index: 24
   line: 9
   link: null
-  name: token24
   obj_id: '223'
   text: End Sub
   type: 44

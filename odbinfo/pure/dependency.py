@@ -209,7 +209,7 @@ def search_deps_in_queries(dataobjects: Sequence[PageOwner],
     return sum(map(find_tables_in_query, queries), [])
 
 #
-# DataObject (query, view, table) in Report
+# DataObject (query, view, table) in Report, SubForm
 #
 
 

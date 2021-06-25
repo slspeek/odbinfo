@@ -2,7 +2,7 @@
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
 
-from odbinfo.pure.datatype.base import LinkedString, Node, PageOwner
+from odbinfo.pure.datatype.base import LinkedString, NamedNode, Node, PageOwner
 from odbinfo.pure.datatype.tabular import Query
 
 
@@ -24,7 +24,6 @@ class DatabaseDisplay(Node):
     column: str
 
     def __post_init__(self):
-        # super().__post_init__()
         self.title = f"{self.table.text}.{self.column}"
 
 
@@ -47,9 +46,8 @@ class EventListener(Node):
 
 # pylint: disable=too-many-instance-attributes
 @dataclass
-class Control(Node):
+class Control(NamedNode):
     " Form control "
-    name: str
     controlid: str
     datafield: str
     inputrequired: bool
@@ -73,7 +71,7 @@ class ListBox(Control):
 
 
 @dataclass
-class Grid(Node):
+class Grid(NamedNode):
     " Table view control"
     columns: List[Control]
 

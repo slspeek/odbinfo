@@ -5,7 +5,6 @@ body_tokens:
   index: 123
   line: 38
   link: null
-  name: token123
   obj_id: '362'
   text: print
   type: 100
@@ -14,7 +13,6 @@ body_tokens:
   index: 124
   line: 38
   link: null
-  name: token124
   obj_id: '363'
   text: ' '
   type: 185
@@ -26,7 +24,6 @@ body_tokens:
     bookmark: null
     local_id: view1
     object_type: views
-  name: token125
   obj_id: '364'
   text: '"view1"'
   type: 172
@@ -35,7 +32,6 @@ body_tokens:
   index: 126
   line: 38
   link: null
-  name: token126
   obj_id: '365'
   text: '
 
@@ -60,7 +56,6 @@ strings:
     bookmark: null
     local_id: view1
     object_type: views
-  name: token125
   obj_id: '364'
   text: '"view1"'
   type: 172
@@ -71,7 +66,6 @@ tokens:
   index: 117
   line: 37
   link: null
-  name: token117
   obj_id: '356'
   text: Sub
   type: 125
@@ -80,7 +74,6 @@ tokens:
   index: 118
   line: 37
   link: null
-  name: token118
   obj_id: '357'
   text: ' '
   type: 185
@@ -89,7 +82,6 @@ tokens:
   index: 119
   line: 37
   link: null
-  name: token119
   obj_id: '358'
   text: ReferToView
   type: 181
@@ -98,7 +90,6 @@ tokens:
   index: 120
   line: 37
   link: null
-  name: token120
   obj_id: '359'
   text: (
   type: 157
@@ -107,7 +98,6 @@ tokens:
   index: 121
   line: 37
   link: null
-  name: token121
   obj_id: '360'
   text: )
   type: 168
@@ -116,7 +106,6 @@ tokens:
   index: 122
   line: 37
   link: null
-  name: token122
   obj_id: '361'
   text: "\n\t"
   type: 183
@@ -125,7 +114,6 @@ tokens:
   index: 123
   line: 38
   link: null
-  name: token123
   obj_id: '362'
   text: print
   type: 100
@@ -134,7 +122,6 @@ tokens:
   index: 124
   line: 38
   link: null
-  name: token124
   obj_id: '363'
   text: ' '
   type: 185
@@ -146,7 +133,6 @@ tokens:
     bookmark: null
     local_id: view1
     object_type: views
-  name: token125
   obj_id: '364'
   text: '"view1"'
   type: 172
@@ -155,7 +141,6 @@ tokens:
   index: 126
   line: 38
   link: null
-  name: token126
   obj_id: '365'
   text: '
 
@@ -166,7 +151,6 @@ tokens:
   index: 127
   line: 39
   link: null
-  name: token127
   obj_id: '366'
   text: End Sub
   type: 44

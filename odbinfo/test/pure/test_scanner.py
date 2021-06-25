@@ -9,7 +9,7 @@ from odbinfo.pure.parser.scanner import (ParserError, Scanner, a, anyof, find,
 
 def get_token(text: str, token_type: int):
     "Constructs a token with some defaults "
-    return Token("", 1, 0, text, token_type, 0, False)
+    return Token(1, 0, text, token_type, 0, False)
 
 
 def test_just():
@@ -22,7 +22,7 @@ def test_just():
 
 
 def test_a():
-    " test just combinator "
+    " test a combinator "
     token0 = get_token("Sub", 0)
     token1 = get_token("Foo", 1)
     tokens = [token0, token1]

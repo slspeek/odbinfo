@@ -5,7 +5,6 @@ body_tokens:
   index: 9
   line: 4
   link: null
-  name: token9
   obj_id: '528'
   text: print
   type: 100
@@ -14,7 +13,6 @@ body_tokens:
   index: 10
   line: 4
   link: null
-  name: token10
   obj_id: '529'
   text: ' '
   type: 185
@@ -23,7 +21,6 @@ body_tokens:
   index: 11
   line: 4
   link: null
-  name: token11
   obj_id: '530'
   text: '"Module2.CalleeSub"'
   type: 172
@@ -32,7 +29,6 @@ body_tokens:
   index: 12
   line: 4
   link: null
-  name: token12
   obj_id: '531'
   text: '
 
@@ -54,7 +50,6 @@ strings:
   index: 11
   line: 4
   link: null
-  name: token11
   obj_id: '530'
   text: '"Module2.CalleeSub"'
   type: 172
@@ -65,7 +60,6 @@ tokens:
   index: 3
   line: 3
   link: null
-  name: token3
   obj_id: '522'
   text: Sub
   type: 125
@@ -74,7 +68,6 @@ tokens:
   index: 4
   line: 3
   link: null
-  name: token4
   obj_id: '523'
   text: ' '
   type: 185
@@ -83,7 +76,6 @@ tokens:
   index: 5
   line: 3
   link: null
-  name: token5
   obj_id: '524'
   text: CalleeSub
   type: 181
@@ -92,7 +84,6 @@ tokens:
   index: 6
   line: 3
   link: null
-  name: token6
   obj_id: '525'
   text: (
   type: 157
@@ -101,7 +92,6 @@ tokens:
   index: 7
   line: 3
   link: null
-  name: token7
   obj_id: '526'
   text: )
   type: 168
@@ -110,7 +100,6 @@ tokens:
   index: 8
   line: 3
   link: null
-  name: token8
   obj_id: '527'
   text: "\n\t"
   type: 183
@@ -119,7 +108,6 @@ tokens:
   index: 9
   line: 4
   link: null
-  name: token9
   obj_id: '528'
   text: print
   type: 100
@@ -128,7 +116,6 @@ tokens:
   index: 10
   line: 4
   link: null
-  name: token10
   obj_id: '529'
   text: ' '
   type: 185
@@ -137,7 +124,6 @@ tokens:
   index: 11
   line: 4
   link: null
-  name: token11
   obj_id: '530'
   text: '"Module2.CalleeSub"'
   type: 172
@@ -146,7 +132,6 @@ tokens:
   index: 12
   line: 4
   link: null
-  name: token12
   obj_id: '531'
   text: '
 
@@ -157,7 +142,6 @@ tokens:
   index: 13
   line: 5
   link: null
-  name: token13
   obj_id: '532'
   text: End Sub
   type: 44

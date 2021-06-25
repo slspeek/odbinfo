@@ -5,7 +5,6 @@ body_tokens:
   index: 97
   line: 30
   link: null
-  name: token97
   obj_id: '338'
   text: print
   type: 100
@@ -14,7 +13,6 @@ body_tokens:
   index: 98
   line: 30
   link: null
-  name: token98
   obj_id: '339'
   text: ' '
   type: 185
@@ -23,7 +21,6 @@ body_tokens:
   index: 99
   line: 30
   link: null
-  name: token99
   obj_id: '340'
   text: '"Library1.Module1.ShadowedCallee"'
   type: 172
@@ -32,7 +29,6 @@ body_tokens:
   index: 100
   line: 30
   link: null
-  name: token100
   obj_id: '341'
   text: '
 
@@ -54,7 +50,6 @@ strings:
   index: 99
   line: 30
   link: null
-  name: token99
   obj_id: '340'
   text: '"Library1.Module1.ShadowedCallee"'
   type: 172
@@ -65,7 +60,6 @@ tokens:
   index: 91
   line: 29
   link: null
-  name: token91
   obj_id: '332'
   text: Sub
   type: 125
@@ -74,7 +68,6 @@ tokens:
   index: 92
   line: 29
   link: null
-  name: token92
   obj_id: '333'
   text: ' '
   type: 185
@@ -83,7 +76,6 @@ tokens:
   index: 93
   line: 29
   link: null
-  name: token93
   obj_id: '334'
   text: ShadowedCallee
   type: 181
@@ -92,7 +84,6 @@ tokens:
   index: 94
   line: 29
   link: null
-  name: token94
   obj_id: '335'
   text: (
   type: 157
@@ -101,7 +92,6 @@ tokens:
   index: 95
   line: 29
   link: null
-  name: token95
   obj_id: '336'
   text: )
   type: 168
@@ -110,7 +100,6 @@ tokens:
   index: 96
   line: 29
   link: null
-  name: token96
   obj_id: '337'
   text: "\n\t"
   type: 183
@@ -119,7 +108,6 @@ tokens:
   index: 97
   line: 30
   link: null
-  name: token97
   obj_id: '338'
   text: print
   type: 100
@@ -128,7 +116,6 @@ tokens:
   index: 98
   line: 30
   link: null
-  name: token98
   obj_id: '339'
   text: ' '
   type: 185
@@ -137,7 +124,6 @@ tokens:
   index: 99
   line: 30
   link: null
-  name: token99
   obj_id: '340'
   text: '"Library1.Module1.ShadowedCallee"'
   type: 172
@@ -146,7 +132,6 @@ tokens:
   index: 100
   line: 30
   link: null
-  name: token100
   obj_id: '341'
   text: '
 
@@ -157,7 +142,6 @@ tokens:
   index: 101
   line: 31
   link: null
-  name: token101
   obj_id: '342'
   text: End Sub
   type: 44

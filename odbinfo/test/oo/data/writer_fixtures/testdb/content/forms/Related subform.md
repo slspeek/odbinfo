@@ -84,10 +84,6 @@ subforms:
   masterfields: ''
   name: MainForm
   obj_id: '154'
-  parent_link:
-    bookmark: null
-    local_id: Related subform
-    object_type: forms
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -166,12 +162,6 @@ subforms:
     masterfields: '"RFamliyID"'
     name: SubForm
     obj_id: '161'
-    parent_link:
-      bookmark: null
-      local_id: MainForm
-      object_type: subforms
     subforms: []
-    title: SubForm
-  title: MainForm
 title: Related subform
 ---

@@ -71,6 +71,6 @@ def process_metadata(metadata: Metadata) -> None:
     list(map(_process_query, metadata.queries))
     list(map(_process_query, metadata.views))
     list(map(process_form, metadata.forms))
-    metadata.use_cases = search_dependencies(metadata)
     metadata.set_parents(None)
     metadata.set_obj_ids()
+    metadata.use_cases = search_dependencies(metadata)

@@ -7,7 +7,7 @@ from odbinfo.pure.datatype.tabular import Query
 
 
 @dataclass
-class CommandDriven(PageOwner):
+class CommandDriven:
     " Has a command and commandtype "
     command: LinkedString
     commandtype: str
@@ -80,7 +80,7 @@ class Grid(NamedNode):
 
 
 @dataclass
-class SubForm(CommandDriven):  # pylint: disable=too-many-instance-attributes
+class SubForm(CommandDriven, NamedNode):  # pylint: disable=too-many-instance-attributes
     " Database subform "
     allowdeletes: str
     allowinserts: str
@@ -104,9 +104,13 @@ class Form(PageOwner):
     def children(self):
         return self.subforms
 
+    def all_subforms(self) -> List[SubForm]:
+        " returns all nested subforms"
+        return list(filter(lambda x: isinstance(x, SubForm), self.all_objects()))
+
 
 @dataclass
-class Report(CommandDriven):
+class Report(CommandDriven, PageOwner):
     " Report metadata "
     output_type: str
     formulas: List[str]

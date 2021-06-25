@@ -2,18 +2,25 @@
 import dataclasses
 from functools import partial
 from itertools import starmap
-from typing import List, Optional, Sequence
+from typing import List, Optional, Sequence, Tuple, cast
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, CommandDriven,
                                    DatabaseDisplay, Identifier, Key, Metadata,
-                                   Module, PageOwner, Query, Table,
+                                   Module, Node, PageOwner, Query, Table,
                                    TextDocument, Token, UseCase,
                                    get_identifier, use_case)
 
 
+def _subforms(metadata: Metadata) -> List[Tuple[PageOwner, CommandDriven]]:
+    result = []
+    for form in metadata.forms:
+        result += [(form, sf) for sf in form.all_subforms()]
+    return cast(List[Tuple[PageOwner, CommandDriven]], result)
+
+
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
     " dependency search in `metadata`"
-
+    # assert len(_subforms(metadata)) == len(metadata.subforms())
     return (search_tables_in_tables(metadata.tables) +
             search_callable_in_callable(metadata.basicfunctions()) +
             search_string_refs_in_callables(metadata.tables, metadata.basicfunctions()) +
@@ -27,13 +34,14 @@ def search_dependencies(metadata: Metadata) -> List[UseCase]:
             search_deps_in_queries(metadata.tables, metadata.views) +
             search_deps_in_queries(metadata.views, metadata.views) +
             search_deps_in_commanddriven(metadata.tables,
-                                         metadata.reports) +
-            search_deps_in_commanddriven(metadata.views, metadata.reports) +
-            search_deps_in_commanddriven(metadata.queries, metadata.reports) +
-            search_deps_in_commanddriven(metadata.tables,
-                                         metadata.subforms()) +
-            search_deps_in_commanddriven(metadata.views, metadata.subforms()) +
-            search_deps_in_commanddriven(metadata.queries, metadata.subforms()) +
+                                         list(zip(metadata.reports, metadata.reports))) +
+            search_deps_in_commanddriven(metadata.views,
+                                         list(zip(metadata.reports, metadata.reports))) +
+            search_deps_in_commanddriven(metadata.queries,
+                                         list(zip(metadata.reports, metadata.reports))) +
+            search_deps_in_commanddriven(metadata.tables, _subforms(metadata)) +
+            search_deps_in_commanddriven(metadata.views, _subforms(metadata)) +
+            search_deps_in_commanddriven(metadata.queries, _subforms(metadata)) +
             search_deps_in_documents(metadata.tables, metadata.documents) +
             search_deps_in_documents(metadata.views, metadata.documents) +
             search_deps_in_documents(metadata.queries, metadata.documents)
@@ -213,16 +221,27 @@ def search_deps_in_queries(dataobjects: Sequence[PageOwner],
 #
 
 
+PageCmd = Tuple[PageOwner, CommandDriven]
+
+# pylint:disable=line-too-long
+
+
 def search_deps_in_commanddriven(dataobjects: Sequence[PageOwner],
-                                 reports: Sequence[CommandDriven]) -> List[UseCase]:
+                                 reports: Sequence[Tuple[PageOwner, CommandDriven]]) -> List[UseCase]:
     " find uses of dataobject in report"
-    def find_deps_in_report(report: CommandDriven) -> List[UseCase]:
+    def find_deps_in_report(report: Tuple[PageOwner, CommandDriven]) -> List[UseCase]:
         " find dependency uses in `report` "
+        page, cmddriven = report
+
         def match_one_dep(dependency: PageOwner) -> Optional[UseCase]:
-            if report.command.text == dependency.name:
-                report.command.link = get_identifier(dependency)
-                return use_case(report,
-                                None,
+            if cmddriven.command.text == dependency.name:
+                cmddriven.command.link = get_identifier(dependency)
+                if isinstance(cmddriven, Node):
+                    location = cast(Node, cmddriven)
+                else:
+                    location = page
+                return use_case(page,
+                                location,
                                 dependency,
                                 "queries")
 

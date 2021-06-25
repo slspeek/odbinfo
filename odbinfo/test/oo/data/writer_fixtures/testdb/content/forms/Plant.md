@@ -84,11 +84,6 @@ subforms:
   masterfields: ''
   name: MainForm
   obj_id: '127'
-  parent_link:
-    bookmark: null
-    local_id: Plant
-    object_type: forms
   subforms: []
-  title: MainForm
 title: Plant
 ---

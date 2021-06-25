@@ -21,10 +21,6 @@ subforms:
   masterfields: ''
   name: Formulier
   obj_id: '123'
-  parent_link:
-    bookmark: null
-    local_id: Formulier1
-    object_type: forms
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -40,13 +36,7 @@ subforms:
     masterfields: ''
     name: Formulier2
     obj_id: '124'
-    parent_link:
-      bookmark: null
-      local_id: Formulier
-      object_type: subforms
     subforms: []
-    title: Formulier2
-  title: Formulier
 - allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
@@ -61,11 +51,6 @@ subforms:
   masterfields: ''
   name: Formulier 1
   obj_id: '125'
-  parent_link:
-    bookmark: null
-    local_id: Formulier1
-    object_type: forms
   subforms: []
-  title: Formulier 1
 title: Formulier1
 ---

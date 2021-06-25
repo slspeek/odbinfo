@@ -5,9 +5,8 @@ from typing import List, Sequence
 from zipfile import ZipFile
 
 from odbinfo.oo.ooutil import open_connection
-from odbinfo.pure.datatype import (Column, CommandDriven, Index, Key,
-                                   LinkedString, Metadata, Query, QueryColumn,
-                                   Report, Table, View)
+from odbinfo.pure.datatype import (Column, Index, Key, LinkedString, Metadata,
+                                   Query, QueryColumn, Report, Table, View)
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
@@ -42,7 +41,7 @@ def _read_view(connection, ooview) -> View:
     return view
 
 
-def extract_queries(reports: Sequence[CommandDriven]) -> List[Query]:
+def extract_queries(reports: Sequence[Report]) -> List[Query]:
     " Make queries from embedded sqlcommands in reports"
     queries: List[Query] = []
     for report in reports:

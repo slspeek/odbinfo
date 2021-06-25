@@ -47,11 +47,6 @@ subforms:
   masterfields: ''
   name: MainForm
   obj_id: '135'
-  parent_link:
-    bookmark: null
-    local_id: Plant invoeren
-    object_type: forms
   subforms: []
-  title: MainForm
 title: Plant invoeren
 ---

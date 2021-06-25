@@ -44,11 +44,6 @@ subforms:
   masterfields: ''
   name: MainForm
   obj_id: '169'
-  parent_link:
-    bookmark: null
-    local_id: view1
-    object_type: forms
   subforms: []
-  title: MainForm
 title: view1
 ---

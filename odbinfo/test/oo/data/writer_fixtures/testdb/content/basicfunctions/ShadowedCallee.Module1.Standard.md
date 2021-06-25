@@ -5,7 +5,7 @@ body_tokens:
   index: 20
   line: 8
   link: null
-  obj_id: '194'
+  obj_id: '219'
   text: print
   type: 100
 - column: 6
@@ -13,7 +13,7 @@ body_tokens:
   index: 21
   line: 8
   link: null
-  obj_id: '195'
+  obj_id: '220'
   text: ' '
   type: 185
 - column: 7
@@ -21,7 +21,7 @@ body_tokens:
   index: 22
   line: 8
   link: null
-  obj_id: '196'
+  obj_id: '221'
   text: '"Standard.Module1.ShadowedCallee"'
   type: 172
 - column: 40
@@ -29,7 +29,7 @@ body_tokens:
   index: 23
   line: 8
   link: null
-  obj_id: '197'
+  obj_id: '222'
   text: '
 
     '
@@ -50,7 +50,7 @@ strings:
   index: 22
   line: 8
   link: null
-  obj_id: '196'
+  obj_id: '221'
   text: '"Standard.Module1.ShadowedCallee"'
   type: 172
 title: ShadowedCallee.Module1.Standard
@@ -60,7 +60,7 @@ tokens:
   index: 14
   line: 7
   link: null
-  obj_id: '188'
+  obj_id: '213'
   text: Sub
   type: 125
 - column: 3
@@ -68,7 +68,7 @@ tokens:
   index: 15
   line: 7
   link: null
-  obj_id: '189'
+  obj_id: '214'
   text: ' '
   type: 185
 - column: 4
@@ -76,7 +76,7 @@ tokens:
   index: 16
   line: 7
   link: null
-  obj_id: '190'
+  obj_id: '215'
   text: ShadowedCallee
   type: 181
 - column: 18
@@ -84,7 +84,7 @@ tokens:
   index: 17
   line: 7
   link: null
-  obj_id: '191'
+  obj_id: '216'
   text: (
   type: 157
 - column: 19
@@ -92,7 +92,7 @@ tokens:
   index: 18
   line: 7
   link: null
-  obj_id: '192'
+  obj_id: '217'
   text: )
   type: 168
 - column: 20
@@ -100,7 +100,7 @@ tokens:
   index: 19
   line: 7
   link: null
-  obj_id: '193'
+  obj_id: '218'
   text: "\n\t"
   type: 183
 - column: 1
@@ -108,7 +108,7 @@ tokens:
   index: 20
   line: 8
   link: null
-  obj_id: '194'
+  obj_id: '219'
   text: print
   type: 100
 - column: 6
@@ -116,7 +116,7 @@ tokens:
   index: 21
   line: 8
   link: null
-  obj_id: '195'
+  obj_id: '220'
   text: ' '
   type: 185
 - column: 7
@@ -124,7 +124,7 @@ tokens:
   index: 22
   line: 8
   link: null
-  obj_id: '196'
+  obj_id: '221'
   text: '"Standard.Module1.ShadowedCallee"'
   type: 172
 - column: 40
@@ -132,7 +132,7 @@ tokens:
   index: 23
   line: 8
   link: null
-  obj_id: '197'
+  obj_id: '222'
   text: '
 
     '
@@ -142,7 +142,7 @@ tokens:
   index: 24
   line: 9
   link: null
-  obj_id: '198'
+  obj_id: '223'
   text: End Sub
   type: 44
 ---

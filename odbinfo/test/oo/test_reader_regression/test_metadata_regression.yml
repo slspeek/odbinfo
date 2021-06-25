@@ -65,9 +65,7 @@ forms:
     masterfields: ''
     name: MainForm
     obj_id: not-set
-    parent_link: null
     subforms: []
-    title: MainForm
   title: Family
 - height: null
   name: Formulier1
@@ -88,7 +86,6 @@ forms:
     masterfields: ''
     name: Formulier
     obj_id: not-set
-    parent_link: null
     subforms:
     - allowdeletes: 'true'
       allowinserts: 'true'
@@ -104,10 +101,7 @@ forms:
       masterfields: ''
       name: Formulier2
       obj_id: not-set
-      parent_link: null
       subforms: []
-      title: Formulier2
-    title: Formulier
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
@@ -122,9 +116,7 @@ forms:
     masterfields: ''
     name: Formulier 1
     obj_id: not-set
-    parent_link: null
     subforms: []
-    title: Formulier 1
   title: Formulier1
 - height: null
   name: Plant
@@ -205,9 +197,7 @@ forms:
     masterfields: ''
     name: MainForm
     obj_id: not-set
-    parent_link: null
     subforms: []
-    title: MainForm
   title: Plant
 - height: null
   name: Plant invoeren
@@ -251,9 +241,7 @@ forms:
     masterfields: ''
     name: MainForm
     obj_id: not-set
-    parent_link: null
     subforms: []
-    title: MainForm
   title: Plant invoeren
 - height: null
   name: PlantListbox
@@ -377,9 +365,7 @@ forms:
     masterfields: ''
     name: MainForm
     obj_id: not-set
-    parent_link: null
     subforms: []
-    title: MainForm
   title: PlantListbox
 - height: null
   name: Related subform
@@ -460,7 +446,6 @@ forms:
     masterfields: ''
     name: MainForm
     obj_id: not-set
-    parent_link: null
     subforms:
     - allowdeletes: 'true'
       allowinserts: 'true'
@@ -536,10 +521,7 @@ forms:
       masterfields: '"RFamliyID"'
       name: SubForm
       obj_id: not-set
-      parent_link: null
       subforms: []
-      title: SubForm
-    title: MainForm
   title: Related subform
 - height: null
   name: view1
@@ -580,9 +562,7 @@ forms:
     masterfields: ''
     name: MainForm
     obj_id: not-set
-    parent_link: null
     subforms: []
-    title: MainForm
   title: view1
 libraries:
 - modules:

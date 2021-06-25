@@ -8,7 +8,7 @@ body_tokens:
     bookmark: null
     local_id: CalleeSub.Module1.Library1
     object_type: basicfunctions
-  obj_id: '266'
+  obj_id: '399'
   text: CalleeSub
   type: 181
 - column: 10
@@ -16,7 +16,7 @@ body_tokens:
   index: 21
   line: 8
   link: null
-  obj_id: '267'
+  obj_id: '400'
   text: (
   type: 157
 - column: 11
@@ -24,7 +24,7 @@ body_tokens:
   index: 22
   line: 8
   link: null
-  obj_id: '268'
+  obj_id: '401'
   text: )
   type: 168
 - column: 12
@@ -32,7 +32,7 @@ body_tokens:
   index: 23
   line: 8
   link: null
-  obj_id: '269'
+  obj_id: '402'
   text: "\n\t"
   type: 183
 - column: 1
@@ -40,7 +40,7 @@ body_tokens:
   index: 24
   line: 9
   link: null
-  obj_id: '270'
+  obj_id: '403'
   text: Module2
   type: 181
 - column: 8
@@ -48,7 +48,7 @@ body_tokens:
   index: 25
   line: 9
   link: null
-  obj_id: '271'
+  obj_id: '404'
   text: .
   type: 150
 - column: 9
@@ -59,7 +59,7 @@ body_tokens:
     bookmark: null
     local_id: CalleeSub.Module2.Library1
     object_type: basicfunctions
-  obj_id: '272'
+  obj_id: '405'
   text: CalleeSub
   type: 181
 - column: 18
@@ -67,7 +67,7 @@ body_tokens:
   index: 27
   line: 9
   link: null
-  obj_id: '273'
+  obj_id: '406'
   text: (
   type: 157
 - column: 19
@@ -75,7 +75,7 @@ body_tokens:
   index: 28
   line: 9
   link: null
-  obj_id: '274'
+  obj_id: '407'
   text: )
   type: 168
 - column: 20
@@ -83,7 +83,7 @@ body_tokens:
   index: 29
   line: 9
   link: null
-  obj_id: '275'
+  obj_id: '408'
   text: '
 
     '
@@ -99,7 +99,7 @@ calls:
       bookmark: null
       local_id: CalleeSub.Module1.Library1
       object_type: basicfunctions
-    obj_id: '266'
+    obj_id: '399'
     text: CalleeSub
     type: 181
 - module_token:
@@ -108,7 +108,7 @@ calls:
     index: 24
     line: 9
     link: null
-    obj_id: '270'
+    obj_id: '403'
     text: Module2
     type: 181
   name_token:
@@ -120,7 +120,7 @@ calls:
       bookmark: null
       local_id: CalleeSub.Module2.Library1
       object_type: basicfunctions
-    obj_id: '272'
+    obj_id: '405'
     text: CalleeSub
     type: 181
 library: Library1
@@ -140,7 +140,7 @@ tokens:
   index: 14
   line: 7
   link: null
-  obj_id: '260'
+  obj_id: '393'
   text: Sub
   type: 125
 - column: 3
@@ -148,7 +148,7 @@ tokens:
   index: 15
   line: 7
   link: null
-  obj_id: '261'
+  obj_id: '394'
   text: ' '
   type: 185
 - column: 4
@@ -156,7 +156,7 @@ tokens:
   index: 16
   line: 7
   link: null
-  obj_id: '262'
+  obj_id: '395'
   text: CallerSub
   type: 181
 - column: 13
@@ -164,7 +164,7 @@ tokens:
   index: 17
   line: 7
   link: null
-  obj_id: '263'
+  obj_id: '396'
   text: (
   type: 157
 - column: 14
@@ -172,7 +172,7 @@ tokens:
   index: 18
   line: 7
   link: null
-  obj_id: '264'
+  obj_id: '397'
   text: )
   type: 168
 - column: 15
@@ -180,7 +180,7 @@ tokens:
   index: 19
   line: 7
   link: null
-  obj_id: '265'
+  obj_id: '398'
   text: "\n\t"
   type: 183
 - column: 1
@@ -191,7 +191,7 @@ tokens:
     bookmark: null
     local_id: CalleeSub.Module1.Library1
     object_type: basicfunctions
-  obj_id: '266'
+  obj_id: '399'
   text: CalleeSub
   type: 181
 - column: 10
@@ -199,7 +199,7 @@ tokens:
   index: 21
   line: 8
   link: null
-  obj_id: '267'
+  obj_id: '400'
   text: (
   type: 157
 - column: 11
@@ -207,7 +207,7 @@ tokens:
   index: 22
   line: 8
   link: null
-  obj_id: '268'
+  obj_id: '401'
   text: )
   type: 168
 - column: 12
@@ -215,7 +215,7 @@ tokens:
   index: 23
   line: 8
   link: null
-  obj_id: '269'
+  obj_id: '402'
   text: "\n\t"
   type: 183
 - column: 1
@@ -223,7 +223,7 @@ tokens:
   index: 24
   line: 9
   link: null
-  obj_id: '270'
+  obj_id: '403'
   text: Module2
   type: 181
 - column: 8
@@ -231,7 +231,7 @@ tokens:
   index: 25
   line: 9
   link: null
-  obj_id: '271'
+  obj_id: '404'
   text: .
   type: 150
 - column: 9
@@ -242,7 +242,7 @@ tokens:
     bookmark: null
     local_id: CalleeSub.Module2.Library1
     object_type: basicfunctions
-  obj_id: '272'
+  obj_id: '405'
   text: CalleeSub
   type: 181
 - column: 18
@@ -250,7 +250,7 @@ tokens:
   index: 27
   line: 9
   link: null
-  obj_id: '273'
+  obj_id: '406'
   text: (
   type: 157
 - column: 19
@@ -258,7 +258,7 @@ tokens:
   index: 28
   line: 9
   link: null
-  obj_id: '274'
+  obj_id: '407'
   text: )
   type: 168
 - column: 20
@@ -266,7 +266,7 @@ tokens:
   index: 29
   line: 9
   link: null
-  obj_id: '275'
+  obj_id: '408'
   text: '
 
     '
@@ -276,7 +276,7 @@ tokens:
   index: 30
   line: 10
   link: null
-  obj_id: '276'
+  obj_id: '409'
   text: End Sub
   type: 44
 ---

@@ -18,6 +18,10 @@ pytest = "*"
 pytest-datadir = "*"
 pytest-regressions = "*"
 autopep8 = "*"
+isort = "*"
+pytest-benchmark = "*"
+pygal = "*"
+pygaljs = "*"
 
 [requires]
 python_version = "3.7"

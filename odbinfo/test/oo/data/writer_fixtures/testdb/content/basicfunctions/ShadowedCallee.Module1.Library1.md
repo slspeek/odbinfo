@@ -1,33 +1,25 @@
 ---
 body_tokens:
-- column: 1
-  hidden: false
+- hidden: false
   index: 97
-  line: 30
   link: null
   obj_id: '476'
   text: print
   type: 100
-- column: 6
-  hidden: false
+- hidden: false
   index: 98
-  line: 30
   link: null
   obj_id: '477'
   text: ' '
   type: 185
-- column: 7
-  hidden: false
+- hidden: false
   index: 99
-  line: 30
   link: null
   obj_id: '478'
   text: '"Library1.Module1.ShadowedCallee"'
   type: 172
-- column: 40
-  hidden: false
+- hidden: false
   index: 100
-  line: 30
   link: null
   obj_id: '479'
   text: '
@@ -45,102 +37,78 @@ parent_link:
   local_id: Module1.Library1
   object_type: modules
 strings:
-- column: 7
-  hidden: false
+- hidden: false
   index: 99
-  line: 30
   link: null
   obj_id: '478'
   text: '"Library1.Module1.ShadowedCallee"'
   type: 172
 title: ShadowedCallee.Module1.Library1
 tokens:
-- column: 0
-  hidden: false
+- hidden: false
   index: 91
-  line: 29
   link: null
   obj_id: '470'
   text: Sub
   type: 125
-- column: 3
-  hidden: false
+- hidden: false
   index: 92
-  line: 29
   link: null
   obj_id: '471'
   text: ' '
   type: 185
-- column: 4
-  hidden: false
+- hidden: false
   index: 93
-  line: 29
   link: null
   obj_id: '472'
   text: ShadowedCallee
   type: 181
-- column: 18
-  hidden: false
+- hidden: false
   index: 94
-  line: 29
   link: null
   obj_id: '473'
   text: (
   type: 157
-- column: 19
-  hidden: false
+- hidden: false
   index: 95
-  line: 29
   link: null
   obj_id: '474'
   text: )
   type: 168
-- column: 20
-  hidden: false
+- hidden: false
   index: 96
-  line: 29
   link: null
   obj_id: '475'
   text: "\n\t"
   type: 183
-- column: 1
-  hidden: false
+- hidden: false
   index: 97
-  line: 30
   link: null
   obj_id: '476'
   text: print
   type: 100
-- column: 6
-  hidden: false
+- hidden: false
   index: 98
-  line: 30
   link: null
   obj_id: '477'
   text: ' '
   type: 185
-- column: 7
-  hidden: false
+- hidden: false
   index: 99
-  line: 30
   link: null
   obj_id: '478'
   text: '"Library1.Module1.ShadowedCallee"'
   type: 172
-- column: 40
-  hidden: false
+- hidden: false
   index: 100
-  line: 30
   link: null
   obj_id: '479'
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 101
-  line: 31
   link: null
   obj_id: '480'
   text: End Sub

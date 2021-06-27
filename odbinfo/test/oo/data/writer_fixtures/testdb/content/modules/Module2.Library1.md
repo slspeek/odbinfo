@@ -1,34 +1,26 @@
 ---
 callables:
 - body_tokens:
-  - column: 1
-    hidden: false
+  - hidden: false
     index: 9
-    line: 4
     link: null
     obj_id: '554'
     text: print
     type: 100
-  - column: 6
-    hidden: false
+  - hidden: false
     index: 10
-    line: 4
     link: null
     obj_id: '555'
     text: ' '
     type: 185
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 11
-    line: 4
     link: null
     obj_id: '556'
     text: '"Module2.CalleeSub"'
     type: 172
-  - column: 26
-    hidden: false
+  - hidden: false
     index: 12
-    line: 4
     link: null
     obj_id: '557'
     text: '
@@ -46,135 +38,103 @@ callables:
     local_id: Module2.Library1
     object_type: modules
   strings:
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 11
-    line: 4
     link: null
     obj_id: '556'
     text: '"Module2.CalleeSub"'
     type: 172
   title: CalleeSub.Module2.Library1
   tokens:
-  - column: 0
-    hidden: false
+  - hidden: false
     index: 3
-    line: 3
     link: null
     obj_id: '548'
     text: Sub
     type: 125
-  - column: 3
-    hidden: false
+  - hidden: false
     index: 4
-    line: 3
     link: null
     obj_id: '549'
     text: ' '
     type: 185
-  - column: 4
-    hidden: false
+  - hidden: false
     index: 5
-    line: 3
     link: null
     obj_id: '550'
     text: CalleeSub
     type: 181
-  - column: 13
-    hidden: false
+  - hidden: false
     index: 6
-    line: 3
     link: null
     obj_id: '551'
     text: (
     type: 157
-  - column: 14
-    hidden: false
+  - hidden: false
     index: 7
-    line: 3
     link: null
     obj_id: '552'
     text: )
     type: 168
-  - column: 15
-    hidden: false
+  - hidden: false
     index: 8
-    line: 3
     link: null
     obj_id: '553'
     text: "\n\t"
     type: 183
-  - column: 1
-    hidden: false
+  - hidden: false
     index: 9
-    line: 4
     link: null
     obj_id: '554'
     text: print
     type: 100
-  - column: 6
-    hidden: false
+  - hidden: false
     index: 10
-    line: 4
     link: null
     obj_id: '555'
     text: ' '
     type: 185
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 11
-    line: 4
     link: null
     obj_id: '556'
     text: '"Module2.CalleeSub"'
     type: 172
-  - column: 26
-    hidden: false
+  - hidden: false
     index: 12
-    line: 4
     link: null
     obj_id: '557'
     text: '
 
       '
     type: 183
-  - column: 0
-    hidden: false
+  - hidden: false
     index: 13
-    line: 5
     link: null
     obj_id: '558'
     text: End Sub
     type: 44
 - body_tokens:
-  - column: 1
-    hidden: false
+  - hidden: false
     index: 22
-    line: 8
     link: null
     obj_id: '567'
     text: print
     type: 100
-  - column: 6
-    hidden: false
+  - hidden: false
     index: 23
-    line: 8
     link: null
     obj_id: '568'
     text: ' '
     type: 185
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 24
-    line: 8
     link: null
     obj_id: '569'
     text: '"Module2.CalleeTwoSub"'
     type: 172
-  - column: 29
-    hidden: false
+  - hidden: false
     index: 25
-    line: 8
     link: null
     obj_id: '570'
     text: '
@@ -192,102 +152,78 @@ callables:
     local_id: Module2.Library1
     object_type: modules
   strings:
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 24
-    line: 8
     link: null
     obj_id: '569'
     text: '"Module2.CalleeTwoSub"'
     type: 172
   title: CalleeTwoSub.Module2.Library1
   tokens:
-  - column: 0
-    hidden: false
+  - hidden: false
     index: 16
-    line: 7
     link: null
     obj_id: '561'
     text: Sub
     type: 125
-  - column: 3
-    hidden: false
+  - hidden: false
     index: 17
-    line: 7
     link: null
     obj_id: '562'
     text: ' '
     type: 185
-  - column: 4
-    hidden: false
+  - hidden: false
     index: 18
-    line: 7
     link: null
     obj_id: '563'
     text: CalleeTwoSub
     type: 181
-  - column: 16
-    hidden: false
+  - hidden: false
     index: 19
-    line: 7
     link: null
     obj_id: '564'
     text: (
     type: 157
-  - column: 17
-    hidden: false
+  - hidden: false
     index: 20
-    line: 7
     link: null
     obj_id: '565'
     text: )
     type: 168
-  - column: 18
-    hidden: false
+  - hidden: false
     index: 21
-    line: 7
     link: null
     obj_id: '566'
     text: "\n\t"
     type: 183
-  - column: 1
-    hidden: false
+  - hidden: false
     index: 22
-    line: 8
     link: null
     obj_id: '567'
     text: print
     type: 100
-  - column: 6
-    hidden: false
+  - hidden: false
     index: 23
-    line: 8
     link: null
     obj_id: '568'
     text: ' '
     type: 185
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 24
-    line: 8
     link: null
     obj_id: '569'
     text: '"Module2.CalleeTwoSub"'
     type: 172
-  - column: 29
-    hidden: false
+  - hidden: false
     index: 25
-    line: 8
     link: null
     obj_id: '570'
     text: '
 
       '
     type: 183
-  - column: 0
-    hidden: false
+  - hidden: false
     index: 26
-    line: 9
     link: null
     obj_id: '571'
     text: End Sub
@@ -306,54 +242,42 @@ source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSu
   \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
 title: Module2.Library1
 tokens:
-- column: 0
-  hidden: true
+- hidden: true
   index: 0
-  line: 1
   link: null
   obj_id: not-set
   text: REM  *****  BASIC  *****
   type: 184
-- column: 24
-  hidden: false
+- hidden: false
   index: 1
-  line: 1
   link: null
   obj_id: not-set
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 2
-  line: 2
   link: null
   obj_id: not-set
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 3
-  line: 3
   link: null
   obj_id: not-set
   text: Sub
   type: 125
-- column: 3
-  hidden: false
+- hidden: false
   index: 4
-  line: 3
   link: null
   obj_id: not-set
   text: ' '
   type: 185
-- column: 4
-  hidden: false
+- hidden: false
   index: 5
-  line: 3
   link:
     bookmark: null
     local_id: CalleeSub.Module2.Library1
@@ -361,112 +285,86 @@ tokens:
   obj_id: not-set
   text: CalleeSub
   type: 181
-- column: 13
-  hidden: false
+- hidden: false
   index: 6
-  line: 3
   link: null
   obj_id: not-set
   text: (
   type: 157
-- column: 14
-  hidden: false
+- hidden: false
   index: 7
-  line: 3
   link: null
   obj_id: not-set
   text: )
   type: 168
-- column: 15
-  hidden: false
+- hidden: false
   index: 8
-  line: 3
   link: null
   obj_id: not-set
   text: "\n\t"
   type: 183
-- column: 1
-  hidden: false
+- hidden: false
   index: 9
-  line: 4
   link: null
   obj_id: not-set
   text: print
   type: 100
-- column: 6
-  hidden: false
+- hidden: false
   index: 10
-  line: 4
   link: null
   obj_id: not-set
   text: ' '
   type: 185
-- column: 7
-  hidden: false
+- hidden: false
   index: 11
-  line: 4
   link: null
   obj_id: not-set
   text: '"Module2.CalleeSub"'
   type: 172
-- column: 26
-  hidden: false
+- hidden: false
   index: 12
-  line: 4
   link: null
   obj_id: not-set
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 13
-  line: 5
   link: null
   obj_id: not-set
   text: End Sub
   type: 44
-- column: 7
-  hidden: false
+- hidden: false
   index: 14
-  line: 5
   link: null
   obj_id: not-set
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 15
-  line: 6
   link: null
   obj_id: not-set
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 16
-  line: 7
   link: null
   obj_id: not-set
   text: Sub
   type: 125
-- column: 3
-  hidden: false
+- hidden: false
   index: 17
-  line: 7
   link: null
   obj_id: not-set
   text: ' '
   type: 185
-- column: 4
-  hidden: false
+- hidden: false
   index: 18
-  line: 7
   link:
     bookmark: null
     local_id: CalleeTwoSub.Module2.Library1
@@ -474,68 +372,52 @@ tokens:
   obj_id: not-set
   text: CalleeTwoSub
   type: 181
-- column: 16
-  hidden: false
+- hidden: false
   index: 19
-  line: 7
   link: null
   obj_id: not-set
   text: (
   type: 157
-- column: 17
-  hidden: false
+- hidden: false
   index: 20
-  line: 7
   link: null
   obj_id: not-set
   text: )
   type: 168
-- column: 18
-  hidden: false
+- hidden: false
   index: 21
-  line: 7
   link: null
   obj_id: not-set
   text: "\n\t"
   type: 183
-- column: 1
-  hidden: false
+- hidden: false
   index: 22
-  line: 8
   link: null
   obj_id: not-set
   text: print
   type: 100
-- column: 6
-  hidden: false
+- hidden: false
   index: 23
-  line: 8
   link: null
   obj_id: not-set
   text: ' '
   type: 185
-- column: 7
-  hidden: false
+- hidden: false
   index: 24
-  line: 8
   link: null
   obj_id: not-set
   text: '"Module2.CalleeTwoSub"'
   type: 172
-- column: 29
-  hidden: false
+- hidden: false
   index: 25
-  line: 8
   link: null
   obj_id: not-set
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 26
-  line: 9
   link: null
   obj_id: not-set
   text: End Sub

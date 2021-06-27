@@ -248,6 +248,7 @@ expr:
   | TRIM '(' (BOTH | TRAILING | LEADING)? FROM expr ')'
   | EXTRACT '(' (YEAR|MONTH|DAY|HOUR|MINUTE|SECOND) FROM expr ')'
   | POSITION '(' expr IN expr ')'
+  | (YEAR | MONTH | DAY| HOUR| MINUTE |SECOND|SUBSTRING) '(' expr (',' expr)* ')'
   | SUBSTRING '(' expr FROM expr (FOR expr)? ')'
 	| function_name '(' ((DISTINCT? expr ( ',' expr)*) | '*')? ')' filter_clause? over_clause?
 	| '(' expr (',' expr)* ')'
@@ -407,7 +408,7 @@ result_column:
 
 join_operator:
 	','
-	| (NATURAL? ( (LEFT OUTER?) | INNER | CROSS)? JOIN);
+	| (NATURAL? ( (RIGHT OUTER?) | (LEFT OUTER?) | INNER | CROSS)? JOIN);
 
 join_constraint:
 	(ON expr)

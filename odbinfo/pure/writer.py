@@ -9,7 +9,6 @@ import socket
 import subprocess
 import time
 import webbrowser
-from functools import partial
 from inspect import ismethod
 from os import path
 
@@ -51,9 +50,9 @@ METADATA_CONTENT = ["tables",
                     "views",
                     "forms",
                     "reports",
-                    "libraries",
-                    "modules",
                     "basicfunctions",
+                    "modules",
+                    "libraries",
                     "pythonlibraries",
                     "pymodules",
                     "documents"]
@@ -89,9 +88,17 @@ def new_site(output_dir, name):
                     f"unable to copy additional site sources from {DATA_DIR}")
 
 
+def preprocess_metadata(metadata):
+    " clear some fields for speed "
+    for function in metadata.basicfunctions():
+        function.body_tokens = []
+
+
 def make_site(output_dir, name, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
     new_site(output_dir, name)
+
+    preprocess_metadata(metadata)
 
     with chdir(os.path.join(output_dir, name)):
         _write_metadata(name, metadata)
@@ -99,11 +106,24 @@ def make_site(output_dir, name, metadata):
     _convert_local(output_dir, name)
     localsite = f"{output_dir}/{name}-local"
     _open_browser(localsite, os.getcwd())
+    return localsite
+
+
+def clear_fields_after(metadata, content):
+    " clear tokens after basicfunctions were written "
+    if content == "basicfunctions":
+        for func in metadata.basicfunctions():
+            func.tokens = []
 
 
 def _write_metadata(name, metadata: Metadata):
     _write_config(name, metadata)
-    list(map(partial(_write_content, metadata), METADATA_CONTENT))
+    for content in METADATA_CONTENT:
+        start_time = time.time()
+        _write_content(metadata, content)
+        # clear_fields_after(metadata, content)
+        end_time = time.time()
+        print("Write {}: {}".format(content, end_time-start_time))
 
 
 def _get_metadata_attr(metadata: Metadata, attribute: str):

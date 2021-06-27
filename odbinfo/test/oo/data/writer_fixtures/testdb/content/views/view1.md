@@ -21,10 +21,8 @@ parent_link:
   local_id: ./testdb.odb
   object_type: metadatas
 table_tokens:
-- column: 7
-  hidden: false
+- hidden: false
   index: 8
-  line: 2
   link:
     bookmark: null
     local_id: Plant
@@ -34,76 +32,58 @@ table_tokens:
   type: 197
 title: view1
 tokens:
-- column: 0
-  hidden: false
+- hidden: false
   index: 0
-  line: 1
   link: null
   obj_id: '36'
   text: SELECT
   type: 129
-- column: 6
-  hidden: true
+- hidden: true
   index: 1
-  line: 1
   link: null
   obj_id: '37'
   text: ' '
   type: 204
-- column: 7
-  hidden: false
+- hidden: false
   index: 2
-  line: 1
   link: null
   obj_id: '38'
   text: '"id"'
   type: 197
-- column: 11
-  hidden: true
+- hidden: true
   index: 3
-  line: 1
   link: null
   obj_id: '39'
   text: '
 
     '
   type: 204
-- column: 0
-  hidden: false
+- hidden: false
   index: 4
-  line: 2
   link: null
   obj_id: '40'
   text: FROM
   type: 75
-- column: 4
-  hidden: true
+- hidden: true
   index: 5
-  line: 2
   link: null
   obj_id: '41'
   text: ' '
   type: 204
-- column: 5
-  hidden: true
+- hidden: true
   index: 6
-  line: 2
   link: null
   obj_id: '42'
   text: ' '
   type: 204
-- column: 6
-  hidden: true
+- hidden: true
   index: 7
-  line: 2
   link: null
   obj_id: '43'
   text: ' '
   type: 204
-- column: 7
-  hidden: false
+- hidden: false
   index: 8
-  line: 2
   link:
     bookmark: null
     local_id: Plant

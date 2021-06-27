@@ -1,33 +1,25 @@
 ---
 body_tokens:
-- column: 1
-  hidden: false
+- hidden: false
   index: 7
-  line: 4
   link: null
   obj_id: '386'
   text: Error
   type: 49
-- column: 6
-  hidden: false
+- hidden: false
   index: 8
-  line: 4
   link: null
   obj_id: '387'
   text: ' '
   type: 185
-- column: 7
-  hidden: false
+- hidden: false
   index: 9
-  line: 4
   link: null
   obj_id: '388'
   text: '"Mijn fout"'
   type: 172
-- column: 18
-  hidden: false
+- hidden: false
   index: 10
-  line: 4
   link: null
   obj_id: '389'
   text: '
@@ -45,86 +37,66 @@ parent_link:
   local_id: Module1.Library1
   object_type: modules
 strings:
-- column: 7
-  hidden: false
+- hidden: false
   index: 9
-  line: 4
   link: null
   obj_id: '388'
   text: '"Mijn fout"'
   type: 172
 title: Main.Module1.Library1
 tokens:
-- column: 0
-  hidden: false
+- hidden: false
   index: 3
-  line: 3
   link: null
   obj_id: '382'
   text: Sub
   type: 125
-- column: 3
-  hidden: false
+- hidden: false
   index: 4
-  line: 3
   link: null
   obj_id: '383'
   text: ' '
   type: 185
-- column: 4
-  hidden: false
+- hidden: false
   index: 5
-  line: 3
   link: null
   obj_id: '384'
   text: Main
   type: 181
-- column: 8
-  hidden: false
+- hidden: false
   index: 6
-  line: 3
   link: null
   obj_id: '385'
   text: "\n\t"
   type: 183
-- column: 1
-  hidden: false
+- hidden: false
   index: 7
-  line: 4
   link: null
   obj_id: '386'
   text: Error
   type: 49
-- column: 6
-  hidden: false
+- hidden: false
   index: 8
-  line: 4
   link: null
   obj_id: '387'
   text: ' '
   type: 185
-- column: 7
-  hidden: false
+- hidden: false
   index: 9
-  line: 4
   link: null
   obj_id: '388'
   text: '"Mijn fout"'
   type: 172
-- column: 18
-  hidden: false
+- hidden: false
   index: 10
-  line: 4
   link: null
   obj_id: '389'
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 11
-  line: 5
   link: null
   obj_id: '390'
   text: End Sub

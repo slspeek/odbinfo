@@ -7,7 +7,6 @@ from pytest import fixture
 from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
 
 
-
 def load_metadata(shared_datadir, processed=False, empty=False):
     """ Returns Metadata object from the test fixture """
     postfix = prefix = ""

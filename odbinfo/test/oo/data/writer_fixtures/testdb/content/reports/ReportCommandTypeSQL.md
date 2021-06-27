@@ -48,10 +48,8 @@ embedded_query:
     local_id: ./testdb.odb
     object_type: metadatas
   table_tokens:
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 8
-    line: 2
     link:
       bookmark: null
       local_id: Plant
@@ -61,76 +59,58 @@ embedded_query:
     type: 197
   title: ReportCommandTypeSQL.Command
   tokens:
-  - column: 0
-    hidden: false
+  - hidden: false
     index: 0
-    line: 1
     link: null
     obj_id: '106'
     text: SELECT
     type: 129
-  - column: 6
-    hidden: true
+  - hidden: true
     index: 1
-    line: 1
     link: null
     obj_id: '107'
     text: ' '
     type: 204
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 2
-    line: 1
     link: null
     obj_id: '108'
     text: '*'
     type: 7
-  - column: 8
-    hidden: true
+  - hidden: true
     index: 3
-    line: 1
     link: null
     obj_id: '109'
     text: '
 
       '
     type: 204
-  - column: 0
-    hidden: false
+  - hidden: false
     index: 4
-    line: 2
     link: null
     obj_id: '110'
     text: FROM
     type: 75
-  - column: 4
-    hidden: true
+  - hidden: true
     index: 5
-    line: 2
     link: null
     obj_id: '111'
     text: ' '
     type: 204
-  - column: 5
-    hidden: true
+  - hidden: true
     index: 6
-    line: 2
     link: null
     obj_id: '112'
     text: ' '
     type: 204
-  - column: 6
-    hidden: true
+  - hidden: true
     index: 7
-    line: 2
     link: null
     obj_id: '113'
     text: ' '
     type: 204
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 8
-    line: 2
     link:
       bookmark: null
       local_id: Plant
@@ -138,10 +118,8 @@ embedded_query:
     obj_id: '114'
     text: '"Plant"'
     type: 197
-  - column: 14
-    hidden: false
+  - hidden: false
     index: 9
-    line: 2
     link: null
     obj_id: '115'
     text: ;

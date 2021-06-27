@@ -76,10 +76,8 @@ parent_link:
   local_id: ./testdb.odb
   object_type: metadatas
 table_tokens:
-- column: 7
-  hidden: false
+- hidden: false
   index: 8
-  line: 2
   link:
     bookmark: null
     local_id: FamilyLookup
@@ -87,10 +85,8 @@ table_tokens:
   obj_id: '60'
   text: '"FamilyLookup"'
   type: 197
-- column: 23
-  hidden: false
+- hidden: false
   index: 11
-  line: 2
   link:
     bookmark: null
     local_id: vwPlant
@@ -98,10 +94,8 @@ table_tokens:
   obj_id: '63'
   text: '"vwPlant"'
   type: 197
-- column: 34
-  hidden: false
+- hidden: false
   index: 14
-  line: 2
   link:
     bookmark: null
     local_id: view1
@@ -111,76 +105,58 @@ table_tokens:
   type: 197
 title: DependendQuery
 tokens:
-- column: 0
-  hidden: false
+- hidden: false
   index: 0
-  line: 1
   link: null
   obj_id: '52'
   text: SELECT
   type: 129
-- column: 6
-  hidden: true
+- hidden: true
   index: 1
-  line: 1
   link: null
   obj_id: '53'
   text: ' '
   type: 204
-- column: 7
-  hidden: false
+- hidden: false
   index: 2
-  line: 1
   link: null
   obj_id: '54'
   text: '*'
   type: 7
-- column: 8
-  hidden: true
+- hidden: true
   index: 3
-  line: 1
   link: null
   obj_id: '55'
   text: '
 
     '
   type: 204
-- column: 0
-  hidden: false
+- hidden: false
   index: 4
-  line: 2
   link: null
   obj_id: '56'
   text: FROM
   type: 75
-- column: 4
-  hidden: true
+- hidden: true
   index: 5
-  line: 2
   link: null
   obj_id: '57'
   text: ' '
   type: 204
-- column: 5
-  hidden: true
+- hidden: true
   index: 6
-  line: 2
   link: null
   obj_id: '58'
   text: ' '
   type: 204
-- column: 6
-  hidden: true
+- hidden: true
   index: 7
-  line: 2
   link: null
   obj_id: '59'
   text: ' '
   type: 204
-- column: 7
-  hidden: false
+- hidden: false
   index: 8
-  line: 2
   link:
     bookmark: null
     local_id: FamilyLookup
@@ -188,26 +164,20 @@ tokens:
   obj_id: '60'
   text: '"FamilyLookup"'
   type: 197
-- column: 21
-  hidden: false
+- hidden: false
   index: 9
-  line: 2
   link: null
   obj_id: '61'
   text: ','
   type: 5
-- column: 22
-  hidden: true
+- hidden: true
   index: 10
-  line: 2
   link: null
   obj_id: '62'
   text: ' '
   type: 204
-- column: 23
-  hidden: false
+- hidden: false
   index: 11
-  line: 2
   link:
     bookmark: null
     local_id: vwPlant
@@ -215,26 +185,20 @@ tokens:
   obj_id: '63'
   text: '"vwPlant"'
   type: 197
-- column: 32
-  hidden: false
+- hidden: false
   index: 12
-  line: 2
   link: null
   obj_id: '64'
   text: ','
   type: 5
-- column: 33
-  hidden: true
+- hidden: true
   index: 13
-  line: 2
   link: null
   obj_id: '65'
   text: ' '
   type: 204
-- column: 34
-  hidden: false
+- hidden: false
   index: 14
-  line: 2
   link:
     bookmark: null
     local_id: view1

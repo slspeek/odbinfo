@@ -117,8 +117,6 @@ def use_case(source: PageOwner,
 @dataclass
 class Token(Node):
     "lexer token"
-    column: int
-    line: int
     text: str
     type: int
     index: int

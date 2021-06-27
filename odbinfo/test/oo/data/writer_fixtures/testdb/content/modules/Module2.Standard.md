@@ -1,34 +1,26 @@
 ---
 callables:
 - body_tokens:
-  - column: 1
-    hidden: false
+  - hidden: false
     index: 7
-    line: 4
     link: null
     obj_id: '242'
     text: Print
     type: 100
-  - column: 6
-    hidden: false
+  - hidden: false
     index: 8
-    line: 4
     link: null
     obj_id: '243'
     text: ' '
     type: 185
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 9
-    line: 4
     link: null
     obj_id: '244'
     text: '"hello world"'
     type: 172
-  - column: 20
-    hidden: false
+  - hidden: false
     index: 10
-    line: 4
     link: null
     obj_id: '245'
     text: '
@@ -46,86 +38,66 @@ callables:
     local_id: Module2.Standard
     object_type: modules
   strings:
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 9
-    line: 4
     link: null
     obj_id: '244'
     text: '"hello world"'
     type: 172
   title: Main.Module2.Standard
   tokens:
-  - column: 0
-    hidden: false
+  - hidden: false
     index: 3
-    line: 3
     link: null
     obj_id: '238'
     text: Sub
     type: 125
-  - column: 3
-    hidden: false
+  - hidden: false
     index: 4
-    line: 3
     link: null
     obj_id: '239'
     text: ' '
     type: 185
-  - column: 4
-    hidden: false
+  - hidden: false
     index: 5
-    line: 3
     link: null
     obj_id: '240'
     text: Main
     type: 181
-  - column: 8
-    hidden: false
+  - hidden: false
     index: 6
-    line: 3
     link: null
     obj_id: '241'
     text: "\n\t"
     type: 183
-  - column: 1
-    hidden: false
+  - hidden: false
     index: 7
-    line: 4
     link: null
     obj_id: '242'
     text: Print
     type: 100
-  - column: 6
-    hidden: false
+  - hidden: false
     index: 8
-    line: 4
     link: null
     obj_id: '243'
     text: ' '
     type: 185
-  - column: 7
-    hidden: false
+  - hidden: false
     index: 9
-    line: 4
     link: null
     obj_id: '244'
     text: '"hello world"'
     type: 172
-  - column: 20
-    hidden: false
+  - hidden: false
     index: 10
-    line: 4
     link: null
     obj_id: '245'
     text: '
 
       '
     type: 183
-  - column: 0
-    hidden: false
+  - hidden: false
     index: 11
-    line: 5
     link: null
     obj_id: '246'
     text: End Sub
@@ -142,54 +114,42 @@ parent_link:
 source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
 title: Module2.Standard
 tokens:
-- column: 0
-  hidden: true
+- hidden: true
   index: 0
-  line: 1
   link: null
   obj_id: not-set
   text: REM  *****  BASIC  *****
   type: 184
-- column: 24
-  hidden: false
+- hidden: false
   index: 1
-  line: 1
   link: null
   obj_id: not-set
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 2
-  line: 2
   link: null
   obj_id: not-set
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 3
-  line: 3
   link: null
   obj_id: not-set
   text: Sub
   type: 125
-- column: 3
-  hidden: false
+- hidden: false
   index: 4
-  line: 3
   link: null
   obj_id: not-set
   text: ' '
   type: 185
-- column: 4
-  hidden: false
+- hidden: false
   index: 5
-  line: 3
   link:
     bookmark: null
     local_id: Main.Module2.Standard
@@ -197,52 +157,40 @@ tokens:
   obj_id: not-set
   text: Main
   type: 181
-- column: 8
-  hidden: false
+- hidden: false
   index: 6
-  line: 3
   link: null
   obj_id: not-set
   text: "\n\t"
   type: 183
-- column: 1
-  hidden: false
+- hidden: false
   index: 7
-  line: 4
   link: null
   obj_id: not-set
   text: Print
   type: 100
-- column: 6
-  hidden: false
+- hidden: false
   index: 8
-  line: 4
   link: null
   obj_id: not-set
   text: ' '
   type: 185
-- column: 7
-  hidden: false
+- hidden: false
   index: 9
-  line: 4
   link: null
   obj_id: not-set
   text: '"hello world"'
   type: 172
-- column: 20
-  hidden: false
+- hidden: false
   index: 10
-  line: 4
   link: null
   obj_id: not-set
   text: '
 
     '
   type: 183
-- column: 0
-  hidden: false
+- hidden: false
   index: 11
-  line: 5
   link: null
   obj_id: not-set
   text: End Sub

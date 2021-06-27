@@ -1,4 +1,5 @@
 """ Core module """
+import time
 from functools import partial
 from typing import Sequence, Union
 
@@ -65,12 +66,43 @@ def process_form(form: Form) -> None:
     set_form_height(form)
 
 
+def time_func(func, *args):  # *args can take 0 or more
+    '''function which prints the wall time it takes to execute the given command'''
+    start_time = time.time()
+    func(*args)
+    end_time = time.time()
+    print("it took this long to run: {}".format(end_time-start_time))
+
+
 def process_metadata(metadata: Metadata) -> None:
     " preprocessing of the data before it is send to hugo "
+    start_time = time.time()
     _process_libraries(metadata.libraries)
+    end_time = time.time()
+    print("Parse basic: {}".format(end_time-start_time))
+
+    start_time = time.time()
     list(map(_process_query, metadata.queries))
     list(map(_process_query, metadata.views))
+    end_time = time.time()
+    print("Parse queries and views: {}".format(end_time-start_time))
+
+    start_time = time.time()
     list(map(process_form, metadata.forms))
+    end_time = time.time()
+    print("Process forms: {}".format(end_time-start_time))
+
+    start_time = time.time()
     metadata.set_parents(None)
+    end_time = time.time()
+    print("Set parents: {}".format(end_time-start_time))
+
+    start_time = time.time()
     metadata.set_obj_ids()
+    end_time = time.time()
+    print("Set ids: {}".format(end_time-start_time))
+
+    start_time = time.time()
     metadata.use_cases = search_dependencies(metadata)
+    end_time = time.time()
+    print("Dependency search: {}".format(end_time-start_time))

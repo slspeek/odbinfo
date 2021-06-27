@@ -30,8 +30,8 @@ name = "reports"
 weight = 6
 
 [[menu.main]]
-url = "/libraries/index.html"
-name = "libraries"
+url = "/basicfunctions/index.html"
+name = "basicfunctions"
 weight = 7
 
 [[menu.main]]
@@ -40,8 +40,8 @@ name = "modules"
 weight = 8
 
 [[menu.main]]
-url = "/basicfunctions/index.html"
-name = "basicfunctions"
+url = "/libraries/index.html"
+name = "libraries"
 weight = 9
 
 [[menu.main]]

@@ -22,7 +22,7 @@ def test_processor_regression_empty(empty_metadata, data_regression,
 
 
 def process_and_check(unprocessed, filename, data_regression,
-                        file_regression, benchmark):
+                      file_regression, benchmark):
     " do processing and check"
     benchmark(process_metadata, unprocessed)
     data_regression.check(dataclasses.asdict(unprocessed))

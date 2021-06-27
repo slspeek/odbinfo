@@ -24,6 +24,7 @@ class SQLListener(SQLiteParserListener):
 
 def parse(sqlcommand):
     " Returns parsetree object "
+    # print("Parsing: ", sqlcommand)
     stream = get_token_stream(sqlcommand, SQLiteLexer)
     tokens = get_tokens(stream)
     parser = SQLiteParser(stream)

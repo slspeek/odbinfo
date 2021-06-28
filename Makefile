@@ -91,6 +91,7 @@ benchmark:
 histogram:
 	# PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $ $(testloc) --benchmark-histogram --benchmark-compare=\*
 	py.test-benchmark compare --histogram=benchmarks/histogram --group-by=func --sort=name
+	py.test-benchmark compare --histogram=benchmarks/histogram 
 
 alltest: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable  $(testloc)

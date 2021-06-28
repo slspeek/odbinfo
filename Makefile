@@ -22,6 +22,7 @@ PUREPYTHONPATH=.:$$(cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
 pythonsources=$$(find -name \*.py -and -not -ipath ./target/\* -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* )
+benchmarking=--benchmark-only --benchmark-autosave
 
 build: mypy metric itest
 
@@ -55,7 +56,7 @@ coverage: clean prepare
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 itest: clean prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} -m "not veryslow" $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable -m "not veryslow" $(testloc)
 
 single: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)/${SINGLE}
@@ -67,28 +68,32 @@ metadata_fixture: prepare
 	cp -v odbinfo/test/oo/test_reader_regression/*.pickle odbinfo/test/oo/data
 
 processor_fixture: metadata_fixture
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py ||$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py ||$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(puretestloc)/test_processor_regression.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(puretestloc)/test_processor_regression.py ||$\
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(puretestloc)/test_processor_regression.py ||$\
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(puretestloc)/test_processor_regression.py
 	cp -v odbinfo/test/pure/test_processor_regression/*.pickle odbinfo/test/oo/data
 
 writer_fixture: processor_fixture
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py ||$\
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable $(puretestloc)/test_writer_regression.py ||$\
 	(rm -rf $(fixtureloc)/writer_fixtures/* &&$\
 	cp -rv $(test-output)/test_writer_regression/emptydb $(fixtureloc)/writer_fixtures/ &&$\
 	cp -rv $(test-output)/test_writer_regression/testdb $(fixtureloc)/writer_fixtures/  &&$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $(puretestloc)/test_writer_regression.py )
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable $(puretestloc)/test_writer_regression.py )
 
 fixtures: writer_fixture
 
 unit:
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  -m "not slow" $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable -m "not slow" $(testloc)
 
 benchmark:
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-histogram -m "not slow" $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} $(benchmarking) $(testloc)
+
+histogram:
+	# PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $ $(testloc) --benchmark-histogram --benchmark-compare=\*
+	py.test-benchmark compare --histogram=benchmarks/histogram
 
 alltest: prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}   $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable  $(testloc)
 
 .ONESHELL:
 serve: clean prepare

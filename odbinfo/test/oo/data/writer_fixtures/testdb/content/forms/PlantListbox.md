@@ -1,24 +1,25 @@
 ---
+!!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: PlantListbox
 obj_id: '139'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 subforms:
-- allowdeletes: 'false'
+- !!python/object:odbinfo.pure.datatype.ui.SubForm
+  allowdeletes: 'false'
   allowinserts: 'true'
   allowupdates: 'true'
-  command:
-    link:
-      bookmark: null
+  command: !!python/object:odbinfo.pure.datatype.base.LinkedString
+    link: !!python/object:odbinfo.pure.datatype.base.Identifier
       local_id: Plant
       object_type: tables
     text: Plant
   commandtype: table
   controls:
-  - controlid: control1
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control1
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -28,7 +29,8 @@ subforms:
     name: lblid
     obj_id: '141'
     type: FixedText
-  - controlid: control3
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control3
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -38,7 +40,8 @@ subforms:
     name: lblnaam
     obj_id: '142'
     type: FixedText
-  - controlid: control5
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control5
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -48,7 +51,8 @@ subforms:
     name: lblRFamliyID
     obj_id: '143'
     type: FixedText
-  - controlid: control2
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control2
     convertemptytonull: 'true'
     datafield: id
     eventlisteners: []
@@ -58,7 +62,8 @@ subforms:
     name: fmtid
     obj_id: '144'
     type: FormattedField
-  - controlid: control4
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control4
     convertemptytonull: 'true'
     datafield: naam
     eventlisteners: []
@@ -68,7 +73,8 @@ subforms:
     name: txtnaam
     obj_id: '145'
     type: TextField
-  - boundcolumn: '1'
+  - !!python/object:odbinfo.pure.datatype.ui.ListBox
+    boundcolumn: '1'
     controlid: control6
     convertemptytonull: ''
     datafield: RFamliyID
@@ -82,11 +88,13 @@ subforms:
     name: fmtRFamliyID
     obj_id: '146'
     type: ListBox
-  - controlid: control7
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control7
     convertemptytonull: ''
     datafield: ''
     eventlisteners:
-    - event: form:performaction
+    - !!python/object:odbinfo.pure.datatype.ui.EventListener
+      event: form:performaction
       obj_id: '148'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''
@@ -95,7 +103,8 @@ subforms:
     name: Knop 1
     obj_id: '147'
     type: CommandButton
-  - controlid: control8
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control8
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -105,14 +114,17 @@ subforms:
     name: Knop 2
     obj_id: '149'
     type: CommandButton
-  - controlid: control9
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control9
     convertemptytonull: ''
     datafield: ''
     eventlisteners:
-    - event: form:performaction
+    - !!python/object:odbinfo.pure.datatype.ui.EventListener
+      event: form:performaction
       obj_id: '151'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-    - event: form:approveaction
+    - !!python/object:odbinfo.pure.datatype.ui.EventListener
+      event: form:approveaction
       obj_id: '152'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''
@@ -123,7 +135,6 @@ subforms:
     type: CommandButton
   depth: 0
   detailfields: ''
-  embedded_query: null
   masterfields: ''
   name: MainForm
   obj_id: '140'

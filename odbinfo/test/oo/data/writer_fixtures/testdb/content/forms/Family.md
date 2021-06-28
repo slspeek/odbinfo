@@ -1,25 +1,27 @@
 ---
+!!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: Family
 obj_id: '116'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 subforms:
-- allowdeletes: 'true'
+- !!python/object:odbinfo.pure.datatype.ui.SubForm
+  allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command:
-    link:
-      bookmark: null
+  command: !!python/object:odbinfo.pure.datatype.base.LinkedString
+    link: !!python/object:odbinfo.pure.datatype.base.Identifier
       local_id: Family
       object_type: tables
     text: Family
   commandtype: table
   controls:
-  - columns:
-    - controlid: control2
+  - !!python/object:odbinfo.pure.datatype.ui.Grid
+    columns:
+    - !!python/object:odbinfo.pure.datatype.ui.Control
+      controlid: control2
       convertemptytonull: 'true'
       datafield: FamlilyID
       eventlisteners: []
@@ -29,7 +31,8 @@ subforms:
       name: FamlilyID
       obj_id: '119'
       type: ooo:FormattedField
-    - controlid: control3
+    - !!python/object:odbinfo.pure.datatype.ui.Control
+      controlid: control3
       convertemptytonull: 'true'
       datafield: Name
       eventlisteners: []
@@ -39,7 +42,8 @@ subforms:
       name: Name
       obj_id: '120'
       type: ooo:TextField
-    - controlid: control4
+    - !!python/object:odbinfo.pure.datatype.ui.Control
+      controlid: control4
       convertemptytonull: 'true'
       datafield: Desc
       eventlisteners: []
@@ -53,7 +57,6 @@ subforms:
     obj_id: '118'
   depth: 0
   detailfields: ''
-  embedded_query: null
   masterfields: ''
   name: MainForm
   obj_id: '117'

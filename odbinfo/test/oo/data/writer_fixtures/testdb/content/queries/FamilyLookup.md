@@ -1,6 +1,8 @@
 ---
+!!python/object:odbinfo.pure.datatype.tabular.Query
 columns:
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
+  autoincrement: false
   issigned: false
   name: Name
   nullable: Nullable
@@ -9,9 +11,11 @@ columns:
   readonly: false
   scale: 0
   tablename: Family
+  title: Family.Name
   typename: VARCHAR
   writable: true
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
+  autoincrement: false
   issigned: true
   name: FamilyID
   nullable: No_Nulls
@@ -20,20 +24,20 @@ columns:
   readonly: false
   scale: 0
   tablename: Family
+  title: Family.FamilyID
   typename: INTEGER
   writable: true
 command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
 name: FamilyLookup
 obj_id: '67'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 table_tokens:
-- hidden: false
+- &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 18
-  link:
-    bookmark: null
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: Family
     object_type: tables
   obj_id: '88'
@@ -41,125 +45,117 @@ table_tokens:
   type: 197
 title: FamilyLookup
 tokens:
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 0
-  link: null
   obj_id: '70'
   text: SELECT
   type: 129
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 1
-  link: null
   obj_id: '71'
   text: ' '
   type: 204
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 2
-  link: null
   obj_id: '72'
   text: '"Name"'
   type: 197
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 3
-  link: null
   obj_id: '73'
   text: ','
   type: 5
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 4
-  link: null
   obj_id: '74'
   text: '
 
     '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 5
-  link: null
   obj_id: '75'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 6
-  link: null
   obj_id: '76'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 7
-  link: null
   obj_id: '77'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 8
-  link: null
   obj_id: '78'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 9
-  link: null
   obj_id: '79'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 10
-  link: null
   obj_id: '80'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 11
-  link: null
   obj_id: '81'
   text: ' '
   type: 204
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 12
-  link: null
   obj_id: '82'
   text: '"FamilyID"'
   type: 197
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 13
-  link: null
   obj_id: '83'
   text: '
 
     '
   type: 204
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 14
-  link: null
   obj_id: '84'
   text: FROM
   type: 75
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 15
-  link: null
   obj_id: '85'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 16
-  link: null
   obj_id: '86'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 17
-  link: null
   obj_id: '87'
   text: ' '
   type: 204
-- hidden: false
-  index: 18
-  link:
-    bookmark: null
-    local_id: Family
-    object_type: tables
-  obj_id: '88'
-  text: '"Family"'
-  type: 197
+- *id001
 ---

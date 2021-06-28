@@ -1,6 +1,8 @@
 ---
+!!python/object:odbinfo.pure.datatype.tabular.Table
 columns:
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.Column
+  autoincrement: false
   defaultvalue: ''
   description: Unique key for the plant
   name: id
@@ -9,8 +11,10 @@ columns:
   precision: 100
   scale: 0
   tablename: Plant
+  title: Plant.id
   typename: NUMERIC
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.Column
+  autoincrement: false
   defaultvalue: ''
   description: Naam aan de plant gegeven
   name: naam
@@ -19,8 +23,10 @@ columns:
   precision: 100
   scale: 0
   tablename: Plant
+  title: Plant.naam
   typename: VARCHAR
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.Column
+  autoincrement: false
   defaultvalue: ''
   description: null
   name: RFamliyID
@@ -29,10 +35,12 @@ columns:
   precision: 0
   scale: 0
   tablename: Plant
+  title: Plant.RFamliyID
   typename: INTEGER
 description: ''
 indexes:
-- catalog: ''
+- !!python/object:odbinfo.pure.datatype.tabular.Index
+  catalog: ''
   clustered: false
   columns:
   - id
@@ -40,7 +48,8 @@ indexes:
   obj_id: '16'
   primary: false
   unique: true
-- catalog: ''
+- !!python/object:odbinfo.pure.datatype.tabular.Index
+  catalog: ''
   clustered: false
   columns:
   - RFamliyID
@@ -49,26 +58,26 @@ indexes:
   primary: false
   unique: false
 keys:
-- columns:
+- !!python/object:odbinfo.pure.datatype.tabular.Key
+  columns:
   - id
   delete_rule: Cascade
   name: SYS_PK_47
   obj_id: '14'
-  referenced_table:
-    link: null
+  referenced_table: !!python/object:odbinfo.pure.datatype.base.LinkedString
     text: ''
   relatedcolumns:
   - ''
   typename: Primary
   update_rule: Cascade
-- columns:
+- !!python/object:odbinfo.pure.datatype.tabular.Key
+  columns:
   - RFamliyID
   delete_rule: No_Action
   name: SYS_FK_79
   obj_id: '15'
-  referenced_table:
-    link:
-      bookmark: null
+  referenced_table: !!python/object:odbinfo.pure.datatype.base.LinkedString
+    link: !!python/object:odbinfo.pure.datatype.base.Identifier
       local_id: Family
       object_type: tables
     text: Family
@@ -78,8 +87,7 @@ keys:
   update_rule: No_Action
 name: Plant
 obj_id: '13'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 title: Plant

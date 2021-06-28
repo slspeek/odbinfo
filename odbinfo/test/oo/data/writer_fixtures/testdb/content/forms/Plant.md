@@ -1,24 +1,25 @@
 ---
+!!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: Plant
 obj_id: '126'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 subforms:
-- allowdeletes: 'true'
+- !!python/object:odbinfo.pure.datatype.ui.SubForm
+  allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command:
-    link:
-      bookmark: null
+  command: !!python/object:odbinfo.pure.datatype.base.LinkedString
+    link: !!python/object:odbinfo.pure.datatype.base.Identifier
       local_id: Plant
       object_type: tables
     text: Plant
   commandtype: table
   controls:
-  - controlid: control1
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control1
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -28,7 +29,8 @@ subforms:
     name: lblid
     obj_id: '128'
     type: FixedText
-  - controlid: control3
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control3
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -38,7 +40,8 @@ subforms:
     name: lblnaam
     obj_id: '129'
     type: FixedText
-  - controlid: control5
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control5
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -48,7 +51,8 @@ subforms:
     name: lblRFamliyID
     obj_id: '130'
     type: FixedText
-  - controlid: control2
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control2
     convertemptytonull: 'true'
     datafield: id
     eventlisteners: []
@@ -58,7 +62,8 @@ subforms:
     name: fmtid
     obj_id: '131'
     type: FormattedField
-  - controlid: control6
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control6
     convertemptytonull: 'true'
     datafield: RFamliyID
     eventlisteners: []
@@ -68,7 +73,8 @@ subforms:
     name: fmtRFamliyID
     obj_id: '132'
     type: FormattedField
-  - controlid: control4
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control4
     convertemptytonull: 'true'
     datafield: naam
     eventlisteners: []
@@ -80,7 +86,6 @@ subforms:
     type: TextField
   depth: 0
   detailfields: ''
-  embedded_query: null
   masterfields: ''
   name: MainForm
   obj_id: '127'

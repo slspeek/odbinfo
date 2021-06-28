@@ -1,6 +1,8 @@
 ---
+!!python/object:odbinfo.pure.datatype.tabular.Table
 columns:
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.Column
+  autoincrement: false
   defaultvalue: ''
   description: null
   name: FamilyID
@@ -9,8 +11,10 @@ columns:
   precision: 0
   scale: 0
   tablename: Family
+  title: Family.FamilyID
   typename: INTEGER
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.Column
+  autoincrement: false
   defaultvalue: ''
   description: null
   name: Name
@@ -19,8 +23,10 @@ columns:
   precision: 100
   scale: 0
   tablename: Family
+  title: Family.Name
   typename: VARCHAR
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.Column
+  autoincrement: false
   defaultvalue: ''
   description: null
   name: Desc
@@ -29,10 +35,12 @@ columns:
   precision: 0
   scale: 0
   tablename: Family
+  title: Family.Desc
   typename: LONGVARCHAR
 description: ''
 indexes:
-- catalog: ''
+- !!python/object:odbinfo.pure.datatype.tabular.Index
+  catalog: ''
   clustered: false
   columns:
   - FamilyID
@@ -41,13 +49,13 @@ indexes:
   primary: false
   unique: true
 keys:
-- columns:
+- !!python/object:odbinfo.pure.datatype.tabular.Key
+  columns:
   - FamilyID
   delete_rule: Cascade
   name: SYS_PK_49
   obj_id: '2'
-  referenced_table:
-    link: null
+  referenced_table: !!python/object:odbinfo.pure.datatype.base.LinkedString
     text: ''
   relatedcolumns:
   - ''
@@ -55,8 +63,7 @@ keys:
   update_rule: Cascade
 name: Family
 obj_id: '1'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 title: Family

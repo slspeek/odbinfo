@@ -1,6 +1,5 @@
 """ Writing out to hugo site format """
 import contextlib
-import dataclasses
 import os
 import pathlib
 import shlex
@@ -165,7 +164,8 @@ def _write_content(metadata: Metadata, name):
         os.makedirs(targetpath, exist_ok=True)
         for content in contentlist:
             with open(f"{targetpath}/{content.title}.md", "w") as out:
-                _frontmatter(dataclasses.asdict(content), out)
+                # _frontmatter(dataclasses.asdict(content), out)
+                _frontmatter(content, out)
 
 
 def _is_port_open(port):

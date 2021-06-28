@@ -1,5 +1,6 @@
 """ Writing out to hugo site format """
 import contextlib
+import dataclasses
 import os
 import pathlib
 import shlex
@@ -57,10 +58,10 @@ METADATA_CONTENT = ["tables",
                     "documents"]
 
 
-def _frontmatter(adict, out):
+def _frontmatter(obj, out):
     """ Writes `adict` to yaml and marks it as frontmatter """
     out.write(FRONT_MATTER_MARK)
-    yaml.dump(adict, out)
+    yaml.dump(obj, out)
     out.write(FRONT_MATTER_MARK)
 
 
@@ -123,7 +124,7 @@ def _write_metadata(name, metadata: Metadata):
     for content in METADATA_CONTENT:
         start_time = time.time()
         _write_content(metadata, content)
-        clear_fields_after(metadata, content)
+        # clear_fields_after(metadata, content)
         end_time = time.time()
         print("Write {}: {}".format(content, end_time-start_time))
 
@@ -167,8 +168,8 @@ def _write_content(metadata: Metadata, name):
         os.makedirs(targetpath, exist_ok=True)
         for content in contentlist:
             with open(f"{targetpath}/{content.title}.md", "w") as out:
-                # _frontmatter(dataclasses.asdict(content), out)
-                _frontmatter(content, out)
+                _frontmatter(dataclasses.asdict(content), out)
+                # _frontmatter(content, out)
 
 
 def _is_port_open(port):

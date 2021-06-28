@@ -1,8 +1,6 @@
 ---
-!!python/object:odbinfo.pure.datatype.tabular.Table
 columns:
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: null
   name: Naam
@@ -11,10 +9,8 @@ columns:
   precision: 100
   scale: 0
   tablename: Persoon
-  title: Persoon.Naam
   typename: VARCHAR
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: Woonadres
   name: Adres
@@ -23,10 +19,8 @@ columns:
   precision: 100
   scale: 0
   tablename: Persoon
-  title: Persoon.Adres
   typename: VARCHAR
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: null
   name: Leeftijd
@@ -35,12 +29,10 @@ columns:
   precision: 0
   scale: 0
   tablename: Persoon
-  title: Persoon.Leeftijd
   typename: INTEGER
 description: ''
 indexes:
-- !!python/object:odbinfo.pure.datatype.tabular.Index
-  catalog: ''
+- catalog: ''
   clustered: false
   columns:
   - Naam
@@ -50,14 +42,14 @@ indexes:
   primary: false
   unique: true
 keys:
-- !!python/object:odbinfo.pure.datatype.tabular.Key
-  columns:
+- columns:
   - Adres
   - Naam
   delete_rule: Cascade
   name: SYS_PK_51
   obj_id: '8'
-  referenced_table: !!python/object:odbinfo.pure.datatype.base.LinkedString
+  referenced_table:
+    link: null
     text: ''
   relatedcolumns:
   - ''
@@ -66,7 +58,8 @@ keys:
   update_rule: Cascade
 name: Persoon
 obj_id: '7'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadatas
 title: Persoon

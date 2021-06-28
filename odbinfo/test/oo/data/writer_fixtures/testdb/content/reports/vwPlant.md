@@ -1,11 +1,12 @@
 ---
-!!python/object:odbinfo.pure.datatype.ui.Report
-command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+command:
+  link:
+    bookmark: null
     local_id: vwPlant
     object_type: queries
   text: vwPlant
 commandtype: query
+embedded_query: null
 formulas:
 - field:[id]
 - field:[naam]
@@ -13,7 +14,8 @@ formulas:
 name: vwPlant
 obj_id: '174'
 output_type: application/vnd.oasis.opendocument.text
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadatas
 title: vwPlant

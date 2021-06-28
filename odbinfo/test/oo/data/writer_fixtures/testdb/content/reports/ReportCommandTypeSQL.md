@@ -1,12 +1,11 @@
 ---
-!!python/object:odbinfo.pure.datatype.ui.Report
-command: !!python/object:odbinfo.pure.datatype.base.LinkedString
+command:
+  link: null
   text: select * from "Plant";
 commandtype: command
-embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
+embedded_query:
   columns:
-  - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-    autoincrement: false
+  - autoincrement: false
     issigned: true
     name: id
     nullable: No_Nulls
@@ -15,11 +14,9 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     readonly: false
     scale: 0
     tablename: Plant
-    title: Plant.id
     typename: NUMERIC
     writable: true
-  - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-    autoincrement: false
+  - autoincrement: false
     issigned: false
     name: naam
     nullable: Nullable
@@ -28,11 +25,9 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     readonly: false
     scale: 0
     tablename: Plant
-    title: Plant.naam
     typename: VARCHAR
     writable: true
-  - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-    autoincrement: false
+  - autoincrement: false
     issigned: true
     name: RFamliyID
     nullable: Nullable
@@ -41,7 +36,6 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     readonly: false
     scale: 0
     tablename: Plant
-    title: Plant.RFamliyID
     typename: INTEGER
     writable: true
   command: 'SELECT *
@@ -49,14 +43,15 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     FROM   "Plant";'
   name: ReportCommandTypeSQL.Command
   obj_id: '102'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  parent_link:
+    bookmark: null
     local_id: ./testdb.odb
     object_type: metadatas
   table_tokens:
-  - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
+  - hidden: false
     index: 8
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    link:
+      bookmark: null
       local_id: Plant
       object_type: tables
     obj_id: '114'
@@ -64,60 +59,68 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     type: 197
   title: ReportCommandTypeSQL.Command
   tokens:
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
+  - hidden: false
     index: 0
+    link: null
     obj_id: '106'
     text: SELECT
     type: 129
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: true
+  - hidden: true
     index: 1
+    link: null
     obj_id: '107'
     text: ' '
     type: 204
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
+  - hidden: false
     index: 2
+    link: null
     obj_id: '108'
     text: '*'
     type: 7
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: true
+  - hidden: true
     index: 3
+    link: null
     obj_id: '109'
     text: '
 
       '
     type: 204
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
+  - hidden: false
     index: 4
+    link: null
     obj_id: '110'
     text: FROM
     type: 75
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: true
+  - hidden: true
     index: 5
+    link: null
     obj_id: '111'
     text: ' '
     type: 204
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: true
+  - hidden: true
     index: 6
+    link: null
     obj_id: '112'
     text: ' '
     type: 204
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: true
+  - hidden: true
     index: 7
+    link: null
     obj_id: '113'
     text: ' '
     type: 204
-  - *id001
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
+  - hidden: false
+    index: 8
+    link:
+      bookmark: null
+      local_id: Plant
+      object_type: tables
+    obj_id: '114'
+    text: '"Plant"'
+    type: 197
+  - hidden: false
     index: 9
+    link: null
     obj_id: '115'
     text: ;
     type: 1
@@ -127,7 +130,8 @@ formulas:
 name: ReportCommandTypeSQL
 obj_id: '173'
 output_type: application/vnd.oasis.opendocument.text
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadatas
 title: ReportCommandTypeSQL

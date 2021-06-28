@@ -1,27 +1,26 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.BasicFunction
 body_tokens:
-- &id002 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
+- hidden: false
   index: 7
+  link: null
   obj_id: '206'
   text: print
   type: 100
-- &id003 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
+- hidden: false
   index: 8
+  link: null
   obj_id: '207'
   text: ' '
   type: 185
-- &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
+- hidden: false
   index: 9
+  link: null
   obj_id: '208'
   text: '"Standard.Module1.CalleeOtherLib"'
   type: 172
-- &id004 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
+- hidden: false
   index: 10
+  link: null
   obj_id: '209'
   text: '
 
@@ -33,44 +32,72 @@ module: Module1
 name: CalleeOtherLib
 name_token_index: 5
 obj_id: '177'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
+  bookmark: null
   local_id: Module1.Standard
   object_type: modules
 strings:
-- *id001
+- hidden: false
+  index: 9
+  link: null
+  obj_id: '208'
+  text: '"Standard.Module1.CalleeOtherLib"'
+  type: 172
 title: CalleeOtherLib.Module1.Standard
 tokens:
-- !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
+- hidden: false
   index: 3
+  link: null
   obj_id: '202'
   text: Sub
   type: 125
-- !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
+- hidden: false
   index: 4
+  link: null
   obj_id: '203'
   text: ' '
   type: 185
-- !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
+- hidden: false
   index: 5
+  link: null
   obj_id: '204'
   text: CalleeOtherLib
   type: 181
-- !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
+- hidden: false
   index: 6
+  link: null
   obj_id: '205'
   text: "\n\t"
   type: 183
-- *id002
-- *id003
-- *id001
-- *id004
-- !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
+- hidden: false
+  index: 7
+  link: null
+  obj_id: '206'
+  text: print
+  type: 100
+- hidden: false
+  index: 8
+  link: null
+  obj_id: '207'
+  text: ' '
+  type: 185
+- hidden: false
+  index: 9
+  link: null
+  obj_id: '208'
+  text: '"Standard.Module1.CalleeOtherLib"'
+  type: 172
+- hidden: false
+  index: 10
+  link: null
+  obj_id: '209'
+  text: '
+
+    '
+  type: 183
+- hidden: false
   index: 11
+  link: null
   obj_id: '210'
   text: End Sub
   type: 44

@@ -123,7 +123,7 @@ def _write_metadata(name, metadata: Metadata):
     for content in METADATA_CONTENT:
         start_time = time.time()
         _write_content(metadata, content)
-        # clear_fields_after(metadata, content)
+        clear_fields_after(metadata, content)
         end_time = time.time()
         print("Write {}: {}".format(content, end_time-start_time))
 

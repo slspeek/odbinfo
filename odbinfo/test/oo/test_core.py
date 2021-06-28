@@ -8,17 +8,17 @@ from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 
 @pytest.mark.slow
-def test_generate_report(testdb_doc):
+def test_generate_report(testdb_doc, benchmark):
     """ test generate-site """
-    generate_report_test(testdb_doc)
+    generate_report_test(testdb_doc, benchmark)
 
 
 @pytest.mark.slow
-def test_generate_report_empty(emptydb_doc):
+def test_generate_report_empty(emptydb_doc, benchmark):
     """ test generate-site """
-    generate_report_test(emptydb_doc)
+    generate_report_test(emptydb_doc, benchmark)
 
 
-def generate_report_test(oodoc):
+def generate_report_test(oodoc, benchmark):
     " generate report "
-    generate_report(oodoc, TEST_OUTPUT_TPL.format("test_core"))
+    benchmark(generate_report, oodoc, TEST_OUTPUT_TPL.format("test_core"))

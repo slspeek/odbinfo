@@ -48,7 +48,7 @@ info:
 	@echo
 	@hugo version
 	@echo
-	@dot -V
+	@dot -V|head -1
 	@echo
 
 coverage: clean prepare
@@ -90,7 +90,7 @@ benchmark:
 
 histogram:
 	# PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $ $(testloc) --benchmark-histogram --benchmark-compare=\*
-	py.test-benchmark compare --histogram=benchmarks/histogram
+	py.test-benchmark compare --histogram=benchmarks/histogram --group-by=func --sort=name
 
 alltest: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable  $(testloc)

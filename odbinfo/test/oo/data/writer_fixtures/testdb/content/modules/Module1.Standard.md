@@ -3,13 +3,13 @@
 callables:
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   body_tokens:
-  - &id002 !!python/object:odbinfo.pure.datatype.base.Token
+  - !!python/object:odbinfo.pure.datatype.base.Token
     hidden: false
     index: 7
     obj_id: '206'
     text: print
     type: 100
-  - &id003 !!python/object:odbinfo.pure.datatype.base.Token
+  - !!python/object:odbinfo.pure.datatype.base.Token
     hidden: false
     index: 8
     obj_id: '207'
@@ -21,7 +21,7 @@ callables:
     obj_id: '208'
     text: '"Standard.Module1.CalleeOtherLib"'
     type: 172
-  - &id004 !!python/object:odbinfo.pure.datatype.base.Token
+  - !!python/object:odbinfo.pure.datatype.base.Token
     hidden: false
     index: 10
     obj_id: '209'
@@ -41,62 +41,28 @@ callables:
   strings:
   - *id001
   title: CalleeOtherLib.Module1.Standard
-  tokens:
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 3
-    obj_id: '202'
-    text: Sub
-    type: 125
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 4
-    obj_id: '203'
-    text: ' '
-    type: 185
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 5
-    obj_id: '204'
-    text: CalleeOtherLib
-    type: 181
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 6
-    obj_id: '205'
-    text: "\n\t"
-    type: 183
-  - *id002
-  - *id003
-  - *id001
-  - *id004
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 11
-    obj_id: '210'
-    text: End Sub
-    type: 44
+  tokens: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   body_tokens:
-  - &id006 !!python/object:odbinfo.pure.datatype.base.Token
+  - !!python/object:odbinfo.pure.datatype.base.Token
     hidden: false
     index: 20
     obj_id: '219'
     text: print
     type: 100
-  - &id007 !!python/object:odbinfo.pure.datatype.base.Token
+  - !!python/object:odbinfo.pure.datatype.base.Token
     hidden: false
     index: 21
     obj_id: '220'
     text: ' '
     type: 185
-  - &id005 !!python/object:odbinfo.pure.datatype.base.Token
+  - &id002 !!python/object:odbinfo.pure.datatype.base.Token
     hidden: false
     index: 22
     obj_id: '221'
     text: '"Standard.Module1.ShadowedCallee"'
     type: 172
-  - &id008 !!python/object:odbinfo.pure.datatype.base.Token
+  - !!python/object:odbinfo.pure.datatype.base.Token
     hidden: false
     index: 23
     obj_id: '222'
@@ -114,55 +80,9 @@ callables:
     local_id: Module1.Standard
     object_type: modules
   strings:
-  - *id005
+  - *id002
   title: ShadowedCallee.Module1.Standard
-  tokens:
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 14
-    obj_id: '213'
-    text: Sub
-    type: 125
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 15
-    obj_id: '214'
-    text: ' '
-    type: 185
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 16
-    obj_id: '215'
-    text: ShadowedCallee
-    type: 181
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 17
-    obj_id: '216'
-    text: (
-    type: 157
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 18
-    obj_id: '217'
-    text: )
-    type: 168
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 19
-    obj_id: '218'
-    text: "\n\t"
-    type: 183
-  - *id006
-  - *id007
-  - *id005
-  - *id008
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    hidden: false
-    index: 24
-    obj_id: '223'
-    text: End Sub
-    type: 44
+  tokens: []
 library: Standard
 name: Module1
 name_indexes:

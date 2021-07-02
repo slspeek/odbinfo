@@ -1,6 +1,8 @@
 ---
+!!python/object:odbinfo.pure.datatype.tabular.View
 columns:
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
+  autoincrement: false
   issigned: true
   name: id
   nullable: Nullable
@@ -9,6 +11,7 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
+  title: SYSTEM_SUBQUERY.id
   typename: NUMERIC
   writable: true
 command: 'SELECT "view1"."id"
@@ -16,24 +19,23 @@ command: 'SELECT "view1"."id"
   FROM   "view1"'
 name: DependendView
 obj_id: '21'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 table_tokens:
-- hidden: false
+- &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 2
-  link:
-    bookmark: null
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: view1
     object_type: views
   obj_id: '25'
   text: '"view1"'
   type: 197
-- hidden: false
+- &id002 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 10
-  link:
-    bookmark: null
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: view1
     object_type: views
   obj_id: '33'
@@ -41,78 +43,64 @@ table_tokens:
   type: 197
 title: DependendView
 tokens:
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 0
-  link: null
   obj_id: '23'
   text: SELECT
   type: 129
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 1
-  link: null
   obj_id: '24'
   text: ' '
   type: 204
-- hidden: false
-  index: 2
-  link:
-    bookmark: null
-    local_id: view1
-    object_type: views
-  obj_id: '25'
-  text: '"view1"'
-  type: 197
-- hidden: false
+- *id001
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 3
-  link: null
   obj_id: '26'
   text: .
   type: 2
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 4
-  link: null
   obj_id: '27'
   text: '"id"'
   type: 197
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 5
-  link: null
   obj_id: '28'
   text: '
 
     '
   type: 204
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 6
-  link: null
   obj_id: '29'
   text: FROM
   type: 75
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 7
-  link: null
   obj_id: '30'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 8
-  link: null
   obj_id: '31'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 9
-  link: null
   obj_id: '32'
   text: ' '
   type: 204
-- hidden: false
-  index: 10
-  link:
-    bookmark: null
-    local_id: view1
-    object_type: views
-  obj_id: '33'
-  text: '"view1"'
-  type: 197
+- *id002
+used_by: []
+uses: []
 ---

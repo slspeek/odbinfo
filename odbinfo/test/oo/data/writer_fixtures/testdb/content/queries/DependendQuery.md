@@ -1,6 +1,8 @@
 ---
+!!python/object:odbinfo.pure.datatype.tabular.Query
 columns:
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
+  autoincrement: false
   issigned: false
   name: Name
   nullable: Nullable
@@ -9,9 +11,11 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
+  title: SYSTEM_SUBQUERY.Name
   typename: VARCHAR
   writable: true
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
+  autoincrement: false
   issigned: true
   name: FamilyID
   nullable: Nullable
@@ -20,9 +24,11 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
+  title: SYSTEM_SUBQUERY.FamilyID
   typename: INTEGER
   writable: true
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
+  autoincrement: false
   issigned: true
   name: id
   nullable: Nullable
@@ -31,9 +37,11 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
+  title: SYSTEM_SUBQUERY.id
   typename: NUMERIC
   writable: true
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
+  autoincrement: false
   issigned: false
   name: naam
   nullable: Nullable
@@ -42,9 +50,11 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
+  title: SYSTEM_SUBQUERY.naam
   typename: VARCHAR
   writable: true
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
+  autoincrement: false
   issigned: true
   name: RFamliyID
   nullable: Nullable
@@ -53,9 +63,11 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
+  title: SYSTEM_SUBQUERY.RFamliyID
   typename: INTEGER
   writable: true
-- autoincrement: false
+- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
+  autoincrement: false
   issigned: true
   name: id
   nullable: Nullable
@@ -64,6 +76,7 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
+  title: SYSTEM_SUBQUERY.id
   typename: NUMERIC
   writable: true
 command: 'SELECT *
@@ -71,33 +84,32 @@ command: 'SELECT *
   FROM   "FamilyLookup", "vwPlant", "view1"'
 name: DependendQuery
 obj_id: '45'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 table_tokens:
-- hidden: false
+- &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 8
-  link:
-    bookmark: null
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: FamilyLookup
     object_type: queries
   obj_id: '60'
   text: '"FamilyLookup"'
   type: 197
-- hidden: false
+- &id002 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 11
-  link:
-    bookmark: null
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: vwPlant
     object_type: queries
   obj_id: '63'
   text: '"vwPlant"'
   type: 197
-- hidden: false
+- &id003 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 14
-  link:
-    bookmark: null
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: view1
     object_type: views
   obj_id: '66'
@@ -105,105 +117,83 @@ table_tokens:
   type: 197
 title: DependendQuery
 tokens:
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 0
-  link: null
   obj_id: '52'
   text: SELECT
   type: 129
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 1
-  link: null
   obj_id: '53'
   text: ' '
   type: 204
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 2
-  link: null
   obj_id: '54'
   text: '*'
   type: 7
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 3
-  link: null
   obj_id: '55'
   text: '
 
     '
   type: 204
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 4
-  link: null
   obj_id: '56'
   text: FROM
   type: 75
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 5
-  link: null
   obj_id: '57'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 6
-  link: null
   obj_id: '58'
   text: ' '
   type: 204
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 7
-  link: null
   obj_id: '59'
   text: ' '
   type: 204
-- hidden: false
-  index: 8
-  link:
-    bookmark: null
-    local_id: FamilyLookup
-    object_type: queries
-  obj_id: '60'
-  text: '"FamilyLookup"'
-  type: 197
-- hidden: false
+- *id001
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 9
-  link: null
   obj_id: '61'
   text: ','
   type: 5
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 10
-  link: null
   obj_id: '62'
   text: ' '
   type: 204
-- hidden: false
-  index: 11
-  link:
-    bookmark: null
-    local_id: vwPlant
-    object_type: queries
-  obj_id: '63'
-  text: '"vwPlant"'
-  type: 197
-- hidden: false
+- *id002
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 12
-  link: null
   obj_id: '64'
   text: ','
   type: 5
-- hidden: true
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: true
   index: 13
-  link: null
   obj_id: '65'
   text: ' '
   type: 204
-- hidden: false
-  index: 14
-  link:
-    bookmark: null
-    local_id: view1
-    object_type: views
-  obj_id: '66'
-  text: '"view1"'
-  type: 197
+- *id003
+used_by: []
+uses: []
 ---

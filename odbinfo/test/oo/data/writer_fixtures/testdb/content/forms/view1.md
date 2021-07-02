@@ -1,24 +1,25 @@
 ---
+!!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: view1
 obj_id: '168'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 subforms:
-- allowdeletes: 'true'
+- !!python/object:odbinfo.pure.datatype.ui.SubForm
+  allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command:
-    link:
-      bookmark: null
+  command: !!python/object:odbinfo.pure.datatype.base.LinkedString
+    link: !!python/object:odbinfo.pure.datatype.base.Identifier
       local_id: view1
       object_type: views
     text: view1
   commandtype: table
   controls:
-  - controlid: control1
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control1
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -28,7 +29,8 @@ subforms:
     name: lblid
     obj_id: '170'
     type: FixedText
-  - controlid: control2
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control2
     convertemptytonull: 'true'
     datafield: id
     eventlisteners: []
@@ -40,10 +42,11 @@ subforms:
     type: FormattedField
   depth: 0
   detailfields: ''
-  embedded_query: null
   masterfields: ''
   name: MainForm
   obj_id: '169'
   subforms: []
 title: view1
+used_by: []
+uses: []
 ---

@@ -1,29 +1,30 @@
 ---
+!!python/object:odbinfo.pure.datatype.exec.BasicFunction
 body_tokens:
-- hidden: false
+- &id002 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 136
-  link: null
   obj_id: '515'
   text: print
   type: 100
-- hidden: false
+- &id003 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 137
-  link: null
   obj_id: '516'
   text: ' '
   type: 185
-- hidden: false
+- &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 138
-  link:
-    bookmark: null
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: FamilyLookup
     object_type: queries
   obj_id: '517'
   text: '"FamilyLookup"'
   type: 172
-- hidden: false
+- &id004 !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 139
-  link: null
   obj_id: '518'
   text: '
 
@@ -35,91 +36,59 @@ module: Module1
 name: ReferToQuery
 name_token_index: 132
 obj_id: '367'
-parent_link:
-  bookmark: null
+parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: Module1.Library1
   object_type: modules
 strings:
-- hidden: false
-  index: 138
-  link:
-    bookmark: null
-    local_id: FamilyLookup
-    object_type: queries
-  obj_id: '517'
-  text: '"FamilyLookup"'
-  type: 172
+- *id001
 title: ReferToQuery.Module1.Library1
 tokens:
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 130
-  link: null
   obj_id: '509'
   text: Sub
   type: 125
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 131
-  link: null
   obj_id: '510'
   text: ' '
   type: 185
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 132
-  link: null
   obj_id: '511'
   text: ReferToQuery
   type: 181
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 133
-  link: null
   obj_id: '512'
   text: (
   type: 157
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 134
-  link: null
   obj_id: '513'
   text: )
   type: 168
-- hidden: false
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 135
-  link: null
   obj_id: '514'
   text: "\n\t"
   type: 183
-- hidden: false
-  index: 136
-  link: null
-  obj_id: '515'
-  text: print
-  type: 100
-- hidden: false
-  index: 137
-  link: null
-  obj_id: '516'
-  text: ' '
-  type: 185
-- hidden: false
-  index: 138
-  link:
-    bookmark: null
-    local_id: FamilyLookup
-    object_type: queries
-  obj_id: '517'
-  text: '"FamilyLookup"'
-  type: 172
-- hidden: false
-  index: 139
-  link: null
-  obj_id: '518'
-  text: '
-
-    '
-  type: 183
-- hidden: false
+- *id002
+- *id003
+- *id001
+- *id004
+- !!python/object:odbinfo.pure.datatype.base.Token
+  hidden: false
   index: 140
-  link: null
   obj_id: '519'
   text: End Sub
   type: 44
+used_by: []
+uses: []
 ---

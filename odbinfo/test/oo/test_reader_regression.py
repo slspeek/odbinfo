@@ -35,6 +35,7 @@ def read_metadata_regression_test(testdb_doc, filename, data_regression,
     " runs read_metadata and asserts nothing changed "
     metadata_read = read_metadata_in_test(testdb_doc, monkeypatch, benchmark)
     data_regression.check(dataclasses.asdict(metadata_read))
+    # data_regression.check(metadata_read)
     file_regression.check(pickle.dumps(metadata_read),
                           binary=True, extension=".pickle", basename=filename)
 

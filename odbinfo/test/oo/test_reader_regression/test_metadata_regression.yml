@@ -12,6 +12,8 @@ documents:
   parent_link: null
   path: ./Untitled.odt
   title: Untitled.odt
+  used_by: []
+  uses: []
 forms:
 - height: null
   name: Family
@@ -67,6 +69,8 @@ forms:
     obj_id: not-set
     subforms: []
   title: Family
+  used_by: []
+  uses: []
 - height: null
   name: Formulier1
   obj_id: not-set
@@ -118,6 +122,8 @@ forms:
     obj_id: not-set
     subforms: []
   title: Formulier1
+  used_by: []
+  uses: []
 - height: null
   name: Plant
   obj_id: not-set
@@ -199,6 +205,8 @@ forms:
     obj_id: not-set
     subforms: []
   title: Plant
+  used_by: []
+  uses: []
 - height: null
   name: Plant invoeren
   obj_id: not-set
@@ -243,6 +251,8 @@ forms:
     obj_id: not-set
     subforms: []
   title: Plant invoeren
+  used_by: []
+  uses: []
 - height: null
   name: PlantListbox
   obj_id: not-set
@@ -367,6 +377,8 @@ forms:
     obj_id: not-set
     subforms: []
   title: PlantListbox
+  used_by: []
+  uses: []
 - height: null
   name: Related subform
   obj_id: not-set
@@ -523,6 +535,8 @@ forms:
       obj_id: not-set
       subforms: []
   title: Related subform
+  used_by: []
+  uses: []
 - height: null
   name: view1
   obj_id: not-set
@@ -564,6 +578,8 @@ forms:
     obj_id: not-set
     subforms: []
   title: view1
+  used_by: []
+  uses: []
 libraries:
 - modules:
   - callables: []
@@ -577,6 +593,8 @@ libraries:
       \nEnd Sub"
     title: Module1.Standard
     tokens: []
+    used_by: []
+    uses: []
   - callables: []
     library: Standard
     name: Module2
@@ -586,10 +604,14 @@ libraries:
     source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
     title: Module2.Standard
     tokens: []
+    used_by: []
+    uses: []
   name: Standard
   obj_id: not-set
   parent_link: null
   title: Standard
+  used_by: []
+  uses: []
 - modules:
   - callables: []
     library: Library1
@@ -607,6 +629,8 @@ libraries:
       \nSub ReferToQuery()\n\tprint \"FamilyLookup\"\nEnd Sub"
     title: Module1.Library1
     tokens: []
+    used_by: []
+    uses: []
   - callables: []
     library: Library1
     name: Module2
@@ -617,10 +641,14 @@ libraries:
       \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
     title: Module2.Library1
     tokens: []
+    used_by: []
+    uses: []
   name: Library1
   obj_id: not-set
   parent_link: null
   title: Library1
+  used_by: []
+  uses: []
 name: ./testdb.odb
 obj_id: not-set
 parent_link: null
@@ -633,10 +661,14 @@ pythonlibraries:
     source: "# coding: utf-8\nfrom __future__ import unicode_literals\n\ndef script():\n\
       \tprint(\"Hello\")\n"
     title: Bibliotheek.Module.py
+    used_by: []
+    uses: []
   name: Bibliotheek
   obj_id: not-set
   parent_link: null
   title: Bibliotheek
+  used_by: []
+  uses: []
 - modules:
   - library: python
     name: pymodule.py
@@ -645,10 +677,14 @@ pythonlibraries:
     source: "# coding: utf-8\n\ndef main():\n\tprint(\"Hello from testdb.odb\")\n\n\
       \n"
     title: python.pymodule.py
+    used_by: []
+    uses: []
   name: python
   obj_id: not-set
   parent_link: null
   title: python
+  used_by: []
+  uses: []
 queries:
 - columns:
   - autoincrement: false
@@ -726,6 +762,8 @@ queries:
   table_tokens: []
   title: DependendQuery
   tokens: []
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     issigned: false
@@ -756,6 +794,8 @@ queries:
   table_tokens: []
   title: FamilyLookup
   tokens: []
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     issigned: true
@@ -799,6 +839,8 @@ queries:
   table_tokens: []
   title: vwPlant
   tokens: []
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     issigned: true
@@ -842,6 +884,8 @@ queries:
   table_tokens: []
   title: ReportCommandTypeSQL.Command
   tokens: []
+  used_by: []
+  uses: []
 reports:
 - command:
     link: null
@@ -857,6 +901,8 @@ reports:
   output_type: application/vnd.oasis.opendocument.text
   parent_link: null
   title: Family
+  used_by: []
+  uses: []
 - command:
     link: null
     text: select * from "Plant";
@@ -905,6 +951,8 @@ reports:
     table_tokens: []
     title: ReportCommandTypeSQL.Command
     tokens: []
+    used_by: []
+    uses: []
   formulas:
   - field:[id]
   - field:[naam]
@@ -913,6 +961,8 @@ reports:
   output_type: application/vnd.oasis.opendocument.text
   parent_link: null
   title: ReportCommandTypeSQL
+  used_by: []
+  uses: []
 - command:
     link: null
     text: vwPlant
@@ -927,6 +977,8 @@ reports:
   output_type: application/vnd.oasis.opendocument.text
   parent_link: null
   title: vwPlant
+  used_by: []
+  uses: []
 tables:
 - columns:
   - autoincrement: false
@@ -986,6 +1038,8 @@ tables:
   obj_id: not-set
   parent_link: null
   title: Family
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     defaultvalue: ''
@@ -1047,6 +1101,8 @@ tables:
   obj_id: not-set
   parent_link: null
   title: Persoon
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     defaultvalue: ''
@@ -1125,8 +1181,12 @@ tables:
   obj_id: not-set
   parent_link: null
   title: Plant
+  used_by: []
+  uses: []
 title: ./testdb.odb
 use_cases: []
+used_by: []
+uses: []
 views:
 - columns:
   - autoincrement: false
@@ -1149,6 +1209,8 @@ views:
   table_tokens: []
   title: DependendView
   tokens: []
+  used_by: []
+  uses: []
 - columns:
   - autoincrement: false
     issigned: true
@@ -1170,3 +1232,5 @@ views:
   table_tokens: []
   title: view1
   tokens: []
+  used_by: []
+  uses: []

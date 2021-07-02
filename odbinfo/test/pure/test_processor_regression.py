@@ -25,6 +25,7 @@ def process_and_check(unprocessed, filename, data_regression,
                       file_regression, benchmark):
     " do processing and check"
     benchmark(process_metadata, unprocessed)
+    # data_regression.check(unprocessed)
     data_regression.check(dataclasses.asdict(unprocessed))
     file_regression.check(pickle.dumps(unprocessed), binary=True,
                           basename=filename, extension=".pickle")

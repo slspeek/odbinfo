@@ -50,7 +50,16 @@ class LinkedString:
 
 
 @dataclass
-class PageOwner(NamedNode):
+class Aggregator:
+    " aggregates uses and used_by "
+    uses: List['Identifier'] = field(
+        init=False, repr=False, default_factory=list)
+    used_by: List['SourceIdentifier'] = field(
+        init=False, repr=False, default_factory=list)
+
+
+@dataclass
+class PageOwner(Aggregator, NamedNode):
     " has its own page, thus title attribute "\
         " an object with a parent_link "
     title: str = field(init=False)
@@ -66,15 +75,6 @@ class PageOwner(NamedNode):
 
     def __post_init__(self):
         self.title = self.name
-
-
-@dataclass
-class Aggregator:
-    " aggregates uses and used_by "
-    uses: List['Identifier'] = field(
-        init=False, repr=False, default_factory=list)
-    used_by: List['SourceIdentifier'] = field(
-        init=False, repr=False, default_factory=list)
 
 
 def get_content_type(obj):

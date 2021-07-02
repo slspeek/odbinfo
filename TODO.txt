@@ -1,3 +1,11 @@
+del attributes index, hidden from Token before writing
+if not linked remove obj_id too
+
+
+
+Add uses, used_by to PageOwner, and render with template
+  - distribute UseCases over uses, used_by
+
 Weave in Configuration
 
 class Dependend for DataObject s that possible use another object?

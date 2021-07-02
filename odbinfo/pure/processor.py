@@ -74,6 +74,17 @@ def time_func(func, *args):  # *args can take 0 or more
     print("it took this long to run: {}".format(end_time-start_time))
 
 
+def distribute_usecases(metadata):
+    "Decorate the PageOwners with their dependencies and use cases"
+    for usecase in metadata.use_cases:
+        source = metadata.index[(
+            usecase.obj.object_type, usecase.obj.local_id)]
+        source.uses.append(usecase.subject)
+        target = metadata.index[(
+            usecase.subject.object_type, usecase.subject.local_id)]
+        target.used_by.append(usecase.obj)
+
+
 def process_metadata(metadata: Metadata) -> None:
     " preprocessing of the data before it is send to hugo "
     start_time = time.time()
@@ -106,3 +117,13 @@ def process_metadata(metadata: Metadata) -> None:
     metadata.use_cases = search_dependencies(metadata)
     end_time = time.time()
     print("Dependency search: {}".format(end_time-start_time))
+
+    start_time = time.time()
+    metadata.create_index()
+    end_time = time.time()
+    print("Create index: {}".format(end_time-start_time))
+
+    start_time = time.time()
+    distribute_usecases(metadata)
+    end_time = time.time()
+    print("Distribute usecases: {}".format(end_time-start_time))

@@ -6,6 +6,7 @@
       {{ highlight .Params.command "sql" ""}}
     </div> -->
     {{ partial "render-query-command" (dict "context" . "query" .Params)}}
+    {{ partial "render-dependencies" . }}
 </main>
 
 {{ partial "footer" . }}

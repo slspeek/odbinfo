@@ -59,6 +59,29 @@ tokens:
   text: ' '
   type: 204
 - *id001
-used_by: []
-uses: []
+used_by:
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: ReferToView.Module1.Library1
+  location_id: '504'
+  object_type: basicfunctions
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: DependendQuery
+  location_id: '66'
+  object_type: queries
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: DependendView
+  location_id: '25'
+  object_type: views
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: DependendView
+  location_id: '33'
+  object_type: views
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: view1
+  location_id: '169'
+  object_type: forms
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: Plant
+  object_type: tables
 ---

@@ -30,7 +30,11 @@ callables:
   - *id001
   title: CalleeSub.Module2.Library1
   tokens: []
-  used_by: []
+  used_by:
+  - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+    local_id: CallerSub.Module1.Library1
+    location_id: '405'
+    object_type: basicfunctions
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   body_tokens:
@@ -61,7 +65,11 @@ callables:
   - *id002
   title: CalleeTwoSub.Module2.Library1
   tokens: []
-  used_by: []
+  used_by:
+  - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+    local_id: CallerTwo.Module1.Library1
+    location_id: '431'
+    object_type: basicfunctions
   uses: []
 library: Library1
 name: Module2

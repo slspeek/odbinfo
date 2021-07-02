@@ -58,5 +58,8 @@ tokens:
   text: End Sub
   type: 44
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: FamilyLookup
+  object_type: queries
 ---

@@ -55,8 +55,8 @@ name = "pymodules"
 weight = 11
 
 [[menu.main]]
-url = "/documents/index.html"
-name = "documents"
+url = "/textdocuments/index.html"
+name = "textdocuments"
 weight = 12
 
 [[menu.main]]

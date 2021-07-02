@@ -153,5 +153,14 @@ tokens:
   type: 204
 - *id003
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: view1
+  object_type: views
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: FamilyLookup
+  object_type: queries
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: vwPlant
+  object_type: queries
 ---

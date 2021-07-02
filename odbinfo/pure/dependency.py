@@ -42,9 +42,9 @@ def search_dependencies(metadata: Metadata) -> List[UseCase]:
             search_deps_in_commanddriven(metadata.tables, _subforms(metadata)) +
             search_deps_in_commanddriven(metadata.views, _subforms(metadata)) +
             search_deps_in_commanddriven(metadata.queries, _subforms(metadata)) +
-            search_deps_in_documents(metadata.tables, metadata.documents) +
-            search_deps_in_documents(metadata.views, metadata.documents) +
-            search_deps_in_documents(metadata.queries, metadata.documents)
+            search_deps_in_documents(metadata.tables, metadata.textdocuments) +
+            search_deps_in_documents(metadata.views, metadata.textdocuments) +
+            search_deps_in_documents(metadata.queries, metadata.textdocuments)
             )
 
 #
@@ -68,6 +68,10 @@ def _rewrite_module_token_links(modules):
     # e.g /Lib1.Mod1/#macro
     # By rewriting Identifier(type="BasicFunction" local_id="call.Mod1.Lib1")
     # to Identifier("Module", "Mod1.Lib1", bookmark="call")
+    # module_index = {}
+    # for module in modules:
+    #     module_index[(module.name, module.library)] = module
+
     def rewrite_module(module: Module):
 
         def rewrite_token(token: Token):
@@ -76,6 +80,7 @@ def _rewrite_module_token_links(modules):
                 if not link.object_type == "basicfunctions":
                     return
                 lmacro, lmodule, llib = link.local_id.split('.')
+                # target_module = module_index[(lmodule, llib)]
                 new_link = Identifier("modules", f"{lmodule}.{llib}")
                 new_link.bookmark = lmacro
                 token.link = new_link

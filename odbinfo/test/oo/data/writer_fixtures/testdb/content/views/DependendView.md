@@ -71,5 +71,11 @@ tokens:
   type: 204
 - *id002
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: view1
+  object_type: views
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: view1
+  object_type: views
 ---

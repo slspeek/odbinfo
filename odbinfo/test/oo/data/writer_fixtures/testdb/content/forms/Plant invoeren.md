@@ -52,5 +52,8 @@ subforms:
   subforms: []
 title: Plant invoeren
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: vwPlant
+  object_type: queries
 ---

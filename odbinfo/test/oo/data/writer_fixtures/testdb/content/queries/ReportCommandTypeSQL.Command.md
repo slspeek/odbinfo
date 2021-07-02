@@ -89,5 +89,8 @@ tokens:
   text: ;
   type: 1
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: Plant
+  object_type: tables
 ---

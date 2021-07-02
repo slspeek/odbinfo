@@ -47,6 +47,14 @@ tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   text: End Sub
   type: 44
-used_by: []
+used_by:
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: CallerOtherLib.Module1.Library1
+  location_id: '444'
+  object_type: basicfunctions
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: CallerOtherLib.Module1.Library1
+  location_id: '450'
+  object_type: basicfunctions
 uses: []
 ---

@@ -4,5 +4,9 @@
 -->{{ if .link.bookmark }}<!--
   -->{{ $bareurl }}#{{ .link.bookmark }}<!--
 -->{{ else }}<!--
-  -->{{$bareurl }}<!--
+  -->{{ if .link.location_id }}<!--
+    -->{{ $bareurl }}#{{ .link.location_id }}<!--
+  -->{{ else }}<!--
+    -->{{$bareurl }}<!--
+  -->{{ end }}<!--
 -->{{ end }}

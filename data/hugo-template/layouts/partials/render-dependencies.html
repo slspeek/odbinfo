@@ -1,0 +1,19 @@
+{{ $context := . }}
+<div class="dependencies">
+  {{ if .Params.uses }}
+  <h3>Uses</h3>
+    <ul class="list-group">
+    {{ range .Params.uses }}
+      <li class="list-group-item">{{ partial "render-link" (dict "link" . "context" $context)}}</li>
+    {{ end }}
+    </ul>
+  {{ end }}
+  {{ if .Params.used_by }}
+  <h3>Used by </h3>
+    <ul class="list-group">
+    {{ range .Params.used_by }}
+      <li class="list-group-item">{{ partial "render-link" (dict "link" . "context" $context)}}</li>
+    {{ end }}
+    </ul>
+  {{ end }}
+</div>

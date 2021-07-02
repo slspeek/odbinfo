@@ -15,6 +15,7 @@ import toml
 import yaml
 
 from odbinfo.pure.datatype import Metadata, Token
+from odbinfo.pure.datatype.metadata import METADATA_CONTENT
 
 FRONT_MATTER_MARK = "---\n"
 
@@ -42,19 +43,6 @@ def chdir(dirname=None):
 # so we go up three times, and then into 'data'
 DATA_DIR = path.join(path.dirname(path.dirname(path.dirname(__file__))),
                      "data")
-
-
-METADATA_CONTENT = ["tables",
-                    "queries",
-                    "views",
-                    "forms",
-                    "reports",
-                    "basicfunctions",
-                    "modules",
-                    "libraries",
-                    "pythonlibraries",
-                    "pymodules",
-                    "documents"]
 
 
 def _frontmatter(obj, out):

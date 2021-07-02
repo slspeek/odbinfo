@@ -67,6 +67,26 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 title: Family
-used_by: []
+used_by:
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: Plant
+  location_id: '15'
+  object_type: tables
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: FamilyLookup
+  location_id: '88'
+  object_type: queries
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: Family
+  location_id: '172'
+  object_type: reports
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: Family
+  location_id: '117'
+  object_type: forms
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: Related subform
+  location_id: '161'
+  object_type: forms
 uses: []
 ---

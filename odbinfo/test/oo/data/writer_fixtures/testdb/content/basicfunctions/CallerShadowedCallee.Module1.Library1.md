@@ -60,5 +60,8 @@ tokens:
   text: End Sub
   type: 44
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: ShadowedCallee.Module1.Library1
+  object_type: basicfunctions
 ---

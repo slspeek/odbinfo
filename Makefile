@@ -59,7 +59,7 @@ itest: clean prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable -m "not veryslow" $(testloc)
 
 single: prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)/${SINGLE}
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable $(testloc)/${SINGLE}
 
 metadata_fixture: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(ootestloc)/test_reader_regression.py ||$\
@@ -98,7 +98,7 @@ alltest: prepare
 
 .ONESHELL:
 serve: clean prepare
-	SINGLE=oo/test_core.py::test_generate_report make single
+	ODBINFO_NO_BROWSE=1 SINGLE=oo/test_core.py::test_generate_report make single
 	cd $(test-output)/test_core/testdb
 	x-www-browser http://localhost:1313/ &
 	hugo server --layoutDir ../../../../../data/hugo-template/layouts

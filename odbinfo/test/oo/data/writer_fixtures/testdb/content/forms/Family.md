@@ -63,5 +63,8 @@ subforms:
   subforms: []
 title: Family
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: Family
+  object_type: tables
 ---

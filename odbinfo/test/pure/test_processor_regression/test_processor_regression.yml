@@ -1,25 +1,3 @@
-documents:
-- fields:
-  - column: naam
-    database: testdb
-    obj_id: '577'
-    table:
-      link:
-        bookmark: null
-        local_id: vwPlant
-        object_type: queries
-      text: vwPlant
-    tabletype: query
-  name: Untitled.odt
-  obj_id: '576'
-  parent_link:
-    bookmark: null
-    local_id: ./testdb.odb
-    object_type: metadatas
-  path: ./Untitled.odt
-  title: Untitled.odt
-  used_by: []
-  uses: []
 forms:
 - height: 0
   name: Family
@@ -82,7 +60,10 @@ forms:
     subforms: []
   title: Family
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: Family
+    object_type: tables
 - height: 1
   name: Formulier1
   obj_id: '122'
@@ -227,7 +208,10 @@ forms:
     subforms: []
   title: Plant
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
 - height: 0
   name: Plant invoeren
   obj_id: '134'
@@ -279,7 +263,10 @@ forms:
     subforms: []
   title: Plant invoeren
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: vwPlant
+    object_type: queries
 - height: 0
   name: PlantListbox
   obj_id: '139'
@@ -411,7 +398,10 @@ forms:
     subforms: []
   title: PlantListbox
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
 - height: 1
   name: Related subform
   obj_id: '153'
@@ -578,7 +568,13 @@ forms:
       subforms: []
   title: Related subform
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
+  - bookmark: null
+    local_id: Family
+    object_type: tables
 - height: 0
   name: view1
   obj_id: '168'
@@ -627,7 +623,10 @@ forms:
     subforms: []
   title: view1
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: view1
+    object_type: views
 libraries:
 - modules:
   - callables:
@@ -733,7 +732,15 @@ libraries:
         obj_id: '210'
         text: End Sub
         type: 44
-      used_by: []
+      used_by:
+      - bookmark: null
+        local_id: CallerOtherLib.Module1.Library1
+        location_id: '444'
+        object_type: basicfunctions
+      - bookmark: null
+        local_id: CallerOtherLib.Module1.Library1
+        location_id: '450'
+        object_type: basicfunctions
       uses: []
     - body_tokens:
       - hidden: false
@@ -1572,7 +1579,13 @@ libraries:
         text: End Sub
         type: 44
       used_by: []
-      uses: []
+      uses:
+      - bookmark: null
+        local_id: CalleeSub.Module1.Library1
+        object_type: basicfunctions
+      - bookmark: null
+        local_id: CalleeSub.Module2.Library1
+        object_type: basicfunctions
     - body_tokens:
       - hidden: false
         index: 39
@@ -1687,7 +1700,11 @@ libraries:
         obj_id: '422'
         text: End Sub
         type: 44
-      used_by: []
+      used_by:
+      - bookmark: null
+        local_id: CallerSub.Module1.Library1
+        location_id: '399'
+        object_type: basicfunctions
       uses: []
     - body_tokens:
       - hidden: false
@@ -1815,7 +1832,10 @@ libraries:
         text: End Sub
         type: 44
       used_by: []
-      uses: []
+      uses:
+      - bookmark: null
+        local_id: CalleeTwoSub.Module2.Library1
+        object_type: basicfunctions
     - body_tokens:
       - hidden: false
         index: 65
@@ -2037,7 +2057,13 @@ libraries:
         text: End Sub
         type: 44
       used_by: []
-      uses: []
+      uses:
+      - bookmark: null
+        local_id: CalleeOtherLib.Module1.Standard
+        object_type: basicfunctions
+      - bookmark: null
+        local_id: CalleeOtherLib.Module1.Standard
+        object_type: basicfunctions
     - body_tokens:
       - hidden: false
         index: 84
@@ -2164,7 +2190,10 @@ libraries:
         text: End Sub
         type: 44
       used_by: []
-      uses: []
+      uses:
+      - bookmark: null
+        local_id: ShadowedCallee.Module1.Library1
+        object_type: basicfunctions
     - body_tokens:
       - hidden: false
         index: 97
@@ -2279,7 +2308,11 @@ libraries:
         obj_id: '480'
         text: End Sub
         type: 44
-      used_by: []
+      used_by:
+      - bookmark: null
+        local_id: CallerShadowedCallee.Module1.Library1
+        location_id: '463'
+        object_type: basicfunctions
       uses: []
     - body_tokens:
       - hidden: false
@@ -2405,7 +2438,10 @@ libraries:
         text: End Sub
         type: 44
       used_by: []
-      uses: []
+      uses:
+      - bookmark: null
+        local_id: Plant
+        object_type: tables
     - body_tokens:
       - hidden: false
         index: 123
@@ -2530,7 +2566,10 @@ libraries:
         text: End Sub
         type: 44
       used_by: []
-      uses: []
+      uses:
+      - bookmark: null
+        local_id: view1
+        object_type: views
     - body_tokens:
       - hidden: false
         index: 136
@@ -2655,7 +2694,10 @@ libraries:
         text: End Sub
         type: 44
       used_by: []
-      uses: []
+      uses:
+      - bookmark: null
+        local_id: FamilyLookup
+        object_type: queries
     library: Library1
     name: Module1
     name_indexes:
@@ -3764,7 +3806,11 @@ libraries:
         obj_id: '558'
         text: End Sub
         type: 44
-      used_by: []
+      used_by:
+      - bookmark: null
+        local_id: CallerSub.Module1.Library1
+        location_id: '405'
+        object_type: basicfunctions
       uses: []
     - body_tokens:
       - hidden: false
@@ -3880,7 +3926,11 @@ libraries:
         obj_id: '571'
         text: End Sub
         type: 44
-      used_by: []
+      used_by:
+      - bookmark: null
+        local_id: CallerTwo.Module1.Library1
+        location_id: '431'
+        object_type: basicfunctions
       uses: []
     library: Library1
     name: Module2
@@ -4344,7 +4394,16 @@ queries:
     text: '"view1"'
     type: 197
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: view1
+    object_type: views
+  - bookmark: null
+    local_id: FamilyLookup
+    object_type: queries
+  - bookmark: null
+    local_id: vwPlant
+    object_type: queries
 - columns:
   - autoincrement: false
     issigned: false
@@ -4508,8 +4567,19 @@ queries:
     obj_id: '88'
     text: '"Family"'
     type: 197
-  used_by: []
-  uses: []
+  used_by:
+  - bookmark: null
+    local_id: ReferToQuery.Module1.Library1
+    location_id: '517'
+    object_type: basicfunctions
+  - bookmark: null
+    local_id: DependendQuery
+    location_id: '60'
+    object_type: queries
+  uses:
+  - bookmark: null
+    local_id: Family
+    object_type: tables
 - columns:
   - autoincrement: false
     issigned: true
@@ -4624,8 +4694,27 @@ queries:
     obj_id: '101'
     text: '"Plant"'
     type: 197
-  used_by: []
-  uses: []
+  used_by:
+  - bookmark: null
+    local_id: DependendQuery
+    location_id: '63'
+    object_type: queries
+  - bookmark: null
+    local_id: vwPlant
+    location_id: '174'
+    object_type: reports
+  - bookmark: null
+    local_id: Plant invoeren
+    location_id: '135'
+    object_type: forms
+  - bookmark: null
+    local_id: Untitled.odt
+    location_id: '577'
+    object_type: textdocuments
+  uses:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
 - columns:
   - autoincrement: false
     issigned: true
@@ -4747,7 +4836,10 @@ queries:
     text: ;
     type: 1
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables
 reports:
 - command:
     link:
@@ -4770,7 +4862,10 @@ reports:
     object_type: metadatas
   title: Family
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: Family
+    object_type: tables
 - command:
     link: null
     text: select * from "Plant";
@@ -4897,7 +4992,10 @@ reports:
       text: ;
       type: 1
     used_by: []
-    uses: []
+    uses:
+    - bookmark: null
+      local_id: Plant
+      object_type: tables
   formulas:
   - field:[id]
   - field:[naam]
@@ -4932,7 +5030,10 @@ reports:
     object_type: metadatas
   title: vwPlant
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: vwPlant
+    object_type: queries
 tables:
 - columns:
   - autoincrement: false
@@ -4995,7 +5096,27 @@ tables:
     local_id: ./testdb.odb
     object_type: metadatas
   title: Family
-  used_by: []
+  used_by:
+  - bookmark: null
+    local_id: Plant
+    location_id: '15'
+    object_type: tables
+  - bookmark: null
+    local_id: FamilyLookup
+    location_id: '88'
+    object_type: queries
+  - bookmark: null
+    local_id: Family
+    location_id: '172'
+    object_type: reports
+  - bookmark: null
+    local_id: Family
+    location_id: '117'
+    object_type: forms
+  - bookmark: null
+    local_id: Related subform
+    location_id: '161'
+    object_type: forms
   uses: []
 - columns:
   - autoincrement: false
@@ -5147,8 +5268,64 @@ tables:
     local_id: ./testdb.odb
     object_type: metadatas
   title: Plant
+  used_by:
+  - bookmark: null
+    local_id: ReferToTable.Module1.Library1
+    location_id: '491'
+    object_type: basicfunctions
+  - bookmark: null
+    local_id: vwPlant
+    location_id: '101'
+    object_type: queries
+  - bookmark: null
+    local_id: ReportCommandTypeSQL.Command
+    location_id: '114'
+    object_type: queries
+  - bookmark: null
+    local_id: view1
+    location_id: '44'
+    object_type: views
+  - bookmark: null
+    local_id: Plant
+    location_id: '127'
+    object_type: forms
+  - bookmark: null
+    local_id: PlantListbox
+    location_id: '140'
+    object_type: forms
+  - bookmark: null
+    local_id: Related subform
+    location_id: '154'
+    object_type: forms
+  uses:
+  - bookmark: null
+    local_id: Family
+    object_type: tables
+textdocuments:
+- fields:
+  - column: naam
+    database: testdb
+    obj_id: '577'
+    table:
+      link:
+        bookmark: null
+        local_id: vwPlant
+        object_type: queries
+      text: vwPlant
+    tabletype: query
+  name: Untitled.odt
+  obj_id: '576'
+  parent_link:
+    bookmark: null
+    local_id: ./testdb.odb
+    object_type: metadatas
+  path: ./Untitled.odt
+  title: Untitled.odt
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: vwPlant
+    object_type: queries
 title: ./testdb.odb
 use_cases:
 - obj:
@@ -5561,7 +5738,13 @@ views:
     text: '"view1"'
     type: 197
   used_by: []
-  uses: []
+  uses:
+  - bookmark: null
+    local_id: view1
+    object_type: views
+  - bookmark: null
+    local_id: view1
+    object_type: views
 - columns:
   - autoincrement: false
     issigned: true
@@ -5654,5 +5837,28 @@ views:
     obj_id: '44'
     text: '"Plant"'
     type: 197
-  used_by: []
-  uses: []
+  used_by:
+  - bookmark: null
+    local_id: ReferToView.Module1.Library1
+    location_id: '504'
+    object_type: basicfunctions
+  - bookmark: null
+    local_id: DependendQuery
+    location_id: '66'
+    object_type: queries
+  - bookmark: null
+    local_id: DependendView
+    location_id: '25'
+    object_type: views
+  - bookmark: null
+    local_id: DependendView
+    location_id: '33'
+    object_type: views
+  - bookmark: null
+    local_id: view1
+    location_id: '169'
+    object_type: forms
+  uses:
+  - bookmark: null
+    local_id: Plant
+    object_type: tables

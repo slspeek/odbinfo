@@ -95,7 +95,13 @@ modules:
     title: CallerSub.Module1.Library1
     tokens: []
     used_by: []
-    uses: []
+    uses:
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      local_id: CalleeSub.Module1.Library1
+      object_type: basicfunctions
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      local_id: CalleeSub.Module2.Library1
+      object_type: basicfunctions
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
@@ -125,7 +131,11 @@ modules:
     - *id005
     title: CalleeSub.Module1.Library1
     tokens: []
-    used_by: []
+    used_by:
+    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+      local_id: CallerSub.Module1.Library1
+      location_id: '399'
+      object_type: basicfunctions
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
@@ -163,7 +173,10 @@ modules:
     title: CallerTwo.Module1.Library1
     tokens: []
     used_by: []
-    uses: []
+    uses:
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      local_id: CalleeTwoSub.Module2.Library1
+      object_type: basicfunctions
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - &id007 !!python/object:odbinfo.pure.datatype.base.Token
@@ -225,7 +238,13 @@ modules:
     title: CallerOtherLib.Module1.Library1
     tokens: []
     used_by: []
-    uses: []
+    uses:
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      local_id: CalleeOtherLib.Module1.Standard
+      object_type: basicfunctions
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      local_id: CalleeOtherLib.Module1.Standard
+      object_type: basicfunctions
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - &id010 !!python/object:odbinfo.pure.datatype.base.Token
@@ -262,7 +281,10 @@ modules:
     title: CallerShadowedCallee.Module1.Library1
     tokens: []
     used_by: []
-    uses: []
+    uses:
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      local_id: ShadowedCallee.Module1.Library1
+      object_type: basicfunctions
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
@@ -292,7 +314,11 @@ modules:
     - *id011
     title: ShadowedCallee.Module1.Library1
     tokens: []
-    used_by: []
+    used_by:
+    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+      local_id: CallerShadowedCallee.Module1.Library1
+      location_id: '463'
+      object_type: basicfunctions
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
@@ -328,7 +354,10 @@ modules:
     title: ReferToTable.Module1.Library1
     tokens: []
     used_by: []
-    uses: []
+    uses:
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      local_id: Plant
+      object_type: tables
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
@@ -363,7 +392,10 @@ modules:
     title: ReferToView.Module1.Library1
     tokens: []
     used_by: []
-    uses: []
+    uses:
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      local_id: view1
+      object_type: views
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
@@ -398,7 +430,10 @@ modules:
     title: ReferToQuery.Module1.Library1
     tokens: []
     used_by: []
-    uses: []
+    uses:
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      local_id: FamilyLookup
+      object_type: queries
   library: Library1
   name: Module1
   name_indexes:
@@ -459,7 +494,11 @@ modules:
     - *id015
     title: CalleeSub.Module2.Library1
     tokens: []
-    used_by: []
+    used_by:
+    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+      local_id: CallerSub.Module1.Library1
+      location_id: '405'
+      object_type: basicfunctions
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
@@ -490,7 +529,11 @@ modules:
     - *id016
     title: CalleeTwoSub.Module2.Library1
     tokens: []
-    used_by: []
+    used_by:
+    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+      local_id: CallerTwo.Module1.Library1
+      location_id: '431'
+      object_type: basicfunctions
     uses: []
   library: Library1
   name: Module2

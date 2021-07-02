@@ -85,6 +85,25 @@ tokens:
   text: ' '
   type: 204
 - *id001
-used_by: []
-uses: []
+used_by:
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: DependendQuery
+  location_id: '63'
+  object_type: queries
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: vwPlant
+  location_id: '174'
+  object_type: reports
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: Plant invoeren
+  location_id: '135'
+  object_type: forms
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: Untitled.odt
+  location_id: '577'
+  object_type: textdocuments
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: Plant
+  object_type: tables
 ---

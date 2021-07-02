@@ -1,5 +1,5 @@
 {{ partial "header" . }}
-
+{{ $context := . }}
 <main>
     <div>
         <h2>{{ .Params.name }}</h2>
@@ -11,6 +11,7 @@
         <h4>Indexes</h4>
         {{ partial "indexes-table.html" . }}
     </div>
+    {{ partial "render-dependencies" . }}
 </main>
 
 {{ partial "footer" . }}

@@ -30,7 +30,15 @@ callables:
   - *id001
   title: CalleeOtherLib.Module1.Standard
   tokens: []
-  used_by: []
+  used_by:
+  - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+    local_id: CallerOtherLib.Module1.Library1
+    location_id: '444'
+    object_type: basicfunctions
+  - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+    local_id: CallerOtherLib.Module1.Library1
+    location_id: '450'
+    object_type: basicfunctions
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   body_tokens:

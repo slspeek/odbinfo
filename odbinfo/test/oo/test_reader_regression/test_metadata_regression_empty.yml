@@ -1,4 +1,3 @@
-documents: []
 forms: []
 libraries: []
 name: ./emptydb.odb
@@ -8,6 +7,7 @@ pythonlibraries: []
 queries: []
 reports: []
 tables: []
+textdocuments: []
 title: ./emptydb.odb
 use_cases: []
 used_by: []

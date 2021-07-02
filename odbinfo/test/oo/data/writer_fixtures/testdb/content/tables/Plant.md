@@ -91,6 +91,37 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
   object_type: metadatas
 title: Plant
-used_by: []
-uses: []
+used_by:
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: ReferToTable.Module1.Library1
+  location_id: '491'
+  object_type: basicfunctions
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: vwPlant
+  location_id: '101'
+  object_type: queries
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: ReportCommandTypeSQL.Command
+  location_id: '114'
+  object_type: queries
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: view1
+  location_id: '44'
+  object_type: views
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: Plant
+  location_id: '127'
+  object_type: forms
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: PlantListbox
+  location_id: '140'
+  object_type: forms
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: Related subform
+  location_id: '154'
+  object_type: forms
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: Family
+  object_type: tables
 ---

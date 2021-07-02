@@ -48,5 +48,8 @@ subforms:
   subforms: []
 title: view1
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: view1
+  object_type: views
 ---

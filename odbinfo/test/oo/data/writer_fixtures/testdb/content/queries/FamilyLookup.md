@@ -102,6 +102,17 @@ tokens:
   text: ' '
   type: 204
 - *id001
-used_by: []
-uses: []
+used_by:
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: ReferToQuery.Module1.Library1
+  location_id: '517'
+  object_type: basicfunctions
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  local_id: DependendQuery
+  location_id: '60'
+  object_type: queries
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: Family
+  object_type: tables
 ---

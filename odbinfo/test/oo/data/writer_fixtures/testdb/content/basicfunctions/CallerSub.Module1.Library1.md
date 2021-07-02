@@ -91,5 +91,11 @@ tokens:
   text: End Sub
   type: 44
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: CalleeSub.Module1.Library1
+  object_type: basicfunctions
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: CalleeSub.Module2.Library1
+  object_type: basicfunctions
 ---

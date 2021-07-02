@@ -1,20 +1,14 @@
-Add uses, used_by to PageOwner, and render with template
-  - distribute UseCases over uses, used_by
+Course in Bootsrap
 
 Weave in Configuration
 
-class Dependend for DataObject s that possible use another object?
 
 Graph making
 ------------
-What constitutes the graph data?
-- Metadata
-Are all sub-objects in Metadata nodes? Container types should implement
-children method.
-
 UseCase gets a refering location field (Union[Token, LinkedString, None])
 This location should get an #id in the templates for refering back (used by)
 
+class Dependend for DataObject s that possible use another object?
 datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
 
 make Metadata.usecases a set?

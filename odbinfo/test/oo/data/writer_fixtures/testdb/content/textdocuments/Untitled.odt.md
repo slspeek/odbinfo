@@ -20,5 +20,8 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
 path: ./Untitled.odt
 title: Untitled.odt
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  local_id: vwPlant
+  object_type: queries
 ---

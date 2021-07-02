@@ -6,27 +6,15 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 7
-      obj_id: '386'
       text: Error
       type: 49
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 8
-      obj_id: '387'
       text: ' '
       type: 185
     - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 9
-      obj_id: '388'
       text: '"Mijn fout"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 10
-      obj_id: '389'
       text: '
 
         '
@@ -49,8 +37,6 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - &id002 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 20
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
         local_id: CalleeSub.Module1.Library1
         object_type: basicfunctions
@@ -58,38 +44,21 @@ modules:
       text: CalleeSub
       type: 181
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 21
-      obj_id: '400'
       text: (
       type: 157
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 22
-      obj_id: '401'
       text: )
       type: 168
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 23
-      obj_id: '402'
       text: "\n\t"
       type: 183
     - &id003 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 24
-      obj_id: '403'
       text: Module2
       type: 181
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 25
-      obj_id: '404'
       text: .
       type: 150
     - &id004 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 26
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
         local_id: CalleeSub.Module2.Library1
         object_type: basicfunctions
@@ -97,21 +66,12 @@ modules:
       text: CalleeSub
       type: 181
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 27
-      obj_id: '406'
       text: (
       type: 157
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 28
-      obj_id: '407'
       text: )
       type: 168
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 29
-      obj_id: '408'
       text: '
 
         '
@@ -139,27 +99,15 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 39
-      obj_id: '418'
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 40
-      obj_id: '419'
       text: ' '
       type: 185
     - &id005 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 41
-      obj_id: '420'
       text: '"Module1.CalleeSub"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 42
-      obj_id: '421'
       text: '
 
         '
@@ -182,8 +130,6 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - &id006 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 52
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
         local_id: CalleeTwoSub.Module2.Library1
         object_type: basicfunctions
@@ -191,21 +137,12 @@ modules:
       text: CalleeTwoSub
       type: 181
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 53
-      obj_id: '432'
       text: (
       type: 157
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 54
-      obj_id: '433'
       text: )
       type: 168
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 55
-      obj_id: '434'
       text: '
 
         '
@@ -230,8 +167,6 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - &id007 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 65
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
         local_id: CalleeOtherLib.Module1.Standard
         object_type: basicfunctions
@@ -239,38 +174,21 @@ modules:
       text: CalleeOtherLib
       type: 181
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 66
-      obj_id: '445'
       text: (
       type: 157
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 67
-      obj_id: '446'
       text: )
       type: 168
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 68
-      obj_id: '447'
       text: "\n\t"
       type: 183
     - &id008 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 69
-      obj_id: '448'
       text: Module1
       type: 181
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 70
-      obj_id: '449'
       text: .
       type: 150
     - &id009 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 71
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
         local_id: CalleeOtherLib.Module1.Standard
         object_type: basicfunctions
@@ -278,21 +196,12 @@ modules:
       text: CalleeOtherLib
       type: 181
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 72
-      obj_id: '451'
       text: (
       type: 157
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 73
-      obj_id: '452'
       text: )
       type: 168
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 74
-      obj_id: '453'
       text: '
 
         '
@@ -320,8 +229,6 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - &id010 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 84
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
         local_id: ShadowedCallee.Module1.Library1
         object_type: basicfunctions
@@ -329,21 +236,12 @@ modules:
       text: ShadowedCallee
       type: 181
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 85
-      obj_id: '464'
       text: (
       type: 157
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 86
-      obj_id: '465'
       text: )
       type: 168
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 87
-      obj_id: '466'
       text: '
 
         '
@@ -368,27 +266,15 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 97
-      obj_id: '476'
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 98
-      obj_id: '477'
       text: ' '
       type: 185
     - &id011 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 99
-      obj_id: '478'
       text: '"Library1.Module1.ShadowedCallee"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 100
-      obj_id: '479'
       text: '
 
         '
@@ -411,20 +297,12 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 110
-      obj_id: '489'
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 111
-      obj_id: '490'
       text: ' '
       type: 185
     - &id012 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 112
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
         local_id: Plant
         object_type: tables
@@ -432,9 +310,6 @@ modules:
       text: '"Plant"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 113
-      obj_id: '492'
       text: '
 
         '
@@ -457,20 +332,12 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 123
-      obj_id: '502'
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 124
-      obj_id: '503'
       text: ' '
       type: 185
     - &id013 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 125
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
         local_id: view1
         object_type: views
@@ -478,9 +345,6 @@ modules:
       text: '"view1"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 126
-      obj_id: '505'
       text: '
 
         '
@@ -503,20 +367,12 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 136
-      obj_id: '515'
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 137
-      obj_id: '516'
       text: ' '
       type: 185
     - &id014 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 138
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
         local_id: FamilyLookup
         object_type: queries
@@ -524,9 +380,6 @@ modules:
       text: '"FamilyLookup"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 139
-      obj_id: '518'
       text: '
 
         '
@@ -580,27 +433,15 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 9
-      obj_id: '554'
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 10
-      obj_id: '555'
       text: ' '
       type: 185
     - &id015 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 11
-      obj_id: '556'
       text: '"Module2.CalleeSub"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 12
-      obj_id: '557'
       text: '
 
         '
@@ -623,27 +464,15 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 22
-      obj_id: '567'
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 23
-      obj_id: '568'
       text: ' '
       type: 185
     - &id016 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 24
-      obj_id: '569'
       text: '"Module2.CalleeTwoSub"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 25
-      obj_id: '570'
       text: '
 
         '

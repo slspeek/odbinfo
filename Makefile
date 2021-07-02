@@ -62,9 +62,9 @@ single: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS}  $(testloc)/${SINGLE}
 
 metadata_fixture: prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(ootestloc)/test_reader_regression.py ||$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --force-regen $(ootestloc)/test_reader_regression.py ||$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest  $(ootestloc)/test_reader_regression.py
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(ootestloc)/test_reader_regression.py ||$\
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(ootestloc)/test_reader_regression.py ||$\
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable  $(ootestloc)/test_reader_regression.py
 	cp -v odbinfo/test/oo/test_reader_regression/*.pickle odbinfo/test/oo/data
 
 processor_fixture: metadata_fixture
@@ -86,12 +86,12 @@ unit:
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable -m "not slow" $(testloc)
 
 benchmark:
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} $(benchmarking) $(testloc)
+	ODBINFO_NO_BROWSE=1 PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} $(benchmarking) $(testloc)
 
 histogram:
 	# PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $ $(testloc) --benchmark-histogram --benchmark-compare=\*
 	py.test-benchmark compare --histogram=benchmarks/histogram --group-by=func --sort=name
-	py.test-benchmark compare --histogram=benchmarks/histogram 
+	py.test-benchmark compare --histogram=benchmarks/histogram
 
 alltest: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable  $(testloc)

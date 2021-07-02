@@ -50,8 +50,6 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   object_type: metadatas
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 8
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: Plant
     object_type: tables
@@ -61,53 +59,29 @@ table_tokens:
 title: vwPlant
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 0
-  obj_id: '93'
   text: SELECT
   type: 129
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 1
-  obj_id: '94'
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 2
-  obj_id: '95'
   text: '*'
   type: 7
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 3
-  obj_id: '96'
   text: '
 
     '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 4
-  obj_id: '97'
   text: FROM
   type: 75
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 5
-  obj_id: '98'
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 6
-  obj_id: '99'
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 7
-  obj_id: '100'
   text: ' '
   type: 204
 - *id001

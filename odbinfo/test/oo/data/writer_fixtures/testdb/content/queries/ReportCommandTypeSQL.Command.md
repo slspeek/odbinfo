@@ -50,8 +50,6 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   object_type: metadatas
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 8
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: Plant
     object_type: tables
@@ -61,60 +59,33 @@ table_tokens:
 title: ReportCommandTypeSQL.Command
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 0
-  obj_id: '106'
   text: SELECT
   type: 129
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 1
-  obj_id: '107'
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 2
-  obj_id: '108'
   text: '*'
   type: 7
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 3
-  obj_id: '109'
   text: '
 
     '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 4
-  obj_id: '110'
   text: FROM
   type: 75
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 5
-  obj_id: '111'
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 6
-  obj_id: '112'
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: true
-  index: 7
-  obj_id: '113'
   text: ' '
   type: 204
 - *id001
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 9
-  obj_id: '115'
   text: ;
   type: 1
 used_by: []

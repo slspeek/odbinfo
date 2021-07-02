@@ -6,27 +6,15 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 7
-      obj_id: '206'
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 8
-      obj_id: '207'
       text: ' '
       type: 185
     - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 9
-      obj_id: '208'
       text: '"Standard.Module1.CalleeOtherLib"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 10
-      obj_id: '209'
       text: '
 
         '
@@ -49,27 +37,15 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 20
-      obj_id: '219'
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 21
-      obj_id: '220'
       text: ' '
       type: 185
     - &id002 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 22
-      obj_id: '221'
       text: '"Standard.Module1.ShadowedCallee"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 23
-      obj_id: '222'
       text: '
 
         '
@@ -110,27 +86,15 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 7
-      obj_id: '242'
       text: Print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 8
-      obj_id: '243'
       text: ' '
       type: 185
     - &id003 !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 9
-      obj_id: '244'
       text: '"hello world"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
-      hidden: false
-      index: 10
-      obj_id: '245'
       text: '
 
         '

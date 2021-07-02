@@ -14,7 +14,7 @@ from os import path
 import toml
 import yaml
 
-from odbinfo.pure.datatype import Metadata
+from odbinfo.pure.datatype import Metadata, Token
 
 FRONT_MATTER_MARK = "---\n"
 
@@ -118,7 +118,24 @@ def clear_fields_after(metadata, content):
             module.tokens = []
 
 
+def cleanup_tokens(metadata):
+    " delete fields from Token instances for efficient writing "
+    def clean_token(token):
+        if hasattr(token, "index"):
+            del token.index
+        if hasattr(token, "hidden"):
+            del token.hidden
+        if not token.link and hasattr(token, "obj_id"):
+            token.obj_id = None
+            del token.obj_id
+
+    for content in metadata.all_objects():
+        if isinstance(content, Token):
+            clean_token(content)
+
+
 def _write_metadata(name, metadata: Metadata):
+    cleanup_tokens(metadata)
     _write_config(name, metadata)
     for content in METADATA_CONTENT:
         start_time = time.time()

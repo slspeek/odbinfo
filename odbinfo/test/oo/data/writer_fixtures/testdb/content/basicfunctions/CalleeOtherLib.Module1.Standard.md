@@ -2,27 +2,15 @@
 !!python/object:odbinfo.pure.datatype.exec.BasicFunction
 body_tokens:
 - &id002 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 7
-  obj_id: '206'
   text: print
   type: 100
 - &id003 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 8
-  obj_id: '207'
   text: ' '
   type: 185
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 9
-  obj_id: '208'
   text: '"Standard.Module1.CalleeOtherLib"'
   type: 172
 - &id004 !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 10
-  obj_id: '209'
   text: '
 
     '
@@ -41,27 +29,15 @@ strings:
 title: CalleeOtherLib.Module1.Standard
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 3
-  obj_id: '202'
   text: Sub
   type: 125
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 4
-  obj_id: '203'
   text: ' '
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 5
-  obj_id: '204'
   text: CalleeOtherLib
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 6
-  obj_id: '205'
   text: "\n\t"
   type: 183
 - *id002
@@ -69,9 +45,6 @@ tokens:
 - *id001
 - *id004
 - !!python/object:odbinfo.pure.datatype.base.Token
-  hidden: false
-  index: 11
-  obj_id: '210'
   text: End Sub
   type: 44
 used_by: []

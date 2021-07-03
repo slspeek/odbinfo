@@ -24,6 +24,7 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   object_type: metadatas
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 8
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: Plant
     object_type: tables
@@ -33,29 +34,37 @@ table_tokens:
 title: view1
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 0
   text: SELECT
   type: 129
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 1
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 2
   text: '"id"'
   type: 197
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 3
   text: '
 
     '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 4
   text: FROM
   type: 75
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 5
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 6
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 7
   text: ' '
   type: 204
 - *id001

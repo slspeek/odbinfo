@@ -35,6 +35,7 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   object_type: metadatas
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 18
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: Family
     object_type: tables
@@ -44,61 +45,79 @@ table_tokens:
 title: FamilyLookup
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 0
   text: SELECT
   type: 129
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 1
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 2
   text: '"Name"'
   type: 197
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 3
   text: ','
   type: 5
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 4
   text: '
 
     '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 5
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 6
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 7
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 8
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 9
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 10
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 11
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 12
   text: '"FamilyID"'
   type: 197
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 13
   text: '
 
     '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 14
   text: FROM
   type: 75
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 15
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 16
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 17
   text: ' '
   type: 204
 - *id001

@@ -2,6 +2,7 @@
 !!python/object:odbinfo.pure.datatype.exec.BasicFunction
 body_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 65
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: CalleeOtherLib.Module1.Standard
     object_type: basicfunctions
@@ -9,21 +10,27 @@ body_tokens:
   text: CalleeOtherLib
   type: 181
 - &id004 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 66
   text: (
   type: 157
 - &id005 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 67
   text: )
   type: 168
 - &id006 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 68
   text: "\n\t"
   type: 183
 - &id002 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 69
   text: Module1
   type: 181
 - &id007 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 70
   text: .
   type: 150
 - &id003 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 71
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: CalleeOtherLib.Module1.Standard
     object_type: basicfunctions
@@ -31,12 +38,15 @@ body_tokens:
   text: CalleeOtherLib
   type: 181
 - &id008 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 72
   text: (
   type: 157
 - &id009 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 73
   text: )
   type: 168
 - &id010 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 74
   text: '
 
     '
@@ -60,21 +70,27 @@ strings: []
 title: CallerOtherLib.Module1.Library1
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 59
   text: Sub
   type: 125
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 60
   text: ' '
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 61
   text: CallerOtherLib
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 62
   text: (
   type: 157
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 63
   text: )
   type: 168
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 64
   text: "\n\t"
   type: 183
 - *id001
@@ -88,6 +104,7 @@ tokens:
 - *id009
 - *id010
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 75
   text: End Sub
   type: 44
 used_by: []

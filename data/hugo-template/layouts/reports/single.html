@@ -6,7 +6,7 @@
         <table class="table table-bordered">
           <tr>
             <th>Command</th>
-            <td>
+            <td  id={{ .Params.obj_id }}>
               {{ if (eq .Params.commandtype "command") }}
                 {{ partial "render-query-command" (dict "context" . "query" .Params.embedded_query )}}
               {{ else }}

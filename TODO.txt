@@ -1,4 +1,6 @@
-Course in Bootsrap
+templates: Query columns
+
+Moving to the hash takes a second <- Course in Bootsrap
 
 Weave in Configuration
 
@@ -15,7 +17,7 @@ make Metadata.usecases a set?
 
 database (driver) information retrieval
 
-update minimal theme
+update minimal theme (20210703 ok)
 
 make typing more complete (lot of work)
 

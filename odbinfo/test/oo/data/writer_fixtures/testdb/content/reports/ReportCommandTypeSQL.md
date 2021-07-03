@@ -54,6 +54,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     object_type: metadatas
   table_tokens:
   - &id001 !!python/object:odbinfo.pure.datatype.base.Token
+    index: 8
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
       local_id: Plant
       object_type: tables
@@ -63,33 +64,42 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
   title: ReportCommandTypeSQL.Command
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 0
     text: SELECT
     type: 129
   - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 1
     text: ' '
     type: 204
   - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 2
     text: '*'
     type: 7
   - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 3
     text: '
 
       '
     type: 204
   - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 4
     text: FROM
     type: 75
   - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 5
     text: ' '
     type: 204
   - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 6
     text: ' '
     type: 204
   - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 7
     text: ' '
     type: 204
   - *id001
   - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 9
     text: ;
     type: 1
   used_by: []

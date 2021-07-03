@@ -21,7 +21,7 @@
       <td colspan={{$depth}}></td>
       {{ end }}
       <td>{{ .subform.name }}</td>
-      <td>{{ partial "render-linked-string" (dict "context" $context "linked_string" .subform.command) }}</td>
+      <td id="{{ .subform.obj_id }}">{{ partial "render-linked-string" (dict "context" $context "linked_string" .subform.command) }}</td>
       <td>{{ .subform.commandtype }}</td>
       <td>{{ .subform.allowdeletes }}</td>
       <td>{{ .subform.allowinserts }}</td>

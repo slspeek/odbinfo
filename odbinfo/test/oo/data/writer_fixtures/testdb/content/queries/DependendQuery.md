@@ -89,6 +89,7 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   object_type: metadatas
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 8
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: FamilyLookup
     object_type: queries
@@ -96,6 +97,7 @@ table_tokens:
   text: '"FamilyLookup"'
   type: 197
 - &id002 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 11
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: vwPlant
     object_type: queries
@@ -103,6 +105,7 @@ table_tokens:
   text: '"vwPlant"'
   type: 197
 - &id003 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 14
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     local_id: view1
     object_type: views
@@ -112,43 +115,55 @@ table_tokens:
 title: DependendQuery
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 0
   text: SELECT
   type: 129
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 1
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 2
   text: '*'
   type: 7
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 3
   text: '
 
     '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 4
   text: FROM
   type: 75
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 5
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 6
   text: ' '
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 7
   text: ' '
   type: 204
 - *id001
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 9
   text: ','
   type: 5
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 10
   text: ' '
   type: 204
 - *id002
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 12
   text: ','
   type: 5
 - !!python/object:odbinfo.pure.datatype.base.Token
+  index: 13
   text: ' '
   type: 204
 - *id003

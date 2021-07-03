@@ -6,15 +6,19 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
+      index: 7
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
+      index: 8
       text: ' '
       type: 185
     - &id001 !!python/object:odbinfo.pure.datatype.base.Token
+      index: 9
       text: '"Standard.Module1.CalleeOtherLib"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
+      index: 10
       text: '
 
         '
@@ -45,15 +49,19 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
+      index: 20
       text: print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
+      index: 21
       text: ' '
       type: 185
     - &id002 !!python/object:odbinfo.pure.datatype.base.Token
+      index: 22
       text: '"Standard.Module1.ShadowedCallee"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
+      index: 23
       text: '
 
         '
@@ -94,15 +102,19 @@ modules:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens:
     - !!python/object:odbinfo.pure.datatype.base.Token
+      index: 7
       text: Print
       type: 100
     - !!python/object:odbinfo.pure.datatype.base.Token
+      index: 8
       text: ' '
       type: 185
     - &id003 !!python/object:odbinfo.pure.datatype.base.Token
+      index: 9
       text: '"hello world"'
       type: 172
     - !!python/object:odbinfo.pure.datatype.base.Token
+      index: 10
       text: '
 
         '

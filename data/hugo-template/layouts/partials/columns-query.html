@@ -2,13 +2,23 @@
   <thead>
   <tr>
     <th>Name</th>
-    <th>Default value</th>
-    <th>Description</th>
     <th>Auto increment</th>
     <th>Nullable</th>
     <th>Typename</th>
     <th>Precision</th>
     <th>Scale</th>
+    <th>Is signed</th>
+    <th>Writable</th>
+    <th>Read only</th>
+<!--  autoincrement: bool
+      nullable: Union[str, int]
+      tablename: str
+      typename: str
+      precision: str
+      scale: str
+      issigned: bool
+      writable: bool
+      readonly: bool -->
   </tr>
   </thead>
   <tbody>
@@ -16,12 +26,6 @@
    <tr>
       <td>
       {{  .name }}
-      </td>
-      <td>
-      {{  .defaultvalue }}
-      </td>
-      <td>
-      {{ .description }}
       </td>
       <td>
       {{  .autoincrement }}
@@ -37,6 +41,15 @@
       </td>
       <td>
       {{  .scale }}
+      </td>
+      <td>
+        {{  .issigned }}
+      </td>
+      <td>
+        {{ .writable }}
+      </td>
+      <td>
+        {{ .readonly }}
       </td>
     </tr>
 {{ end }}

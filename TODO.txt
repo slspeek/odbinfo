@@ -1,9 +1,6 @@
-templates: Query columns
-
-Moving to the hash takes a second <- Course in Bootsrap
-
 Weave in Configuration
 
+Flex tutorial
 
 Graph making
 ------------
@@ -77,42 +74,26 @@ installation check
 ------------------
 UI and suggestions
 
-
-dependencies representation
----------------------------
-datatype must extend generic super dataclass
-with
-  title
-  shortname
-  uses
-  used_by
-  parent
-
-Macro calls in controls (eventlisteners)
-
 SubForm command type is command
 ListBox command type is command
 
 dependency search matrix
 ------------------------
-tables in tables (via its keys)
+Macro calls in controls (eventlisteners)
+tables, views, queries in ListBox
+textdocuments in basic
+tables in tables (via its keys) (done)
 tables, views in views (done)
 tables, queries, views in queries (done)
-tables, queries, views in reports (done, except commandtype=command)
+tables, queries, views in reports (done)
 tables, queries,views, reports in basic (done)
 basic in basic (done)
 tables, queries, views in forms (subforms)
-tables, queries, views, macros in formcontrols
 tables, views, queries in textdocuments (done)
+
 python in python (nice to have)
 others in python (nice to have)
-tables, views, queries in ListBox
 field are done last as they are nice to have
-
-Both macros and queries are parsed and have more detailed dependencies,
-in the sense that they are referenced by a token. Use cases should include this
-token.
-Forms are special too in this respect
 
 errors in parser need improvement
 

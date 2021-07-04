@@ -1,0 +1,11 @@
+{{ $context := . }}
+  {{ if .Params.used_by }}
+  <div class="col-4">
+  <h3>Used by </h3>
+    <ul class="list-group">
+    {{ range .Params.used_by }}
+      <li class="list-group-item">{{ partial "render-link" (dict "link" . "context" $context)}}</li>
+    {{ end }}
+    </ul>
+  </div>
+  {{ end }}

@@ -1,8 +1,7 @@
 $(document).ready ( function () { //Work as soon as the DOM is ready for parsing
-    var id  = location.hash.substr(1); //Get the word after the hash from the url
-    if (id) $('#'+id).addClass('mark'); // add class highlight to element whose id is the word after the hash
+    highlightHash();
     // Set the offset when entering page with hash present in the url
-    window.setTimeout(offsetAnchor, 1000);
+    window.setTimeout(offsetAnchor, 400);
 });
 // The function actually applying the offset
 function offsetAnchor() {
@@ -11,11 +10,16 @@ function offsetAnchor() {
   }
 }
 
-// Captures click events of all <a> elements with href starting with #
-$(document).on('click', 'a[href^="#"]', function(event) {
+function highlightHash() {
+  var id  = location.hash.substr(1); //Get the word after the hash from the url
+  if (id) $('#'+id).addClass('mark'); // add class highlight to element whose id is the word after the hash
+}
+// Captures click events of all <a> elements with href containing #
+$(document).on('click', 'a[href*="#"]', function(event) {
 // Click events are captured before hashchanges. Timeout
 // causes offsetAnchor to be called after the page jump.
   window.setTimeout(function() {
+    highlightHash();
     offsetAnchor();
   }, 0);
 });

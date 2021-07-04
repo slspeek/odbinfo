@@ -1,14 +1,25 @@
 {{ partial "header" . }}
 {{ $context:= . }}
 <main>
-    <div class="col order-2">
-    <h2>Query: {{ .Params.name }}</h2>
+  <h2>Query: {{ .Params.name }}</h2>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      {{ partial "columns-query" . }}
+    </div>
+  </div>
+  <div class="row">
+    {{ partial "render-uses" . }}
+    <div class="col-8">
     <!-- <div style="text-align:left; font-size: 150%;">
       {{ highlight .Params.command "sql" ""}}
     </div> -->
     {{ partial "render-query-command" (dict "context" . "query" .Params)}}
     </div>
-    {{ partial "render-dependencies" . }}
+    {{ partial "render-used-by" . }}
+  </div>
+
+</div>
 </main>
 
 {{ partial "footer" . }}

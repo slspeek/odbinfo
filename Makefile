@@ -101,7 +101,7 @@ serve: clean prepare
 	ODBINFO_NO_BROWSE=1 SINGLE=oo/test_core.py::test_generate_report make single
 	cd $(test-output)/test_core/testdb
 	x-www-browser http://localhost:1313/ &
-	hugo server --layoutDir ../../../../../data/hugo-template/layouts
+	hugo server --disableFastRender --layoutDir ../../../../../data/hugo-template/layouts
 
 format:
 	isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py

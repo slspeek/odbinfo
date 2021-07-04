@@ -9,13 +9,13 @@
     </div>
   </div>
   <div class="row">
-    {{ partial "render-uses" . }}
     <div class="col-8">
     <!-- <div style="text-align:left; font-size: 150%;">
       {{ highlight .Params.command "sql" ""}}
     </div> -->
     {{ partial "render-query-command" (dict "context" . "query" .Params)}}
     </div>
+    {{ partial "render-uses" . }}
     {{ partial "render-used-by" . }}
   </div>
 

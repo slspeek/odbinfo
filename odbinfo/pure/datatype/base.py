@@ -79,11 +79,7 @@ class PageOwner(Aggregator, NamedNode):
 
 def get_content_type(obj):
     " returns classname in plural in lowercase "
-    classname = obj.__class__.__name__.lower()
-    plurals = {"query": "queries",
-               "pythonlibrary": "pythonlibraries",
-               "library": "libraries"}
-    return plurals.get(classname, classname + "s")
+    return obj.__class__.__name__.lower()
 
 
 def get_identifier(page: PageOwner) -> Identifier:

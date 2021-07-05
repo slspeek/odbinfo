@@ -5,7 +5,9 @@ from typing import Sequence, Union
 
 from odbinfo.pure.datatype import (Control, Form, Grid, Library, Metadata,
                                    Module, Query, SubForm)
+from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.dependency import search_dependencies
+from odbinfo.pure.graph import generate_graphs
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.parser.sql import parse
 
@@ -85,21 +87,21 @@ def distribute_usecases(metadata):
         target.used_by.append(usecase.obj)
 
 
-def process_metadata(metadata: Metadata) -> None:
+def process_metadata(metadata: Metadata, config: Configuration) -> None:
     " preprocessing of the data before it is send to hugo "
     start_time = time.time()
-    _process_libraries(metadata.libraries)
+    _process_libraries(metadata.library_defs)
     end_time = time.time()
     print("Parse basic: {}".format(end_time-start_time))
 
     start_time = time.time()
-    list(map(_process_query, metadata.queries))
-    list(map(_process_query, metadata.views))
+    list(map(_process_query, metadata.query_defs))
+    list(map(_process_query, metadata.view_defs))
     end_time = time.time()
     print("Parse queries and views: {}".format(end_time-start_time))
 
     start_time = time.time()
-    list(map(process_form, metadata.forms))
+    list(map(process_form, metadata.form_defs))
     end_time = time.time()
     print("Process forms: {}".format(end_time-start_time))
 
@@ -127,3 +129,8 @@ def process_metadata(metadata: Metadata) -> None:
     distribute_usecases(metadata)
     end_time = time.time()
     print("Distribute usecases: {}".format(end_time-start_time))
+
+    start_time = time.time()
+    generate_graphs(metadata, config)
+    end_time = time.time()
+    print("Generate graphs: {}".format(end_time-start_time))

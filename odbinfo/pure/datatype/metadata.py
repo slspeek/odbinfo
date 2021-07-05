@@ -9,17 +9,17 @@ from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
 from odbinfo.pure.datatype.tabular import Query, Table, View
 from odbinfo.pure.datatype.ui import Form, Report, SubForm, TextDocument
 
-METADATA_CONTENT = ["tables",
-                    "queries",
-                    "views",
-                    "forms",
-                    "reports",
-                    "basicfunctions",
-                    "modules",
-                    "libraries",
-                    "pythonlibraries",
-                    "pymodules",
-                    "textdocuments"]
+METADATA_CONTENT = ["table",
+                    "query",
+                    "view",
+                    "form",
+                    "report",
+                    "basicfunction",
+                    "module",
+                    "library",
+                    "pythonlibrary",
+                    "pythonmodule",
+                    "textdocument"]
 
 # pylint: disable=too-many-instance-attributes
 
@@ -28,43 +28,43 @@ METADATA_CONTENT = ["tables",
 class Metadata(PageOwner):
 
     """ Collector class for all metadata read from the odb-file """
-    tables: List[Table]
-    views: List[View]
-    queries: List[Query]
-    forms: List[Form]
-    reports: List[Report]
-    libraries: List[Library]
-    pythonlibraries: List[PythonLibrary]
-    textdocuments: List[TextDocument]
+    table_defs: List[Table]
+    view_defs: List[View]
+    query_defs: List[Query]
+    form_defs: List[Form]
+    report_defs: List[Report]
+    library_defs: List[Library]
+    pythonlibrary_defs: List[PythonLibrary]
+    textdocument_defs: List[TextDocument]
     use_cases: List[UseCase] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         super().__post_init__()
         self.index = {}
 
-    def basicfunctions(self) -> List[BasicFunction]:
+    def basicfunction_defs(self) -> List[BasicFunction]:
         "collect all callables from libraries"
         result = []
-        for lib in self.libraries:
+        for lib in self.library_defs:
             for module in lib.modules:
                 result.extend(module.callables)
         return result
 
-    def modules(self) -> List[Module]:
+    def module_defs(self) -> List[Module]:
         "collect all basic modules from libraries"
         result = []
-        for lib in self.libraries:
+        for lib in self.library_defs:
             result.extend(lib.modules)
         return result
 
-    def pymodules(self) -> List[PythonModule]:
+    def pythonmodule_defs(self) -> List[PythonModule]:
         "collect all python modules from libraries"
         result = []
-        for lib in self.pythonlibraries:
+        for lib in self.pythonlibrary_defs:
             result.extend(lib.modules)
         return result
 
-    def subforms(self) -> List[SubForm]:
+    def subform_defs(self) -> List[SubForm]:
         " collect all subforms from the forms and subforms "
         def collect_subforms(subform: SubForm) -> List[SubForm]:
             result = [subform]
@@ -75,19 +75,19 @@ class Metadata(PageOwner):
         def collect_subforms_from_form(form: Form) -> List[SubForm]:
             return sum([collect_subforms(sf) for sf in form.subforms], [])
 
-        return sum([collect_subforms_from_form(f) for f in self.forms], [])
+        return sum([collect_subforms_from_form(f) for f in self.form_defs], [])
 
     def children(self):
         return (
 
-            self.tables +
-            self.views +
-            self.queries +
-            self.forms +
-            self.reports +
-            self.libraries +
-            self.pythonlibraries +
-            self.textdocuments
+            self.table_defs +
+            self.view_defs +
+            self.query_defs +
+            self.form_defs +
+            self.report_defs +
+            self.library_defs +
+            self.pythonlibrary_defs +
+            self.textdocument_defs
 
         )
 

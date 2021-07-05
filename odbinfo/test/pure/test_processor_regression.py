@@ -2,6 +2,7 @@
 import dataclasses
 import pickle
 
+from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.processor import process_metadata
 from odbinfo.test.pure.fixtures import empty_metadata, metadata
 
@@ -24,7 +25,7 @@ def test_processor_regression_empty(empty_metadata, data_regression,
 def process_and_check(unprocessed, filename, data_regression,
                       file_regression, benchmark):
     " do processing and check"
-    benchmark(process_metadata, unprocessed)
+    benchmark(process_metadata, unprocessed, get_configuration())
     # data_regression.check(unprocessed)
     data_regression.check(dataclasses.asdict(unprocessed))
     file_regression.check(pickle.dumps(unprocessed), binary=True,

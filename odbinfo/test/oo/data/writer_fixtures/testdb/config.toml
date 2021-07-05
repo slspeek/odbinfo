@@ -5,58 +5,58 @@ theme = "minimal"
 
 [menu]
 [[menu.main]]
-url = "/tables/index.html"
-name = "tables"
+url = "/table/index.html"
+name = "table"
 weight = 2
 
 [[menu.main]]
-url = "/queries/index.html"
-name = "queries"
+url = "/query/index.html"
+name = "query"
 weight = 3
 
 [[menu.main]]
-url = "/views/index.html"
-name = "views"
+url = "/view/index.html"
+name = "view"
 weight = 4
 
 [[menu.main]]
-url = "/forms/index.html"
-name = "forms"
+url = "/form/index.html"
+name = "form"
 weight = 5
 
 [[menu.main]]
-url = "/reports/index.html"
-name = "reports"
+url = "/report/index.html"
+name = "report"
 weight = 6
 
 [[menu.main]]
-url = "/basicfunctions/index.html"
-name = "basicfunctions"
+url = "/basicfunction/index.html"
+name = "basicfunction"
 weight = 7
 
 [[menu.main]]
-url = "/modules/index.html"
-name = "modules"
+url = "/module/index.html"
+name = "module"
 weight = 8
 
 [[menu.main]]
-url = "/libraries/index.html"
-name = "libraries"
+url = "/library/index.html"
+name = "library"
 weight = 9
 
 [[menu.main]]
-url = "/pythonlibraries/index.html"
-name = "pythonlibraries"
+url = "/pythonlibrary/index.html"
+name = "pythonlibrary"
 weight = 10
 
 [[menu.main]]
-url = "/pymodules/index.html"
-name = "pymodules"
+url = "/pythonmodule/index.html"
+name = "pythonmodule"
 weight = 11
 
 [[menu.main]]
-url = "/textdocuments/index.html"
-name = "textdocuments"
+url = "/textdocument/index.html"
+name = "textdocument"
 weight = 12
 
 [[menu.main]]

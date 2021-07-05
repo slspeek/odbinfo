@@ -77,12 +77,13 @@ def new_site(output_dir, name):
 
 def preprocess_metadata(metadata):
     " clear some fields for speed "
-    for function in metadata.basicfunctions():
+    for function in metadata.basicfunction_defs():
         function.body_tokens = []
 
 
 def make_site(output_dir, name, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
+
     new_site(output_dir, name)
 
     preprocess_metadata(metadata)
@@ -132,7 +133,7 @@ def _write_metadata(name, metadata: Metadata):
 
 
 def _get_metadata_attr(metadata: Metadata, attribute: str):
-    meta_attribute = getattr(metadata, attribute)
+    meta_attribute = getattr(metadata, f"{attribute}_defs")
     if ismethod(meta_attribute):
         meta_attribute = meta_attribute()
     return meta_attribute

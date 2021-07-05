@@ -1,20 +1,24 @@
+NamedNode method users_match() return list of possible matches
+most of the time [self.name]
+
+print --> logger.info
+logging window (sfriederichs.github.io/how-to/python/gui/logging/2017/12/21/Python-GUI-Logging.html)
+
 Weave in Configuration
+dataclass Config with sections to yaml in ~/.odbinfo.yaml
+
+templates: Grid rendering like Subform
 
 Flex tutorial
 
 Graph making
 ------------
-UseCase gets a refering location field (Union[Token, LinkedString, None])
-This location should get an #id in the templates for refering back (used by)
-
 class Dependend for DataObject s that possible use another object?
-datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
 
 make Metadata.usecases a set?
 
 database (driver) information retrieval
 
-update minimal theme (20210703 ok)
 
 make typing more complete (lot of work)
 
@@ -27,9 +31,7 @@ Attributes, Observations, Locations
 Macros that open browser on interesting Plant sites
 
 
-Grid rendering like Subform
 
-BasicCall module_token Optional? Why no mypy warning?
 
 parent relationships
 --------------------
@@ -39,7 +41,6 @@ parent inherits dependencies from children (e.g. form inhertis from SubForm and 
 
 make e2e test (BaseDocumenter2dot example)
 
-scroll down little bit after bookmark link in modules (see basedocumenter2dot)
 
 look at Identifier construction at dependency.py:69
 
@@ -93,17 +94,41 @@ tables, views, queries in textdocuments (done)
 
 python in python (nice to have)
 others in python (nice to have)
+
 field are done last as they are nice to have
+datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
+
 
 errors in parser need improvement
 
 better description of the extension
 
+update minimal theme (20210703 ok)
+
+Later
+-----
+i18n gettext in python, hugo {{ T id }}
 
 Limitations
 -----------
+Dialogs, Toolbars, Toolbarcontrols are omitted
 Macro recursive calls are not considered
 Controls more specific, eg Button...
 IsCurrency Column omitted
 Catalog excluded
 KeyColumns, IndexColumns not used fully
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

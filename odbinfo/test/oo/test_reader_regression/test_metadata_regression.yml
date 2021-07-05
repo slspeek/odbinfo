@@ -1,4 +1,4 @@
-forms:
+form_defs:
 - height: null
   name: Family
   obj_id: not-set
@@ -564,7 +564,7 @@ forms:
   title: view1
   used_by: []
   uses: []
-libraries:
+library_defs:
 - modules:
   - callables: []
     library: Standard
@@ -636,7 +636,7 @@ libraries:
 name: ./testdb.odb
 obj_id: not-set
 parent_link: null
-pythonlibraries:
+pythonlibrary_defs:
 - modules:
   - library: Bibliotheek
     name: Module.py
@@ -669,7 +669,7 @@ pythonlibraries:
   title: python
   used_by: []
   uses: []
-queries:
+query_defs:
 - columns:
   - autoincrement: false
     issigned: false
@@ -870,7 +870,7 @@ queries:
   tokens: []
   used_by: []
   uses: []
-reports:
+report_defs:
 - command:
     link: null
     text: Family
@@ -963,7 +963,7 @@ reports:
   title: vwPlant
   used_by: []
   uses: []
-tables:
+table_defs:
 - columns:
   - autoincrement: false
     defaultvalue: ''
@@ -1167,7 +1167,7 @@ tables:
   title: Plant
   used_by: []
   uses: []
-textdocuments:
+textdocument_defs:
 - fields:
   - column: naam
     database: testdb
@@ -1187,7 +1187,7 @@ title: ./testdb.odb
 use_cases: []
 used_by: []
 uses: []
-views:
+view_defs:
 - columns:
   - autoincrement: false
     issigned: true

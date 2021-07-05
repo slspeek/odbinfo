@@ -13,7 +13,7 @@ from odbinfo.pure.datatype import (BasicCall, BasicFunction, CommandDriven,
 
 def _subforms(metadata: Metadata) -> List[Tuple[PageOwner, CommandDriven]]:
     result = []
-    for form in metadata.forms:
+    for form in metadata.form_defs:
         result += [(form, sf) for sf in form.all_subforms()]
     return cast(List[Tuple[PageOwner, CommandDriven]], result)
 
@@ -21,30 +21,31 @@ def _subforms(metadata: Metadata) -> List[Tuple[PageOwner, CommandDriven]]:
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
     " dependency search in `metadata`"
     # assert len(_subforms(metadata)) == len(metadata.subforms())
-    return (search_tables_in_tables(metadata.tables) +
-            search_callable_in_callable(metadata.basicfunctions()) +
-            search_string_refs_in_callables(metadata.tables, metadata.basicfunctions()) +
-            search_string_refs_in_callables(metadata.views, metadata.basicfunctions()) +
-            search_string_refs_in_callables(metadata.queries, metadata.basicfunctions()) +
-            search_string_refs_in_callables(metadata.reports, metadata.basicfunctions()) +
-            rewrite_module_callable_links(metadata.modules()) +
-            search_deps_in_queries(metadata.tables, metadata.queries) +
-            search_deps_in_queries(metadata.views, metadata.queries) +
-            search_deps_in_queries(metadata.queries, metadata.queries) +
-            search_deps_in_queries(metadata.tables, metadata.views) +
-            search_deps_in_queries(metadata.views, metadata.views) +
-            search_deps_in_commanddriven(metadata.tables,
-                                         list(zip(metadata.reports, metadata.reports))) +
-            search_deps_in_commanddriven(metadata.views,
-                                         list(zip(metadata.reports, metadata.reports))) +
-            search_deps_in_commanddriven(metadata.queries,
-                                         list(zip(metadata.reports, metadata.reports))) +
-            search_deps_in_commanddriven(metadata.tables, _subforms(metadata)) +
-            search_deps_in_commanddriven(metadata.views, _subforms(metadata)) +
-            search_deps_in_commanddriven(metadata.queries, _subforms(metadata)) +
-            search_deps_in_documents(metadata.tables, metadata.textdocuments) +
-            search_deps_in_documents(metadata.views, metadata.textdocuments) +
-            search_deps_in_documents(metadata.queries, metadata.textdocuments)
+    return (search_tables_in_tables(metadata.table_defs) +
+            search_callable_in_callable(metadata.basicfunction_defs()) +
+            search_string_refs_in_callables(metadata.table_defs, metadata.basicfunction_defs()) +
+            search_string_refs_in_callables(metadata.view_defs, metadata.basicfunction_defs()) +
+            search_string_refs_in_callables(metadata.query_defs, metadata.basicfunction_defs()) +
+            search_string_refs_in_callables(metadata.report_defs, metadata.basicfunction_defs()) +
+            rewrite_module_callable_links(metadata.module_defs()) +
+            search_deps_in_queries(metadata.table_defs, metadata.query_defs) +
+            search_deps_in_queries(metadata.view_defs, metadata.query_defs) +
+            search_deps_in_queries(metadata.query_defs, metadata.query_defs) +
+            search_deps_in_queries(metadata.table_defs, metadata.view_defs) +
+            search_deps_in_queries(metadata.view_defs, metadata.view_defs) +
+            search_deps_in_commanddriven(metadata.table_defs,
+                                         list(zip(metadata.report_defs, metadata.report_defs))) +
+            search_deps_in_commanddriven(metadata.view_defs,
+                                         list(zip(metadata.report_defs, metadata.report_defs))) +
+            search_deps_in_commanddriven(metadata.query_defs,
+                                         list(zip(metadata.report_defs, metadata.report_defs))) +
+            search_deps_in_commanddriven(metadata.table_defs, _subforms(metadata)) +
+            search_deps_in_commanddriven(metadata.view_defs, _subforms(metadata)) +
+            search_deps_in_commanddriven(metadata.query_defs, _subforms(metadata)) +
+            search_deps_in_documents(metadata.table_defs, metadata.textdocument_defs) +
+            search_deps_in_documents(metadata.view_defs, metadata.textdocument_defs) +
+            search_deps_in_documents(
+                metadata.query_defs, metadata.textdocument_defs)
             )
 
 #

@@ -2,6 +2,7 @@
 import pytest
 
 from odbinfo.oo.core import generate_report
+from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.test.oo.connect import (  # pylint:disable=unused-import
     emptydb_doc, libreoffice, testdb_doc)
 from odbinfo.test.resource import TEST_OUTPUT_TPL
@@ -21,4 +22,6 @@ def test_generate_report_empty(emptydb_doc, benchmark):
 
 def generate_report_test(oodoc, benchmark):
     " generate report "
-    benchmark(generate_report, oodoc, TEST_OUTPUT_TPL.format("test_core"))
+    config = get_configuration()
+    config.general.output_dir = TEST_OUTPUT_TPL.format("test_core")
+    benchmark(generate_report, oodoc, config)

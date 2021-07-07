@@ -22,6 +22,10 @@ class Node:
     " DataObject without children "
     obj_id: str = field(init=False, default="not-set")
 
+    def type_name(self):
+        " returns classname in lowercase "
+        return self.__class__.__name__.lower()
+
     # pylint:disable=no-self-use
     def children(self):
         " returns a list of child nodes "
@@ -77,21 +81,16 @@ class PageOwner(Aggregator, NamedNode):
         self.title = self.name
 
 
-def get_content_type(obj):
-    " returns classname in plural in lowercase "
-    return obj.__class__.__name__.lower()
-
-
 def get_identifier(page: PageOwner) -> Identifier:
     "returns Identifier for `dataobject`"
-    return Identifier(get_content_type(page),
+    return Identifier(page.type_name(),
                       page.title)
 
 
 def get_source_identifier(source: PageOwner, location: Optional[Node]) -> SourceIdentifier:
     " creates a SourceIdentifier "
     source_id = "" if not location else location.obj_id
-    return SourceIdentifier(get_content_type(source), source.title, source_id)
+    return SourceIdentifier(source.type_name(), source.title, source_id)
 
 
 @dataclass

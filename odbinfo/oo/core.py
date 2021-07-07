@@ -13,6 +13,7 @@ def generate_report(oodocument, config=get_configuration()):
     """ Make report """
     docpath = urlparse(oodocument.URL).path
     name, _ = os.path.splitext(os.path.basename(docpath))
+    config.name = name
     if not config.general.output_dir:
         config.general.output_dir = \
             os.path.join(os.path.dirname(docpath), ".odbinfo")

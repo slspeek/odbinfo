@@ -1,5 +1,6 @@
 " Tests for the processor "
 import dataclasses
+import os
 import pickle
 
 from odbinfo.pure.datatype.config import get_configuration
@@ -25,7 +26,9 @@ def test_processor_regression_empty(empty_metadata, data_regression,
 def process_and_check(unprocessed, filename, data_regression,
                       file_regression, benchmark):
     " do processing and check"
-    benchmark(process_metadata, unprocessed, get_configuration())
+    config = get_configuration()
+    config.name, _ = os.path.splitext(os.path.basename(unprocessed.name))
+    benchmark(process_metadata, unprocessed, config)
     # data_regression.check(unprocessed)
     data_regression.check(dataclasses.asdict(unprocessed))
     file_regression.check(pickle.dumps(unprocessed), binary=True,

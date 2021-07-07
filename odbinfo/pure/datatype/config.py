@@ -1,6 +1,6 @@
 " Configuration classes "
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
 
@@ -11,52 +11,58 @@ class GeneralConfig:
 
 
 TYPE_ATTRS = {
-    "Table": {"shape": "cylinder", "fillcolor": "#a7c3eb", "style": "filled"},
-    "View": {"shape": "hexagon"},
-    "Query": {"shape": "ellipse"},
-    "Form": {"shape": "rect", "style": "filled", "fillcolor": "#ffcc99"},
-    "Report": {"shape": "rectangle"},
-    "Dialog": {"shape": "trapezium"},
-    "Module": {"shape": "component"},
-    "Field": {"shape": "invhouse"},
-    "SubForm": {"shape": "doubleoctagon",
+    "listbox": {},
+    "library": {},
+    "textdocument": {},
+    "table": {"shape": "cylinder", "fillcolor": "#a7c3eb", "style": "filled"},
+    "view": {"shape": "hexagon"},
+    "query": {"shape": "ellipse"},
+    "form": {"shape": "rect", "style": "filled", "fillcolor": "#ffcc99"},
+    "report": {"shape": "rectangle"},
+    "dialog": {"shape": "trapezium"},
+    "module": {"shape": "component"},
+    "field": {"shape": "invhouse"},
+    "subform": {"shape": "doubleoctagon",
                 "style": "filled", "fillcolor": "#d3d3d3"},
-    "Grid": {"shape": "Mdiamond"},
-    "Control": {"shape": "octagon", "style": "filled", "fillcolor": "#d3d3d3"},
-    "BasicFunction": {"shape": "component"}
+    "grid": {"shape": "Mdiamond"},
+    "control": {"shape": "octagon", "style": "filled", "fillcolor": "#d3d3d3"},
+    "basicfunction": {"shape": "component"}
 }
 
 RELATION_ATTRS = {
-    ("Table", "Table"): {},
-    ("Control", "Table"): {"arrowhead": "box", "color": "red"},
-    ("Control", "Query"): {"arrowhead": "dot"},
-    ("SubForm", "Table"): {"arrowhead": "box", "color": "red"},
-    ("BasicFunction", "BasicFunction"): {"arrowhead": "dot", "color": "#90EE90"},
-    ("Form", "Table"): {"arrowhead": "box", "color": "red"},
-    ("View", "Table"): {"arrowhead": "dot"},
-    ("Form", "View"): {"arrowhead": "dot"},
-    ("Form", "Query"): {"arrowhead": "dot"},
-    ("Query", "Table"): {"arrowhead": "dot"},
-    ("Query", "Query"): {"arrowhead": "dot"}
+    ("table", "table"): {},
+    ("control", "table"): {"arrowhead": "box", "color": "red"},
+    ("control", "query"): {"arrowhead": "dot"},
+    ("subform", "table"): {"arrowhead": "box", "color": "red"},
+    ("basicfunction", "basicfunction"): {"arrowhead": "dot", "color": "#90EE90"},
+    ("form", "table"): {"arrowhead": "box", "color": "red"},
+    ("view", "table"): {"arrowhead": "dot"},
+    ("form", "view"): {"arrowhead": "dot"},
+    ("form", "query"): {"arrowhead": "dot"},
+    ("query", "table"): {"arrowhead": "dot"},
+    ("query", "query"): {"arrowhead": "dot"}
 }
 
 TYPE_HREF = {
-    "Table": "tables",
-    "View": "views",
-    "Query": "Queries",
-    "Form": "ControlsByForm",
-    "Report": "FullIndex",
-    "Dialog": "FullIndex",
-    "Module": "Modules",
-    "Field": "FullIndex",
-    "SubForm": "FullIndex",
-    "Grid": "FullIndex",
-    "Control": "ControlsByForm",
-    "BasicFunction": "ProceduresByModule"
+    "table": "tables",
+    "library": "library",
+    "textdocument": "textdocument",
+    "view": "views",
+    "query": "Queries",
+    "form": "ControlsByForm",
+    "report": "FullIndex",
+    "listbox": "FullIndex",
+    "module": "Modules",
+    "field": "FullIndex",
+    "subform": "FullIndex",
+    "grid": "FullIndex",
+    "control": "ControlsByForm",
+    "basicfunction": "ProceduresByModule"
 }
 
-EXCLUDED_TYPES = ["Metadata", "QueryColumn", "Column", "PythonLibrary",
-                  "PythonModule"]
+EXCLUDED_TYPES = ["eventlistener", "metadata", "key", "index",
+                  "token", "querycolumn", "column", "pythonlibrary",
+                  "pythonmodule", "databasedisplay"]
 
 
 @dataclass
@@ -71,6 +77,8 @@ class GraphConfig:
 @dataclass
 class Configuration:
     " Overall configuration "
+
+    name: Optional[str] = field(init=False)
     general: GeneralConfig
     graph: GraphConfig
 

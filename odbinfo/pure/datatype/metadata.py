@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from itertools import starmap
 from typing import List
 
-from odbinfo.pure.datatype.base import PageOwner, UseCase, get_content_type
+from odbinfo.pure.datatype.base import PageOwner, UseCase
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import Query, Table, View
@@ -104,6 +104,5 @@ class Metadata(PageOwner):
         " make an index of linkable objects "
         for content in self.all_objects():
             if isinstance(content, PageOwner):
-                content_type = get_content_type(content)
                 # pylint:disable=no-member
-                self.index[(content_type, content.title)] = content
+                self.index[(content.type_name(), content.title)] = content

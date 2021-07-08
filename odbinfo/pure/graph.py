@@ -17,10 +17,11 @@ def href(config, obj):
 def make_node(config: GraphConfig, graph: Digraph, node: NamedNode):
     " adds a node to `graph` for `node` if `config` says so "
     if not node.type_name() in config.excludes:
+        label = node.name
         if node.type_name() == "control":
-            label = cast(Control, node).label
-        else:
-            label = node.name
+            control = cast(Control, node)
+            if control.label:
+                label = control.label
         graph.node(str(node.obj_id),
                    label=label,
                    tooltip="{} ({})".format(node.name,
@@ -39,11 +40,6 @@ def generate_main_graph(metadata, config):
                labelloc="top", fontsize="24")
     for node in metadata.all_objects():
         make_node(config.graph, graph, node)
-    print(f"{config.general.output_dir}/{config.name}")
-    # graph.view()
-    # move to writer.py
-    # graph.save(directory=f"{config.general.output_dir}/{config.name}")
-    # graph.render(format="svg")
     return graph
 
 

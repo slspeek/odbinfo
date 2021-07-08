@@ -627,6 +627,7 @@ form_defs:
   - bookmark: null
     local_id: view1
     object_type: view
+graphs: []
 library_defs:
 - modules:
   - callables:

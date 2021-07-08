@@ -7,60 +7,65 @@ theme = "minimal"
 [[menu.main]]
 url = "/table/index.html"
 name = "table"
-weight = 2
+weight = 3
 
 [[menu.main]]
 url = "/query/index.html"
 name = "query"
-weight = 3
+weight = 4
 
 [[menu.main]]
 url = "/view/index.html"
 name = "view"
-weight = 4
+weight = 5
 
 [[menu.main]]
 url = "/form/index.html"
 name = "form"
-weight = 5
+weight = 6
 
 [[menu.main]]
 url = "/report/index.html"
 name = "report"
-weight = 6
+weight = 7
 
 [[menu.main]]
 url = "/basicfunction/index.html"
 name = "basicfunction"
-weight = 7
+weight = 8
 
 [[menu.main]]
 url = "/module/index.html"
 name = "module"
-weight = 8
+weight = 9
 
 [[menu.main]]
 url = "/library/index.html"
 name = "library"
-weight = 9
+weight = 10
 
 [[menu.main]]
 url = "/pythonlibrary/index.html"
 name = "pythonlibrary"
-weight = 10
+weight = 11
 
 [[menu.main]]
 url = "/pythonmodule/index.html"
 name = "pythonmodule"
-weight = 11
+weight = 12
 
 [[menu.main]]
 url = "/textdocument/index.html"
 name = "textdocument"
-weight = 12
+weight = 13
 
 [[menu.main]]
 url = "/"
 name = "home"
 weight = 1
+
+[[menu.main]]
+url = "/svg/testdb.gv.svg"
+name = "picture"
+weight = 2
 

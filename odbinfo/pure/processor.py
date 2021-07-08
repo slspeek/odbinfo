@@ -131,6 +131,6 @@ def process_metadata(metadata: Metadata, config: Configuration) -> None:
     print("Distribute usecases: {}".format(end_time-start_time))
 
     start_time = time.time()
-    generate_graphs(metadata, config)
+    metadata.graphs = generate_graphs(metadata, config)
     end_time = time.time()
     print("Generate graphs: {}".format(end_time-start_time))

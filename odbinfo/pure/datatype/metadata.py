@@ -3,6 +3,8 @@ from dataclasses import dataclass, field
 from itertools import starmap
 from typing import List
 
+from graphviz import Digraph
+
 from odbinfo.pure.datatype.base import PageOwner, UseCase
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
@@ -37,6 +39,7 @@ class Metadata(PageOwner):
     pythonlibrary_defs: List[PythonLibrary]
     textdocument_defs: List[TextDocument]
     use_cases: List[UseCase] = field(init=False, default_factory=list)
+    graphs: List[Digraph] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         super().__post_init__()

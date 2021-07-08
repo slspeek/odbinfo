@@ -45,6 +45,12 @@ DATA_DIR = path.join(path.dirname(path.dirname(path.dirname(__file__))),
                      "data")
 
 
+def _write_graphs(metadata):
+    for graph in metadata.graphs:
+        graph.save(directory="static/svg")
+        graph.render(format="svg")
+
+
 def _frontmatter(obj, out):
     """ Writes `adict` to yaml and marks it as frontmatter """
     out.write(FRONT_MATTER_MARK)
@@ -90,6 +96,7 @@ def make_site(output_dir, name, metadata):
 
     with chdir(os.path.join(output_dir, name)):
         _write_metadata(name, metadata)
+        _write_graphs(metadata)
         run_checked("hugo", "unable to build hugo site")
     _convert_local(output_dir, name)
     localsite = f"{output_dir}/{name}-local"
@@ -149,11 +156,15 @@ def _write_config(site_name, metadata):
                     "weight": weight}
         return None
     menus_defs = list(
-        zip(METADATA_CONTENT, range(2, len(METADATA_CONTENT) + 2)))
+        zip(METADATA_CONTENT, range(3, len(METADATA_CONTENT) + 3)))
     menus = list(filter(lambda x: x is not None, map(_menu, menus_defs)))
     menus.append({"url": "/",
                   "name": "home",
                   "weight": 1})
+    menus.append({"url": f"/svg/{site_name}.gv.svg",
+                  "name": "picture",
+                  "weight": 2})
+
     with open("config.toml", "w") as cfg:
         toml.dump({"title": site_name,
                    "baseURL": "http://example.com/",

@@ -30,6 +30,7 @@ def process_and_check(unprocessed, filename, data_regression,
     config.name, _ = os.path.splitext(os.path.basename(unprocessed.name))
     benchmark(process_metadata, unprocessed, config)
     # data_regression.check(unprocessed)
-    data_regression.check(dataclasses.asdict(unprocessed))
     file_regression.check(pickle.dumps(unprocessed), binary=True,
                           basename=filename, extension=".pickle")
+    unprocessed.graphs = []
+    data_regression.check(dataclasses.asdict(unprocessed))

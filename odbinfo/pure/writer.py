@@ -85,14 +85,15 @@ def preprocess_metadata(metadata):
     " clear some fields for speed "
     for function in metadata.basicfunction_defs():
         function.body_tokens = []
+    for obj in metadata.all_objects():
+        obj.parent = None
+        del obj.parent
 
 
 def make_site(output_dir, name, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
 
     new_site(output_dir, name)
-
-    preprocess_metadata(metadata)
 
     with chdir(os.path.join(output_dir, name)):
         _write_metadata(name, metadata)
@@ -129,6 +130,7 @@ def cleanup_tokens(metadata):
 
 
 def _write_metadata(name, metadata: Metadata):
+    preprocess_metadata(metadata)
     cleanup_tokens(metadata)
     _write_config(name, metadata)
     for content in METADATA_CONTENT:

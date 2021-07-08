@@ -11,7 +11,6 @@ fields:
       object_type: query
     text: vwPlant
   tabletype: query
-  title: vwPlant.naam
 name: Untitled.odt
 obj_id: '576'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier

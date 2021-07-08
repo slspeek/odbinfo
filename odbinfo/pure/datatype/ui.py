@@ -22,9 +22,10 @@ class DatabaseDisplay(Node):
     table: LinkedString
     tabletype: str
     column: str
-
-    def __post_init__(self):
-        self.title = f"{self.table.text}.{self.column}"
+    #
+    # def __post_init__(self):
+    #     self.title = f"{self.table.text}.{self.column}"
+    #
 
 
 @dataclass

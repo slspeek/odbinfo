@@ -107,6 +107,7 @@ def process_metadata(metadata: Metadata, config: Configuration) -> None:
 
     start_time = time.time()
     metadata.set_parents(None)
+    metadata.build_parent_index()
     end_time = time.time()
     print("Set parents: {}".format(end_time-start_time))
 

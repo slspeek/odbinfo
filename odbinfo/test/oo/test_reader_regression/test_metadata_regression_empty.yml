@@ -3,6 +3,7 @@ graphs: []
 library_defs: []
 name: ./emptydb.odb
 obj_id: not-set
+parent: null
 parent_link: null
 pythonlibrary_defs: []
 query_defs: []

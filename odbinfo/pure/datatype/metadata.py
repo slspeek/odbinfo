@@ -45,6 +45,12 @@ class Metadata(PageOwner):
         super().__post_init__()
         self.index = {}
 
+    def build_parent_index(self):
+        " set the parents in all objects "
+        for obj in self.all_objects():
+            for child in obj.children():
+                child.parent = obj
+
     def basicfunction_defs(self) -> List[BasicFunction]:
         "collect all callables from libraries"
         result = []

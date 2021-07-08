@@ -33,4 +33,6 @@ def process_and_check(unprocessed, filename, data_regression,
     file_regression.check(pickle.dumps(unprocessed), binary=True,
                           basename=filename, extension=".pickle")
     unprocessed.graphs = []
+    for obj in unprocessed.all_objects():
+        obj.parent = None
     data_regression.check(dataclasses.asdict(unprocessed))

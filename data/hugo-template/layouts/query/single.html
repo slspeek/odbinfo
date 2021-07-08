@@ -2,6 +2,7 @@
 {{ $context:= . }}
 <main>
   <h2>Query: {{ .Params.name }}</h2>
+  <h4>{{ partial "picture-link" . }}</h4>
   <div class="container">
   <div class="row">
     <div class="col">

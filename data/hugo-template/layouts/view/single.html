@@ -2,6 +2,7 @@
 {{ $context:= . }}
 <main>
     <h2>View: {{ .Params.name }}</h2>
+    <h4>{{ partial "picture-link" . }}</h4>
     <!-- <div style="text-align:left; font-size: 150%;">
       {{ highlight .Params.command "sql" ""}}
     </div> -->

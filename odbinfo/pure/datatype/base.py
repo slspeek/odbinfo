@@ -21,6 +21,7 @@ class SourceIdentifier(Identifier):
 class Node:
     " DataObject without children "
     obj_id: str = field(init=False, default="not-set")
+    parent: Optional["Node"] = field(init=False, default=None)
 
     def type_name(self):
         " returns classname in lowercase "
@@ -44,6 +45,9 @@ class Node:
 class NamedNode(Node):
     "Has a name"
     name: str
+
+    def __hash__(self):
+        return hash(self.name)
 
 
 @dataclass
@@ -69,16 +73,17 @@ class PageOwner(Aggregator, NamedNode):
     title: str = field(init=False)
     parent_link: Optional['Identifier'] = field(init=False, default=None)
 
+    def __post_init__(self):
+        self.title = self.name
+
     def set_parents(self, parent: Optional['PageOwner']) -> None:
         " recursively set parents "
         if isinstance(parent, PageOwner):
             self.parent_link = get_identifier(parent)
+
         for child in self.children():
             if isinstance(child, PageOwner):
                 child.set_parents(self)
-
-    def __post_init__(self):
-        self.title = self.name
 
 
 def get_identifier(page: PageOwner) -> Identifier:

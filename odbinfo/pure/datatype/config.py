@@ -1,7 +1,7 @@
 " Configuration classes "
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 
 @dataclass
@@ -43,23 +43,6 @@ RELATION_ATTRS = {
     ("query", "query"): {"arrowhead": "dot"}
 }
 
-TYPE_HREF = {
-    "table": "tables",
-    "library": "library",
-    "textdocument": "textdocument",
-    "view": "views",
-    "query": "Queries",
-    "form": "ControlsByForm",
-    "report": "FullIndex",
-    "listbox": "FullIndex",
-    "module": "Modules",
-    "field": "FullIndex",
-    "subform": "FullIndex",
-    "grid": "FullIndex",
-    "control": "ControlsByForm",
-    "basicfunction": "ProceduresByModule"
-}
-
 EXCLUDED_TYPES = ["eventlistener", "metadata", "key", "index",
                   "token", "querycolumn", "column", "pythonlibrary",
                   "pythonmodule", "databasedisplay"]
@@ -71,7 +54,6 @@ class GraphConfig:
     excludes: List[str]
     type_attrs: dict
     relation_attrs: dict
-    type_href: Dict[str, str]
 
 
 @dataclass
@@ -91,7 +73,6 @@ def get_configuration() -> Configuration:
             GraphConfig(
                 EXCLUDED_TYPES,
                 TYPE_ATTRS,
-                RELATION_ATTRS,
-                TYPE_HREF
+                RELATION_ATTRS
             )
         )

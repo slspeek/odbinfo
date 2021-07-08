@@ -2,25 +2,7 @@
 !!python/object:odbinfo.pure.datatype.exec.Module
 callables:
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  body_tokens:
-  - &id002 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 7
-    text: Print
-    type: 100
-  - &id003 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 8
-    text: ' '
-    type: 185
-  - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 9
-    text: '"hello world"'
-    type: 172
-  - &id004 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 10
-    text: '
-
-      '
-    type: 183
+  body_tokens: []
   calls: []
   library: Standard
   module: Module2
@@ -31,7 +13,10 @@ callables:
     local_id: Module2.Standard
     object_type: module
   strings:
-  - *id001
+  - &id001 !!python/object:odbinfo.pure.datatype.base.Token
+    index: 9
+    text: '"hello world"'
+    type: 172
   title: Main.Module2.Standard
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -50,10 +35,21 @@ callables:
     index: 6
     text: "\n\t"
     type: 183
-  - *id002
-  - *id003
+  - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 7
+    text: Print
+    type: 100
+  - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 8
+    text: ' '
+    type: 185
   - *id001
-  - *id004
+  - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 10
+    text: '
+
+      '
+    type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 11
     text: End Sub

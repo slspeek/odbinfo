@@ -2,25 +2,7 @@
 !!python/object:odbinfo.pure.datatype.exec.Module
 callables:
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  body_tokens:
-  - &id002 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 9
-    text: print
-    type: 100
-  - &id003 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 10
-    text: ' '
-    type: 185
-  - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 11
-    text: '"Module2.CalleeSub"'
-    type: 172
-  - &id004 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 12
-    text: '
-
-      '
-    type: 183
+  body_tokens: []
   calls: []
   library: Library1
   module: Module2
@@ -31,7 +13,10 @@ callables:
     local_id: Module2.Library1
     object_type: module
   strings:
-  - *id001
+  - &id001 !!python/object:odbinfo.pure.datatype.base.Token
+    index: 11
+    text: '"Module2.CalleeSub"'
+    type: 172
   title: CalleeSub.Module2.Library1
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -58,10 +43,21 @@ callables:
     index: 8
     text: "\n\t"
     type: 183
-  - *id002
-  - *id003
+  - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 9
+    text: print
+    type: 100
+  - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 10
+    text: ' '
+    type: 185
   - *id001
-  - *id004
+  - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 12
+    text: '
+
+      '
+    type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 13
     text: End Sub
@@ -73,25 +69,7 @@ callables:
     object_type: basicfunction
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  body_tokens:
-  - &id006 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 22
-    text: print
-    type: 100
-  - &id007 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 23
-    text: ' '
-    type: 185
-  - &id005 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 24
-    text: '"Module2.CalleeTwoSub"'
-    type: 172
-  - &id008 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 25
-    text: '
-
-      '
-    type: 183
+  body_tokens: []
   calls: []
   library: Library1
   module: Module2
@@ -102,7 +80,10 @@ callables:
     local_id: Module2.Library1
     object_type: module
   strings:
-  - *id005
+  - &id002 !!python/object:odbinfo.pure.datatype.base.Token
+    index: 24
+    text: '"Module2.CalleeTwoSub"'
+    type: 172
   title: CalleeTwoSub.Module2.Library1
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -129,10 +110,21 @@ callables:
     index: 21
     text: "\n\t"
     type: 183
-  - *id006
-  - *id007
-  - *id005
-  - *id008
+  - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 22
+    text: print
+    type: 100
+  - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 23
+    text: ' '
+    type: 185
+  - *id002
+  - !!python/object:odbinfo.pure.datatype.base.Token
+    index: 25
+    text: '
+
+      '
+    type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 26
     text: End Sub

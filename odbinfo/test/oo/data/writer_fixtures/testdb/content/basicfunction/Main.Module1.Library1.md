@@ -1,24 +1,6 @@
 ---
 !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-body_tokens:
-- &id002 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 7
-  text: Error
-  type: 49
-- &id003 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 8
-  text: ' '
-  type: 185
-- &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 9
-  text: '"Mijn fout"'
-  type: 172
-- &id004 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 10
-  text: '
-
-    '
-  type: 183
+body_tokens: []
 calls: []
 library: Library1
 module: Module1
@@ -29,7 +11,10 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: Module1.Library1
   object_type: module
 strings:
-- *id001
+- &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  index: 9
+  text: '"Mijn fout"'
+  type: 172
 title: Main.Module1.Library1
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
@@ -48,10 +33,21 @@ tokens:
   index: 6
   text: "\n\t"
   type: 183
-- *id002
-- *id003
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 7
+  text: Error
+  type: 49
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 8
+  text: ' '
+  type: 185
 - *id001
-- *id004
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 10
+  text: '
+
+    '
+  type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
   text: End Sub

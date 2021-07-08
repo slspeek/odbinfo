@@ -3,18 +3,29 @@ from typing import cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import Control
+from odbinfo.pure.datatype import Control, PageOwner
 from odbinfo.pure.datatype.base import NamedNode
 from odbinfo.pure.datatype.config import GraphConfig
 
 
-def href(config, obj):
-    """ returns the value for a href html attribute """
-    file = config.type_href[obj.type_name()]
-    return "../{}.html#{}".format(file, obj.obj_id)
+def hugo_filename(name: str) -> str:
+    " name converted as hugo converts filename to .Params.filename "
+    return name.replace(" ", "-").lower()
 
 
-def make_node(config: GraphConfig, graph: Digraph, node: NamedNode):
+def href(obj):
+    """ returns a href html attribute """
+    if isinstance(obj, PageOwner):
+        return f"../{obj.type_name()}/{hugo_filename(obj.title)}"
+
+    node = obj.parent
+    while not isinstance(node, PageOwner):
+        node = node.parent
+    return f"../{node.type_name()}/{hugo_filename(node.title)}/#{obj.obj_id}"
+
+
+def make_node(config: GraphConfig,
+              graph: Digraph, node: NamedNode):
     " adds a node to `graph` for `node` if `config` says so "
     if not node.type_name() in config.excludes:
         label = node.name
@@ -26,7 +37,7 @@ def make_node(config: GraphConfig, graph: Digraph, node: NamedNode):
                    label=label,
                    tooltip="{} ({})".format(node.name,
                                             node.type_name()),
-                   href=href(config, node),
+                   href=href(node),
                    id=node.obj_id,
                    _attributes=config.type_attrs[node.type_name()])
 

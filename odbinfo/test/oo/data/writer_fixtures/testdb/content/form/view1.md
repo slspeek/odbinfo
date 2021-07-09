@@ -4,6 +4,7 @@ height: 0
 name: view1
 obj_id: '168'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 subforms:
@@ -13,6 +14,7 @@ subforms:
   allowupdates: 'true'
   command: !!python/object:odbinfo.pure.datatype.base.LinkedString
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: view1
       object_type: view
     text: view1
@@ -50,6 +52,7 @@ title: view1
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: view1
   object_type: view
 ---

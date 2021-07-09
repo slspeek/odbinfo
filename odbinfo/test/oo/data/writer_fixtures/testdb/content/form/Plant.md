@@ -4,6 +4,7 @@ height: 0
 name: Plant
 obj_id: '126'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 subforms:
@@ -13,6 +14,7 @@ subforms:
   allowupdates: 'true'
   command: !!python/object:odbinfo.pure.datatype.base.LinkedString
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: Plant
       object_type: table
     text: Plant
@@ -94,6 +96,7 @@ title: Plant
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Plant
   object_type: table
 ---

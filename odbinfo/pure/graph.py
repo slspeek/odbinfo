@@ -77,7 +77,23 @@ def edge(graph, start, end, attrs):
                _attributes=attrs)
 
 
+def make_dependency_edges(metadata, config, graph, node):
+    " make edges for all dependencies of `node` "
+
+    if hasattr(node, "uses"):
+        if config.collapse_multiple_uses:
+            uses = set(node.uses)
+        else:
+            uses = node.uses
+
+        for used_node_link in uses:
+            used_node = metadata.index[(
+                used_node_link.object_type, used_node_link.local_id)]
+            make_edge(config, graph, node, used_node)
+
 # pylint:disable=unused-argument
+
+
 def generate_main_graph(metadata, config):
     " returns the main graph "
     graph = Digraph(config.name)
@@ -88,11 +104,7 @@ def generate_main_graph(metadata, config):
     for node in metadata.all_objects():
         make_node(config.graph, graph, node)
         make_parent_edge(config.graph, graph, node)
-        if hasattr(node, "uses"):
-            for used_node_link in node.uses:
-                used_node = metadata.index[(
-                    used_node_link.object_type, used_node_link.local_id)]
-                make_edge(config.graph, graph, node, used_node)
+        make_dependency_edges(metadata, config.graph, graph, node)
     return graph
 
 

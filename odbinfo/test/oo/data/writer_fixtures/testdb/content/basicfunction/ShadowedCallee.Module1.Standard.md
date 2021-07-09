@@ -8,6 +8,7 @@ name: ShadowedCallee
 name_token_index: 16
 obj_id: '187'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Module1.Standard
   object_type: module
 strings:

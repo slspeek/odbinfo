@@ -10,6 +10,7 @@ callables:
   name_token_index: 5
   obj_id: '177'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: Module1.Standard
     object_type: module
   strings:
@@ -56,10 +57,12 @@ callables:
     type: 44
   used_by:
   - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+    bookmark: null
     local_id: CallerOtherLib.Module1.Library1
     location_id: '444'
     object_type: basicfunction
   - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+    bookmark: null
     local_id: CallerOtherLib.Module1.Library1
     location_id: '450'
     object_type: basicfunction
@@ -73,6 +76,7 @@ callables:
   name_token_index: 16
   obj_id: '187'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: Module1.Standard
     object_type: module
   strings:
@@ -134,6 +138,7 @@ name_indexes:
 - 16
 obj_id: '176'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Standard
   object_type: library
 source: "REM  *****  BASIC  *****\n\nSub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\
@@ -173,6 +178,7 @@ tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
     object_type: basicfunction
   text: CalleeOtherLib
@@ -236,6 +242,7 @@ tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 16
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: ShadowedCallee.Module1.Standard
     object_type: basicfunction
   text: ShadowedCallee

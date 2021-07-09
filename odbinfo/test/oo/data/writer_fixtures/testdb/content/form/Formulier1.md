@@ -4,6 +4,7 @@ height: 1
 name: Formulier1
 obj_id: '122'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 subforms:

@@ -1,5 +1,9 @@
 Clean up files after make_site if no config.keepfiles is specified
 
+Relevant control filter:
+  ListBox handling
+  eventlisteners parsing
+  
 type file based MetaData, TextDocument
 
 NamedNode method users_match() return list of possible matches

@@ -20,12 +20,14 @@ command: 'SELECT "id"
 name: view1
 obj_id: '34'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: Plant
     object_type: table
   obj_id: '44'
@@ -70,27 +72,33 @@ tokens:
 - *id001
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: ReferToView.Module1.Library1
   location_id: '504'
   object_type: basicfunction
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: DependendQuery
   location_id: '66'
   object_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: DependendView
   location_id: '25'
   object_type: view
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: DependendView
   location_id: '33'
   object_type: view
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: view1
   location_id: '169'
   object_type: form
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Plant
   object_type: table
 ---

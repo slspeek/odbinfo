@@ -4,6 +4,7 @@ height: 0
 name: Plant invoeren
 obj_id: '134'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 subforms:
@@ -13,6 +14,7 @@ subforms:
   allowupdates: 'true'
   command: !!python/object:odbinfo.pure.datatype.base.LinkedString
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: vwPlant
       object_type: query
     text: vwPlant
@@ -54,6 +56,7 @@ title: Plant invoeren
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: vwPlant
   object_type: query
 ---

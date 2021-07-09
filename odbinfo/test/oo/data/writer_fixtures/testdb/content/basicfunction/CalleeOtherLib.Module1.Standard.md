@@ -8,6 +8,7 @@ name: CalleeOtherLib
 name_token_index: 5
 obj_id: '177'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Module1.Standard
   object_type: module
 strings:
@@ -54,10 +55,12 @@ tokens:
   type: 44
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: CallerOtherLib.Module1.Library1
   location_id: '444'
   object_type: basicfunction
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: CallerOtherLib.Module1.Library1
   location_id: '450'
   object_type: basicfunction

@@ -85,12 +85,14 @@ command: 'SELECT *
 name: DependendQuery
 obj_id: '45'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: FamilyLookup
     object_type: query
   obj_id: '60'
@@ -99,6 +101,7 @@ table_tokens:
 - &id002 !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: vwPlant
     object_type: query
   obj_id: '63'
@@ -107,6 +110,7 @@ table_tokens:
 - &id003 !!python/object:odbinfo.pure.datatype.base.Token
   index: 14
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: view1
     object_type: view
   obj_id: '66'
@@ -170,12 +174,15 @@ tokens:
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: view1
   object_type: view
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: FamilyLookup
   object_type: query
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: vwPlant
   object_type: query
 ---

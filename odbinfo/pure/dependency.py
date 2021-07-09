@@ -82,9 +82,7 @@ def _rewrite_module_token_links(modules):
                     return
                 lmacro, lmodule, llib = link.local_id.split('.')
                 # target_module = module_index[(lmodule, llib)]
-                new_link = Identifier("modules", f"{lmodule}.{llib}")
-                new_link.bookmark = lmacro
-                token.link = new_link
+                token.link = Identifier("modules", f"{lmodule}.{llib}", lmacro)
 
             if token.link:
                 rewrite_link(token.link)

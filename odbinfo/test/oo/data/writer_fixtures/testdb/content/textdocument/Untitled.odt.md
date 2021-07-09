@@ -7,6 +7,7 @@ fields:
   obj_id: '577'
   table: !!python/object:odbinfo.pure.datatype.base.LinkedString
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: vwPlant
       object_type: query
     text: vwPlant
@@ -14,6 +15,7 @@ fields:
 name: Untitled.odt
 obj_id: '576'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 path: ./Untitled.odt
@@ -21,6 +23,7 @@ title: Untitled.odt
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: vwPlant
   object_type: query
 ---

@@ -54,6 +54,7 @@ class GraphConfig:
     excludes: List[str]
     type_attrs: dict
     relation_attrs: dict
+    collapse_multiple_uses: bool
 
 
 @dataclass
@@ -73,6 +74,7 @@ def get_configuration() -> Configuration:
             GraphConfig(
                 EXCLUDED_TYPES,
                 TYPE_ATTRS,
-                RELATION_ATTRS
+                RELATION_ATTRS,
+                True
             )
         )

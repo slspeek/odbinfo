@@ -8,6 +8,7 @@ name: CalleeTwoSub
 name_token_index: 18
 obj_id: '533'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Module2.Library1
   object_type: module
 strings:
@@ -62,6 +63,7 @@ tokens:
   type: 44
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: CallerTwo.Module1.Library1
   location_id: '431'
   object_type: basicfunction

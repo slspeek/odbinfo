@@ -7,6 +7,7 @@ calls:
   name_token: &id001 !!python/object:odbinfo.pure.datatype.base.Token
     index: 20
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: CalleeSub.Module1.Library1
       object_type: basicfunction
     obj_id: '399'
@@ -20,6 +21,7 @@ calls:
   name_token: &id003 !!python/object:odbinfo.pure.datatype.base.Token
     index: 26
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: CalleeSub.Module2.Library1
       object_type: basicfunction
     obj_id: '405'
@@ -31,6 +33,7 @@ name: CallerSub
 name_token_index: 16
 obj_id: '259'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Module1.Library1
   object_type: module
 strings: []
@@ -100,9 +103,11 @@ tokens:
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: CalleeSub.Module1.Library1
   object_type: basicfunction
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: CalleeSub.Module2.Library1
   object_type: basicfunction
 ---

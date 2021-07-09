@@ -7,6 +7,7 @@ calls:
   name_token: &id001 !!python/object:odbinfo.pure.datatype.base.Token
     index: 84
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: ShadowedCallee.Module1.Library1
       object_type: basicfunction
     obj_id: '463'
@@ -18,6 +19,7 @@ name: CallerShadowedCallee
 name_token_index: 80
 obj_id: '319'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Module1.Library1
   object_type: module
 strings: []
@@ -69,6 +71,7 @@ tokens:
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ShadowedCallee.Module1.Library1
   object_type: basicfunction
 ---

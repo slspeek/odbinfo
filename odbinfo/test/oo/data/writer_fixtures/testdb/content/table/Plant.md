@@ -78,6 +78,7 @@ keys:
   obj_id: '15'
   referenced_table: !!python/object:odbinfo.pure.datatype.base.LinkedString
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: Family
       object_type: table
     text: Family
@@ -88,40 +89,49 @@ keys:
 name: Plant
 obj_id: '13'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 title: Plant
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: ReferToTable.Module1.Library1
   location_id: '491'
   object_type: basicfunction
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: vwPlant
   location_id: '101'
   object_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: ReportCommandTypeSQL.Command
   location_id: '114'
   object_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: view1
   location_id: '44'
   object_type: view
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: Plant
   location_id: '127'
   object_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: PlantListbox
   location_id: '140'
   object_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: Related subform
   location_id: '154'
   object_type: form
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Family
   object_type: table
 ---

@@ -8,12 +8,14 @@ name: ReferToTable
 name_token_index: 106
 obj_id: '343'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Module1.Library1
   object_type: module
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 112
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: Plant
     object_type: table
   obj_id: '491'
@@ -67,6 +69,7 @@ tokens:
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Plant
   object_type: table
 ---

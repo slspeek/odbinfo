@@ -8,6 +8,7 @@ name: Main
 name_token_index: 5
 obj_id: '249'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Module1.Library1
   object_type: module
 strings:

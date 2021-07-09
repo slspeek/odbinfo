@@ -50,12 +50,14 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
   name: ReportCommandTypeSQL.Command
   obj_id: '102'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: ./testdb.odb
     object_type: metadata
   table_tokens:
   - &id001 !!python/object:odbinfo.pure.datatype.base.Token
     index: 8
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: Plant
       object_type: table
     obj_id: '114'
@@ -105,6 +107,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
   used_by: []
   uses:
   - !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: Plant
     object_type: table
 formulas:
@@ -114,6 +117,7 @@ name: ReportCommandTypeSQL
 obj_id: '173'
 output_type: application/vnd.oasis.opendocument.text
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 title: ReportCommandTypeSQL

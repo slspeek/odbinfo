@@ -46,12 +46,14 @@ command: 'SELECT *
 name: ReportCommandTypeSQL.Command
 obj_id: '102'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: Plant
     object_type: table
   obj_id: '114'
@@ -101,6 +103,7 @@ tokens:
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Plant
   object_type: table
 ---

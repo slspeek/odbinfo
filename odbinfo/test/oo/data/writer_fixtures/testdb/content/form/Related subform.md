@@ -4,6 +4,7 @@ height: 1
 name: Related subform
 obj_id: '153'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 subforms:
@@ -13,6 +14,7 @@ subforms:
   allowupdates: 'true'
   command: !!python/object:odbinfo.pure.datatype.base.LinkedString
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: Plant
       object_type: table
     text: Plant
@@ -96,6 +98,7 @@ subforms:
     allowupdates: 'true'
     command: !!python/object:odbinfo.pure.datatype.base.LinkedString
       link: !!python/object:odbinfo.pure.datatype.base.Identifier
+        bookmark: null
         local_id: Family
         object_type: table
       text: Family
@@ -177,9 +180,11 @@ title: Related subform
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Plant
   object_type: table
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Family
   object_type: table
 ---

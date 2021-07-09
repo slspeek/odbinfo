@@ -3,15 +3,15 @@ from dataclasses import dataclass, field
 from typing import List, Optional
 
 
-@dataclass
+@dataclass(frozen=True)
 class Identifier:
     " Unique id for ooobjects "
     object_type: str
     local_id: str
-    bookmark: Optional[str] = field(init=False, default=None)
+    bookmark: Optional[str]
 
 
-@dataclass
+@dataclass(frozen=True)
 class SourceIdentifier(Identifier):
     " source location identifier for back linking "
     location_id: str
@@ -86,13 +86,13 @@ class PageOwner(Aggregator, NamedNode):
 def get_identifier(page: PageOwner) -> Identifier:
     "returns Identifier for `dataobject`"
     return Identifier(page.type_name(),
-                      page.title)
+                      page.title, None)
 
 
 def get_source_identifier(source: PageOwner, location: Optional[Node]) -> SourceIdentifier:
     " creates a SourceIdentifier "
     source_id = "" if not location else location.obj_id
-    return SourceIdentifier(source.type_name(), source.title, source_id)
+    return SourceIdentifier(source.type_name(), source.title, None, source_id)
 
 
 @dataclass

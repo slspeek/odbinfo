@@ -46,12 +46,14 @@ command: 'SELECT *
 name: vwPlant
 obj_id: '89'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: Plant
     object_type: table
   obj_id: '101'
@@ -96,23 +98,28 @@ tokens:
 - *id001
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: DependendQuery
   location_id: '63'
   object_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: vwPlant
   location_id: '174'
   object_type: report
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: Plant invoeren
   location_id: '135'
   object_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: Untitled.odt
   location_id: '577'
   object_type: textdocument
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Plant
   object_type: table
 ---

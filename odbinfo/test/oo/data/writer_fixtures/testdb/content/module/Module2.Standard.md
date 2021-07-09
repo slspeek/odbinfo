@@ -10,6 +10,7 @@ callables:
   name_token_index: 5
   obj_id: '225'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: Module2.Standard
     object_type: module
   strings:
@@ -62,6 +63,7 @@ name_indexes:
 - 5
 obj_id: '224'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Standard
   object_type: library
 source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
@@ -99,6 +101,7 @@ tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: Main.Module2.Standard
     object_type: basicfunction
   text: Main

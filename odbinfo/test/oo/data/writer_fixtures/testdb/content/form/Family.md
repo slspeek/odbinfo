@@ -4,6 +4,7 @@ height: 0
 name: Family
 obj_id: '116'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 subforms:
@@ -13,6 +14,7 @@ subforms:
   allowupdates: 'true'
   command: !!python/object:odbinfo.pure.datatype.base.LinkedString
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
       local_id: Family
       object_type: table
     text: Family
@@ -65,6 +67,7 @@ title: Family
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: Family
   object_type: table
 ---

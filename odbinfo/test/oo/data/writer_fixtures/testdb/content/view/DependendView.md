@@ -20,12 +20,14 @@ command: 'SELECT "view1"."id"
 name: DependendView
 obj_id: '21'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: ./testdb.odb
   object_type: metadata
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: view1
     object_type: view
   obj_id: '25'
@@ -34,6 +36,7 @@ table_tokens:
 - &id002 !!python/object:odbinfo.pure.datatype.base.Token
   index: 10
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
     local_id: view1
     object_type: view
   obj_id: '33'
@@ -84,9 +87,11 @@ tokens:
 used_by: []
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: view1
   object_type: view
 - !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
   local_id: view1
   object_type: view
 ---

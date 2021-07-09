@@ -21,7 +21,6 @@ class SourceIdentifier(Identifier):
 class Node:
     " DataObject without children "
     obj_id: str = field(init=False, default="not-set")
-    parent: Optional["Node"] = field(init=False, default=None)
 
     def type_name(self):
         " returns classname in lowercase "
@@ -45,9 +44,7 @@ class Node:
 class NamedNode(Node):
     "Has a name"
     name: str
-
-    def __hash__(self):
-        return hash(self.name)
+    parent: Optional["NamedNode"] = field(init=False, default=None)
 
 
 @dataclass

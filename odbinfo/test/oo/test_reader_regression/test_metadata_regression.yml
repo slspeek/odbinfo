@@ -350,7 +350,6 @@ form_defs:
       eventlisteners:
       - event: form:performaction
         obj_id: not-set
-        parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       formfor: ''
       inputrequired: ''
@@ -376,11 +375,9 @@ form_defs:
       eventlisteners:
       - event: form:performaction
         obj_id: not-set
-        parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       - event: form:approveaction
         obj_id: not-set
-        parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       formfor: ''
       inputrequired: ''
@@ -1285,7 +1282,6 @@ textdocument_defs:
   - column: naam
     database: testdb
     obj_id: not-set
-    parent: null
     table:
       link: null
       text: vwPlant

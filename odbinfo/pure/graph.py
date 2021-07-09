@@ -16,12 +16,12 @@ def hugo_filename(name: str) -> str:
 def href(obj):
     """ returns a href html attribute """
     if isinstance(obj, PageOwner):
-        return f"../{obj.type_name()}/{hugo_filename(obj.title)}"
+        return f"../{obj.type_name()}/{hugo_filename(obj.title)}/index.html"
 
     node = obj.parent
     while not isinstance(node, PageOwner):
         node = node.parent
-    return f"../{node.type_name()}/{hugo_filename(node.title)}/#{obj.obj_id}"
+    return f"../{node.type_name()}/{hugo_filename(node.title)}/index.html#{obj.obj_id}"
 
 
 def make_node(config: GraphConfig,
@@ -42,6 +42,41 @@ def make_node(config: GraphConfig,
                    _attributes=config.type_attrs[node.type_name()])
 
 
+def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode, end: NamedNode):
+    " make edge from `start` to `end` if `config` says so "
+    if not start.type_name() in config.excludes and \
+            not end.type_name() in config.excludes:
+        attrs = config.relation_attrs.get(
+            (start.type_name(), end.type_name()), {})
+        attrs["edgetooltip"] = "{} -> {}".format(start.name, end.name)
+        edge(graph, start,
+             end, attrs)
+
+
+def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
+    " make edge from `node` to `parent` if `config` says so "
+    if not hasattr(node, "parent"):
+        return
+    if not node.parent:
+        return
+    if not node.type_name() in config.excludes and\
+            not node.parent.type_name() in config.excludes:
+        attrs = {}
+        attrs["edgetooltip"] = "{} is child of {}"\
+            .format(node.name, node.parent.name)
+        attrs["style"] = "dashed"
+        attrs["color"] = "#ffcc99"
+        attrs["arrowhead"] = "none"
+        edge(graph, node, node.parent, attrs)
+
+
+def edge(graph, start, end, attrs):
+    " make an edge in `graph`"
+    graph.edge(str(start.obj_id),
+               str(end.obj_id),
+               _attributes=attrs)
+
+
 # pylint:disable=unused-argument
 def generate_main_graph(metadata, config):
     " returns the main graph "
@@ -49,8 +84,15 @@ def generate_main_graph(metadata, config):
     graph.attr("graph", rankdir="LR")
     graph.attr("graph", label=config.name,
                labelloc="top", fontsize="24")
+    graph.attr("graph", tooltip="")
     for node in metadata.all_objects():
         make_node(config.graph, graph, node)
+        make_parent_edge(config.graph, graph, node)
+        if hasattr(node, "uses"):
+            for used_node_link in node.uses:
+                used_node = metadata.index[(
+                    used_node_link.object_type, used_node_link.local_id)]
+                make_edge(config.graph, graph, node, used_node)
     return graph
 
 

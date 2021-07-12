@@ -10,7 +10,7 @@ calls:
       bookmark: null
       local_id: CalleeSub.Module1.Library1
       object_type: basicfunction
-    obj_id: '399'
+    obj_id: '449'
     text: CalleeSub
     type: 181
 - !!python/object:odbinfo.pure.datatype.exec.BasicCall
@@ -24,14 +24,14 @@ calls:
       bookmark: null
       local_id: CalleeSub.Module2.Library1
       object_type: basicfunction
-    obj_id: '405'
+    obj_id: '455'
     text: CalleeSub
     type: 181
 library: Library1
 module: Module1
 name: CallerSub
 name_token_index: 16
-obj_id: '259'
+obj_id: '309'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Library1

@@ -10,14 +10,14 @@ calls:
       bookmark: null
       local_id: ShadowedCallee.Module1.Library1
       object_type: basicfunction
-    obj_id: '463'
+    obj_id: '513'
     text: ShadowedCallee
     type: 181
 library: Library1
 module: Module1
 name: CallerShadowedCallee
 name_token_index: 80
-obj_id: '319'
+obj_id: '369'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Library1

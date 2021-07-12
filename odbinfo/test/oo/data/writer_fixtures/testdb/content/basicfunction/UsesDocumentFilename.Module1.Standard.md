@@ -2,57 +2,74 @@
 !!python/object:odbinfo.pure.datatype.exec.BasicFunction
 body_tokens: []
 calls: []
-library: Library1
+library: Standard
 module: Module1
-name: Main
-name_token_index: 5
-obj_id: '299'
+name: UsesDocumentFilename
+name_token_index: 18
+obj_id: '189'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module1.Library1
+  local_id: Module1.Standard
   object_type: module
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 9
-  text: '"Mijn fout"'
+  index: 24
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    local_id: Untitled
+    object_type: textdocument
+  obj_id: '247'
+  text: '"Untitled.odt"'
   type: 172
-title: Main.Module1.Library1
+title: UsesDocumentFilename.Module1.Standard
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 3
+  index: 16
   text: Sub
   type: 125
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 4
+  index: 17
   text: ' '
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 5
-  text: Main
+  index: 18
+  text: UsesDocumentFilename
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 6
+  index: 19
+  text: (
+  type: 157
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 20
+  text: )
+  type: 168
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 21
   text: "\n\t"
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 7
-  text: Error
-  type: 49
+  index: 22
+  text: print
+  type: 100
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 8
+  index: 23
   text: ' '
   type: 185
 - *id001
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 10
+  index: 25
   text: '
 
     '
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 11
+  index: 26
   text: End Sub
   type: 44
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
+  local_id: Untitled
+  object_type: textdocument
 ---

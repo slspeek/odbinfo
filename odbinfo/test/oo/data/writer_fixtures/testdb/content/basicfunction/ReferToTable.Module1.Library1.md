@@ -6,7 +6,7 @@ library: Library1
 module: Module1
 name: ReferToTable
 name_token_index: 106
-obj_id: '343'
+obj_id: '393'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Library1
@@ -18,7 +18,7 @@ strings:
     bookmark: null
     local_id: Plant
     object_type: table
-  obj_id: '491'
+  obj_id: '541'
   text: '"Plant"'
   type: 172
 title: ReferToTable.Module1.Library1

@@ -46,6 +46,10 @@ class NamedNode(Node):
     name: str
     parent: Optional["NamedNode"] = field(init=False, default=None)
 
+    def users_match(self, username: str) -> bool:
+        " determines whether `username` (possibly) matches this object "
+        return self.name == username
+
 
 @dataclass
 class LinkedString:

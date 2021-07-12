@@ -5,64 +5,64 @@ calls: []
 library: Standard
 module: Module1
 name: CalleeOtherLib
-name_token_index: 5
-obj_id: '177'
+name_token_index: 31
+obj_id: '201'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Standard
   object_type: module
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 9
+  index: 35
   text: '"Standard.Module1.CalleeOtherLib"'
   type: 172
 title: CalleeOtherLib.Module1.Standard
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 3
+  index: 29
   text: Sub
   type: 125
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 4
+  index: 30
   text: ' '
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 5
+  index: 31
   text: CalleeOtherLib
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 6
+  index: 32
   text: "\n\t"
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 7
+  index: 33
   text: print
   type: 100
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 8
+  index: 34
   text: ' '
   type: 185
 - *id001
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 10
+  index: 36
   text: '
 
     '
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 11
+  index: 37
   text: End Sub
   type: 44
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: CallerOtherLib.Module1.Library1
-  location_id: '444'
+  location_id: '494'
   object_type: basicfunction
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: CallerOtherLib.Module1.Library1
-  location_id: '450'
+  location_id: '500'
   object_type: basicfunction
 uses: []
 ---

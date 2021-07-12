@@ -1,13 +1,21 @@
+If SubForms, Controls are not excluded they should
+have the dependencies, not its containing Form
+
 Clean up files after make_site if no config.keepfiles is specified
+
+Report dependencies when commandtype=command (should inherit from the
+embedded query)
 
 Relevant control filter:
   ListBox handling
   eventlisteners parsing
-  
-type file based MetaData, TextDocument
 
-NamedNode method users_match() return list of possible matches
-most of the time [self.name]
+Graphs:
+  - for table, queries, Views
+  - for basicfunction, library, module
+  - object with direct uses and used_bies
+
+type file based MetaData, TextDocument
 
 print --> logger.info
 logging window (sfriederichs.github.io/how-to/python/gui/logging/2017/12/21/Python-GUI-Logging.html)
@@ -19,20 +27,15 @@ templates: Grid rendering like Subform
 
 Flex tutorial
 
-Graph making
-------------
 class Dependend for DataObject s that possible use another object?
 
-make Metadata.usecases a set?
-
 database (driver) information retrieval
-
 
 make typing more complete (lot of work)
 
 look into GoHugo submenus
 
-Demonstation database Herbarium
+Demonstration database Herbarium
 -------------------------------
 Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,
 Attributes, Observations, Locations
@@ -90,7 +93,7 @@ dependency search matrix
 ------------------------
 Macro calls in controls (eventlisteners)
 tables, views, queries in ListBox
-textdocuments in basic
+textdocuments in basic (done)gr
 tables in tables (via its keys) (done)
 tables, views in views (done)
 tables, queries, views in queries (done)

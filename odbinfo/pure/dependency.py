@@ -27,6 +27,8 @@ def search_dependencies(metadata: Metadata) -> List[UseCase]:
             search_string_refs_in_callables(metadata.view_defs, metadata.basicfunction_defs()) +
             search_string_refs_in_callables(metadata.query_defs, metadata.basicfunction_defs()) +
             search_string_refs_in_callables(metadata.report_defs, metadata.basicfunction_defs()) +
+            search_string_refs_in_callables(metadata.textdocument_defs,
+                                            metadata.basicfunction_defs()) +
             rewrite_module_callable_links(metadata.module_defs()) +
             search_deps_in_queries(metadata.table_defs, metadata.query_defs) +
             search_deps_in_queries(metadata.view_defs, metadata.query_defs) +
@@ -181,7 +183,7 @@ def search_string_refs_in_callables(dataobjects: Sequence[PageOwner],
     def search_refs_in_one(acallable: BasicFunction) -> List[UseCase]:
         def ref_in_one(dataobject: PageOwner) -> List[UseCase]:
             def compare_ref(string_token: Token) -> List[UseCase]:
-                if dataobject.name == string_token.text[1:-1]:
+                if dataobject.users_match(string_token.text[1:-1]):
                     link_token(string_token, dataobject)
                     return [use_case(acallable,
                                      string_token,
@@ -204,14 +206,14 @@ def search_deps_in_queries(dataobjects: Sequence[PageOwner],
     " find uses of dataobject in queries "
     def find_tables_in_query(query: Query) -> List[UseCase]:
         " find table uses in `query` "
-        def find_table_in_query(table: PageOwner) -> List[UseCase]:
+        def find_table_in_query(page: PageOwner) -> List[UseCase]:
             def find_table_in_token(token: Token) -> List[UseCase]:
                 use_cases = []
-                if token.text[1:-1] == table.name:
-                    link_token(token, table)
+                if page.users_match(token.text[1:-1]):
+                    link_token(token, page)
                     use_cases.append(use_case(query,
                                               token,
-                                              table,
+                                              page,
                                               "queries"))
                 return use_cases
 
@@ -238,7 +240,7 @@ def search_deps_in_commanddriven(dataobjects: Sequence[PageOwner],
         page, cmddriven = report
 
         def match_one_dep(dependency: PageOwner) -> Optional[UseCase]:
-            if cmddriven.command.text == dependency.name:
+            if dependency.users_match(cmddriven.command.text):
                 cmddriven.command.link = get_identifier(dependency)
                 if isinstance(cmddriven, Node):
                     location = cast(Node, cmddriven)
@@ -264,7 +266,7 @@ def search_deps_in_documents(dataobjects: Sequence[PageOwner],
         def find_one_dep(dependency: PageOwner) -> List[UseCase]:
 
             def find_in_databasedisplay(display: DatabaseDisplay) -> Optional[UseCase]:
-                if display.table.text == dependency.name:
+                if dependency.users_match(display.table.text):
                     display.table.link = get_identifier(dependency)
                     return use_case(document,
                                     display,
@@ -291,7 +293,7 @@ def search_tables_in_tables(tables: Sequence[Table]) -> List[UseCase]:
         def search_one_key(key: Key) -> List[UseCase]:
 
             def match_table(othertable: Table) -> Optional[UseCase]:
-                if key.referenced_table.text == othertable.name:
+                if othertable.users_match(key.referenced_table.text):
                     key.referenced_table.link = get_identifier(othertable)
                     return use_case(atable, key, othertable, "references")
                 return None

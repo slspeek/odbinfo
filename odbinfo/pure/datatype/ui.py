@@ -31,11 +31,16 @@ class DatabaseDisplay(Node):
 @dataclass
 class TextDocument(PageOwner):
     " ODT or OTT file metadata "
+    filename: str
     path: str
     fields: List[DatabaseDisplay]
 
     def children(self):
         return self.fields
+
+    def users_match(self, username: str) -> bool:
+        # could be done better by enumerating all subpaths
+        return username in (self.name, self.filename)
 
 
 @dataclass

@@ -2,21 +2,26 @@
 !!python/object:odbinfo.pure.datatype.exec.BasicFunction
 body_tokens: []
 calls: []
-library: Library1
+library: Standard
 module: Module1
-name: Main
+name: UsesDocument
 name_token_index: 5
-obj_id: '299'
+obj_id: '177'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module1.Library1
+  local_id: Module1.Standard
   object_type: module
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 9
-  text: '"Mijn fout"'
+  index: 11
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    local_id: Untitled
+    object_type: textdocument
+  obj_id: '234'
+  text: '"Untitled"'
   type: 172
-title: Main.Module1.Library1
+title: UsesDocument.Module1.Standard
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 3
@@ -28,31 +33,43 @@ tokens:
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
-  text: Main
+  text: UsesDocument
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 6
+  text: (
+  type: 157
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 7
+  text: )
+  type: 168
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 8
   text: "\n\t"
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 7
-  text: Error
-  type: 49
+  index: 9
+  text: print
+  type: 100
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 8
+  index: 10
   text: ' '
   type: 185
 - *id001
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 10
+  index: 12
   text: '
 
     '
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 11
+  index: 13
   text: End Sub
   type: 44
 used_by: []
-uses: []
+uses:
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
+  local_id: Untitled
+  object_type: textdocument
 ---

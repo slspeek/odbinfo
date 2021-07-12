@@ -79,9 +79,12 @@ def read_text_documents(dir_path, dbname) -> List[TextDocument]:
             displays
         ))
         if len(displays) > 0:
+            filename = os.path.basename(doc_path)
+            name, _ = os.path.splitext(filename)
             docs.append(
                 TextDocument(
-                    os.path.basename(doc_path),
+                    name,
+                    filename,
                     doc_path,
                     displays
                 )

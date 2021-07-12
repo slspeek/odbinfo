@@ -10,14 +10,14 @@ calls:
       bookmark: null
       local_id: CalleeTwoSub.Module2.Library1
       object_type: basicfunction
-    obj_id: '431'
+    obj_id: '481'
     text: CalleeTwoSub
     type: 181
 library: Library1
 module: Module1
 name: CallerTwo
 name_token_index: 48
-obj_id: '289'
+obj_id: '339'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Library1

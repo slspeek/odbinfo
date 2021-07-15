@@ -1,26 +1,23 @@
 {{ partial "header" . }}
 {{ $context:= . }}
 <main>
-  <h2>Query: {{ .Params.name }}</h2>
-  <h4>{{ partial "picture-link" . }}</h4>
   <div class="container">
-  <div class="row">
-    <div class="col">
-      {{ partial "columns-query" . }}
-    </div>
+    <h2>Query: {{ .Params.name }}</h2>
+    <h4>{{ partial "picture-link" . }}</h4>
+        {{ partial "columns-query" . }}
+      <!-- <div style="text-align:left; font-size: 150%;">
+        {{ highlight .Params.command "sql" ""}}
+      </div> -->
+      {{ partial "render-query-command" (dict "context" . "query" .Params)}}
+      <div class="row">
+        <div class="col-lg-4 col-md-12 mb-4">
+        {{ partial "render-uses" . }}
+        </div>
+        <div class="col-lg-4 col-md-12 mb-4">
+        {{ partial "render-used-by" . }}
+        </div>
+      </div>
   </div>
-  <div class="row">
-    <div class="col-8">
-    <!-- <div style="text-align:left; font-size: 150%;">
-      {{ highlight .Params.command "sql" ""}}
-    </div> -->
-    {{ partial "render-query-command" (dict "context" . "query" .Params)}}
-    </div>
-    {{ partial "render-uses" . }}
-    {{ partial "render-used-by" . }}
-  </div>
-
-</div>
 </main>
 
 {{ partial "footer" . }}

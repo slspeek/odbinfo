@@ -1,7 +1,7 @@
 {{ partial "header" . }}
 {{ $context:=. }}
 <main>
-    <div>
+    <div class="container">
         <h2>Form: {{ .Params.name }}</h2>
         <h4>{{ partial "picture-link" . }}</h4>
         <h4>Subforms</h4>
@@ -12,8 +12,8 @@
           {{ end }}
 
         </table>
-    </div>
     {{ partial "render-dependencies" . }}
+  </div>
 </main>
 
 {{ partial "footer" . }}

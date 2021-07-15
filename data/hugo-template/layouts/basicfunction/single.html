@@ -1,6 +1,8 @@
 {{ partial "header" . }}
 {{ $context := .}}
 <main>
+  <div class="container">
+
     <h2>Macro: {{.Params.title}}</h2>
     <h4>{{ partial "picture-link" . }}</h4>
     <div style="text-align:left; font-size: 150%;">
@@ -16,6 +18,7 @@
     </div>
     {{ partial "parent_link" (dict "context" . "link" .Params.parent_link) }}
     {{ partial "render-dependencies" . }}
+  </div>
 </main>
 
 {{ partial "footer" . }}

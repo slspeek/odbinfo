@@ -103,6 +103,11 @@ serve: clean prepare
 	x-www-browser http://localhost:1313/ &
 	hugo server --disableFastRender --layoutDir ../../../../../data/hugo-template/layouts
 
+.ONESHELL:
+qserve:
+	cd $(test-output)/test_core/testdb
+	hugo server --disableFastRender --layoutDir ../../../../../data/hugo-template/layouts
+
 format:
 	isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
 	autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py

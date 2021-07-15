@@ -10,9 +10,10 @@ body {
 }
 
 main {
-    margin: auto;
+    margin: 0 ;
     padding: 25px;
     flex: 1 0 auto;
+    /* flex-shrink: 0; */
     /* max-width: 750px; */
 }
 

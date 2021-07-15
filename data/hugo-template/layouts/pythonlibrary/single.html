@@ -3,11 +3,11 @@
 {{ $dot := . }}
 <main>
     <h2>{{.Params.name}}</h2>
-    <div style="text-align:left; font-size: 150%;">
-        <ol>
+    <div class="container">
+        <ol class="list-group">
           {{ range .Params.modules }}
-          {{ $url := partial "find-in-section" (dict "context" $dot "section" "pymodules" "title" .title)}}
-          <li><a href="{{$url}}">{{.title}}</a> </li>
+          {{ $url := partial "find-in-section" (dict "context" $dot "section" "pythonmodule" "title" .title)}}
+          <li class="list-group-item"><h4><a href="{{$url}}">{{.title}}</a></h4> </li>
           {{ end }}
         </ol>
     </div>

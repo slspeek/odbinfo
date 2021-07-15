@@ -1,7 +1,9 @@
 {{ partial "header" . }}
 {{ $context:=. }}
 <main>
-    <div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4">
         <h2>Document: {{ .Params.name }}</h2>
         <h4>{{ partial "picture-link" . }}</h4>
         <table class="table table-bordered">
@@ -16,7 +18,7 @@
             </tr>
           </tbody>
         </table>
-        {{ if .Params.fields }}
+  {{ if .Params.fields }}
         <table class="table table-bordered">
           <caption>Fields</caption>
           <thead>
@@ -26,19 +28,31 @@
             <th>Column</th>
           </thead>
           <tbody>
-          {{ range $index, $val := .Params.fields }}
-          <tr>
-            <td>{{ $val.database }}</td>
-            <td id="{{ .obj_id }}">{{ partial "render-linked-string" (dict "linked_string" $val.table "context" $context)}}</td>
-            <td>{{ $val.tabletype }}</td>
-            <td>{{ $val.column }}</td>
-          </tr>
-          {{ end }}
-         </tbody>
+    {{ range $index, $val := .Params.fields }}
+            <tr>
+              <td>{{ $val.database }}</td>
+              <td id="{{ .obj_id }}">{{ partial "render-linked-string" (dict "linked_string" $val.table "context" $context)}}</td>
+              <td>{{ $val.tabletype }}</td>
+              <td>{{ $val.column }}</td>
+            </tr>
+    {{ end }}
+          </tbody>
         </table>
-        {{ end }}
-    </div>
-    {{ partial "render-dependencies" . }}
+  {{ end }}
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+  {{ partial "render-uses" . }}
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+  {{ partial "render-used-by" . }}
+      </div>
+  </div>
+
+
+
+
 </main>
 
 {{ partial "footer" . }}

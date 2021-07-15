@@ -1,5 +1,10 @@
+Fix 'recursive calls' i basicfunction
+
+Nicer ids, based on names
+
 If SubForms, Controls are not excluded they should
 have the dependencies, not its containing Form
+And how about Library, Module and BasicFunction then?
 
 Clean up files after make_site if no config.keepfiles is specified
 

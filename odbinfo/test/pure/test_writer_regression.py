@@ -5,7 +5,9 @@ import pytest
 
 from odbinfo.pure.writer import _write_metadata, chdir
 from odbinfo.test.pure.fixtures import (empty_metadata_processed,
-                                        metadata_processed)
+                                        empty_metadata_processed_loader,
+                                        metadata_processed,
+                                        metadata_processed_loader)
 from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 
@@ -41,27 +43,30 @@ def make_writer_regression_test(name, metadata, fixture_name: str):
     assert os.system(f"diff -r {fixture_name}/ {site_dir}/") == 0
 
 
-def benchmark_writer(output_dir, name, metadata, benchmark):
+def benchmark_writer(output_dir, name, data_loader, benchmark):
     " generate report and verify"
+    def setup():
+        metadata = data_loader()
+        return (name, metadata), {}
     site_dir = f"{output_dir}/{name}"
     os.makedirs(site_dir, exist_ok=True)
     with chdir(site_dir):
-        benchmark(_write_metadata, name, metadata)
+        benchmark.pedantic(_write_metadata, setup=setup)
 
 
 @pytest.mark.slow
-def test_writer_performance(metadata_processed, benchmark):
+def test_writer_performance(metadata_processed_loader, benchmark):
     """ Run without database scan """
     name = "testdb"
-    make_writer_performance_test(name, metadata_processed,
+    make_writer_performance_test(name, metadata_processed_loader,
                                  benchmark)
 
 
 @pytest.mark.slow
-def test_writer_performance_empty(empty_metadata_processed, benchmark):
+def test_writer_performance_empty(empty_metadata_processed_loader, benchmark):
     """ Run without database scan """
     name = "emptydb"
-    make_writer_performance_test(name, empty_metadata_processed,
+    make_writer_performance_test(name, empty_metadata_processed_loader,
                                  benchmark)
 
 

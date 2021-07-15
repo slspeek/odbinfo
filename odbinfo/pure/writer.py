@@ -118,9 +118,8 @@ def clear_fields_after(metadata, content):
 def cleanup_tokens(metadata):
     " delete fields from Token instances for efficient writing "
     def clean_token(token):
-        if hasattr(token, "hidden"):
-            del token.hidden
-        if not token.link and hasattr(token, "obj_id"):
+        del token.hidden
+        if not token.link:
             token.obj_id = None
             del token.obj_id
 

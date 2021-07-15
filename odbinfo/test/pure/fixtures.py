@@ -63,6 +63,22 @@ def empty_metadata_processed(shared_datadir):
 
 
 @fixture(scope="function")
+def metadata_processed_loader(shared_datadir):
+    """ Array of all objects from repository """
+    def inner():
+        return load_metadata(shared_datadir, processed=True)
+    yield inner
+
+
+@fixture(scope="function")
+def empty_metadata_processed_loader(shared_datadir):
+    """ Array of all objects from repository """
+    def inner():
+        return load_metadata(shared_datadir, processed=True, empty=True)
+    yield inner
+
+
+@fixture(scope="function")
 def odbzip(shared_datadir):
     " odb file open for reading "
 

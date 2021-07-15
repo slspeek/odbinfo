@@ -28,9 +28,26 @@ def metadata(shared_datadir):
 
 
 @fixture(scope="function")
+def metadata_loader(shared_datadir):
+    """ metadata delayed reader for benchmarking """
+
+    def inner():
+        return load_metadata(shared_datadir)
+    yield inner
+
+
+@fixture(scope="function")
 def empty_metadata(shared_datadir):
     """ Array of all objects from repository """
     yield load_metadata(shared_datadir, empty=True)
+
+
+@fixture(scope="function")
+def empty_metadata_loader(shared_datadir):
+    """ empty metadata delayed reader for benchmarking """
+    def inner():
+        return load_metadata(shared_datadir, empty=True)
+    yield inner
 
 
 @fixture(scope="function")

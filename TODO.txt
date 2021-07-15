@@ -1,4 +1,6 @@
-Fix 'recursive calls' i basicfunction
+Threads: writer, parser?
+
+Fix 'recursive calls' in basicfunctions
 
 Nicer ids, based on names
 

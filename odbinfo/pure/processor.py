@@ -87,7 +87,7 @@ def distribute_usecases(metadata):
         target.used_by.append(usecase.obj)
 
 
-def process_metadata(metadata: Metadata, config: Configuration) -> None:
+def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
     " preprocessing of the data before it is send to hugo "
     start_time = time.time()
     _process_libraries(metadata.library_defs)
@@ -135,3 +135,5 @@ def process_metadata(metadata: Metadata, config: Configuration) -> None:
     metadata.graphs = generate_graphs(metadata, config)
     end_time = time.time()
     print("Generate graphs: {}".format(end_time-start_time))
+    # for test purposes only
+    return metadata

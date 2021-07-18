@@ -12,6 +12,7 @@ fields:
       object_type: query
     text: vwPlant
   tabletype: query
+  title: naam.vwPlant.Untitled
 filename: Untitled.odt
 name: Untitled
 obj_id: '626'

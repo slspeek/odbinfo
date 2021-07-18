@@ -2,7 +2,8 @@
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
 
-from odbinfo.pure.datatype.base import LinkedString, NamedNode, Node, PageOwner
+from odbinfo.pure.datatype.base import (LinkedString, NamedNode, Node,
+                                        PageOwner, TitleFromParents)
 from odbinfo.pure.datatype.tabular import Query
 
 
@@ -22,10 +23,10 @@ class DatabaseDisplay(Node):
     table: LinkedString
     tabletype: str
     column: str
-    #
-    # def __post_init__(self):
-    #     self.title = f"{self.table.text}.{self.column}"
-    #
+
+    def set_title(self):
+        " sets a unique title "
+        self.title = f"{self.column}.{self.table.text}.{self.parent.title}"
 
 
 @dataclass
@@ -49,10 +50,15 @@ class EventListener(Node):
     event: str
     script: str
 
+    def set_title(self):
+        " sets a unique title "
+        self.title = f"{self.parent.title}.{self.event}"
 
 # pylint: disable=too-many-instance-attributes
+
+
 @dataclass
-class Control(NamedNode):
+class Control(TitleFromParents, NamedNode):
     " Form control "
     controlid: str
     datafield: str
@@ -62,6 +68,9 @@ class Control(NamedNode):
     formfor: str
     type: str
     eventlisteners: List[EventListener]
+
+    def __post_init__(self):
+        self.title = self.controlid
 
     def children(self):
         return self.eventlisteners
@@ -77,7 +86,7 @@ class ListBox(Control):
 
 
 @dataclass
-class Grid(NamedNode):
+class Grid(TitleFromParents, NamedNode):
     " Table view control"
     columns: List[Control]
 
@@ -86,7 +95,7 @@ class Grid(NamedNode):
 
 
 @dataclass
-class SubForm(CommandDriven, NamedNode):  # pylint: disable=too-many-instance-attributes
+class SubForm(TitleFromParents, CommandDriven, NamedNode):  # pylint: disable=too-many-instance-attributes
     " Database subform "
     allowdeletes: str
     allowinserts: str

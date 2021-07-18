@@ -30,6 +30,7 @@ subforms:
     label: id
     name: lblid
     obj_id: '141'
+    title: control1.MainForm.PlantListbox
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control3
@@ -41,6 +42,7 @@ subforms:
     label: naam
     name: lblnaam
     obj_id: '142'
+    title: control3.MainForm.PlantListbox
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control5
@@ -52,6 +54,7 @@ subforms:
     label: RFamliyID
     name: lblRFamliyID
     obj_id: '143'
+    title: control5.MainForm.PlantListbox
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control2
@@ -63,6 +66,7 @@ subforms:
     label: ''
     name: fmtid
     obj_id: '144'
+    title: control2.MainForm.PlantListbox
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control4
@@ -74,6 +78,7 @@ subforms:
     label: ''
     name: txtnaam
     obj_id: '145'
+    title: control4.MainForm.PlantListbox
     type: TextField
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
@@ -89,6 +94,7 @@ subforms:
     listsourcetype: query
     name: fmtRFamliyID
     obj_id: '146'
+    title: control6.MainForm.PlantListbox
     type: ListBox
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control7
@@ -99,11 +105,13 @@ subforms:
       event: form:performaction
       obj_id: '148'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
+      title: control7.MainForm.PlantListbox.form:performaction
     formfor: ''
     inputrequired: ''
     label: Say hello
     name: Knop 1
     obj_id: '147'
+    title: control7.MainForm.PlantListbox
     type: CommandButton
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control8
@@ -115,6 +123,7 @@ subforms:
     label: Knop
     name: Knop 2
     obj_id: '149'
+    title: control8.MainForm.PlantListbox
     type: CommandButton
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control9
@@ -125,15 +134,18 @@ subforms:
       event: form:performaction
       obj_id: '151'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
+      title: control9.MainForm.PlantListbox.form:performaction
     - !!python/object:odbinfo.pure.datatype.ui.EventListener
       event: form:approveaction
       obj_id: '152'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
+      title: control9.MainForm.PlantListbox.form:approveaction
     formfor: ''
     inputrequired: ''
     label: Call to script
     name: Knop 3
     obj_id: '150'
+    title: control9.MainForm.PlantListbox
     type: CommandButton
   depth: 0
   detailfields: ''
@@ -141,6 +153,7 @@ subforms:
   name: MainForm
   obj_id: '140'
   subforms: []
+  title: MainForm.PlantListbox
 title: PlantListbox
 used_by: []
 uses:

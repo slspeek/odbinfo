@@ -7,11 +7,12 @@ columns:
   name: Name
   nullable: Nullable
   obj_id: '68'
+  position: 1
   precision: 2147483647
   readonly: false
   scale: 0
   tablename: Family
-  title: Family.Name
+  title: Name_1.FamilyLookup
   typename: VARCHAR
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -20,11 +21,12 @@ columns:
   name: FamilyID
   nullable: No_Nulls
   obj_id: '69'
+  position: 2
   precision: 10
   readonly: false
   scale: 0
   tablename: Family
-  title: Family.FamilyID
+  title: FamilyID_2.FamilyLookup
   typename: INTEGER
   writable: true
 command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
@@ -43,84 +45,103 @@ table_tokens:
     object_type: table
   obj_id: '88'
   text: '"Family"'
+  title: token18.FamilyLookup
   type: 197
 title: FamilyLookup
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 0
   text: SELECT
+  title: token0.FamilyLookup
   type: 129
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 1
   text: ' '
+  title: token1.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
   text: '"Name"'
+  title: token2.FamilyLookup
   type: 197
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 3
   text: ','
+  title: token3.FamilyLookup
   type: 5
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 4
   text: '
 
     '
+  title: token4.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
   text: ' '
+  title: token5.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 6
   text: ' '
+  title: token6.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 7
   text: ' '
+  title: token7.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   text: ' '
+  title: token8.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 9
   text: ' '
+  title: token9.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 10
   text: ' '
+  title: token10.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
   text: ' '
+  title: token11.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 12
   text: '"FamilyID"'
+  title: token12.FamilyLookup
   type: 197
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 13
   text: '
 
     '
+  title: token13.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 14
   text: FROM
+  title: token14.FamilyLookup
   type: 75
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 15
   text: ' '
+  title: token15.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 16
   text: ' '
+  title: token16.FamilyLookup
   type: 204
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 17
   text: ' '
+  title: token17.FamilyLookup
   type: 204
 - *id001
 used_by:

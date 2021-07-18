@@ -47,6 +47,7 @@ indexes:
   name: SYS_IDX_46
   obj_id: '16'
   primary: false
+  title: SYS_IDX_46
   unique: true
 - !!python/object:odbinfo.pure.datatype.tabular.Index
   catalog: ''
@@ -56,6 +57,7 @@ indexes:
   name: SYS_IDX_80
   obj_id: '17'
   primary: false
+  title: SYS_IDX_80
   unique: false
 keys:
 - !!python/object:odbinfo.pure.datatype.tabular.Key
@@ -68,6 +70,7 @@ keys:
     text: ''
   relatedcolumns:
   - ''
+  title: SYS_PK_47
   typename: Primary
   update_rule: Cascade
 - !!python/object:odbinfo.pure.datatype.tabular.Key
@@ -84,6 +87,7 @@ keys:
     text: Family
   relatedcolumns:
   - FamilyID
+  title: SYS_FK_79
   typename: Foreign
   update_rule: No_Action
 name: Plant

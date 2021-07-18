@@ -47,7 +47,7 @@ def test_search_callable_in_callable_shadowing():
     cases = search_callable_in_callable(callables_one + callables_two)
     usecase = UseCase(
         SourceIdentifier(
-            callables_two[0].type_name(), "Wose.ModuleTwo.Lib", None, "not-set"),
+            callables_two[0].type_name(), "Wose.ModuleTwo.Lib", None, "OBJID_NOT_SET"),
         get_identifier(callables_one[0]), "invokes"
     )
     assert len(cases) == 3

@@ -20,7 +20,9 @@ class SourceIdentifier(Identifier):
 @dataclass
 class Node:
     " DataObject without children "
-    obj_id: str = field(init=False, default="not-set")
+    obj_id: str = field(init=False, default="OBJID_NOT_SET")
+    title: str = field(init=False, default="TITLE_NOT_SET")
+    parent: Optional["NamedNode"] = field(init=False, default=None)
 
     def type_name(self):
         " returns classname in lowercase "
@@ -44,7 +46,12 @@ class Node:
 class NamedNode(Node):
     "Has a name"
     name: str
-    parent: Optional["NamedNode"] = field(init=False, default=None)
+
+    def __post_init__(self):
+        self.title = self.name
+
+    def set_title(self):
+        " sets a unique title "
 
     def users_match(self, username: str) -> bool:
         " determines whether `username` (possibly) matches this object "
@@ -71,11 +78,7 @@ class Aggregator:
 class PageOwner(Aggregator, NamedNode):
     " has its own page, thus title attribute "\
         " an object with a parent_link "
-    title: str = field(init=False)
     parent_link: Optional['Identifier'] = field(init=False, default=None)
-
-    def __post_init__(self):
-        self.title = self.name
 
     def set_parents(self, parent: Optional['PageOwner']) -> None:
         " recursively set parents "
@@ -115,6 +118,21 @@ def use_case(source: PageOwner,
     return UseCase(get_source_identifier(source, location), get_identifier(target), ref_type)
 
 
+# pylint:disable=too-few-public-methods,no-member
+class TitleFromParents:
+    " set_title mixin "
+
+    def set_title(self):
+        " sets a unique title "
+        parent = self
+        while True:
+            # statement (s)
+            parent = parent.parent
+            self.title += f".{parent.name}"
+            if isinstance(parent, PageOwner):
+                break
+
+
 @dataclass
 class Token(Node):
     "lexer token"
@@ -123,3 +141,15 @@ class Token(Node):
     index: int
     hidden: bool
     link: Optional[Identifier] = field(init=False, default=None)
+
+    def __post_init__(self):
+        self.title = f"token{self.index}"
+
+    def set_title(self):
+        " sets a unique title "
+        parent = self
+        while True:
+            parent = parent.parent
+            self.title += f".{parent.name}"
+            if parent.type_name() in ["library", "query", "view"]:
+                break

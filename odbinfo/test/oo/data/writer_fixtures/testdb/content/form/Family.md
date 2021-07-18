@@ -32,6 +32,7 @@ subforms:
       label: FamlilyID
       name: FamlilyID
       obj_id: '119'
+      title: control2.MainForm_Grid.MainForm.Family
       type: ooo:FormattedField
     - !!python/object:odbinfo.pure.datatype.ui.Control
       controlid: control3
@@ -43,6 +44,7 @@ subforms:
       label: Name
       name: Name
       obj_id: '120'
+      title: control3.MainForm_Grid.MainForm.Family
       type: ooo:TextField
     - !!python/object:odbinfo.pure.datatype.ui.Control
       controlid: control4
@@ -54,15 +56,18 @@ subforms:
       label: Desc
       name: Desc
       obj_id: '121'
+      title: control4.MainForm_Grid.MainForm.Family
       type: ooo:TextField
     name: MainForm_Grid
     obj_id: '118'
+    title: MainForm_Grid.MainForm.Family
   depth: 0
   detailfields: ''
   masterfields: ''
   name: MainForm
   obj_id: '117'
   subforms: []
+  title: MainForm.Family
 title: Family
 used_by: []
 uses:

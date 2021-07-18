@@ -1,11 +1,12 @@
 " Metadata class "
 from dataclasses import dataclass, field
+from functools import partial
 from itertools import starmap
 from typing import List
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype.base import PageOwner, UseCase
+from odbinfo.pure.datatype.base import PageOwner, Token, UseCase
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import Query, Table, View
@@ -115,3 +116,39 @@ class Metadata(PageOwner):
             if isinstance(content, PageOwner):
                 # pylint:disable=no-member
                 self.index[(content.type_name(), content.title)] = content
+
+    def set_titles(self):
+        " set the titles so that they are unique within their type_name "
+        for content in self.all_objects():
+            # pylint:disable=no-member
+            content.set_title()
+
+    # def set_title(self):
+    #     " do nothing"
+
+    def verify_titles_unique_in_kind(self):
+        " verify that titles are unique within their kind"
+        all_objs = self.all_objects()
+        title_list = list(
+            map(lambda x: f"{x.type_name()}:{x.title}", all_objs))
+        title_set = set(title_list)
+        fn_tokens = []
+        for lib in self.basicfunction_defs():
+            fn_tokens += list(filter(lambda x: isinstance(x,
+                              Token), lib.all_objects()))
+        titles_minus = [t for t in title_list if t not in list(
+            map(lambda x: f"{x.type_name()}:{x.title}", fn_tokens))]
+        titles_minus.sort()
+        print("obj count", len(all_objs), "title count", len(
+            title_set), "tokens in libs", len(fn_tokens))
+        print("obj count minus token count", len(all_objs) - len(fn_tokens),
+              "title count", len(title_set))
+
+        def select_by_title(title, cand):
+            return title == cand
+
+        for title in titles_minus:
+            if len(list(filter(partial(select_by_title, title), titles_minus))) > 1:
+                print("Double: ", title)
+
+        assert len(all_objs) - len(fn_tokens) == len(title_set)

@@ -1,5 +1,6 @@
 " Dependency searcher for metadata "
 import dataclasses
+import logging
 from functools import partial
 from itertools import starmap
 from typing import List, Optional, Sequence, Tuple, cast
@@ -9,6 +10,8 @@ from odbinfo.pure.datatype import (BasicCall, BasicFunction, CommandDriven,
                                    Module, Node, PageOwner, Query, Table,
                                    TextDocument, Token, UseCase,
                                    get_identifier, use_case)
+
+logger = logging.getLogger(__name__)
 
 
 def _subforms(metadata: Metadata) -> List[Tuple[PageOwner, CommandDriven]]:
@@ -143,6 +146,8 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> List[UseC
 
 def link_token(token: Token, referand: PageOwner):
     "link `token` to `acallable`"
+    if token.link:
+        logger.warning("Replacing link in token: {token} with {referand.name}")
     token.link = get_identifier(referand)
 
 
@@ -172,7 +177,7 @@ def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> List[Use
     return use_cases
 
 #
-# Tables, Views, Queries, Reports in Callables
+# Tables, Views, Queries, Reports in BasicFunction
 #
 
 

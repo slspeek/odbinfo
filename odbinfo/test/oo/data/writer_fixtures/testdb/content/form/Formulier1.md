@@ -36,6 +36,8 @@ subforms:
     name: Formulier2
     obj_id: '124'
     subforms: []
+    title: Formulier2.Formulier.Formulier1
+  title: Formulier.Formulier1
 - !!python/object:odbinfo.pure.datatype.ui.SubForm
   allowdeletes: 'true'
   allowinserts: 'true'
@@ -50,6 +52,7 @@ subforms:
   name: Formulier 1
   obj_id: '125'
   subforms: []
+  title: Formulier 1.Formulier1
 title: Formulier1
 used_by: []
 uses: []

@@ -2,7 +2,7 @@ form_defs: []
 graphs: []
 library_defs: []
 name: ./emptydb.odb
-obj_id: not-set
+obj_id: OBJID_NOT_SET
 parent: null
 parent_link: null
 pythonlibrary_defs: []

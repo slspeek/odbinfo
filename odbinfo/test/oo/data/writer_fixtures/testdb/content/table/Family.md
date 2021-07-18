@@ -47,6 +47,7 @@ indexes:
   name: SYS_IDX_48
   obj_id: '3'
   primary: false
+  title: SYS_IDX_48
   unique: true
 keys:
 - !!python/object:odbinfo.pure.datatype.tabular.Key
@@ -59,6 +60,7 @@ keys:
     text: ''
   relatedcolumns:
   - ''
+  title: SYS_PK_49
   typename: Primary
   update_rule: Cascade
 name: Family

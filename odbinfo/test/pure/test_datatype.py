@@ -10,8 +10,8 @@ def test_python_module():
 
 def test_query_column():
     " test __post_init__"
-    qcolumn = QueryColumn("id", True, 2, "plants", "int", "", "",
-                          True, True, True)
+    qcolumn = QueryColumn("id",  True, 2, "plants", "int", "", "",
+                          1, True, True, True)
     assert qcolumn.nullable == "Nullable_Unknown"
 
 

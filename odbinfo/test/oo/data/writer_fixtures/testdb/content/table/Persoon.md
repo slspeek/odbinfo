@@ -48,6 +48,7 @@ indexes:
   name: SYS_IDX_50
   obj_id: '9'
   primary: false
+  title: SYS_IDX_50
   unique: true
 keys:
 - !!python/object:odbinfo.pure.datatype.tabular.Key
@@ -62,6 +63,7 @@ keys:
   relatedcolumns:
   - ''
   - ''
+  title: SYS_PK_51
   typename: Primary
   update_rule: Cascade
 name: Persoon

@@ -1,8 +1,12 @@
+Fix double BasicFunction id in token title
+
+Like NamedNode,users_match have a method on Node.link_use
+
+Nicer ids, based on names
+
 Threads: writer, parser?
 
 Fix 'recursive calls' in basicfunctions
-
-Nicer ids, based on names
 
 If SubForms, Controls are not excluded they should
 have the dependencies, not its containing Form

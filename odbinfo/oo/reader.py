@@ -82,6 +82,7 @@ def _read_query_columns(connection, command) -> List[QueryColumn]:
             rsmeta.getColumnTypeName(i),
             rsmeta.getPrecision(i),
             rsmeta.getScale(i),
+            i,
             rsmeta.isSigned(i),
             rsmeta.isWritable(i),
             rsmeta.isReadOnly(i)

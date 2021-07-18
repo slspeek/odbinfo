@@ -48,9 +48,17 @@ class BaseColumn(NamedNode):
 class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
     "https://www.openhttps://www.openoffice.org/api/docs/"\
         "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
+    position: int
     issigned: bool
     writable: bool
     readonly: bool
+
+    def __post_init__(self):
+        super().__post_init__()
+        self.title = f"{self.name}_{self.position}"
+
+    def set_title(self):
+        self.title += f".{self.parent.name}"
 
 
 @dataclass
@@ -99,7 +107,7 @@ class Key(NamedNode):  # pylint: disable=too-many-instance-attributes
     update_rule: object
 
     def __post_init__(self):
-        # super().__post_init__()
+        super().__post_init__()
         self.typename = KEYTYPES[self.typename]
         self.update_rule = KEYRULES[self.update_rule]
         self.delete_rule = KEYRULES[self.delete_rule]

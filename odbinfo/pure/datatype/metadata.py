@@ -126,16 +126,28 @@ class Metadata(PageOwner):
     # def set_title(self):
     #     " do nothing"
 
-    def verify_titles_unique_in_kind(self):
-        " verify that titles are unique within their kind"
-        all_objs = self.all_objects()
-        title_list = list(
-            map(lambda x: f"{x.type_name()}:{x.title}", all_objs))
-        title_set = set(title_list)
+    def _tokens_in_basicfunctions(self):
         fn_tokens = []
         for lib in self.basicfunction_defs():
             fn_tokens += list(filter(lambda x: isinstance(x,
                               Token), lib.all_objects()))
+        return fn_tokens
+
+    def verify_titles_unique_in_kind(self):
+        " verify that titles are unique within their kind"
+        def _print_doubles(titles_minus):
+            def select_by_title(title, cand):
+                return title == cand
+
+            for title in titles_minus:
+                if len(list(filter(partial(select_by_title, title), titles_minus))) > 1:
+                    print("Double: ", title)
+
+        all_objs = self.all_objects()
+        title_list = list(
+            map(lambda x: f"{x.type_name()}:{x.title}", all_objs))
+        title_set = set(title_list)
+        fn_tokens = self._tokens_in_basicfunctions()
         titles_minus = [t for t in title_list if t not in list(
             map(lambda x: f"{x.type_name()}:{x.title}", fn_tokens))]
         titles_minus.sort()
@@ -143,12 +155,6 @@ class Metadata(PageOwner):
             title_set), "tokens in libs", len(fn_tokens))
         print("obj count minus token count", len(all_objs) - len(fn_tokens),
               "title count", len(title_set))
-
-        def select_by_title(title, cand):
-            return title == cand
-
-        for title in titles_minus:
-            if len(list(filter(partial(select_by_title, title), titles_minus))) > 1:
-                print("Double: ", title)
+        _print_doubles(titles_minus)
 
         assert len(all_objs) - len(fn_tokens) == len(title_set)

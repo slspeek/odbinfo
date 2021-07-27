@@ -23,10 +23,11 @@ class DatabaseDisplay(Node):
     table: LinkedString
     tabletype: str
     column: str
+    index: int = field(init=False)
 
     def set_title(self):
         " sets a unique title "
-        self.title = f"{self.column}.{self.table.text}.{self.parent.title}"
+        self.title = f"{self.column}.{self.index}.{self.table.text}.{self.parent.title}"
 
 
 @dataclass

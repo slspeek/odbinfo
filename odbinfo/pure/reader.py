@@ -55,18 +55,23 @@ def _text_documents(dir_path) -> List[str]:
 
 
 def _database_displays(doc_path) -> List[DatabaseDisplay]:
-    def display(data):
-        return \
-            DatabaseDisplay(
-                data["@text:database-name"],
-                LinkedString(data["@text:table-name"]),
-                data["@text:table-type"],
-                data["@text:column-name"]
-            )
-    with ZipFile(doc_path) as file:
-        body = _body_elem(file, "content.xml")["office:text"]
-        return sum(map(partial(mapiflist, display),
-                       _collect_attribute(body, "text:database-display")), [])
+    def _unnumbered_database_displays(doc_path) -> List[DatabaseDisplay]:
+        def display(data):
+            return \
+                DatabaseDisplay(
+                    data["@text:database-name"],
+                    LinkedString(data["@text:table-name"]),
+                    data["@text:table-type"],
+                    data["@text:column-name"]
+                )
+        with ZipFile(doc_path) as file:
+            body = _body_elem(file, "content.xml")["office:text"]
+            return sum(map(partial(mapiflist, display),
+                           _collect_attribute(body, "text:database-display")), [])
+    displays = _unnumbered_database_displays(doc_path)
+    for index, display in zip(range(len(displays)), displays):
+        display.index = index
+    return displays
 
 
 def read_text_documents(dir_path, dbname) -> List[TextDocument]:

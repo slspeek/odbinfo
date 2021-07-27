@@ -1,3 +1,7 @@
+verify_titles_unique_in_kind should not consider Tokens
+
+performance verify_titles_unique_in_kind terrible, move to tests
+
 Fix double BasicFunction id in token title
 
 Like NamedNode,users_match have a method on Node.link_use
@@ -133,6 +137,7 @@ i18n gettext in python, hugo {{ T id }}
 
 Limitations
 -----------
+SubForms within the same level in a form should have distinct names
 Dialogs, Toolbars, Toolbarcontrols are omitted
 Macro recursive calls are not considered
 Controls more specific, eg Button...

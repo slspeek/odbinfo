@@ -7164,6 +7164,7 @@ textdocument_defs:
 - fields:
   - column: naam
     database: testdb
+    index: 0
     obj_id: '627'
     parent: null
     table:
@@ -7173,7 +7174,7 @@ textdocument_defs:
         object_type: query
       text: vwPlant
     tabletype: query
-    title: naam.vwPlant.Untitled
+    title: naam.0.vwPlant.Untitled
   filename: Untitled.odt
   name: Untitled
   obj_id: '626'

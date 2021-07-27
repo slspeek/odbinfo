@@ -4,6 +4,7 @@ fields:
 - !!python/object:odbinfo.pure.datatype.ui.DatabaseDisplay
   column: naam
   database: testdb
+  index: 0
   obj_id: '627'
   table: !!python/object:odbinfo.pure.datatype.base.LinkedString
     link: !!python/object:odbinfo.pure.datatype.base.Identifier
@@ -12,7 +13,7 @@ fields:
       object_type: query
     text: vwPlant
   tabletype: query
-  title: naam.vwPlant.Untitled
+  title: naam.0.vwPlant.Untitled
 filename: Untitled.odt
 name: Untitled
 obj_id: '626'

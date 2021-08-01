@@ -47,6 +47,8 @@ GT_EQ: '>=';
 EQ: '==';
 NOT_EQ1: '!=';
 NOT_EQ2: '<>';
+LBRACE: '{';
+RBRACE: '}';
 
 // http://www.sqlite.org/lang_keywords.html
 ABORT: A B O R T;
@@ -221,6 +223,9 @@ MINUTE: M I N U T E;
 SECOND: S E C O N D;
 POSITION: P O S I T I O N;
 SUBSTRING: S U B S T R I N G;
+OJ
+  : O J | '"' O J '"';
+
 
 
 IDENTIFIER:

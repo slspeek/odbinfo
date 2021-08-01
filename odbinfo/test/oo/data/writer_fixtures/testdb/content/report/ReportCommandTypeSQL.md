@@ -66,19 +66,19 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     obj_id: '114'
     text: '"Plant"'
     title: token8.ReportCommandTypeSQL.Command
-    type: 197
+    type: 200
   title: ReportCommandTypeSQL.Command
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 0
     text: SELECT
     title: token0.ReportCommandTypeSQL.Command
-    type: 129
+    type: 131
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 1
     text: ' '
     title: token1.ReportCommandTypeSQL.Command
-    type: 204
+    type: 207
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 2
     text: '*'
@@ -90,27 +90,27 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
 
       '
     title: token3.ReportCommandTypeSQL.Command
-    type: 204
+    type: 207
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 4
     text: FROM
     title: token4.ReportCommandTypeSQL.Command
-    type: 75
+    type: 77
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 5
     text: ' '
     title: token5.ReportCommandTypeSQL.Command
-    type: 204
+    type: 207
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 6
     text: ' '
     title: token6.ReportCommandTypeSQL.Command
-    type: 204
+    type: 207
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 7
     text: ' '
     title: token7.ReportCommandTypeSQL.Command
-    type: 204
+    type: 207
   - *id001
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 9

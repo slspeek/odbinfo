@@ -348,10 +348,14 @@ select_stmt:
 		compound_operator select_core
 	)* order_by_stmt? limit_stmt?;
 
-join_clause:
+join_raw_clause:
 	table_or_subquery (
 		join_operator table_or_subquery join_constraint?
 	)*;
+
+join_clause:
+  LBRACE OJ join_raw_clause RBRACE
+  | join_raw_clause;
 
 select_core:
 	(

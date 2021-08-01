@@ -62,19 +62,19 @@ table_tokens:
   obj_id: '101'
   text: '"Plant"'
   title: token8.vwPlant
-  type: 197
+  type: 200
 title: vwPlant
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 0
   text: SELECT
   title: token0.vwPlant
-  type: 129
+  type: 131
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 1
   text: ' '
   title: token1.vwPlant
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
   text: '*'
@@ -86,27 +86,27 @@ tokens:
 
     '
   title: token3.vwPlant
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 4
   text: FROM
   title: token4.vwPlant
-  type: 75
+  type: 77
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
   text: ' '
   title: token5.vwPlant
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 6
   text: ' '
   title: token6.vwPlant
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 7
   text: ' '
   title: token7.vwPlant
-  type: 204
+  type: 207
 - *id001
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier

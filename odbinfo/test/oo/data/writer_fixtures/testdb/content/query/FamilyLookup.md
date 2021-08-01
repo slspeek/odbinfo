@@ -46,24 +46,24 @@ table_tokens:
   obj_id: '88'
   text: '"Family"'
   title: token18.FamilyLookup
-  type: 197
+  type: 200
 title: FamilyLookup
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 0
   text: SELECT
   title: token0.FamilyLookup
-  type: 129
+  type: 131
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 1
   text: ' '
   title: token1.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
   text: '"Name"'
   title: token2.FamilyLookup
-  type: 197
+  type: 200
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 3
   text: ','
@@ -75,74 +75,74 @@ tokens:
 
     '
   title: token4.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
   text: ' '
   title: token5.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 6
   text: ' '
   title: token6.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 7
   text: ' '
   title: token7.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   text: ' '
   title: token8.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 9
   text: ' '
   title: token9.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 10
   text: ' '
   title: token10.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
   text: ' '
   title: token11.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 12
   text: '"FamilyID"'
   title: token12.FamilyLookup
-  type: 197
+  type: 200
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 13
   text: '
 
     '
   title: token13.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 14
   text: FROM
   title: token14.FamilyLookup
-  type: 75
+  type: 77
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 15
   text: ' '
   title: token15.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 16
   text: ' '
   title: token16.FamilyLookup
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 17
   text: ' '
   title: token17.FamilyLookup
-  type: 204
+  type: 207
 - *id001
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier

@@ -387,6 +387,15 @@ class SQLiteParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SQLiteParser#join_raw_clause.
+    def enterJoin_raw_clause(self, ctx:SQLiteParser.Join_raw_clauseContext):
+        pass
+
+    # Exit a parse tree produced by SQLiteParser#join_raw_clause.
+    def exitJoin_raw_clause(self, ctx:SQLiteParser.Join_raw_clauseContext):
+        pass
+
+
     # Enter a parse tree produced by SQLiteParser#join_clause.
     def enterJoin_clause(self, ctx:SQLiteParser.Join_clauseContext):
         pass

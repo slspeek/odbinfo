@@ -9,6 +9,20 @@ def test_parse():
     parse("")
 
 
+def test_parse_outer_join_escape():
+    " outer join escape "
+    outer_join_escape = """
+    SELECT "personer"."foretag", "personer"."fnamn", "personer"."enamn",
+    "befattningnamn"."namn" FROM  { OJ "public"."befattning" "befattning"
+    LEFT OUTER JOIN "public"."personer" "personer" ON
+    "befattning"."personid" = "personer"."personid" },
+    "public"."kommentar" "kommentar", "public"."personer" "personer",
+    "public"."befattning" "befattning",   "public"."befattningnamn"
+    "befattningnamn" WHERE  0 = 1
+    """
+    parse(outer_join_escape)
+
+
 def test_parse_select():
     " call parse select"
     parse('select * from "table", "second_table", (select * from "foo")')

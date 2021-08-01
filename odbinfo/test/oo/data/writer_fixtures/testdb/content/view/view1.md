@@ -34,51 +34,51 @@ table_tokens:
   obj_id: '44'
   text: '"Plant"'
   title: token8.view1
-  type: 197
+  type: 200
 title: view1
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 0
   text: SELECT
   title: token0.view1
-  type: 129
+  type: 131
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 1
   text: ' '
   title: token1.view1
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
   text: '"id"'
   title: token2.view1
-  type: 197
+  type: 200
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 3
   text: '
 
     '
   title: token3.view1
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 4
   text: FROM
   title: token4.view1
-  type: 75
+  type: 77
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
   text: ' '
   title: token5.view1
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 6
   text: ' '
   title: token6.view1
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 7
   text: ' '
   title: token7.view1
-  type: 204
+  type: 207
 - *id001
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier

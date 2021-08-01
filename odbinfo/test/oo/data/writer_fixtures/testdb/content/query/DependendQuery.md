@@ -104,7 +104,7 @@ table_tokens:
   obj_id: '60'
   text: '"FamilyLookup"'
   title: token8.DependendQuery
-  type: 197
+  type: 200
 - &id002 !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
@@ -114,7 +114,7 @@ table_tokens:
   obj_id: '63'
   text: '"vwPlant"'
   title: token11.DependendQuery
-  type: 197
+  type: 200
 - &id003 !!python/object:odbinfo.pure.datatype.base.Token
   index: 14
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
@@ -124,19 +124,19 @@ table_tokens:
   obj_id: '66'
   text: '"view1"'
   title: token14.DependendQuery
-  type: 197
+  type: 200
 title: DependendQuery
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 0
   text: SELECT
   title: token0.DependendQuery
-  type: 129
+  type: 131
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 1
   text: ' '
   title: token1.DependendQuery
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
   text: '*'
@@ -148,27 +148,27 @@ tokens:
 
     '
   title: token3.DependendQuery
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 4
   text: FROM
   title: token4.DependendQuery
-  type: 75
+  type: 77
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
   text: ' '
   title: token5.DependendQuery
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 6
   text: ' '
   title: token6.DependendQuery
-  type: 204
+  type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 7
   text: ' '
   title: token7.DependendQuery
-  type: 204
+  type: 207
 - *id001
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 9
@@ -179,7 +179,7 @@ tokens:
   index: 10
   text: ' '
   title: token10.DependendQuery
-  type: 204
+  type: 207
 - *id002
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 12
@@ -190,7 +190,7 @@ tokens:
   index: 13
   text: ' '
   title: token13.DependendQuery
-  type: 204
+  type: 207
 - *id003
 used_by: []
 uses:

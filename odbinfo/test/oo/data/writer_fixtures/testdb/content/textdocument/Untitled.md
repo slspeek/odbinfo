@@ -5,13 +5,12 @@ fields:
   column: naam
   database: testdb
   index: 0
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    local_id: vwPlant
+    object_type: query
   obj_id: '627'
-  table: !!python/object:odbinfo.pure.datatype.base.LinkedString
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: null
-      local_id: vwPlant
-      object_type: query
-    text: vwPlant
+  table: vwPlant
   tabletype: query
   title: naam.0.vwPlant.Untitled
 filename: Untitled.odt

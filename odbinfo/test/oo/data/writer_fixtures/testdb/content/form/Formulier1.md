@@ -12,8 +12,7 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-    text: ''
+  command: ''
   commandtype: table
   controls: []
   depth: 0
@@ -26,8 +25,7 @@ subforms:
     allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-      text: ''
+    command: ''
     commandtype: table
     controls: []
     depth: 1
@@ -42,8 +40,7 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-    text: ''
+  command: ''
   commandtype: table
   controls: []
   depth: 0

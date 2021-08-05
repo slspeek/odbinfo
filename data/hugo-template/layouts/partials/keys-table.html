@@ -17,7 +17,7 @@
       <td>{{ .typename }}</td>
       <td>{{ partial "commalist" .columns }}</td>
       <td>
-        {{ partial "render-linked-string" (dict "context" $context "linked_string" .referenced_table)}}
+        {{ partial "render-linked-string" (dict "context" $context "linked_string" (dict "text" .referenced_table "link" .link))}}
       </td>
       <td>{{ .update_rule }}</td>
       <td>{{ .delete_rule }}</td>

@@ -8,9 +8,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: Family
+    command: Family
     commandtype: table
     controls:
     - columns:
@@ -57,6 +55,7 @@ form_defs:
     depth: null
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: MainForm
     obj_id: OBJID_NOT_SET
@@ -75,14 +74,13 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: ''
+    command: ''
     commandtype: table
     controls: []
     depth: null
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: Formulier
     obj_id: OBJID_NOT_SET
@@ -91,14 +89,13 @@ form_defs:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command:
-        link: null
-        text: ''
+      command: ''
       commandtype: table
       controls: []
       depth: null
       detailfields: ''
       embedded_query: null
+      link: null
       masterfields: ''
       name: Formulier2
       obj_id: OBJID_NOT_SET
@@ -109,14 +106,13 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: ''
+    command: ''
     commandtype: table
     controls: []
     depth: null
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: Formulier 1
     obj_id: OBJID_NOT_SET
@@ -135,9 +131,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: Plant
+    command: Plant
     commandtype: table
     controls:
     - controlid: control1
@@ -215,6 +209,7 @@ form_defs:
     depth: null
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: MainForm
     obj_id: OBJID_NOT_SET
@@ -233,9 +228,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: vwPlant
+    command: vwPlant
     commandtype: query
     controls:
     - columns:
@@ -270,6 +263,7 @@ form_defs:
     depth: null
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: MainForm
     obj_id: OBJID_NOT_SET
@@ -288,9 +282,7 @@ form_defs:
   - allowdeletes: 'false'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: Plant
+    command: Plant
     commandtype: table
     controls:
     - controlid: control1
@@ -423,6 +415,7 @@ form_defs:
     depth: null
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: MainForm
     obj_id: OBJID_NOT_SET
@@ -441,9 +434,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: Plant
+    command: Plant
     commandtype: table
     controls:
     - controlid: control7
@@ -521,6 +512,7 @@ form_defs:
     depth: null
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: MainForm
     obj_id: OBJID_NOT_SET
@@ -529,9 +521,7 @@ form_defs:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command:
-        link: null
-        text: Family
+      command: Family
       commandtype: table
       controls:
       - controlid: control1
@@ -609,6 +599,7 @@ form_defs:
       depth: null
       detailfields: '"FamilyID"'
       embedded_query: null
+      link: null
       masterfields: '"RFamliyID"'
       name: SubForm
       obj_id: OBJID_NOT_SET
@@ -628,9 +619,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: view1
+    command: view1
     commandtype: table
     controls:
     - controlid: control1
@@ -660,6 +649,7 @@ form_defs:
     depth: null
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: MainForm
     obj_id: OBJID_NOT_SET
@@ -1035,15 +1025,14 @@ query_defs:
   used_by: []
   uses: []
 report_defs:
-- command:
-    link: null
-    text: Family
+- command: Family
   commandtype: table
   embedded_query: null
   formulas:
   - field:[FamlilyID]
   - field:[Name]
   - field:[Desc]
+  link: null
   name: Family
   obj_id: OBJID_NOT_SET
   output_type: application/vnd.oasis.opendocument.text
@@ -1052,9 +1041,7 @@ report_defs:
   title: Family
   used_by: []
   uses: []
-- command:
-    link: null
-    text: select * from "Plant";
+- command: select * from "Plant";
   commandtype: command
   embedded_query:
     columns:
@@ -1115,6 +1102,7 @@ report_defs:
   formulas:
   - field:[id]
   - field:[naam]
+  link: null
   name: ReportCommandTypeSQL
   obj_id: OBJID_NOT_SET
   output_type: application/vnd.oasis.opendocument.text
@@ -1123,15 +1111,14 @@ report_defs:
   title: ReportCommandTypeSQL
   used_by: []
   uses: []
-- command:
-    link: null
-    text: vwPlant
+- command: vwPlant
   commandtype: query
   embedded_query: null
   formulas:
   - field:[id]
   - field:[naam]
   - field:[RFamliyID]
+  link: null
   name: vwPlant
   obj_id: OBJID_NOT_SET
   output_type: application/vnd.oasis.opendocument.text
@@ -1194,12 +1181,11 @@ table_defs:
   - columns:
     - FamilyID
     delete_rule: Cascade
+    link: null
     name: SYS_PK_49
     obj_id: OBJID_NOT_SET
     parent: null
-    referenced_table:
-      link: null
-      text: ''
+    referenced_table: ''
     relatedcolumns:
     - ''
     title: SYS_PK_49
@@ -1267,12 +1253,11 @@ table_defs:
     - Adres
     - Naam
     delete_rule: Cascade
+    link: null
     name: SYS_PK_51
     obj_id: OBJID_NOT_SET
     parent: null
-    referenced_table:
-      link: null
-      text: ''
+    referenced_table: ''
     relatedcolumns:
     - ''
     - ''
@@ -1349,12 +1334,11 @@ table_defs:
   - columns:
     - id
     delete_rule: Cascade
+    link: null
     name: SYS_PK_47
     obj_id: OBJID_NOT_SET
     parent: null
-    referenced_table:
-      link: null
-      text: ''
+    referenced_table: ''
     relatedcolumns:
     - ''
     title: SYS_PK_47
@@ -1363,12 +1347,11 @@ table_defs:
   - columns:
     - RFamliyID
     delete_rule: No_Action
+    link: null
     name: SYS_FK_79
     obj_id: OBJID_NOT_SET
     parent: null
-    referenced_table:
-      link: null
-      text: Family
+    referenced_table: Family
     relatedcolumns:
     - FamilyID
     title: SYS_FK_79
@@ -1386,11 +1369,10 @@ textdocument_defs:
   - column: naam
     database: testdb
     index: 0
+    link: null
     obj_id: OBJID_NOT_SET
     parent: null
-    table:
-      link: null
-      text: vwPlant
+    table: vwPlant
     tabletype: query
     title: TITLE_NOT_SET
   filename: Untitled.odt

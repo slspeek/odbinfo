@@ -31,7 +31,7 @@
     {{ range $index, $val := .Params.fields }}
             <tr>
               <td>{{ $val.database }}</td>
-              <td id="{{ .obj_id }}">{{ partial "render-linked-string" (dict "linked_string" $val.table "context" $context)}}</td>
+              <td id="{{ .obj_id }}">{{ partial "render-linked-string" (dict "linked_string" (dict "text" $val.table "link" $val.link) "context" $context)}}</td>
               <td>{{ $val.tabletype }}</td>
               <td>{{ $val.column }}</td>
             </tr>

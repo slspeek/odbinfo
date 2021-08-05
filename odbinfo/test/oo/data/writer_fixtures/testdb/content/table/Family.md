@@ -56,8 +56,7 @@ keys:
   delete_rule: Cascade
   name: SYS_PK_49
   obj_id: '2'
-  referenced_table: !!python/object:odbinfo.pure.datatype.base.LinkedString
-    text: ''
+  referenced_table: ''
   relatedcolumns:
   - ''
   title: SYS_PK_49

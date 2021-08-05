@@ -59,18 +59,22 @@ class NamedNode(Node):
 
 
 @dataclass
-class LinkedString:
-    " a string referencing a dataobject "
-    text: str
+class User:
+    " Mixin for Nodes that can use other nodes "
     link: Optional[Identifier] = field(init=False, default=None)
 
 
 @dataclass
-class Aggregator:
+class Usable:
+    " Mixin for Nodes that can be used by other nodes "
+    used_by: List['SourceIdentifier'] = field(
+        init=False, repr=False, default_factory=list)
+
+
+@dataclass
+class Aggregator(Usable):
     " aggregates uses and used_by "
     uses: List['Identifier'] = field(
-        init=False, repr=False, default_factory=list)
-    used_by: List['SourceIdentifier'] = field(
         init=False, repr=False, default_factory=list)
 
 
@@ -134,13 +138,12 @@ class TitleFromParents:
 
 
 @dataclass
-class Token(Node):
+class Token(User, Node):
     "lexer token"
     text: str
     type: int
     index: int
     hidden: bool
-    link: Optional[Identifier] = field(init=False, default=None)
 
     def __post_init__(self):
         self.title = f"token{self.index}"

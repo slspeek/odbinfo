@@ -1,16 +1,15 @@
 ---
 !!python/object:odbinfo.pure.datatype.ui.Report
-command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    local_id: Family
-    object_type: table
-  text: Family
+command: Family
 commandtype: table
 formulas:
 - field:[FamlilyID]
 - field:[Name]
 - field:[Desc]
+link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
+  local_id: Family
+  object_type: table
 name: Family
 obj_id: '172'
 output_type: application/vnd.oasis.opendocument.text

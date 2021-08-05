@@ -12,12 +12,7 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: null
-      local_id: vwPlant
-      object_type: query
-    text: vwPlant
+  command: vwPlant
   commandtype: query
   controls:
   - !!python/object:odbinfo.pure.datatype.ui.Grid
@@ -51,6 +46,10 @@ subforms:
     title: MainForm_Grid.MainForm.Plant invoeren
   depth: 0
   detailfields: ''
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    local_id: vwPlant
+    object_type: query
   masterfields: ''
   name: MainForm
   obj_id: '135'

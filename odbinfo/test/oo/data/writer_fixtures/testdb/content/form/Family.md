@@ -12,12 +12,7 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: null
-      local_id: Family
-      object_type: table
-    text: Family
+  command: Family
   commandtype: table
   controls:
   - !!python/object:odbinfo.pure.datatype.ui.Grid
@@ -63,6 +58,10 @@ subforms:
     title: MainForm_Grid.MainForm.Family
   depth: 0
   detailfields: ''
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    local_id: Family
+    object_type: table
   masterfields: ''
   name: MainForm
   obj_id: '117'

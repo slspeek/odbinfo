@@ -2,32 +2,32 @@
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
 
-from odbinfo.pure.datatype.base import (LinkedString, NamedNode, Node,
-                                        PageOwner, TitleFromParents)
+from odbinfo.pure.datatype.base import (NamedNode, Node, PageOwner,
+                                        TitleFromParents, User)
 from odbinfo.pure.datatype.tabular import Query
 
 
 @dataclass
-class CommandDriven:
+class CommandDriven(User):
     " Has a command and commandtype "
-    command: LinkedString
+    command: str
     commandtype: str
     # Only if commandtype == "command"
     embedded_query: Optional[Query] = field(init=False, default=None)
 
 
 @dataclass
-class DatabaseDisplay(Node):
+class DatabaseDisplay(User, Node):
     " Field in TextDocument "
     database: str
-    table: LinkedString
+    table: str
     tabletype: str
     column: str
     index: int = field(init=False)
 
     def set_title(self):
         " sets a unique title "
-        self.title = f"{self.column}.{self.index}.{self.table.text}.{self.parent.title}"
+        self.title = f"{self.column}.{self.index}.{self.table}.{self.parent.title}"
 
 
 @dataclass
@@ -125,6 +125,7 @@ class Form(PageOwner):
         return list(filter(lambda x: isinstance(x, SubForm), self.all_objects()))
 
 
+# pylint:disable=too-many-ancestors
 @dataclass
 class Report(CommandDriven, PageOwner):
     " Report metadata "

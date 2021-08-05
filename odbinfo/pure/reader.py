@@ -8,8 +8,8 @@ from zipfile import ZipFile
 import xmltodict
 
 from odbinfo.pure.datatype import (Control, DatabaseDisplay, EventListener,
-                                   Form, Grid, Library, LinkedString, ListBox,
-                                   Module, PythonLibrary, PythonModule, Report,
+                                   Form, Grid, Library, ListBox, Module,
+                                   PythonLibrary, PythonModule, Report,
                                    SubForm, TextDocument)
 
 
@@ -60,7 +60,7 @@ def _database_displays(doc_path) -> List[DatabaseDisplay]:
             return \
                 DatabaseDisplay(
                     data["@text:database-name"],
-                    LinkedString(data["@text:table-name"]),
+                    data["@text:table-name"],
                     data["@text:table-type"],
                     data["@text:column-name"]
                 )
@@ -117,7 +117,7 @@ def read_reports(odbzip) -> List[Report]:
     reports = []
     for name, info in _reports(odbzip):
         reports.append(Report(name,
-                              LinkedString(info["@rpt:command"]),
+                              info["@rpt:command"],
                               info.get("@rpt:command-type", "command"),
                               info.get("@office:mimetype", ""),
                               _read_report_formulas(info))
@@ -223,14 +223,14 @@ def _read_subform(data):
     controls = sum(
         starmap(_read_form_controls,
                 filter(lambda x: x[0].startswith("form:") and
-                       not(x[0] == "form:properties") and
-                       not(x[0] == "form:form"), data.items())),
+                       not(x[0] == "form:properties")
+                       and not(x[0] == "form:form"), data.items())),
         [])
     subforms = []
     if "form:form" in data.keys():
         subforms.extend(mapiflist(_read_subform, data["form:form"]))
     return SubForm(data["@form:name"],
-                   LinkedString(data.get("@form:command", "")),
+                   data.get("@form:command", ""),
                    data.get("@form:command-type", ""),
                    data.get("@form:allow-deletes", "true"),
                    data.get("@form:allow-updates", "true"),

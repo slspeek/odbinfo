@@ -4,8 +4,7 @@ from typing import List, Union
 
 from sql_formatter.core import format_sql
 
-from odbinfo.pure.datatype.base import (LinkedString, NamedNode, PageOwner,
-                                        Token)
+from odbinfo.pure.datatype.base import NamedNode, PageOwner, Token, User
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 KEYTYPES = {1: "Primary",
@@ -95,13 +94,13 @@ class Column(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Key(NamedNode):  # pylint: disable=too-many-instance-attributes
+class Key(User, NamedNode):  # pylint: disable=too-many-instance-attributes
     """ Database key properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
     columns: List[str]
     relatedcolumns: List[str]
-    referenced_table: LinkedString
+    referenced_table: str
     typename: object
     delete_rule: object
     update_rule: object

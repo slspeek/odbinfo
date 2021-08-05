@@ -251,8 +251,8 @@ def search_deps_in_commanddriven(dataobjects: Sequence[PageOwner],
         page, cmddriven = report
 
         def match_one_dep(dependency: PageOwner) -> Optional[UseCase]:
-            if dependency.users_match(cmddriven.command.text):
-                cmddriven.command.link = get_identifier(dependency)
+            if dependency.users_match(cmddriven.command):
+                cmddriven.link = get_identifier(dependency)
                 if isinstance(cmddriven, Node):
                     location = cast(Node, cmddriven)
                 else:
@@ -277,8 +277,8 @@ def search_deps_in_documents(dataobjects: Sequence[PageOwner],
         def find_one_dep(dependency: PageOwner) -> List[UseCase]:
 
             def find_in_databasedisplay(display: DatabaseDisplay) -> Optional[UseCase]:
-                if dependency.users_match(display.table.text):
-                    display.table.link = get_identifier(dependency)
+                if dependency.users_match(display.table):
+                    display.link = get_identifier(dependency)
                     return use_case(document,
                                     display,
                                     dependency,
@@ -304,8 +304,8 @@ def search_tables_in_tables(tables: Sequence[Table]) -> List[UseCase]:
         def search_one_key(key: Key) -> List[UseCase]:
 
             def match_table(othertable: Table) -> Optional[UseCase]:
-                if othertable.users_match(key.referenced_table.text):
-                    key.referenced_table.link = get_identifier(othertable)
+                if othertable.users_match(key.referenced_table):
+                    key.link = get_identifier(othertable)
                     return use_case(atable, key, othertable, "references")
                 return None
 

@@ -1,11 +1,11 @@
 " ui classes test "
 
-from odbinfo.pure.datatype import LinkedString, Report
+from odbinfo.pure.datatype import Report
 
 
 def test_report_constructor() -> None:
     report = Report("plants_report",
-                    LinkedString("plant"),
+                    "plant",
                     "table",
                     "doc", [])
     assert report

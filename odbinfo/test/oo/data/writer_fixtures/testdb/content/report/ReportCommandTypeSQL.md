@@ -1,7 +1,6 @@
 ---
 !!python/object:odbinfo.pure.datatype.ui.Report
-command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-  text: select * from "Plant";
+command: select * from "Plant";
 commandtype: command
 embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
   columns:

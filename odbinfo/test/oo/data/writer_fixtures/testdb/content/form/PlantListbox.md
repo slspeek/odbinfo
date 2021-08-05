@@ -12,12 +12,7 @@ subforms:
   allowdeletes: 'false'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: null
-      local_id: Plant
-      object_type: table
-    text: Plant
+  command: Plant
   commandtype: table
   controls:
   - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -149,6 +144,10 @@ subforms:
     type: CommandButton
   depth: 0
   detailfields: ''
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    local_id: Plant
+    object_type: table
   masterfields: ''
   name: MainForm
   obj_id: '140'

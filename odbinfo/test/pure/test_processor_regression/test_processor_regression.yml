@@ -11,12 +11,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link:
-        bookmark: null
-        local_id: Family
-        object_type: table
-      text: Family
+    command: Family
     commandtype: table
     controls:
     - columns:
@@ -63,6 +58,10 @@ form_defs:
     depth: 0
     detailfields: ''
     embedded_query: null
+    link:
+      bookmark: null
+      local_id: Family
+      object_type: table
     masterfields: ''
     name: MainForm
     obj_id: '117'
@@ -87,14 +86,13 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: ''
+    command: ''
     commandtype: table
     controls: []
     depth: 0
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: Formulier
     obj_id: '123'
@@ -103,14 +101,13 @@ form_defs:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command:
-        link: null
-        text: ''
+      command: ''
       commandtype: table
       controls: []
       depth: 1
       detailfields: ''
       embedded_query: null
+      link: null
       masterfields: ''
       name: Formulier2
       obj_id: '124'
@@ -121,14 +118,13 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link: null
-      text: ''
+    command: ''
     commandtype: table
     controls: []
     depth: 0
     detailfields: ''
     embedded_query: null
+    link: null
     masterfields: ''
     name: Formulier 1
     obj_id: '125'
@@ -150,12 +146,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link:
-        bookmark: null
-        local_id: Plant
-        object_type: table
-      text: Plant
+    command: Plant
     commandtype: table
     controls:
     - controlid: control1
@@ -233,6 +224,10 @@ form_defs:
     depth: 0
     detailfields: ''
     embedded_query: null
+    link:
+      bookmark: null
+      local_id: Plant
+      object_type: table
     masterfields: ''
     name: MainForm
     obj_id: '127'
@@ -257,12 +252,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link:
-        bookmark: null
-        local_id: vwPlant
-        object_type: query
-      text: vwPlant
+    command: vwPlant
     commandtype: query
     controls:
     - columns:
@@ -297,6 +287,10 @@ form_defs:
     depth: 0
     detailfields: ''
     embedded_query: null
+    link:
+      bookmark: null
+      local_id: vwPlant
+      object_type: query
     masterfields: ''
     name: MainForm
     obj_id: '135'
@@ -321,12 +315,7 @@ form_defs:
   - allowdeletes: 'false'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link:
-        bookmark: null
-        local_id: Plant
-        object_type: table
-      text: Plant
+    command: Plant
     commandtype: table
     controls:
     - controlid: control1
@@ -459,6 +448,10 @@ form_defs:
     depth: 0
     detailfields: ''
     embedded_query: null
+    link:
+      bookmark: null
+      local_id: Plant
+      object_type: table
     masterfields: ''
     name: MainForm
     obj_id: '140'
@@ -483,12 +476,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link:
-        bookmark: null
-        local_id: Plant
-        object_type: table
-      text: Plant
+    command: Plant
     commandtype: table
     controls:
     - controlid: control7
@@ -566,6 +554,10 @@ form_defs:
     depth: 0
     detailfields: ''
     embedded_query: null
+    link:
+      bookmark: null
+      local_id: Plant
+      object_type: table
     masterfields: ''
     name: MainForm
     obj_id: '154'
@@ -574,12 +566,7 @@ form_defs:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command:
-        link:
-          bookmark: null
-          local_id: Family
-          object_type: table
-        text: Family
+      command: Family
       commandtype: table
       controls:
       - controlid: control1
@@ -657,6 +644,10 @@ form_defs:
       depth: 1
       detailfields: '"FamilyID"'
       embedded_query: null
+      link:
+        bookmark: null
+        local_id: Family
+        object_type: table
       masterfields: '"RFamliyID"'
       name: SubForm
       obj_id: '161'
@@ -685,12 +676,7 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command:
-      link:
-        bookmark: null
-        local_id: view1
-        object_type: view
-      text: view1
+    command: view1
     commandtype: table
     controls:
     - controlid: control1
@@ -720,6 +706,10 @@ form_defs:
     depth: 0
     detailfields: ''
     embedded_query: null
+    link:
+      bookmark: null
+      local_id: view1
+      object_type: view
     masterfields: ''
     name: MainForm
     obj_id: '169'
@@ -6628,18 +6618,17 @@ query_defs:
     local_id: Plant
     object_type: table
 report_defs:
-- command:
-    link:
-      bookmark: null
-      local_id: Family
-      object_type: table
-    text: Family
+- command: Family
   commandtype: table
   embedded_query: null
   formulas:
   - field:[FamlilyID]
   - field:[Name]
   - field:[Desc]
+  link:
+    bookmark: null
+    local_id: Family
+    object_type: table
   name: Family
   obj_id: '172'
   output_type: application/vnd.oasis.opendocument.text
@@ -6654,9 +6643,7 @@ report_defs:
   - bookmark: null
     local_id: Family
     object_type: table
-- command:
-    link: null
-    text: select * from "Plant";
+- command: select * from "Plant";
   commandtype: command
   embedded_query:
     columns:
@@ -6819,6 +6806,7 @@ report_defs:
   formulas:
   - field:[id]
   - field:[naam]
+  link: null
   name: ReportCommandTypeSQL
   obj_id: '173'
   output_type: application/vnd.oasis.opendocument.text
@@ -6830,18 +6818,17 @@ report_defs:
   title: ReportCommandTypeSQL
   used_by: []
   uses: []
-- command:
-    link:
-      bookmark: null
-      local_id: vwPlant
-      object_type: query
-    text: vwPlant
+- command: vwPlant
   commandtype: query
   embedded_query: null
   formulas:
   - field:[id]
   - field:[naam]
   - field:[RFamliyID]
+  link:
+    bookmark: null
+    local_id: vwPlant
+    object_type: query
   name: vwPlant
   obj_id: '174'
   output_type: application/vnd.oasis.opendocument.text
@@ -6910,12 +6897,11 @@ table_defs:
   - columns:
     - FamilyID
     delete_rule: Cascade
+    link: null
     name: SYS_PK_49
     obj_id: '2'
     parent: null
-    referenced_table:
-      link: null
-      text: ''
+    referenced_table: ''
     relatedcolumns:
     - ''
     title: SYS_PK_49
@@ -7006,12 +6992,11 @@ table_defs:
     - Adres
     - Naam
     delete_rule: Cascade
+    link: null
     name: SYS_PK_51
     obj_id: '8'
     parent: null
-    referenced_table:
-      link: null
-      text: ''
+    referenced_table: ''
     relatedcolumns:
     - ''
     - ''
@@ -7091,12 +7076,11 @@ table_defs:
   - columns:
     - id
     delete_rule: Cascade
+    link: null
     name: SYS_PK_47
     obj_id: '14'
     parent: null
-    referenced_table:
-      link: null
-      text: ''
+    referenced_table: ''
     relatedcolumns:
     - ''
     title: SYS_PK_47
@@ -7105,15 +7089,14 @@ table_defs:
   - columns:
     - RFamliyID
     delete_rule: No_Action
+    link:
+      bookmark: null
+      local_id: Family
+      object_type: table
     name: SYS_FK_79
     obj_id: '15'
     parent: null
-    referenced_table:
-      link:
-        bookmark: null
-        local_id: Family
-        object_type: table
-      text: Family
+    referenced_table: Family
     relatedcolumns:
     - FamilyID
     title: SYS_FK_79
@@ -7165,14 +7148,13 @@ textdocument_defs:
   - column: naam
     database: testdb
     index: 0
+    link:
+      bookmark: null
+      local_id: vwPlant
+      object_type: query
     obj_id: '627'
     parent: null
-    table:
-      link:
-        bookmark: null
-        local_id: vwPlant
-        object_type: query
-      text: vwPlant
+    table: vwPlant
     tabletype: query
     title: naam.0.vwPlant.Untitled
   filename: Untitled.odt

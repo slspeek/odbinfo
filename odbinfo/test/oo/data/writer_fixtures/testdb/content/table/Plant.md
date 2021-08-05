@@ -66,8 +66,7 @@ keys:
   delete_rule: Cascade
   name: SYS_PK_47
   obj_id: '14'
-  referenced_table: !!python/object:odbinfo.pure.datatype.base.LinkedString
-    text: ''
+  referenced_table: ''
   relatedcolumns:
   - ''
   title: SYS_PK_47
@@ -77,14 +76,13 @@ keys:
   columns:
   - RFamliyID
   delete_rule: No_Action
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    local_id: Family
+    object_type: table
   name: SYS_FK_79
   obj_id: '15'
-  referenced_table: !!python/object:odbinfo.pure.datatype.base.LinkedString
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: null
-      local_id: Family
-      object_type: table
-    text: Family
+  referenced_table: Family
   relatedcolumns:
   - FamilyID
   title: SYS_FK_79

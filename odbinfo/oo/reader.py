@@ -5,8 +5,8 @@ from typing import List, Sequence
 from zipfile import ZipFile
 
 from odbinfo.oo.ooutil import open_connection
-from odbinfo.pure.datatype import (Column, Index, Key, LinkedString, Metadata,
-                                   Query, QueryColumn, Report, Table, View)
+from odbinfo.pure.datatype import (Column, Index, Key, Metadata, Query,
+                                   QueryColumn, Report, Table, View)
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
@@ -46,7 +46,7 @@ def extract_queries(reports: Sequence[Report]) -> List[Query]:
     queries: List[Query] = []
     for report in reports:
         if report.commandtype == "command":
-            query = Query(f"{report.name}.Command", report.command.text)
+            query = Query(f"{report.name}.Command", report.command)
             report.embedded_query = query
             queries.append(query)
     return queries
@@ -130,7 +130,7 @@ def _read_key(ookey) -> Key:
         Key(ookey.Name,
             list(ookey.Columns.ElementNames),
             [col.RelatedColumn for col in ookey.Columns],
-            LinkedString(ookey.ReferencedTable),
+            ookey.ReferencedTable,
             ookey.Type,
             ookey.DeleteRule,
             ookey.UpdateRule

@@ -11,7 +11,7 @@
               {{ if (eq .Params.commandtype "command") }}
                 {{ partial "render-query-command" (dict "context" . "query" .Params.embedded_query )}}
               {{ else }}
-                {{ partial "render-linked-string" (dict "linked_string" .Params.command "context" .) }}
+                {{ partial "render-linked-string" (dict "linked_string" (dict "text" .Params.command "link" .Params.link) "context" .) }}
               {{ end }}
             </td>
           </tr>

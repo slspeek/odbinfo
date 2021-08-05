@@ -1,16 +1,15 @@
 ---
 !!python/object:odbinfo.pure.datatype.ui.Report
-command: !!python/object:odbinfo.pure.datatype.base.LinkedString
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    local_id: vwPlant
-    object_type: query
-  text: vwPlant
+command: vwPlant
 commandtype: query
 formulas:
 - field:[id]
 - field:[naam]
 - field:[RFamliyID]
+link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: null
+  local_id: vwPlant
+  object_type: query
 name: vwPlant
 obj_id: '174'
 output_type: application/vnd.oasis.opendocument.text

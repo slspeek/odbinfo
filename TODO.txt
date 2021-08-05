@@ -6,6 +6,11 @@ Fix 'recursive calls' in basicfunctions
 If SubForms, Controls are not excluded they should
 have the dependencies, not its containing Form
 And how about Library, Module and BasicFunction then?
+Defaulting to lowest in hierarchy that is present for graph
+
+Aggregation of dependencies
+---------------------------
+
 
 Report dependencies when commandtype=command (should inherit from the
 embedded query)
@@ -13,6 +18,7 @@ embedded query)
 
 Relevant control filter:
   ListBox handling
+    --> commanddriven
   eventlisteners parsing
 
 

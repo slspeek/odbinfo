@@ -91,8 +91,6 @@ def make_dependency_edges(metadata, config, graph, node):
                 used_node_link.object_type, used_node_link.local_id)]
             make_edge(config, graph, node, used_node)
 
-# pylint:disable=unused-argument
-
 
 def generate_main_graph(metadata, config):
     " returns the main graph "

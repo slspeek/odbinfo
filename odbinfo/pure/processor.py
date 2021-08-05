@@ -1,7 +1,6 @@
 """ Core module """
 import dataclasses
 import time
-from functools import partial
 from typing import Sequence, Union
 
 from odbinfo.pure.datatype import (Control, Form, Grid, Library, Metadata,
@@ -33,11 +32,13 @@ def _process_library(library: Library) -> None:
         module.name_indexes =\
             list(map(lambda c: c.name_token_index, module.callables))
 
-    list(map(parse_module, library.modules))
+    for module in library.modules:
+        parse_module(module)
 
 
 def _process_libraries(libraries: Sequence[Library]) -> None:
-    list(map(_process_library, libraries))
+    for lib in libraries:
+        _process_library(lib)
 
 
 def _process_query(query: Query) -> None:
@@ -47,7 +48,8 @@ def _process_query(query: Query) -> None:
 def set_depth(depth: int, subform: SubForm) -> None:
     " sets depth recursively in `subform`"
     subform.depth = depth
-    list(map(partial(set_depth, depth + 1), subform.subforms))
+    for asubform in subform.subforms:
+        set_depth(depth + 1, asubform)
 
 
 def height(subform: SubForm) -> int:
@@ -68,14 +70,18 @@ def process_subform(subform: SubForm) -> None:
         if isinstance(control, Grid):
             return
         control.type = control.type.split(".")[-1]
-    list(map(process_control, subform.controls))
-    list(map(process_subform, subform.subforms))
+
+    for control in subform.controls:
+        process_control(control)
+    for asubform in subform.subforms:
+        process_subform(asubform)
 
 
 def process_form(form: Form) -> None:
     " calculate depth for its subforms "
-    list(map(partial(set_depth, 0), form.subforms))
-    list(map(process_subform, form.subforms))
+    for subform in form.subforms:
+        set_depth(0, subform)
+        process_subform(subform)
     set_form_height(form)
 
 
@@ -106,13 +112,16 @@ def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
     print("Parse basic: {}".format(end_time-start_time))
 
     start_time = time.time()
-    list(map(_process_query, metadata.query_defs))
-    list(map(_process_query, metadata.view_defs))
+    for query in metadata.query_defs:
+        _process_query(query)
+    for view in metadata.view_defs:
+        _process_query(view)
     end_time = time.time()
     print("Parse queries and views: {}".format(end_time-start_time))
 
     start_time = time.time()
-    list(map(process_form, metadata.form_defs))
+    for form in metadata.form_defs:
+        process_form(form)
     end_time = time.time()
     print("Process forms: {}".format(end_time-start_time))
 

@@ -102,11 +102,12 @@ def _link_name_tokens(module: Module):
     list(starmap(_link_name, zip(module.name_indexes, module.callables)))
 
 
-def rewrite_module_callable_links(modules: Sequence[Module]) -> List[UseCase]:
+def rewrite_module_callable_links(module_seq: Sequence[Module]) -> List[UseCase]:
     """ links to callables are rewritten to links to callables in
         modules (using #bookmarks)"""
-    _rewrite_module_token_links(modules)
-    list(map(_link_name_tokens, modules))
+    _rewrite_module_token_links(module_seq)
+    for module in module_seq:
+        _link_name_tokens(module)
     return []
 
 

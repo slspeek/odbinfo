@@ -1,5 +1,3 @@
-replace unassigned list(map()) calls with for loops
-
 Nicer ids, based on name
 ------------------------
 BasicScanner --> ModuleScanner

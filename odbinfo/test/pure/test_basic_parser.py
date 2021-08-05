@@ -2,7 +2,7 @@
 # pylint: disable=protected-access
 " parser tests "
 from odbinfo.pure.datatype import BasicFunction
-from odbinfo.pure.parser.basic import (BasicScanner, BodyScanner,
+from odbinfo.pure.parser.basic import (BodyScanner, ModuleScanner,
                                        all_functioncalls, allmacros,
                                        extract_stringliterals, functioncall,
                                        get_basic_tokens, macro, maybe,
@@ -14,11 +14,11 @@ def parse(source):
     return scan_basic(get_basic_tokens(source), "Standard", "Module")
 
 
-def basicscanner(source: str) -> BasicScanner:
-    "Instantiates BasicScanner on `source`"
+def module_scanner(source: str) -> ModuleScanner:
+    "Instantiates ModuleScanner on `source`"
     alltokens = get_basic_tokens(source)
     tokens = list(filter(lambda x: not x.hidden, alltokens))
-    return BasicScanner(tokens, alltokens, "Standard", "Module1")
+    return ModuleScanner(tokens, alltokens, "Standard", "Module1")
 
 
 def bodyscanner(source: str) -> BodyScanner:
@@ -73,14 +73,14 @@ rem end of file"""
 
 def test_allmacros():
     " test allmacros"
-    scanner = basicscanner(TOKENSOURCECODE)
+    scanner = module_scanner(TOKENSOURCECODE)
     macros = allmacros(scanner)
     print("All Macros: ", macros)
 
 
 def test_allmacros_empty():
     " test allmacros"
-    scanner = basicscanner("")
+    scanner = module_scanner("")
     macros = allmacros(scanner)
     print("All Macros: ", macros)
 
@@ -130,7 +130,7 @@ def test_allfunctioncalls_method():
 
 def test_signature():
     " test signature"
-    scanner = basicscanner("public static sub foo()\n")
+    scanner = module_scanner("public static sub foo()\n")
     start, end, name_token = signature(scanner)
 
     print(start, end, name_token)
@@ -139,14 +139,14 @@ def test_signature():
 
 def test_macro():
     " test macro"
-    scanner = basicscanner("sub foo()\nend sub\n")
+    scanner = module_scanner("sub foo()\nend sub\n")
     amacro = macro(scanner)
     print("Macro: ", amacro)
 
 
 def test_find_signature():
     " test _signature"
-    scanner = basicscanner("public static sub sub foo()\n")
+    scanner = module_scanner("public static sub sub foo()\n")
     result = maybe(signature)(scanner)
     print(result)
 

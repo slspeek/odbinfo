@@ -11,7 +11,7 @@ from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find,
 def scan_basic(alltokens: List[Token], library: str, module: str) -> List[BasicFunction]:
     " extract procedure names "
     tokens = list(filter(lambda x: not x.hidden, alltokens))
-    scanner = BasicScanner(tokens, alltokens, library, module)
+    scanner = ModuleScanner(tokens, alltokens, library, module)
     return scanner.scan()
 
 
@@ -36,7 +36,7 @@ def extract_stringliterals(acallable: BasicFunction) -> List[Token]:
 
 
 # pylint:disable=too-few-public-methods
-class BasicScanner(Scanner):
+class ModuleScanner(Scanner):
     "scan for procedure names"
 
     def __init__(self, tokens: List[Token], alltokens: List[Token], library: str, module: str):

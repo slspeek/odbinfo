@@ -55,7 +55,7 @@ def test_find_found():
 
 
 def new_scanner(source: str) -> Scanner:
-    "Instantiates BasicScanner on `source`"
+    "Instantiates ModuleScanner on `source`"
     tokens = get_basic_tokens(source)
     return Scanner(tokens)
 

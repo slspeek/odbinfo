@@ -1,7 +1,3 @@
-Nicer ids, based on name
-------------------------
-BasicScanner --> ModuleScanner
-
 Like NamedNode,users_match have a method on Node.link_use
 
 Fix 'recursive calls' in basicfunctions

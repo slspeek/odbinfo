@@ -740,18 +740,18 @@ library_defs:
       - hidden: false
         index: 9
         link: null
-        obj_id: '232'
+        obj_id: '184'
         parent: null
         text: print
-        title: token9.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token9.UsesDocument.Module1.Standard
         type: 100
       - hidden: false
         index: 10
         link: null
-        obj_id: '233'
+        obj_id: '185'
         parent: null
         text: ' '
-        title: token10.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token10.UsesDocument.Module1.Standard
         type: 185
       - hidden: false
         index: 11
@@ -759,20 +759,20 @@ library_defs:
           bookmark: null
           local_id: Untitled
           object_type: textdocument
-        obj_id: '234'
+        obj_id: '186'
         parent: null
         text: '"Untitled"'
-        title: token11.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token11.UsesDocument.Module1.Standard
         type: 172
       - hidden: false
         index: 12
         link: null
-        obj_id: '235'
+        obj_id: '187'
         parent: null
         text: '
 
           '
-        title: token12.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token12.UsesDocument.Module1.Standard
         type: 183
       calls: []
       library: Standard
@@ -792,76 +792,76 @@ library_defs:
           bookmark: null
           local_id: Untitled
           object_type: textdocument
-        obj_id: '234'
+        obj_id: '186'
         parent: null
         text: '"Untitled"'
-        title: token11.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token11.UsesDocument.Module1.Standard
         type: 172
       title: UsesDocument.Module1.Standard
       tokens:
       - hidden: false
         index: 3
         link: null
-        obj_id: '226'
+        obj_id: '178'
         parent: null
         text: Sub
-        title: token3.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token3.UsesDocument.Module1.Standard
         type: 125
       - hidden: false
         index: 4
         link: null
-        obj_id: '227'
+        obj_id: '179'
         parent: null
         text: ' '
-        title: token4.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token4.UsesDocument.Module1.Standard
         type: 185
       - hidden: false
         index: 5
         link: null
-        obj_id: '228'
+        obj_id: '180'
         parent: null
         text: UsesDocument
-        title: token5.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token5.UsesDocument.Module1.Standard
         type: 181
       - hidden: false
         index: 6
         link: null
-        obj_id: '229'
+        obj_id: '181'
         parent: null
         text: (
-        title: token6.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token6.UsesDocument.Module1.Standard
         type: 157
       - hidden: false
         index: 7
         link: null
-        obj_id: '230'
+        obj_id: '182'
         parent: null
         text: )
-        title: token7.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token7.UsesDocument.Module1.Standard
         type: 168
       - hidden: false
         index: 8
         link: null
-        obj_id: '231'
+        obj_id: '183'
         parent: null
         text: "\n\t"
-        title: token8.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token8.UsesDocument.Module1.Standard
         type: 183
       - hidden: false
         index: 9
         link: null
-        obj_id: '232'
+        obj_id: '184'
         parent: null
         text: print
-        title: token9.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token9.UsesDocument.Module1.Standard
         type: 100
       - hidden: false
         index: 10
         link: null
-        obj_id: '233'
+        obj_id: '185'
         parent: null
         text: ' '
-        title: token10.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token10.UsesDocument.Module1.Standard
         type: 185
       - hidden: false
         index: 11
@@ -869,28 +869,28 @@ library_defs:
           bookmark: null
           local_id: Untitled
           object_type: textdocument
-        obj_id: '234'
+        obj_id: '186'
         parent: null
         text: '"Untitled"'
-        title: token11.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token11.UsesDocument.Module1.Standard
         type: 172
       - hidden: false
         index: 12
         link: null
-        obj_id: '235'
+        obj_id: '187'
         parent: null
         text: '
 
           '
-        title: token12.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token12.UsesDocument.Module1.Standard
         type: 183
       - hidden: false
         index: 13
         link: null
-        obj_id: '236'
+        obj_id: '188'
         parent: null
         text: End Sub
-        title: token13.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+        title: token13.UsesDocument.Module1.Standard
         type: 44
       used_by: []
       uses:
@@ -901,18 +901,18 @@ library_defs:
       - hidden: false
         index: 22
         link: null
-        obj_id: '245'
+        obj_id: '196'
         parent: null
         text: print
-        title: token22.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token22.UsesDocumentFilename.Module1.Standard
         type: 100
       - hidden: false
         index: 23
         link: null
-        obj_id: '246'
+        obj_id: '197'
         parent: null
         text: ' '
-        title: token23.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token23.UsesDocumentFilename.Module1.Standard
         type: 185
       - hidden: false
         index: 24
@@ -920,20 +920,20 @@ library_defs:
           bookmark: null
           local_id: Untitled
           object_type: textdocument
-        obj_id: '247'
+        obj_id: '198'
         parent: null
         text: '"Untitled.odt"'
-        title: token24.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token24.UsesDocumentFilename.Module1.Standard
         type: 172
       - hidden: false
         index: 25
         link: null
-        obj_id: '248'
+        obj_id: '199'
         parent: null
         text: '
 
           '
-        title: token25.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token25.UsesDocumentFilename.Module1.Standard
         type: 183
       calls: []
       library: Standard
@@ -953,76 +953,76 @@ library_defs:
           bookmark: null
           local_id: Untitled
           object_type: textdocument
-        obj_id: '247'
+        obj_id: '198'
         parent: null
         text: '"Untitled.odt"'
-        title: token24.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token24.UsesDocumentFilename.Module1.Standard
         type: 172
       title: UsesDocumentFilename.Module1.Standard
       tokens:
       - hidden: false
         index: 16
         link: null
-        obj_id: '239'
+        obj_id: '190'
         parent: null
         text: Sub
-        title: token16.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token16.UsesDocumentFilename.Module1.Standard
         type: 125
       - hidden: false
         index: 17
         link: null
-        obj_id: '240'
+        obj_id: '191'
         parent: null
         text: ' '
-        title: token17.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token17.UsesDocumentFilename.Module1.Standard
         type: 185
       - hidden: false
         index: 18
         link: null
-        obj_id: '241'
+        obj_id: '192'
         parent: null
         text: UsesDocumentFilename
-        title: token18.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token18.UsesDocumentFilename.Module1.Standard
         type: 181
       - hidden: false
         index: 19
         link: null
-        obj_id: '242'
+        obj_id: '193'
         parent: null
         text: (
-        title: token19.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token19.UsesDocumentFilename.Module1.Standard
         type: 157
       - hidden: false
         index: 20
         link: null
-        obj_id: '243'
+        obj_id: '194'
         parent: null
         text: )
-        title: token20.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token20.UsesDocumentFilename.Module1.Standard
         type: 168
       - hidden: false
         index: 21
         link: null
-        obj_id: '244'
+        obj_id: '195'
         parent: null
         text: "\n\t"
-        title: token21.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token21.UsesDocumentFilename.Module1.Standard
         type: 183
       - hidden: false
         index: 22
         link: null
-        obj_id: '245'
+        obj_id: '196'
         parent: null
         text: print
-        title: token22.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token22.UsesDocumentFilename.Module1.Standard
         type: 100
       - hidden: false
         index: 23
         link: null
-        obj_id: '246'
+        obj_id: '197'
         parent: null
         text: ' '
-        title: token23.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token23.UsesDocumentFilename.Module1.Standard
         type: 185
       - hidden: false
         index: 24
@@ -1030,28 +1030,28 @@ library_defs:
           bookmark: null
           local_id: Untitled
           object_type: textdocument
-        obj_id: '247'
+        obj_id: '198'
         parent: null
         text: '"Untitled.odt"'
-        title: token24.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token24.UsesDocumentFilename.Module1.Standard
         type: 172
       - hidden: false
         index: 25
         link: null
-        obj_id: '248'
+        obj_id: '199'
         parent: null
         text: '
 
           '
-        title: token25.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token25.UsesDocumentFilename.Module1.Standard
         type: 183
       - hidden: false
         index: 26
         link: null
-        obj_id: '249'
+        obj_id: '200'
         parent: null
         text: End Sub
-        title: token26.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+        title: token26.UsesDocumentFilename.Module1.Standard
         type: 44
       used_by: []
       uses:
@@ -1062,36 +1062,36 @@ library_defs:
       - hidden: false
         index: 33
         link: null
-        obj_id: '256'
+        obj_id: '206'
         parent: null
         text: print
-        title: token33.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token33.CalleeOtherLib.Module1.Standard
         type: 100
       - hidden: false
         index: 34
         link: null
-        obj_id: '257'
+        obj_id: '207'
         parent: null
         text: ' '
-        title: token34.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token34.CalleeOtherLib.Module1.Standard
         type: 185
       - hidden: false
         index: 35
         link: null
-        obj_id: '258'
+        obj_id: '208'
         parent: null
         text: '"Standard.Module1.CalleeOtherLib"'
-        title: token35.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token35.CalleeOtherLib.Module1.Standard
         type: 172
       - hidden: false
         index: 36
         link: null
-        obj_id: '259'
+        obj_id: '209'
         parent: null
         text: '
 
           '
-        title: token36.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token36.CalleeOtherLib.Module1.Standard
         type: 183
       calls: []
       library: Standard
@@ -1108,131 +1108,131 @@ library_defs:
       - hidden: false
         index: 35
         link: null
-        obj_id: '258'
+        obj_id: '208'
         parent: null
         text: '"Standard.Module1.CalleeOtherLib"'
-        title: token35.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token35.CalleeOtherLib.Module1.Standard
         type: 172
       title: CalleeOtherLib.Module1.Standard
       tokens:
       - hidden: false
         index: 29
         link: null
-        obj_id: '252'
+        obj_id: '202'
         parent: null
         text: Sub
-        title: token29.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token29.CalleeOtherLib.Module1.Standard
         type: 125
       - hidden: false
         index: 30
         link: null
-        obj_id: '253'
+        obj_id: '203'
         parent: null
         text: ' '
-        title: token30.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token30.CalleeOtherLib.Module1.Standard
         type: 185
       - hidden: false
         index: 31
         link: null
-        obj_id: '254'
+        obj_id: '204'
         parent: null
         text: CalleeOtherLib
-        title: token31.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token31.CalleeOtherLib.Module1.Standard
         type: 181
       - hidden: false
         index: 32
         link: null
-        obj_id: '255'
+        obj_id: '205'
         parent: null
         text: "\n\t"
-        title: token32.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token32.CalleeOtherLib.Module1.Standard
         type: 183
       - hidden: false
         index: 33
         link: null
-        obj_id: '256'
+        obj_id: '206'
         parent: null
         text: print
-        title: token33.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token33.CalleeOtherLib.Module1.Standard
         type: 100
       - hidden: false
         index: 34
         link: null
-        obj_id: '257'
+        obj_id: '207'
         parent: null
         text: ' '
-        title: token34.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token34.CalleeOtherLib.Module1.Standard
         type: 185
       - hidden: false
         index: 35
         link: null
-        obj_id: '258'
+        obj_id: '208'
         parent: null
         text: '"Standard.Module1.CalleeOtherLib"'
-        title: token35.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token35.CalleeOtherLib.Module1.Standard
         type: 172
       - hidden: false
         index: 36
         link: null
-        obj_id: '259'
+        obj_id: '209'
         parent: null
         text: '
 
           '
-        title: token36.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token36.CalleeOtherLib.Module1.Standard
         type: 183
       - hidden: false
         index: 37
         link: null
-        obj_id: '260'
+        obj_id: '210'
         parent: null
         text: End Sub
-        title: token37.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
+        title: token37.CalleeOtherLib.Module1.Standard
         type: 44
       used_by:
       - bookmark: null
         local_id: CallerOtherLib.Module1.Library1
-        location_id: '494'
+        location_id: '358'
         object_type: basicfunction
       - bookmark: null
         local_id: CallerOtherLib.Module1.Library1
-        location_id: '500'
+        location_id: '364'
         object_type: basicfunction
       uses: []
     - body_tokens:
       - hidden: false
         index: 46
         link: null
-        obj_id: '269'
+        obj_id: '218'
         parent: null
         text: print
-        title: token46.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token46.ShadowedCallee.Module1.Standard
         type: 100
       - hidden: false
         index: 47
         link: null
-        obj_id: '270'
+        obj_id: '219'
         parent: null
         text: ' '
-        title: token47.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token47.ShadowedCallee.Module1.Standard
         type: 185
       - hidden: false
         index: 48
         link: null
-        obj_id: '271'
+        obj_id: '220'
         parent: null
         text: '"Standard.Module1.ShadowedCallee"'
-        title: token48.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token48.ShadowedCallee.Module1.Standard
         type: 172
       - hidden: false
         index: 49
         link: null
-        obj_id: '272'
+        obj_id: '221'
         parent: null
         text: '
 
           '
-        title: token49.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token49.ShadowedCallee.Module1.Standard
         type: 183
       calls: []
       library: Standard
@@ -1249,102 +1249,102 @@ library_defs:
       - hidden: false
         index: 48
         link: null
-        obj_id: '271'
+        obj_id: '220'
         parent: null
         text: '"Standard.Module1.ShadowedCallee"'
-        title: token48.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token48.ShadowedCallee.Module1.Standard
         type: 172
       title: ShadowedCallee.Module1.Standard
       tokens:
       - hidden: false
         index: 40
         link: null
-        obj_id: '263'
+        obj_id: '212'
         parent: null
         text: Sub
-        title: token40.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token40.ShadowedCallee.Module1.Standard
         type: 125
       - hidden: false
         index: 41
         link: null
-        obj_id: '264'
+        obj_id: '213'
         parent: null
         text: ' '
-        title: token41.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token41.ShadowedCallee.Module1.Standard
         type: 185
       - hidden: false
         index: 42
         link: null
-        obj_id: '265'
+        obj_id: '214'
         parent: null
         text: ShadowedCallee
-        title: token42.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token42.ShadowedCallee.Module1.Standard
         type: 181
       - hidden: false
         index: 43
         link: null
-        obj_id: '266'
+        obj_id: '215'
         parent: null
         text: (
-        title: token43.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token43.ShadowedCallee.Module1.Standard
         type: 157
       - hidden: false
         index: 44
         link: null
-        obj_id: '267'
+        obj_id: '216'
         parent: null
         text: )
-        title: token44.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token44.ShadowedCallee.Module1.Standard
         type: 168
       - hidden: false
         index: 45
         link: null
-        obj_id: '268'
+        obj_id: '217'
         parent: null
         text: "\n\t"
-        title: token45.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token45.ShadowedCallee.Module1.Standard
         type: 183
       - hidden: false
         index: 46
         link: null
-        obj_id: '269'
+        obj_id: '218'
         parent: null
         text: print
-        title: token46.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token46.ShadowedCallee.Module1.Standard
         type: 100
       - hidden: false
         index: 47
         link: null
-        obj_id: '270'
+        obj_id: '219'
         parent: null
         text: ' '
-        title: token47.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token47.ShadowedCallee.Module1.Standard
         type: 185
       - hidden: false
         index: 48
         link: null
-        obj_id: '271'
+        obj_id: '220'
         parent: null
         text: '"Standard.Module1.ShadowedCallee"'
-        title: token48.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token48.ShadowedCallee.Module1.Standard
         type: 172
       - hidden: false
         index: 49
         link: null
-        obj_id: '272'
+        obj_id: '221'
         parent: null
         text: '
 
           '
-        title: token49.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token49.ShadowedCallee.Module1.Standard
         type: 183
       - hidden: false
         index: 50
         link: null
-        obj_id: '273'
+        obj_id: '222'
         parent: null
         text: End Sub
-        title: token50.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
+        title: token50.ShadowedCallee.Module1.Standard
         type: 44
       used_by: []
       uses: []
@@ -1370,46 +1370,46 @@ library_defs:
     - hidden: true
       index: 0
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '223'
       parent: null
       text: REM  *****  BASIC  *****
-      title: token0
+      title: token0.Module1.Standard
       type: 184
     - hidden: false
       index: 1
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '224'
       parent: null
       text: '
 
         '
-      title: token1
+      title: token1.Module1.Standard
       type: 183
     - hidden: false
       index: 2
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '225'
       parent: null
       text: '
 
         '
-      title: token2
+      title: token2.Module1.Standard
       type: 183
     - hidden: false
       index: 3
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '226'
       parent: null
       text: Sub
-      title: token3
+      title: token3.Module1.Standard
       type: 125
     - hidden: false
       index: 4
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '227'
       parent: null
       text: ' '
-      title: token4
+      title: token4.Module1.Standard
       type: 185
     - hidden: false
       index: 5
@@ -1417,50 +1417,50 @@ library_defs:
         bookmark: null
         local_id: UsesDocument.Module1.Standard
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '228'
       parent: null
       text: UsesDocument
-      title: token5
+      title: token5.Module1.Standard
       type: 181
     - hidden: false
       index: 6
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '229'
       parent: null
       text: (
-      title: token6
+      title: token6.Module1.Standard
       type: 157
     - hidden: false
       index: 7
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '230'
       parent: null
       text: )
-      title: token7
+      title: token7.Module1.Standard
       type: 168
     - hidden: false
       index: 8
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '231'
       parent: null
       text: "\n\t"
-      title: token8
+      title: token8.Module1.Standard
       type: 183
     - hidden: false
       index: 9
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '232'
       parent: null
       text: print
-      title: token9
+      title: token9.Module1.Standard
       type: 100
     - hidden: false
       index: 10
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '233'
       parent: null
       text: ' '
-      title: token10
+      title: token10.Module1.Standard
       type: 185
     - hidden: false
       index: 11
@@ -1468,64 +1468,64 @@ library_defs:
         bookmark: null
         local_id: Untitled
         object_type: textdocument
-      obj_id: OBJID_NOT_SET
+      obj_id: '234'
       parent: null
       text: '"Untitled"'
-      title: token11
+      title: token11.Module1.Standard
       type: 172
     - hidden: false
       index: 12
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '235'
       parent: null
       text: '
 
         '
-      title: token12
+      title: token12.Module1.Standard
       type: 183
     - hidden: false
       index: 13
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '236'
       parent: null
       text: End Sub
-      title: token13
+      title: token13.Module1.Standard
       type: 44
     - hidden: false
       index: 14
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '237'
       parent: null
       text: '
 
         '
-      title: token14
+      title: token14.Module1.Standard
       type: 183
     - hidden: false
       index: 15
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '238'
       parent: null
       text: '
 
         '
-      title: token15
+      title: token15.Module1.Standard
       type: 183
     - hidden: false
       index: 16
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '239'
       parent: null
       text: Sub
-      title: token16
+      title: token16.Module1.Standard
       type: 125
     - hidden: false
       index: 17
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '240'
       parent: null
       text: ' '
-      title: token17
+      title: token17.Module1.Standard
       type: 185
     - hidden: false
       index: 18
@@ -1533,50 +1533,50 @@ library_defs:
         bookmark: null
         local_id: UsesDocumentFilename.Module1.Standard
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '241'
       parent: null
       text: UsesDocumentFilename
-      title: token18
+      title: token18.Module1.Standard
       type: 181
     - hidden: false
       index: 19
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '242'
       parent: null
       text: (
-      title: token19
+      title: token19.Module1.Standard
       type: 157
     - hidden: false
       index: 20
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '243'
       parent: null
       text: )
-      title: token20
+      title: token20.Module1.Standard
       type: 168
     - hidden: false
       index: 21
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '244'
       parent: null
       text: "\n\t"
-      title: token21
+      title: token21.Module1.Standard
       type: 183
     - hidden: false
       index: 22
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '245'
       parent: null
       text: print
-      title: token22
+      title: token22.Module1.Standard
       type: 100
     - hidden: false
       index: 23
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '246'
       parent: null
       text: ' '
-      title: token23
+      title: token23.Module1.Standard
       type: 185
     - hidden: false
       index: 24
@@ -1584,64 +1584,64 @@ library_defs:
         bookmark: null
         local_id: Untitled
         object_type: textdocument
-      obj_id: OBJID_NOT_SET
+      obj_id: '247'
       parent: null
       text: '"Untitled.odt"'
-      title: token24
+      title: token24.Module1.Standard
       type: 172
     - hidden: false
       index: 25
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '248'
       parent: null
       text: '
 
         '
-      title: token25
+      title: token25.Module1.Standard
       type: 183
     - hidden: false
       index: 26
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '249'
       parent: null
       text: End Sub
-      title: token26
+      title: token26.Module1.Standard
       type: 44
     - hidden: false
       index: 27
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '250'
       parent: null
       text: '
 
         '
-      title: token27
+      title: token27.Module1.Standard
       type: 183
     - hidden: false
       index: 28
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '251'
       parent: null
       text: '
 
         '
-      title: token28
+      title: token28.Module1.Standard
       type: 183
     - hidden: false
       index: 29
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '252'
       parent: null
       text: Sub
-      title: token29
+      title: token29.Module1.Standard
       type: 125
     - hidden: false
       index: 30
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '253'
       parent: null
       text: ' '
-      title: token30
+      title: token30.Module1.Standard
       type: 185
     - hidden: false
       index: 31
@@ -1649,96 +1649,96 @@ library_defs:
         bookmark: null
         local_id: CalleeOtherLib.Module1.Standard
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '254'
       parent: null
       text: CalleeOtherLib
-      title: token31
+      title: token31.Module1.Standard
       type: 181
     - hidden: false
       index: 32
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '255'
       parent: null
       text: "\n\t"
-      title: token32
+      title: token32.Module1.Standard
       type: 183
     - hidden: false
       index: 33
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '256'
       parent: null
       text: print
-      title: token33
+      title: token33.Module1.Standard
       type: 100
     - hidden: false
       index: 34
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '257'
       parent: null
       text: ' '
-      title: token34
+      title: token34.Module1.Standard
       type: 185
     - hidden: false
       index: 35
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '258'
       parent: null
       text: '"Standard.Module1.CalleeOtherLib"'
-      title: token35
+      title: token35.Module1.Standard
       type: 172
     - hidden: false
       index: 36
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '259'
       parent: null
       text: '
 
         '
-      title: token36
+      title: token36.Module1.Standard
       type: 183
     - hidden: false
       index: 37
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '260'
       parent: null
       text: End Sub
-      title: token37
+      title: token37.Module1.Standard
       type: 44
     - hidden: false
       index: 38
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '261'
       parent: null
       text: '
 
         '
-      title: token38
+      title: token38.Module1.Standard
       type: 183
     - hidden: false
       index: 39
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '262'
       parent: null
       text: '
 
         '
-      title: token39
+      title: token39.Module1.Standard
       type: 183
     - hidden: false
       index: 40
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '263'
       parent: null
       text: Sub
-      title: token40
+      title: token40.Module1.Standard
       type: 125
     - hidden: false
       index: 41
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '264'
       parent: null
       text: ' '
-      title: token41
+      title: token41.Module1.Standard
       type: 185
     - hidden: false
       index: 42
@@ -1746,76 +1746,76 @@ library_defs:
         bookmark: null
         local_id: ShadowedCallee.Module1.Standard
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '265'
       parent: null
       text: ShadowedCallee
-      title: token42
+      title: token42.Module1.Standard
       type: 181
     - hidden: false
       index: 43
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '266'
       parent: null
       text: (
-      title: token43
+      title: token43.Module1.Standard
       type: 157
     - hidden: false
       index: 44
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '267'
       parent: null
       text: )
-      title: token44
+      title: token44.Module1.Standard
       type: 168
     - hidden: false
       index: 45
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '268'
       parent: null
       text: "\n\t"
-      title: token45
+      title: token45.Module1.Standard
       type: 183
     - hidden: false
       index: 46
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '269'
       parent: null
       text: print
-      title: token46
+      title: token46.Module1.Standard
       type: 100
     - hidden: false
       index: 47
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '270'
       parent: null
       text: ' '
-      title: token47
+      title: token47.Module1.Standard
       type: 185
     - hidden: false
       index: 48
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '271'
       parent: null
       text: '"Standard.Module1.ShadowedCallee"'
-      title: token48
+      title: token48.Module1.Standard
       type: 172
     - hidden: false
       index: 49
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '272'
       parent: null
       text: '
 
         '
-      title: token49
+      title: token49.Module1.Standard
       type: 183
     - hidden: false
       index: 50
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '273'
       parent: null
       text: End Sub
-      title: token50
+      title: token50.Module1.Standard
       type: 44
     used_by: []
     uses: []
@@ -1824,36 +1824,36 @@ library_defs:
       - hidden: false
         index: 7
         link: null
-        obj_id: '292'
+        obj_id: '280'
         parent: null
         text: Print
-        title: token7.Main.Module2.Standard.Main.Module2.Standard
+        title: token7.Main.Module2.Standard
         type: 100
       - hidden: false
         index: 8
         link: null
-        obj_id: '293'
+        obj_id: '281'
         parent: null
         text: ' '
-        title: token8.Main.Module2.Standard.Main.Module2.Standard
+        title: token8.Main.Module2.Standard
         type: 185
       - hidden: false
         index: 9
         link: null
-        obj_id: '294'
+        obj_id: '282'
         parent: null
         text: '"hello world"'
-        title: token9.Main.Module2.Standard.Main.Module2.Standard
+        title: token9.Main.Module2.Standard
         type: 172
       - hidden: false
         index: 10
         link: null
-        obj_id: '295'
+        obj_id: '283'
         parent: null
         text: '
 
           '
-        title: token10.Main.Module2.Standard.Main.Module2.Standard
+        title: token10.Main.Module2.Standard
         type: 183
       calls: []
       library: Standard
@@ -1870,86 +1870,86 @@ library_defs:
       - hidden: false
         index: 9
         link: null
-        obj_id: '294'
+        obj_id: '282'
         parent: null
         text: '"hello world"'
-        title: token9.Main.Module2.Standard.Main.Module2.Standard
+        title: token9.Main.Module2.Standard
         type: 172
       title: Main.Module2.Standard
       tokens:
       - hidden: false
         index: 3
         link: null
-        obj_id: '288'
+        obj_id: '276'
         parent: null
         text: Sub
-        title: token3.Main.Module2.Standard.Main.Module2.Standard
+        title: token3.Main.Module2.Standard
         type: 125
       - hidden: false
         index: 4
         link: null
-        obj_id: '289'
+        obj_id: '277'
         parent: null
         text: ' '
-        title: token4.Main.Module2.Standard.Main.Module2.Standard
+        title: token4.Main.Module2.Standard
         type: 185
       - hidden: false
         index: 5
         link: null
-        obj_id: '290'
+        obj_id: '278'
         parent: null
         text: Main
-        title: token5.Main.Module2.Standard.Main.Module2.Standard
+        title: token5.Main.Module2.Standard
         type: 181
       - hidden: false
         index: 6
         link: null
-        obj_id: '291'
+        obj_id: '279'
         parent: null
         text: "\n\t"
-        title: token6.Main.Module2.Standard.Main.Module2.Standard
+        title: token6.Main.Module2.Standard
         type: 183
       - hidden: false
         index: 7
         link: null
-        obj_id: '292'
+        obj_id: '280'
         parent: null
         text: Print
-        title: token7.Main.Module2.Standard.Main.Module2.Standard
+        title: token7.Main.Module2.Standard
         type: 100
       - hidden: false
         index: 8
         link: null
-        obj_id: '293'
+        obj_id: '281'
         parent: null
         text: ' '
-        title: token8.Main.Module2.Standard.Main.Module2.Standard
+        title: token8.Main.Module2.Standard
         type: 185
       - hidden: false
         index: 9
         link: null
-        obj_id: '294'
+        obj_id: '282'
         parent: null
         text: '"hello world"'
-        title: token9.Main.Module2.Standard.Main.Module2.Standard
+        title: token9.Main.Module2.Standard
         type: 172
       - hidden: false
         index: 10
         link: null
-        obj_id: '295'
+        obj_id: '283'
         parent: null
         text: '
 
           '
-        title: token10.Main.Module2.Standard.Main.Module2.Standard
+        title: token10.Main.Module2.Standard
         type: 183
       - hidden: false
         index: 11
         link: null
-        obj_id: '296'
+        obj_id: '284'
         parent: null
         text: End Sub
-        title: token11.Main.Module2.Standard.Main.Module2.Standard
+        title: token11.Main.Module2.Standard
         type: 44
       used_by: []
       uses: []
@@ -1969,46 +1969,46 @@ library_defs:
     - hidden: true
       index: 0
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '285'
       parent: null
       text: REM  *****  BASIC  *****
-      title: token0
+      title: token0.Module2.Standard
       type: 184
     - hidden: false
       index: 1
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '286'
       parent: null
       text: '
 
         '
-      title: token1
+      title: token1.Module2.Standard
       type: 183
     - hidden: false
       index: 2
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '287'
       parent: null
       text: '
 
         '
-      title: token2
+      title: token2.Module2.Standard
       type: 183
     - hidden: false
       index: 3
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '288'
       parent: null
       text: Sub
-      title: token3
+      title: token3.Module2.Standard
       type: 125
     - hidden: false
       index: 4
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '289'
       parent: null
       text: ' '
-      title: token4
+      title: token4.Module2.Standard
       type: 185
     - hidden: false
       index: 5
@@ -2016,60 +2016,60 @@ library_defs:
         bookmark: null
         local_id: Main.Module2.Standard
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '290'
       parent: null
       text: Main
-      title: token5
+      title: token5.Module2.Standard
       type: 181
     - hidden: false
       index: 6
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '291'
       parent: null
       text: "\n\t"
-      title: token6
+      title: token6.Module2.Standard
       type: 183
     - hidden: false
       index: 7
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '292'
       parent: null
       text: Print
-      title: token7
+      title: token7.Module2.Standard
       type: 100
     - hidden: false
       index: 8
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '293'
       parent: null
       text: ' '
-      title: token8
+      title: token8.Module2.Standard
       type: 185
     - hidden: false
       index: 9
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '294'
       parent: null
       text: '"hello world"'
-      title: token9
+      title: token9.Module2.Standard
       type: 172
     - hidden: false
       index: 10
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '295'
       parent: null
       text: '
 
         '
-      title: token10
+      title: token10.Module2.Standard
       type: 183
     - hidden: false
       index: 11
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '296'
       parent: null
       text: End Sub
-      title: token11
+      title: token11.Module2.Standard
       type: 44
     used_by: []
     uses: []
@@ -2089,36 +2089,36 @@ library_defs:
       - hidden: false
         index: 7
         link: null
-        obj_id: '436'
+        obj_id: '304'
         parent: null
         text: Error
-        title: token7.Main.Module1.Library1.Main.Module1.Library1
+        title: token7.Main.Module1.Library1
         type: 49
       - hidden: false
         index: 8
         link: null
-        obj_id: '437'
+        obj_id: '305'
         parent: null
         text: ' '
-        title: token8.Main.Module1.Library1.Main.Module1.Library1
+        title: token8.Main.Module1.Library1
         type: 185
       - hidden: false
         index: 9
         link: null
-        obj_id: '438'
+        obj_id: '306'
         parent: null
         text: '"Mijn fout"'
-        title: token9.Main.Module1.Library1.Main.Module1.Library1
+        title: token9.Main.Module1.Library1
         type: 172
       - hidden: false
         index: 10
         link: null
-        obj_id: '439'
+        obj_id: '307'
         parent: null
         text: '
 
           '
-        title: token10.Main.Module1.Library1.Main.Module1.Library1
+        title: token10.Main.Module1.Library1
         type: 183
       calls: []
       library: Library1
@@ -2135,86 +2135,86 @@ library_defs:
       - hidden: false
         index: 9
         link: null
-        obj_id: '438'
+        obj_id: '306'
         parent: null
         text: '"Mijn fout"'
-        title: token9.Main.Module1.Library1.Main.Module1.Library1
+        title: token9.Main.Module1.Library1
         type: 172
       title: Main.Module1.Library1
       tokens:
       - hidden: false
         index: 3
         link: null
-        obj_id: '432'
+        obj_id: '300'
         parent: null
         text: Sub
-        title: token3.Main.Module1.Library1.Main.Module1.Library1
+        title: token3.Main.Module1.Library1
         type: 125
       - hidden: false
         index: 4
         link: null
-        obj_id: '433'
+        obj_id: '301'
         parent: null
         text: ' '
-        title: token4.Main.Module1.Library1.Main.Module1.Library1
+        title: token4.Main.Module1.Library1
         type: 185
       - hidden: false
         index: 5
         link: null
-        obj_id: '434'
+        obj_id: '302'
         parent: null
         text: Main
-        title: token5.Main.Module1.Library1.Main.Module1.Library1
+        title: token5.Main.Module1.Library1
         type: 181
       - hidden: false
         index: 6
         link: null
-        obj_id: '435'
+        obj_id: '303'
         parent: null
         text: "\n\t"
-        title: token6.Main.Module1.Library1.Main.Module1.Library1
+        title: token6.Main.Module1.Library1
         type: 183
       - hidden: false
         index: 7
         link: null
-        obj_id: '436'
+        obj_id: '304'
         parent: null
         text: Error
-        title: token7.Main.Module1.Library1.Main.Module1.Library1
+        title: token7.Main.Module1.Library1
         type: 49
       - hidden: false
         index: 8
         link: null
-        obj_id: '437'
+        obj_id: '305'
         parent: null
         text: ' '
-        title: token8.Main.Module1.Library1.Main.Module1.Library1
+        title: token8.Main.Module1.Library1
         type: 185
       - hidden: false
         index: 9
         link: null
-        obj_id: '438'
+        obj_id: '306'
         parent: null
         text: '"Mijn fout"'
-        title: token9.Main.Module1.Library1.Main.Module1.Library1
+        title: token9.Main.Module1.Library1
         type: 172
       - hidden: false
         index: 10
         link: null
-        obj_id: '439'
+        obj_id: '307'
         parent: null
         text: '
 
           '
-        title: token10.Main.Module1.Library1.Main.Module1.Library1
+        title: token10.Main.Module1.Library1
         type: 183
       - hidden: false
         index: 11
         link: null
-        obj_id: '440'
+        obj_id: '308'
         parent: null
         text: End Sub
-        title: token11.Main.Module1.Library1.Main.Module1.Library1
+        title: token11.Main.Module1.Library1
         type: 44
       used_by: []
       uses: []
@@ -2225,50 +2225,50 @@ library_defs:
           bookmark: null
           local_id: CalleeSub.Module1.Library1
           object_type: basicfunction
-        obj_id: '449'
+        obj_id: '316'
         parent: null
         text: CalleeSub
-        title: token20.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token20.CallerSub.Module1.Library1
         type: 181
       - hidden: false
         index: 21
         link: null
-        obj_id: '450'
+        obj_id: '317'
         parent: null
         text: (
-        title: token21.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token21.CallerSub.Module1.Library1
         type: 157
       - hidden: false
         index: 22
         link: null
-        obj_id: '451'
+        obj_id: '318'
         parent: null
         text: )
-        title: token22.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token22.CallerSub.Module1.Library1
         type: 168
       - hidden: false
         index: 23
         link: null
-        obj_id: '452'
+        obj_id: '319'
         parent: null
         text: "\n\t"
-        title: token23.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token23.CallerSub.Module1.Library1
         type: 183
       - hidden: false
         index: 24
         link: null
-        obj_id: '453'
+        obj_id: '320'
         parent: null
         text: Module2
-        title: token24.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token24.CallerSub.Module1.Library1
         type: 181
       - hidden: false
         index: 25
         link: null
-        obj_id: '454'
+        obj_id: '321'
         parent: null
         text: .
-        title: token25.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token25.CallerSub.Module1.Library1
         type: 150
       - hidden: false
         index: 26
@@ -2276,36 +2276,36 @@ library_defs:
           bookmark: null
           local_id: CalleeSub.Module2.Library1
           object_type: basicfunction
-        obj_id: '455'
+        obj_id: '322'
         parent: null
         text: CalleeSub
-        title: token26.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token26.CallerSub.Module1.Library1
         type: 181
       - hidden: false
         index: 27
         link: null
-        obj_id: '456'
+        obj_id: '323'
         parent: null
         text: (
-        title: token27.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token27.CallerSub.Module1.Library1
         type: 157
       - hidden: false
         index: 28
         link: null
-        obj_id: '457'
+        obj_id: '324'
         parent: null
         text: )
-        title: token28.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token28.CallerSub.Module1.Library1
         type: 168
       - hidden: false
         index: 29
         link: null
-        obj_id: '458'
+        obj_id: '325'
         parent: null
         text: '
 
           '
-        title: token29.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token29.CallerSub.Module1.Library1
         type: 183
       calls:
       - module_token: null
@@ -2316,19 +2316,19 @@ library_defs:
             bookmark: null
             local_id: CalleeSub.Module1.Library1
             object_type: basicfunction
-          obj_id: '449'
+          obj_id: '316'
           parent: null
           text: CalleeSub
-          title: token20.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+          title: token20.CallerSub.Module1.Library1
           type: 181
       - module_token:
           hidden: false
           index: 24
           link: null
-          obj_id: '453'
+          obj_id: '320'
           parent: null
           text: Module2
-          title: token24.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+          title: token24.CallerSub.Module1.Library1
           type: 181
         name_token:
           hidden: false
@@ -2337,10 +2337,10 @@ library_defs:
             bookmark: null
             local_id: CalleeSub.Module2.Library1
             object_type: basicfunction
-          obj_id: '455'
+          obj_id: '322'
           parent: null
           text: CalleeSub
-          title: token26.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+          title: token26.CallerSub.Module1.Library1
           type: 181
       library: Library1
       module: Module1
@@ -2358,50 +2358,50 @@ library_defs:
       - hidden: false
         index: 14
         link: null
-        obj_id: '443'
+        obj_id: '310'
         parent: null
         text: Sub
-        title: token14.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token14.CallerSub.Module1.Library1
         type: 125
       - hidden: false
         index: 15
         link: null
-        obj_id: '444'
+        obj_id: '311'
         parent: null
         text: ' '
-        title: token15.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token15.CallerSub.Module1.Library1
         type: 185
       - hidden: false
         index: 16
         link: null
-        obj_id: '445'
+        obj_id: '312'
         parent: null
         text: CallerSub
-        title: token16.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token16.CallerSub.Module1.Library1
         type: 181
       - hidden: false
         index: 17
         link: null
-        obj_id: '446'
+        obj_id: '313'
         parent: null
         text: (
-        title: token17.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token17.CallerSub.Module1.Library1
         type: 157
       - hidden: false
         index: 18
         link: null
-        obj_id: '447'
+        obj_id: '314'
         parent: null
         text: )
-        title: token18.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token18.CallerSub.Module1.Library1
         type: 168
       - hidden: false
         index: 19
         link: null
-        obj_id: '448'
+        obj_id: '315'
         parent: null
         text: "\n\t"
-        title: token19.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token19.CallerSub.Module1.Library1
         type: 183
       - hidden: false
         index: 20
@@ -2409,50 +2409,50 @@ library_defs:
           bookmark: null
           local_id: CalleeSub.Module1.Library1
           object_type: basicfunction
-        obj_id: '449'
+        obj_id: '316'
         parent: null
         text: CalleeSub
-        title: token20.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token20.CallerSub.Module1.Library1
         type: 181
       - hidden: false
         index: 21
         link: null
-        obj_id: '450'
+        obj_id: '317'
         parent: null
         text: (
-        title: token21.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token21.CallerSub.Module1.Library1
         type: 157
       - hidden: false
         index: 22
         link: null
-        obj_id: '451'
+        obj_id: '318'
         parent: null
         text: )
-        title: token22.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token22.CallerSub.Module1.Library1
         type: 168
       - hidden: false
         index: 23
         link: null
-        obj_id: '452'
+        obj_id: '319'
         parent: null
         text: "\n\t"
-        title: token23.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token23.CallerSub.Module1.Library1
         type: 183
       - hidden: false
         index: 24
         link: null
-        obj_id: '453'
+        obj_id: '320'
         parent: null
         text: Module2
-        title: token24.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token24.CallerSub.Module1.Library1
         type: 181
       - hidden: false
         index: 25
         link: null
-        obj_id: '454'
+        obj_id: '321'
         parent: null
         text: .
-        title: token25.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token25.CallerSub.Module1.Library1
         type: 150
       - hidden: false
         index: 26
@@ -2460,44 +2460,44 @@ library_defs:
           bookmark: null
           local_id: CalleeSub.Module2.Library1
           object_type: basicfunction
-        obj_id: '455'
+        obj_id: '322'
         parent: null
         text: CalleeSub
-        title: token26.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token26.CallerSub.Module1.Library1
         type: 181
       - hidden: false
         index: 27
         link: null
-        obj_id: '456'
+        obj_id: '323'
         parent: null
         text: (
-        title: token27.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token27.CallerSub.Module1.Library1
         type: 157
       - hidden: false
         index: 28
         link: null
-        obj_id: '457'
+        obj_id: '324'
         parent: null
         text: )
-        title: token28.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token28.CallerSub.Module1.Library1
         type: 168
       - hidden: false
         index: 29
         link: null
-        obj_id: '458'
+        obj_id: '325'
         parent: null
         text: '
 
           '
-        title: token29.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token29.CallerSub.Module1.Library1
         type: 183
       - hidden: false
         index: 30
         link: null
-        obj_id: '459'
+        obj_id: '326'
         parent: null
         text: End Sub
-        title: token30.CallerSub.Module1.Library1.CallerSub.Module1.Library1
+        title: token30.CallerSub.Module1.Library1
         type: 44
       used_by: []
       uses:
@@ -2511,36 +2511,36 @@ library_defs:
       - hidden: false
         index: 39
         link: null
-        obj_id: '468'
+        obj_id: '334'
         parent: null
         text: print
-        title: token39.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token39.CalleeSub.Module1.Library1
         type: 100
       - hidden: false
         index: 40
         link: null
-        obj_id: '469'
+        obj_id: '335'
         parent: null
         text: ' '
-        title: token40.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token40.CalleeSub.Module1.Library1
         type: 185
       - hidden: false
         index: 41
         link: null
-        obj_id: '470'
+        obj_id: '336'
         parent: null
         text: '"Module1.CalleeSub"'
-        title: token41.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token41.CalleeSub.Module1.Library1
         type: 172
       - hidden: false
         index: 42
         link: null
-        obj_id: '471'
+        obj_id: '337'
         parent: null
         text: '
 
           '
-        title: token42.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token42.CalleeSub.Module1.Library1
         type: 183
       calls: []
       library: Library1
@@ -2557,107 +2557,107 @@ library_defs:
       - hidden: false
         index: 41
         link: null
-        obj_id: '470'
+        obj_id: '336'
         parent: null
         text: '"Module1.CalleeSub"'
-        title: token41.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token41.CalleeSub.Module1.Library1
         type: 172
       title: CalleeSub.Module1.Library1
       tokens:
       - hidden: false
         index: 33
         link: null
-        obj_id: '462'
+        obj_id: '328'
         parent: null
         text: Sub
-        title: token33.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token33.CalleeSub.Module1.Library1
         type: 125
       - hidden: false
         index: 34
         link: null
-        obj_id: '463'
+        obj_id: '329'
         parent: null
         text: ' '
-        title: token34.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token34.CalleeSub.Module1.Library1
         type: 185
       - hidden: false
         index: 35
         link: null
-        obj_id: '464'
+        obj_id: '330'
         parent: null
         text: CalleeSub
-        title: token35.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token35.CalleeSub.Module1.Library1
         type: 181
       - hidden: false
         index: 36
         link: null
-        obj_id: '465'
+        obj_id: '331'
         parent: null
         text: (
-        title: token36.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token36.CalleeSub.Module1.Library1
         type: 157
       - hidden: false
         index: 37
         link: null
-        obj_id: '466'
+        obj_id: '332'
         parent: null
         text: )
-        title: token37.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token37.CalleeSub.Module1.Library1
         type: 168
       - hidden: false
         index: 38
         link: null
-        obj_id: '467'
+        obj_id: '333'
         parent: null
         text: "\n\t"
-        title: token38.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token38.CalleeSub.Module1.Library1
         type: 183
       - hidden: false
         index: 39
         link: null
-        obj_id: '468'
+        obj_id: '334'
         parent: null
         text: print
-        title: token39.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token39.CalleeSub.Module1.Library1
         type: 100
       - hidden: false
         index: 40
         link: null
-        obj_id: '469'
+        obj_id: '335'
         parent: null
         text: ' '
-        title: token40.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token40.CalleeSub.Module1.Library1
         type: 185
       - hidden: false
         index: 41
         link: null
-        obj_id: '470'
+        obj_id: '336'
         parent: null
         text: '"Module1.CalleeSub"'
-        title: token41.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token41.CalleeSub.Module1.Library1
         type: 172
       - hidden: false
         index: 42
         link: null
-        obj_id: '471'
+        obj_id: '337'
         parent: null
         text: '
 
           '
-        title: token42.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token42.CalleeSub.Module1.Library1
         type: 183
       - hidden: false
         index: 43
         link: null
-        obj_id: '472'
+        obj_id: '338'
         parent: null
         text: End Sub
-        title: token43.CalleeSub.Module1.Library1.CalleeSub.Module1.Library1
+        title: token43.CalleeSub.Module1.Library1
         type: 44
       used_by:
       - bookmark: null
         local_id: CallerSub.Module1.Library1
-        location_id: '449'
+        location_id: '316'
         object_type: basicfunction
       uses: []
     - body_tokens:
@@ -2667,36 +2667,36 @@ library_defs:
           bookmark: null
           local_id: CalleeTwoSub.Module2.Library1
           object_type: basicfunction
-        obj_id: '481'
+        obj_id: '346'
         parent: null
         text: CalleeTwoSub
-        title: token52.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token52.CallerTwo.Module1.Library1
         type: 181
       - hidden: false
         index: 53
         link: null
-        obj_id: '482'
+        obj_id: '347'
         parent: null
         text: (
-        title: token53.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token53.CallerTwo.Module1.Library1
         type: 157
       - hidden: false
         index: 54
         link: null
-        obj_id: '483'
+        obj_id: '348'
         parent: null
         text: )
-        title: token54.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token54.CallerTwo.Module1.Library1
         type: 168
       - hidden: false
         index: 55
         link: null
-        obj_id: '484'
+        obj_id: '349'
         parent: null
         text: '
 
           '
-        title: token55.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token55.CallerTwo.Module1.Library1
         type: 183
       calls:
       - module_token: null
@@ -2707,10 +2707,10 @@ library_defs:
             bookmark: null
             local_id: CalleeTwoSub.Module2.Library1
             object_type: basicfunction
-          obj_id: '481'
+          obj_id: '346'
           parent: null
           text: CalleeTwoSub
-          title: token52.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+          title: token52.CallerTwo.Module1.Library1
           type: 181
       library: Library1
       module: Module1
@@ -2728,50 +2728,50 @@ library_defs:
       - hidden: false
         index: 46
         link: null
-        obj_id: '475'
+        obj_id: '340'
         parent: null
         text: sub
-        title: token46.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token46.CallerTwo.Module1.Library1
         type: 125
       - hidden: false
         index: 47
         link: null
-        obj_id: '476'
+        obj_id: '341'
         parent: null
         text: ' '
-        title: token47.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token47.CallerTwo.Module1.Library1
         type: 185
       - hidden: false
         index: 48
         link: null
-        obj_id: '477'
+        obj_id: '342'
         parent: null
         text: CallerTwo
-        title: token48.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token48.CallerTwo.Module1.Library1
         type: 181
       - hidden: false
         index: 49
         link: null
-        obj_id: '478'
+        obj_id: '343'
         parent: null
         text: (
-        title: token49.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token49.CallerTwo.Module1.Library1
         type: 157
       - hidden: false
         index: 50
         link: null
-        obj_id: '479'
+        obj_id: '344'
         parent: null
         text: )
-        title: token50.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token50.CallerTwo.Module1.Library1
         type: 168
       - hidden: false
         index: 51
         link: null
-        obj_id: '480'
+        obj_id: '345'
         parent: null
         text: "\n\t"
-        title: token51.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token51.CallerTwo.Module1.Library1
         type: 183
       - hidden: false
         index: 52
@@ -2779,44 +2779,44 @@ library_defs:
           bookmark: null
           local_id: CalleeTwoSub.Module2.Library1
           object_type: basicfunction
-        obj_id: '481'
+        obj_id: '346'
         parent: null
         text: CalleeTwoSub
-        title: token52.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token52.CallerTwo.Module1.Library1
         type: 181
       - hidden: false
         index: 53
         link: null
-        obj_id: '482'
+        obj_id: '347'
         parent: null
         text: (
-        title: token53.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token53.CallerTwo.Module1.Library1
         type: 157
       - hidden: false
         index: 54
         link: null
-        obj_id: '483'
+        obj_id: '348'
         parent: null
         text: )
-        title: token54.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token54.CallerTwo.Module1.Library1
         type: 168
       - hidden: false
         index: 55
         link: null
-        obj_id: '484'
+        obj_id: '349'
         parent: null
         text: '
 
           '
-        title: token55.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token55.CallerTwo.Module1.Library1
         type: 183
       - hidden: false
         index: 56
         link: null
-        obj_id: '485'
+        obj_id: '350'
         parent: null
         text: End Sub
-        title: token56.CallerTwo.Module1.Library1.CallerTwo.Module1.Library1
+        title: token56.CallerTwo.Module1.Library1
         type: 44
       used_by: []
       uses:
@@ -2830,50 +2830,50 @@ library_defs:
           bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
           object_type: basicfunction
-        obj_id: '494'
+        obj_id: '358'
         parent: null
         text: CalleeOtherLib
-        title: token65.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token65.CallerOtherLib.Module1.Library1
         type: 181
       - hidden: false
         index: 66
         link: null
-        obj_id: '495'
+        obj_id: '359'
         parent: null
         text: (
-        title: token66.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token66.CallerOtherLib.Module1.Library1
         type: 157
       - hidden: false
         index: 67
         link: null
-        obj_id: '496'
+        obj_id: '360'
         parent: null
         text: )
-        title: token67.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token67.CallerOtherLib.Module1.Library1
         type: 168
       - hidden: false
         index: 68
         link: null
-        obj_id: '497'
+        obj_id: '361'
         parent: null
         text: "\n\t"
-        title: token68.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token68.CallerOtherLib.Module1.Library1
         type: 183
       - hidden: false
         index: 69
         link: null
-        obj_id: '498'
+        obj_id: '362'
         parent: null
         text: Module1
-        title: token69.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token69.CallerOtherLib.Module1.Library1
         type: 181
       - hidden: false
         index: 70
         link: null
-        obj_id: '499'
+        obj_id: '363'
         parent: null
         text: .
-        title: token70.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token70.CallerOtherLib.Module1.Library1
         type: 150
       - hidden: false
         index: 71
@@ -2881,36 +2881,36 @@ library_defs:
           bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
           object_type: basicfunction
-        obj_id: '500'
+        obj_id: '364'
         parent: null
         text: CalleeOtherLib
-        title: token71.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token71.CallerOtherLib.Module1.Library1
         type: 181
       - hidden: false
         index: 72
         link: null
-        obj_id: '501'
+        obj_id: '365'
         parent: null
         text: (
-        title: token72.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token72.CallerOtherLib.Module1.Library1
         type: 157
       - hidden: false
         index: 73
         link: null
-        obj_id: '502'
+        obj_id: '366'
         parent: null
         text: )
-        title: token73.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token73.CallerOtherLib.Module1.Library1
         type: 168
       - hidden: false
         index: 74
         link: null
-        obj_id: '503'
+        obj_id: '367'
         parent: null
         text: '
 
           '
-        title: token74.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token74.CallerOtherLib.Module1.Library1
         type: 183
       calls:
       - module_token: null
@@ -2921,19 +2921,19 @@ library_defs:
             bookmark: null
             local_id: CalleeOtherLib.Module1.Standard
             object_type: basicfunction
-          obj_id: '494'
+          obj_id: '358'
           parent: null
           text: CalleeOtherLib
-          title: token65.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+          title: token65.CallerOtherLib.Module1.Library1
           type: 181
       - module_token:
           hidden: false
           index: 69
           link: null
-          obj_id: '498'
+          obj_id: '362'
           parent: null
           text: Module1
-          title: token69.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+          title: token69.CallerOtherLib.Module1.Library1
           type: 181
         name_token:
           hidden: false
@@ -2942,10 +2942,10 @@ library_defs:
             bookmark: null
             local_id: CalleeOtherLib.Module1.Standard
             object_type: basicfunction
-          obj_id: '500'
+          obj_id: '364'
           parent: null
           text: CalleeOtherLib
-          title: token71.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+          title: token71.CallerOtherLib.Module1.Library1
           type: 181
       library: Library1
       module: Module1
@@ -2963,50 +2963,50 @@ library_defs:
       - hidden: false
         index: 59
         link: null
-        obj_id: '488'
+        obj_id: '352'
         parent: null
         text: Sub
-        title: token59.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token59.CallerOtherLib.Module1.Library1
         type: 125
       - hidden: false
         index: 60
         link: null
-        obj_id: '489'
+        obj_id: '353'
         parent: null
         text: ' '
-        title: token60.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token60.CallerOtherLib.Module1.Library1
         type: 185
       - hidden: false
         index: 61
         link: null
-        obj_id: '490'
+        obj_id: '354'
         parent: null
         text: CallerOtherLib
-        title: token61.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token61.CallerOtherLib.Module1.Library1
         type: 181
       - hidden: false
         index: 62
         link: null
-        obj_id: '491'
+        obj_id: '355'
         parent: null
         text: (
-        title: token62.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token62.CallerOtherLib.Module1.Library1
         type: 157
       - hidden: false
         index: 63
         link: null
-        obj_id: '492'
+        obj_id: '356'
         parent: null
         text: )
-        title: token63.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token63.CallerOtherLib.Module1.Library1
         type: 168
       - hidden: false
         index: 64
         link: null
-        obj_id: '493'
+        obj_id: '357'
         parent: null
         text: "\n\t"
-        title: token64.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token64.CallerOtherLib.Module1.Library1
         type: 183
       - hidden: false
         index: 65
@@ -3014,50 +3014,50 @@ library_defs:
           bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
           object_type: basicfunction
-        obj_id: '494'
+        obj_id: '358'
         parent: null
         text: CalleeOtherLib
-        title: token65.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token65.CallerOtherLib.Module1.Library1
         type: 181
       - hidden: false
         index: 66
         link: null
-        obj_id: '495'
+        obj_id: '359'
         parent: null
         text: (
-        title: token66.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token66.CallerOtherLib.Module1.Library1
         type: 157
       - hidden: false
         index: 67
         link: null
-        obj_id: '496'
+        obj_id: '360'
         parent: null
         text: )
-        title: token67.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token67.CallerOtherLib.Module1.Library1
         type: 168
       - hidden: false
         index: 68
         link: null
-        obj_id: '497'
+        obj_id: '361'
         parent: null
         text: "\n\t"
-        title: token68.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token68.CallerOtherLib.Module1.Library1
         type: 183
       - hidden: false
         index: 69
         link: null
-        obj_id: '498'
+        obj_id: '362'
         parent: null
         text: Module1
-        title: token69.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token69.CallerOtherLib.Module1.Library1
         type: 181
       - hidden: false
         index: 70
         link: null
-        obj_id: '499'
+        obj_id: '363'
         parent: null
         text: .
-        title: token70.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token70.CallerOtherLib.Module1.Library1
         type: 150
       - hidden: false
         index: 71
@@ -3065,44 +3065,44 @@ library_defs:
           bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
           object_type: basicfunction
-        obj_id: '500'
+        obj_id: '364'
         parent: null
         text: CalleeOtherLib
-        title: token71.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token71.CallerOtherLib.Module1.Library1
         type: 181
       - hidden: false
         index: 72
         link: null
-        obj_id: '501'
+        obj_id: '365'
         parent: null
         text: (
-        title: token72.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token72.CallerOtherLib.Module1.Library1
         type: 157
       - hidden: false
         index: 73
         link: null
-        obj_id: '502'
+        obj_id: '366'
         parent: null
         text: )
-        title: token73.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token73.CallerOtherLib.Module1.Library1
         type: 168
       - hidden: false
         index: 74
         link: null
-        obj_id: '503'
+        obj_id: '367'
         parent: null
         text: '
 
           '
-        title: token74.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token74.CallerOtherLib.Module1.Library1
         type: 183
       - hidden: false
         index: 75
         link: null
-        obj_id: '504'
+        obj_id: '368'
         parent: null
         text: End Sub
-        title: token75.CallerOtherLib.Module1.Library1.CallerOtherLib.Module1.Library1
+        title: token75.CallerOtherLib.Module1.Library1
         type: 44
       used_by: []
       uses:
@@ -3119,36 +3119,36 @@ library_defs:
           bookmark: null
           local_id: ShadowedCallee.Module1.Library1
           object_type: basicfunction
-        obj_id: '513'
+        obj_id: '376'
         parent: null
         text: ShadowedCallee
-        title: token84.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token84.CallerShadowedCallee.Module1.Library1
         type: 181
       - hidden: false
         index: 85
         link: null
-        obj_id: '514'
+        obj_id: '377'
         parent: null
         text: (
-        title: token85.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token85.CallerShadowedCallee.Module1.Library1
         type: 157
       - hidden: false
         index: 86
         link: null
-        obj_id: '515'
+        obj_id: '378'
         parent: null
         text: )
-        title: token86.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token86.CallerShadowedCallee.Module1.Library1
         type: 168
       - hidden: false
         index: 87
         link: null
-        obj_id: '516'
+        obj_id: '379'
         parent: null
         text: '
 
           '
-        title: token87.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token87.CallerShadowedCallee.Module1.Library1
         type: 183
       calls:
       - module_token: null
@@ -3159,10 +3159,10 @@ library_defs:
             bookmark: null
             local_id: ShadowedCallee.Module1.Library1
             object_type: basicfunction
-          obj_id: '513'
+          obj_id: '376'
           parent: null
           text: ShadowedCallee
-          title: token84.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+          title: token84.CallerShadowedCallee.Module1.Library1
           type: 181
       library: Library1
       module: Module1
@@ -3180,50 +3180,50 @@ library_defs:
       - hidden: false
         index: 78
         link: null
-        obj_id: '507'
+        obj_id: '370'
         parent: null
         text: Sub
-        title: token78.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token78.CallerShadowedCallee.Module1.Library1
         type: 125
       - hidden: false
         index: 79
         link: null
-        obj_id: '508'
+        obj_id: '371'
         parent: null
         text: ' '
-        title: token79.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token79.CallerShadowedCallee.Module1.Library1
         type: 185
       - hidden: false
         index: 80
         link: null
-        obj_id: '509'
+        obj_id: '372'
         parent: null
         text: CallerShadowedCallee
-        title: token80.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token80.CallerShadowedCallee.Module1.Library1
         type: 181
       - hidden: false
         index: 81
         link: null
-        obj_id: '510'
+        obj_id: '373'
         parent: null
         text: (
-        title: token81.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token81.CallerShadowedCallee.Module1.Library1
         type: 157
       - hidden: false
         index: 82
         link: null
-        obj_id: '511'
+        obj_id: '374'
         parent: null
         text: )
-        title: token82.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token82.CallerShadowedCallee.Module1.Library1
         type: 168
       - hidden: false
         index: 83
         link: null
-        obj_id: '512'
+        obj_id: '375'
         parent: null
         text: "\n\t"
-        title: token83.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token83.CallerShadowedCallee.Module1.Library1
         type: 183
       - hidden: false
         index: 84
@@ -3231,44 +3231,44 @@ library_defs:
           bookmark: null
           local_id: ShadowedCallee.Module1.Library1
           object_type: basicfunction
-        obj_id: '513'
+        obj_id: '376'
         parent: null
         text: ShadowedCallee
-        title: token84.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token84.CallerShadowedCallee.Module1.Library1
         type: 181
       - hidden: false
         index: 85
         link: null
-        obj_id: '514'
+        obj_id: '377'
         parent: null
         text: (
-        title: token85.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token85.CallerShadowedCallee.Module1.Library1
         type: 157
       - hidden: false
         index: 86
         link: null
-        obj_id: '515'
+        obj_id: '378'
         parent: null
         text: )
-        title: token86.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token86.CallerShadowedCallee.Module1.Library1
         type: 168
       - hidden: false
         index: 87
         link: null
-        obj_id: '516'
+        obj_id: '379'
         parent: null
         text: '
 
           '
-        title: token87.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token87.CallerShadowedCallee.Module1.Library1
         type: 183
       - hidden: false
         index: 88
         link: null
-        obj_id: '517'
+        obj_id: '380'
         parent: null
         text: End Sub
-        title: token88.CallerShadowedCallee.Module1.Library1.CallerShadowedCallee.Module1.Library1
+        title: token88.CallerShadowedCallee.Module1.Library1
         type: 44
       used_by: []
       uses:
@@ -3279,36 +3279,36 @@ library_defs:
       - hidden: false
         index: 97
         link: null
-        obj_id: '526'
+        obj_id: '388'
         parent: null
         text: print
-        title: token97.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token97.ShadowedCallee.Module1.Library1
         type: 100
       - hidden: false
         index: 98
         link: null
-        obj_id: '527'
+        obj_id: '389'
         parent: null
         text: ' '
-        title: token98.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token98.ShadowedCallee.Module1.Library1
         type: 185
       - hidden: false
         index: 99
         link: null
-        obj_id: '528'
+        obj_id: '390'
         parent: null
         text: '"Library1.Module1.ShadowedCallee"'
-        title: token99.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token99.ShadowedCallee.Module1.Library1
         type: 172
       - hidden: false
         index: 100
         link: null
-        obj_id: '529'
+        obj_id: '391'
         parent: null
         text: '
 
           '
-        title: token100.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token100.ShadowedCallee.Module1.Library1
         type: 183
       calls: []
       library: Library1
@@ -3325,125 +3325,125 @@ library_defs:
       - hidden: false
         index: 99
         link: null
-        obj_id: '528'
+        obj_id: '390'
         parent: null
         text: '"Library1.Module1.ShadowedCallee"'
-        title: token99.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token99.ShadowedCallee.Module1.Library1
         type: 172
       title: ShadowedCallee.Module1.Library1
       tokens:
       - hidden: false
         index: 91
         link: null
-        obj_id: '520'
+        obj_id: '382'
         parent: null
         text: Sub
-        title: token91.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token91.ShadowedCallee.Module1.Library1
         type: 125
       - hidden: false
         index: 92
         link: null
-        obj_id: '521'
+        obj_id: '383'
         parent: null
         text: ' '
-        title: token92.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token92.ShadowedCallee.Module1.Library1
         type: 185
       - hidden: false
         index: 93
         link: null
-        obj_id: '522'
+        obj_id: '384'
         parent: null
         text: ShadowedCallee
-        title: token93.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token93.ShadowedCallee.Module1.Library1
         type: 181
       - hidden: false
         index: 94
         link: null
-        obj_id: '523'
+        obj_id: '385'
         parent: null
         text: (
-        title: token94.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token94.ShadowedCallee.Module1.Library1
         type: 157
       - hidden: false
         index: 95
         link: null
-        obj_id: '524'
+        obj_id: '386'
         parent: null
         text: )
-        title: token95.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token95.ShadowedCallee.Module1.Library1
         type: 168
       - hidden: false
         index: 96
         link: null
-        obj_id: '525'
+        obj_id: '387'
         parent: null
         text: "\n\t"
-        title: token96.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token96.ShadowedCallee.Module1.Library1
         type: 183
       - hidden: false
         index: 97
         link: null
-        obj_id: '526'
+        obj_id: '388'
         parent: null
         text: print
-        title: token97.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token97.ShadowedCallee.Module1.Library1
         type: 100
       - hidden: false
         index: 98
         link: null
-        obj_id: '527'
+        obj_id: '389'
         parent: null
         text: ' '
-        title: token98.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token98.ShadowedCallee.Module1.Library1
         type: 185
       - hidden: false
         index: 99
         link: null
-        obj_id: '528'
+        obj_id: '390'
         parent: null
         text: '"Library1.Module1.ShadowedCallee"'
-        title: token99.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token99.ShadowedCallee.Module1.Library1
         type: 172
       - hidden: false
         index: 100
         link: null
-        obj_id: '529'
+        obj_id: '391'
         parent: null
         text: '
 
           '
-        title: token100.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token100.ShadowedCallee.Module1.Library1
         type: 183
       - hidden: false
         index: 101
         link: null
-        obj_id: '530'
+        obj_id: '392'
         parent: null
         text: End Sub
-        title: token101.ShadowedCallee.Module1.Library1.ShadowedCallee.Module1.Library1
+        title: token101.ShadowedCallee.Module1.Library1
         type: 44
       used_by:
       - bookmark: null
         local_id: CallerShadowedCallee.Module1.Library1
-        location_id: '513'
+        location_id: '376'
         object_type: basicfunction
       uses: []
     - body_tokens:
       - hidden: false
         index: 110
         link: null
-        obj_id: '539'
+        obj_id: '400'
         parent: null
         text: print
-        title: token110.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token110.ReferToTable.Module1.Library1
         type: 100
       - hidden: false
         index: 111
         link: null
-        obj_id: '540'
+        obj_id: '401'
         parent: null
         text: ' '
-        title: token111.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token111.ReferToTable.Module1.Library1
         type: 185
       - hidden: false
         index: 112
@@ -3451,20 +3451,20 @@ library_defs:
           bookmark: null
           local_id: Plant
           object_type: table
-        obj_id: '541'
+        obj_id: '402'
         parent: null
         text: '"Plant"'
-        title: token112.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token112.ReferToTable.Module1.Library1
         type: 172
       - hidden: false
         index: 113
         link: null
-        obj_id: '542'
+        obj_id: '403'
         parent: null
         text: '
 
           '
-        title: token113.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token113.ReferToTable.Module1.Library1
         type: 183
       calls: []
       library: Library1
@@ -3484,76 +3484,76 @@ library_defs:
           bookmark: null
           local_id: Plant
           object_type: table
-        obj_id: '541'
+        obj_id: '402'
         parent: null
         text: '"Plant"'
-        title: token112.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token112.ReferToTable.Module1.Library1
         type: 172
       title: ReferToTable.Module1.Library1
       tokens:
       - hidden: false
         index: 104
         link: null
-        obj_id: '533'
+        obj_id: '394'
         parent: null
         text: Sub
-        title: token104.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token104.ReferToTable.Module1.Library1
         type: 125
       - hidden: false
         index: 105
         link: null
-        obj_id: '534'
+        obj_id: '395'
         parent: null
         text: ' '
-        title: token105.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token105.ReferToTable.Module1.Library1
         type: 185
       - hidden: false
         index: 106
         link: null
-        obj_id: '535'
+        obj_id: '396'
         parent: null
         text: ReferToTable
-        title: token106.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token106.ReferToTable.Module1.Library1
         type: 181
       - hidden: false
         index: 107
         link: null
-        obj_id: '536'
+        obj_id: '397'
         parent: null
         text: (
-        title: token107.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token107.ReferToTable.Module1.Library1
         type: 157
       - hidden: false
         index: 108
         link: null
-        obj_id: '537'
+        obj_id: '398'
         parent: null
         text: )
-        title: token108.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token108.ReferToTable.Module1.Library1
         type: 168
       - hidden: false
         index: 109
         link: null
-        obj_id: '538'
+        obj_id: '399'
         parent: null
         text: "\n\t"
-        title: token109.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token109.ReferToTable.Module1.Library1
         type: 183
       - hidden: false
         index: 110
         link: null
-        obj_id: '539'
+        obj_id: '400'
         parent: null
         text: print
-        title: token110.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token110.ReferToTable.Module1.Library1
         type: 100
       - hidden: false
         index: 111
         link: null
-        obj_id: '540'
+        obj_id: '401'
         parent: null
         text: ' '
-        title: token111.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token111.ReferToTable.Module1.Library1
         type: 185
       - hidden: false
         index: 112
@@ -3561,28 +3561,28 @@ library_defs:
           bookmark: null
           local_id: Plant
           object_type: table
-        obj_id: '541'
+        obj_id: '402'
         parent: null
         text: '"Plant"'
-        title: token112.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token112.ReferToTable.Module1.Library1
         type: 172
       - hidden: false
         index: 113
         link: null
-        obj_id: '542'
+        obj_id: '403'
         parent: null
         text: '
 
           '
-        title: token113.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token113.ReferToTable.Module1.Library1
         type: 183
       - hidden: false
         index: 114
         link: null
-        obj_id: '543'
+        obj_id: '404'
         parent: null
         text: End Sub
-        title: token114.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+        title: token114.ReferToTable.Module1.Library1
         type: 44
       used_by: []
       uses:
@@ -3593,18 +3593,18 @@ library_defs:
       - hidden: false
         index: 123
         link: null
-        obj_id: '552'
+        obj_id: '412'
         parent: null
         text: print
-        title: token123.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token123.ReferToView.Module1.Library1
         type: 100
       - hidden: false
         index: 124
         link: null
-        obj_id: '553'
+        obj_id: '413'
         parent: null
         text: ' '
-        title: token124.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token124.ReferToView.Module1.Library1
         type: 185
       - hidden: false
         index: 125
@@ -3612,20 +3612,20 @@ library_defs:
           bookmark: null
           local_id: view1
           object_type: view
-        obj_id: '554'
+        obj_id: '414'
         parent: null
         text: '"view1"'
-        title: token125.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token125.ReferToView.Module1.Library1
         type: 172
       - hidden: false
         index: 126
         link: null
-        obj_id: '555'
+        obj_id: '415'
         parent: null
         text: '
 
           '
-        title: token126.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token126.ReferToView.Module1.Library1
         type: 183
       calls: []
       library: Library1
@@ -3645,76 +3645,76 @@ library_defs:
           bookmark: null
           local_id: view1
           object_type: view
-        obj_id: '554'
+        obj_id: '414'
         parent: null
         text: '"view1"'
-        title: token125.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token125.ReferToView.Module1.Library1
         type: 172
       title: ReferToView.Module1.Library1
       tokens:
       - hidden: false
         index: 117
         link: null
-        obj_id: '546'
+        obj_id: '406'
         parent: null
         text: Sub
-        title: token117.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token117.ReferToView.Module1.Library1
         type: 125
       - hidden: false
         index: 118
         link: null
-        obj_id: '547'
+        obj_id: '407'
         parent: null
         text: ' '
-        title: token118.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token118.ReferToView.Module1.Library1
         type: 185
       - hidden: false
         index: 119
         link: null
-        obj_id: '548'
+        obj_id: '408'
         parent: null
         text: ReferToView
-        title: token119.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token119.ReferToView.Module1.Library1
         type: 181
       - hidden: false
         index: 120
         link: null
-        obj_id: '549'
+        obj_id: '409'
         parent: null
         text: (
-        title: token120.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token120.ReferToView.Module1.Library1
         type: 157
       - hidden: false
         index: 121
         link: null
-        obj_id: '550'
+        obj_id: '410'
         parent: null
         text: )
-        title: token121.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token121.ReferToView.Module1.Library1
         type: 168
       - hidden: false
         index: 122
         link: null
-        obj_id: '551'
+        obj_id: '411'
         parent: null
         text: "\n\t"
-        title: token122.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token122.ReferToView.Module1.Library1
         type: 183
       - hidden: false
         index: 123
         link: null
-        obj_id: '552'
+        obj_id: '412'
         parent: null
         text: print
-        title: token123.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token123.ReferToView.Module1.Library1
         type: 100
       - hidden: false
         index: 124
         link: null
-        obj_id: '553'
+        obj_id: '413'
         parent: null
         text: ' '
-        title: token124.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token124.ReferToView.Module1.Library1
         type: 185
       - hidden: false
         index: 125
@@ -3722,28 +3722,28 @@ library_defs:
           bookmark: null
           local_id: view1
           object_type: view
-        obj_id: '554'
+        obj_id: '414'
         parent: null
         text: '"view1"'
-        title: token125.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token125.ReferToView.Module1.Library1
         type: 172
       - hidden: false
         index: 126
         link: null
-        obj_id: '555'
+        obj_id: '415'
         parent: null
         text: '
 
           '
-        title: token126.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token126.ReferToView.Module1.Library1
         type: 183
       - hidden: false
         index: 127
         link: null
-        obj_id: '556'
+        obj_id: '416'
         parent: null
         text: End Sub
-        title: token127.ReferToView.Module1.Library1.ReferToView.Module1.Library1
+        title: token127.ReferToView.Module1.Library1
         type: 44
       used_by: []
       uses:
@@ -3754,18 +3754,18 @@ library_defs:
       - hidden: false
         index: 136
         link: null
-        obj_id: '565'
+        obj_id: '424'
         parent: null
         text: print
-        title: token136.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token136.ReferToQuery.Module1.Library1
         type: 100
       - hidden: false
         index: 137
         link: null
-        obj_id: '566'
+        obj_id: '425'
         parent: null
         text: ' '
-        title: token137.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token137.ReferToQuery.Module1.Library1
         type: 185
       - hidden: false
         index: 138
@@ -3773,20 +3773,20 @@ library_defs:
           bookmark: null
           local_id: FamilyLookup
           object_type: query
-        obj_id: '567'
+        obj_id: '426'
         parent: null
         text: '"FamilyLookup"'
-        title: token138.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token138.ReferToQuery.Module1.Library1
         type: 172
       - hidden: false
         index: 139
         link: null
-        obj_id: '568'
+        obj_id: '427'
         parent: null
         text: '
 
           '
-        title: token139.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token139.ReferToQuery.Module1.Library1
         type: 183
       calls: []
       library: Library1
@@ -3806,76 +3806,76 @@ library_defs:
           bookmark: null
           local_id: FamilyLookup
           object_type: query
-        obj_id: '567'
+        obj_id: '426'
         parent: null
         text: '"FamilyLookup"'
-        title: token138.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token138.ReferToQuery.Module1.Library1
         type: 172
       title: ReferToQuery.Module1.Library1
       tokens:
       - hidden: false
         index: 130
         link: null
-        obj_id: '559'
+        obj_id: '418'
         parent: null
         text: Sub
-        title: token130.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token130.ReferToQuery.Module1.Library1
         type: 125
       - hidden: false
         index: 131
         link: null
-        obj_id: '560'
+        obj_id: '419'
         parent: null
         text: ' '
-        title: token131.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token131.ReferToQuery.Module1.Library1
         type: 185
       - hidden: false
         index: 132
         link: null
-        obj_id: '561'
+        obj_id: '420'
         parent: null
         text: ReferToQuery
-        title: token132.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token132.ReferToQuery.Module1.Library1
         type: 181
       - hidden: false
         index: 133
         link: null
-        obj_id: '562'
+        obj_id: '421'
         parent: null
         text: (
-        title: token133.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token133.ReferToQuery.Module1.Library1
         type: 157
       - hidden: false
         index: 134
         link: null
-        obj_id: '563'
+        obj_id: '422'
         parent: null
         text: )
-        title: token134.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token134.ReferToQuery.Module1.Library1
         type: 168
       - hidden: false
         index: 135
         link: null
-        obj_id: '564'
+        obj_id: '423'
         parent: null
         text: "\n\t"
-        title: token135.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token135.ReferToQuery.Module1.Library1
         type: 183
       - hidden: false
         index: 136
         link: null
-        obj_id: '565'
+        obj_id: '424'
         parent: null
         text: print
-        title: token136.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token136.ReferToQuery.Module1.Library1
         type: 100
       - hidden: false
         index: 137
         link: null
-        obj_id: '566'
+        obj_id: '425'
         parent: null
         text: ' '
-        title: token137.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token137.ReferToQuery.Module1.Library1
         type: 185
       - hidden: false
         index: 138
@@ -3883,28 +3883,28 @@ library_defs:
           bookmark: null
           local_id: FamilyLookup
           object_type: query
-        obj_id: '567'
+        obj_id: '426'
         parent: null
         text: '"FamilyLookup"'
-        title: token138.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token138.ReferToQuery.Module1.Library1
         type: 172
       - hidden: false
         index: 139
         link: null
-        obj_id: '568'
+        obj_id: '427'
         parent: null
         text: '
 
           '
-        title: token139.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token139.ReferToQuery.Module1.Library1
         type: 183
       - hidden: false
         index: 140
         link: null
-        obj_id: '569'
+        obj_id: '428'
         parent: null
         text: End Sub
-        title: token140.ReferToQuery.Module1.Library1.ReferToQuery.Module1.Library1
+        title: token140.ReferToQuery.Module1.Library1
         type: 44
       used_by: []
       uses:
@@ -3943,46 +3943,46 @@ library_defs:
     - hidden: true
       index: 0
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '429'
       parent: null
       text: REM  *****  BASIC  *****
-      title: token0
+      title: token0.Module1.Library1
       type: 184
     - hidden: false
       index: 1
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '430'
       parent: null
       text: '
 
         '
-      title: token1
+      title: token1.Module1.Library1
       type: 183
     - hidden: false
       index: 2
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '431'
       parent: null
       text: '
 
         '
-      title: token2
+      title: token2.Module1.Library1
       type: 183
     - hidden: false
       index: 3
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '432'
       parent: null
       text: Sub
-      title: token3
+      title: token3.Module1.Library1
       type: 125
     - hidden: false
       index: 4
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '433'
       parent: null
       text: ' '
-      title: token4
+      title: token4.Module1.Library1
       type: 185
     - hidden: false
       index: 5
@@ -3990,96 +3990,96 @@ library_defs:
         bookmark: null
         local_id: Main.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '434'
       parent: null
       text: Main
-      title: token5
+      title: token5.Module1.Library1
       type: 181
     - hidden: false
       index: 6
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '435'
       parent: null
       text: "\n\t"
-      title: token6
+      title: token6.Module1.Library1
       type: 183
     - hidden: false
       index: 7
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '436'
       parent: null
       text: Error
-      title: token7
+      title: token7.Module1.Library1
       type: 49
     - hidden: false
       index: 8
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '437'
       parent: null
       text: ' '
-      title: token8
+      title: token8.Module1.Library1
       type: 185
     - hidden: false
       index: 9
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '438'
       parent: null
       text: '"Mijn fout"'
-      title: token9
+      title: token9.Module1.Library1
       type: 172
     - hidden: false
       index: 10
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '439'
       parent: null
       text: '
 
         '
-      title: token10
+      title: token10.Module1.Library1
       type: 183
     - hidden: false
       index: 11
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '440'
       parent: null
       text: End Sub
-      title: token11
+      title: token11.Module1.Library1
       type: 44
     - hidden: false
       index: 12
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '441'
       parent: null
       text: '
 
         '
-      title: token12
+      title: token12.Module1.Library1
       type: 183
     - hidden: false
       index: 13
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '442'
       parent: null
       text: '
 
         '
-      title: token13
+      title: token13.Module1.Library1
       type: 183
     - hidden: false
       index: 14
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '443'
       parent: null
       text: Sub
-      title: token14
+      title: token14.Module1.Library1
       type: 125
     - hidden: false
       index: 15
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '444'
       parent: null
       text: ' '
-      title: token15
+      title: token15.Module1.Library1
       type: 185
     - hidden: false
       index: 16
@@ -4087,166 +4087,166 @@ library_defs:
         bookmark: null
         local_id: CallerSub.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '445'
       parent: null
       text: CallerSub
-      title: token16
+      title: token16.Module1.Library1
       type: 181
     - hidden: false
       index: 17
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '446'
       parent: null
       text: (
-      title: token17
+      title: token17.Module1.Library1
       type: 157
     - hidden: false
       index: 18
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '447'
       parent: null
       text: )
-      title: token18
+      title: token18.Module1.Library1
       type: 168
     - hidden: false
       index: 19
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '448'
       parent: null
       text: "\n\t"
-      title: token19
+      title: token19.Module1.Library1
       type: 183
     - hidden: false
       index: 20
       link:
-        bookmark: null
-        local_id: CalleeSub.Module1.Library1
-        object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+        bookmark: CalleeSub
+        local_id: Module1.Library1
+        object_type: modules
+      obj_id: '449'
       parent: null
       text: CalleeSub
-      title: token20
+      title: token20.Module1.Library1
       type: 181
     - hidden: false
       index: 21
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '450'
       parent: null
       text: (
-      title: token21
+      title: token21.Module1.Library1
       type: 157
     - hidden: false
       index: 22
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '451'
       parent: null
       text: )
-      title: token22
+      title: token22.Module1.Library1
       type: 168
     - hidden: false
       index: 23
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '452'
       parent: null
       text: "\n\t"
-      title: token23
+      title: token23.Module1.Library1
       type: 183
     - hidden: false
       index: 24
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '453'
       parent: null
       text: Module2
-      title: token24
+      title: token24.Module1.Library1
       type: 181
     - hidden: false
       index: 25
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '454'
       parent: null
       text: .
-      title: token25
+      title: token25.Module1.Library1
       type: 150
     - hidden: false
       index: 26
       link:
-        bookmark: null
-        local_id: CalleeSub.Module2.Library1
-        object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+        bookmark: CalleeSub
+        local_id: Module2.Library1
+        object_type: modules
+      obj_id: '455'
       parent: null
       text: CalleeSub
-      title: token26
+      title: token26.Module1.Library1
       type: 181
     - hidden: false
       index: 27
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '456'
       parent: null
       text: (
-      title: token27
+      title: token27.Module1.Library1
       type: 157
     - hidden: false
       index: 28
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '457'
       parent: null
       text: )
-      title: token28
+      title: token28.Module1.Library1
       type: 168
     - hidden: false
       index: 29
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '458'
       parent: null
       text: '
 
         '
-      title: token29
+      title: token29.Module1.Library1
       type: 183
     - hidden: false
       index: 30
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '459'
       parent: null
       text: End Sub
-      title: token30
+      title: token30.Module1.Library1
       type: 44
     - hidden: false
       index: 31
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '460'
       parent: null
       text: '
 
         '
-      title: token31
+      title: token31.Module1.Library1
       type: 183
     - hidden: false
       index: 32
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '461'
       parent: null
       text: '
 
         '
-      title: token32
+      title: token32.Module1.Library1
       type: 183
     - hidden: false
       index: 33
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '462'
       parent: null
       text: Sub
-      title: token33
+      title: token33.Module1.Library1
       type: 125
     - hidden: false
       index: 34
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '463'
       parent: null
       text: ' '
-      title: token34
+      title: token34.Module1.Library1
       type: 185
     - hidden: false
       index: 35
@@ -4254,112 +4254,112 @@ library_defs:
         bookmark: null
         local_id: CalleeSub.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '464'
       parent: null
       text: CalleeSub
-      title: token35
+      title: token35.Module1.Library1
       type: 181
     - hidden: false
       index: 36
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '465'
       parent: null
       text: (
-      title: token36
+      title: token36.Module1.Library1
       type: 157
     - hidden: false
       index: 37
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '466'
       parent: null
       text: )
-      title: token37
+      title: token37.Module1.Library1
       type: 168
     - hidden: false
       index: 38
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '467'
       parent: null
       text: "\n\t"
-      title: token38
+      title: token38.Module1.Library1
       type: 183
     - hidden: false
       index: 39
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '468'
       parent: null
       text: print
-      title: token39
+      title: token39.Module1.Library1
       type: 100
     - hidden: false
       index: 40
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '469'
       parent: null
       text: ' '
-      title: token40
+      title: token40.Module1.Library1
       type: 185
     - hidden: false
       index: 41
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '470'
       parent: null
       text: '"Module1.CalleeSub"'
-      title: token41
+      title: token41.Module1.Library1
       type: 172
     - hidden: false
       index: 42
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '471'
       parent: null
       text: '
 
         '
-      title: token42
+      title: token42.Module1.Library1
       type: 183
     - hidden: false
       index: 43
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '472'
       parent: null
       text: End Sub
-      title: token43
+      title: token43.Module1.Library1
       type: 44
     - hidden: false
       index: 44
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '473'
       parent: null
       text: '
 
         '
-      title: token44
+      title: token44.Module1.Library1
       type: 183
     - hidden: false
       index: 45
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '474'
       parent: null
       text: '
 
         '
-      title: token45
+      title: token45.Module1.Library1
       type: 183
     - hidden: false
       index: 46
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '475'
       parent: null
       text: sub
-      title: token46
+      title: token46.Module1.Library1
       type: 125
     - hidden: false
       index: 47
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '476'
       parent: null
       text: ' '
-      title: token47
+      title: token47.Module1.Library1
       type: 185
     - hidden: false
       index: 48
@@ -4367,115 +4367,115 @@ library_defs:
         bookmark: null
         local_id: CallerTwo.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '477'
       parent: null
       text: CallerTwo
-      title: token48
+      title: token48.Module1.Library1
       type: 181
     - hidden: false
       index: 49
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '478'
       parent: null
       text: (
-      title: token49
+      title: token49.Module1.Library1
       type: 157
     - hidden: false
       index: 50
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '479'
       parent: null
       text: )
-      title: token50
+      title: token50.Module1.Library1
       type: 168
     - hidden: false
       index: 51
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '480'
       parent: null
       text: "\n\t"
-      title: token51
+      title: token51.Module1.Library1
       type: 183
     - hidden: false
       index: 52
       link:
-        bookmark: null
-        local_id: CalleeTwoSub.Module2.Library1
-        object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+        bookmark: CalleeTwoSub
+        local_id: Module2.Library1
+        object_type: modules
+      obj_id: '481'
       parent: null
       text: CalleeTwoSub
-      title: token52
+      title: token52.Module1.Library1
       type: 181
     - hidden: false
       index: 53
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '482'
       parent: null
       text: (
-      title: token53
+      title: token53.Module1.Library1
       type: 157
     - hidden: false
       index: 54
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '483'
       parent: null
       text: )
-      title: token54
+      title: token54.Module1.Library1
       type: 168
     - hidden: false
       index: 55
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '484'
       parent: null
       text: '
 
         '
-      title: token55
+      title: token55.Module1.Library1
       type: 183
     - hidden: false
       index: 56
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '485'
       parent: null
       text: End Sub
-      title: token56
+      title: token56.Module1.Library1
       type: 44
     - hidden: false
       index: 57
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '486'
       parent: null
       text: '
 
         '
-      title: token57
+      title: token57.Module1.Library1
       type: 183
     - hidden: false
       index: 58
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '487'
       parent: null
       text: '
 
         '
-      title: token58
+      title: token58.Module1.Library1
       type: 183
     - hidden: false
       index: 59
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '488'
       parent: null
       text: Sub
-      title: token59
+      title: token59.Module1.Library1
       type: 125
     - hidden: false
       index: 60
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '489'
       parent: null
       text: ' '
-      title: token60
+      title: token60.Module1.Library1
       type: 185
     - hidden: false
       index: 61
@@ -4483,166 +4483,166 @@ library_defs:
         bookmark: null
         local_id: CallerOtherLib.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '490'
       parent: null
       text: CallerOtherLib
-      title: token61
+      title: token61.Module1.Library1
       type: 181
     - hidden: false
       index: 62
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '491'
       parent: null
       text: (
-      title: token62
+      title: token62.Module1.Library1
       type: 157
     - hidden: false
       index: 63
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '492'
       parent: null
       text: )
-      title: token63
+      title: token63.Module1.Library1
       type: 168
     - hidden: false
       index: 64
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '493'
       parent: null
       text: "\n\t"
-      title: token64
+      title: token64.Module1.Library1
       type: 183
     - hidden: false
       index: 65
       link:
-        bookmark: null
-        local_id: CalleeOtherLib.Module1.Standard
-        object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+        bookmark: CalleeOtherLib
+        local_id: Module1.Standard
+        object_type: modules
+      obj_id: '494'
       parent: null
       text: CalleeOtherLib
-      title: token65
+      title: token65.Module1.Library1
       type: 181
     - hidden: false
       index: 66
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '495'
       parent: null
       text: (
-      title: token66
+      title: token66.Module1.Library1
       type: 157
     - hidden: false
       index: 67
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '496'
       parent: null
       text: )
-      title: token67
+      title: token67.Module1.Library1
       type: 168
     - hidden: false
       index: 68
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '497'
       parent: null
       text: "\n\t"
-      title: token68
+      title: token68.Module1.Library1
       type: 183
     - hidden: false
       index: 69
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '498'
       parent: null
       text: Module1
-      title: token69
+      title: token69.Module1.Library1
       type: 181
     - hidden: false
       index: 70
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '499'
       parent: null
       text: .
-      title: token70
+      title: token70.Module1.Library1
       type: 150
     - hidden: false
       index: 71
       link:
-        bookmark: null
-        local_id: CalleeOtherLib.Module1.Standard
-        object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+        bookmark: CalleeOtherLib
+        local_id: Module1.Standard
+        object_type: modules
+      obj_id: '500'
       parent: null
       text: CalleeOtherLib
-      title: token71
+      title: token71.Module1.Library1
       type: 181
     - hidden: false
       index: 72
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '501'
       parent: null
       text: (
-      title: token72
+      title: token72.Module1.Library1
       type: 157
     - hidden: false
       index: 73
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '502'
       parent: null
       text: )
-      title: token73
+      title: token73.Module1.Library1
       type: 168
     - hidden: false
       index: 74
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '503'
       parent: null
       text: '
 
         '
-      title: token74
+      title: token74.Module1.Library1
       type: 183
     - hidden: false
       index: 75
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '504'
       parent: null
       text: End Sub
-      title: token75
+      title: token75.Module1.Library1
       type: 44
     - hidden: false
       index: 76
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '505'
       parent: null
       text: '
 
         '
-      title: token76
+      title: token76.Module1.Library1
       type: 183
     - hidden: false
       index: 77
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '506'
       parent: null
       text: '
 
         '
-      title: token77
+      title: token77.Module1.Library1
       type: 183
     - hidden: false
       index: 78
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '507'
       parent: null
       text: Sub
-      title: token78
+      title: token78.Module1.Library1
       type: 125
     - hidden: false
       index: 79
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '508'
       parent: null
       text: ' '
-      title: token79
+      title: token79.Module1.Library1
       type: 185
     - hidden: false
       index: 80
@@ -4650,115 +4650,115 @@ library_defs:
         bookmark: null
         local_id: CallerShadowedCallee.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '509'
       parent: null
       text: CallerShadowedCallee
-      title: token80
+      title: token80.Module1.Library1
       type: 181
     - hidden: false
       index: 81
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '510'
       parent: null
       text: (
-      title: token81
+      title: token81.Module1.Library1
       type: 157
     - hidden: false
       index: 82
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '511'
       parent: null
       text: )
-      title: token82
+      title: token82.Module1.Library1
       type: 168
     - hidden: false
       index: 83
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '512'
       parent: null
       text: "\n\t"
-      title: token83
+      title: token83.Module1.Library1
       type: 183
     - hidden: false
       index: 84
       link:
-        bookmark: null
-        local_id: ShadowedCallee.Module1.Library1
-        object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+        bookmark: ShadowedCallee
+        local_id: Module1.Library1
+        object_type: modules
+      obj_id: '513'
       parent: null
       text: ShadowedCallee
-      title: token84
+      title: token84.Module1.Library1
       type: 181
     - hidden: false
       index: 85
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '514'
       parent: null
       text: (
-      title: token85
+      title: token85.Module1.Library1
       type: 157
     - hidden: false
       index: 86
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '515'
       parent: null
       text: )
-      title: token86
+      title: token86.Module1.Library1
       type: 168
     - hidden: false
       index: 87
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '516'
       parent: null
       text: '
 
         '
-      title: token87
+      title: token87.Module1.Library1
       type: 183
     - hidden: false
       index: 88
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '517'
       parent: null
       text: End Sub
-      title: token88
+      title: token88.Module1.Library1
       type: 44
     - hidden: false
       index: 89
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '518'
       parent: null
       text: '
 
         '
-      title: token89
+      title: token89.Module1.Library1
       type: 183
     - hidden: false
       index: 90
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '519'
       parent: null
       text: '
 
         '
-      title: token90
+      title: token90.Module1.Library1
       type: 183
     - hidden: false
       index: 91
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '520'
       parent: null
       text: Sub
-      title: token91
+      title: token91.Module1.Library1
       type: 125
     - hidden: false
       index: 92
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '521'
       parent: null
       text: ' '
-      title: token92
+      title: token92.Module1.Library1
       type: 185
     - hidden: false
       index: 93
@@ -4766,112 +4766,112 @@ library_defs:
         bookmark: null
         local_id: ShadowedCallee.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '522'
       parent: null
       text: ShadowedCallee
-      title: token93
+      title: token93.Module1.Library1
       type: 181
     - hidden: false
       index: 94
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '523'
       parent: null
       text: (
-      title: token94
+      title: token94.Module1.Library1
       type: 157
     - hidden: false
       index: 95
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '524'
       parent: null
       text: )
-      title: token95
+      title: token95.Module1.Library1
       type: 168
     - hidden: false
       index: 96
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '525'
       parent: null
       text: "\n\t"
-      title: token96
+      title: token96.Module1.Library1
       type: 183
     - hidden: false
       index: 97
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '526'
       parent: null
       text: print
-      title: token97
+      title: token97.Module1.Library1
       type: 100
     - hidden: false
       index: 98
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '527'
       parent: null
       text: ' '
-      title: token98
+      title: token98.Module1.Library1
       type: 185
     - hidden: false
       index: 99
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '528'
       parent: null
       text: '"Library1.Module1.ShadowedCallee"'
-      title: token99
+      title: token99.Module1.Library1
       type: 172
     - hidden: false
       index: 100
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '529'
       parent: null
       text: '
 
         '
-      title: token100
+      title: token100.Module1.Library1
       type: 183
     - hidden: false
       index: 101
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '530'
       parent: null
       text: End Sub
-      title: token101
+      title: token101.Module1.Library1
       type: 44
     - hidden: false
       index: 102
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '531'
       parent: null
       text: '
 
         '
-      title: token102
+      title: token102.Module1.Library1
       type: 183
     - hidden: false
       index: 103
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '532'
       parent: null
       text: '
 
         '
-      title: token103
+      title: token103.Module1.Library1
       type: 183
     - hidden: false
       index: 104
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '533'
       parent: null
       text: Sub
-      title: token104
+      title: token104.Module1.Library1
       type: 125
     - hidden: false
       index: 105
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '534'
       parent: null
       text: ' '
-      title: token105
+      title: token105.Module1.Library1
       type: 185
     - hidden: false
       index: 106
@@ -4879,50 +4879,50 @@ library_defs:
         bookmark: null
         local_id: ReferToTable.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '535'
       parent: null
       text: ReferToTable
-      title: token106
+      title: token106.Module1.Library1
       type: 181
     - hidden: false
       index: 107
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '536'
       parent: null
       text: (
-      title: token107
+      title: token107.Module1.Library1
       type: 157
     - hidden: false
       index: 108
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '537'
       parent: null
       text: )
-      title: token108
+      title: token108.Module1.Library1
       type: 168
     - hidden: false
       index: 109
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '538'
       parent: null
       text: "\n\t"
-      title: token109
+      title: token109.Module1.Library1
       type: 183
     - hidden: false
       index: 110
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '539'
       parent: null
       text: print
-      title: token110
+      title: token110.Module1.Library1
       type: 100
     - hidden: false
       index: 111
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '540'
       parent: null
       text: ' '
-      title: token111
+      title: token111.Module1.Library1
       type: 185
     - hidden: false
       index: 112
@@ -4930,64 +4930,64 @@ library_defs:
         bookmark: null
         local_id: Plant
         object_type: table
-      obj_id: OBJID_NOT_SET
+      obj_id: '541'
       parent: null
       text: '"Plant"'
-      title: token112
+      title: token112.Module1.Library1
       type: 172
     - hidden: false
       index: 113
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '542'
       parent: null
       text: '
 
         '
-      title: token113
+      title: token113.Module1.Library1
       type: 183
     - hidden: false
       index: 114
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '543'
       parent: null
       text: End Sub
-      title: token114
+      title: token114.Module1.Library1
       type: 44
     - hidden: false
       index: 115
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '544'
       parent: null
       text: '
 
         '
-      title: token115
+      title: token115.Module1.Library1
       type: 183
     - hidden: false
       index: 116
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '545'
       parent: null
       text: '
 
         '
-      title: token116
+      title: token116.Module1.Library1
       type: 183
     - hidden: false
       index: 117
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '546'
       parent: null
       text: Sub
-      title: token117
+      title: token117.Module1.Library1
       type: 125
     - hidden: false
       index: 118
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '547'
       parent: null
       text: ' '
-      title: token118
+      title: token118.Module1.Library1
       type: 185
     - hidden: false
       index: 119
@@ -4995,50 +4995,50 @@ library_defs:
         bookmark: null
         local_id: ReferToView.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '548'
       parent: null
       text: ReferToView
-      title: token119
+      title: token119.Module1.Library1
       type: 181
     - hidden: false
       index: 120
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '549'
       parent: null
       text: (
-      title: token120
+      title: token120.Module1.Library1
       type: 157
     - hidden: false
       index: 121
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '550'
       parent: null
       text: )
-      title: token121
+      title: token121.Module1.Library1
       type: 168
     - hidden: false
       index: 122
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '551'
       parent: null
       text: "\n\t"
-      title: token122
+      title: token122.Module1.Library1
       type: 183
     - hidden: false
       index: 123
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '552'
       parent: null
       text: print
-      title: token123
+      title: token123.Module1.Library1
       type: 100
     - hidden: false
       index: 124
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '553'
       parent: null
       text: ' '
-      title: token124
+      title: token124.Module1.Library1
       type: 185
     - hidden: false
       index: 125
@@ -5046,64 +5046,64 @@ library_defs:
         bookmark: null
         local_id: view1
         object_type: view
-      obj_id: OBJID_NOT_SET
+      obj_id: '554'
       parent: null
       text: '"view1"'
-      title: token125
+      title: token125.Module1.Library1
       type: 172
     - hidden: false
       index: 126
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '555'
       parent: null
       text: '
 
         '
-      title: token126
+      title: token126.Module1.Library1
       type: 183
     - hidden: false
       index: 127
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '556'
       parent: null
       text: End Sub
-      title: token127
+      title: token127.Module1.Library1
       type: 44
     - hidden: false
       index: 128
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '557'
       parent: null
       text: '
 
         '
-      title: token128
+      title: token128.Module1.Library1
       type: 183
     - hidden: false
       index: 129
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '558'
       parent: null
       text: '
 
         '
-      title: token129
+      title: token129.Module1.Library1
       type: 183
     - hidden: false
       index: 130
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '559'
       parent: null
       text: Sub
-      title: token130
+      title: token130.Module1.Library1
       type: 125
     - hidden: false
       index: 131
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '560'
       parent: null
       text: ' '
-      title: token131
+      title: token131.Module1.Library1
       type: 185
     - hidden: false
       index: 132
@@ -5111,50 +5111,50 @@ library_defs:
         bookmark: null
         local_id: ReferToQuery.Module1.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '561'
       parent: null
       text: ReferToQuery
-      title: token132
+      title: token132.Module1.Library1
       type: 181
     - hidden: false
       index: 133
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '562'
       parent: null
       text: (
-      title: token133
+      title: token133.Module1.Library1
       type: 157
     - hidden: false
       index: 134
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '563'
       parent: null
       text: )
-      title: token134
+      title: token134.Module1.Library1
       type: 168
     - hidden: false
       index: 135
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '564'
       parent: null
       text: "\n\t"
-      title: token135
+      title: token135.Module1.Library1
       type: 183
     - hidden: false
       index: 136
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '565'
       parent: null
       text: print
-      title: token136
+      title: token136.Module1.Library1
       type: 100
     - hidden: false
       index: 137
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '566'
       parent: null
       text: ' '
-      title: token137
+      title: token137.Module1.Library1
       type: 185
     - hidden: false
       index: 138
@@ -5162,28 +5162,28 @@ library_defs:
         bookmark: null
         local_id: FamilyLookup
         object_type: query
-      obj_id: OBJID_NOT_SET
+      obj_id: '567'
       parent: null
       text: '"FamilyLookup"'
-      title: token138
+      title: token138.Module1.Library1
       type: 172
     - hidden: false
       index: 139
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '568'
       parent: null
       text: '
 
         '
-      title: token139
+      title: token139.Module1.Library1
       type: 183
     - hidden: false
       index: 140
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '569'
       parent: null
       text: End Sub
-      title: token140
+      title: token140.Module1.Library1
       type: 44
     used_by: []
     uses: []
@@ -5192,36 +5192,36 @@ library_defs:
       - hidden: false
         index: 9
         link: null
-        obj_id: '604'
+        obj_id: '578'
         parent: null
         text: print
-        title: token9.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token9.CalleeSub.Module2.Library1
         type: 100
       - hidden: false
         index: 10
         link: null
-        obj_id: '605'
+        obj_id: '579'
         parent: null
         text: ' '
-        title: token10.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token10.CalleeSub.Module2.Library1
         type: 185
       - hidden: false
         index: 11
         link: null
-        obj_id: '606'
+        obj_id: '580'
         parent: null
         text: '"Module2.CalleeSub"'
-        title: token11.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token11.CalleeSub.Module2.Library1
         type: 172
       - hidden: false
         index: 12
         link: null
-        obj_id: '607'
+        obj_id: '581'
         parent: null
         text: '
 
           '
-        title: token12.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token12.CalleeSub.Module2.Library1
         type: 183
       calls: []
       library: Library1
@@ -5238,143 +5238,143 @@ library_defs:
       - hidden: false
         index: 11
         link: null
-        obj_id: '606'
+        obj_id: '580'
         parent: null
         text: '"Module2.CalleeSub"'
-        title: token11.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token11.CalleeSub.Module2.Library1
         type: 172
       title: CalleeSub.Module2.Library1
       tokens:
       - hidden: false
         index: 3
         link: null
-        obj_id: '598'
+        obj_id: '572'
         parent: null
         text: Sub
-        title: token3.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token3.CalleeSub.Module2.Library1
         type: 125
       - hidden: false
         index: 4
         link: null
-        obj_id: '599'
+        obj_id: '573'
         parent: null
         text: ' '
-        title: token4.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token4.CalleeSub.Module2.Library1
         type: 185
       - hidden: false
         index: 5
         link: null
-        obj_id: '600'
+        obj_id: '574'
         parent: null
         text: CalleeSub
-        title: token5.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token5.CalleeSub.Module2.Library1
         type: 181
       - hidden: false
         index: 6
         link: null
-        obj_id: '601'
+        obj_id: '575'
         parent: null
         text: (
-        title: token6.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token6.CalleeSub.Module2.Library1
         type: 157
       - hidden: false
         index: 7
         link: null
-        obj_id: '602'
+        obj_id: '576'
         parent: null
         text: )
-        title: token7.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token7.CalleeSub.Module2.Library1
         type: 168
       - hidden: false
         index: 8
         link: null
-        obj_id: '603'
+        obj_id: '577'
         parent: null
         text: "\n\t"
-        title: token8.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token8.CalleeSub.Module2.Library1
         type: 183
       - hidden: false
         index: 9
         link: null
-        obj_id: '604'
+        obj_id: '578'
         parent: null
         text: print
-        title: token9.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token9.CalleeSub.Module2.Library1
         type: 100
       - hidden: false
         index: 10
         link: null
-        obj_id: '605'
+        obj_id: '579'
         parent: null
         text: ' '
-        title: token10.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token10.CalleeSub.Module2.Library1
         type: 185
       - hidden: false
         index: 11
         link: null
-        obj_id: '606'
+        obj_id: '580'
         parent: null
         text: '"Module2.CalleeSub"'
-        title: token11.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token11.CalleeSub.Module2.Library1
         type: 172
       - hidden: false
         index: 12
         link: null
-        obj_id: '607'
+        obj_id: '581'
         parent: null
         text: '
 
           '
-        title: token12.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token12.CalleeSub.Module2.Library1
         type: 183
       - hidden: false
         index: 13
         link: null
-        obj_id: '608'
+        obj_id: '582'
         parent: null
         text: End Sub
-        title: token13.CalleeSub.Module2.Library1.CalleeSub.Module2.Library1
+        title: token13.CalleeSub.Module2.Library1
         type: 44
       used_by:
       - bookmark: null
         local_id: CallerSub.Module1.Library1
-        location_id: '455'
+        location_id: '322'
         object_type: basicfunction
       uses: []
     - body_tokens:
       - hidden: false
         index: 22
         link: null
-        obj_id: '617'
+        obj_id: '590'
         parent: null
         text: print
-        title: token22.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token22.CalleeTwoSub.Module2.Library1
         type: 100
       - hidden: false
         index: 23
         link: null
-        obj_id: '618'
+        obj_id: '591'
         parent: null
         text: ' '
-        title: token23.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token23.CalleeTwoSub.Module2.Library1
         type: 185
       - hidden: false
         index: 24
         link: null
-        obj_id: '619'
+        obj_id: '592'
         parent: null
         text: '"Module2.CalleeTwoSub"'
-        title: token24.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token24.CalleeTwoSub.Module2.Library1
         type: 172
       - hidden: false
         index: 25
         link: null
-        obj_id: '620'
+        obj_id: '593'
         parent: null
         text: '
 
           '
-        title: token25.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token25.CalleeTwoSub.Module2.Library1
         type: 183
       calls: []
       library: Library1
@@ -5391,107 +5391,107 @@ library_defs:
       - hidden: false
         index: 24
         link: null
-        obj_id: '619'
+        obj_id: '592'
         parent: null
         text: '"Module2.CalleeTwoSub"'
-        title: token24.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token24.CalleeTwoSub.Module2.Library1
         type: 172
       title: CalleeTwoSub.Module2.Library1
       tokens:
       - hidden: false
         index: 16
         link: null
-        obj_id: '611'
+        obj_id: '584'
         parent: null
         text: Sub
-        title: token16.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token16.CalleeTwoSub.Module2.Library1
         type: 125
       - hidden: false
         index: 17
         link: null
-        obj_id: '612'
+        obj_id: '585'
         parent: null
         text: ' '
-        title: token17.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token17.CalleeTwoSub.Module2.Library1
         type: 185
       - hidden: false
         index: 18
         link: null
-        obj_id: '613'
+        obj_id: '586'
         parent: null
         text: CalleeTwoSub
-        title: token18.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token18.CalleeTwoSub.Module2.Library1
         type: 181
       - hidden: false
         index: 19
         link: null
-        obj_id: '614'
+        obj_id: '587'
         parent: null
         text: (
-        title: token19.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token19.CalleeTwoSub.Module2.Library1
         type: 157
       - hidden: false
         index: 20
         link: null
-        obj_id: '615'
+        obj_id: '588'
         parent: null
         text: )
-        title: token20.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token20.CalleeTwoSub.Module2.Library1
         type: 168
       - hidden: false
         index: 21
         link: null
-        obj_id: '616'
+        obj_id: '589'
         parent: null
         text: "\n\t"
-        title: token21.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token21.CalleeTwoSub.Module2.Library1
         type: 183
       - hidden: false
         index: 22
         link: null
-        obj_id: '617'
+        obj_id: '590'
         parent: null
         text: print
-        title: token22.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token22.CalleeTwoSub.Module2.Library1
         type: 100
       - hidden: false
         index: 23
         link: null
-        obj_id: '618'
+        obj_id: '591'
         parent: null
         text: ' '
-        title: token23.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token23.CalleeTwoSub.Module2.Library1
         type: 185
       - hidden: false
         index: 24
         link: null
-        obj_id: '619'
+        obj_id: '592'
         parent: null
         text: '"Module2.CalleeTwoSub"'
-        title: token24.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token24.CalleeTwoSub.Module2.Library1
         type: 172
       - hidden: false
         index: 25
         link: null
-        obj_id: '620'
+        obj_id: '593'
         parent: null
         text: '
 
           '
-        title: token25.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token25.CalleeTwoSub.Module2.Library1
         type: 183
       - hidden: false
         index: 26
         link: null
-        obj_id: '621'
+        obj_id: '594'
         parent: null
         text: End Sub
-        title: token26.CalleeTwoSub.Module2.Library1.CalleeTwoSub.Module2.Library1
+        title: token26.CalleeTwoSub.Module2.Library1
         type: 44
       used_by:
       - bookmark: null
         local_id: CallerTwo.Module1.Library1
-        location_id: '481'
+        location_id: '346'
         object_type: basicfunction
       uses: []
     library: Library1
@@ -5512,46 +5512,46 @@ library_defs:
     - hidden: true
       index: 0
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '595'
       parent: null
       text: REM  *****  BASIC  *****
-      title: token0
+      title: token0.Module2.Library1
       type: 184
     - hidden: false
       index: 1
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '596'
       parent: null
       text: '
 
         '
-      title: token1
+      title: token1.Module2.Library1
       type: 183
     - hidden: false
       index: 2
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '597'
       parent: null
       text: '
 
         '
-      title: token2
+      title: token2.Module2.Library1
       type: 183
     - hidden: false
       index: 3
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '598'
       parent: null
       text: Sub
-      title: token3
+      title: token3.Module2.Library1
       type: 125
     - hidden: false
       index: 4
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '599'
       parent: null
       text: ' '
-      title: token4
+      title: token4.Module2.Library1
       type: 185
     - hidden: false
       index: 5
@@ -5559,112 +5559,112 @@ library_defs:
         bookmark: null
         local_id: CalleeSub.Module2.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '600'
       parent: null
       text: CalleeSub
-      title: token5
+      title: token5.Module2.Library1
       type: 181
     - hidden: false
       index: 6
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '601'
       parent: null
       text: (
-      title: token6
+      title: token6.Module2.Library1
       type: 157
     - hidden: false
       index: 7
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '602'
       parent: null
       text: )
-      title: token7
+      title: token7.Module2.Library1
       type: 168
     - hidden: false
       index: 8
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '603'
       parent: null
       text: "\n\t"
-      title: token8
+      title: token8.Module2.Library1
       type: 183
     - hidden: false
       index: 9
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '604'
       parent: null
       text: print
-      title: token9
+      title: token9.Module2.Library1
       type: 100
     - hidden: false
       index: 10
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '605'
       parent: null
       text: ' '
-      title: token10
+      title: token10.Module2.Library1
       type: 185
     - hidden: false
       index: 11
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '606'
       parent: null
       text: '"Module2.CalleeSub"'
-      title: token11
+      title: token11.Module2.Library1
       type: 172
     - hidden: false
       index: 12
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '607'
       parent: null
       text: '
 
         '
-      title: token12
+      title: token12.Module2.Library1
       type: 183
     - hidden: false
       index: 13
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '608'
       parent: null
       text: End Sub
-      title: token13
+      title: token13.Module2.Library1
       type: 44
     - hidden: false
       index: 14
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '609'
       parent: null
       text: '
 
         '
-      title: token14
+      title: token14.Module2.Library1
       type: 183
     - hidden: false
       index: 15
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '610'
       parent: null
       text: '
 
         '
-      title: token15
+      title: token15.Module2.Library1
       type: 183
     - hidden: false
       index: 16
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '611'
       parent: null
       text: Sub
-      title: token16
+      title: token16.Module2.Library1
       type: 125
     - hidden: false
       index: 17
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '612'
       parent: null
       text: ' '
-      title: token17
+      title: token17.Module2.Library1
       type: 185
     - hidden: false
       index: 18
@@ -5672,76 +5672,76 @@ library_defs:
         bookmark: null
         local_id: CalleeTwoSub.Module2.Library1
         object_type: basicfunction
-      obj_id: OBJID_NOT_SET
+      obj_id: '613'
       parent: null
       text: CalleeTwoSub
-      title: token18
+      title: token18.Module2.Library1
       type: 181
     - hidden: false
       index: 19
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '614'
       parent: null
       text: (
-      title: token19
+      title: token19.Module2.Library1
       type: 157
     - hidden: false
       index: 20
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '615'
       parent: null
       text: )
-      title: token20
+      title: token20.Module2.Library1
       type: 168
     - hidden: false
       index: 21
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '616'
       parent: null
       text: "\n\t"
-      title: token21
+      title: token21.Module2.Library1
       type: 183
     - hidden: false
       index: 22
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '617'
       parent: null
       text: print
-      title: token22
+      title: token22.Module2.Library1
       type: 100
     - hidden: false
       index: 23
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '618'
       parent: null
       text: ' '
-      title: token23
+      title: token23.Module2.Library1
       type: 185
     - hidden: false
       index: 24
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '619'
       parent: null
       text: '"Module2.CalleeTwoSub"'
-      title: token24
+      title: token24.Module2.Library1
       type: 172
     - hidden: false
       index: 25
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '620'
       parent: null
       text: '
 
         '
-      title: token25
+      title: token25.Module2.Library1
       type: 183
     - hidden: false
       index: 26
       link: null
-      obj_id: OBJID_NOT_SET
+      obj_id: '621'
       parent: null
       text: End Sub
-      title: token26
+      title: token26.Module2.Library1
       type: 44
     used_by: []
     uses: []
@@ -6295,7 +6295,7 @@ query_defs:
   used_by:
   - bookmark: null
     local_id: ReferToQuery.Module1.Library1
-    location_id: '567'
+    location_id: '426'
     object_type: basicfunction
   - bookmark: null
     local_id: DependendQuery
@@ -7130,7 +7130,7 @@ table_defs:
   used_by:
   - bookmark: null
     local_id: ReferToTable.Module1.Library1
-    location_id: '541'
+    location_id: '402'
     object_type: basicfunction
   - bookmark: null
     local_id: vwPlant
@@ -7188,11 +7188,11 @@ textdocument_defs:
   used_by:
   - bookmark: null
     local_id: UsesDocument.Module1.Standard
-    location_id: '234'
+    location_id: '186'
     object_type: basicfunction
   - bookmark: null
     local_id: UsesDocumentFilename.Module1.Standard
-    location_id: '247'
+    location_id: '198'
     object_type: basicfunction
   uses:
   - bookmark: null
@@ -7213,7 +7213,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: CallerSub.Module1.Library1
-    location_id: '449'
+    location_id: '316'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7223,7 +7223,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: CallerSub.Module1.Library1
-    location_id: '455'
+    location_id: '322'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7233,7 +7233,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: CallerTwo.Module1.Library1
-    location_id: '481'
+    location_id: '346'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7243,7 +7243,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: CallerOtherLib.Module1.Library1
-    location_id: '494'
+    location_id: '358'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7253,7 +7253,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: CallerOtherLib.Module1.Library1
-    location_id: '500'
+    location_id: '364'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7263,7 +7263,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: CallerShadowedCallee.Module1.Library1
-    location_id: '513'
+    location_id: '376'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7273,7 +7273,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: ReferToTable.Module1.Library1
-    location_id: '541'
+    location_id: '402'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7283,7 +7283,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: ReferToView.Module1.Library1
-    location_id: '554'
+    location_id: '414'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7293,7 +7293,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: ReferToQuery.Module1.Library1
-    location_id: '567'
+    location_id: '426'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7303,7 +7303,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: UsesDocument.Module1.Standard
-    location_id: '234'
+    location_id: '186'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7313,7 +7313,7 @@ use_cases:
 - obj:
     bookmark: null
     local_id: UsesDocumentFilename.Module1.Standard
-    location_id: '247'
+    location_id: '198'
     object_type: basicfunction
   subject:
     bookmark: null
@@ -7786,7 +7786,7 @@ view_defs:
   used_by:
   - bookmark: null
     local_id: ReferToView.Module1.Library1
-    location_id: '554'
+    location_id: '414'
     object_type: basicfunction
   - bookmark: null
     local_id: DependendQuery

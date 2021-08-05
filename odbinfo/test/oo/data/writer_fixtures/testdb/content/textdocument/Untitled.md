@@ -27,12 +27,12 @@ used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: UsesDocument.Module1.Standard
-  location_id: '234'
+  location_id: '186'
   object_type: basicfunction
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: UsesDocumentFilename.Module1.Standard
-  location_id: '247'
+  location_id: '198'
   object_type: basicfunction
 uses:
 - !!python/object:odbinfo.pure.datatype.base.Identifier

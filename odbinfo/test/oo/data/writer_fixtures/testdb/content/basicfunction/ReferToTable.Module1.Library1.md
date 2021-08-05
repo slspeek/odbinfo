@@ -18,51 +18,43 @@ strings:
     bookmark: null
     local_id: Plant
     object_type: table
-  obj_id: '541'
+  obj_id: '402'
   text: '"Plant"'
-  title: token112.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
+  title: token112.ReferToTable.Module1.Library1
   type: 172
 title: ReferToTable.Module1.Library1
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 104
   text: Sub
-  title: token104.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 125
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 105
   text: ' '
-  title: token105.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 106
   text: ReferToTable
-  title: token106.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 107
   text: (
-  title: token107.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 157
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 108
   text: )
-  title: token108.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 168
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 109
   text: "\n\t"
-  title: token109.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 110
   text: print
-  title: token110.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 100
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 111
   text: ' '
-  title: token111.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 185
 - *id001
 - !!python/object:odbinfo.pure.datatype.base.Token
@@ -70,12 +62,10 @@ tokens:
   text: '
 
     '
-  title: token113.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 114
   text: End Sub
-  title: token114.ReferToTable.Module1.Library1.ReferToTable.Module1.Library1
   type: 44
 used_by: []
 uses:

@@ -122,6 +122,8 @@ def cleanup_tokens(metadata):
         if not token.link:
             token.obj_id = None
             del token.obj_id
+            token.title = None
+            del token.title
 
     for content in metadata.all_objects():
         if isinstance(content, Token):

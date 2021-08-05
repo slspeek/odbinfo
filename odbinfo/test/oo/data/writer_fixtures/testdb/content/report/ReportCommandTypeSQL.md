@@ -72,50 +72,41 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 0
     text: SELECT
-    title: token0.ReportCommandTypeSQL.Command
     type: 131
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 1
     text: ' '
-    title: token1.ReportCommandTypeSQL.Command
     type: 207
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 2
     text: '*'
-    title: token2.ReportCommandTypeSQL.Command
     type: 7
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 3
     text: '
 
       '
-    title: token3.ReportCommandTypeSQL.Command
     type: 207
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 4
     text: FROM
-    title: token4.ReportCommandTypeSQL.Command
     type: 77
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 5
     text: ' '
-    title: token5.ReportCommandTypeSQL.Command
     type: 207
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 6
     text: ' '
-    title: token6.ReportCommandTypeSQL.Command
     type: 207
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 7
     text: ' '
-    title: token7.ReportCommandTypeSQL.Command
     type: 207
   - *id001
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 9
     text: ;
-    title: token9.ReportCommandTypeSQL.Command
     type: 1
   used_by: []
   uses:

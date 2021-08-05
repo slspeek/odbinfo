@@ -1,5 +1,4 @@
 " Dependency searcher for metadata "
-import dataclasses
 import logging
 from functools import partial
 from itertools import starmap
@@ -25,47 +24,40 @@ def search_dependencies(metadata: Metadata) -> List[UseCase]:
     " dependency search in `metadata`"
     # assert len(_subforms(metadata)) == len(metadata.subforms())
     return (search_tables_in_tables(metadata.table_defs) +
-            search_callable_in_callable(metadata.basicfunction_defs()) +
-            search_string_refs_in_callables(metadata.table_defs, metadata.basicfunction_defs()) +
-            search_string_refs_in_callables(metadata.view_defs, metadata.basicfunction_defs()) +
-            search_string_refs_in_callables(metadata.query_defs, metadata.basicfunction_defs()) +
-            search_string_refs_in_callables(metadata.report_defs, metadata.basicfunction_defs()) +
-            search_string_refs_in_callables(metadata.textdocument_defs,
-                                            metadata.basicfunction_defs()) +
-            rewrite_module_callable_links(metadata.module_defs()) +
-            search_deps_in_queries(metadata.table_defs, metadata.query_defs) +
-            search_deps_in_queries(metadata.view_defs, metadata.query_defs) +
-            search_deps_in_queries(metadata.query_defs, metadata.query_defs) +
-            search_deps_in_queries(metadata.table_defs, metadata.view_defs) +
-            search_deps_in_queries(metadata.view_defs, metadata.view_defs) +
-            search_deps_in_commanddriven(metadata.table_defs,
-                                         list(zip(metadata.report_defs, metadata.report_defs))) +
-            search_deps_in_commanddriven(metadata.view_defs,
-                                         list(zip(metadata.report_defs, metadata.report_defs))) +
-            search_deps_in_commanddriven(metadata.query_defs,
-                                         list(zip(metadata.report_defs, metadata.report_defs))) +
-            search_deps_in_commanddriven(metadata.table_defs, _subforms(metadata)) +
-            search_deps_in_commanddriven(metadata.view_defs, _subforms(metadata)) +
-            search_deps_in_commanddriven(metadata.query_defs, _subforms(metadata)) +
-            search_deps_in_documents(metadata.table_defs, metadata.textdocument_defs) +
-            search_deps_in_documents(metadata.view_defs, metadata.textdocument_defs) +
-            search_deps_in_documents(
+            search_callable_in_callable(metadata.basicfunction_defs())
+            + search_string_refs_in_callables(metadata.table_defs, metadata.basicfunction_defs())
+            + search_string_refs_in_callables(metadata.view_defs, metadata.basicfunction_defs())
+            + search_string_refs_in_callables(metadata.query_defs, metadata.basicfunction_defs())
+            + search_string_refs_in_callables(metadata.report_defs, metadata.basicfunction_defs())
+            + search_string_refs_in_callables(metadata.textdocument_defs,
+                                              metadata.basicfunction_defs()) +
+            rewrite_module_callable_links(metadata.module_defs())
+            + search_deps_in_queries(metadata.table_defs, metadata.query_defs)
+            + search_deps_in_queries(metadata.view_defs, metadata.query_defs)
+            + search_deps_in_queries(metadata.query_defs, metadata.query_defs)
+            + search_deps_in_queries(metadata.table_defs, metadata.view_defs)
+            + search_deps_in_queries(metadata.view_defs, metadata.view_defs)
+            + search_deps_in_commanddriven(metadata.table_defs,
+                                           list(zip(metadata.report_defs, metadata.report_defs)))
+            + search_deps_in_commanddriven(metadata.view_defs,
+                                           list(zip(metadata.report_defs, metadata.report_defs)))
+            + search_deps_in_commanddriven(metadata.query_defs,
+                                           list(zip(metadata.report_defs, metadata.report_defs)))
+            + search_deps_in_commanddriven(
+                metadata.table_defs, _subforms(metadata))
+            + search_deps_in_commanddriven(metadata.view_defs, _subforms(metadata))
+            + search_deps_in_commanddriven(metadata.query_defs, _subforms(metadata))
+            + search_deps_in_documents(metadata.table_defs,
+                                       metadata.textdocument_defs)
+            + search_deps_in_documents(metadata.view_defs,
+                                       metadata.textdocument_defs)
+            + search_deps_in_documents(
                 metadata.query_defs, metadata.textdocument_defs)
             )
 
 #
 # BasicFunction in BasicFunction
 #
-
-
-def _copy_module_tokens(modules):
-    def copy_tokens(module):
-        def copy_token(token):
-            new_token = dataclasses.replace(token)
-            new_token.link = token.link
-            return new_token
-        module.tokens = list(map(copy_token, module.tokens))
-    list(map(copy_tokens, modules))
 
 
 def _rewrite_module_token_links(modules):
@@ -79,22 +71,29 @@ def _rewrite_module_token_links(modules):
     #     module_index[(module.name, module.library)] = module
 
     def rewrite_module(module: Module):
+        def copy_links(function):
+            for token in function.tokens:
+                module_token = module.tokens[token.index]
+                module_token.link = token.link
+        for function in module.callables:
+            copy_links(function)
 
         def rewrite_token(token: Token):
 
             def rewrite_link(link: Identifier):
-                if not link.object_type == "basicfunctions":
+                if not link.object_type == "basicfunction":
                     return
                 lmacro, lmodule, llib = link.local_id.split('.')
-                # target_module = module_index[(lmodule, llib)]
                 token.link = Identifier("modules", f"{lmodule}.{llib}", lmacro)
 
             if token.link:
                 rewrite_link(token.link)
 
-        list(map(rewrite_token, module.tokens))
+        for token in module.tokens:
+            rewrite_token(token)
 
-    list(map(rewrite_module, modules))
+    for module in modules:
+        rewrite_module(module)
 
 
 def _link_name_tokens(module: Module):
@@ -106,7 +105,6 @@ def _link_name_tokens(module: Module):
 def rewrite_module_callable_links(modules: Sequence[Module]) -> List[UseCase]:
     """ links to callables are rewritten to links to callables in
         modules (using #bookmarks)"""
-    _copy_module_tokens(modules)
     _rewrite_module_token_links(modules)
     list(map(_link_name_tokens, modules))
     return []
@@ -122,22 +120,22 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> List[UseC
     def search_in_one(caller: BasicFunction):
         # caller's module
         def filter_own_module(call: BasicFunction):
-            return (call.module == caller.module and
-                    call.library == caller.library)
+            return (call.module == caller.module
+                    and call.library == caller.library)
 
         # callables in own library
         def filter_own_library(call: BasicFunction):
-            return (not (call.module == caller.module) and
-                    call.library == caller.library)
+            return (not (call.module == caller.module)
+                    and call.library == caller.library)
 
         # callables in other libraries
         def filter_other_library(call: BasicFunction):
             return not call.library == caller.library
 
         # the order is crucial as it represents scope in OOBasic
-        candidates = (list(filter(filter_own_module, callables)) +
-                      list(filter(filter_own_library, callables)) +
-                      list(filter(filter_other_library, callables)))
+        candidates = (list(filter(filter_own_module, callables))
+                      + list(filter(filter_own_library, callables))
+                      + list(filter(filter_other_library, callables)))
         consider_caller = partial(consider, caller)
         return sum(map(consider_caller, candidates), [])
 
@@ -147,7 +145,14 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> List[UseC
 def link_token(token: Token, referand: PageOwner):
     "link `token` to `acallable`"
     if token.link:
-        logger.warning("Replacing link in token: {token} with {referand.name}")
+        # pylint:disable=logging-too-many-args
+        logger.warning(
+            "Replacing link in token: {} (link={}:{}) with {}:{}",
+            token.title,
+            token.link.object_type,
+            token.link.local_id,
+            referand.type_name(),
+            referand.name)
     token.link = get_identifier(referand)
 
 

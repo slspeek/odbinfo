@@ -20,51 +20,43 @@ callables:
       bookmark: null
       local_id: Untitled
       object_type: textdocument
-    obj_id: '234'
+    obj_id: '186'
     text: '"Untitled"'
-    title: token11.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
+    title: token11.UsesDocument.Module1.Standard
     type: 172
   title: UsesDocument.Module1.Standard
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 3
     text: Sub
-    title: token3.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 4
     text: ' '
-    title: token4.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 5
     text: UsesDocument
-    title: token5.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 6
     text: (
-    title: token6.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 7
     text: )
-    title: token7.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 8
     text: "\n\t"
-    title: token8.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 9
     text: print
-    title: token9.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 10
     text: ' '
-    title: token10.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 185
   - *id001
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -72,12 +64,10 @@ callables:
     text: '
 
       '
-    title: token12.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 13
     text: End Sub
-    title: token13.UsesDocument.Module1.Standard.UsesDocument.Module1.Standard
     type: 44
   used_by: []
   uses:
@@ -104,51 +94,43 @@ callables:
       bookmark: null
       local_id: Untitled
       object_type: textdocument
-    obj_id: '247'
+    obj_id: '198'
     text: '"Untitled.odt"'
-    title: token24.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
+    title: token24.UsesDocumentFilename.Module1.Standard
     type: 172
   title: UsesDocumentFilename.Module1.Standard
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 16
     text: Sub
-    title: token16.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 17
     text: ' '
-    title: token17.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 18
     text: UsesDocumentFilename
-    title: token18.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 19
     text: (
-    title: token19.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 20
     text: )
-    title: token20.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 21
     text: "\n\t"
-    title: token21.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 22
     text: print
-    title: token22.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 23
     text: ' '
-    title: token23.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 185
   - *id002
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -156,12 +138,10 @@ callables:
     text: '
 
       '
-    title: token25.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 26
     text: End Sub
-    title: token26.UsesDocumentFilename.Module1.Standard.UsesDocumentFilename.Module1.Standard
     type: 44
   used_by: []
   uses:
@@ -185,39 +165,32 @@ callables:
   - &id003 !!python/object:odbinfo.pure.datatype.base.Token
     index: 35
     text: '"Standard.Module1.CalleeOtherLib"'
-    title: token35.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
     type: 172
   title: CalleeOtherLib.Module1.Standard
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 29
     text: Sub
-    title: token29.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 30
     text: ' '
-    title: token30.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 31
     text: CalleeOtherLib
-    title: token31.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 32
     text: "\n\t"
-    title: token32.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 33
     text: print
-    title: token33.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 34
     text: ' '
-    title: token34.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
     type: 185
   - *id003
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -225,23 +198,21 @@ callables:
     text: '
 
       '
-    title: token36.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 37
     text: End Sub
-    title: token37.CalleeOtherLib.Module1.Standard.CalleeOtherLib.Module1.Standard
     type: 44
   used_by:
   - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
     bookmark: null
     local_id: CallerOtherLib.Module1.Library1
-    location_id: '494'
+    location_id: '358'
     object_type: basicfunction
   - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
     bookmark: null
     local_id: CallerOtherLib.Module1.Library1
-    location_id: '500'
+    location_id: '364'
     object_type: basicfunction
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
@@ -260,49 +231,40 @@ callables:
   - &id004 !!python/object:odbinfo.pure.datatype.base.Token
     index: 48
     text: '"Standard.Module1.ShadowedCallee"'
-    title: token48.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 172
   title: ShadowedCallee.Module1.Standard
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 40
     text: Sub
-    title: token40.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 41
     text: ' '
-    title: token41.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 42
     text: ShadowedCallee
-    title: token42.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 43
     text: (
-    title: token43.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 44
     text: )
-    title: token44.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 45
     text: "\n\t"
-    title: token45.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 46
     text: print
-    title: token46.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 47
     text: ' '
-    title: token47.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 185
   - *id004
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -310,12 +272,10 @@ callables:
     text: '
 
       '
-    title: token49.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 50
     text: End Sub
-    title: token50.ShadowedCallee.Module1.Standard.ShadowedCallee.Module1.Standard
     type: 44
   used_by: []
   uses: []
@@ -341,7 +301,6 @@ tokens:
   index: 0
   link: null
   text: REM  *****  BASIC  *****
-  title: token0
   type: 184
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 1
@@ -349,7 +308,6 @@ tokens:
   text: '
 
     '
-  title: token1
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
@@ -357,19 +315,16 @@ tokens:
   text: '
 
     '
-  title: token2
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 3
   link: null
   text: Sub
-  title: token3
   type: 125
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 4
   link: null
   text: ' '
-  title: token4
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
@@ -377,44 +332,41 @@ tokens:
     bookmark: null
     local_id: UsesDocument.Module1.Standard
     object_type: basicfunction
+  obj_id: '228'
   text: UsesDocument
-  title: token5
+  title: token5.Module1.Standard
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 6
   link: null
   text: (
-  title: token6
   type: 157
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 7
   link: null
   text: )
-  title: token7
   type: 168
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   link: null
   text: "\n\t"
-  title: token8
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 9
   link: null
   text: print
-  title: token9
   type: 100
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 10
   link: null
   text: ' '
-  title: token10
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
   link: *id005
+  obj_id: '234'
   text: '"Untitled"'
-  title: token11
+  title: token11.Module1.Standard
   type: 172
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 12
@@ -422,13 +374,11 @@ tokens:
   text: '
 
     '
-  title: token12
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 13
   link: null
   text: End Sub
-  title: token13
   type: 44
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 14
@@ -436,7 +386,6 @@ tokens:
   text: '
 
     '
-  title: token14
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 15
@@ -444,19 +393,16 @@ tokens:
   text: '
 
     '
-  title: token15
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 16
   link: null
   text: Sub
-  title: token16
   type: 125
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 17
   link: null
   text: ' '
-  title: token17
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 18
@@ -464,44 +410,41 @@ tokens:
     bookmark: null
     local_id: UsesDocumentFilename.Module1.Standard
     object_type: basicfunction
+  obj_id: '241'
   text: UsesDocumentFilename
-  title: token18
+  title: token18.Module1.Standard
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 19
   link: null
   text: (
-  title: token19
   type: 157
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 20
   link: null
   text: )
-  title: token20
   type: 168
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 21
   link: null
   text: "\n\t"
-  title: token21
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 22
   link: null
   text: print
-  title: token22
   type: 100
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 23
   link: null
   text: ' '
-  title: token23
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 24
   link: *id006
+  obj_id: '247'
   text: '"Untitled.odt"'
-  title: token24
+  title: token24.Module1.Standard
   type: 172
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 25
@@ -509,13 +452,11 @@ tokens:
   text: '
 
     '
-  title: token25
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 26
   link: null
   text: End Sub
-  title: token26
   type: 44
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 27
@@ -523,7 +464,6 @@ tokens:
   text: '
 
     '
-  title: token27
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 28
@@ -531,19 +471,16 @@ tokens:
   text: '
 
     '
-  title: token28
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 29
   link: null
   text: Sub
-  title: token29
   type: 125
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 30
   link: null
   text: ' '
-  title: token30
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 31
@@ -551,32 +488,29 @@ tokens:
     bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
     object_type: basicfunction
+  obj_id: '254'
   text: CalleeOtherLib
-  title: token31
+  title: token31.Module1.Standard
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 32
   link: null
   text: "\n\t"
-  title: token32
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 33
   link: null
   text: print
-  title: token33
   type: 100
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 34
   link: null
   text: ' '
-  title: token34
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 35
   link: null
   text: '"Standard.Module1.CalleeOtherLib"'
-  title: token35
   type: 172
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 36
@@ -584,13 +518,11 @@ tokens:
   text: '
 
     '
-  title: token36
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 37
   link: null
   text: End Sub
-  title: token37
   type: 44
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 38
@@ -598,7 +530,6 @@ tokens:
   text: '
 
     '
-  title: token38
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 39
@@ -606,19 +537,16 @@ tokens:
   text: '
 
     '
-  title: token39
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 40
   link: null
   text: Sub
-  title: token40
   type: 125
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 41
   link: null
   text: ' '
-  title: token41
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 42
@@ -626,44 +554,39 @@ tokens:
     bookmark: null
     local_id: ShadowedCallee.Module1.Standard
     object_type: basicfunction
+  obj_id: '265'
   text: ShadowedCallee
-  title: token42
+  title: token42.Module1.Standard
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 43
   link: null
   text: (
-  title: token43
   type: 157
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 44
   link: null
   text: )
-  title: token44
   type: 168
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 45
   link: null
   text: "\n\t"
-  title: token45
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 46
   link: null
   text: print
-  title: token46
   type: 100
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 47
   link: null
   text: ' '
-  title: token47
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 48
   link: null
   text: '"Standard.Module1.ShadowedCallee"'
-  title: token48
   type: 172
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 49
@@ -671,13 +594,11 @@ tokens:
   text: '
 
     '
-  title: token49
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 50
   link: null
   text: End Sub
-  title: token50
   type: 44
 used_by: []
 uses: []

@@ -147,9 +147,4 @@ class Token(Node):
 
     def set_title(self):
         " sets a unique title "
-        parent = self
-        while True:
-            parent = parent.parent
-            self.title += f".{parent.name}"
-            if parent.type_name() in ["library", "query", "view"]:
-                break
+        self.title = f"{self.title}.{self.parent.title}"

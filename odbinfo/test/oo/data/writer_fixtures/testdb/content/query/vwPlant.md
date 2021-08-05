@@ -68,44 +68,36 @@ tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 0
   text: SELECT
-  title: token0.vwPlant
   type: 131
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 1
   text: ' '
-  title: token1.vwPlant
   type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
   text: '*'
-  title: token2.vwPlant
   type: 7
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 3
   text: '
 
     '
-  title: token3.vwPlant
   type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 4
   text: FROM
-  title: token4.vwPlant
   type: 77
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
   text: ' '
-  title: token5.vwPlant
   type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 6
   text: ' '
-  title: token6.vwPlant
   type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 7
   text: ' '
-  title: token7.vwPlant
   type: 207
 - *id001
 used_by:

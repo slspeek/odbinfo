@@ -1,4 +1,5 @@
 """ Core module """
+import dataclasses
 import time
 from functools import partial
 from typing import Sequence, Union
@@ -12,6 +13,15 @@ from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.parser.sql import parse
 
 
+def copy_tokens(module):
+    "Copies the modules tokens"
+    def copy_token(token):
+        new_token = dataclasses.replace(token)
+        new_token.link = token.link
+        return new_token
+    module.tokens = list(map(copy_token, module.tokens))
+
+
 def _process_library(library: Library) -> None:
     def parse_module(module: Module) -> None:
         # print("parsing: " + module.source)
@@ -19,6 +29,7 @@ def _process_library(library: Library) -> None:
             get_basic_tokens(module.source)
         module.callables =\
             scan_basic(module.tokens, library.name, module.name)
+        copy_tokens(module)
         module.name_indexes =\
             list(map(lambda c: c.name_token_index, module.callables))
 

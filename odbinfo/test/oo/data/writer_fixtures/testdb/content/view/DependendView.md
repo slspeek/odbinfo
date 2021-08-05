@@ -50,50 +50,41 @@ tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 0
   text: SELECT
-  title: token0.DependendView
   type: 131
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 1
   text: ' '
-  title: token1.DependendView
   type: 207
 - *id001
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 3
   text: .
-  title: token3.DependendView
   type: 2
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 4
   text: '"id"'
-  title: token4.DependendView
   type: 200
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 5
   text: '
 
     '
-  title: token5.DependendView
   type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 6
   text: FROM
-  title: token6.DependendView
   type: 77
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 7
   text: ' '
-  title: token7.DependendView
   type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   text: ' '
-  title: token8.DependendView
   type: 207
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 9
   text: ' '
-  title: token9.DependendView
   type: 207
 - *id002
 used_by: []

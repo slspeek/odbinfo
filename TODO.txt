@@ -1,29 +1,26 @@
-verify_titles_unique_in_kind should not consider Tokens
+replace unassigned list(map()) calls with for loops
 
-performance verify_titles_unique_in_kind terrible, move to tests
-
-Fix double BasicFunction id in token title
+Nicer ids, based on name
+------------------------
+BasicScanner --> ModuleScanner
 
 Like NamedNode,users_match have a method on Node.link_use
 
-Nicer ids, based on names
-
-Threads: writer, parser?
-
 Fix 'recursive calls' in basicfunctions
+
 
 If SubForms, Controls are not excluded they should
 have the dependencies, not its containing Form
 And how about Library, Module and BasicFunction then?
 
-Clean up files after make_site if no config.keepfiles is specified
-
 Report dependencies when commandtype=command (should inherit from the
 embedded query)
+
 
 Relevant control filter:
   ListBox handling
   eventlisteners parsing
+
 
 Graphs:
   - for table, queries, Views
@@ -40,13 +37,10 @@ dataclass Config with sections to yaml in ~/.odbinfo.yaml
 
 templates: Grid rendering like Subform
 
-Flex tutorial
-
 class Dependend for DataObject s that possible use another object?
 
 database (driver) information retrieval
 
-make typing more complete (lot of work)
 
 look into GoHugo submenus
 
@@ -125,7 +119,6 @@ field are done last as they are nice to have
 datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
 
 
-errors in parser need improvement
 
 better description of the extension
 
@@ -133,7 +126,11 @@ update minimal theme (20210703 ok)
 
 Later
 -----
+Threads: writer, parser?
 i18n gettext in python, hugo {{ T id }}
+make typing more complete (lot of work)
+errors in parser need improvement
+Clean up files after make_site if no config.keepfiles is specified
 
 Limitations
 -----------
@@ -144,6 +141,7 @@ Controls more specific, eg Button...
 IsCurrency Column omitted
 Catalog excluded
 KeyColumns, IndexColumns not used fully
+
 
 
 

@@ -1,4 +1,4 @@
-Like NamedNode,users_match have a method on Node.link_use
+Like NamedNode.users_match have a method on Node.link_use
 
 Fix 'recursive calls' in basicfunctions
 
@@ -10,8 +10,6 @@ Defaulting to lowest in hierarchy that is present for graph
 
 Aggregation of dependencies
 ---------------------------
-
-
 Report dependencies when commandtype=command (should inherit from the
 embedded query)
 
@@ -102,22 +100,15 @@ dependency search matrix
 ------------------------
 Macro calls in controls (eventlisteners)
 tables, views, queries in ListBox
-textdocuments in basic (done)gr
+textdocuments in basic (done)
 tables in tables (via its keys) (done)
 tables, views in views (done)
 tables, queries, views in queries (done)
 tables, queries, views in reports (done)
 tables, queries,views, reports in basic (done)
 basic in basic (done)
-tables, queries, views in forms (subforms)
+tables, queries, views in forms (subforms) (done)
 tables, views, queries in textdocuments (done)
-
-python in python (nice to have)
-others in python (nice to have)
-
-field are done last as they are nice to have
-datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
-
 
 
 better description of the extension
@@ -131,6 +122,10 @@ i18n gettext in python, hugo {{ T id }}
 make typing more complete (lot of work)
 errors in parser need improvement
 Clean up files after make_site if no config.keepfiles is specified
+field are done last as they are nice to have
+datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
+python in python (nice to have)
+others in python (nice to have)
 
 Limitations
 -----------

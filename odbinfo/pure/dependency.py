@@ -1,7 +1,6 @@
 " Dependency searcher for metadata "
 import logging
 from functools import partial
-from itertools import starmap
 from typing import List, Optional, Sequence, Tuple, cast
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, CommandDriven,
@@ -22,38 +21,53 @@ def _subforms(metadata: Metadata) -> List[Tuple[PageOwner, CommandDriven]]:
 
 def search_dependencies(metadata: Metadata) -> List[UseCase]:
     " dependency search in `metadata`"
-    # assert len(_subforms(metadata)) == len(metadata.subforms())
-    return (search_tables_in_tables(metadata.table_defs) +
-            search_callable_in_callable(metadata.basicfunction_defs())
-            + search_string_refs_in_callables(metadata.table_defs, metadata.basicfunction_defs())
-            + search_string_refs_in_callables(metadata.view_defs, metadata.basicfunction_defs())
-            + search_string_refs_in_callables(metadata.query_defs, metadata.basicfunction_defs())
-            + search_string_refs_in_callables(metadata.report_defs, metadata.basicfunction_defs())
-            + search_string_refs_in_callables(metadata.textdocument_defs,
-                                              metadata.basicfunction_defs()) +
-            rewrite_module_callable_links(metadata.module_defs())
-            + search_deps_in_queries(metadata.table_defs, metadata.query_defs)
-            + search_deps_in_queries(metadata.view_defs, metadata.query_defs)
-            + search_deps_in_queries(metadata.query_defs, metadata.query_defs)
-            + search_deps_in_queries(metadata.table_defs, metadata.view_defs)
-            + search_deps_in_queries(metadata.view_defs, metadata.view_defs)
-            + search_deps_in_commanddriven(metadata.table_defs,
-                                           list(zip(metadata.report_defs, metadata.report_defs)))
-            + search_deps_in_commanddriven(metadata.view_defs,
-                                           list(zip(metadata.report_defs, metadata.report_defs)))
-            + search_deps_in_commanddriven(metadata.query_defs,
-                                           list(zip(metadata.report_defs, metadata.report_defs)))
-            + search_deps_in_commanddriven(
-                metadata.table_defs, _subforms(metadata))
-            + search_deps_in_commanddriven(metadata.view_defs, _subforms(metadata))
-            + search_deps_in_commanddriven(metadata.query_defs, _subforms(metadata))
-            + search_deps_in_documents(metadata.table_defs,
-                                       metadata.textdocument_defs)
-            + search_deps_in_documents(metadata.view_defs,
-                                       metadata.textdocument_defs)
-            + search_deps_in_documents(
-                metadata.query_defs, metadata.textdocument_defs)
+    usecases = (
+        search_tables_in_tables(metadata.table_defs)
+        + search_callable_in_callable(metadata.basicfunction_defs())
+        + search_string_refs_in_callables(metadata.table_defs,
+                                          metadata.basicfunction_defs())
+        + search_string_refs_in_callables(metadata.view_defs,
+                                          metadata.basicfunction_defs())
+        + search_string_refs_in_callables(metadata.query_defs,
+                                          metadata.basicfunction_defs())
+        + search_string_refs_in_callables(metadata.report_defs,
+                                          metadata.basicfunction_defs())
+        + search_string_refs_in_callables(metadata.textdocument_defs,
+                                          metadata.basicfunction_defs())
+
+        + search_deps_in_queries(metadata.table_defs,
+                                 metadata.query_defs)
+        + search_deps_in_queries(metadata.view_defs,
+                                 metadata.query_defs)
+        + search_deps_in_queries(metadata.query_defs,
+                                 metadata.query_defs)
+        + search_deps_in_queries(metadata.table_defs,
+                                 metadata.view_defs)
+        + search_deps_in_queries(metadata.view_defs,
+                                 metadata.view_defs)
+        + search_deps_in_commanddriven(metadata.table_defs,
+                                       list(zip(metadata.report_defs,
+                                                metadata.report_defs)))
+        + search_deps_in_commanddriven(metadata.view_defs,
+                                       list(zip(metadata.report_defs,
+                                                metadata.report_defs)))
+        + search_deps_in_commanddriven(metadata.query_defs,
+                                       list(zip(metadata.report_defs,
+                                                metadata.report_defs)))
+        + search_deps_in_commanddriven(
+            metadata.table_defs, _subforms(metadata))
+        + search_deps_in_commanddriven(metadata.view_defs, _subforms(metadata))
+        + search_deps_in_commanddriven(metadata.query_defs,
+                                       _subforms(metadata))
+        + search_deps_in_documents(metadata.table_defs,
+                                   metadata.textdocument_defs)
+        + search_deps_in_documents(metadata.view_defs,
+                                   metadata.textdocument_defs)
+        + search_deps_in_documents(
+            metadata.query_defs, metadata.textdocument_defs)
             )
+    rewrite_module_callable_links(metadata.module_defs())
+    return usecases
 
 #
 # BasicFunction in BasicFunction
@@ -71,26 +85,20 @@ def _rewrite_module_token_links(modules):
     #     module_index[(module.name, module.library)] = module
 
     def rewrite_module(module: Module):
+        def rewrite_link(link: Identifier):
+            if not link.object_type == "basicfunction":
+                return link
+            lmacro, lmodule, llib = link.local_id.split('.')
+            return Identifier("modules", f"{lmodule}.{llib}", lmacro)
+
         def copy_links(function):
             for token in function.tokens:
                 module_token = module.tokens[token.index]
-                module_token.link = token.link
+                if token.link:
+                    module_token.link = rewrite_link(token.link)
+
         for function in module.callables:
             copy_links(function)
-
-        def rewrite_token(token: Token):
-
-            def rewrite_link(link: Identifier):
-                if not link.object_type == "basicfunction":
-                    return
-                lmacro, lmodule, llib = link.local_id.split('.')
-                token.link = Identifier("modules", f"{lmodule}.{llib}", lmacro)
-
-            if token.link:
-                rewrite_link(token.link)
-
-        for token in module.tokens:
-            rewrite_token(token)
 
     for module in modules:
         rewrite_module(module)
@@ -99,16 +107,16 @@ def _rewrite_module_token_links(modules):
 def _link_name_tokens(module: Module):
     def _link_name(index: int, acallable: BasicFunction):
         link_token(module.tokens[index], acallable)
-    list(starmap(_link_name, zip(module.name_indexes, module.callables)))
+    for name_index, acallable in zip(module.name_indexes, module.callables):
+        _link_name(name_index, acallable)
 
 
-def rewrite_module_callable_links(module_seq: Sequence[Module]) -> List[UseCase]:
+def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
     """ links to callables are rewritten to links to callables in
         modules (using #bookmarks)"""
     _rewrite_module_token_links(module_seq)
     for module in module_seq:
         _link_name_tokens(module)
-    return []
 
 
 def search_callable_in_callable(callables: Sequence[BasicFunction]) -> List[UseCase]:

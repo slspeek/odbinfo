@@ -70,16 +70,22 @@ class Usable:
     used_by: List['SourceIdentifier'] = field(
         init=False, repr=False, default_factory=list)
 
+    # def users_match(self, username: str) -> bool:
+    #     " determines whether `username` (possibly) matches this object "
+    #     # pylint:disable=no-member
+    #     return self.name == username  # type: ignore
+    #     # return False
+
 
 @dataclass
-class Aggregator(Usable):
+class UseAggregator:
     " aggregates uses and used_by "
     uses: List['Identifier'] = field(
         init=False, repr=False, default_factory=list)
 
 
 @dataclass
-class PageOwner(Aggregator, NamedNode):
+class PageOwner(UseAggregator, Usable, NamedNode):
     " has its own page, thus title attribute "\
         " an object with a parent_link "
     parent_link: Optional['Identifier'] = field(init=False, default=None)

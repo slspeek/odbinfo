@@ -65,7 +65,7 @@ def search_dependencies(metadata: Metadata) -> List[UseCase]:
                                    metadata.textdocument_defs)
         + search_deps_in_documents(
             metadata.query_defs, metadata.textdocument_defs)
-            )
+    )
     rewrite_module_callable_links(metadata.module_defs())
     return usecases
 
@@ -249,6 +249,8 @@ def search_deps_in_queries(dataobjects: Sequence[PageOwner],
 PageCmd = Tuple[PageOwner, CommandDriven]
 
 # pylint:disable=line-too-long
+
+#
 
 
 def search_deps_in_commanddriven(dataobjects: Sequence[PageOwner],

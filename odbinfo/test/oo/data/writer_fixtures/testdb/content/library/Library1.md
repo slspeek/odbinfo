@@ -827,31 +827,26 @@ modules:
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 0
-    link: null
     text: REM  *****  BASIC  *****
     type: 184
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 1
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 2
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 3
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 4
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -866,58 +861,48 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 6
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 7
-    link: null
     text: Error
     type: 49
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 8
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 9
-    link: null
     text: '"Mijn fout"'
     type: 172
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 10
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 11
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 12
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 13
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 14
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 15
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -932,17 +917,14 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 17
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 18
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 19
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -957,27 +939,22 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 21
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 22
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 23
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 24
-    link: null
     text: Module2
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 25
-    link: null
     text: .
     type: 150
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -992,48 +969,40 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 27
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 28
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 29
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 30
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 31
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 32
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 33
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 34
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1048,68 +1017,56 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 36
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 37
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 38
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 39
-    link: null
     text: print
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 40
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 41
-    link: null
     text: '"Module1.CalleeSub"'
     type: 172
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 42
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 43
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 44
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 45
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 46
-    link: null
     text: sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 47
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1124,17 +1081,14 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 49
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 50
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 51
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1149,48 +1103,40 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 53
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 54
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 55
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 56
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 57
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 58
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 59
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 60
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1205,17 +1151,14 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 62
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 63
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 64
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1230,27 +1173,22 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 66
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 67
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 68
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 69
-    link: null
     text: Module1
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 70
-    link: null
     text: .
     type: 150
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1265,48 +1203,40 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 72
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 73
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 74
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 75
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 76
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 77
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 78
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 79
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1321,17 +1251,14 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 81
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 82
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 83
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1346,48 +1273,40 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 85
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 86
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 87
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 88
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 89
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 90
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 91
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 92
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1402,68 +1321,56 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 94
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 95
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 96
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 97
-    link: null
     text: print
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 98
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 99
-    link: null
     text: '"Library1.Module1.ShadowedCallee"'
     type: 172
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 100
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 101
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 102
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 103
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 104
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 105
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1478,27 +1385,22 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 107
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 108
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 109
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 110
-    link: null
     text: print
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 111
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1510,38 +1412,32 @@ modules:
     type: 172
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 113
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 114
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 115
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 116
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 117
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 118
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1556,27 +1452,22 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 120
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 121
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 122
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 123
-    link: null
     text: print
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 124
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1588,38 +1479,32 @@ modules:
     type: 172
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 126
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 127
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 128
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 129
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 130
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 131
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1634,27 +1519,22 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 133
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 134
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 135
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 136
-    link: null
     text: print
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 137
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1666,14 +1546,12 @@ modules:
     type: 172
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 139
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 140
-    link: null
     text: End Sub
     type: 44
   used_by: []
@@ -1834,31 +1712,26 @@ modules:
   tokens:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 0
-    link: null
     text: REM  *****  BASIC  *****
     type: 184
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 1
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 2
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 3
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 4
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1873,68 +1746,56 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 6
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 7
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 8
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 9
-    link: null
     text: print
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 10
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 11
-    link: null
     text: '"Module2.CalleeSub"'
     type: 172
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 12
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 13
-    link: null
     text: End Sub
     type: 44
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 14
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 15
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 16
-    link: null
     text: Sub
     type: 125
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 17
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
@@ -1949,44 +1810,36 @@ modules:
     type: 181
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 19
-    link: null
     text: (
     type: 157
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 20
-    link: null
     text: )
     type: 168
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 21
-    link: null
     text: "\n\t"
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 22
-    link: null
     text: print
     type: 100
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 23
-    link: null
     text: ' '
     type: 185
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 24
-    link: null
     text: '"Module2.CalleeTwoSub"'
     type: 172
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 25
-    link: null
     text: '
 
       '
     type: 183
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 26
-    link: null
     text: End Sub
     type: 44
   used_by: []

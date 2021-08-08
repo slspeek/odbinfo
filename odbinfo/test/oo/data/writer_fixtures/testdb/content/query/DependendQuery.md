@@ -97,7 +97,7 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: FamilyLookup
     object_type: query
@@ -107,7 +107,7 @@ table_tokens:
   type: 200
 - &id002 !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: vwPlant
     object_type: query
@@ -117,7 +117,7 @@ table_tokens:
   type: 200
 - &id003 !!python/object:odbinfo.pure.datatype.base.Token
   index: 14
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id006 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
     object_type: view
@@ -182,16 +182,7 @@ tokens:
 - *id003
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: view1
-  object_type: view
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: FamilyLookup
-  object_type: query
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: vwPlant
-  object_type: query
+- *id004
+- *id005
+- *id006
 ---

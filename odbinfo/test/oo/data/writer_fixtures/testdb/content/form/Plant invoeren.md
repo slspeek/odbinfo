@@ -46,7 +46,7 @@ subforms:
     title: MainForm_Grid.MainForm.Plant invoeren
   depth: 0
   detailfields: ''
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: vwPlant
     object_type: query
@@ -58,8 +58,5 @@ subforms:
 title: Plant invoeren
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: vwPlant
-  object_type: query
+- *id001
 ---

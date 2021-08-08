@@ -58,7 +58,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
   table_tokens:
   - &id001 !!python/object:odbinfo.pure.datatype.base.Token
     index: 8
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: Plant
       object_type: table
@@ -109,10 +109,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     type: 1
   used_by: []
   uses:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    local_id: Plant
-    object_type: table
+  - *id002
 formulas:
 - field:[id]
 - field:[naam]

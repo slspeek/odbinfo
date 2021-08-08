@@ -27,7 +27,7 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
     object_type: view
@@ -37,7 +37,7 @@ table_tokens:
   type: 200
 - &id002 !!python/object:odbinfo.pure.datatype.base.Token
   index: 10
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
     object_type: view
@@ -89,12 +89,6 @@ tokens:
 - *id002
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: view1
-  object_type: view
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: view1
-  object_type: view
+- *id003
+- *id004
 ---

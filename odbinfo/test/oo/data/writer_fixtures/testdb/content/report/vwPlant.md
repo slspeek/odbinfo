@@ -6,7 +6,7 @@ formulas:
 - field:[id]
 - field:[naam]
 - field:[RFamliyID]
-link: !!python/object:odbinfo.pure.datatype.base.Identifier
+link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: vwPlant
   object_type: query
@@ -20,8 +20,5 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
 title: vwPlant
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: vwPlant
-  object_type: query
+- *id001
 ---

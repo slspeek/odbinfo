@@ -55,7 +55,7 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Plant
     object_type: table
@@ -108,22 +108,19 @@ used_by:
   object_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
-  local_id: vwPlant
-  location_id: '174'
-  object_type: report
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
   local_id: Plant invoeren
   location_id: '135'
   object_type: form
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
+  local_id: vwPlant
+  location_id: '174'
+  object_type: report
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Untitled
   location_id: '627'
   object_type: textdocument
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: Plant
-  object_type: table
+- *id002
 ---

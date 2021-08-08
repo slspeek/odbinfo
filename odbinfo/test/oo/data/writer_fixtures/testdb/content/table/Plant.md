@@ -76,7 +76,7 @@ keys:
   columns:
   - RFamliyID
   delete_rule: No_Action
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Family
     object_type: table
@@ -98,9 +98,9 @@ title: Plant
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
-  local_id: ReferToTable.Module1.Library1
-  location_id: '402'
-  object_type: basicfunction
+  local_id: view1
+  location_id: '44'
+  object_type: view
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: vwPlant
@@ -111,11 +111,6 @@ used_by:
   local_id: ReportCommandTypeSQL.Command
   location_id: '114'
   object_type: query
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
-  local_id: view1
-  location_id: '44'
-  object_type: view
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Plant
@@ -131,9 +126,16 @@ used_by:
   local_id: Related subform
   location_id: '154'
   object_type: form
-uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
-  local_id: Family
-  object_type: table
+  local_id: ReferToTable.Module1.Library1
+  location_id: '402'
+  object_type: basicfunction
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
+  local_id: Module1.Library1
+  location_id: '541'
+  object_type: module
+uses:
+- *id001
 ---

@@ -100,32 +100,22 @@ class PageOwner(UseAggregator, Usable, NamedNode):
                 child.set_parents(self)
 
 
-def get_identifier(page: PageOwner) -> Identifier:
-    "returns Identifier for `dataobject`"
-    return Identifier(page.type_name(),
-                      page.title, None)
+def get_identifier(usable) -> Identifier:
+    "returns Identifier for `usable`"
+    parent = usable
+    while not isinstance(parent, PageOwner):
+        parent = parent.parent
+    if parent == usable:
+        return Identifier(usable.type_name(),
+                          usable.title, None)
+    return Identifier(parent.type_name(),
+                      parent.title, usable.obj_id)
 
 
 def get_source_identifier(source: PageOwner, location: Optional[Node]) -> SourceIdentifier:
     " creates a SourceIdentifier "
     source_id = "" if not location else location.obj_id
     return SourceIdentifier(source.type_name(), source.title, None, source_id)
-
-
-@dataclass
-class UseCase:
-    " `obj` uses `subject`"
-    obj: SourceIdentifier
-    subject: Identifier
-    type: str
-
-
-def use_case(source: PageOwner,
-             location: Optional[Node],
-             target: PageOwner,
-             ref_type: str) -> UseCase:
-    " creates a usecase from `source` and `location` to `target`"
-    return UseCase(get_source_identifier(source, location), get_identifier(target), ref_type)
 
 
 # pylint:disable=too-few-public-methods,no-member

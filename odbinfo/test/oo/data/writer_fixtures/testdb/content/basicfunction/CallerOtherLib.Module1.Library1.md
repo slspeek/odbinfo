@@ -6,7 +6,7 @@ calls:
   module_token: null
   name_token: &id001 !!python/object:odbinfo.pure.datatype.base.Token
     index: 65
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: CalleeOtherLib.Module1.Standard
       object_type: basicfunction
@@ -21,7 +21,7 @@ calls:
     type: 181
   name_token: &id003 !!python/object:odbinfo.pure.datatype.base.Token
     index: 71
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: CalleeOtherLib.Module1.Standard
       object_type: basicfunction
@@ -104,12 +104,6 @@ tokens:
   type: 44
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: CalleeOtherLib.Module1.Standard
-  object_type: basicfunction
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: CalleeOtherLib.Module1.Standard
-  object_type: basicfunction
+- *id004
+- *id005
 ---

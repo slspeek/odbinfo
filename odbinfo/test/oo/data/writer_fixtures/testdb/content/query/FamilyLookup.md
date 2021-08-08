@@ -39,7 +39,7 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 18
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Family
     object_type: table
@@ -129,17 +129,19 @@ tokens:
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
+  local_id: DependendQuery
+  location_id: '60'
+  object_type: query
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
   local_id: ReferToQuery.Module1.Library1
   location_id: '426'
   object_type: basicfunction
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
-  local_id: DependendQuery
-  location_id: '60'
-  object_type: query
+  local_id: Module1.Library1
+  location_id: '567'
+  object_type: module
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: Family
-  object_type: table
+- *id002
 ---

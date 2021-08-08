@@ -6,7 +6,7 @@ from typing import List
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype.base import PageOwner, Token, UseCase
+from odbinfo.pure.datatype.base import PageOwner, Token, User
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import Query, Table, View
@@ -39,7 +39,7 @@ class Metadata(PageOwner):
     library_defs: List[Library]
     pythonlibrary_defs: List[PythonLibrary]
     textdocument_defs: List[TextDocument]
-    use_cases: List[UseCase] = field(init=False, default_factory=list)
+    # use_cases: List[UseCase] = field(init=False, default_factory=list)
     graphs: List[Digraph] = field(init=False, default_factory=list)
 
     def __post_init__(self):
@@ -150,3 +150,10 @@ class Metadata(PageOwner):
         if not len(all_objs) == len(title_set):
             _print_doubles(title_list)
         assert len(all_objs) == len(title_set)
+
+    def all_active_users(self):
+        " returns all User objects with a link set from the tree "
+        # pylint:disable=no-member
+        return \
+            [obj for obj in self.all_objects() if isinstance(obj, User)
+                and obj.link]

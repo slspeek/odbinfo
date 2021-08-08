@@ -1,3 +1,7 @@
+Simplify embeddedqueries in CommandDriven by removing them from queries later
+- EmbeddedQuery part of report children
+EmbeddedQuery which is no PageOwner for CommandDriven
+
 CanonicalUse(SourceNode, TargetUsable) derived uses are
   - p in SourceNode.Ancestors + [SourceNode],
     tp in TargetUsable.Ancestors + [TargetUsable] : DerivedUse(p, tp)

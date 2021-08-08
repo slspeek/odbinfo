@@ -1385,7 +1385,6 @@ textdocument_defs:
   used_by: []
   uses: []
 title: ./testdb.odb
-use_cases: []
 used_by: []
 uses: []
 view_defs:

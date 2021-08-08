@@ -14,7 +14,7 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 24
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Untitled
     object_type: textdocument
@@ -69,8 +69,5 @@ tokens:
   type: 44
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: Untitled
-  object_type: textdocument
+- *id002
 ---

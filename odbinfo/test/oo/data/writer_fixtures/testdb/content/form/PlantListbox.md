@@ -144,7 +144,7 @@ subforms:
     type: CommandButton
   depth: 0
   detailfields: ''
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Plant
     object_type: table
@@ -156,8 +156,5 @@ subforms:
 title: PlantListbox
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: Plant
-  object_type: table
+- *id001
 ---

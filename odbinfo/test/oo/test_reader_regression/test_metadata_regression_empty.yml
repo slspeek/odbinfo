@@ -11,7 +11,6 @@ report_defs: []
 table_defs: []
 textdocument_defs: []
 title: ./emptydb.odb
-use_cases: []
 used_by: []
 uses: []
 view_defs: []

@@ -6,7 +6,7 @@ calls:
   module_token: null
   name_token: &id001 !!python/object:odbinfo.pure.datatype.base.Token
     index: 84
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: ShadowedCallee.Module1.Library1
       object_type: basicfunction
@@ -71,8 +71,5 @@ tokens:
   type: 44
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: ShadowedCallee.Module1.Library1
-  object_type: basicfunction
+- *id002
 ---

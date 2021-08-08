@@ -89,7 +89,7 @@ subforms:
     type: TextField
   depth: 0
   detailfields: ''
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Plant
     object_type: table
@@ -178,7 +178,7 @@ subforms:
       type: TextField
     depth: 1
     detailfields: '"FamilyID"'
-    link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: Family
       object_type: table
@@ -191,12 +191,6 @@ subforms:
 title: Related subform
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: Plant
-  object_type: table
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: Family
-  object_type: table
+- *id001
+- *id002
 ---

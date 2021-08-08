@@ -5,7 +5,7 @@ fields:
   column: naam
   database: testdb
   index: 0
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: vwPlant
     object_type: query
@@ -33,9 +33,16 @@ used_by:
   local_id: UsesDocumentFilename.Module1.Standard
   location_id: '198'
   object_type: basicfunction
-uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
-  local_id: vwPlant
-  object_type: query
+  local_id: Module1.Standard
+  location_id: '234'
+  object_type: module
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
+  local_id: Module1.Standard
+  location_id: '247'
+  object_type: module
+uses:
+- *id001
 ---

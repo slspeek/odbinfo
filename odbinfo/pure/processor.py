@@ -5,8 +5,10 @@ from typing import Sequence, Union
 
 from odbinfo.pure.datatype import (Control, Form, Grid, Library, Metadata,
                                    Module, Query, SubForm)
+from odbinfo.pure.datatype.base import (PageOwner, UseAggregator, User,
+                                        get_source_identifier)
 from odbinfo.pure.datatype.config import Configuration
-from odbinfo.pure.dependency import search_dependencies
+from odbinfo.pure.dependency import _link_name_tokens, search_dependencies
 from odbinfo.pure.graph import generate_graphs
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.parser.sql import parse
@@ -104,6 +106,37 @@ def distribute_usecases(metadata):
         target.used_by.append(usecase.obj)
 
 
+def aggregate_uses_from_children(user_agg):
+    "Collect aggregated uses from its children "
+    for user in user_agg.all_objects():
+        if isinstance(user, User) and user.link:
+            user_agg.uses.append(user.link)
+
+
+def aggregate_uses(metadata: Metadata) -> None:
+    "Collect all aggregated uses "
+    for use_agg in metadata.all_objects():
+        if isinstance(use_agg, UseAggregator):
+            aggregate_uses_from_children(use_agg)
+
+
+def source_link(user):
+    "returns a back link to this `user`"
+    parent = user
+    while not isinstance(parent, PageOwner):
+        parent = parent.parent
+    return get_source_identifier(parent, user)
+
+
+def aggregate_used_by(metadata):
+    "Collect all used_by"
+    for user in metadata.all_active_users():
+        print(user.link)
+        if not user.link.bookmark:
+            metadata.index[(user.link.object_type, user.link.local_id)
+                           ].used_by.append(source_link(user))
+
+
 def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
     " preprocessing of the data before it is send to hugo "
     start_time = time.time()
@@ -139,7 +172,8 @@ def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
     print("Set ids: {}".format(end_time-start_time))
 
     start_time = time.time()
-    metadata.use_cases = search_dependencies(metadata)
+    # is actually link_dependencies, assign should go
+    search_dependencies(metadata)
     end_time = time.time()
     print("Dependency search: {}".format(end_time-start_time))
 
@@ -149,7 +183,11 @@ def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
     print("Create index: {}".format(end_time-start_time))
 
     start_time = time.time()
-    distribute_usecases(metadata)
+    # distribute_usecases(metadata)
+    aggregate_uses(metadata)
+    aggregate_used_by(metadata)
+    for module in metadata.module_defs():
+        _link_name_tokens(module)
     end_time = time.time()
     print("Distribute usecases: {}".format(end_time-start_time))
 

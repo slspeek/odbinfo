@@ -58,7 +58,7 @@ subforms:
     title: MainForm_Grid.MainForm.Family
   depth: 0
   detailfields: ''
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Family
     object_type: table
@@ -70,8 +70,5 @@ subforms:
 title: Family
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: Family
-  object_type: table
+- *id001
 ---

@@ -41,7 +41,7 @@ subforms:
     type: FormattedField
   depth: 0
   detailfields: ''
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
     object_type: view
@@ -53,8 +53,5 @@ subforms:
 title: view1
 used_by: []
 uses:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
-  local_id: view1
-  object_type: view
+- *id001
 ---

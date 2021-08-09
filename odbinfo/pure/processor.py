@@ -131,9 +131,8 @@ def source_link(user):
 def aggregate_used_by(metadata):
     "Collect all used_by"
     for user in metadata.all_active_users():
-        if not user.link.bookmark:
-            metadata.index[(user.link.object_type, user.link.local_id)
-                           ].used_by.append(source_link(user))
+        metadata.index[(user.link.object_type, user.link.local_id)
+                       ].used_by.append(source_link(user))
 
 
 def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:

@@ -1,18 +1,7 @@
 Simplify embeddedqueries in CommandDriven by removing them from queries later
-- EmbeddedQuery part of report children
+- EmbeddedQuery.tokens part of report/subform children
 EmbeddedQuery which is no PageOwner for CommandDriven
 
-CanonicalUse(SourceNode, TargetUsable) derived uses are
-  - p in SourceNode.Ancestors + [SourceNode],
-    tp in TargetUsable.Ancestors + [TargetUsable] : DerivedUse(p, tp)
-via the ancentors of SourceNode and TargetUsable find all represetations of this
-usecase
-1. collect the Users with link set
-2. loop
-  read link
-  CanonicalUse(user, link)
-
-derive use_type later based on ancentors and target
 
 upgrade dependencies
 
@@ -20,11 +9,6 @@ Like NamedNode.users_match have a method on Node.link_use
 
 Fix 'recursive calls' in basicfunctions
 
-
-If SubForms, Controls are not excluded they should
-have the dependencies, not its containing Form
-And how about Library, Module and BasicFunction then?
-Defaulting to lowest in hierarchy that is present for graph
 
 Aggregation of dependencies
 ---------------------------

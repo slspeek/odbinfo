@@ -131,7 +131,6 @@ def source_link(user):
 def aggregate_used_by(metadata):
     "Collect all used_by"
     for user in metadata.all_active_users():
-        print(user.link)
         if not user.link.bookmark:
             metadata.index[(user.link.object_type, user.link.local_id)
                            ].used_by.append(source_link(user))
@@ -186,13 +185,14 @@ def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
     # distribute_usecases(metadata)
     aggregate_uses(metadata)
     aggregate_used_by(metadata)
-    for module in metadata.module_defs():
-        _link_name_tokens(module)
+
     end_time = time.time()
     print("Distribute usecases: {}".format(end_time-start_time))
 
     start_time = time.time()
     metadata.graphs = generate_graphs(metadata, config)
+    for module in metadata.module_defs():
+        _link_name_tokens(module)
     end_time = time.time()
     print("Generate graphs: {}".format(end_time-start_time))
     # for test purposes only

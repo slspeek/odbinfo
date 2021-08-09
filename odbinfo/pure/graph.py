@@ -42,15 +42,25 @@ def make_node(config: GraphConfig,
                    _attributes=config.type_attrs[node.type_name()])
 
 
+def visible_ancestor(config: GraphConfig, node):
+    """ returns `node` if is visible, else first ancestor that is visible
+        or None if there is no visible ancestor"""
+    parent = node
+    while parent.type_name() in config.excludes:
+        parent = parent.parent
+        if not parent:
+            return None
+    return parent
+
+
 def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode, end: NamedNode):
-    " make edge from `start` to `end` if `config` says so "
-    if not start.type_name() in config.excludes and \
-            not end.type_name() in config.excludes:
-        attrs = config.relation_attrs.get(
-            (start.type_name(), end.type_name()), {})
-        attrs["edgetooltip"] = "{} -> {}".format(start.name, end.name)
-        edge(graph, start,
-             end, attrs)
+    " make edge from `start` to `end` with attributes specified by `config`"
+    attrs = config.relation_attrs.get(
+        (start.type_name(), end.type_name()), {})
+    attrs["edgetooltip"] = "{} -> {}".format(
+        start.title, end.title)
+    edge(graph, start,
+         end, attrs)
 
 
 def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
@@ -59,15 +69,18 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
         return
     if not node.parent:
         return
-    if not node.type_name() in config.excludes and\
-            not node.parent.type_name() in config.excludes:
+    if not node.type_name() in config.excludes:
+        avisible_ancestor = visible_ancestor(config, node.parent)
+        if not avisible_ancestor:
+            return
+
         attrs = {}
         attrs["edgetooltip"] = "{} is child of {}"\
-            .format(node.name, node.parent.name)
+            .format(node.name, avisible_ancestor.name)
         attrs["style"] = "dashed"
         attrs["color"] = "#ffcc99"
         attrs["arrowhead"] = "none"
-        edge(graph, node, node.parent, attrs)
+        edge(graph, node, avisible_ancestor, attrs)
 
 
 def edge(graph, start, end, attrs):
@@ -77,19 +90,36 @@ def edge(graph, start, end, attrs):
                _attributes=attrs)
 
 
-def make_dependency_edges(metadata, config, graph, node):
+def visible_edges(metadata, config):
+    " returns edges to draw in graph "
+    uses = []
+    for user in metadata.all_active_users():
+        # print("In: from:", user.title, " to ", user.link)
+        used_node_link = user.link
+        used_node = metadata.index[(
+            used_node_link.object_type, used_node_link.local_id)]
+        user_vis_ancestor = visible_ancestor(config, user)
+        if not user_vis_ancestor:
+            continue
+        used_vis_ancestor = visible_ancestor(config, used_node)
+        if not used_vis_ancestor:
+            continue
+        # print("Out: from:", user_vis_ancestor.title,
+        #       " to ", used_vis_ancestor.title)
+        uses.append(((user_vis_ancestor.type_name(), user_vis_ancestor.title),
+                     (used_vis_ancestor.type_name(), used_vis_ancestor.title)))
+    if config.collapse_multiple_uses:
+        uses = set(uses)
+    return uses
+
+
+def make_dependency_edges(metadata, config, graph):
     " make edges for all dependencies of `node` "
-
-    if hasattr(node, "uses"):
-        if config.collapse_multiple_uses:
-            uses = set(node.uses)
-        else:
-            uses = node.uses
-
-        for used_node_link in uses:
-            used_node = metadata.index[(
-                used_node_link.object_type, used_node_link.local_id)]
-            make_edge(config, graph, node, used_node)
+    uses = visible_edges(metadata, config)
+    for use in uses:
+        start = metadata.index[use[0]]
+        end = metadata.index[use[1]]
+        make_edge(config, graph, start, end)
 
 
 def generate_main_graph(metadata, config):
@@ -102,7 +132,8 @@ def generate_main_graph(metadata, config):
     for node in metadata.all_objects():
         make_node(config.graph, graph, node)
         make_parent_edge(config.graph, graph, node)
-        make_dependency_edges(metadata, config.graph, graph, node)
+
+    make_dependency_edges(metadata, config.graph, graph)
     return graph
 
 

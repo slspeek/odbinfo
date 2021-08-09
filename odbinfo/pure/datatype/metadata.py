@@ -113,9 +113,7 @@ class Metadata(PageOwner):
     def create_index(self) -> None:
         " make an index of linkable objects "
         for content in self.all_objects():
-            if isinstance(content, PageOwner):
-                # pylint:disable=no-member
-                self.index[(content.type_name(), content.title)] = content
+            self.index[(content.type_name(), content.title)] = content
 
     def set_titles(self):
         " set the titles so that they are unique within their type_name "
@@ -153,7 +151,9 @@ class Metadata(PageOwner):
 
     def all_active_users(self):
         " returns all User objects with a link set from the tree "
+        # exclude tokens in Modules
         # pylint:disable=no-member
+
         return \
             [obj for obj in self.all_objects() if isinstance(obj, User)
-                and obj.link]
+                and obj.link and not isinstance(obj.parent, Module)]

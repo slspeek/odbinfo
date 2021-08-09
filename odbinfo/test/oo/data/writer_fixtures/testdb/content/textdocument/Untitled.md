@@ -33,16 +33,6 @@ used_by:
   local_id: UsesDocumentFilename.Module1.Standard
   location_id: '198'
   object_type: basicfunction
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
-  local_id: Module1.Standard
-  location_id: '234'
-  object_type: module
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
-  local_id: Module1.Standard
-  location_id: '247'
-  object_type: module
 uses:
 - *id001
 ---

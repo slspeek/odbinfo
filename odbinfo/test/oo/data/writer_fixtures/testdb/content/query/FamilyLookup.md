@@ -137,11 +137,6 @@ used_by:
   local_id: ReferToQuery.Module1.Library1
   location_id: '426'
   object_type: basicfunction
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
-  local_id: Module1.Library1
-  location_id: '567'
-  object_type: module
 uses:
 - *id002
 ---

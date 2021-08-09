@@ -6423,10 +6423,6 @@ query_defs:
     local_id: ReferToQuery.Module1.Library1
     location_id: '426'
     object_type: basicfunction
-  - bookmark: null
-    local_id: Module1.Library1
-    location_id: '567'
-    object_type: module
   uses:
   - bookmark: null
     local_id: Family
@@ -7275,10 +7271,6 @@ table_defs:
     local_id: ReferToTable.Module1.Library1
     location_id: '402'
     object_type: basicfunction
-  - bookmark: null
-    local_id: Module1.Library1
-    location_id: '541'
-    object_type: module
   uses:
   - bookmark: null
     local_id: Family
@@ -7316,14 +7308,6 @@ textdocument_defs:
     local_id: UsesDocumentFilename.Module1.Standard
     location_id: '198'
     object_type: basicfunction
-  - bookmark: null
-    local_id: Module1.Standard
-    location_id: '234'
-    object_type: module
-  - bookmark: null
-    local_id: Module1.Standard
-    location_id: '247'
-    object_type: module
   uses:
   - bookmark: null
     local_id: vwPlant
@@ -7749,10 +7733,6 @@ view_defs:
     local_id: ReferToView.Module1.Library1
     location_id: '414'
     object_type: basicfunction
-  - bookmark: null
-    local_id: Module1.Library1
-    location_id: '554'
-    object_type: module
   uses:
   - bookmark: null
     local_id: Plant

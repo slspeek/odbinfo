@@ -1,7 +1,12 @@
+Get test coverage up to 100%
+
 Simplify embeddedqueries in CommandDriven by removing them from queries later
 - EmbeddedQuery.tokens part of report/subform children
 EmbeddedQuery which is no PageOwner for CommandDriven
 
+CommandDriven --> abstract base class
+
+Use decorator (with args (indent)?) for timing
 
 upgrade dependencies
 
@@ -89,7 +94,7 @@ Progress dialog
 
 general
 -------
-direct sql queries must be transformed to Query object
+
 
 installation check
 ------------------
@@ -119,6 +124,7 @@ update minimal theme (20210703 ok)
 
 Later
 -----
+direct sql queries must be transformed to Query object
 Threads: writer, parser?
 i18n gettext in python, hugo {{ T id }}
 make typing more complete (lot of work)

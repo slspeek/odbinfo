@@ -1,4 +1,5 @@
 " Graphical User Interface datatypes "
+from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
 
@@ -7,13 +8,31 @@ from odbinfo.pure.datatype.base import (NamedNode, Node, PageOwner,
 from odbinfo.pure.datatype.tabular import Query
 
 
+class AbstractCommander(ABC):
+    "Commander interface"
+
+    @abstractmethod
+    def get_command(self):
+        "returns the command str"
+
+    @abstractmethod
+    def get_commandtype(self):
+        "returns the commandtype"
+
+
 @dataclass
-class Commander(User):
+class Commander(User, AbstractCommander):
     " Has a command and commandtype "
     command: str
     commandtype: str
     # Only if commandtype == "command"
     embedded_query: Optional[Query] = field(init=False, default=None)
+
+    def get_command(self):
+        return self.command
+
+    def get_commandtype(self):
+        return self.commandtype
 
 
 @dataclass

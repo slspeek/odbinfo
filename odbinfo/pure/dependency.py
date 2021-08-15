@@ -220,17 +220,17 @@ def search_deps_in_queries(dataobjects: Sequence[Usable],
 # pylint:disable=line-too-long
 
 def search_deps_in_commander(dataobjects: Sequence[PageOwner],
-                             cmddriven_seq: Sequence[Commander]) -> None:
+                             commander_seq: Sequence[Commander]) -> None:
     " find uses of dataobject in report"
-    def find_deps_in_cmddriven(cmddriven: Commander) -> None:
+    def find_deps_in_commander(commander: Commander) -> None:
         " find dependency uses in `report` "
         def match_one_dep(dependency: PageOwner) -> None:
-            if dependency.users_match(cmddriven.command):
-                cmddriven.link = get_identifier(dependency)
+            if not commander.get_commandtype() == 3 and dependency.users_match(commander.get_command()):
+                commander.link = get_identifier(dependency)
         for obj in dataobjects:
             match_one_dep(obj)
-    for cmddriven in cmddriven_seq:
-        find_deps_in_cmddriven(cmddriven)
+    for commander in commander_seq:
+        find_deps_in_commander(commander)
 
 
 def search_deps_in_documents(dataobjects: Sequence[PageOwner],

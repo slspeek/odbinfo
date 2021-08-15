@@ -3,7 +3,7 @@ import logging
 from functools import partial
 from typing import Sequence
 
-from odbinfo.pure.datatype import (BasicCall, BasicFunction, CommandDriven,
+from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
                                    DatabaseDisplay, Identifier, Key, Metadata,
                                    Module, PageOwner, Query, Table,
                                    TextDocument, Token, get_identifier)
@@ -37,17 +37,17 @@ def search_dependencies(metadata: Metadata):
                            metadata.view_defs)
     search_deps_in_queries(metadata.view_defs,
                            metadata.view_defs)
-    search_deps_in_commanddriven(metadata.table_defs,
-                                 metadata.report_defs)
-    search_deps_in_commanddriven(metadata.view_defs,
-                                 metadata.report_defs)
-    search_deps_in_commanddriven(metadata.query_defs,
-                                 metadata.report_defs)
-    search_deps_in_commanddriven(
+    search_deps_in_commander(metadata.table_defs,
+                             metadata.report_defs)
+    search_deps_in_commander(metadata.view_defs,
+                             metadata.report_defs)
+    search_deps_in_commander(metadata.query_defs,
+                             metadata.report_defs)
+    search_deps_in_commander(
         metadata.table_defs, metadata.subform_defs())
-    search_deps_in_commanddriven(metadata.view_defs, metadata.subform_defs())
-    search_deps_in_commanddriven(metadata.query_defs,
-                                 metadata.subform_defs())
+    search_deps_in_commander(metadata.view_defs, metadata.subform_defs())
+    search_deps_in_commander(metadata.query_defs,
+                             metadata.subform_defs())
     search_deps_in_documents(metadata.table_defs,
                              metadata.textdocument_defs)
     search_deps_in_documents(metadata.view_defs,
@@ -219,10 +219,10 @@ def search_deps_in_queries(dataobjects: Sequence[Usable],
 
 # pylint:disable=line-too-long
 
-def search_deps_in_commanddriven(dataobjects: Sequence[PageOwner],
-                                 cmddriven_seq: Sequence[CommandDriven]) -> None:
+def search_deps_in_commander(dataobjects: Sequence[PageOwner],
+                             cmddriven_seq: Sequence[Commander]) -> None:
     " find uses of dataobject in report"
-    def find_deps_in_cmddriven(cmddriven: CommandDriven) -> None:
+    def find_deps_in_cmddriven(cmddriven: Commander) -> None:
         " find dependency uses in `report` "
         def match_one_dep(dependency: PageOwner) -> None:
             if dependency.users_match(cmddriven.command):

@@ -87,7 +87,7 @@ def process_form(form: Form) -> None:
     set_form_height(form)
 
 
-def time_func(func, *args):  # *args can take 0 or more
+def time_func(func, *args):
     '''function which prints the wall time it takes to execute the given command'''
     start_time = time.time()
     func(*args)

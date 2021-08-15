@@ -7,7 +7,7 @@ from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, Library,
 from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import (Column, Index, Key, Query,
                                            QueryColumn, Table, View)
-from odbinfo.pure.datatype.ui import (CommandDriven, Control, DatabaseDisplay,
+from odbinfo.pure.datatype.ui import (Commander, Control, DatabaseDisplay,
                                       EventListener, Form, Grid, ListBox,
                                       Report, SubForm, TextDocument)
 
@@ -15,7 +15,7 @@ __all__ = [
     "BasicCall",
     "BasicFunction",
     "Column",
-    "CommandDriven",
+    "Commander",
     "Control",
     "DatabaseDisplay",
     "EventListener",

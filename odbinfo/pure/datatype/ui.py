@@ -8,7 +8,7 @@ from odbinfo.pure.datatype.tabular import Query
 
 
 @dataclass
-class CommandDriven(User):
+class Commander(User):
     " Has a command and commandtype "
     command: str
     commandtype: str
@@ -96,7 +96,7 @@ class Grid(TitleFromParents, NamedNode):
 
 
 @dataclass
-class SubForm(TitleFromParents, CommandDriven, NamedNode):  # pylint: disable=too-many-instance-attributes
+class SubForm(TitleFromParents, Commander, NamedNode):  # pylint: disable=too-many-instance-attributes
     " Database subform "
     allowdeletes: str
     allowinserts: str
@@ -127,7 +127,7 @@ class Form(PageOwner):
 
 # pylint:disable=too-many-ancestors
 @dataclass
-class Report(CommandDriven, PageOwner):
+class Report(Commander, PageOwner):
     " Report metadata "
     output_type: str
     formulas: List[str]

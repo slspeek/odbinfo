@@ -6,17 +6,17 @@ EmbeddedQuery which is no PageOwner for CommandDriven
 
 CommandDriven --> abstract base class
 
+CommandDriver --> Commander
+
 Use decorator (with args (indent)?) for timing
 
-upgrade dependencies
+upgrade dependencies (20210813 done)
 
 Like NamedNode.users_match have a method on Node.link_use
 
 Fix 'recursive calls' in basicfunctions
 
 
-Aggregation of dependencies
----------------------------
 Report dependencies when commandtype=command (should inherit from the
 embedded query)
 

@@ -1,4 +1,4 @@
-""" Core module """
+""" Processor module """
 import dataclasses
 import time
 from typing import Sequence, Union
@@ -93,17 +93,6 @@ def time_func(func, *args):  # *args can take 0 or more
     func(*args)
     end_time = time.time()
     print("it took this long to run: {}".format(end_time-start_time))
-
-
-def distribute_usecases(metadata):
-    "Decorate the PageOwners with their dependencies and use cases"
-    for usecase in metadata.use_cases:
-        source = metadata.index[(
-            usecase.obj.object_type, usecase.obj.local_id)]
-        source.uses.append(usecase.subject)
-        target = metadata.index[(
-            usecase.subject.object_type, usecase.subject.local_id)]
-        target.used_by.append(usecase.obj)
 
 
 def aggregate_uses_from_children(user_agg):

@@ -2,7 +2,7 @@
 !!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: Family
-obj_id: '116'
+obj_id: '102'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
@@ -26,7 +26,7 @@ subforms:
       inputrequired: 'false'
       label: FamlilyID
       name: FamlilyID
-      obj_id: '119'
+      obj_id: '105'
       title: control2.MainForm_Grid.MainForm.Family
       type: ooo:FormattedField
     - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -38,7 +38,7 @@ subforms:
       inputrequired: 'false'
       label: Name
       name: Name
-      obj_id: '120'
+      obj_id: '106'
       title: control3.MainForm_Grid.MainForm.Family
       type: ooo:TextField
     - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -50,11 +50,11 @@ subforms:
       inputrequired: 'false'
       label: Desc
       name: Desc
-      obj_id: '121'
+      obj_id: '107'
       title: control4.MainForm_Grid.MainForm.Family
       type: ooo:TextField
     name: MainForm_Grid
-    obj_id: '118'
+    obj_id: '104'
     title: MainForm_Grid.MainForm.Family
   depth: 0
   detailfields: ''
@@ -64,7 +64,7 @@ subforms:
     object_type: table
   masterfields: ''
   name: MainForm
-  obj_id: '117'
+  obj_id: '103'
   subforms: []
   title: MainForm.Family
 title: Family

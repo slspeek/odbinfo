@@ -3,8 +3,8 @@ import dataclasses
 import time
 from typing import Sequence, Union
 
-from odbinfo.pure.datatype import (Control, Form, Grid, Library, Metadata,
-                                   Module, Query, SubForm)
+from odbinfo.pure.datatype import (Control, EmbeddedQuery, Form, Grid, Library,
+                                   Metadata, Module, SubForm)
 from odbinfo.pure.datatype.base import (PageOwner, UseAggregator, User,
                                         get_source_identifier)
 from odbinfo.pure.datatype.config import Configuration
@@ -43,7 +43,7 @@ def _process_libraries(libraries: Sequence[Library]) -> None:
         _process_library(lib)
 
 
-def _process_query(query: Query) -> None:
+def _process_query(query: EmbeddedQuery) -> None:
     query.table_tokens, query.tokens = parse(query.command)
 
 
@@ -124,20 +124,26 @@ def aggregate_used_by(metadata):
                        ].used_by.append(source_link(user))
 
 
+def process_queries(metadata: Metadata):
+    "process all query-like objects"
+    start_time = time.time()
+    for query in metadata.query_defs:
+        _process_query(query)
+    for view in metadata.view_defs:
+        _process_query(view)
+    for embedded_query in metadata.embeddedquery_defs():
+        _process_query(embedded_query)
+    end_time = time.time()
+    print("Parse queries and views: {}".format(end_time-start_time))
+
+
 def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
     " preprocessing of the data before it is send to hugo "
     start_time = time.time()
     _process_libraries(metadata.library_defs)
     end_time = time.time()
     print("Parse basic: {}".format(end_time-start_time))
-
-    start_time = time.time()
-    for query in metadata.query_defs:
-        _process_query(query)
-    for view in metadata.view_defs:
-        _process_query(view)
-    end_time = time.time()
-    print("Parse queries and views: {}".format(end_time-start_time))
+    process_queries(metadata)
 
     start_time = time.time()
     for form in metadata.form_defs:
@@ -175,7 +181,7 @@ def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
     aggregate_used_by(metadata)
 
     end_time = time.time()
-    print("Distribute usecases: {}".format(end_time-start_time))
+    print("Aggregate usecases: {}".format(end_time-start_time))
 
     start_time = time.time()
     metadata.graphs = generate_graphs(metadata, config)

@@ -77,12 +77,12 @@ used_by:
   bookmark: null
   local_id: DependendView
   location_id: '25'
-  object_type: view
+  object_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: DependendView
   location_id: '33'
-  object_type: view
+  object_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: DependendQuery
@@ -91,7 +91,7 @@ used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: view1
-  location_id: '169'
+  location_id: '155'
   object_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null

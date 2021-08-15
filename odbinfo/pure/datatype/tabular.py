@@ -61,8 +61,9 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Query(PageOwner):
-    " Query properties see:"\
+class EmbeddedQuery(NamedNode):
+    " Query object embedded in Report, Listbox or SubForm "\
+        " Query properties see:"\
         " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
         " QueryDefinition.html"
     command: str
@@ -77,6 +78,14 @@ class Query(PageOwner):
 
     def children(self):
         return self.columns + self.tokens
+
+    def type_name(self):
+        return "query"
+
+
+@dataclass
+class Query(EmbeddedQuery, PageOwner):
+    " Query properties "
 
 
 @dataclass

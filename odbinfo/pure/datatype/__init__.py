@@ -5,8 +5,8 @@ from odbinfo.pure.datatype.base import (Identifier, Node, PageOwner,
 from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, Library,
                                         Module, PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.metadata import Metadata
-from odbinfo.pure.datatype.tabular import (Column, Index, Key, Query,
-                                           QueryColumn, Table, View)
+from odbinfo.pure.datatype.tabular import (Column, EmbeddedQuery, Index, Key,
+                                           Query, QueryColumn, Table, View)
 from odbinfo.pure.datatype.ui import (Commander, Control, DatabaseDisplay,
                                       EventListener, Form, Grid, ListBox,
                                       Report, SubForm, TextDocument)
@@ -18,6 +18,7 @@ __all__ = [
     "Commander",
     "Control",
     "DatabaseDisplay",
+    "EmbeddedQuery",
     "EventListener",
     "get_identifier",
     "Grid",

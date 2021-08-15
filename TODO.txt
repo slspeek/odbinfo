@@ -4,8 +4,6 @@ Simplify embeddedqueries in CommandDriven by removing them from queries later
 - EmbeddedQuery.tokens part of report/subform children
 EmbeddedQuery which is no PageOwner for CommandDriven
 
-Commander --> abstract base class, default impl
-
 Use decorator (with args (indent)?) for timing
 
 upgrade dependencies (20210813 done)

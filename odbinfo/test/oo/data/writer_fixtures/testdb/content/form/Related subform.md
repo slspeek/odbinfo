@@ -2,7 +2,7 @@
 !!python/object:odbinfo.pure.datatype.ui.Form
 height: 1
 name: Related subform
-obj_id: '153'
+obj_id: '139'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
@@ -24,7 +24,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
-    obj_id: '155'
+    obj_id: '141'
     title: control7.MainForm.Related subform
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -36,7 +36,7 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
-    obj_id: '156'
+    obj_id: '142'
     title: control9.MainForm.Related subform
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -48,7 +48,7 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
-    obj_id: '157'
+    obj_id: '143'
     title: control11.MainForm.Related subform
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -60,7 +60,7 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
-    obj_id: '158'
+    obj_id: '144'
     title: control8.MainForm.Related subform
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -72,7 +72,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtRFamliyID
-    obj_id: '159'
+    obj_id: '145'
     title: control12.MainForm.Related subform
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -84,7 +84,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
-    obj_id: '160'
+    obj_id: '146'
     title: control10.MainForm.Related subform
     type: TextField
   depth: 0
@@ -95,7 +95,7 @@ subforms:
     object_type: table
   masterfields: ''
   name: MainForm
-  obj_id: '154'
+  obj_id: '140'
   subforms:
   - !!python/object:odbinfo.pure.datatype.ui.SubForm
     allowdeletes: 'true'
@@ -113,7 +113,7 @@ subforms:
       inputrequired: ''
       label: FamilyID
       name: lblFamilyID
-      obj_id: '162'
+      obj_id: '148'
       title: control1.SubForm.MainForm.Related subform
       type: FixedText
     - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -125,7 +125,7 @@ subforms:
       inputrequired: ''
       label: Name
       name: lblName
-      obj_id: '163'
+      obj_id: '149'
       title: control3.SubForm.MainForm.Related subform
       type: FixedText
     - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -137,7 +137,7 @@ subforms:
       inputrequired: ''
       label: Desc
       name: lblDesc
-      obj_id: '164'
+      obj_id: '150'
       title: control5.SubForm.MainForm.Related subform
       type: FixedText
     - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -149,7 +149,7 @@ subforms:
       inputrequired: 'true'
       label: ''
       name: fmtFamilyID
-      obj_id: '165'
+      obj_id: '151'
       title: control2.SubForm.MainForm.Related subform
       type: FormattedField
     - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -161,7 +161,7 @@ subforms:
       inputrequired: 'false'
       label: ''
       name: txtName
-      obj_id: '166'
+      obj_id: '152'
       title: control4.SubForm.MainForm.Related subform
       type: TextField
     - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -173,7 +173,7 @@ subforms:
       inputrequired: 'false'
       label: ''
       name: txtDesc
-      obj_id: '167'
+      obj_id: '153'
       title: control6.SubForm.MainForm.Related subform
       type: TextField
     depth: 1
@@ -184,7 +184,7 @@ subforms:
       object_type: table
     masterfields: '"RFamliyID"'
     name: SubForm
-    obj_id: '161'
+    obj_id: '147'
     subforms: []
     title: SubForm.MainForm.Related subform
   title: MainForm.Related subform

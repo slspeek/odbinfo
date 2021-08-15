@@ -5,8 +5,8 @@ from typing import List, Sequence
 from zipfile import ZipFile
 
 from odbinfo.oo.ooutil import open_connection
-from odbinfo.pure.datatype import (Column, Index, Key, Metadata, Query,
-                                   QueryColumn, Report, Table, View)
+from odbinfo.pure.datatype import (Column, EmbeddedQuery, Index, Key, Metadata,
+                                   Query, QueryColumn, Report, Table, View)
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
@@ -41,12 +41,12 @@ def _read_view(connection, ooview) -> View:
     return view
 
 
-def extract_queries(reports: Sequence[Report]) -> List[Query]:
+def extract_queries(reports: Sequence[Report]):
     " Make queries from embedded sqlcommands in reports"
-    queries: List[Query] = []
+    queries = []
     for report in reports:
         if report.commandtype == "command":
-            query = Query(f"{report.name}.Command", report.command)
+            query = EmbeddedQuery(f"{report.name}.Command", report.command)
             report.embedded_query = query
             queries.append(query)
     return queries
@@ -59,7 +59,9 @@ def read_queries(connection, datasource, reports: List[Report]) -> List[Query]:
                             datasource.QueryDefinitions]
 
     read_query_func = partial(read_query_columns, connection)
-    return list(map(read_query_func, queries + embedded_queries))
+    for embedded_query in embedded_queries:
+        read_query_func(embedded_query)
+    return list(map(read_query_func, queries))
 
 
 def read_query_columns(connection, query: Query) -> Query:

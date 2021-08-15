@@ -9,7 +9,7 @@ from graphviz import Digraph
 from odbinfo.pure.datatype.base import PageOwner, Token, User
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
-from odbinfo.pure.datatype.tabular import Query, Table, View
+from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
 from odbinfo.pure.datatype.ui import Form, Report, SubForm, TextDocument
 
 METADATA_CONTENT = ["table",
@@ -87,6 +87,11 @@ class Metadata(PageOwner):
 
         return sum([collect_subforms_from_form(f) for f in self.form_defs], [])
 
+    def embeddedquery_defs(self) -> List[EmbeddedQuery]:
+        " collect all EmbeddedQuery objects "
+        return \
+            [obj for obj in self.all_objects() if obj.__class__ == EmbeddedQuery]
+
     def children(self):
         return (
 
@@ -121,8 +126,8 @@ class Metadata(PageOwner):
             # pylint:disable=no-member
             content.set_title()
 
-    # def set_title(self):
-    #     " do nothing"
+        # def set_title(self):
+        #     " do nothing"
 
     def _tokens_in_basicfunctions(self):
         fn_tokens = []
@@ -134,6 +139,7 @@ class Metadata(PageOwner):
     def verify_titles_unique_in_kind(self):
         " verify that titles are unique within their kind"
         def _print_doubles(titles_minus):
+
             def select_by_title(title, cand):
                 return title == cand
 
@@ -156,4 +162,4 @@ class Metadata(PageOwner):
 
         return \
             [obj for obj in self.all_objects() if isinstance(obj, User)
-                and obj.link and not isinstance(obj.parent, Module)]
+             and obj.link and not isinstance(obj.parent, Module)]

@@ -2,7 +2,7 @@
 !!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: Plant invoeren
-obj_id: '134'
+obj_id: '120'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
@@ -26,7 +26,7 @@ subforms:
       inputrequired: 'false'
       label: id
       name: id
-      obj_id: '137'
+      obj_id: '123'
       title: control2.MainForm_Grid.MainForm.Plant invoeren
       type: ooo:FormattedField
     - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -38,11 +38,11 @@ subforms:
       inputrequired: 'false'
       label: naam
       name: naam
-      obj_id: '138'
+      obj_id: '124'
       title: control3.MainForm_Grid.MainForm.Plant invoeren
       type: ooo:TextField
     name: MainForm_Grid
-    obj_id: '136'
+    obj_id: '122'
     title: MainForm_Grid.MainForm.Plant invoeren
   depth: 0
   detailfields: ''
@@ -52,7 +52,7 @@ subforms:
     object_type: query
   masterfields: ''
   name: MainForm
-  obj_id: '135'
+  obj_id: '121'
   subforms: []
   title: MainForm.Plant invoeren
 title: Plant invoeren

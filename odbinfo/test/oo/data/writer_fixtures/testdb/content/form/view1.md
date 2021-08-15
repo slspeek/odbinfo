@@ -2,7 +2,7 @@
 !!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: view1
-obj_id: '168'
+obj_id: '154'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
@@ -24,7 +24,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
-    obj_id: '170'
+    obj_id: '156'
     title: control1.MainForm.view1
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
@@ -36,7 +36,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: fmtid
-    obj_id: '171'
+    obj_id: '157'
     title: control2.MainForm.view1
     type: FormattedField
   depth: 0
@@ -44,10 +44,10 @@ subforms:
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: view
+    object_type: query
   masterfields: ''
   name: MainForm
-  obj_id: '169'
+  obj_id: '155'
   subforms: []
   title: MainForm.view1
 title: view1

@@ -30,7 +30,7 @@ table_tokens:
   link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: view
+    object_type: query
   obj_id: '25'
   text: '"view1"'
   title: token2.DependendView
@@ -40,7 +40,7 @@ table_tokens:
   link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: view
+    object_type: query
   obj_id: '33'
   text: '"view1"'
   title: token10.DependendView

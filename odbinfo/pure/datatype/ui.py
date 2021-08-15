@@ -5,11 +5,15 @@ from typing import List, Optional, Union
 
 from odbinfo.pure.datatype.base import (NamedNode, Node, PageOwner,
                                         TitleFromParents, User)
-from odbinfo.pure.datatype.tabular import Query
+from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
 
+@dataclass  # type: ignore
 class AbstractCommander(ABC):
     "Commander interface"
+
+    # Only if commandtype == "command"
+    embedded_query: Optional[EmbeddedQuery] = field(init=False, default=None)
 
     @abstractmethod
     def get_command(self):
@@ -25,8 +29,6 @@ class Commander(User, AbstractCommander):
     " Has a command and commandtype "
     command: str
     commandtype: str
-    # Only if commandtype == "command"
-    embedded_query: Optional[Query] = field(init=False, default=None)
 
     def get_command(self):
         return self.command
@@ -150,3 +152,8 @@ class Report(Commander, PageOwner):
     " Report metadata "
     output_type: str
     formulas: List[str]
+
+    def children(self):
+        if self.embedded_query:
+            return [self.embedded_query]
+        return []

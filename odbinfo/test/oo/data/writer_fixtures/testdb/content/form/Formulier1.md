@@ -2,7 +2,7 @@
 !!python/object:odbinfo.pure.datatype.ui.Form
 height: 1
 name: Formulier1
-obj_id: '122'
+obj_id: '108'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
@@ -19,7 +19,7 @@ subforms:
   detailfields: ''
   masterfields: ''
   name: Formulier
-  obj_id: '123'
+  obj_id: '109'
   subforms:
   - !!python/object:odbinfo.pure.datatype.ui.SubForm
     allowdeletes: 'true'
@@ -32,7 +32,7 @@ subforms:
     detailfields: ''
     masterfields: ''
     name: Formulier2
-    obj_id: '124'
+    obj_id: '110'
     subforms: []
     title: Formulier2.Formulier.Formulier1
   title: Formulier.Formulier1
@@ -47,7 +47,7 @@ subforms:
   detailfields: ''
   masterfields: ''
   name: Formulier 1
-  obj_id: '125'
+  obj_id: '111'
   subforms: []
   title: Formulier 1.Formulier1
 title: Formulier1

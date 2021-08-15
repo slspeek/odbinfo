@@ -4,8 +4,8 @@ from functools import partial
 from typing import Sequence
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
-                                   DatabaseDisplay, Identifier, Key, Metadata,
-                                   Module, PageOwner, Query, Table,
+                                   DatabaseDisplay, EmbeddedQuery, Identifier,
+                                   Key, Metadata, Module, PageOwner, Table,
                                    TextDocument, Token, get_identifier)
 from odbinfo.pure.datatype.base import Usable
 
@@ -37,6 +37,12 @@ def search_dependencies(metadata: Metadata):
                            metadata.view_defs)
     search_deps_in_queries(metadata.view_defs,
                            metadata.view_defs)
+    search_deps_in_queries(metadata.table_defs,
+                           metadata.embeddedquery_defs())
+    # search_deps_in_queries(metadata.view_defs,
+    #                        metadata.embeddedquery_defs())
+    # search_deps_in_queries(metadata.query_defs,
+    #                        metadata.embeddedquery_defs())
     search_deps_in_commander(metadata.table_defs,
                              metadata.report_defs)
     search_deps_in_commander(metadata.view_defs,
@@ -138,11 +144,12 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
 
 
 def link_token(token: Token, referand):
-    "link `token` to `acallable`"
+    "link `token` to `referand`"
+
     if token.link:
         # pylint:disable=logging-too-many-args
         logger.warning(
-            "Replacing link in token: {} (link={}:{}) with {}:{}",
+            "Replacing link in token: %s (link=%s:%s) with %s:%s",
             token.title,
             token.link.object_type,
             token.link.local_id,
@@ -197,9 +204,9 @@ def search_string_refs_in_callables(dataobjects: Sequence[PageOwner],
 
 
 def search_deps_in_queries(dataobjects: Sequence[Usable],
-                           queries: Sequence[Query]) -> None:
+                           queries: Sequence[EmbeddedQuery]) -> None:
     " find uses of `dataobjects` (Table, View, Query) in `queries` "
-    def find_tabulars_in_query(query: Query) -> None:
+    def find_tabulars_in_query(query: EmbeddedQuery) -> None:
         " find tabular uses in `query` "
         def find_tabular_in_query(usable: Usable) -> None:
             def find_tabular_in_token(token: Token) -> None:
@@ -225,7 +232,9 @@ def search_deps_in_commander(dataobjects: Sequence[PageOwner],
     def find_deps_in_commander(commander: Commander) -> None:
         " find dependency uses in `report` "
         def match_one_dep(dependency: PageOwner) -> None:
-            if not commander.get_commandtype() == 3 and dependency.users_match(commander.get_command()):
+            if (not commander.get_commandtype() == "command"  # no matching of embedded
+                # queries (COMMAND)
+                    and dependency.users_match(commander.get_command())):
                 commander.link = get_identifier(dependency)
         for obj in dataobjects:
             match_one_dep(obj)

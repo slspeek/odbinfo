@@ -2,14 +2,14 @@
 !!python/object:odbinfo.pure.datatype.ui.Report
 command: select * from "Plant";
 commandtype: command
-embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
+embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
   columns:
   - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
     autoincrement: false
     issigned: true
     name: id
     nullable: No_Nulls
-    obj_id: '103'
+    obj_id: '161'
     position: 1
     precision: 100
     readonly: false
@@ -23,7 +23,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     issigned: false
     name: naam
     nullable: Nullable
-    obj_id: '104'
+    obj_id: '162'
     position: 2
     precision: 2147483647
     readonly: false
@@ -37,7 +37,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     issigned: true
     name: RFamliyID
     nullable: Nullable
-    obj_id: '105'
+    obj_id: '163'
     position: 3
     precision: 10
     readonly: false
@@ -50,11 +50,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
 
     FROM   "Plant";'
   name: ReportCommandTypeSQL.Command
-  obj_id: '102'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    local_id: ./testdb.odb
-    object_type: metadata
+  obj_id: '160'
   table_tokens:
   - &id001 !!python/object:odbinfo.pure.datatype.base.Token
     index: 8
@@ -62,7 +58,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
       bookmark: null
       local_id: Plant
       object_type: table
-    obj_id: '114'
+    obj_id: '172'
     text: '"Plant"'
     title: token8.ReportCommandTypeSQL.Command
     type: 200
@@ -107,14 +103,11 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.Query
     index: 9
     text: ;
     type: 1
-  used_by: []
-  uses:
-  - *id002
 formulas:
 - field:[id]
 - field:[naam]
 name: ReportCommandTypeSQL
-obj_id: '173'
+obj_id: '159'
 output_type: application/vnd.oasis.opendocument.text
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
@@ -122,5 +115,6 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   object_type: metadata
 title: ReportCommandTypeSQL
 used_by: []
-uses: []
+uses:
+- *id002
 ---

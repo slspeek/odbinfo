@@ -709,7 +709,7 @@ form_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: query
+      object_type: view
     masterfields: ''
     name: MainForm
     obj_id: '155'
@@ -721,7 +721,7 @@ form_defs:
   uses:
   - bookmark: null
     local_id: view1
-    object_type: query
+    object_type: view
 graphs: []
 library_defs:
 - modules:
@@ -3625,7 +3625,7 @@ library_defs:
         link:
           bookmark: null
           local_id: view1
-          object_type: query
+          object_type: view
         obj_id: '414'
         parent: null
         text: '"view1"'
@@ -3658,7 +3658,7 @@ library_defs:
         link:
           bookmark: null
           local_id: view1
-          object_type: query
+          object_type: view
         obj_id: '414'
         parent: null
         text: '"view1"'
@@ -3735,7 +3735,7 @@ library_defs:
         link:
           bookmark: null
           local_id: view1
-          object_type: query
+          object_type: view
         obj_id: '414'
         parent: null
         text: '"view1"'
@@ -3763,7 +3763,7 @@ library_defs:
       uses:
       - bookmark: null
         local_id: view1
-        object_type: query
+        object_type: view
     - body_tokens:
       - hidden: false
         index: 136
@@ -5059,7 +5059,7 @@ library_defs:
       link:
         bookmark: null
         local_id: view1
-        object_type: query
+        object_type: view
       obj_id: '554'
       parent: null
       text: '"view1"'
@@ -5224,7 +5224,7 @@ library_defs:
       object_type: table
     - bookmark: null
       local_id: view1
-      object_type: query
+      object_type: view
     - bookmark: null
       local_id: FamilyLookup
       object_type: query
@@ -5251,7 +5251,7 @@ library_defs:
       object_type: table
     - bookmark: null
       local_id: view1
-      object_type: query
+      object_type: view
     - bookmark: null
       local_id: FamilyLookup
       object_type: query
@@ -5846,7 +5846,7 @@ library_defs:
     object_type: table
   - bookmark: null
     local_id: view1
-    object_type: query
+    object_type: view
   - bookmark: null
     local_id: FamilyLookup
     object_type: query
@@ -5873,7 +5873,7 @@ library_defs:
     object_type: table
   - bookmark: null
     local_id: view1
-    object_type: query
+    object_type: view
   - bookmark: null
     local_id: FamilyLookup
     object_type: query
@@ -6054,7 +6054,7 @@ query_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: query
+      object_type: view
     obj_id: '66'
     parent: null
     text: '"view1"'
@@ -6187,7 +6187,7 @@ query_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: query
+      object_type: view
     obj_id: '66'
     parent: null
     text: '"view1"'
@@ -6203,7 +6203,7 @@ query_defs:
     object_type: query
   - bookmark: null
     local_id: view1
-    object_type: query
+    object_type: view
 - columns:
   - autoincrement: false
     issigned: false
@@ -7083,7 +7083,7 @@ table_defs:
   - bookmark: null
     local_id: view1
     location_id: '44'
-    object_type: query
+    object_type: view
   - bookmark: null
     local_id: vwPlant
     location_id: '101'
@@ -7157,10 +7157,10 @@ uses:
   object_type: table
 - bookmark: null
   local_id: view1
-  object_type: query
+  object_type: view
 - bookmark: null
   local_id: view1
-  object_type: query
+  object_type: view
 - bookmark: null
   local_id: Plant
   object_type: table
@@ -7172,7 +7172,7 @@ uses:
   object_type: query
 - bookmark: null
   local_id: view1
-  object_type: query
+  object_type: view
 - bookmark: null
   local_id: Family
   object_type: table
@@ -7199,7 +7199,7 @@ uses:
   object_type: table
 - bookmark: null
   local_id: view1
-  object_type: query
+  object_type: view
 - bookmark: null
   local_id: Family
   object_type: table
@@ -7244,7 +7244,7 @@ uses:
   object_type: table
 - bookmark: null
   local_id: view1
-  object_type: query
+  object_type: view
 - bookmark: null
   local_id: FamilyLookup
   object_type: query
@@ -7271,7 +7271,7 @@ uses:
   object_type: table
 - bookmark: null
   local_id: view1
-  object_type: query
+  object_type: view
 - bookmark: null
   local_id: FamilyLookup
   object_type: query
@@ -7310,7 +7310,7 @@ view_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: query
+      object_type: view
     obj_id: '25'
     parent: null
     text: '"view1"'
@@ -7321,7 +7321,7 @@ view_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: query
+      object_type: view
     obj_id: '33'
     parent: null
     text: '"view1"'
@@ -7350,7 +7350,7 @@ view_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: query
+      object_type: view
     obj_id: '25'
     parent: null
     text: '"view1"'
@@ -7419,7 +7419,7 @@ view_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: query
+      object_type: view
     obj_id: '33'
     parent: null
     text: '"view1"'
@@ -7429,10 +7429,10 @@ view_defs:
   uses:
   - bookmark: null
     local_id: view1
-    object_type: query
+    object_type: view
   - bookmark: null
     local_id: view1
-    object_type: query
+    object_type: view
 - columns:
   - autoincrement: false
     issigned: true
@@ -7553,11 +7553,11 @@ view_defs:
   - bookmark: null
     local_id: DependendView
     location_id: '25'
-    object_type: query
+    object_type: view
   - bookmark: null
     local_id: DependendView
     location_id: '33'
-    object_type: query
+    object_type: view
   - bookmark: null
     local_id: DependendQuery
     location_id: '66'

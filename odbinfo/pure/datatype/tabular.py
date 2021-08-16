@@ -79,9 +79,6 @@ class EmbeddedQuery(NamedNode):
     def children(self):
         return self.columns + self.tokens
 
-    def type_name(self):
-        return "query"
-
 
 @dataclass
 class Query(EmbeddedQuery, PageOwner):

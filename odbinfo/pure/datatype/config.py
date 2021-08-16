@@ -17,6 +17,7 @@ TYPE_ATTRS = {
     "table": {"shape": "cylinder", "fillcolor": "#a7c3eb", "style": "filled"},
     "view": {"shape": "hexagon"},
     "query": {"shape": "ellipse"},
+    "embeddedquery": {"shape": "ellipse"},
     "form": {"shape": "rect", "style": "filled", "fillcolor": "#ffcc99"},
     "report": {"shape": "rectangle"},
     "dialog": {"shape": "trapezium"},

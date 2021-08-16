@@ -1,9 +1,9 @@
 " Graphviz graph generation "
-from typing import cast
+from typing import Sequence, Tuple, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import Control, PageOwner
+from odbinfo.pure.datatype import Control, Metadata, PageOwner
 from odbinfo.pure.datatype.base import NamedNode
 from odbinfo.pure.datatype.config import GraphConfig
 
@@ -65,8 +65,6 @@ def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode, end: NamedN
 
 def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
     " make edge from `node` to `parent` if `config` says so "
-    if not hasattr(node, "parent"):
-        return
     if not node.parent:
         return
     if not node.type_name() in config.excludes:
@@ -90,7 +88,8 @@ def edge(graph, start, end, attrs):
                _attributes=attrs)
 
 
-def visible_edges(metadata, config):
+def visible_edges(metadata: Metadata, config: GraphConfig) \
+        -> Sequence[Tuple[Tuple[str, str], Tuple[str, str]]]:
     " returns edges to draw in graph "
     uses = []
     for user in metadata.all_active_users():
@@ -109,7 +108,7 @@ def visible_edges(metadata, config):
         uses.append(((user_vis_ancestor.type_name(), user_vis_ancestor.title),
                      (used_vis_ancestor.type_name(), used_vis_ancestor.title)))
     if config.collapse_multiple_uses:
-        uses = set(uses)
+        return list(set(uses))
     return uses
 
 

@@ -14,47 +14,12 @@ callables:
     local_id: Module2.Standard
     object_type: module
   strings:
-  - &id001 !!python/object:odbinfo.pure.datatype.base.Token
+  - !!python/object:odbinfo.pure.datatype.base.Token
     index: 9
     text: '"hello world"'
     type: 172
   title: Main.Module2.Standard
-  tokens:
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    index: 3
-    text: Sub
-    type: 125
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    index: 4
-    text: ' '
-    type: 185
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    index: 5
-    text: Main
-    type: 181
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    index: 6
-    text: "\n\t"
-    type: 183
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    index: 7
-    text: Print
-    type: 100
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    index: 8
-    text: ' '
-    type: 185
-  - *id001
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    index: 10
-    text: '
-
-      '
-    type: 183
-  - !!python/object:odbinfo.pure.datatype.base.Token
-    index: 11
-    text: End Sub
-    type: 44
+  tokens: []
   used_by: []
   uses: []
 library: Standard

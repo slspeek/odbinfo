@@ -141,9 +141,9 @@ class Form(PageOwner):
     def children(self):
         return self.subforms
 
-    def all_subforms(self) -> List[SubForm]:
-        " returns all nested subforms"
-        return list(filter(lambda x: isinstance(x, SubForm), self.all_objects()))
+    # def all_subforms(self) -> List[SubForm]:
+    #     " returns all nested subforms"
+    #     return list(filter(lambda x: isinstance(x, SubForm), self.all_objects()))
 
 
 # pylint:disable=too-many-ancestors

@@ -6,7 +6,7 @@ from typing import List
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype.base import PageOwner, Token, User
+from odbinfo.pure.datatype.base import PageOwner, User
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
@@ -125,16 +125,6 @@ class Metadata(PageOwner):
         for content in self.all_objects():
             # pylint:disable=no-member
             content.set_title()
-
-        # def set_title(self):
-        #     " do nothing"
-
-    def _tokens_in_basicfunctions(self):
-        fn_tokens = []
-        for lib in self.basicfunction_defs():
-            fn_tokens += list(filter(lambda x: isinstance(x,
-                                                          Token), lib.all_objects()))
-        return fn_tokens
 
     def verify_titles_unique_in_kind(self):
         " verify that titles are unique within their kind"

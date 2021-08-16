@@ -17,7 +17,7 @@ strings:
   link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: query
+    object_type: view
   obj_id: '414'
   text: '"view1"'
   title: token125.ReferToView.Module1.Library1

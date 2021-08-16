@@ -44,7 +44,7 @@ subforms:
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: query
+    object_type: view
   masterfields: ''
   name: MainForm
   obj_id: '155'

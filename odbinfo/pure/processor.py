@@ -87,14 +87,6 @@ def process_form(form: Form) -> None:
     set_form_height(form)
 
 
-def time_func(func, *args):
-    '''function which prints the wall time it takes to execute the given command'''
-    start_time = time.time()
-    func(*args)
-    end_time = time.time()
-    print("it took this long to run: {}".format(end_time-start_time))
-
-
 def aggregate_uses_from_children(user_agg):
     "Collect aggregated uses from its children "
     for user in user_agg.all_objects():

@@ -100,7 +100,7 @@ used_by:
   bookmark: null
   local_id: view1
   location_id: '44'
-  object_type: query
+  object_type: view
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: vwPlant

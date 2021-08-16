@@ -3,9 +3,10 @@ import os
 from unittest.mock import MagicMock
 
 import pytest
+from graphviz import Digraph
 
-from odbinfo.pure.writer import (_open_browser, chdir, clean_old_site,
-                                 new_site, run_checked)
+from odbinfo.pure.writer import (_open_browser, _write_graphs, chdir,
+                                 clean_old_site, new_site, run_checked)
 from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 
@@ -23,6 +24,21 @@ def test_clean_old_site(tmpdir):
     os.makedirs(tmpdir / "exampledb")
     os.makedirs(tmpdir / "exampledb-local")
     clean_old_site(output_dir, "exampledb")
+
+
+def test_write_graphs(tmpdir, monkeypatch):
+    "test write graphs"
+    monkeypatch.chdir(tmpdir)
+    graph = Digraph()
+
+    # pylint:disable=too-few-public-methods
+    class Meta:
+        "for test only"
+        graphs = []
+
+    obj = Meta()
+    obj.graphs = [graph]
+    _write_graphs(obj)
 
 
 @pytest.mark.slow

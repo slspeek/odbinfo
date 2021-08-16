@@ -120,7 +120,7 @@ table_tokens:
   link: &id006 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: query
+    object_type: view
   obj_id: '66'
   text: '"view1"'
   title: token14.DependendQuery

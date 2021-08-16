@@ -24,7 +24,7 @@ class Node:
     title: str = field(init=False, default="TITLE_NOT_SET")
     parent: Optional["NamedNode"] = field(init=False, default=None)
 
-    def type_name(self):
+    def type_name(self) -> str:
         " returns classname in lowercase "
         return self.__class__.__name__.lower()
 

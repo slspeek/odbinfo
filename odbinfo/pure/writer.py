@@ -105,13 +105,13 @@ def make_site(output_dir, name, metadata):
     return localsite
 
 
-def clear_fields_after(metadata, content):
+def clear_fields_after(metadata: Metadata, type_name: str) -> None:
     " clear tokens after basicfunctions were written "
-    if content == "basicfunctions":
-        for func in metadata.basicfunctions():
+    if type_name == "basicfunction":
+        for func in metadata.basicfunction_defs():
             func.tokens = []
-    if content == "modules":
-        for module in metadata.modules():
+    if type_name == "module":
+        for module in metadata.module_defs():
             module.tokens = []
 
 

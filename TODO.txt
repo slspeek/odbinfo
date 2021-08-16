@@ -1,8 +1,6 @@
-Get test coverage up to 100%
+Makefile: pyreverse goal: classdiagram
 
-Simplify embeddedqueries in CommandDriven by removing them from queries later
-- EmbeddedQuery.tokens part of report/subform children
-EmbeddedQuery which is no PageOwner for CommandDriven
+children, all_objects from List to Iterator
 
 Use decorator (with args (indent)?) for timing
 
@@ -12,16 +10,10 @@ Like NamedNode.users_match have a method on Node.link_use
 
 Fix 'recursive calls' in basicfunctions
 
-
-Report dependencies when commandtype=command (should inherit from the
-embedded query)
-
-
 Relevant control filter:
   ListBox handling
     --> commanddriven
   eventlisteners parsing
-
 
 Graphs:
   - for table, queries, Views

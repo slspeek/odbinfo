@@ -2,8 +2,6 @@ Makefile: pyreverse goal: classdiagram
 
 children, all_objects from List to Iterator
 
-Use decorator (with args (indent)?) for timing
-
 upgrade dependencies (20210813 done)
 
 Like NamedNode.users_match have a method on Node.link_use

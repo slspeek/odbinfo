@@ -10,8 +10,10 @@ from odbinfo.pure.datatype import (Column, EmbeddedQuery, Index, Key, Metadata,
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
+from odbinfo.pure.util import timed
 
 
+@timed("Read metadata", indent=2)
 def read_metadata(datasource, odbpath):
     """ reads all metadata """
     with open_connection(datasource) as con:
@@ -30,6 +32,7 @@ def read_metadata(datasource, odbpath):
                          read_text_documents(os.path.dirname(odbpath), dbname))
 
 
+@timed("Read views", indent=4)
 def read_views(connection) -> List[View]:
     """ Reads view metadata from `connection` """
     return [_read_view(connection, ooview) for ooview in connection.Views]
@@ -52,6 +55,7 @@ def extract_queries(reports: Sequence[Report]):
     return queries
 
 
+@timed("Read queries", indent=4)
 def read_queries(connection, datasource, reports: List[Report]) -> List[Query]:
     """ Reads query metadata from `datasource` """
     embedded_queries: List[Query] = extract_queries(reports)
@@ -92,6 +96,7 @@ def _read_query_columns(connection, command) -> List[QueryColumn]:
     return cols
 
 
+@timed("Read tables", indent=4)
 def read_tables(connection) -> List[Table]:
     """ Reads table metadata from `connection` """
     result = []

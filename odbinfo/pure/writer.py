@@ -16,6 +16,7 @@ import yaml
 
 from odbinfo.pure.datatype import Metadata, Token
 from odbinfo.pure.datatype.metadata import METADATA_CONTENT
+from odbinfo.pure.util import timed
 
 FRONT_MATTER_MARK = "---\n"
 
@@ -45,6 +46,7 @@ DATA_DIR = path.join(path.dirname(path.dirname(path.dirname(__file__))),
                      "data")
 
 
+@timed("Write graphs", indent=4)
 def _write_graphs(metadata):
     for graph in metadata.graphs:
         graph.save(directory="static/svg")
@@ -90,6 +92,7 @@ def preprocess_metadata(metadata):
         del obj.parent
 
 
+@timed("Write and build hugo site", indent=2)
 def make_site(output_dir, name, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
 
@@ -137,11 +140,8 @@ def _write_metadata(name, metadata: Metadata):
     cleanup_tokens(metadata)
     _write_config(name, metadata)
     for content in METADATA_CONTENT:
-        start_time = time.time()
         _write_content(metadata, content)
         clear_fields_after(metadata, content)
-        end_time = time.time()
-        print("Write {}: {}".format(content, end_time-start_time))
 
 
 def _get_metadata_attr(metadata: Metadata, attribute: str):
@@ -180,6 +180,7 @@ def _write_config(site_name, metadata):
                    }, cfg)
 
 
+@timed("Write content ", indent=4, arg=1, name=False)
 def _write_content(metadata: Metadata, name):
     contentlist = _get_metadata_attr(metadata, name)
     if len(contentlist) > 0:

@@ -8,10 +8,12 @@ from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
                                    Key, Metadata, Module, PageOwner, Table,
                                    TextDocument, Token, get_identifier)
 from odbinfo.pure.datatype.base import Usable
+from odbinfo.pure.util import timed
 
 logger = logging.getLogger(__name__)
 
 
+@timed("Search dependencies", indent=4)
 def search_dependencies(metadata: Metadata):
     " dependency search in `metadata`"
     search_tables_in_tables(metadata.table_defs)

@@ -1,7 +1,7 @@
 "test for graph module"
-from odbinfo.test.pure.fixtures import metadata_processed
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.graph import visible_edges
+from odbinfo.test.pure.fixtures import metadata_processed
 
 
 def test_visible_edges(metadata_processed):

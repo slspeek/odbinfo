@@ -24,7 +24,7 @@ class Node:
     title: str = field(init=False, default="TITLE_NOT_SET")
     parent: Optional["NamedNode"] = field(init=False, default=None)
 
-    def type_name(self) -> str:
+    def content_type(self) -> str:
         " returns classname in lowercase "
         return self.__class__.__name__.lower()
 
@@ -106,16 +106,16 @@ def get_identifier(usable) -> Identifier:
     while not isinstance(parent, PageOwner):
         parent = parent.parent
     if parent == usable:
-        return Identifier(usable.type_name(),
+        return Identifier(usable.content_type(),
                           usable.title, None)
-    return Identifier(parent.type_name(),
+    return Identifier(parent.content_type(),
                       parent.title, usable.obj_id)
 
 
 def get_source_identifier(source: PageOwner, location: Optional[Node]) -> SourceIdentifier:
     " creates a SourceIdentifier "
     source_id = "" if not location else location.obj_id
-    return SourceIdentifier(source.type_name(), source.title, None, source_id)
+    return SourceIdentifier(source.content_type(), source.title, None, source_id)
 
 
 # pylint:disable=too-few-public-methods,no-member

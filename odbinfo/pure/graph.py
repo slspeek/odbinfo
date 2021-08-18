@@ -16,37 +16,37 @@ def hugo_filename(name: str) -> str:
 def href(obj):
     """ returns a href html attribute """
     if isinstance(obj, PageOwner):
-        return f"../{obj.type_name()}/{hugo_filename(obj.title)}/index.html"
+        return f"../{obj.content_type()}/{hugo_filename(obj.title)}/index.html"
 
     node = obj.parent
     while not isinstance(node, PageOwner):
         node = node.parent
-    return f"../{node.type_name()}/{hugo_filename(node.title)}/index.html#{obj.obj_id}"
+    return f"../{node.content_type()}/{hugo_filename(node.title)}/index.html#{obj.obj_id}"
 
 
 def make_node(config: GraphConfig,
               graph: Digraph, node: NamedNode):
     " adds a node to `graph` for `node` if `config` says so "
-    if not node.type_name() in config.excludes:
+    if not node.content_type() in config.excludes:
         label = node.name
-        if node.type_name() == "control":
+        if node.content_type() == "control":
             control = cast(Control, node)
             if control.label:
                 label = control.label
         graph.node(str(node.obj_id),
                    label=label,
                    tooltip="{} ({})".format(node.name,
-                                            node.type_name()),
+                                            node.content_type()),
                    href=href(node),
                    id=node.obj_id,
-                   _attributes=config.type_attrs[node.type_name()])
+                   _attributes=config.type_attrs[node.content_type()])
 
 
 def visible_ancestor(config: GraphConfig, node):
     """ returns `node` if is visible, else first ancestor that is visible
         or None if there is no visible ancestor"""
     parent = node
-    while parent.type_name() in config.excludes:
+    while parent.content_type() in config.excludes:
         parent = parent.parent
         if not parent:
             return None
@@ -56,7 +56,7 @@ def visible_ancestor(config: GraphConfig, node):
 def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode, end: NamedNode):
     " make edge from `start` to `end` with attributes specified by `config`"
     attrs = config.relation_attrs.get(
-        (start.type_name(), end.type_name()), {})
+        (start.content_type(), end.content_type()), {})
     attrs["edgetooltip"] = "{} -> {}".format(
         start.title, end.title)
     edge(graph, start,
@@ -67,7 +67,7 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
     " make edge from `node` to `parent` if `config` says so "
     if not node.parent:
         return
-    if not node.type_name() in config.excludes:
+    if not node.content_type() in config.excludes:
         avisible_ancestor = visible_ancestor(config, node.parent)
         if not avisible_ancestor:
             return
@@ -105,8 +105,8 @@ def visible_edges(metadata: Metadata, config: GraphConfig) \
             continue
         # print("Out: from:", user_vis_ancestor.title,
         #       " to ", used_vis_ancestor.title)
-        uses.append(((user_vis_ancestor.type_name(), user_vis_ancestor.title),
-                     (used_vis_ancestor.type_name(), used_vis_ancestor.title)))
+        uses.append(((user_vis_ancestor.content_type(), user_vis_ancestor.title),
+                     (used_vis_ancestor.content_type(), used_vis_ancestor.title)))
     if config.collapse_multiple_uses:
         return list(set(uses))
     return uses

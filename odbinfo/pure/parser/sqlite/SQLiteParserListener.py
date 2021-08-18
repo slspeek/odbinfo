@@ -153,12 +153,12 @@ class SQLiteParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SQLiteParser#type_name.
-    def enterType_name(self, ctx:SQLiteParser.Type_nameContext):
+    # Enter a parse tree produced by SQLiteParser#content_type.
+    def enterContent_type(self, ctx:SQLiteParser.Content_typeContext):
         pass
 
-    # Exit a parse tree produced by SQLiteParser#type_name.
-    def exitType_name(self, ctx:SQLiteParser.Type_nameContext):
+    # Exit a parse tree produced by SQLiteParser#content_type.
+    def exitContent_type(self, ctx:SQLiteParser.Content_typeContext):
         pass
 
 

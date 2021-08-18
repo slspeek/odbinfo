@@ -118,10 +118,10 @@ class Metadata(PageOwner):
     def create_index(self) -> None:
         " make an index of linkable objects "
         for content in self.all_objects():
-            self.index[(content.type_name(), content.title)] = content
+            self.index[(content.content_type(), content.title)] = content
 
     def set_titles(self):
-        " set the titles so that they are unique within their type_name "
+        " set the titles so that they are unique within their content_type "
         for content in self.all_objects():
             # pylint:disable=no-member
             content.set_title()
@@ -139,7 +139,7 @@ class Metadata(PageOwner):
 
         all_objs = self.all_objects()
         title_list = list(
-            map(lambda x: f"{x.type_name()}:{x.title}", all_objs))
+            map(lambda x: f"{x.content_type()}:{x.title}", all_objs))
         title_set = set(title_list)
         if not len(all_objs) == len(title_set):
             _print_doubles(title_list)

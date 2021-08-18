@@ -437,7 +437,7 @@ create_index_stmt
 indexed_column
 create_table_stmt
 column_def
-type_name
+content_type
 column_constraint
 signed_number
 table_constraint

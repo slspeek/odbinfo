@@ -155,7 +155,7 @@ def link_token(token: Token, referand):
             token.title,
             token.link.object_type,
             token.link.local_id,
-            referand.type_name(),
+            referand.content_type(),
             referand.name)
     token.link = get_identifier(referand)
 

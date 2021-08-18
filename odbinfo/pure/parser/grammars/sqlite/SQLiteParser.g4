@@ -113,9 +113,9 @@ create_table_stmt:
 		| (AS select_stmt)
 	);
 
-column_def: column_name type_name? column_constraint*;
+column_def: column_name content_type? column_constraint*;
 
-type_name:
+content_type:
 	name+ (
 		'(' signed_number ')'
 		| '(' signed_number ',' signed_number ')'
@@ -252,7 +252,7 @@ expr:
   | SUBSTRING '(' expr FROM expr (FOR expr)? ')'
 	| function_name '(' ((DISTINCT? expr ( ',' expr)*) | '*')? ')' filter_clause? over_clause?
 	| '(' expr (',' expr)* ')'
-	| CAST '(' expr AS type_name ')'
+	| CAST '(' expr AS content_type ')'
 	| expr COLLATE collation_name
 	| expr NOT? (LIKE | GLOB | REGEXP | MATCH) expr (ESCAPE expr)?
 	| expr ( ISNULL | NOTNULL | (NOT NULL_))

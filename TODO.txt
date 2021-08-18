@@ -1,3 +1,8 @@
+SubForm command type is command
+
+Get rid of magic strings line "basicfunction", "form", etc
+- content_type(obj) -> str:
+
 Makefile: pyreverse goal: classdiagram
 
 children, all_objects from List to Iterator
@@ -42,14 +47,6 @@ Attributes, Observations, Locations
 Macros that open browser on interesting Plant sites
 
 
-
-
-parent relationships
---------------------
-parent inherits dependencies from children (e.g. form inhertis from SubForm and Controls)
-
-
-
 make e2e test (BaseDocumenter2dot example)
 
 
@@ -86,7 +83,6 @@ installation check
 ------------------
 UI and suggestions
 
-SubForm command type is command
 ListBox command type is command
 
 dependency search matrix

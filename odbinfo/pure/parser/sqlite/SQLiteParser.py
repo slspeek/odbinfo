@@ -1201,7 +1201,7 @@ class SQLiteParser ( Parser ):
     RULE_indexed_column = 13
     RULE_create_table_stmt = 14
     RULE_column_def = 15
-    RULE_type_name = 16
+    RULE_content_type = 16
     RULE_column_constraint = 17
     RULE_signed_number = 18
     RULE_table_constraint = 19
@@ -1303,10 +1303,10 @@ class SQLiteParser ( Parser ):
                    "analyze_stmt", "attach_stmt", "begin_stmt", "commit_stmt", 
                    "rollback_stmt", "savepoint_stmt", "release_stmt", "create_index_stmt", 
                    "indexed_column", "create_table_stmt", "column_def", 
-                   "type_name", "column_constraint", "signed_number", "table_constraint", 
-                   "foreign_key_clause", "conflict_clause", "create_trigger_stmt", 
-                   "create_view_stmt", "create_virtual_table_stmt", "with_clause", 
-                   "cte_table_name", "recursive_cte", "common_table_expression", 
+                   "content_type", "column_constraint", "signed_number", 
+                   "table_constraint", "foreign_key_clause", "conflict_clause", 
+                   "create_trigger_stmt", "create_view_stmt", "create_virtual_table_stmt", 
+                   "with_clause", "cte_table_name", "recursive_cte", "common_table_expression", 
                    "delete_stmt", "delete_stmt_limited", "detach_stmt", 
                    "drop_stmt", "expr", "raise_function", "literal_value", 
                    "insert_stmt", "upsert_clause", "pragma_stmt", "pragma_value", 
@@ -3151,8 +3151,8 @@ class SQLiteParser ( Parser ):
             return self.getTypedRuleContext(SQLiteParser.Column_nameContext,0)
 
 
-        def type_name(self):
-            return self.getTypedRuleContext(SQLiteParser.Type_nameContext,0)
+        def content_type(self):
+            return self.getTypedRuleContext(SQLiteParser.Content_typeContext,0)
 
 
         def column_constraint(self, i:int=None):
@@ -3189,7 +3189,7 @@ class SQLiteParser ( Parser ):
             la_ = self._interp.adaptivePredict(self._input,40,self._ctx)
             if la_ == 1:
                 self.state = 459
-                self.type_name()
+                self.content_type()
 
 
             self.state = 465
@@ -3212,7 +3212,7 @@ class SQLiteParser ( Parser ):
         return localctx
 
 
-    class Type_nameContext(ParserRuleContext):
+    class Content_typeContext(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3243,23 +3243,23 @@ class SQLiteParser ( Parser ):
             return self.getToken(SQLiteParser.COMMA, 0)
 
         def getRuleIndex(self):
-            return SQLiteParser.RULE_type_name
+            return SQLiteParser.RULE_content_type
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterType_name" ):
-                listener.enterType_name(self)
+            if hasattr( listener, "enterContent_type" ):
+                listener.enterContent_type(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitType_name" ):
-                listener.exitType_name(self)
+            if hasattr( listener, "exitContent_type" ):
+                listener.exitContent_type(self)
 
 
 
 
-    def type_name(self):
+    def content_type(self):
 
-        localctx = SQLiteParser.Type_nameContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_type_name)
+        localctx = SQLiteParser.Content_typeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 32, self.RULE_content_type)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 469 
@@ -5702,8 +5702,8 @@ class SQLiteParser ( Parser ):
         def AS(self):
             return self.getToken(SQLiteParser.AS, 0)
 
-        def type_name(self):
-            return self.getTypedRuleContext(SQLiteParser.Type_nameContext,0)
+        def content_type(self):
+            return self.getTypedRuleContext(SQLiteParser.Content_typeContext,0)
 
 
         def select_stmt(self):
@@ -6112,7 +6112,7 @@ class SQLiteParser ( Parser ):
                 self.state = 967
                 self.match(SQLiteParser.AS)
                 self.state = 968
-                self.type_name()
+                self.content_type()
                 self.state = 969
                 self.match(SQLiteParser.CLOSE_PAR)
                 pass

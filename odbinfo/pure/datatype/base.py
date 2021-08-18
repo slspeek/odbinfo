@@ -17,6 +17,11 @@ class SourceIdentifier(Identifier):
     location_id: str
 
 
+def content_type(clazz) -> str:
+    "returns the Hugo content type of `clazz`"
+    return clazz.__name__.lower()
+
+
 @dataclass
 class Node:
     " DataObject without children "
@@ -26,7 +31,7 @@ class Node:
 
     def content_type(self) -> str:
         " returns classname in lowercase "
-        return self.__class__.__name__.lower()
+        return content_type(self.__class__)
 
     # pylint:disable=no-self-use
     def children(self):

@@ -6,7 +6,8 @@ from typing import Sequence
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
                                    DatabaseDisplay, EmbeddedQuery, Identifier,
                                    Key, Metadata, Module, PageOwner, Table,
-                                   TextDocument, Token, get_identifier)
+                                   TextDocument, Token, content_type,
+                                   get_identifier)
 from odbinfo.pure.datatype.base import Usable
 from odbinfo.pure.util import timed
 
@@ -81,10 +82,10 @@ def _rewrite_module_token_links(modules):
 
     def rewrite_module(module: Module):
         def rewrite_link(link: Identifier):
-            if not link.object_type == "basicfunction":
+            if not link.object_type == content_type(BasicFunction):
                 return link
             lmacro, lmodule, llib = link.local_id.split('.')
-            return Identifier("module", f"{lmodule}.{llib}", lmacro)
+            return Identifier(content_type(Module), f"{lmodule}.{llib}", lmacro)
 
         def copy_links(function):
             for token in function.tokens:

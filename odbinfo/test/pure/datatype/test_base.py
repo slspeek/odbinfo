@@ -1,6 +1,6 @@
 " test base classes "
 from odbinfo.pure.datatype import (EmbeddedQuery, Identifier, Report, Table,
-                                   get_identifier)
+                                   content_type, get_identifier)
 
 
 def test_post_init():
@@ -13,3 +13,8 @@ def test_get_identifier():
     usable.parent = Report("Report", "Plant", "table", "doc", [])
     assert get_identifier(usable) == Identifier(
         'report', 'Report', 'OBJID_NOT_SET')
+
+
+def test_content_type():
+    "test content_type"
+    assert content_type(Table) == "table"

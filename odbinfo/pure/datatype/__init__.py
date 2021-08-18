@@ -1,6 +1,6 @@
 """ Defines the main datatype MetaData """
 from odbinfo.pure.datatype.base import (Identifier, Node, PageOwner,
-                                        SourceIdentifier, Token,
+                                        SourceIdentifier, Token, content_type,
                                         get_identifier)
 from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, Library,
                                         Module, PythonLibrary, PythonModule)
@@ -17,6 +17,7 @@ __all__ = [
     "Column",
     "Commander",
     "Control",
+    "content_type",
     "DatabaseDisplay",
     "EmbeddedQuery",
     "EventListener",

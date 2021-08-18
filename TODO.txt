@@ -1,8 +1,5 @@
 SubForm command type is command
 
-Get rid of magic strings line "basicfunction", "form", etc
-- content_type(obj) -> str:
-
 Makefile: pyreverse goal: classdiagram
 
 children, all_objects from List to Iterator

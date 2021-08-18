@@ -14,7 +14,8 @@ from os import path
 import toml
 import yaml
 
-from odbinfo.pure.datatype import Metadata, Token
+from odbinfo.pure.datatype import (BasicFunction, Metadata, Module, Token,
+                                   content_type)
 from odbinfo.pure.datatype.metadata import METADATA_CONTENT
 from odbinfo.pure.util import timed
 
@@ -108,12 +109,12 @@ def make_site(output_dir, name, metadata):
     return localsite
 
 
-def clear_fields_after(metadata: Metadata, content_type: str) -> None:
+def clear_fields_after(metadata: Metadata, acontent_type: str) -> None:
     " clear tokens after basicfunctions were written "
-    if content_type == "basicfunction":
+    if acontent_type == content_type(BasicFunction):
         for func in metadata.basicfunction_defs():
             func.tokens = []
-    if content_type == "module":
+    if acontent_type == content_type(Module):
         for module in metadata.module_defs():
             module.tokens = []
 

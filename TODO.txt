@@ -1,4 +1,4 @@
-templates: Listbox rendering
+templates: Listbox rendering commandtype=command
 
 SubForm command type is command
 

@@ -46,17 +46,51 @@
   </thead>
   <tbody>
   {{  range .subform.controls }}
-    <tr>
-      {{ if (gt $depth 0 ) }}
-      <td colspan={{$depth}}></td>
-      {{ end }}
-      <td>{{ .name }}</td>
-      <td>{{ .controlid }}</td>
-      <td>{{ .datafield }}</td>
-      <td>{{ .inputrequired }}</td>
-      <td>{{ .convertemptytonull }}</td>
-      <td>{{ .type }}</td>
-    </tr>
+    {{ if (eq .type "ListBox") }}
+
+      <tr>
+        {{ if (gt $depth 0 ) }}
+        <td colspan={{$depth}}></td>
+        {{ end }}
+        <td>{{ .name }}</td>
+        <td>{{ .controlid }}</td>
+        <td>{{ .datafield }}</td>
+        <td>{{ .inputrequired }}</td>
+        <td>{{ .convertemptytonull }}</td>
+        <td>{{ .type }}</td>
+      </tr>
+      <thead>
+        {{ $depthplusone:= (add 1 $depth)}}
+        {{ if (gt $depthplusone 0 ) }}
+        <th colspan={{$depthplusone}}></th>
+        {{ end }}
+        <th>List sourcetype</th>
+        <th>List source</th>
+        <th>Bound column</th>
+        <th>Dropdown</th>
+      </thead>
+      <tr>
+        {{ if (gt $depthplusone 0 ) }}
+        <td colspan={{$depthplusone}}></td>
+        {{ end }}
+        <td>{{ .listsourcetype }}</td>
+        <td>{{ .listsource }}</td>
+        <td>{{ .boundcolumn }}</td>
+        <td>{{ .dropdown }}</td>
+      </tr>
+     {{ else }}
+     <tr>
+       {{ if (gt $depth 0 ) }}
+       <td colspan={{$depth}}></td>
+       {{ end }}
+       <td>{{ .name }}</td>
+       <td>{{ .controlid }}</td>
+       <td>{{ .datafield }}</td>
+       <td>{{ .inputrequired }}</td>
+       <td>{{ .convertemptytonull }}</td>
+       <td>{{ .type }}</td>
+     </tr>
+     {{ end }}
   {{ end }}
   </tbody>
   {{ range .subform.subforms }}

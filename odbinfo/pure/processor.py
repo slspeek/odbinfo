@@ -116,7 +116,7 @@ def source_link(user):
 def aggregate_used_by(metadata):
     "Collect all used_by"
     for user in metadata.all_active_users():
-        metadata.index[(user.link.object_type, user.link.local_id)
+        metadata.index[(user.link.content_type, user.link.local_id)
                        ].used_by.append(source_link(user))
 
 

@@ -96,7 +96,7 @@ def visible_edges(metadata: Metadata, config: GraphConfig) \
         # print("In: from:", user.title, " to ", user.link)
         used_node_link = user.link
         used_node = metadata.index[(
-            used_node_link.object_type, used_node_link.local_id)]
+            used_node_link.content_type, used_node_link.local_id)]
         user_vis_ancestor = visible_ancestor(config, user)
         if not user_vis_ancestor:
             continue

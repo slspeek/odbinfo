@@ -10,14 +10,14 @@ obj_id: '393'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Library1
-  object_type: module
+  content_type: module
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 112
   link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
   obj_id: '402'
   text: '"Plant"'
   title: token112.ReferToTable.Module1.Library1

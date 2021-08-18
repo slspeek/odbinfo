@@ -6,7 +6,7 @@ from typing import List, Optional
 @dataclass(frozen=True)
 class Identifier:
     " Unique id for ooobjects "
-    object_type: str
+    content_type: str
     local_id: str
     bookmark: Optional[str]
 

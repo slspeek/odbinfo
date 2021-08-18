@@ -6,7 +6,7 @@ obj_id: '154'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 subforms:
 - !!python/object:odbinfo.pure.datatype.ui.SubForm
   allowdeletes: 'true'
@@ -44,7 +44,7 @@ subforms:
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
   masterfields: ''
   name: MainForm
   obj_id: '155'

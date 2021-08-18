@@ -12,14 +12,14 @@ callables:
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Module1.Standard
-    object_type: module
+    content_type: module
   strings:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 11
     link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: Untitled
-      object_type: textdocument
+      content_type: textdocument
     obj_id: '186'
     text: '"Untitled"'
     title: token11.UsesDocument.Module1.Standard
@@ -40,14 +40,14 @@ callables:
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Module1.Standard
-    object_type: module
+    content_type: module
   strings:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 24
     link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: Untitled
-      object_type: textdocument
+      content_type: textdocument
     obj_id: '198'
     text: '"Untitled.odt"'
     title: token24.UsesDocumentFilename.Module1.Standard
@@ -68,7 +68,7 @@ callables:
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Module1.Standard
-    object_type: module
+    content_type: module
   strings:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 35
@@ -81,12 +81,12 @@ callables:
     bookmark: null
     local_id: CallerOtherLib.Module1.Library1
     location_id: '358'
-    object_type: basicfunction
+    content_type: basicfunction
   - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
     bookmark: null
     local_id: CallerOtherLib.Module1.Library1
     location_id: '364'
-    object_type: basicfunction
+    content_type: basicfunction
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   body_tokens: []
@@ -99,7 +99,7 @@ callables:
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Module1.Standard
-    object_type: module
+    content_type: module
   strings:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 48
@@ -120,7 +120,7 @@ obj_id: '176'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Standard
-  object_type: library
+  content_type: library
 source: "REM  *****  BASIC  *****\n\nSub UsesDocument()\n\tprint \"Untitled\"\nEnd\
   \ Sub\n\nSub UsesDocumentFilename()\n\tprint \"Untitled.odt\"\nEnd Sub\n\nSub CalleeOtherLib\n\
   \tprint \"Standard.Module1.CalleeOtherLib\"\nEnd Sub\n\nSub ShadowedCallee()\n\t\
@@ -156,7 +156,7 @@ tokens:
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: UsesDocument.Module1.Standard
-    object_type: basicfunction
+    content_type: basicfunction
   obj_id: '228'
   text: UsesDocument
   title: token5.Module1.Standard
@@ -223,7 +223,7 @@ tokens:
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: UsesDocumentFilename.Module1.Standard
-    object_type: basicfunction
+    content_type: basicfunction
   obj_id: '241'
   text: UsesDocumentFilename
   title: token18.Module1.Standard
@@ -290,7 +290,7 @@ tokens:
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
-    object_type: basicfunction
+    content_type: basicfunction
   obj_id: '254'
   text: CalleeOtherLib
   title: token31.Module1.Standard
@@ -346,7 +346,7 @@ tokens:
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: ShadowedCallee.Module1.Standard
-    object_type: basicfunction
+    content_type: basicfunction
   obj_id: '265'
   text: ShadowedCallee
   title: token42.Module1.Standard

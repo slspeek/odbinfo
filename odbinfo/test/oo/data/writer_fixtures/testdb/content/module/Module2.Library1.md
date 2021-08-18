@@ -12,7 +12,7 @@ callables:
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Module2.Library1
-    object_type: module
+    content_type: module
   strings:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 11
@@ -25,7 +25,7 @@ callables:
     bookmark: null
     local_id: CallerSub.Module1.Library1
     location_id: '322'
-    object_type: basicfunction
+    content_type: basicfunction
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   body_tokens: []
@@ -38,7 +38,7 @@ callables:
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Module2.Library1
-    object_type: module
+    content_type: module
   strings:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 24
@@ -51,7 +51,7 @@ callables:
     bookmark: null
     local_id: CallerTwo.Module1.Library1
     location_id: '346'
-    object_type: basicfunction
+    content_type: basicfunction
   uses: []
 library: Library1
 name: Module2
@@ -62,7 +62,7 @@ obj_id: '570'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Library1
-  object_type: library
+  content_type: library
 source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
   \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
 title: Module2.Library1
@@ -96,7 +96,7 @@ tokens:
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: CalleeSub.Module2.Library1
-    object_type: basicfunction
+    content_type: basicfunction
   obj_id: '600'
   text: CalleeSub
   title: token5.Module2.Library1
@@ -160,7 +160,7 @@ tokens:
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: CalleeTwoSub.Module2.Library1
-    object_type: basicfunction
+    content_type: basicfunction
   obj_id: '613'
   text: CalleeTwoSub
   title: token18.Module2.Library1

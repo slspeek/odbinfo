@@ -23,14 +23,14 @@ obj_id: '34'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
   obj_id: '44'
   text: '"Plant"'
   title: token8.view1
@@ -77,27 +77,27 @@ used_by:
   bookmark: null
   local_id: DependendView
   location_id: '25'
-  object_type: view
+  content_type: view
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: DependendView
   location_id: '33'
-  object_type: view
+  content_type: view
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: DependendQuery
   location_id: '66'
-  object_type: query
+  content_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: view1
   location_id: '155'
-  object_type: form
+  content_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: ReferToView.Module1.Library1
   location_id: '414'
-  object_type: basicfunction
+  content_type: basicfunction
 uses:
 - *id002
 ---

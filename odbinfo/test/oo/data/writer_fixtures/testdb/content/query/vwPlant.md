@@ -51,14 +51,14 @@ obj_id: '89'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
   obj_id: '101'
   text: '"Plant"'
   title: token8.vwPlant
@@ -105,22 +105,22 @@ used_by:
   bookmark: null
   local_id: DependendQuery
   location_id: '63'
-  object_type: query
+  content_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Plant invoeren
   location_id: '121'
-  object_type: form
+  content_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: vwPlant
   location_id: '174'
-  object_type: report
+  content_type: report
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Untitled
   location_id: '627'
-  object_type: textdocument
+  content_type: textdocument
 uses:
 - *id002
 ---

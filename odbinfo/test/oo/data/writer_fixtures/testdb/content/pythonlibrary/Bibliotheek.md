@@ -8,7 +8,7 @@ modules:
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Bibliotheek
-    object_type: pythonlibrary
+    content_type: pythonlibrary
   source: "# coding: utf-8\nfrom __future__ import unicode_literals\n\ndef script():\n\
     \tprint(\"Hello\")\n"
   title: Bibliotheek.Module.py
@@ -19,7 +19,7 @@ obj_id: '622'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 title: Bibliotheek
 used_by: []
 uses: []

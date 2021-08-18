@@ -93,14 +93,14 @@ obj_id: '45'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 8
   link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: FamilyLookup
-    object_type: query
+    content_type: query
   obj_id: '60'
   text: '"FamilyLookup"'
   title: token8.DependendQuery
@@ -110,7 +110,7 @@ table_tokens:
   link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: vwPlant
-    object_type: query
+    content_type: query
   obj_id: '63'
   text: '"vwPlant"'
   title: token11.DependendQuery
@@ -120,7 +120,7 @@ table_tokens:
   link: &id006 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
   obj_id: '66'
   text: '"view1"'
   title: token14.DependendQuery

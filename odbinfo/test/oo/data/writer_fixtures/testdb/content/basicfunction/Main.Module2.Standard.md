@@ -10,7 +10,7 @@ obj_id: '275'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module2.Standard
-  object_type: module
+  content_type: module
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 9

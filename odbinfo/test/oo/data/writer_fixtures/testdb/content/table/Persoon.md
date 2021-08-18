@@ -70,7 +70,7 @@ obj_id: '7'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 title: Persoon
 used_by: []
 uses: []

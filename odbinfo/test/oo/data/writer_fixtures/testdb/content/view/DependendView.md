@@ -23,14 +23,14 @@ obj_id: '21'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 table_tokens:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 2
   link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
   obj_id: '25'
   text: '"view1"'
   title: token2.DependendView
@@ -40,7 +40,7 @@ table_tokens:
   link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
   obj_id: '33'
   text: '"view1"'
   title: token10.DependendView

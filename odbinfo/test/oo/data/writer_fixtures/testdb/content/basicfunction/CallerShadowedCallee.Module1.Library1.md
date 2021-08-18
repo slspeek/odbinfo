@@ -9,7 +9,7 @@ calls:
     link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: ShadowedCallee.Module1.Library1
-      object_type: basicfunction
+      content_type: basicfunction
     obj_id: '376'
     text: ShadowedCallee
     title: token84.CallerShadowedCallee.Module1.Library1
@@ -22,7 +22,7 @@ obj_id: '369'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Library1
-  object_type: module
+  content_type: module
 strings: []
 title: CallerShadowedCallee.Module1.Library1
 tokens:

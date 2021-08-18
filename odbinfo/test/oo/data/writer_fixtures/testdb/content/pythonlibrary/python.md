@@ -8,7 +8,7 @@ modules:
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: python
-    object_type: pythonlibrary
+    content_type: pythonlibrary
   source: "# coding: utf-8\n\ndef main():\n\tprint(\"Hello from testdb.odb\")\n\n\n"
   title: python.pymodule.py
   used_by: []
@@ -18,7 +18,7 @@ obj_id: '624'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 title: python
 used_by: []
 uses: []

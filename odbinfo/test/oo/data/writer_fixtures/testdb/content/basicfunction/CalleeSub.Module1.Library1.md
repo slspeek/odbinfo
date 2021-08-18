@@ -10,7 +10,7 @@ obj_id: '327'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Library1
-  object_type: module
+  content_type: module
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 41
@@ -66,6 +66,6 @@ used_by:
   bookmark: null
   local_id: CallerSub.Module1.Library1
   location_id: '316'
-  object_type: basicfunction
+  content_type: basicfunction
 uses: []
 ---

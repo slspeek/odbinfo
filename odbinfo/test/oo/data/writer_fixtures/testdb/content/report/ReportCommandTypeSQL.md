@@ -57,7 +57,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
     link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     obj_id: '172'
     text: '"Plant"'
     title: token8.ReportCommandTypeSQL.Command
@@ -112,7 +112,7 @@ output_type: application/vnd.oasis.opendocument.text
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 title: ReportCommandTypeSQL
 used_by: []
 uses:

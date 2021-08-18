@@ -9,14 +9,14 @@ formulas:
 link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Family
-  object_type: table
+  content_type: table
 name: Family
 obj_id: '158'
 output_type: application/vnd.oasis.opendocument.text
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 title: Family
 used_by: []
 uses:

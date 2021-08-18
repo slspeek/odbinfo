@@ -9,7 +9,7 @@ calls:
     link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: CalleeOtherLib.Module1.Standard
-      object_type: basicfunction
+      content_type: basicfunction
     obj_id: '358'
     text: CalleeOtherLib
     title: token65.CallerOtherLib.Module1.Library1
@@ -24,7 +24,7 @@ calls:
     link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       local_id: CalleeOtherLib.Module1.Standard
-      object_type: basicfunction
+      content_type: basicfunction
     obj_id: '364'
     text: CalleeOtherLib
     title: token71.CallerOtherLib.Module1.Library1
@@ -37,7 +37,7 @@ obj_id: '351'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Library1
-  object_type: module
+  content_type: module
 strings: []
 title: CallerOtherLib.Module1.Library1
 tokens:

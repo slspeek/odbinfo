@@ -6,7 +6,7 @@ form_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -61,7 +61,7 @@ form_defs:
     link:
       bookmark: null
       local_id: Family
-      object_type: table
+      content_type: table
     masterfields: ''
     name: MainForm
     obj_id: '103'
@@ -73,7 +73,7 @@ form_defs:
   uses:
   - bookmark: null
     local_id: Family
-    object_type: table
+    content_type: table
 - height: 1
   name: Formulier1
   obj_id: '108'
@@ -81,7 +81,7 @@ form_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -141,7 +141,7 @@ form_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -227,7 +227,7 @@ form_defs:
     link:
       bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     masterfields: ''
     name: MainForm
     obj_id: '113'
@@ -239,7 +239,7 @@ form_defs:
   uses:
   - bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
 - height: 0
   name: Plant invoeren
   obj_id: '120'
@@ -247,7 +247,7 @@ form_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -290,7 +290,7 @@ form_defs:
     link:
       bookmark: null
       local_id: vwPlant
-      object_type: query
+      content_type: query
     masterfields: ''
     name: MainForm
     obj_id: '121'
@@ -302,7 +302,7 @@ form_defs:
   uses:
   - bookmark: null
     local_id: vwPlant
-    object_type: query
+    content_type: query
 - height: 0
   name: PlantListbox
   obj_id: '125'
@@ -310,7 +310,7 @@ form_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   subforms:
   - allowdeletes: 'false'
     allowinserts: 'true'
@@ -451,7 +451,7 @@ form_defs:
     link:
       bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     masterfields: ''
     name: MainForm
     obj_id: '126'
@@ -463,7 +463,7 @@ form_defs:
   uses:
   - bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
 - height: 1
   name: Related subform
   obj_id: '139'
@@ -471,7 +471,7 @@ form_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -557,7 +557,7 @@ form_defs:
     link:
       bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     masterfields: ''
     name: MainForm
     obj_id: '140'
@@ -647,7 +647,7 @@ form_defs:
       link:
         bookmark: null
         local_id: Family
-        object_type: table
+        content_type: table
       masterfields: '"RFamliyID"'
       name: SubForm
       obj_id: '147'
@@ -660,10 +660,10 @@ form_defs:
   uses:
   - bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
   - bookmark: null
     local_id: Family
-    object_type: table
+    content_type: table
 - height: 0
   name: view1
   obj_id: '154'
@@ -671,7 +671,7 @@ form_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   subforms:
   - allowdeletes: 'true'
     allowinserts: 'true'
@@ -709,7 +709,7 @@ form_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: view
+      content_type: view
     masterfields: ''
     name: MainForm
     obj_id: '155'
@@ -721,7 +721,7 @@ form_defs:
   uses:
   - bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
 graphs: []
 library_defs:
 - modules:
@@ -748,7 +748,7 @@ library_defs:
         link:
           bookmark: null
           local_id: Untitled
-          object_type: textdocument
+          content_type: textdocument
         obj_id: '186'
         parent: null
         text: '"Untitled"'
@@ -774,14 +774,14 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Standard
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 11
         link:
           bookmark: null
           local_id: Untitled
-          object_type: textdocument
+          content_type: textdocument
         obj_id: '186'
         parent: null
         text: '"Untitled"'
@@ -858,7 +858,7 @@ library_defs:
         link:
           bookmark: null
           local_id: Untitled
-          object_type: textdocument
+          content_type: textdocument
         obj_id: '186'
         parent: null
         text: '"Untitled"'
@@ -886,7 +886,7 @@ library_defs:
       uses:
       - bookmark: null
         local_id: Untitled
-        object_type: textdocument
+        content_type: textdocument
     - body_tokens:
       - hidden: false
         index: 22
@@ -909,7 +909,7 @@ library_defs:
         link:
           bookmark: null
           local_id: Untitled
-          object_type: textdocument
+          content_type: textdocument
         obj_id: '198'
         parent: null
         text: '"Untitled.odt"'
@@ -935,14 +935,14 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Standard
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 24
         link:
           bookmark: null
           local_id: Untitled
-          object_type: textdocument
+          content_type: textdocument
         obj_id: '198'
         parent: null
         text: '"Untitled.odt"'
@@ -1019,7 +1019,7 @@ library_defs:
         link:
           bookmark: null
           local_id: Untitled
-          object_type: textdocument
+          content_type: textdocument
         obj_id: '198'
         parent: null
         text: '"Untitled.odt"'
@@ -1047,7 +1047,7 @@ library_defs:
       uses:
       - bookmark: null
         local_id: Untitled
-        object_type: textdocument
+        content_type: textdocument
     - body_tokens:
       - hidden: false
         index: 33
@@ -1093,7 +1093,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Standard
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 35
@@ -1183,11 +1183,11 @@ library_defs:
       - bookmark: null
         local_id: CallerOtherLib.Module1.Library1
         location_id: '358'
-        object_type: basicfunction
+        content_type: basicfunction
       - bookmark: null
         local_id: CallerOtherLib.Module1.Library1
         location_id: '364'
-        object_type: basicfunction
+        content_type: basicfunction
       uses: []
     - body_tokens:
       - hidden: false
@@ -1234,7 +1234,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Standard
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 48
@@ -1350,7 +1350,7 @@ library_defs:
     parent_link:
       bookmark: null
       local_id: Standard
-      object_type: library
+      content_type: library
     source: "REM  *****  BASIC  *****\n\nSub UsesDocument()\n\tprint \"Untitled\"\n\
       End Sub\n\nSub UsesDocumentFilename()\n\tprint \"Untitled.odt\"\nEnd Sub\n\n\
       Sub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\nEnd Sub\n\n\
@@ -1406,7 +1406,7 @@ library_defs:
       link:
         bookmark: null
         local_id: UsesDocument.Module1.Standard
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '228'
       parent: null
       text: UsesDocument
@@ -1457,7 +1457,7 @@ library_defs:
       link:
         bookmark: null
         local_id: Untitled
-        object_type: textdocument
+        content_type: textdocument
       obj_id: '234'
       parent: null
       text: '"Untitled"'
@@ -1522,7 +1522,7 @@ library_defs:
       link:
         bookmark: null
         local_id: UsesDocumentFilename.Module1.Standard
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '241'
       parent: null
       text: UsesDocumentFilename
@@ -1573,7 +1573,7 @@ library_defs:
       link:
         bookmark: null
         local_id: Untitled
-        object_type: textdocument
+        content_type: textdocument
       obj_id: '247'
       parent: null
       text: '"Untitled.odt"'
@@ -1638,7 +1638,7 @@ library_defs:
       link:
         bookmark: null
         local_id: CalleeOtherLib.Module1.Standard
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '254'
       parent: null
       text: CalleeOtherLib
@@ -1735,7 +1735,7 @@ library_defs:
       link:
         bookmark: null
         local_id: ShadowedCallee.Module1.Standard
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '265'
       parent: null
       text: ShadowedCallee
@@ -1811,16 +1811,16 @@ library_defs:
     uses:
     - bookmark: null
       local_id: Untitled
-      object_type: textdocument
+      content_type: textdocument
     - bookmark: null
       local_id: Untitled
-      object_type: textdocument
+      content_type: textdocument
     - bookmark: null
       local_id: Untitled
-      object_type: textdocument
+      content_type: textdocument
     - bookmark: null
       local_id: Untitled
-      object_type: textdocument
+      content_type: textdocument
   - callables:
     - body_tokens:
       - hidden: false
@@ -1867,7 +1867,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module2.Standard
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 9
@@ -1964,7 +1964,7 @@ library_defs:
     parent_link:
       bookmark: null
       local_id: Standard
-      object_type: library
+      content_type: library
     source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
     title: Module2.Standard
     tokens:
@@ -2017,7 +2017,7 @@ library_defs:
       link:
         bookmark: null
         local_id: Main.Module2.Standard
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '290'
       parent: null
       text: Main
@@ -2081,22 +2081,22 @@ library_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: Standard
   used_by: []
   uses:
   - bookmark: null
     local_id: Untitled
-    object_type: textdocument
+    content_type: textdocument
   - bookmark: null
     local_id: Untitled
-    object_type: textdocument
+    content_type: textdocument
   - bookmark: null
     local_id: Untitled
-    object_type: textdocument
+    content_type: textdocument
   - bookmark: null
     local_id: Untitled
-    object_type: textdocument
+    content_type: textdocument
 - modules:
   - callables:
     - body_tokens:
@@ -2144,7 +2144,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 9
@@ -2238,7 +2238,7 @@ library_defs:
         link:
           bookmark: null
           local_id: CalleeSub.Module1.Library1
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '316'
         parent: null
         text: CalleeSub
@@ -2289,7 +2289,7 @@ library_defs:
         link:
           bookmark: null
           local_id: CalleeSub.Module2.Library1
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '322'
         parent: null
         text: CalleeSub
@@ -2329,7 +2329,7 @@ library_defs:
           link:
             bookmark: null
             local_id: CalleeSub.Module1.Library1
-            object_type: basicfunction
+            content_type: basicfunction
           obj_id: '316'
           parent: null
           text: CalleeSub
@@ -2350,7 +2350,7 @@ library_defs:
           link:
             bookmark: null
             local_id: CalleeSub.Module2.Library1
-            object_type: basicfunction
+            content_type: basicfunction
           obj_id: '322'
           parent: null
           text: CalleeSub
@@ -2365,7 +2365,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings: []
       title: CallerSub.Module1.Library1
       tokens:
@@ -2422,7 +2422,7 @@ library_defs:
         link:
           bookmark: null
           local_id: CalleeSub.Module1.Library1
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '316'
         parent: null
         text: CalleeSub
@@ -2473,7 +2473,7 @@ library_defs:
         link:
           bookmark: null
           local_id: CalleeSub.Module2.Library1
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '322'
         parent: null
         text: CalleeSub
@@ -2517,10 +2517,10 @@ library_defs:
       uses:
       - bookmark: null
         local_id: CalleeSub.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       - bookmark: null
         local_id: CalleeSub.Module2.Library1
-        object_type: basicfunction
+        content_type: basicfunction
     - body_tokens:
       - hidden: false
         index: 39
@@ -2566,7 +2566,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 41
@@ -2672,7 +2672,7 @@ library_defs:
       - bookmark: null
         local_id: CallerSub.Module1.Library1
         location_id: '316'
-        object_type: basicfunction
+        content_type: basicfunction
       uses: []
     - body_tokens:
       - hidden: false
@@ -2680,7 +2680,7 @@ library_defs:
         link:
           bookmark: null
           local_id: CalleeTwoSub.Module2.Library1
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '346'
         parent: null
         text: CalleeTwoSub
@@ -2720,7 +2720,7 @@ library_defs:
           link:
             bookmark: null
             local_id: CalleeTwoSub.Module2.Library1
-            object_type: basicfunction
+            content_type: basicfunction
           obj_id: '346'
           parent: null
           text: CalleeTwoSub
@@ -2735,7 +2735,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings: []
       title: CallerTwo.Module1.Library1
       tokens:
@@ -2792,7 +2792,7 @@ library_defs:
         link:
           bookmark: null
           local_id: CalleeTwoSub.Module2.Library1
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '346'
         parent: null
         text: CalleeTwoSub
@@ -2836,14 +2836,14 @@ library_defs:
       uses:
       - bookmark: null
         local_id: CalleeTwoSub.Module2.Library1
-        object_type: basicfunction
+        content_type: basicfunction
     - body_tokens:
       - hidden: false
         index: 65
         link:
           bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '358'
         parent: null
         text: CalleeOtherLib
@@ -2894,7 +2894,7 @@ library_defs:
         link:
           bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '364'
         parent: null
         text: CalleeOtherLib
@@ -2934,7 +2934,7 @@ library_defs:
           link:
             bookmark: null
             local_id: CalleeOtherLib.Module1.Standard
-            object_type: basicfunction
+            content_type: basicfunction
           obj_id: '358'
           parent: null
           text: CalleeOtherLib
@@ -2955,7 +2955,7 @@ library_defs:
           link:
             bookmark: null
             local_id: CalleeOtherLib.Module1.Standard
-            object_type: basicfunction
+            content_type: basicfunction
           obj_id: '364'
           parent: null
           text: CalleeOtherLib
@@ -2970,7 +2970,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings: []
       title: CallerOtherLib.Module1.Library1
       tokens:
@@ -3027,7 +3027,7 @@ library_defs:
         link:
           bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '358'
         parent: null
         text: CalleeOtherLib
@@ -3078,7 +3078,7 @@ library_defs:
         link:
           bookmark: null
           local_id: CalleeOtherLib.Module1.Standard
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '364'
         parent: null
         text: CalleeOtherLib
@@ -3122,17 +3122,17 @@ library_defs:
       uses:
       - bookmark: null
         local_id: CalleeOtherLib.Module1.Standard
-        object_type: basicfunction
+        content_type: basicfunction
       - bookmark: null
         local_id: CalleeOtherLib.Module1.Standard
-        object_type: basicfunction
+        content_type: basicfunction
     - body_tokens:
       - hidden: false
         index: 84
         link:
           bookmark: null
           local_id: ShadowedCallee.Module1.Library1
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '376'
         parent: null
         text: ShadowedCallee
@@ -3172,7 +3172,7 @@ library_defs:
           link:
             bookmark: null
             local_id: ShadowedCallee.Module1.Library1
-            object_type: basicfunction
+            content_type: basicfunction
           obj_id: '376'
           parent: null
           text: ShadowedCallee
@@ -3187,7 +3187,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings: []
       title: CallerShadowedCallee.Module1.Library1
       tokens:
@@ -3244,7 +3244,7 @@ library_defs:
         link:
           bookmark: null
           local_id: ShadowedCallee.Module1.Library1
-          object_type: basicfunction
+          content_type: basicfunction
         obj_id: '376'
         parent: null
         text: ShadowedCallee
@@ -3288,7 +3288,7 @@ library_defs:
       uses:
       - bookmark: null
         local_id: ShadowedCallee.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
     - body_tokens:
       - hidden: false
         index: 97
@@ -3334,7 +3334,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 99
@@ -3440,7 +3440,7 @@ library_defs:
       - bookmark: null
         local_id: CallerShadowedCallee.Module1.Library1
         location_id: '376'
-        object_type: basicfunction
+        content_type: basicfunction
       uses: []
     - body_tokens:
       - hidden: false
@@ -3464,7 +3464,7 @@ library_defs:
         link:
           bookmark: null
           local_id: Plant
-          object_type: table
+          content_type: table
         obj_id: '402'
         parent: null
         text: '"Plant"'
@@ -3490,14 +3490,14 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 112
         link:
           bookmark: null
           local_id: Plant
-          object_type: table
+          content_type: table
         obj_id: '402'
         parent: null
         text: '"Plant"'
@@ -3574,7 +3574,7 @@ library_defs:
         link:
           bookmark: null
           local_id: Plant
-          object_type: table
+          content_type: table
         obj_id: '402'
         parent: null
         text: '"Plant"'
@@ -3602,7 +3602,7 @@ library_defs:
       uses:
       - bookmark: null
         local_id: Plant
-        object_type: table
+        content_type: table
     - body_tokens:
       - hidden: false
         index: 123
@@ -3625,7 +3625,7 @@ library_defs:
         link:
           bookmark: null
           local_id: view1
-          object_type: view
+          content_type: view
         obj_id: '414'
         parent: null
         text: '"view1"'
@@ -3651,14 +3651,14 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 125
         link:
           bookmark: null
           local_id: view1
-          object_type: view
+          content_type: view
         obj_id: '414'
         parent: null
         text: '"view1"'
@@ -3735,7 +3735,7 @@ library_defs:
         link:
           bookmark: null
           local_id: view1
-          object_type: view
+          content_type: view
         obj_id: '414'
         parent: null
         text: '"view1"'
@@ -3763,7 +3763,7 @@ library_defs:
       uses:
       - bookmark: null
         local_id: view1
-        object_type: view
+        content_type: view
     - body_tokens:
       - hidden: false
         index: 136
@@ -3786,7 +3786,7 @@ library_defs:
         link:
           bookmark: null
           local_id: FamilyLookup
-          object_type: query
+          content_type: query
         obj_id: '426'
         parent: null
         text: '"FamilyLookup"'
@@ -3812,14 +3812,14 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 138
         link:
           bookmark: null
           local_id: FamilyLookup
-          object_type: query
+          content_type: query
         obj_id: '426'
         parent: null
         text: '"FamilyLookup"'
@@ -3896,7 +3896,7 @@ library_defs:
         link:
           bookmark: null
           local_id: FamilyLookup
-          object_type: query
+          content_type: query
         obj_id: '426'
         parent: null
         text: '"FamilyLookup"'
@@ -3924,7 +3924,7 @@ library_defs:
       uses:
       - bookmark: null
         local_id: FamilyLookup
-        object_type: query
+        content_type: query
     library: Library1
     name: Module1
     name_indexes:
@@ -3943,7 +3943,7 @@ library_defs:
     parent_link:
       bookmark: null
       local_id: Library1
-      object_type: library
+      content_type: library
     source: "REM  *****  BASIC  *****\n\nSub Main\n\tError \"Mijn fout\"\nEnd Sub\n\
       \nSub CallerSub()\n\tCalleeSub()\n\tModule2.CalleeSub()\nEnd Sub\n\nSub CalleeSub()\n\
       \tprint \"Module1.CalleeSub\"\nEnd Sub\n\nsub CallerTwo()\n\tCalleeTwoSub()\n\
@@ -4003,7 +4003,7 @@ library_defs:
       link:
         bookmark: null
         local_id: Main.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '434'
       parent: null
       text: Main
@@ -4100,7 +4100,7 @@ library_defs:
       link:
         bookmark: null
         local_id: CallerSub.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '445'
       parent: null
       text: CallerSub
@@ -4135,7 +4135,7 @@ library_defs:
       link:
         bookmark: CalleeSub
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       obj_id: '449'
       parent: null
       text: CalleeSub
@@ -4186,7 +4186,7 @@ library_defs:
       link:
         bookmark: CalleeSub
         local_id: Module2.Library1
-        object_type: module
+        content_type: module
       obj_id: '455'
       parent: null
       text: CalleeSub
@@ -4267,7 +4267,7 @@ library_defs:
       link:
         bookmark: null
         local_id: CalleeSub.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '464'
       parent: null
       text: CalleeSub
@@ -4380,7 +4380,7 @@ library_defs:
       link:
         bookmark: null
         local_id: CallerTwo.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '477'
       parent: null
       text: CallerTwo
@@ -4415,7 +4415,7 @@ library_defs:
       link:
         bookmark: CalleeTwoSub
         local_id: Module2.Library1
-        object_type: module
+        content_type: module
       obj_id: '481'
       parent: null
       text: CalleeTwoSub
@@ -4496,7 +4496,7 @@ library_defs:
       link:
         bookmark: null
         local_id: CallerOtherLib.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '490'
       parent: null
       text: CallerOtherLib
@@ -4531,7 +4531,7 @@ library_defs:
       link:
         bookmark: CalleeOtherLib
         local_id: Module1.Standard
-        object_type: module
+        content_type: module
       obj_id: '494'
       parent: null
       text: CalleeOtherLib
@@ -4582,7 +4582,7 @@ library_defs:
       link:
         bookmark: CalleeOtherLib
         local_id: Module1.Standard
-        object_type: module
+        content_type: module
       obj_id: '500'
       parent: null
       text: CalleeOtherLib
@@ -4663,7 +4663,7 @@ library_defs:
       link:
         bookmark: null
         local_id: CallerShadowedCallee.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '509'
       parent: null
       text: CallerShadowedCallee
@@ -4698,7 +4698,7 @@ library_defs:
       link:
         bookmark: ShadowedCallee
         local_id: Module1.Library1
-        object_type: module
+        content_type: module
       obj_id: '513'
       parent: null
       text: ShadowedCallee
@@ -4779,7 +4779,7 @@ library_defs:
       link:
         bookmark: null
         local_id: ShadowedCallee.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '522'
       parent: null
       text: ShadowedCallee
@@ -4892,7 +4892,7 @@ library_defs:
       link:
         bookmark: null
         local_id: ReferToTable.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '535'
       parent: null
       text: ReferToTable
@@ -4943,7 +4943,7 @@ library_defs:
       link:
         bookmark: null
         local_id: Plant
-        object_type: table
+        content_type: table
       obj_id: '541'
       parent: null
       text: '"Plant"'
@@ -5008,7 +5008,7 @@ library_defs:
       link:
         bookmark: null
         local_id: ReferToView.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '548'
       parent: null
       text: ReferToView
@@ -5059,7 +5059,7 @@ library_defs:
       link:
         bookmark: null
         local_id: view1
-        object_type: view
+        content_type: view
       obj_id: '554'
       parent: null
       text: '"view1"'
@@ -5124,7 +5124,7 @@ library_defs:
       link:
         bookmark: null
         local_id: ReferToQuery.Module1.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '561'
       parent: null
       text: ReferToQuery
@@ -5175,7 +5175,7 @@ library_defs:
       link:
         bookmark: null
         local_id: FamilyLookup
-        object_type: query
+        content_type: query
       obj_id: '567'
       parent: null
       text: '"FamilyLookup"'
@@ -5203,58 +5203,58 @@ library_defs:
     uses:
     - bookmark: null
       local_id: CalleeSub.Module1.Library1
-      object_type: basicfunction
+      content_type: basicfunction
     - bookmark: null
       local_id: CalleeSub.Module2.Library1
-      object_type: basicfunction
+      content_type: basicfunction
     - bookmark: null
       local_id: CalleeTwoSub.Module2.Library1
-      object_type: basicfunction
+      content_type: basicfunction
     - bookmark: null
       local_id: CalleeOtherLib.Module1.Standard
-      object_type: basicfunction
+      content_type: basicfunction
     - bookmark: null
       local_id: CalleeOtherLib.Module1.Standard
-      object_type: basicfunction
+      content_type: basicfunction
     - bookmark: null
       local_id: ShadowedCallee.Module1.Library1
-      object_type: basicfunction
+      content_type: basicfunction
     - bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     - bookmark: null
       local_id: view1
-      object_type: view
+      content_type: view
     - bookmark: null
       local_id: FamilyLookup
-      object_type: query
+      content_type: query
     - bookmark: CalleeSub
       local_id: Module1.Library1
-      object_type: module
+      content_type: module
     - bookmark: CalleeSub
       local_id: Module2.Library1
-      object_type: module
+      content_type: module
     - bookmark: CalleeTwoSub
       local_id: Module2.Library1
-      object_type: module
+      content_type: module
     - bookmark: CalleeOtherLib
       local_id: Module1.Standard
-      object_type: module
+      content_type: module
     - bookmark: CalleeOtherLib
       local_id: Module1.Standard
-      object_type: module
+      content_type: module
     - bookmark: ShadowedCallee
       local_id: Module1.Library1
-      object_type: module
+      content_type: module
     - bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     - bookmark: null
       local_id: view1
-      object_type: view
+      content_type: view
     - bookmark: null
       local_id: FamilyLookup
-      object_type: query
+      content_type: query
   - callables:
     - body_tokens:
       - hidden: false
@@ -5301,7 +5301,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module2.Library1
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 11
@@ -5407,7 +5407,7 @@ library_defs:
       - bookmark: null
         local_id: CallerSub.Module1.Library1
         location_id: '322'
-        object_type: basicfunction
+        content_type: basicfunction
       uses: []
     - body_tokens:
       - hidden: false
@@ -5454,7 +5454,7 @@ library_defs:
       parent_link:
         bookmark: null
         local_id: Module2.Library1
-        object_type: module
+        content_type: module
       strings:
       - hidden: false
         index: 24
@@ -5560,7 +5560,7 @@ library_defs:
       - bookmark: null
         local_id: CallerTwo.Module1.Library1
         location_id: '346'
-        object_type: basicfunction
+        content_type: basicfunction
       uses: []
     library: Library1
     name: Module2
@@ -5572,7 +5572,7 @@ library_defs:
     parent_link:
       bookmark: null
       local_id: Library1
-      object_type: library
+      content_type: library
     source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
       \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
     title: Module2.Library1
@@ -5626,7 +5626,7 @@ library_defs:
       link:
         bookmark: null
         local_id: CalleeSub.Module2.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '600'
       parent: null
       text: CalleeSub
@@ -5739,7 +5739,7 @@ library_defs:
       link:
         bookmark: null
         local_id: CalleeTwoSub.Module2.Library1
-        object_type: basicfunction
+        content_type: basicfunction
       obj_id: '613'
       parent: null
       text: CalleeTwoSub
@@ -5819,64 +5819,64 @@ library_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: Library1
   used_by: []
   uses:
   - bookmark: null
     local_id: CalleeSub.Module1.Library1
-    object_type: basicfunction
+    content_type: basicfunction
   - bookmark: null
     local_id: CalleeSub.Module2.Library1
-    object_type: basicfunction
+    content_type: basicfunction
   - bookmark: null
     local_id: CalleeTwoSub.Module2.Library1
-    object_type: basicfunction
+    content_type: basicfunction
   - bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
-    object_type: basicfunction
+    content_type: basicfunction
   - bookmark: null
     local_id: CalleeOtherLib.Module1.Standard
-    object_type: basicfunction
+    content_type: basicfunction
   - bookmark: null
     local_id: ShadowedCallee.Module1.Library1
-    object_type: basicfunction
+    content_type: basicfunction
   - bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
   - bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
   - bookmark: null
     local_id: FamilyLookup
-    object_type: query
+    content_type: query
   - bookmark: CalleeSub
     local_id: Module1.Library1
-    object_type: module
+    content_type: module
   - bookmark: CalleeSub
     local_id: Module2.Library1
-    object_type: module
+    content_type: module
   - bookmark: CalleeTwoSub
     local_id: Module2.Library1
-    object_type: module
+    content_type: module
   - bookmark: CalleeOtherLib
     local_id: Module1.Standard
-    object_type: module
+    content_type: module
   - bookmark: CalleeOtherLib
     local_id: Module1.Standard
-    object_type: module
+    content_type: module
   - bookmark: ShadowedCallee
     local_id: Module1.Library1
-    object_type: module
+    content_type: module
   - bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
   - bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
   - bookmark: null
     local_id: FamilyLookup
-    object_type: query
+    content_type: query
 name: ./testdb.odb
 obj_id: '0'
 parent: null
@@ -5890,7 +5890,7 @@ pythonlibrary_defs:
     parent_link:
       bookmark: null
       local_id: Bibliotheek
-      object_type: pythonlibrary
+      content_type: pythonlibrary
     source: "# coding: utf-8\nfrom __future__ import unicode_literals\n\ndef script():\n\
       \tprint(\"Hello\")\n"
     title: Bibliotheek.Module.py
@@ -5902,7 +5902,7 @@ pythonlibrary_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: Bibliotheek
   used_by: []
   uses: []
@@ -5914,7 +5914,7 @@ pythonlibrary_defs:
     parent_link:
       bookmark: null
       local_id: python
-      object_type: pythonlibrary
+      content_type: pythonlibrary
     source: "# coding: utf-8\n\ndef main():\n\tprint(\"Hello from testdb.odb\")\n\n\
       \n"
     title: python.pymodule.py
@@ -5926,7 +5926,7 @@ pythonlibrary_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: python
   used_by: []
   uses: []
@@ -6025,14 +6025,14 @@ query_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   table_tokens:
   - hidden: false
     index: 8
     link:
       bookmark: null
       local_id: FamilyLookup
-      object_type: query
+      content_type: query
     obj_id: '60'
     parent: null
     text: '"FamilyLookup"'
@@ -6043,7 +6043,7 @@ query_defs:
     link:
       bookmark: null
       local_id: vwPlant
-      object_type: query
+      content_type: query
     obj_id: '63'
     parent: null
     text: '"vwPlant"'
@@ -6054,7 +6054,7 @@ query_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: view
+      content_type: view
     obj_id: '66'
     parent: null
     text: '"view1"'
@@ -6133,7 +6133,7 @@ query_defs:
     link:
       bookmark: null
       local_id: FamilyLookup
-      object_type: query
+      content_type: query
     obj_id: '60'
     parent: null
     text: '"FamilyLookup"'
@@ -6160,7 +6160,7 @@ query_defs:
     link:
       bookmark: null
       local_id: vwPlant
-      object_type: query
+      content_type: query
     obj_id: '63'
     parent: null
     text: '"vwPlant"'
@@ -6187,7 +6187,7 @@ query_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: view
+      content_type: view
     obj_id: '66'
     parent: null
     text: '"view1"'
@@ -6197,13 +6197,13 @@ query_defs:
   uses:
   - bookmark: null
     local_id: FamilyLookup
-    object_type: query
+    content_type: query
   - bookmark: null
     local_id: vwPlant
-    object_type: query
+    content_type: query
   - bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
 - columns:
   - autoincrement: false
     issigned: false
@@ -6240,14 +6240,14 @@ query_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   table_tokens:
   - hidden: false
     index: 18
     link:
       bookmark: null
       local_id: Family
-      object_type: table
+      content_type: table
     obj_id: '88'
     parent: null
     text: '"Family"'
@@ -6408,7 +6408,7 @@ query_defs:
     link:
       bookmark: null
       local_id: Family
-      object_type: table
+      content_type: table
     obj_id: '88'
     parent: null
     text: '"Family"'
@@ -6418,15 +6418,15 @@ query_defs:
   - bookmark: null
     local_id: DependendQuery
     location_id: '60'
-    object_type: query
+    content_type: query
   - bookmark: null
     local_id: ReferToQuery.Module1.Library1
     location_id: '426'
-    object_type: basicfunction
+    content_type: basicfunction
   uses:
   - bookmark: null
     local_id: Family
-    object_type: table
+    content_type: table
 - columns:
   - autoincrement: false
     issigned: true
@@ -6479,14 +6479,14 @@ query_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   table_tokens:
   - hidden: false
     index: 8
     link:
       bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     obj_id: '101'
     parent: null
     text: '"Plant"'
@@ -6565,7 +6565,7 @@ query_defs:
     link:
       bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     obj_id: '101'
     parent: null
     text: '"Plant"'
@@ -6575,23 +6575,23 @@ query_defs:
   - bookmark: null
     local_id: DependendQuery
     location_id: '63'
-    object_type: query
+    content_type: query
   - bookmark: null
     local_id: Plant invoeren
     location_id: '121'
-    object_type: form
+    content_type: form
   - bookmark: null
     local_id: vwPlant
     location_id: '174'
-    object_type: report
+    content_type: report
   - bookmark: null
     local_id: Untitled
     location_id: '627'
-    object_type: textdocument
+    content_type: textdocument
   uses:
   - bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
 report_defs:
 - command: Family
   commandtype: table
@@ -6603,7 +6603,7 @@ report_defs:
   link:
     bookmark: null
     local_id: Family
-    object_type: table
+    content_type: table
   name: Family
   obj_id: '158'
   output_type: application/vnd.oasis.opendocument.text
@@ -6611,13 +6611,13 @@ report_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: Family
   used_by: []
   uses:
   - bookmark: null
     local_id: Family
-    object_type: table
+    content_type: table
 - command: select * from "Plant";
   commandtype: command
   embedded_query:
@@ -6676,7 +6676,7 @@ report_defs:
       link:
         bookmark: null
         local_id: Plant
-        object_type: table
+        content_type: table
       obj_id: '172'
       parent: null
       text: '"Plant"'
@@ -6755,7 +6755,7 @@ report_defs:
       link:
         bookmark: null
         local_id: Plant
-        object_type: table
+        content_type: table
       obj_id: '172'
       parent: null
       text: '"Plant"'
@@ -6780,13 +6780,13 @@ report_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: ReportCommandTypeSQL
   used_by: []
   uses:
   - bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table
 - command: vwPlant
   commandtype: query
   embedded_query: null
@@ -6797,7 +6797,7 @@ report_defs:
   link:
     bookmark: null
     local_id: vwPlant
-    object_type: query
+    content_type: query
   name: vwPlant
   obj_id: '174'
   output_type: application/vnd.oasis.opendocument.text
@@ -6805,13 +6805,13 @@ report_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: vwPlant
   used_by: []
   uses:
   - bookmark: null
     local_id: vwPlant
-    object_type: query
+    content_type: query
 table_defs:
 - columns:
   - autoincrement: false
@@ -6882,29 +6882,29 @@ table_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: Family
   used_by:
   - bookmark: null
     local_id: Plant
     location_id: '15'
-    object_type: table
+    content_type: table
   - bookmark: null
     local_id: FamilyLookup
     location_id: '88'
-    object_type: query
+    content_type: query
   - bookmark: null
     local_id: Family
     location_id: '103'
-    object_type: form
+    content_type: form
   - bookmark: null
     local_id: Related subform
     location_id: '147'
-    object_type: form
+    content_type: form
   - bookmark: null
     local_id: Family
     location_id: '158'
-    object_type: report
+    content_type: report
   uses: []
 - columns:
   - autoincrement: false
@@ -6978,7 +6978,7 @@ table_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: Persoon
   used_by: []
   uses: []
@@ -7061,7 +7061,7 @@ table_defs:
     link:
       bookmark: null
       local_id: Family
-      object_type: table
+      content_type: table
     name: SYS_FK_79
     obj_id: '15'
     parent: null
@@ -7077,41 +7077,41 @@ table_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   title: Plant
   used_by:
   - bookmark: null
     local_id: view1
     location_id: '44'
-    object_type: view
+    content_type: view
   - bookmark: null
     local_id: vwPlant
     location_id: '101'
-    object_type: query
+    content_type: query
   - bookmark: null
     local_id: Plant
     location_id: '113'
-    object_type: form
+    content_type: form
   - bookmark: null
     local_id: PlantListbox
     location_id: '126'
-    object_type: form
+    content_type: form
   - bookmark: null
     local_id: Related subform
     location_id: '140'
-    object_type: form
+    content_type: form
   - bookmark: null
     local_id: ReportCommandTypeSQL
     location_id: '172'
-    object_type: report
+    content_type: report
   - bookmark: null
     local_id: ReferToTable.Module1.Library1
     location_id: '402'
-    object_type: basicfunction
+    content_type: basicfunction
   uses:
   - bookmark: null
     local_id: Family
-    object_type: table
+    content_type: table
 textdocument_defs:
 - fields:
   - column: naam
@@ -7120,7 +7120,7 @@ textdocument_defs:
     link:
       bookmark: null
       local_id: vwPlant
-      object_type: query
+      content_type: query
     obj_id: '627'
     parent: null
     table: vwPlant
@@ -7133,151 +7133,151 @@ textdocument_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   path: ./Untitled.odt
   title: Untitled
   used_by:
   - bookmark: null
     local_id: UsesDocument.Module1.Standard
     location_id: '186'
-    object_type: basicfunction
+    content_type: basicfunction
   - bookmark: null
     local_id: UsesDocumentFilename.Module1.Standard
     location_id: '198'
-    object_type: basicfunction
+    content_type: basicfunction
   uses:
   - bookmark: null
     local_id: vwPlant
-    object_type: query
+    content_type: query
 title: ./testdb.odb
 used_by: []
 uses:
 - bookmark: null
   local_id: Family
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: view1
-  object_type: view
+  content_type: view
 - bookmark: null
   local_id: view1
-  object_type: view
+  content_type: view
 - bookmark: null
   local_id: Plant
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: FamilyLookup
-  object_type: query
+  content_type: query
 - bookmark: null
   local_id: vwPlant
-  object_type: query
+  content_type: query
 - bookmark: null
   local_id: view1
-  object_type: view
+  content_type: view
 - bookmark: null
   local_id: Family
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: Plant
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: Family
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: Plant
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: vwPlant
-  object_type: query
+  content_type: query
 - bookmark: null
   local_id: Plant
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: Plant
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: Family
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: view1
-  object_type: view
+  content_type: view
 - bookmark: null
   local_id: Family
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: Plant
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: vwPlant
-  object_type: query
+  content_type: query
 - bookmark: null
   local_id: Untitled
-  object_type: textdocument
+  content_type: textdocument
 - bookmark: null
   local_id: Untitled
-  object_type: textdocument
+  content_type: textdocument
 - bookmark: null
   local_id: Untitled
-  object_type: textdocument
+  content_type: textdocument
 - bookmark: null
   local_id: Untitled
-  object_type: textdocument
+  content_type: textdocument
 - bookmark: null
   local_id: CalleeSub.Module1.Library1
-  object_type: basicfunction
+  content_type: basicfunction
 - bookmark: null
   local_id: CalleeSub.Module2.Library1
-  object_type: basicfunction
+  content_type: basicfunction
 - bookmark: null
   local_id: CalleeTwoSub.Module2.Library1
-  object_type: basicfunction
+  content_type: basicfunction
 - bookmark: null
   local_id: CalleeOtherLib.Module1.Standard
-  object_type: basicfunction
+  content_type: basicfunction
 - bookmark: null
   local_id: CalleeOtherLib.Module1.Standard
-  object_type: basicfunction
+  content_type: basicfunction
 - bookmark: null
   local_id: ShadowedCallee.Module1.Library1
-  object_type: basicfunction
+  content_type: basicfunction
 - bookmark: null
   local_id: Plant
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: view1
-  object_type: view
+  content_type: view
 - bookmark: null
   local_id: FamilyLookup
-  object_type: query
+  content_type: query
 - bookmark: CalleeSub
   local_id: Module1.Library1
-  object_type: module
+  content_type: module
 - bookmark: CalleeSub
   local_id: Module2.Library1
-  object_type: module
+  content_type: module
 - bookmark: CalleeTwoSub
   local_id: Module2.Library1
-  object_type: module
+  content_type: module
 - bookmark: CalleeOtherLib
   local_id: Module1.Standard
-  object_type: module
+  content_type: module
 - bookmark: CalleeOtherLib
   local_id: Module1.Standard
-  object_type: module
+  content_type: module
 - bookmark: ShadowedCallee
   local_id: Module1.Library1
-  object_type: module
+  content_type: module
 - bookmark: null
   local_id: Plant
-  object_type: table
+  content_type: table
 - bookmark: null
   local_id: view1
-  object_type: view
+  content_type: view
 - bookmark: null
   local_id: FamilyLookup
-  object_type: query
+  content_type: query
 - bookmark: null
   local_id: vwPlant
-  object_type: query
+  content_type: query
 view_defs:
 - columns:
   - autoincrement: false
@@ -7303,14 +7303,14 @@ view_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   table_tokens:
   - hidden: false
     index: 2
     link:
       bookmark: null
       local_id: view1
-      object_type: view
+      content_type: view
     obj_id: '25'
     parent: null
     text: '"view1"'
@@ -7321,7 +7321,7 @@ view_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: view
+      content_type: view
     obj_id: '33'
     parent: null
     text: '"view1"'
@@ -7350,7 +7350,7 @@ view_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: view
+      content_type: view
     obj_id: '25'
     parent: null
     text: '"view1"'
@@ -7419,7 +7419,7 @@ view_defs:
     link:
       bookmark: null
       local_id: view1
-      object_type: view
+      content_type: view
     obj_id: '33'
     parent: null
     text: '"view1"'
@@ -7429,10 +7429,10 @@ view_defs:
   uses:
   - bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
   - bookmark: null
     local_id: view1
-    object_type: view
+    content_type: view
 - columns:
   - autoincrement: false
     issigned: true
@@ -7457,14 +7457,14 @@ view_defs:
   parent_link:
     bookmark: null
     local_id: ./testdb.odb
-    object_type: metadata
+    content_type: metadata
   table_tokens:
   - hidden: false
     index: 8
     link:
       bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     obj_id: '44'
     parent: null
     text: '"Plant"'
@@ -7543,7 +7543,7 @@ view_defs:
     link:
       bookmark: null
       local_id: Plant
-      object_type: table
+      content_type: table
     obj_id: '44'
     parent: null
     text: '"Plant"'
@@ -7553,24 +7553,24 @@ view_defs:
   - bookmark: null
     local_id: DependendView
     location_id: '25'
-    object_type: view
+    content_type: view
   - bookmark: null
     local_id: DependendView
     location_id: '33'
-    object_type: view
+    content_type: view
   - bookmark: null
     local_id: DependendQuery
     location_id: '66'
-    object_type: query
+    content_type: query
   - bookmark: null
     local_id: view1
     location_id: '155'
-    object_type: form
+    content_type: form
   - bookmark: null
     local_id: ReferToView.Module1.Library1
     location_id: '414'
-    object_type: basicfunction
+    content_type: basicfunction
   uses:
   - bookmark: null
     local_id: Plant
-    object_type: table
+    content_type: table

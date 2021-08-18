@@ -79,7 +79,7 @@ keys:
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Family
-    object_type: table
+    content_type: table
   name: SYS_FK_79
   obj_id: '15'
   referenced_table: Family
@@ -93,44 +93,44 @@ obj_id: '13'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 title: Plant
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: view1
   location_id: '44'
-  object_type: view
+  content_type: view
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: vwPlant
   location_id: '101'
-  object_type: query
+  content_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Plant
   location_id: '113'
-  object_type: form
+  content_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: PlantListbox
   location_id: '126'
-  object_type: form
+  content_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Related subform
   location_id: '140'
-  object_type: form
+  content_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: ReportCommandTypeSQL
   location_id: '172'
-  object_type: report
+  content_type: report
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: ReferToTable.Module1.Library1
   location_id: '402'
-  object_type: basicfunction
+  content_type: basicfunction
 uses:
 - *id001
 ---

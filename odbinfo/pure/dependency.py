@@ -82,7 +82,7 @@ def _rewrite_module_token_links(modules):
 
     def rewrite_module(module: Module):
         def rewrite_link(link: Identifier):
-            if not link.object_type == content_type(BasicFunction):
+            if not link.content_type == content_type(BasicFunction):
                 return link
             lmacro, lmodule, llib = link.local_id.split('.')
             return Identifier(content_type(Module), f"{lmodule}.{llib}", lmacro)
@@ -154,7 +154,7 @@ def link_token(token: Token, referand):
         logger.warning(
             "Replacing link in token: %s (link=%s:%s) with %s:%s",
             token.title,
-            token.link.object_type,
+            token.link.content_type,
             token.link.local_id,
             referand.content_type(),
             referand.name)

@@ -10,14 +10,14 @@ obj_id: '177'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: Module1.Standard
-  object_type: module
+  content_type: module
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
   link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     local_id: Untitled
-    object_type: textdocument
+    content_type: textdocument
   obj_id: '186'
   text: '"Untitled"'
   title: token11.UsesDocument.Module1.Standard

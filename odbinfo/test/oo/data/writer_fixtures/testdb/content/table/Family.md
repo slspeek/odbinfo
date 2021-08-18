@@ -67,33 +67,33 @@ obj_id: '1'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   local_id: ./testdb.odb
-  object_type: metadata
+  content_type: metadata
 title: Family
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Plant
   location_id: '15'
-  object_type: table
+  content_type: table
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: FamilyLookup
   location_id: '88'
-  object_type: query
+  content_type: query
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Family
   location_id: '103'
-  object_type: form
+  content_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Related subform
   location_id: '147'
-  object_type: form
+  content_type: form
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   local_id: Family
   location_id: '158'
-  object_type: report
+  content_type: report
 uses: []
 ---

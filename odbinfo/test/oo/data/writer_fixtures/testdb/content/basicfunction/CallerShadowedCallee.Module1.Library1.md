@@ -8,8 +8,8 @@ calls:
     index: 84
     link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
-      local_id: ShadowedCallee.Module1.Library1
       content_type: basicfunction
+      local_id: ShadowedCallee.Module1.Library1
     obj_id: '376'
     text: ShadowedCallee
     title: token84.CallerShadowedCallee.Module1.Library1
@@ -21,8 +21,8 @@ name_token_index: 80
 obj_id: '369'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module1.Library1
   content_type: module
+  local_id: Module1.Library1
 strings: []
 title: CallerShadowedCallee.Module1.Library1
 tokens:

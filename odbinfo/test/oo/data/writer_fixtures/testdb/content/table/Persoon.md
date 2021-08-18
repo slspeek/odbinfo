@@ -69,8 +69,8 @@ name: Persoon
 obj_id: '7'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: ./testdb.odb
   content_type: metadata
+  local_id: ./testdb.odb
 title: Persoon
 used_by: []
 uses: []

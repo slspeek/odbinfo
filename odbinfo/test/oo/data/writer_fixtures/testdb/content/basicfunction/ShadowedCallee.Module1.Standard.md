@@ -9,8 +9,8 @@ name_token_index: 42
 obj_id: '211'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module1.Standard
   content_type: module
+  local_id: Module1.Standard
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 48

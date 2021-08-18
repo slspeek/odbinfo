@@ -9,8 +9,8 @@ name_token_index: 31
 obj_id: '201'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module1.Standard
   content_type: module
+  local_id: Module1.Standard
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 35
@@ -56,13 +56,13 @@ tokens:
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
+  content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
   location_id: '358'
-  content_type: basicfunction
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
+  content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
   location_id: '364'
-  content_type: basicfunction
 uses: []
 ---

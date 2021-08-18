@@ -8,15 +8,15 @@ formulas:
 - field:[Desc]
 link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Family
   content_type: table
+  local_id: Family
 name: Family
 obj_id: '158'
 output_type: application/vnd.oasis.opendocument.text
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: ./testdb.odb
   content_type: metadata
+  local_id: ./testdb.odb
 title: Family
 used_by: []
 uses:

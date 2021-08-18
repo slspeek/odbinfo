@@ -8,8 +8,8 @@ calls:
     index: 52
     link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
-      local_id: CalleeTwoSub.Module2.Library1
       content_type: basicfunction
+      local_id: CalleeTwoSub.Module2.Library1
     obj_id: '346'
     text: CalleeTwoSub
     title: token52.CallerTwo.Module1.Library1
@@ -21,8 +21,8 @@ name_token_index: 48
 obj_id: '339'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module1.Library1
   content_type: module
+  local_id: Module1.Library1
 strings: []
 title: CallerTwo.Module1.Library1
 tokens:

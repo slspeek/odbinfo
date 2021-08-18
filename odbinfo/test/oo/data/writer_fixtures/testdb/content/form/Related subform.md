@@ -5,8 +5,8 @@ name: Related subform
 obj_id: '139'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: ./testdb.odb
   content_type: metadata
+  local_id: ./testdb.odb
 subforms:
 - !!python/object:odbinfo.pure.datatype.ui.SubForm
   allowdeletes: 'true'
@@ -91,8 +91,8 @@ subforms:
   detailfields: ''
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
-    local_id: Plant
     content_type: table
+    local_id: Plant
   masterfields: ''
   name: MainForm
   obj_id: '140'
@@ -180,8 +180,8 @@ subforms:
     detailfields: '"FamilyID"'
     link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
-      local_id: Family
       content_type: table
+      local_id: Family
     masterfields: '"RFamliyID"'
     name: SubForm
     obj_id: '147'

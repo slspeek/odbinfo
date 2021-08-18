@@ -11,8 +11,8 @@ callables:
   obj_id: '571'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
-    local_id: Module2.Library1
     content_type: module
+    local_id: Module2.Library1
   strings:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 11
@@ -23,9 +23,9 @@ callables:
   used_by:
   - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
     bookmark: null
+    content_type: basicfunction
     local_id: CallerSub.Module1.Library1
     location_id: '322'
-    content_type: basicfunction
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   body_tokens: []
@@ -37,8 +37,8 @@ callables:
   obj_id: '583'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
-    local_id: Module2.Library1
     content_type: module
+    local_id: Module2.Library1
   strings:
   - !!python/object:odbinfo.pure.datatype.base.Token
     index: 24
@@ -49,9 +49,9 @@ callables:
   used_by:
   - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
     bookmark: null
+    content_type: basicfunction
     local_id: CallerTwo.Module1.Library1
     location_id: '346'
-    content_type: basicfunction
   uses: []
 library: Library1
 name: Module2
@@ -61,8 +61,8 @@ name_indexes:
 obj_id: '570'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Library1
   content_type: library
+  local_id: Library1
 source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
   \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
 title: Module2.Library1
@@ -95,8 +95,8 @@ tokens:
   index: 5
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
-    local_id: CalleeSub.Module2.Library1
     content_type: basicfunction
+    local_id: CalleeSub.Module2.Library1
   obj_id: '600'
   text: CalleeSub
   title: token5.Module2.Library1
@@ -159,8 +159,8 @@ tokens:
   index: 18
   link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
-    local_id: CalleeTwoSub.Module2.Library1
     content_type: basicfunction
+    local_id: CalleeTwoSub.Module2.Library1
   obj_id: '613'
   text: CalleeTwoSub
   title: token18.Module2.Library1

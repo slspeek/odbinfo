@@ -5,8 +5,8 @@ name: PlantListbox
 obj_id: '125'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: ./testdb.odb
   content_type: metadata
+  local_id: ./testdb.odb
 subforms:
 - !!python/object:odbinfo.pure.datatype.ui.SubForm
   allowdeletes: 'false'
@@ -146,8 +146,8 @@ subforms:
   detailfields: ''
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
-    local_id: Plant
     content_type: table
+    local_id: Plant
   masterfields: ''
   name: MainForm
   obj_id: '126'

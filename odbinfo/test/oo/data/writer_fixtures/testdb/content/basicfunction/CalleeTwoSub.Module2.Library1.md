@@ -9,8 +9,8 @@ name_token_index: 18
 obj_id: '583'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module2.Library1
   content_type: module
+  local_id: Module2.Library1
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 24
@@ -64,8 +64,8 @@ tokens:
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
+  content_type: basicfunction
   local_id: CallerTwo.Module1.Library1
   location_id: '346'
-  content_type: basicfunction
 uses: []
 ---

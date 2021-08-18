@@ -8,8 +8,8 @@ calls:
     index: 20
     link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
-      local_id: CalleeSub.Module1.Library1
       content_type: basicfunction
+      local_id: CalleeSub.Module1.Library1
     obj_id: '316'
     text: CalleeSub
     title: token20.CallerSub.Module1.Library1
@@ -23,8 +23,8 @@ calls:
     index: 26
     link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
-      local_id: CalleeSub.Module2.Library1
       content_type: basicfunction
+      local_id: CalleeSub.Module2.Library1
     obj_id: '322'
     text: CalleeSub
     title: token26.CallerSub.Module1.Library1
@@ -36,8 +36,8 @@ name_token_index: 16
 obj_id: '309'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module1.Library1
   content_type: module
+  local_id: Module1.Library1
 strings: []
 title: CallerSub.Module1.Library1
 tokens:

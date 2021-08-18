@@ -5,8 +5,8 @@ name: Plant invoeren
 obj_id: '120'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: ./testdb.odb
   content_type: metadata
+  local_id: ./testdb.odb
 subforms:
 - !!python/object:odbinfo.pure.datatype.ui.SubForm
   allowdeletes: 'true'
@@ -48,8 +48,8 @@ subforms:
   detailfields: ''
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
-    local_id: vwPlant
     content_type: query
+    local_id: vwPlant
   masterfields: ''
   name: MainForm
   obj_id: '121'

@@ -9,15 +9,15 @@ name_token_index: 5
 obj_id: '177'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module1.Standard
   content_type: module
+  local_id: Module1.Standard
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
   link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
-    local_id: Untitled
     content_type: textdocument
+    local_id: Untitled
   obj_id: '186'
   text: '"Untitled"'
   title: token11.UsesDocument.Module1.Standard

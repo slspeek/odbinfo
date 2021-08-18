@@ -9,15 +9,15 @@ name_token_index: 106
 obj_id: '393'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
-  local_id: Module1.Library1
   content_type: module
+  local_id: Module1.Library1
 strings:
 - &id001 !!python/object:odbinfo.pure.datatype.base.Token
   index: 112
   link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
-    local_id: Plant
     content_type: table
+    local_id: Plant
   obj_id: '402'
   text: '"Plant"'
   title: token112.ReferToTable.Module1.Library1

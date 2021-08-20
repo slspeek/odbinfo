@@ -21,7 +21,11 @@
       <td colspan={{$depth}}></td>
       {{ end }}
       <td>{{ .subform.name }}</td>
+      {{ if (eq .subform.commandtype "command")}}
+       <td>{{ partial "render-query-command" (dict "context" $context "query" .subform.embedded_query )}} </td>
+      {{else}}
       <td id="{{ .subform.obj_id }}">{{ partial "render-linked-string" (dict "context" $context "linked_string" (dict "text" .subform.command "link" .subform.link)) }}</td>
+      {{end}}
       <td>{{ .subform.commandtype }}</td>
       <td>{{ .subform.allowdeletes }}</td>
       <td>{{ .subform.allowinserts }}</td>
@@ -74,7 +78,13 @@
         <td colspan={{$depthplusone}}></td>
         {{ end }}
         <td>{{ .listsourcetype }}</td>
-        <td>{{ .listsource }}</td>
+        <td>
+        {{ if (eq .listsourcetype "sql") }}
+          {{ partial "render-query-command" (dict "context" $context "query" .embedded_query )}}
+        {{ else }}
+          {{ partial "render-linked-string" (dict "linked_string" (dict "text" .listsource "link" .link) "context" .) }}
+        {{ end }}
+        </td>
         <td>{{ .boundcolumn }}</td>
         <td>{{ .dropdown }}</td>
       </tr>

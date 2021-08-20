@@ -74,8 +74,8 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: ''
-    commandtype: table
+    command: select * from "Person"
+    commandtype: command
     controls: []
     depth: null
     detailfields: ''
@@ -350,6 +350,7 @@ form_defs:
       convertemptytonull: ''
       datafield: RFamliyID
       dropdown: 'true'
+      embedded_query: null
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
@@ -423,6 +424,159 @@ form_defs:
     subforms: []
     title: MainForm
   title: PlantListbox
+  used_by: []
+  uses: []
+- height: null
+  name: PlantListboxDirectSQL
+  obj_id: OBJID_NOT_SET
+  parent: null
+  parent_link: null
+  subforms:
+  - allowdeletes: 'false'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: Plant
+    commandtype: table
+    controls:
+    - controlid: control1
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control2
+      inputrequired: ''
+      label: id
+      name: lblid
+      obj_id: OBJID_NOT_SET
+      parent: null
+      title: control1
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      obj_id: OBJID_NOT_SET
+      parent: null
+      title: control3
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      obj_id: OBJID_NOT_SET
+      parent: null
+      title: control5
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control2
+      convertemptytonull: 'true'
+      datafield: id
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'true'
+      label: ''
+      name: fmtid
+      obj_id: OBJID_NOT_SET
+      parent: null
+      title: control2
+      type: ooo:com.sun.star.form.component.FormattedField
+    - controlid: control4
+      convertemptytonull: 'true'
+      datafield: naam
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: txtnaam
+      obj_id: OBJID_NOT_SET
+      parent: null
+      title: control4
+      type: ooo:com.sun.star.form.component.TextField
+    - boundcolumn: '1'
+      controlid: control6
+      convertemptytonull: ''
+      datafield: RFamliyID
+      dropdown: 'true'
+      embedded_query: null
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'true'
+      label: ''
+      listsource: SELECT "Name", "FamilyID" FROM "Family"
+      listsourcetype: sql
+      name: fmtRFamliyID
+      obj_id: OBJID_NOT_SET
+      parent: null
+      title: control6
+      type: ooo:com.sun.star.form.component.ListBox
+    - controlid: control7
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners:
+      - event: form:performaction
+        obj_id: OBJID_NOT_SET
+        parent: null
+        script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
+        title: TITLE_NOT_SET
+      formfor: ''
+      inputrequired: ''
+      label: Say hello
+      name: Knop 1
+      obj_id: OBJID_NOT_SET
+      parent: null
+      title: control7
+      type: ooo:com.sun.star.form.component.CommandButton
+    - controlid: control8
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: ''
+      inputrequired: ''
+      label: Knop
+      name: Knop 2
+      obj_id: OBJID_NOT_SET
+      parent: null
+      title: control8
+      type: ooo:com.sun.star.form.component.CommandButton
+    - controlid: control9
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners:
+      - event: form:performaction
+        obj_id: OBJID_NOT_SET
+        parent: null
+        script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
+        title: TITLE_NOT_SET
+      - event: form:approveaction
+        obj_id: OBJID_NOT_SET
+        parent: null
+        script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
+        title: TITLE_NOT_SET
+      formfor: ''
+      inputrequired: ''
+      label: Call to script
+      name: Knop 3
+      obj_id: OBJID_NOT_SET
+      parent: null
+      title: control9
+      type: ooo:com.sun.star.form.component.CommandButton
+    depth: null
+    detailfields: ''
+    embedded_query: null
+    link: null
+    masterfields: ''
+    name: MainForm
+    obj_id: OBJID_NOT_SET
+    parent: null
+    subforms: []
+    title: MainForm
+  title: PlantListboxDirectSQL
   used_by: []
   uses: []
 - height: null
@@ -988,59 +1142,7 @@ report_defs:
   uses: []
 - command: select * from "Plant";
   commandtype: command
-  embedded_query:
-    columns:
-    - autoincrement: false
-      issigned: true
-      name: id
-      nullable: No_Nulls
-      obj_id: OBJID_NOT_SET
-      parent: null
-      position: 1
-      precision: 100
-      readonly: false
-      scale: 0
-      tablename: Plant
-      title: id_1
-      typename: NUMERIC
-      writable: true
-    - autoincrement: false
-      issigned: false
-      name: naam
-      nullable: Nullable
-      obj_id: OBJID_NOT_SET
-      parent: null
-      position: 2
-      precision: 2147483647
-      readonly: false
-      scale: 0
-      tablename: Plant
-      title: naam_2
-      typename: VARCHAR
-      writable: true
-    - autoincrement: false
-      issigned: true
-      name: RFamliyID
-      nullable: Nullable
-      obj_id: OBJID_NOT_SET
-      parent: null
-      position: 3
-      precision: 10
-      readonly: false
-      scale: 0
-      tablename: Plant
-      title: RFamliyID_3
-      typename: INTEGER
-      writable: true
-    command: 'SELECT *
-
-      FROM   "Plant";'
-    name: ReportCommandTypeSQL.Command
-    obj_id: OBJID_NOT_SET
-    parent: null
-    table_tokens: []
-    title: ReportCommandTypeSQL.Command
-    tokens: []
+  embedded_query: null
   formulas:
   - field:[id]
   - field:[naam]
@@ -1150,8 +1252,8 @@ table_defs:
     parent: null
     precision: 100
     scale: 0
-    tablename: Persoon
-    title: Persoon.Naam
+    tablename: Person
+    title: Person.Naam
     typename: VARCHAR
   - autoincrement: false
     defaultvalue: ''
@@ -1162,8 +1264,8 @@ table_defs:
     parent: null
     precision: 100
     scale: 0
-    tablename: Persoon
-    title: Persoon.Adres
+    tablename: Person
+    title: Person.Adres
     typename: VARCHAR
   - autoincrement: false
     defaultvalue: ''
@@ -1174,8 +1276,8 @@ table_defs:
     parent: null
     precision: 0
     scale: 0
-    tablename: Persoon
-    title: Persoon.Leeftijd
+    tablename: Person
+    title: Person.Leeftijd
     typename: INTEGER
   description: ''
   indexes:
@@ -1206,11 +1308,11 @@ table_defs:
     title: SYS_PK_51
     typename: Primary
     update_rule: Cascade
-  name: Persoon
+  name: Person
   obj_id: OBJID_NOT_SET
   parent: null
   parent_link: null
-  title: Persoon
+  title: Person
   used_by: []
   uses: []
 - columns:

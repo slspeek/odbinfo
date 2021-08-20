@@ -1,12 +1,12 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
 import os
 from functools import partial
-from typing import List, Sequence
+from typing import List
 from zipfile import ZipFile
 
 from odbinfo.oo.ooutil import open_connection
-from odbinfo.pure.datatype import (Column, EmbeddedQuery, Index, Key, Metadata,
-                                   Query, QueryColumn, Report, Table, View)
+from odbinfo.pure.datatype import (Column, Index, Key, Metadata, Query,
+                                   QueryColumn, Table, View)
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
@@ -19,14 +19,13 @@ def read_metadata(datasource, odbpath):
     with open_connection(datasource) as con:
         with ZipFile(odbpath, "r") as odbzip:
             dbname, _ = os.path.splitext(os.path.basename(odbpath))
-            reports: List[Report] = read_reports(odbzip)
             return \
                 Metadata(odbpath,
                          read_tables(con),
                          read_views(con),
-                         read_queries(con, datasource, reports),
+                         read_queries(con, datasource),
                          read_forms(odbzip),
-                         reports,
+                         read_reports(odbzip),
                          read_libraries(odbzip),
                          read_python_libraries(odbzip),
                          read_text_documents(os.path.dirname(odbpath), dbname))
@@ -44,27 +43,13 @@ def _read_view(connection, ooview) -> View:
     return view
 
 
-def extract_queries(reports: Sequence[Report]):
-    " Make queries from embedded sqlcommands in reports"
-    queries = []
-    for report in reports:
-        if report.commandtype == "command":
-            query = EmbeddedQuery(f"{report.name}.Command", report.command)
-            report.embedded_query = query
-            queries.append(query)
-    return queries
-
-
 @timed("Read queries", indent=4)
-def read_queries(connection, datasource, reports: List[Report]) -> List[Query]:
+def read_queries(connection, datasource) -> List[Query]:
     """ Reads query metadata from `datasource` """
-    embedded_queries: List[Query] = extract_queries(reports)
     queries: List[Query] = [Query(ooquery.Name, ooquery.Command) for ooquery in
                             datasource.QueryDefinitions]
 
     read_query_func = partial(read_query_columns, connection)
-    for embedded_query in embedded_queries:
-        read_query_func(embedded_query)
     return list(map(read_query_func, queries))
 
 

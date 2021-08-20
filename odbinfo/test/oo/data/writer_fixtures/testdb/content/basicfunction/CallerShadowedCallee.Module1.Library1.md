@@ -10,7 +10,7 @@ calls:
       bookmark: null
       content_type: basicfunction
       local_id: ShadowedCallee.Module1.Library1
-    obj_id: '376'
+    obj_id: '417'
     text: ShadowedCallee
     title: token84.CallerShadowedCallee.Module1.Library1
     type: 181
@@ -18,7 +18,7 @@ library: Library1
 module: Module1
 name: CallerShadowedCallee
 name_token_index: 80
-obj_id: '369'
+obj_id: '410'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module

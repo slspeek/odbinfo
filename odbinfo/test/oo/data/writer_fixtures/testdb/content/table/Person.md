@@ -10,8 +10,8 @@ columns:
   obj_id: '10'
   precision: 100
   scale: 0
-  tablename: Persoon
-  title: Persoon.Naam
+  tablename: Person
+  title: Person.Naam
   typename: VARCHAR
 - !!python/object:odbinfo.pure.datatype.tabular.Column
   autoincrement: false
@@ -22,8 +22,8 @@ columns:
   obj_id: '11'
   precision: 100
   scale: 0
-  tablename: Persoon
-  title: Persoon.Adres
+  tablename: Person
+  title: Person.Adres
   typename: VARCHAR
 - !!python/object:odbinfo.pure.datatype.tabular.Column
   autoincrement: false
@@ -34,8 +34,8 @@ columns:
   obj_id: '12'
   precision: 0
   scale: 0
-  tablename: Persoon
-  title: Persoon.Leeftijd
+  tablename: Person
+  title: Person.Leeftijd
   typename: INTEGER
 description: ''
 indexes:
@@ -65,13 +65,18 @@ keys:
   title: SYS_PK_51
   typename: Primary
   update_rule: Cascade
-name: Persoon
+name: Person
 obj_id: '7'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
   local_id: ./testdb.odb
-title: Persoon
-used_by: []
+title: Person
+used_by:
+- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
+  bookmark: null
+  content_type: form
+  local_id: Formulier1
+  location_id: '120'
 uses: []
 ---

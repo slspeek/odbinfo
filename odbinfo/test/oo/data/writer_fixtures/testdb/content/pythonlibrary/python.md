@@ -4,7 +4,7 @@ modules:
 - !!python/object:odbinfo.pure.datatype.exec.PythonModule
   library: python
   name: pymodule.py
-  obj_id: '625'
+  obj_id: '666'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: pythonlibrary
@@ -14,7 +14,7 @@ modules:
   used_by: []
   uses: []
 name: python
-obj_id: '624'
+obj_id: '665'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata

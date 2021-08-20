@@ -10,7 +10,8 @@ from odbinfo.pure.datatype.base import PageOwner, User
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
-from odbinfo.pure.datatype.ui import Form, Report, SubForm, TextDocument
+from odbinfo.pure.datatype.ui import (AbstractCommander, Form, Report, SubForm,
+                                      TextDocument)
 
 METADATA_CONTENT = ["table",
                     "query",
@@ -91,6 +92,11 @@ class Metadata(PageOwner):
         " collect all EmbeddedQuery objects "
         return \
             [obj for obj in self.all_objects() if obj.__class__ == EmbeddedQuery]
+
+    def commanders(self):
+        " collect all AbstractCommander objects"
+        return \
+            [obj for obj in self.all_objects() if isinstance(obj, AbstractCommander)]
 
     def children(self):
         return (

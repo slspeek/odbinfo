@@ -10,7 +10,7 @@ modules:
     module: Module1
     name: UsesDocument
     name_token_index: 5
-    obj_id: '177'
+    obj_id: '218'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -22,7 +22,7 @@ modules:
         bookmark: null
         content_type: textdocument
         local_id: Untitled
-      obj_id: '186'
+      obj_id: '227'
       text: '"Untitled"'
       title: token11.UsesDocument.Module1.Standard
       type: 172
@@ -38,7 +38,7 @@ modules:
     module: Module1
     name: UsesDocumentFilename
     name_token_index: 18
-    obj_id: '189'
+    obj_id: '230'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -50,7 +50,7 @@ modules:
         bookmark: null
         content_type: textdocument
         local_id: Untitled
-      obj_id: '198'
+      obj_id: '239'
       text: '"Untitled.odt"'
       title: token24.UsesDocumentFilename.Module1.Standard
       type: 172
@@ -66,7 +66,7 @@ modules:
     module: Module1
     name: CalleeOtherLib
     name_token_index: 31
-    obj_id: '201'
+    obj_id: '242'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -83,12 +83,12 @@ modules:
       bookmark: null
       content_type: basicfunction
       local_id: CallerOtherLib.Module1.Library1
-      location_id: '358'
+      location_id: '399'
     - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
       bookmark: null
       content_type: basicfunction
       local_id: CallerOtherLib.Module1.Library1
-      location_id: '364'
+      location_id: '405'
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens: []
@@ -97,7 +97,7 @@ modules:
     module: Module1
     name: ShadowedCallee
     name_token_index: 42
-    obj_id: '211'
+    obj_id: '252'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -118,7 +118,7 @@ modules:
   - 18
   - 31
   - 42
-  obj_id: '176'
+  obj_id: '217'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: library
@@ -144,7 +144,7 @@ modules:
     module: Module2
     name: Main
     name_token_index: 5
-    obj_id: '275'
+    obj_id: '316'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -162,7 +162,7 @@ modules:
   name: Module2
   name_indexes:
   - 5
-  obj_id: '274'
+  obj_id: '315'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: library
@@ -173,7 +173,7 @@ modules:
   used_by: []
   uses: []
 name: Standard
-obj_id: '175'
+obj_id: '216'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata

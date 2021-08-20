@@ -6,7 +6,7 @@ library: Standard
 module: Module1
 name: CalleeOtherLib
 name_token_index: 31
-obj_id: '201'
+obj_id: '242'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
@@ -58,11 +58,11 @@ used_by:
   bookmark: null
   content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
-  location_id: '358'
+  location_id: '399'
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
   content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
-  location_id: '364'
+  location_id: '405'
 uses: []
 ---

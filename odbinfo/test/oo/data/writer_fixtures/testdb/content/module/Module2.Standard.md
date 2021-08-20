@@ -8,7 +8,7 @@ callables:
   module: Module2
   name: Main
   name_token_index: 5
-  obj_id: '275'
+  obj_id: '316'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: module
@@ -26,7 +26,7 @@ library: Standard
 name: Module2
 name_indexes:
 - 5
-obj_id: '274'
+obj_id: '315'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: library
@@ -64,7 +64,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: Main.Module2.Standard
-  obj_id: '290'
+  obj_id: '331'
   text: Main
   title: token5.Module2.Standard
   type: 181

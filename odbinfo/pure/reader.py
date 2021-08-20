@@ -231,7 +231,7 @@ def _read_subform(data):
         subforms.extend(mapiflist(_read_subform, data["form:form"]))
     return SubForm(data["@form:name"],
                    data.get("@form:command", ""),
-                   data.get("@form:command-type", ""),
+                   data.get("@form:command-type", "command"),
                    data.get("@form:allow-deletes", "true"),
                    data.get("@form:allow-updates", "true"),
                    data.get("@form:allow-inserts", "true"),

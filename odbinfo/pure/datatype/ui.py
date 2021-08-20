@@ -99,12 +99,24 @@ class Control(TitleFromParents, NamedNode):
 
 
 @dataclass
-class ListBox(Control):
+class ListBox(AbstractCommander, Control):
     " ListBox control"
     boundcolumn: int
     dropdown: bool
     listsourcetype: str
     listsource: str
+
+    def get_command(self):
+        return self.listsource
+
+    def get_commandtype(self):
+        return self.listsourcetype
+
+    def children(self):
+
+        if self.embedded_query:
+            return self.eventlisteners + [self.embedded_query]
+        return self.eventlisteners
 
 
 @dataclass
@@ -129,7 +141,10 @@ class SubForm(TitleFromParents, Commander, NamedNode):  # pylint: disable=too-ma
     depth: Optional[int] = field(init=False, default=None)
 
     def children(self):
-        return self.controls + self.subforms
+        return_value = self.controls + self.subforms
+        if self.embedded_query:
+            return_value += [self.embedded_query]
+        return return_value
 
 
 @dataclass

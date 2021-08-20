@@ -6,7 +6,7 @@ library: Standard
 module: Module1
 name: UsesDocument
 name_token_index: 5
-obj_id: '177'
+obj_id: '218'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
@@ -18,7 +18,7 @@ strings:
     bookmark: null
     content_type: textdocument
     local_id: Untitled
-  obj_id: '186'
+  obj_id: '227'
   text: '"Untitled"'
   title: token11.UsesDocument.Module1.Standard
   type: 172

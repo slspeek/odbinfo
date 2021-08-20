@@ -1,6 +1,4 @@
-templates: Listbox rendering commandtype=command
-
-SubForm command type is command
+ListBox.listsourcetype needs inventarisation
 
 Makefile: pyreverse goal: classdiagram
 
@@ -105,6 +103,8 @@ update minimal theme (20210703 ok)
 
 Later
 -----
+Use LibYAML with pyyaml
+caching of query parsing
 direct sql queries must be transformed to Query object
 Threads: writer, parser?
 i18n gettext in python, hugo {{ T id }}

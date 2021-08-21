@@ -355,6 +355,7 @@ form_defs:
       formfor: ''
       inputrequired: 'true'
       label: ''
+      link: null
       listsource: FamilyLookup
       listsourcetype: query
       name: fmtRFamliyID
@@ -511,6 +512,7 @@ form_defs:
       formfor: ''
       inputrequired: 'true'
       label: ''
+      link: null
       listsource: SELECT "Name", "FamilyID" FROM "Family"
       listsourcetype: sql
       name: fmtRFamliyID

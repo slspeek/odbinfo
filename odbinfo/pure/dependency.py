@@ -5,9 +5,10 @@ from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
                                    DatabaseDisplay, EmbeddedQuery,
-                                   EventListener, Identifier, Key, Metadata,
-                                   Module, PageOwner, Table, TextDocument,
-                                   Token, content_type, get_identifier)
+                                   EventListener, Identifier, Key, ListBox,
+                                   Metadata, Module, PageOwner, Table,
+                                   TextDocument, Token, content_type,
+                                   get_identifier)
 from odbinfo.pure.datatype.base import Usable
 from odbinfo.pure.util import timed
 
@@ -44,21 +45,16 @@ def search_dependencies(metadata: Metadata):
                            metadata.view_defs)
     search_deps_in_queries(metadata.table_defs,
                            metadata.embeddedquery_defs())
-    # search_deps_in_queries(metadata.view_defs,
-    #                        metadata.embeddedquery_defs())
-    # search_deps_in_queries(metadata.query_defs,
-    #                        metadata.embeddedquery_defs())
+    search_deps_in_queries(metadata.view_defs,
+                           metadata.embeddedquery_defs())
+    search_deps_in_queries(metadata.query_defs,
+                           metadata.embeddedquery_defs())
     search_deps_in_commander(metadata.table_defs,
-                             metadata.report_defs)
+                             metadata.commanders())
     search_deps_in_commander(metadata.view_defs,
-                             metadata.report_defs)
+                             metadata.commanders())
     search_deps_in_commander(metadata.query_defs,
-                             metadata.report_defs)
-    search_deps_in_commander(
-        metadata.table_defs, metadata.subform_defs())
-    search_deps_in_commander(metadata.view_defs, metadata.subform_defs())
-    search_deps_in_commander(metadata.query_defs,
-                             metadata.subform_defs())
+                             metadata.commanders())
     search_deps_in_documents(metadata.table_defs,
                              metadata.textdocument_defs)
     search_deps_in_documents(metadata.view_defs,
@@ -250,6 +246,9 @@ def search_deps_in_commander(dataobjects: Sequence[PageOwner],
     " find uses of dataobject in report"
     def find_deps_in_commander(commander: Commander) -> None:
         " find dependency uses in `report` "
+        if isinstance(commander, ListBox):
+            print("LISTBOX", commander.name)
+
         def match_one_dep(dependency: PageOwner) -> None:
             if (not commander.get_commandtype() == "command"  # no matching of embedded
                 # queries (COMMAND)

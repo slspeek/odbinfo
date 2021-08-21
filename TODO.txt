@@ -1,3 +1,5 @@
+templates: Controls should show eventlisteners
+
 ListBox.listsourcetype needs inventarisation
 https://www.openoffice.org/api/docs/common/ref/com/sun/star/form/ListSourceType.html
 todo: VALUELIST, SQLPASSTHOUGH, TABLEFIELDS

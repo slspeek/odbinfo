@@ -489,6 +489,10 @@ form_defs:
       formfor: ''
       inputrequired: 'true'
       label: ''
+      link:
+        bookmark: null
+        content_type: query
+        local_id: FamilyLookup
       listsource: FamilyLookup
       listsourcetype: query
       name: fmtRFamliyID
@@ -578,6 +582,9 @@ form_defs:
   - bookmark: null
     content_type: table
     local_id: Plant
+  - bookmark: null
+    content_type: query
+    local_id: FamilyLookup
   - bookmark: null
     content_type: basicfunction
     local_id: Main.Module1.Library1
@@ -850,6 +857,7 @@ form_defs:
       formfor: ''
       inputrequired: 'true'
       label: ''
+      link: null
       listsource: SELECT "Name", "FamilyID" FROM "Family"
       listsourcetype: sql
       name: fmtRFamliyID
@@ -6931,6 +6939,10 @@ query_defs:
     local_id: DependendQuery
     location_id: '60'
   - bookmark: null
+    content_type: form
+    local_id: PlantListbox
+    location_id: '142'
+  - bookmark: null
     content_type: basicfunction
     local_id: ReferToQuery.Module1.Library1
     location_id: '467'
@@ -7675,6 +7687,9 @@ uses:
 - bookmark: null
   content_type: table
   local_id: Plant
+- bookmark: null
+  content_type: query
+  local_id: FamilyLookup
 - bookmark: null
   content_type: basicfunction
   local_id: Main.Module1.Library1

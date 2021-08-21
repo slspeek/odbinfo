@@ -102,7 +102,7 @@ class Control(TitleFromParents, NamedNode):
 
 
 @dataclass
-class ListBox(AbstractCommander, Control):
+class ListBox(User, AbstractCommander, Control):
     " ListBox control"
     boundcolumn: int
     dropdown: bool

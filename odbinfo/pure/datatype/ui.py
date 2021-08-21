@@ -67,7 +67,7 @@ class TextDocument(PageOwner):
 
 
 @dataclass
-class EventListener(Node):
+class EventListener(User, Node):
     " Control eventlistener "
     event: str
     script: str
@@ -76,6 +76,9 @@ class EventListener(Node):
         " sets a unique title "
         self.title = f"{self.parent.title}.{self.event}"
 
+    def parsescript(self) -> str:
+        "returns {Lib}.{Mod}.{Func} part from script field"
+        return (self.script.split(":")[1]).split("?")[0]
 # pylint: disable=too-many-instance-attributes
 
 

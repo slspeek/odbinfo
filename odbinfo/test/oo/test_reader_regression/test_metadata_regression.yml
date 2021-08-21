@@ -367,6 +367,7 @@ form_defs:
       datafield: ''
       eventlisteners:
       - event: form:performaction
+        link: null
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -396,11 +397,13 @@ form_defs:
       datafield: ''
       eventlisteners:
       - event: form:performaction
+        link: null
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
         title: TITLE_NOT_SET
       - event: form:approveaction
+        link: null
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -520,6 +523,7 @@ form_defs:
       datafield: ''
       eventlisteners:
       - event: form:performaction
+        link: null
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -549,11 +553,13 @@ form_defs:
       datafield: ''
       eventlisteners:
       - event: form:performaction
+        link: null
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
         title: TITLE_NOT_SET
       - event: form:approveaction
+        link: null
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document

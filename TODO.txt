@@ -10,8 +10,7 @@ Like NamedNode.users_match have a method on Node.link_use
 
 Fix 'recursive calls' in basicfunctions
 
-Relevant control filter:
-  eventlisteners parsing
+Relevant control filter
 
 Graphs:
   - for table, queries, Views
@@ -31,7 +30,6 @@ templates: Grid rendering like Subform
 database (driver) information retrieval
 
 
-look into GoHugo submenus
 
 Demonstration database Herbarium
 -------------------------------
@@ -68,30 +66,9 @@ Settings dialog
 Progress dialog
 
 
-general
--------
-
-
 installation check
 ------------------
 UI and suggestions
-
-ListBox command type is command
-
-dependency search matrix
-------------------------
-Macro calls in controls (eventlisteners)
-tables, views, queries in ListBox
-textdocuments in basic (done)
-tables in tables (via its keys) (done)
-tables, views in views (done)
-tables, queries, views in queries (done)
-tables, queries, views in reports (done)
-tables, queries,views, reports in basic (done)
-basic in basic (done)
-tables, queries, views in forms (subforms) (done)
-tables, views, queries in textdocuments (done)
-
 
 better description of the extension
 
@@ -111,6 +88,7 @@ field are done last as they are nice to have
 datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
 python in python (nice to have)
 others in python (nice to have)
+look into GoHugo submenus
 
 Limitations
 -----------

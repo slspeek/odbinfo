@@ -11,8 +11,8 @@ from odbinfo.pure.datatype.base import PageOwner, User
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
-from odbinfo.pure.datatype.ui import (AbstractCommander, Form, Report, SubForm,
-                                      TextDocument)
+from odbinfo.pure.datatype.ui import (AbstractCommander, EventListener, Form,
+                                      Report, SubForm, TextDocument)
 
 METADATA_CONTENT = ["table",
                     "query",
@@ -100,6 +100,12 @@ class Metadata(PageOwner):
             (obj for obj in self.all_objects()
              if isinstance(obj, AbstractCommander))
 
+    def eventlisteners(self):
+        " collect all EventListener objects"
+        return \
+            (obj for obj in self.all_objects()
+             if isinstance(obj, EventListener))
+
     def children(self):
         return \
             chain(
@@ -157,5 +163,5 @@ class Metadata(PageOwner):
         # pylint:disable=no-member
 
         return \
-            [obj for obj in self.all_objects() if isinstance(obj, User)
-             and obj.link and not isinstance(obj.parent, Module)]
+            (obj for obj in self.all_objects() if isinstance(obj, User)
+             and obj.link and not isinstance(obj.parent, Module))

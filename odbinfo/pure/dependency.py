@@ -4,10 +4,10 @@ from functools import partial
 from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
-                                   DatabaseDisplay, EmbeddedQuery, Identifier,
-                                   Key, Metadata, Module, PageOwner, Table,
-                                   TextDocument, Token, content_type,
-                                   get_identifier)
+                                   DatabaseDisplay, EmbeddedQuery,
+                                   EventListener, Identifier, Key, Metadata,
+                                   Module, PageOwner, Table, TextDocument,
+                                   Token, content_type, get_identifier)
 from odbinfo.pure.datatype.base import Usable
 from odbinfo.pure.util import timed
 
@@ -17,6 +17,8 @@ logger = logging.getLogger(__name__)
 @timed("Search dependencies", indent=4)
 def search_dependencies(metadata: Metadata):
     " dependency search in `metadata`"
+    search_basicfunction_in_eventlistener(metadata.basicfunction_defs(),
+                                          metadata.eventlisteners())
     search_tables_in_tables(metadata.table_defs)
     search_callable_in_callable(metadata.basicfunction_defs())
     search_string_refs_in_callables(metadata.table_defs,
@@ -200,6 +202,20 @@ def search_string_refs_in_callables(dataobjects: Sequence[PageOwner],
             ref_in_one(obj)
     for acallable in callables:
         search_refs_in_one(acallable)
+
+
+#
+# BasicFunction in EventListener
+#
+
+def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
+                                          eventlisteners: Iterable[EventListener]):
+    "searches for references to basic macros in eventlisteners"
+    for evl in eventlisteners:
+        for func in funcs:
+            if f"{func.library}.{func.module}.{func.name}" == evl.parsescript():
+                evl.link = get_identifier(func)
+
 
 #
 # dataobject in Queries

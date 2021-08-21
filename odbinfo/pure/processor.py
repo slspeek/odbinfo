@@ -97,7 +97,7 @@ def aggregate_uses_from_children(user_agg):
             user_agg.uses.append(user.link)
 
 
-@timed("Agregate uses", indent=4)
+@timed("Aggregate uses", indent=4)
 def aggregate_uses(metadata: Metadata) -> None:
     "Collect all aggregated uses "
     for use_agg in metadata.all_objects():
@@ -129,13 +129,12 @@ def process_queries(metadata: Metadata):
         _process_query(view)
     for embedded_query in metadata.embeddedquery_defs():
         _process_query(embedded_query)
-        # print("EMBEDDED", embedded_query.command)
 
 
 def preprocess_commanders(metadata: Metadata):
     " if command is a direct query, set an EmbeddedQuery obj"
     for cmdr in metadata.commanders():
-        if cmdr.get_commandtype() in ["command", "sql"]:
+        if cmdr.get_commandtype() in ["command", "sql", "sqlpassthrough"]:
             cmdr.embedded_query = \
                 EmbeddedQuery(f"{cmdr.name}.Command", cmdr.get_command())
 

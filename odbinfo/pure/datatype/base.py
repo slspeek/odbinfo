@@ -1,5 +1,6 @@
 " super classes of the datatypes and reference types "
 from dataclasses import dataclass, field
+from itertools import chain
 from typing import List, Optional
 
 
@@ -36,13 +37,13 @@ class Node:
     # pylint:disable=no-self-use
     def children(self):
         " returns a list of child nodes "
-        return []
+        return ()
 
     def all_objects(self):
         " returns all dataobjects for the graph "
         return_value = [self]
         for child in self.children():
-            return_value += child.all_objects()
+            return_value = chain(return_value, child.all_objects())
 
         return return_value
 

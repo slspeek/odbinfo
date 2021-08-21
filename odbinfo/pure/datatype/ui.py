@@ -12,7 +12,7 @@ from odbinfo.pure.datatype.tabular import EmbeddedQuery
 class AbstractCommander(ABC):
     "Commander interface"
 
-    # Only if commandtype == "command"
+    # Only if commandtype in ["command", "sql", "sqlpassthrough"]
     embedded_query: Optional[EmbeddedQuery] = field(init=False, default=None)
 
     @abstractmethod
@@ -171,4 +171,4 @@ class Report(Commander, PageOwner):
     def children(self):
         if self.embedded_query:
             return [self.embedded_query]
-        return []
+        return ()

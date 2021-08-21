@@ -1,5 +1,6 @@
 " Executable datatypes and its containers "
 from dataclasses import dataclass, field
+from itertools import chain
 from typing import List, Sequence
 
 from odbinfo.pure.datatype.base import PageOwner, Token
@@ -69,7 +70,7 @@ class Module(PageOwner):
         self.title = f"{self.name}.{self.library}"
 
     def children(self):
-        return self.callables + self.tokens
+        return chain(self.callables, self.tokens)
 
 
 @dataclass

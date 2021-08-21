@@ -1,5 +1,6 @@
 " Tabular like datatypes "
 from dataclasses import dataclass, field
+from itertools import chain
 from typing import List, Union
 
 from sql_formatter.core import format_sql
@@ -77,7 +78,7 @@ class EmbeddedQuery(NamedNode):
         self.command = format_sql(self.command)
 
     def children(self):
-        return self.columns + self.tokens
+        return chain(self.columns, self.tokens)
 
 
 @dataclass
@@ -141,6 +142,4 @@ class Table(PageOwner):
     indexes: List[Index]
 
     def children(self):
-        return self.keys + \
-            self.indexes + \
-            self.columns
+        return chain(self.keys, self.indexes, self.columns)

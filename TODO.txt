@@ -1,18 +1,16 @@
 ListBox.listsourcetype needs inventarisation
+https://www.openoffice.org/api/docs/common/ref/com/sun/star/form/ListSourceType.html
+todo: VALUELIST, SQLPASSTHOUGH, TABLEFIELDS
 
 Makefile: pyreverse goal: classdiagram
 
-children, all_objects from List to Iterator
-
-upgrade dependencies (20210813 done)
+make upgrade dependencies (20210813 done)
 
 Like NamedNode.users_match have a method on Node.link_use
 
 Fix 'recursive calls' in basicfunctions
 
 Relevant control filter:
-  ListBox handling
-    --> commanddriven
   eventlisteners parsing
 
 Graphs:
@@ -29,8 +27,6 @@ Weave in Configuration
 dataclass Config with sections to yaml in ~/.odbinfo.yaml
 
 templates: Grid rendering like Subform
-
-class Dependend for DataObject s that possible use another object?
 
 database (driver) information retrieval
 

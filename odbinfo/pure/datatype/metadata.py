@@ -1,8 +1,9 @@
 " Metadata class "
+import itertools
 from dataclasses import dataclass, field
 from functools import partial
-from itertools import starmap
-from typing import List
+from itertools import chain
+from typing import Iterable, List
 
 from graphviz import Digraph
 
@@ -88,38 +89,37 @@ class Metadata(PageOwner):
 
         return sum([collect_subforms_from_form(f) for f in self.form_defs], [])
 
-    def embeddedquery_defs(self) -> List[EmbeddedQuery]:
+    def embeddedquery_defs(self) -> Iterable[EmbeddedQuery]:
         " collect all EmbeddedQuery objects "
         return \
-            [obj for obj in self.all_objects() if obj.__class__ == EmbeddedQuery]
+            (obj for obj in self.all_objects() if obj.__class__ == EmbeddedQuery)
 
     def commanders(self):
         " collect all AbstractCommander objects"
         return \
-            [obj for obj in self.all_objects() if isinstance(obj, AbstractCommander)]
+            (obj for obj in self.all_objects()
+             if isinstance(obj, AbstractCommander))
 
     def children(self):
-        return (
-
-            self.table_defs
-            + self.view_defs
-            + self.query_defs
-            + self.form_defs
-            + self.report_defs
-            + self.library_defs
-            + self.pythonlibrary_defs
-            + self.textdocument_defs
-
-        )
+        return \
+            chain(
+                self.table_defs,
+                self.view_defs,
+                self.query_defs,
+                self.form_defs,
+                self.report_defs,
+                self.library_defs,
+                self.pythonlibrary_defs,
+                self.textdocument_defs,
+            )
 
     def set_obj_ids(self) -> None:
         " numbers all contained objects "
-        all_objs = self.all_objects()
-
         def set_id(vid, data):
             data.obj_id = str(vid)
 
-        list(starmap(set_id, zip(range(len(all_objs)), all_objs)))
+        for vid, obj in zip(itertools.count(), self.all_objects()):
+            set_id(vid, obj)
 
     def create_index(self) -> None:
         " make an index of linkable objects "
@@ -143,7 +143,7 @@ class Metadata(PageOwner):
                 if len(list(filter(partial(select_by_title, title), titles_minus))) > 1:
                     print("Double: ", title)
 
-        all_objs = self.all_objects()
+        all_objs = list(self.all_objects())
         title_list = list(
             map(lambda x: f"{x.content_type()}:{x.title}", all_objs))
         title_set = set(title_list)

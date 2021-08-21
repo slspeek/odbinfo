@@ -1,7 +1,7 @@
 " Dependency searcher for metadata "
 import logging
 from functools import partial
-from typing import Sequence
+from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
                                    DatabaseDisplay, EmbeddedQuery, Identifier,
@@ -207,7 +207,7 @@ def search_string_refs_in_callables(dataobjects: Sequence[PageOwner],
 
 
 def search_deps_in_queries(dataobjects: Sequence[Usable],
-                           queries: Sequence[EmbeddedQuery]) -> None:
+                           queries: Iterable[EmbeddedQuery]) -> None:
     " find uses of `dataobjects` (Table, View, Query) in `queries` "
     def find_tabulars_in_query(query: EmbeddedQuery) -> None:
         " find tabular uses in `query` "

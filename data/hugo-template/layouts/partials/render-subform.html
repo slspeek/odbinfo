@@ -47,12 +47,14 @@
     <th>Input required</th>
     <th>Empty to null</th>
     <th>Type</th>
+    <th>EventListener</th>
   </thead>
   <tbody>
   {{  range .subform.controls }}
+
     {{ if (eq .type "ListBox") }}
 
-      <tr>
+      <tr id="{{ .obj_id }}">
         {{ if (gt $depth 0 ) }}
         <td colspan={{$depth}}></td>
         {{ end }}
@@ -69,7 +71,7 @@
         <th colspan={{$depthplusone}}></th>
         {{ end }}
         <th>List sourcetype</th>
-        <th>List source</th>
+        <th colspan=3>List source</th>
         <th>Bound column</th>
         <th>Dropdown</th>
       </thead>
@@ -78,7 +80,7 @@
         <td colspan={{$depthplusone}}></td>
         {{ end }}
         <td>{{ .listsourcetype }}</td>
-        <td>
+        <td colspan=3>
         {{ if (eq .listsourcetype "sql") }}
           {{ partial "render-query-command" (dict "context" $context "query" .embedded_query )}}
         {{ else }}
@@ -89,7 +91,7 @@
         <td>{{ .dropdown }}</td>
       </tr>
      {{ else }}
-     <tr>
+     <tr id="{{ .obj_id }}">
        {{ if (gt $depth 0 ) }}
        <td colspan={{$depth}}></td>
        {{ end }}
@@ -99,8 +101,39 @@
        <td>{{ .inputrequired }}</td>
        <td>{{ .convertemptytonull }}</td>
        <td>{{ .type }}</td>
+       <td>{{ partial "render-eventlisteners" (dict "context" $context "events" .eventlisteners) }}</td>
      </tr>
      {{ end }}
+     {{ if (eq .type "Grid" )}}
+     <thead>
+       <th colspan={{ (add $depth 1) }}></th>
+       <th>Name</th>
+       <th>Id</th>
+       <th>Datafield</th>
+       <th>Input required</th>
+       <th>Empty to null</th>
+       <th>Type</th>
+       <th>EventListener</th>
+     </thead>
+       <tbody>
+
+       {{ range .columns }}
+       <tr id="{{ .obj_id }}">
+
+         <th colspan={{ (add $depth 1) }}></th>
+         <td>{{ .name }}</td>
+         <td>{{ .controlid }}</td>
+         <td>{{ .datafield }}</td>
+         <td>{{ .inputrequired }}</td>
+         <td>{{ .convertemptytonull }}</td>
+         <td>{{ .type }}</td>
+       </tr>
+
+
+       {{ end }}
+     </tbody>
+
+     {{ end  }}
   {{ end }}
   </tbody>
   {{ range .subform.subforms }}

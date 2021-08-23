@@ -44,6 +44,7 @@ subforms:
     name: MainForm_Grid
     obj_id: '132'
     title: MainForm_Grid.MainForm.Plant invoeren
+    type: Grid
   depth: 0
   detailfields: ''
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier

@@ -52,6 +52,7 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       title: MainForm_Grid
+      type: Grid
     depth: null
     detailfields: ''
     embedded_query: null
@@ -260,6 +261,7 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       title: MainForm_Grid
+      type: Grid
     depth: null
     detailfields: ''
     embedded_query: null

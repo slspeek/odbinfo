@@ -5,7 +5,7 @@ from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
                                    DatabaseDisplay, EmbeddedQuery,
-                                   EventListener, Identifier, Key, ListBox,
+                                   EventListener, Identifier, Key,
                                    Metadata, Module, PageOwner, Table,
                                    TextDocument, Token, content_type,
                                    get_identifier)
@@ -246,9 +246,6 @@ def search_deps_in_commander(dataobjects: Sequence[PageOwner],
     " find uses of dataobject in report"
     def find_deps_in_commander(commander: Commander) -> None:
         " find dependency uses in `report` "
-        if isinstance(commander, ListBox):
-            print("LISTBOX", commander.name)
-
         def match_one_dep(dependency: PageOwner) -> None:
             if (not commander.get_commandtype() == "command"  # no matching of embedded
                 # queries (COMMAND)

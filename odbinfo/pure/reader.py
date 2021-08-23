@@ -244,7 +244,7 @@ def _read_subform(data):
 def _read_grid(data):
     gridname = data["@form:name"]
     controls = mapiflist(_read_grid_control, data["form:column"])
-    return Grid(gridname, controls)
+    return Grid(gridname, controls, "Grid")
 
 
 def _read_eventlisteners(data) -> List[EventListener]:

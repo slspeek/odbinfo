@@ -126,6 +126,7 @@ class ListBox(User, AbstractCommander, Control):
 class Grid(TitleFromParents, NamedNode):
     " Table view control"
     columns: List[Control]
+    type: str
 
     def children(self):
         return self.columns

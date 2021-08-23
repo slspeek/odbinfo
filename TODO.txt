@@ -1,4 +1,8 @@
-templates: Controls should show eventlisteners
+templates: refactor render-subform
+- render-token-callable leaves empty id in html
+- render-linked-string obsolete, but needs replacement
+
+writing: token to dict
 
 ListBox.listsourcetype needs inventarisation
 https://www.openoffice.org/api/docs/common/ref/com/sun/star/form/ListSourceType.html
@@ -21,16 +25,10 @@ Graphs:
 
 type file based MetaData, TextDocument
 
-print --> logger.info
-logging window (sfriederichs.github.io/how-to/python/gui/logging/2017/12/21/Python-GUI-Logging.html)
-
 Weave in Configuration
 dataclass Config with sections to yaml in ~/.odbinfo.yaml
 
-templates: Grid rendering like Subform
-
 database (driver) information retrieval
-
 
 
 Demonstration database Herbarium
@@ -40,14 +38,15 @@ Attributes, Observations, Locations
 Macros that open browser on interesting Plant sites
 
 
+Testing
+-------
 make e2e test (BaseDocumenter2dot example)
-
+test_basic_parser_slow.py: parametrize and regression
 
 look at Identifier construction at dependency.py:69
 
 color highlight strings in render-token templates
 
-test_basic_parser_slow.py: parametrize and regression
 
 Configuration
 -------------
@@ -62,10 +61,13 @@ Link to odb file and related text-documents for download,
 
 See BaseDocumenter config too
 
+
 GUI
 ---
 Settings dialog
 Progress dialog
+print --> logger.info
+logging window (sfriederichs.github.io/how-to/python/gui/logging/2017/12/21/Python-GUI-Logging.html)
 
 
 installation check

@@ -55,6 +55,7 @@ form_defs:
       obj_id: '104'
       parent: null
       title: MainForm_Grid.MainForm.Family
+      type: Grid
     depth: 0
     detailfields: ''
     embedded_query: null
@@ -385,6 +386,7 @@ form_defs:
       obj_id: '132'
       parent: null
       title: MainForm_Grid.MainForm.Plant invoeren
+      type: Grid
     depth: 0
     detailfields: ''
     embedded_query: null

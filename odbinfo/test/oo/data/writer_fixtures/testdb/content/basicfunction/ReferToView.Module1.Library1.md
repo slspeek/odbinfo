@@ -6,7 +6,7 @@ library: Library1
 module: Module1
 name: ReferToView
 name_token_index: 119
-obj_id: '446'
+obj_id: '489'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
@@ -18,7 +18,7 @@ strings:
     bookmark: null
     content_type: view
     local_id: view1
-  obj_id: '455'
+  obj_id: '498'
   text: '"view1"'
   title: token125.ReferToView.Module1.Library1
   type: 172

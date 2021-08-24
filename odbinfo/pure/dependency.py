@@ -5,10 +5,9 @@ from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
                                    DatabaseDisplay, EmbeddedQuery,
-                                   EventListener, Identifier, Key,
-                                   Metadata, Module, PageOwner, Table,
-                                   TextDocument, Token, content_type,
-                                   get_identifier)
+                                   EventListener, Identifier, Key, Metadata,
+                                   Module, PageOwner, Table, TextDocument,
+                                   Token, content_type, get_identifier)
 from odbinfo.pure.datatype.base import Usable
 from odbinfo.pure.util import timed
 
@@ -111,6 +110,15 @@ def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
     _rewrite_module_token_links(module_seq)
 
 
+def remove_recursive_calls(funcs: Sequence[BasicFunction]):
+    "remove the probably unintended recursive call made by assignment"\
+        "of the return value"
+    for function in funcs:
+        for call in function.calls:
+            if call.name_token.text == function.name:
+                call.name_token.link = None
+
+
 def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
     """ dependency search amoung the basic callables and linking the
     parsed tokens to the targets
@@ -142,6 +150,7 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
             consider_caller(candidate)
     for acallable in callables:
         search_in_one(acallable)
+    remove_recursive_calls(callables)
 
 
 def link_token(token: Token, referand):

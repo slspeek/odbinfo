@@ -6,7 +6,7 @@ library: Library1
 module: Module2
 name: CalleeSub
 name_token_index: 5
-obj_id: '612'
+obj_id: '655'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
@@ -66,6 +66,6 @@ used_by:
   bookmark: null
   content_type: basicfunction
   local_id: CallerSub.Module1.Library1
-  location_id: '363'
+  location_id: '406'
 uses: []
 ---

@@ -6,7 +6,7 @@ library: Library1
 module: Module1
 name: ReferToQuery
 name_token_index: 132
-obj_id: '458'
+obj_id: '501'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
@@ -18,7 +18,7 @@ strings:
     bookmark: null
     content_type: query
     local_id: FamilyLookup
-  obj_id: '467'
+  obj_id: '510'
   text: '"FamilyLookup"'
   title: token138.ReferToQuery.Module1.Library1
   type: 172

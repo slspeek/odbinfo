@@ -10,7 +10,7 @@ calls:
       bookmark: null
       content_type: basicfunction
       local_id: CalleeTwoSub.Module2.Library1
-    obj_id: '387'
+    obj_id: '430'
     text: CalleeTwoSub
     title: token52.CallerTwo.Module1.Library1
     type: 181
@@ -18,7 +18,7 @@ library: Library1
 module: Module1
 name: CallerTwo
 name_token_index: 48
-obj_id: '380'
+obj_id: '423'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module

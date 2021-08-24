@@ -83,12 +83,12 @@ modules:
       bookmark: null
       content_type: basicfunction
       local_id: CallerOtherLib.Module1.Library1
-      location_id: '399'
+      location_id: '442'
     - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
       bookmark: null
       content_type: basicfunction
       local_id: CallerOtherLib.Module1.Library1
-      location_id: '405'
+      location_id: '448'
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     body_tokens: []
@@ -111,6 +111,29 @@ modules:
     tokens: []
     used_by: []
     uses: []
+  - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
+    body_tokens: []
+    calls:
+    - !!python/object:odbinfo.pure.datatype.exec.BasicCall
+      module_token: null
+      name_token: !!python/object:odbinfo.pure.datatype.base.Token
+        index: 60
+        text: AddOne
+        type: 181
+    library: Standard
+    module: Module1
+    name: AddOne
+    name_token_index: 55
+    obj_id: '264'
+    parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
+      content_type: module
+      local_id: Module1.Standard
+    strings: []
+    title: AddOne.Module1.Standard
+    tokens: []
+    used_by: []
+    uses: []
   library: Standard
   name: Module1
   name_indexes:
@@ -118,6 +141,7 @@ modules:
   - 18
   - 31
   - 42
+  - 55
   obj_id: '217'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
@@ -126,7 +150,8 @@ modules:
   source: "REM  *****  BASIC  *****\n\nSub UsesDocument()\n\tprint \"Untitled\"\n\
     End Sub\n\nSub UsesDocumentFilename()\n\tprint \"Untitled.odt\"\nEnd Sub\n\nSub\
     \ CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\nEnd Sub\n\nSub\
-    \ ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\nEnd Sub"
+    \ ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\nEnd Sub\n\nFunction\
+    \ AddOne(arg)\n\tAddOne() = arg + 1\nEnd Function"
   title: Module1.Standard
   tokens: []
   used_by: []
@@ -144,7 +169,7 @@ modules:
     module: Module2
     name: Main
     name_token_index: 5
-    obj_id: '316'
+    obj_id: '359'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -162,7 +187,7 @@ modules:
   name: Module2
   name_indexes:
   - 5
-  obj_id: '315'
+  obj_id: '358'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: library

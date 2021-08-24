@@ -81,12 +81,12 @@ callables:
     bookmark: null
     content_type: basicfunction
     local_id: CallerOtherLib.Module1.Library1
-    location_id: '399'
+    location_id: '442'
   - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
     bookmark: null
     content_type: basicfunction
     local_id: CallerOtherLib.Module1.Library1
-    location_id: '405'
+    location_id: '448'
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   body_tokens: []
@@ -109,6 +109,29 @@ callables:
   tokens: []
   used_by: []
   uses: []
+- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
+  body_tokens: []
+  calls:
+  - !!python/object:odbinfo.pure.datatype.exec.BasicCall
+    module_token: null
+    name_token: !!python/object:odbinfo.pure.datatype.base.Token
+      index: 60
+      text: AddOne
+      type: 181
+  library: Standard
+  module: Module1
+  name: AddOne
+  name_token_index: 55
+  obj_id: '264'
+  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    content_type: module
+    local_id: Module1.Standard
+  strings: []
+  title: AddOne.Module1.Standard
+  tokens: []
+  used_by: []
+  uses: []
 library: Standard
 name: Module1
 name_indexes:
@@ -116,6 +139,7 @@ name_indexes:
 - 18
 - 31
 - 42
+- 55
 obj_id: '217'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
@@ -124,7 +148,8 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
 source: "REM  *****  BASIC  *****\n\nSub UsesDocument()\n\tprint \"Untitled\"\nEnd\
   \ Sub\n\nSub UsesDocumentFilename()\n\tprint \"Untitled.odt\"\nEnd Sub\n\nSub CalleeOtherLib\n\
   \tprint \"Standard.Module1.CalleeOtherLib\"\nEnd Sub\n\nSub ShadowedCallee()\n\t\
-  print \"Standard.Module1.ShadowedCallee\"\nEnd Sub"
+  print \"Standard.Module1.ShadowedCallee\"\nEnd Sub\n\nFunction AddOne(arg)\n\tAddOne()\
+  \ = arg + 1\nEnd Function"
 title: Module1.Standard
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
@@ -157,7 +182,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: UsesDocument.Module1.Standard
-  obj_id: '269'
+  obj_id: '290'
   text: UsesDocument
   title: token5.Module1.Standard
   type: 181
@@ -184,7 +209,7 @@ tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 11
   link: *id001
-  obj_id: '275'
+  obj_id: '296'
   text: '"Untitled"'
   title: token11.Module1.Standard
   type: 172
@@ -224,7 +249,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: UsesDocumentFilename.Module1.Standard
-  obj_id: '282'
+  obj_id: '303'
   text: UsesDocumentFilename
   title: token18.Module1.Standard
   type: 181
@@ -251,7 +276,7 @@ tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
   index: 24
   link: *id002
-  obj_id: '288'
+  obj_id: '309'
   text: '"Untitled.odt"'
   title: token24.Module1.Standard
   type: 172
@@ -291,7 +316,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeOtherLib.Module1.Standard
-  obj_id: '295'
+  obj_id: '316'
   text: CalleeOtherLib
   title: token31.Module1.Standard
   type: 181
@@ -347,7 +372,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: ShadowedCallee.Module1.Standard
-  obj_id: '306'
+  obj_id: '327'
   text: ShadowedCallee
   title: token42.Module1.Standard
   type: 181
@@ -385,6 +410,106 @@ tokens:
   index: 50
   text: End Sub
   type: 44
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 51
+  text: '
+
+    '
+  type: 183
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 52
+  text: '
+
+    '
+  type: 183
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 53
+  text: Function
+  type: 57
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 54
+  text: ' '
+  type: 185
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 55
+  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    content_type: basicfunction
+    local_id: AddOne.Module1.Standard
+  obj_id: '340'
+  text: AddOne
+  title: token55.Module1.Standard
+  type: 181
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 56
+  text: (
+  type: 157
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 57
+  text: arg
+  type: 181
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 58
+  text: )
+  type: 168
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 59
+  text: "\n\t"
+  type: 183
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 60
+  text: AddOne
+  type: 181
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 61
+  text: (
+  type: 157
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 62
+  text: )
+  type: 168
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 63
+  text: ' '
+  type: 185
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 64
+  text: '='
+  type: 151
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 65
+  text: ' '
+  type: 185
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 66
+  text: arg
+  type: 181
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 67
+  text: ' '
+  type: 185
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 68
+  text: +
+  type: 164
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 69
+  text: ' '
+  type: 185
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 70
+  text: '1'
+  type: 175
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 71
+  text: '
+
+    '
+  type: 183
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 72
+  text: End Function
+  type: 40
 used_by: []
 uses:
 - *id001

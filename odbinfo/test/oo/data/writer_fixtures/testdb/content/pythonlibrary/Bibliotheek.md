@@ -4,7 +4,7 @@ modules:
 - !!python/object:odbinfo.pure.datatype.exec.PythonModule
   library: Bibliotheek
   name: Module.py
-  obj_id: '664'
+  obj_id: '707'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: pythonlibrary
@@ -15,7 +15,7 @@ modules:
   used_by: []
   uses: []
 name: Bibliotheek
-obj_id: '663'
+obj_id: '706'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata

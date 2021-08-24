@@ -1,4 +1,10 @@
-templates: refactor render-subform
+Module: uses? Separate PageOwner from UseAggregator
+
+Uses should become a multiset
+
+templates:
+- link2url should fail if target non-existent (i.e. when it returns "")
+- refactor render-subform
 - render-token-callable leaves empty id in html
 - render-linked-string obsolete, but needs replacement
 
@@ -14,9 +20,7 @@ make upgrade dependencies (20210813 done)
 
 Like NamedNode.users_match have a method on Node.link_use
 
-Fix 'recursive calls' in basicfunctions
-
-Relevant control filter
+Relevant control filter, Relevant function filter
 
 Graphs:
   - for table, queries, Views

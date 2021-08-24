@@ -5,105 +5,100 @@ calls:
 - !!python/object:odbinfo.pure.datatype.exec.BasicCall
   module_token: null
   name_token: &id001 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 20
-    link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: null
-      content_type: basicfunction
-      local_id: CalleeSub.Module1.Library1
-    obj_id: '400'
-    text: CalleeSub
-    title: token20.CallerSub.Module1.Library1
+    index: 60
+    text: AddOne
     type: 181
-- !!python/object:odbinfo.pure.datatype.exec.BasicCall
-  module_token: &id002 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 24
-    text: Module2
-    type: 181
-  name_token: &id003 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 26
-    link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: null
-      content_type: basicfunction
-      local_id: CalleeSub.Module2.Library1
-    obj_id: '406'
-    text: CalleeSub
-    title: token26.CallerSub.Module1.Library1
-    type: 181
-library: Library1
+library: Standard
 module: Module1
-name: CallerSub
-name_token_index: 16
-obj_id: '393'
+name: AddOne
+name_token_index: 55
+obj_id: '264'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
-  local_id: Module1.Library1
+  local_id: Module1.Standard
 strings: []
-title: CallerSub.Module1.Library1
+title: AddOne.Module1.Standard
 tokens:
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 14
-  text: Sub
-  type: 125
+  index: 53
+  text: Function
+  type: 57
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 15
+  index: 54
   text: ' '
   type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 16
-  text: CallerSub
+  index: 55
+  text: AddOne
   type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 17
+  index: 56
   text: (
   type: 157
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 18
+  index: 57
+  text: arg
+  type: 181
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 58
   text: )
   type: 168
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 19
+  index: 59
   text: "\n\t"
   type: 183
 - *id001
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 21
+  index: 61
   text: (
   type: 157
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 22
+  index: 62
   text: )
   type: 168
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 23
-  text: "\n\t"
-  type: 183
-- *id002
+  index: 63
+  text: ' '
+  type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 25
-  text: .
-  type: 150
-- *id003
+  index: 64
+  text: '='
+  type: 151
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 27
-  text: (
-  type: 157
+  index: 65
+  text: ' '
+  type: 185
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 28
-  text: )
-  type: 168
+  index: 66
+  text: arg
+  type: 181
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 29
+  index: 67
+  text: ' '
+  type: 185
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 68
+  text: +
+  type: 164
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 69
+  text: ' '
+  type: 185
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 70
+  text: '1'
+  type: 175
+- !!python/object:odbinfo.pure.datatype.base.Token
+  index: 71
   text: '
 
     '
   type: 183
 - !!python/object:odbinfo.pure.datatype.base.Token
-  index: 30
-  text: End Sub
-  type: 44
+  index: 72
+  text: End Function
+  type: 40
 used_by: []
-uses:
-- *id004
-- *id005
+uses: []
 ---

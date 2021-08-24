@@ -836,7 +836,8 @@ library_defs:
     source: "REM  *****  BASIC  *****\n\nSub UsesDocument()\n\tprint \"Untitled\"\n\
       End Sub\n\nSub UsesDocumentFilename()\n\tprint \"Untitled.odt\"\nEnd Sub\n\n\
       Sub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\nEnd Sub\n\n\
-      Sub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\nEnd Sub"
+      Sub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\nEnd Sub\n\
+      \nFunction AddOne(arg)\n\tAddOne() = arg + 1\nEnd Function"
     title: Module1.Standard
     tokens: []
     used_by: []

@@ -8,7 +8,7 @@ callables:
   module: Module2
   name: CalleeSub
   name_token_index: 5
-  obj_id: '612'
+  obj_id: '655'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: module
@@ -25,7 +25,7 @@ callables:
     bookmark: null
     content_type: basicfunction
     local_id: CallerSub.Module1.Library1
-    location_id: '363'
+    location_id: '406'
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   body_tokens: []
@@ -34,7 +34,7 @@ callables:
   module: Module2
   name: CalleeTwoSub
   name_token_index: 18
-  obj_id: '624'
+  obj_id: '667'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: module
@@ -51,14 +51,14 @@ callables:
     bookmark: null
     content_type: basicfunction
     local_id: CallerTwo.Module1.Library1
-    location_id: '387'
+    location_id: '430'
   uses: []
 library: Library1
 name: Module2
 name_indexes:
 - 5
 - 18
-obj_id: '611'
+obj_id: '654'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: library
@@ -97,7 +97,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeSub.Module2.Library1
-  obj_id: '641'
+  obj_id: '684'
   text: CalleeSub
   title: token5.Module2.Library1
   type: 181
@@ -161,7 +161,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeTwoSub.Module2.Library1
-  obj_id: '654'
+  obj_id: '697'
   text: CalleeTwoSub
   title: token18.Module2.Library1
   type: 181

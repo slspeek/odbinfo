@@ -14,6 +14,8 @@ stage=$(dist)/odbinfo_oxt
 lib=$(stage)/python/pythonpath
 build=$(target)/build
 test-output=$(build)/test-output
+report=$(build)/report
+classdiagram=$(report)/classdiagram
 metadata=$(test-output)/metadata.pickle
 oo=pipenvconf/oo
 pure=pipenvconf/pure
@@ -33,7 +35,7 @@ all: travis install_oxt fixtures mypy_report metric
 prepare:
 	@echo prepare start
 	if [ ! -d odbinfo/test/pure/data ]; then (cd odbinfo/test/pure && ln -s ../oo/data) fi
-	@-mkdir -p $(build) $(test-output)
+	@-mkdir -p $(build) $(test-output) $(classdiagram)
 	@echo prepare done
 
 .ONESHELL:
@@ -50,6 +52,10 @@ info:
 	@echo
 	@dot -V|head -1
 	@echo
+
+classdiagram: prepare
+	PYTHONPATH=$(OOPYTHONPATH) pyreverse -d $(classdiagram) -o svg odbinfo
+	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser $(classdiagram)/classes.svg $(classdiagram)/packages.svg
 
 coverage: clean prepare
 	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html -m "not veryslow" $(puretestloc)

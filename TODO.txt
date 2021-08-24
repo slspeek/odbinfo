@@ -14,8 +14,6 @@ ListBox.listsourcetype needs inventarisation
 https://www.openoffice.org/api/docs/common/ref/com/sun/star/form/ListSourceType.html
 todo: VALUELIST, SQLPASSTHOUGH, TABLEFIELDS
 
-Makefile: pyreverse goal: classdiagram
-
 make upgrade dependencies (20210813 done)
 
 Like NamedNode.users_match have a method on Node.link_use

@@ -3,7 +3,7 @@ from typing import Sequence, Tuple, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import Control, Metadata, PageOwner
+from odbinfo.pure.datatype import Control, Metadata, PageOwner, content_type
 from odbinfo.pure.datatype.base import NamedNode
 from odbinfo.pure.datatype.config import GraphConfig
 
@@ -24,12 +24,26 @@ def href(obj):
     return f"../{node.content_type()}/{hugo_filename(node.title)}/index.html#{obj.obj_id}"
 
 
+def is_visible(config: GraphConfig, node: NamedNode) -> bool:
+    " determines with `config` whether `node` is visible"
+    if not node.content_type() in config.excludes:
+        if config.relevant_controls:
+            if isinstance(node, Control):
+                control = cast(Control, node)
+                if control.eventlisteners:
+                    return True
+                return False
+            return True
+        return True
+    return False
+
+
 def make_node(config: GraphConfig,
               graph: Digraph, node: NamedNode):
     " adds a node to `graph` for `node` if `config` says so "
-    if not node.content_type() in config.excludes:
+    if is_visible(config, node):
         label = node.name
-        if node.content_type() == "control":
+        if node.content_type() == content_type(Control):
             control = cast(Control, node)
             if control.label:
                 label = control.label
@@ -46,7 +60,7 @@ def visible_ancestor(config: GraphConfig, node):
     """ returns `node` if is visible, else first ancestor that is visible
         or None if there is no visible ancestor"""
     parent = node
-    while parent.content_type() in config.excludes:
+    while not is_visible(config, parent):
         parent = parent.parent
         if not parent:
             return None
@@ -67,7 +81,7 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
     " make edge from `node` to `parent` if `config` says so "
     if not node.parent:
         return
-    if not node.content_type() in config.excludes:
+    if is_visible(config, node):
         avisible_ancestor = visible_ancestor(config, node.parent)
         if not avisible_ancestor:
             return
@@ -113,7 +127,7 @@ def visible_edges(metadata: Metadata, config: GraphConfig) \
 
 
 def make_dependency_edges(metadata, config, graph):
-    " make edges for all dependencies of `node` "
+    " make edges for all dependencies "
     uses = visible_edges(metadata, config)
     for use in uses:
         start = metadata.index[use[0]]

@@ -1,9 +1,14 @@
+Relevant function filter
+
+templates: Form; controls linked to API docs.
+
 Module: uses? Separate PageOwner from UseAggregator
 
 Uses should become a multiset
 
 templates:
 - link2url should fail if target non-existent (i.e. when it returns "")
+https://gohugo.io/functions/errorf/
 - refactor render-subform
 - render-token-callable leaves empty id in html
 - render-linked-string obsolete, but needs replacement
@@ -18,9 +23,8 @@ make upgrade dependencies (20210813 done)
 
 Like NamedNode.users_match have a method on Node.link_use
 
-Relevant control filter, Relevant function filter
 
-Graphs:
+Extra graphs:
   - for table, queries, Views
   - for basicfunction, library, module
   - object with direct uses and used_bies

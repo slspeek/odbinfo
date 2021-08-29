@@ -56,6 +56,7 @@ class GraphConfig:
     type_attrs: dict
     relation_attrs: dict
     collapse_multiple_uses: bool
+    relevant_controls: bool
 
 
 @dataclass
@@ -76,6 +77,7 @@ def get_configuration() -> Configuration:
                 EXCLUDED_TYPES,
                 TYPE_ATTRS,
                 RELATION_ATTRS,
+                True,
                 True
             )
         )

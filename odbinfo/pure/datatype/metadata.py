@@ -12,7 +12,7 @@ from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
 from odbinfo.pure.datatype.ui import (AbstractCommander, EventListener, Form,
-                                      Report, SubForm, TextDocument)
+                                      Report, TextDocument)
 
 METADATA_CONTENT = ["table",
                     "query",
@@ -75,19 +75,6 @@ class Metadata(PageOwner):
         for lib in self.pythonlibrary_defs:
             result.extend(lib.modules)
         return result
-
-    def subform_defs(self) -> List[SubForm]:
-        " collect all subforms from the forms and subforms "
-        def collect_subforms(subform: SubForm) -> List[SubForm]:
-            result = [subform]
-            result.extend(sum([collect_subforms(sf)
-                               for sf in subform.subforms], []))
-            return result
-
-        def collect_subforms_from_form(form: Form) -> List[SubForm]:
-            return sum([collect_subforms(sf) for sf in form.subforms], [])
-
-        return sum([collect_subforms_from_form(f) for f in self.form_defs], [])
 
     def embeddedquery_defs(self) -> Iterable[EmbeddedQuery]:
         " collect all EmbeddedQuery objects "

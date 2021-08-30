@@ -10,6 +10,7 @@ import time
 import webbrowser
 from inspect import ismethod
 from os import path
+from typing import Dict
 
 import toml
 import yaml
@@ -86,11 +87,47 @@ def new_site(output_dir, name):
 
 def preprocess_metadata(metadata):
     " clear some fields for speed "
-    for function in metadata.basicfunction_defs():
-        function.body_tokens = []
     for obj in metadata.all_objects():
         obj.parent = None
         del obj.parent
+    _cleanup_tokens(metadata)
+
+
+def _cleanup_tokens(metadata):
+    def clean_token(token):
+        del token.hidden
+
+        if not token.link:
+            token.obj_id = None
+            del token.obj_id
+            token.title = None
+            del token.title
+            token.link = None
+            del token.link
+
+    def replace_qtoken(token: Token) -> Dict:
+        del token.index
+        clean_token(token)
+        return token.__dict__
+
+    def replace_bftoken(token: Token) -> Dict:
+        clean_token(token)
+        return token.__dict__
+
+    for query in (list(metadata.embeddedquery_defs())
+                  + metadata.query_defs + metadata.view_defs):
+        query.tokens = list(map(replace_qtoken, query.tokens))
+        query.table_tokens = []
+
+    for module in metadata.module_defs():
+        del module.source
+        module.tokens = list(map(replace_bftoken, module.tokens))
+
+    for function in metadata.basicfunction_defs():
+        del function.body_tokens
+        del function.calls
+        function.tokens = list(map(replace_bftoken, function.tokens))
+        del function.strings
 
 
 @timed("Write and build hugo site", indent=2)
@@ -119,26 +156,8 @@ def clear_fields_after(metadata: Metadata, acontent_type: str) -> None:
             module.tokens = []
 
 
-def cleanup_tokens(metadata):
-    " delete fields from Token instances for efficient writing "
-    def clean_token(token):
-        del token.hidden
-        if not token.link:
-            token.obj_id = None
-            del token.obj_id
-            token.title = None
-            del token.title
-            token.link = None
-            del token.link
-
-    for content in metadata.all_objects():
-        if isinstance(content, Token):
-            clean_token(content)
-
-
 def _write_metadata(name, metadata: Metadata):
     preprocess_metadata(metadata)
-    cleanup_tokens(metadata)
     _write_config(name, metadata)
     for content in METADATA_CONTENT:
         _write_content(metadata, content)

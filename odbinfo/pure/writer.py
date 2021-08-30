@@ -185,6 +185,9 @@ def _write_config(site_name, metadata):
 def _write_content(metadata: Metadata, name):
     contentlist = _get_metadata_attr(metadata, name)
     if len(contentlist) > 0:
+        # if name == "basicfunction":
+        #     targetpath = f"content/bosicfunction"
+        # else:
         targetpath = f"content/{name}"
         os.makedirs(targetpath, exist_ok=True)
         for content in contentlist:

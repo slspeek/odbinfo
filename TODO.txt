@@ -1,17 +1,17 @@
 Relevant function filter
-
-templates: Form; controls linked to API docs.
+- function that uses something else than a basicfunction
+- function that is used by something else than a basicfunction
 
 Module: uses? Separate PageOwner from UseAggregator
 
 Uses should become a multiset
 
 templates:
-- link2url should fail if target non-existent (i.e. when it returns "")
-https://gohugo.io/functions/errorf/
+- Form; controls linked to sun API docs.
 - refactor render-subform
 - render-token-callable leaves empty id in html
-- render-linked-string obsolete, but needs replacement
+- render-linked-string needs different arguments
+- color highlight strings in render-token templates
 
 writing: token to dict
 
@@ -22,7 +22,6 @@ todo: VALUELIST, SQLPASSTHOUGH, TABLEFIELDS
 make upgrade dependencies (20210813 done)
 
 Like NamedNode.users_match have a method on Node.link_use
-
 
 Extra graphs:
   - for table, queries, Views
@@ -49,9 +48,9 @@ Testing
 make e2e test (BaseDocumenter2dot example)
 test_basic_parser_slow.py: parametrize and regression
 
+
 look at Identifier construction at dependency.py:69
 
-color highlight strings in render-token templates
 
 
 Configuration
@@ -86,7 +85,7 @@ update minimal theme (20210703 ok)
 
 Later
 -----
-Use LibYAML with pyyaml
+Use LibYAML with pyyaml (on linux?)
 caching of query parsing
 direct sql queries must be transformed to Query object
 Threads: writer, parser?

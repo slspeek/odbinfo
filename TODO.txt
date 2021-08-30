@@ -1,3 +1,5 @@
+Use content_type_title as obj_id
+
 Relevant function filter
 - function that uses something else than a basicfunction
 - function that is used by something else than a basicfunction
@@ -12,16 +14,11 @@ templates:
 - render-token-callable leaves empty id in html
 - render-linked-string needs different arguments
 - color highlight strings in render-token templates
-
-writing: token to dict
-
-ListBox.listsourcetype needs inventarisation
-https://www.openoffice.org/api/docs/common/ref/com/sun/star/form/ListSourceType.html
-todo: VALUELIST, SQLPASSTHOUGH, TABLEFIELDS
+- ListBox.listsourcetype needs inventarisation
+  https://www.openoffice.org/api/docs/common/ref/com/sun/star/form/ListSourceType.html
+  todo: VALUELIST, SQLPASSTHOUGH, TABLEFIELDS
 
 make upgrade dependencies (20210813 done)
-
-Like NamedNode.users_match have a method on Node.link_use
 
 Extra graphs:
   - for table, queries, Views

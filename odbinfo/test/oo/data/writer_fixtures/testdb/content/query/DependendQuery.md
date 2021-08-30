@@ -94,10 +94,28 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
   local_id: ./testdb.odb
-table_tokens:
-- &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 8
-  link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
+table_tokens: []
+title: DependendQuery
+tokens:
+- text: SELECT
+  type: 131
+- text: ' '
+  type: 207
+- text: '*'
+  type: 7
+- text: '
+
+    '
+  type: 207
+- text: FROM
+  type: 77
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: query
     local_id: FamilyLookup
@@ -105,9 +123,11 @@ table_tokens:
   text: '"FamilyLookup"'
   title: token8.DependendQuery
   type: 200
-- &id002 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 11
-  link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
+- text: ','
+  type: 5
+- text: ' '
+  type: 207
+- link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: query
     local_id: vwPlant
@@ -115,9 +135,11 @@ table_tokens:
   text: '"vwPlant"'
   title: token11.DependendQuery
   type: 200
-- &id003 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 14
-  link: &id006 !!python/object:odbinfo.pure.datatype.base.Identifier
+- text: ','
+  type: 5
+- text: ' '
+  type: 207
+- link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: view
     local_id: view1
@@ -125,64 +147,9 @@ table_tokens:
   text: '"view1"'
   title: token14.DependendQuery
   type: 200
-title: DependendQuery
-tokens:
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 0
-  text: SELECT
-  type: 131
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 1
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 2
-  text: '*'
-  type: 7
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 3
-  text: '
-
-    '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 4
-  text: FROM
-  type: 77
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 5
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 6
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 7
-  text: ' '
-  type: 207
-- *id001
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 9
-  text: ','
-  type: 5
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 10
-  text: ' '
-  type: 207
-- *id002
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 12
-  text: ','
-  type: 5
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 13
-  text: ' '
-  type: 207
-- *id003
 used_by: []
 uses:
-- *id004
-- *id005
-- *id006
+- *id001
+- *id002
+- *id003
 ---

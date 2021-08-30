@@ -1,7 +1,5 @@
 ---
 !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-body_tokens: []
-calls: []
 library: Standard
 module: Module1
 name: CalleeOtherLib
@@ -11,46 +9,35 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
   local_id: Module1.Standard
-strings:
-- &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 35
-  text: '"Standard.Module1.CalleeOtherLib"'
-  type: 172
 title: CalleeOtherLib.Module1.Standard
 tokens:
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 29
+- index: 29
   text: Sub
   type: 125
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 30
+- index: 30
   text: ' '
   type: 185
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 31
+- index: 31
   text: CalleeOtherLib
   type: 181
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 32
+- index: 32
   text: "\n\t"
   type: 183
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 33
+- index: 33
   text: print
   type: 100
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 34
+- index: 34
   text: ' '
   type: 185
-- *id001
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 36
+- index: 35
+  text: '"Standard.Module1.CalleeOtherLib"'
+  type: 172
+- index: 36
   text: '
 
     '
   type: 183
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 37
+- index: 37
   text: End Sub
   type: 44
 used_by:

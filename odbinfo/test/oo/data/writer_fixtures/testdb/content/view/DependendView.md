@@ -24,10 +24,14 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
   local_id: ./testdb.odb
-table_tokens:
-- &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 2
-  link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
+table_tokens: []
+title: DependendView
+tokens:
+- text: SELECT
+  type: 131
+- text: ' '
+  type: 207
+- link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: view
     local_id: view1
@@ -35,9 +39,23 @@ table_tokens:
   text: '"view1"'
   title: token2.DependendView
   type: 200
-- &id002 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 10
-  link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
+- text: .
+  type: 2
+- text: '"id"'
+  type: 200
+- text: '
+
+    '
+  type: 207
+- text: FROM
+  type: 77
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: view
     local_id: view1
@@ -45,50 +63,8 @@ table_tokens:
   text: '"view1"'
   title: token10.DependendView
   type: 200
-title: DependendView
-tokens:
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 0
-  text: SELECT
-  type: 131
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 1
-  text: ' '
-  type: 207
-- *id001
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 3
-  text: .
-  type: 2
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 4
-  text: '"id"'
-  type: 200
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 5
-  text: '
-
-    '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 6
-  text: FROM
-  type: 77
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 7
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 8
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 9
-  text: ' '
-  type: 207
-- *id002
 used_by: []
 uses:
-- *id003
-- *id004
+- *id001
+- *id002
 ---

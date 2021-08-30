@@ -36,10 +36,50 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
   local_id: ./testdb.odb
-table_tokens:
-- &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 18
-  link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+table_tokens: []
+title: FamilyLookup
+tokens:
+- text: SELECT
+  type: 131
+- text: ' '
+  type: 207
+- text: '"Name"'
+  type: 200
+- text: ','
+  type: 5
+- text: '
+
+    '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: '"FamilyID"'
+  type: 200
+- text: '
+
+    '
+  type: 207
+- text: FROM
+  type: 77
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: table
     local_id: Family
@@ -47,85 +87,6 @@ table_tokens:
   text: '"Family"'
   title: token18.FamilyLookup
   type: 200
-title: FamilyLookup
-tokens:
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 0
-  text: SELECT
-  type: 131
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 1
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 2
-  text: '"Name"'
-  type: 200
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 3
-  text: ','
-  type: 5
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 4
-  text: '
-
-    '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 5
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 6
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 7
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 8
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 9
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 10
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 11
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 12
-  text: '"FamilyID"'
-  type: 200
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 13
-  text: '
-
-    '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 14
-  text: FROM
-  type: 77
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 15
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 16
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 17
-  text: ' '
-  type: 207
-- *id001
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
@@ -143,5 +104,5 @@ used_by:
   local_id: ReferToQuery.Module1.Library1
   location_id: '510'
 uses:
-- *id002
+- *id001
 ---

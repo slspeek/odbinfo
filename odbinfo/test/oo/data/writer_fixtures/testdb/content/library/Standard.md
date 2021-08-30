@@ -4,8 +4,6 @@ modules:
 - !!python/object:odbinfo.pure.datatype.exec.Module
   callables:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-    body_tokens: []
-    calls: []
     library: Standard
     module: Module1
     name: UsesDocument
@@ -15,25 +13,15 @@ modules:
       bookmark: null
       content_type: module
       local_id: Module1.Standard
-    strings:
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 11
-      link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
-        bookmark: null
-        content_type: textdocument
-        local_id: Untitled
-      obj_id: '227'
-      text: '"Untitled"'
-      title: token11.UsesDocument.Module1.Standard
-      type: 172
     title: UsesDocument.Module1.Standard
     tokens: []
     used_by: []
     uses:
-    - *id001
+    - &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
+      content_type: textdocument
+      local_id: Untitled
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-    body_tokens: []
-    calls: []
     library: Standard
     module: Module1
     name: UsesDocumentFilename
@@ -43,25 +31,15 @@ modules:
       bookmark: null
       content_type: module
       local_id: Module1.Standard
-    strings:
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 24
-      link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
-        bookmark: null
-        content_type: textdocument
-        local_id: Untitled
-      obj_id: '239'
-      text: '"Untitled.odt"'
-      title: token24.UsesDocumentFilename.Module1.Standard
-      type: 172
     title: UsesDocumentFilename.Module1.Standard
     tokens: []
     used_by: []
     uses:
-    - *id002
+    - &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: null
+      content_type: textdocument
+      local_id: Untitled
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-    body_tokens: []
-    calls: []
     library: Standard
     module: Module1
     name: CalleeOtherLib
@@ -71,11 +49,6 @@ modules:
       bookmark: null
       content_type: module
       local_id: Module1.Standard
-    strings:
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 35
-      text: '"Standard.Module1.CalleeOtherLib"'
-      type: 172
     title: CalleeOtherLib.Module1.Standard
     tokens: []
     used_by:
@@ -91,8 +64,6 @@ modules:
       location_id: '448'
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-    body_tokens: []
-    calls: []
     library: Standard
     module: Module1
     name: ShadowedCallee
@@ -102,24 +73,11 @@ modules:
       bookmark: null
       content_type: module
       local_id: Module1.Standard
-    strings:
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 48
-      text: '"Standard.Module1.ShadowedCallee"'
-      type: 172
     title: ShadowedCallee.Module1.Standard
     tokens: []
     used_by: []
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-    body_tokens: []
-    calls:
-    - !!python/object:odbinfo.pure.datatype.exec.BasicCall
-      module_token: null
-      name_token: !!python/object:odbinfo.pure.datatype.base.Token
-        index: 60
-        text: AddOne
-        type: 181
     library: Standard
     module: Module1
     name: AddOne
@@ -129,7 +87,6 @@ modules:
       bookmark: null
       content_type: module
       local_id: Module1.Standard
-    strings: []
     title: AddOne.Module1.Standard
     tokens: []
     used_by: []
@@ -147,11 +104,6 @@ modules:
     bookmark: null
     content_type: library
     local_id: Standard
-  source: "REM  *****  BASIC  *****\n\nSub UsesDocument()\n\tprint \"Untitled\"\n\
-    End Sub\n\nSub UsesDocumentFilename()\n\tprint \"Untitled.odt\"\nEnd Sub\n\nSub\
-    \ CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\nEnd Sub\n\nSub\
-    \ ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\nEnd Sub\n\nFunction\
-    \ AddOne(arg)\n\tAddOne() = arg + 1\nEnd Function"
   title: Module1.Standard
   tokens: []
   used_by: []
@@ -163,8 +115,6 @@ modules:
 - !!python/object:odbinfo.pure.datatype.exec.Module
   callables:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-    body_tokens: []
-    calls: []
     library: Standard
     module: Module2
     name: Main
@@ -174,11 +124,6 @@ modules:
       bookmark: null
       content_type: module
       local_id: Module2.Standard
-    strings:
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 9
-      text: '"hello world"'
-      type: 172
     title: Main.Module2.Standard
     tokens: []
     used_by: []
@@ -192,7 +137,6 @@ modules:
     bookmark: null
     content_type: library
     local_id: Standard
-  source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
   title: Module2.Standard
   tokens: []
   used_by: []

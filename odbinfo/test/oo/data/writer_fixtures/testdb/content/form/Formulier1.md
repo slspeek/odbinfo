@@ -24,10 +24,28 @@ subforms:
       FROM   "Person"'
     name: Formulier.Command
     obj_id: '111'
-    table_tokens:
-    - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-      index: 8
-      link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+    table_tokens: []
+    title: Formulier.Command
+    tokens:
+    - text: SELECT
+      type: 131
+    - text: ' '
+      type: 207
+    - text: '*'
+      type: 7
+    - text: '
+
+        '
+      type: 207
+    - text: FROM
+      type: 77
+    - text: ' '
+      type: 207
+    - text: ' '
+      type: 207
+    - text: ' '
+      type: 207
+    - link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
         bookmark: null
         content_type: table
         local_id: Person
@@ -35,43 +53,6 @@ subforms:
       text: '"Person"'
       title: token8.Formulier.Command
       type: 200
-    title: Formulier.Command
-    tokens:
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 0
-      text: SELECT
-      type: 131
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 1
-      text: ' '
-      type: 207
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 2
-      text: '*'
-      type: 7
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 3
-      text: '
-
-        '
-      type: 207
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 4
-      text: FROM
-      type: 77
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 5
-      text: ' '
-      type: 207
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 6
-      text: ' '
-      type: 207
-    - !!python/object:odbinfo.pure.datatype.base.Token
-      index: 7
-      text: ' '
-      type: 207
-    - *id001
   masterfields: ''
   name: Formulier
   obj_id: '109'
@@ -108,5 +89,5 @@ subforms:
 title: Formulier1
 used_by: []
 uses:
-- *id002
+- *id001
 ---

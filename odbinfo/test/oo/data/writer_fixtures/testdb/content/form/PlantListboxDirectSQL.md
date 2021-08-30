@@ -86,10 +86,50 @@ subforms:
       command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
       name: fmtRFamliyID.Command
       obj_id: '157'
-      table_tokens:
-      - &id001 !!python/object:odbinfo.pure.datatype.base.Token
-        index: 18
-        link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
+      table_tokens: []
+      title: fmtRFamliyID.Command
+      tokens:
+      - text: SELECT
+        type: 131
+      - text: ' '
+        type: 207
+      - text: '"Name"'
+        type: 200
+      - text: ','
+        type: 5
+      - text: '
+
+          '
+        type: 207
+      - text: ' '
+        type: 207
+      - text: ' '
+        type: 207
+      - text: ' '
+        type: 207
+      - text: ' '
+        type: 207
+      - text: ' '
+        type: 207
+      - text: ' '
+        type: 207
+      - text: ' '
+        type: 207
+      - text: '"FamilyID"'
+        type: 200
+      - text: '
+
+          '
+        type: 207
+      - text: FROM
+        type: 77
+      - text: ' '
+        type: 207
+      - text: ' '
+        type: 207
+      - text: ' '
+        type: 207
+      - link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
           bookmark: null
           content_type: table
           local_id: Family
@@ -97,85 +137,6 @@ subforms:
         text: '"Family"'
         title: token18.fmtRFamliyID.Command
         type: 200
-      title: fmtRFamliyID.Command
-      tokens:
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 0
-        text: SELECT
-        type: 131
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 1
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 2
-        text: '"Name"'
-        type: 200
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 3
-        text: ','
-        type: 5
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 4
-        text: '
-
-          '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 5
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 6
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 7
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 8
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 9
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 10
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 11
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 12
-        text: '"FamilyID"'
-        type: 200
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 13
-        text: '
-
-          '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 14
-        text: FROM
-        type: 77
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 15
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 16
-        text: ' '
-        type: 207
-      - !!python/object:odbinfo.pure.datatype.base.Token
-        index: 17
-        text: ' '
-        type: 207
-      - *id001
     eventlisteners: []
     formfor: ''
     inputrequired: 'true'
@@ -193,7 +154,7 @@ subforms:
     eventlisteners:
     - !!python/object:odbinfo.pure.datatype.ui.EventListener
       event: form:performaction
-      link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
+      link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
@@ -226,7 +187,7 @@ subforms:
     eventlisteners:
     - !!python/object:odbinfo.pure.datatype.ui.EventListener
       event: form:performaction
-      link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
+      link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
@@ -235,7 +196,7 @@ subforms:
       title: control9.MainForm.PlantListboxDirectSQL.form:performaction
     - !!python/object:odbinfo.pure.datatype.ui.EventListener
       event: form:approveaction
-      link: &id006 !!python/object:odbinfo.pure.datatype.base.Identifier
+      link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
@@ -251,7 +212,7 @@ subforms:
     type: CommandButton
   depth: 0
   detailfields: ''
-  link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: table
     local_id: Plant
@@ -263,9 +224,9 @@ subforms:
 title: PlantListboxDirectSQL
 used_by: []
 uses:
+- *id001
 - *id002
 - *id003
 - *id004
 - *id005
-- *id006
 ---

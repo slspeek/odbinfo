@@ -52,10 +52,28 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
   local_id: ./testdb.odb
-table_tokens:
-- &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 8
-  link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+table_tokens: []
+title: vwPlant
+tokens:
+- text: SELECT
+  type: 131
+- text: ' '
+  type: 207
+- text: '*'
+  type: 7
+- text: '
+
+    '
+  type: 207
+- text: FROM
+  type: 77
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- text: ' '
+  type: 207
+- link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: table
     local_id: Plant
@@ -63,43 +81,6 @@ table_tokens:
   text: '"Plant"'
   title: token8.vwPlant
   type: 200
-title: vwPlant
-tokens:
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 0
-  text: SELECT
-  type: 131
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 1
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 2
-  text: '*'
-  type: 7
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 3
-  text: '
-
-    '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 4
-  text: FROM
-  type: 77
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 5
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 6
-  text: ' '
-  type: 207
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 7
-  text: ' '
-  type: 207
-- *id001
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
   bookmark: null
@@ -122,5 +103,5 @@ used_by:
   local_id: Untitled
   location_id: '711'
 uses:
-- *id002
+- *id001
 ---

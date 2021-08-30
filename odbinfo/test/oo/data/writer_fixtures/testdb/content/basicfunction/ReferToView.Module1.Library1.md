@@ -1,7 +1,5 @@
 ---
 !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-body_tokens: []
-calls: []
 library: Library1
 module: Module1
 name: ReferToView
@@ -11,10 +9,34 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
   local_id: Module1.Library1
-strings:
-- &id001 !!python/object:odbinfo.pure.datatype.base.Token
-  index: 125
-  link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+title: ReferToView.Module1.Library1
+tokens:
+- index: 117
+  text: Sub
+  type: 125
+- index: 118
+  text: ' '
+  type: 185
+- index: 119
+  text: ReferToView
+  type: 181
+- index: 120
+  text: (
+  type: 157
+- index: 121
+  text: )
+  type: 168
+- index: 122
+  text: "\n\t"
+  type: 183
+- index: 123
+  text: print
+  type: 100
+- index: 124
+  text: ' '
+  type: 185
+- index: 125
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: view
     local_id: view1
@@ -22,52 +44,15 @@ strings:
   text: '"view1"'
   title: token125.ReferToView.Module1.Library1
   type: 172
-title: ReferToView.Module1.Library1
-tokens:
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 117
-  text: Sub
-  type: 125
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 118
-  text: ' '
-  type: 185
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 119
-  text: ReferToView
-  type: 181
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 120
-  text: (
-  type: 157
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 121
-  text: )
-  type: 168
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 122
-  text: "\n\t"
-  type: 183
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 123
-  text: print
-  type: 100
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 124
-  text: ' '
-  type: 185
-- *id001
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 126
+- index: 126
   text: '
 
     '
   type: 183
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 127
+- index: 127
   text: End Sub
   type: 44
 used_by: []
 uses:
-- *id002
+- *id001
 ---

@@ -1,34 +1,5 @@
 ---
 !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-body_tokens: []
-calls:
-- !!python/object:odbinfo.pure.datatype.exec.BasicCall
-  module_token: null
-  name_token: &id001 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 65
-    link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: null
-      content_type: basicfunction
-      local_id: CalleeOtherLib.Module1.Standard
-    obj_id: '442'
-    text: CalleeOtherLib
-    title: token65.CallerOtherLib.Module1.Library1
-    type: 181
-- !!python/object:odbinfo.pure.datatype.exec.BasicCall
-  module_token: &id002 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 69
-    text: Module1
-    type: 181
-  name_token: &id003 !!python/object:odbinfo.pure.datatype.base.Token
-    index: 71
-    link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: null
-      content_type: basicfunction
-      local_id: CalleeOtherLib.Module1.Standard
-    obj_id: '448'
-    text: CalleeOtherLib
-    title: token71.CallerOtherLib.Module1.Library1
-    type: 181
 library: Library1
 module: Module1
 name: CallerOtherLib
@@ -38,72 +9,75 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
   local_id: Module1.Library1
-strings: []
 title: CallerOtherLib.Module1.Library1
 tokens:
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 59
+- index: 59
   text: Sub
   type: 125
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 60
+- index: 60
   text: ' '
   type: 185
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 61
+- index: 61
   text: CallerOtherLib
   type: 181
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 62
+- index: 62
   text: (
   type: 157
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 63
+- index: 63
   text: )
   type: 168
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 64
+- index: 64
   text: "\n\t"
   type: 183
-- *id001
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 66
+- index: 65
+  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    content_type: basicfunction
+    local_id: CalleeOtherLib.Module1.Standard
+  obj_id: '442'
+  text: CalleeOtherLib
+  title: token65.CallerOtherLib.Module1.Library1
+  type: 181
+- index: 66
   text: (
   type: 157
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 67
+- index: 67
   text: )
   type: 168
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 68
+- index: 68
   text: "\n\t"
   type: 183
-- *id002
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 70
+- index: 69
+  text: Module1
+  type: 181
+- index: 70
   text: .
   type: 150
-- *id003
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 72
+- index: 71
+  link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: null
+    content_type: basicfunction
+    local_id: CalleeOtherLib.Module1.Standard
+  obj_id: '448'
+  text: CalleeOtherLib
+  title: token71.CallerOtherLib.Module1.Library1
+  type: 181
+- index: 72
   text: (
   type: 157
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 73
+- index: 73
   text: )
   type: 168
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 74
+- index: 74
   text: '
 
     '
   type: 183
-- !!python/object:odbinfo.pure.datatype.base.Token
-  index: 75
+- index: 75
   text: End Sub
   type: 44
 used_by: []
 uses:
-- *id004
-- *id005
+- *id001
+- *id002
 ---

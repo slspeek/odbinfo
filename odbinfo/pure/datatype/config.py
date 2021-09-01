@@ -8,6 +8,7 @@ from typing import List, Optional
 class GeneralConfig:
     " General options "
     output_dir: Optional[str]
+    base_url: str
 
 
 TYPE_ATTRS = {
@@ -72,7 +73,7 @@ def get_configuration() -> Configuration:
     " returns configuration "
     return \
         Configuration(
-            GeneralConfig(None),
+            GeneralConfig(None, "http://odbinfo.org/"),
             GraphConfig(
                 EXCLUDED_TYPES,
                 TYPE_ATTRS,

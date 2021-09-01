@@ -23,5 +23,5 @@ def generate_report(oodocument, config=get_configuration()):
 
     process_metadata(metadata, config)
 
-    result = make_site(config.general.output_dir, name, metadata)
+    result = make_site(config, metadata)
     return result

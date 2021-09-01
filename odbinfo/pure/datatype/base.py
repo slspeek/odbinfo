@@ -66,7 +66,7 @@ class NamedNode(Node):
 
 @dataclass
 class User:
-    " Mixin for Nodes that can use other nodes "
+    " Mixin for Nodes that can use one other node"
     link: Optional[Identifier] = field(init=False, default=None)
 
 

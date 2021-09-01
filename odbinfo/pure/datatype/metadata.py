@@ -41,7 +41,6 @@ class Metadata(PageOwner):
     library_defs: List[Library]
     pythonlibrary_defs: List[PythonLibrary]
     textdocument_defs: List[TextDocument]
-    # use_cases: List[UseCase] = field(init=False, default_factory=list)
     graphs: List[Digraph] = field(init=False, default_factory=list)
 
     def __post_init__(self):

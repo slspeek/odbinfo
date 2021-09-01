@@ -17,6 +17,7 @@ import yaml
 
 from odbinfo.pure.datatype import (BasicFunction, Metadata, Module, Token,
                                    content_type)
+from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.metadata import METADATA_CONTENT
 from odbinfo.pure.util import timed
 
@@ -131,13 +132,14 @@ def _cleanup_tokens(metadata):
 
 
 @timed("Write and build hugo site", indent=2)
-def make_site(output_dir, name, metadata):
+def make_site(config, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
-
+    name = config.name
+    output_dir = config.general.output_dir
     new_site(output_dir, name)
 
     with chdir(os.path.join(output_dir, name)):
-        _write_metadata(name, metadata)
+        _write_metadata(config, metadata)
         _write_graphs(metadata)
         run_checked("hugo", "unable to build hugo site")
     _convert_local(output_dir, name)
@@ -156,9 +158,9 @@ def clear_fields_after(metadata: Metadata, acontent_type: str) -> None:
             module.tokens = []
 
 
-def _write_metadata(name, metadata: Metadata):
+def _write_metadata(config: Configuration, metadata: Metadata):
     preprocess_metadata(metadata)
-    _write_config(name, metadata)
+    _write_config(config, config.name, metadata)
     for content in METADATA_CONTENT:
         _write_content(metadata, content)
         clear_fields_after(metadata, content)
@@ -171,7 +173,7 @@ def _get_metadata_attr(metadata: Metadata, attribute: str):
     return meta_attribute
 
 
-def _write_config(site_name, metadata):
+def _write_config(config, site_name, metadata):
     def _menu(pairs):
         name, weight = pairs
         meta_attribute = _get_metadata_attr(metadata, name)
@@ -192,7 +194,7 @@ def _write_config(site_name, metadata):
 
     with open("config.toml", "w") as cfg:
         toml.dump({"title": site_name,
-                   "baseURL": "http://example.com/",
+                   "baseURL": config.general.base_url,
                    "languageCode": "en-us",
                    "theme": "minimal",
                    "menu": {"main": menus,

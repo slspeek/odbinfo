@@ -1,4 +1,10 @@
-Use content_type_title as obj_id
+Only PageOwner has a title, the rest must be made to work by obj_id,
+needs change of Metadata.index
+Get rid of TitleFromParents etc
+Make a conversion of obj_id to Identifier for PageOwners
+
+
+cleanup minimal before distribution
 
 Relevant function filter
 - function that uses something else than a basicfunction
@@ -82,8 +88,15 @@ update minimal theme (20210703 ok)
 
 Later
 -----
+bypass wget --convert-links with a rewrite in python of public/
+- level 0 strip leading /
+- level 1 strip leading /, add ../
+- level 2 strip leading /, add ../../
+
 Use LibYAML with pyyaml (on linux?)
 caching of query parsing
+- https://docs.python.org/3.7/library/shelve.html
+
 direct sql queries must be transformed to Query object
 Threads: writer, parser?
 i18n gettext in python, hugo {{ T id }}

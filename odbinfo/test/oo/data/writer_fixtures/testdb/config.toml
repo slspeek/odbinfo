@@ -1,5 +1,5 @@
 title = "testdb"
-baseURL = "http://example.com/"
+baseURL = "http://odbinfo.org/"
 languageCode = "en-us"
 theme = "minimal"
 

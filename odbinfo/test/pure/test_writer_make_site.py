@@ -1,6 +1,7 @@
 """ writer regression tests """
 import pytest
 
+from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.writer import make_site
 from odbinfo.test.pure.fixtures import (empty_metadata_processed,
                                         metadata_processed)
@@ -23,5 +24,7 @@ def test_make_site_empty(empty_metadata_processed):
 
 def make_site_test(name, metadata):
     " generate report and verify"
-    outdir = TEST_OUTPUT_TPL.format("make_site_test")
-    make_site(outdir, name, metadata)
+    conf = get_configuration()
+    conf.name = name
+    conf.general.output_dir = TEST_OUTPUT_TPL.format("make_site_test")
+    make_site(conf, metadata)

@@ -3,6 +3,7 @@ import os
 
 import pytest
 
+from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.writer import _write_metadata, chdir
 from odbinfo.test.pure.fixtures import (empty_metadata_processed,
                                         empty_metadata_processed_loader,
@@ -13,10 +14,12 @@ from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 def write_writer_fixture(output_dir, name, metadata):
     " generate report and verify"
+    conf = get_configuration()
     site_dir = f"{output_dir}/{name}"
     os.makedirs(site_dir, exist_ok=True)
+    conf.name = name
     with chdir(site_dir):
-        _write_metadata(name, metadata)
+        _write_metadata(conf, metadata)
 
 
 @pytest.mark.slow
@@ -45,9 +48,12 @@ def make_writer_regression_test(name, metadata, fixture_name: str):
 
 def benchmark_writer(output_dir, name, data_loader, benchmark):
     " generate report and verify"
+    conf = get_configuration()
+    conf.name = name
+
     def setup():
         metadata = data_loader()
-        return (name, metadata), {}
+        return (conf, metadata), {}
     site_dir = f"{output_dir}/{name}"
     os.makedirs(site_dir, exist_ok=True)
     with chdir(site_dir):

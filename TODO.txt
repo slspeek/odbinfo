@@ -3,8 +3,9 @@ needs change of Metadata.index
 Get rid of TitleFromParents etc
 Make a conversion of obj_id to Identifier for PageOwners
 
+More of pathlib instead of os.path
 
-cleanup minimal before distribution
+Makefile: cleanup minimal before distribution
 
 Relevant function filter
 - function that uses something else than a basicfunction
@@ -32,9 +33,6 @@ Extra graphs:
   - object with direct uses and used_bies
 
 type file based MetaData, TextDocument
-
-Weave in Configuration
-dataclass Config with sections to yaml in ~/.odbinfo.yaml
 
 database (driver) information retrieval
 

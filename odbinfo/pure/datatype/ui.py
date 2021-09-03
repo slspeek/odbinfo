@@ -9,7 +9,7 @@ from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
 
 @dataclass  # type: ignore
-class AbstractCommander(ABC):
+class AbstractCommander(User, ABC):
     "Commander interface"
 
     # Only if commandtype in ["command", "sql", "sqlpassthrough"]
@@ -25,7 +25,7 @@ class AbstractCommander(ABC):
 
 
 @dataclass
-class Commander(User, AbstractCommander):
+class Commander(AbstractCommander):
     " Has a command and commandtype "
     command: str
     commandtype: str
@@ -102,7 +102,7 @@ class Control(TitleFromParents, NamedNode):
 
 
 @dataclass
-class ListBox(User, AbstractCommander, Control):
+class ListBox(AbstractCommander, Control):
     " ListBox control"
     boundcolumn: int
     dropdown: bool

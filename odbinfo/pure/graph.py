@@ -3,7 +3,8 @@ from typing import Sequence, Tuple, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import Control, Metadata, PageOwner, content_type
+from odbinfo.pure.datatype import (Control, ListBox, Metadata, PageOwner,
+                                   content_type)
 from odbinfo.pure.datatype.base import NamedNode
 from odbinfo.pure.datatype.config import GraphConfig
 
@@ -24,15 +25,23 @@ def href(obj):
     return f"../{node.content_type()}/{hugo_filename(node.title)}/index.html#{obj.obj_id}"
 
 
+def _is_control_visible(control: Control):
+    if control.eventlisteners:
+        return True
+    if isinstance(control, ListBox):
+        listbox = cast(ListBox, control)
+        if listbox.embedded_query or listbox.link:
+            return True
+    return False
+
+
 def is_visible(config: GraphConfig, node: NamedNode) -> bool:
     " determines with `config` whether `node` is visible"
     if not node.content_type() in config.excludes:
         if config.relevant_controls:
             if isinstance(node, Control):
                 control = cast(Control, node)
-                if control.eventlisteners:
-                    return True
-                return False
+                return _is_control_visible(control)
             return True
         return True
     return False

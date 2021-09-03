@@ -1,3 +1,6 @@
+restrict Metadata.index to Usables,
+remove verify_titles_unique_in_kind
+
 Configuration: places to look for textdocuments
 
 Slug := title-obj_id if title else name-obj_id
@@ -6,7 +9,7 @@ needs change of Metadata.index
 Get rid of TitleFromParents etc
 Make a conversion of obj_id to Identifier for PageOwners
 
-graph: 
+graph:
 
 
 More of pathlib instead of os.path

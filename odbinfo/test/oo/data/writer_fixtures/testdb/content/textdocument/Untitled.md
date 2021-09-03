@@ -23,16 +23,14 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
 path: ./Untitled.odt
 title: Untitled
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '227'
   content_type: basicfunction
   local_id: UsesDocument.Module1.Standard
-  location_id: '227'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '239'
   content_type: basicfunction
   local_id: UsesDocumentFilename.Module1.Standard
-  location_id: '239'
 uses:
 - *id001
 ---

@@ -1,7 +1,6 @@
 """ Defines the main datatype MetaData """
-from odbinfo.pure.datatype.base import (Identifier, Node, PageOwner,
-                                        SourceIdentifier, Token, content_type,
-                                        get_identifier)
+from odbinfo.pure.datatype.base import (Identifier, Node, PageOwner, Token,
+                                        content_type, get_identifier)
 from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, Library,
                                         Module, PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.metadata import Metadata
@@ -31,7 +30,6 @@ __all__ = [
     "Node",
     "Query",
     "QueryColumn",
-    "SourceIdentifier",
     "Table",
     "View"
 ]

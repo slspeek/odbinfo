@@ -4,8 +4,7 @@ from typing import Sequence, Union
 
 from odbinfo.pure.datatype import (Control, EmbeddedQuery, Form, Grid, Library,
                                    Metadata, Module, SubForm)
-from odbinfo.pure.datatype.base import (PageOwner, UseAggregator, User,
-                                        get_source_identifier)
+from odbinfo.pure.datatype.base import UseAggregator, User, get_identifier
 from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.dependency import _link_name_tokens, search_dependencies
 from odbinfo.pure.graph import generate_graphs
@@ -105,19 +104,11 @@ def aggregate_uses(metadata: Metadata) -> None:
             aggregate_uses_from_children(use_agg)
 
 
-def source_link(user):
-    "returns a back link to this `user`"
-    parent = user
-    while not isinstance(parent, PageOwner):
-        parent = parent.parent
-    return get_source_identifier(parent, user)
-
-
 def aggregate_used_by(metadata):
     "Collect all used_by"
     for user in metadata.all_active_users():
         metadata.index[(user.link.content_type, user.link.local_id)
-                       ].used_by.append(source_link(user))
+                       ].used_by.append(get_identifier(user))
 
 
 @timed("Parse queries", indent=4)

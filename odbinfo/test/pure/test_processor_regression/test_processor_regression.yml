@@ -1677,14 +1677,12 @@ library_defs:
         title: token37.CalleeOtherLib.Module1.Standard
         type: 44
       used_by:
-      - bookmark: null
+      - bookmark: '442'
         content_type: basicfunction
         local_id: CallerOtherLib.Module1.Library1
-        location_id: '442'
-      - bookmark: null
+      - bookmark: '448'
         content_type: basicfunction
         local_id: CallerOtherLib.Module1.Library1
-        location_id: '448'
       uses: []
     - body_tokens:
       - hidden: false
@@ -3202,30 +3200,24 @@ library_defs:
         title: token11.Main.Module1.Library1
         type: 44
       used_by:
-      - bookmark: null
+      - bookmark: '144'
         content_type: form
         local_id: PlantListbox
-        location_id: '144'
-      - bookmark: null
+      - bookmark: '147'
         content_type: form
         local_id: PlantListbox
-        location_id: '147'
-      - bookmark: null
+      - bookmark: '148'
         content_type: form
         local_id: PlantListbox
-        location_id: '148'
-      - bookmark: null
+      - bookmark: '178'
         content_type: form
         local_id: PlantListboxDirectSQL
-        location_id: '178'
-      - bookmark: null
+      - bookmark: '181'
         content_type: form
         local_id: PlantListboxDirectSQL
-        location_id: '181'
-      - bookmark: null
+      - bookmark: '182'
         content_type: form
         local_id: PlantListboxDirectSQL
-        location_id: '182'
       uses: []
     - body_tokens:
       - hidden: false
@@ -3664,10 +3656,9 @@ library_defs:
         title: token43.CalleeSub.Module1.Library1
         type: 44
       used_by:
-      - bookmark: null
+      - bookmark: '400'
         content_type: basicfunction
         local_id: CallerSub.Module1.Library1
-        location_id: '400'
       uses: []
     - body_tokens:
       - hidden: false
@@ -4432,10 +4423,9 @@ library_defs:
         title: token101.ShadowedCallee.Module1.Library1
         type: 44
       used_by:
-      - bookmark: null
+      - bookmark: '460'
         content_type: basicfunction
         local_id: CallerShadowedCallee.Module1.Library1
-        location_id: '460'
       uses: []
     - body_tokens:
       - hidden: false
@@ -6399,10 +6389,9 @@ library_defs:
         title: token13.CalleeSub.Module2.Library1
         type: 44
       used_by:
-      - bookmark: null
+      - bookmark: '406'
         content_type: basicfunction
         local_id: CallerSub.Module1.Library1
-        location_id: '406'
       uses: []
     - body_tokens:
       - hidden: false
@@ -6552,10 +6541,9 @@ library_defs:
         title: token26.CalleeTwoSub.Module2.Library1
         type: 44
       used_by:
-      - bookmark: null
+      - bookmark: '430'
         content_type: basicfunction
         local_id: CallerTwo.Module1.Library1
-        location_id: '430'
       uses: []
     library: Library1
     name: Module2
@@ -7410,18 +7398,15 @@ query_defs:
     title: token18.FamilyLookup
     type: 200
   used_by:
-  - bookmark: null
+  - bookmark: '60'
     content_type: query
     local_id: DependendQuery
-    location_id: '60'
-  - bookmark: null
+  - bookmark: '142'
     content_type: form
     local_id: PlantListbox
-    location_id: '142'
-  - bookmark: null
+  - bookmark: '510'
     content_type: basicfunction
     local_id: ReferToQuery.Module1.Library1
-    location_id: '510'
   uses:
   - bookmark: null
     content_type: table
@@ -7571,22 +7556,18 @@ query_defs:
     title: token8.vwPlant
     type: 200
   used_by:
-  - bookmark: null
+  - bookmark: '63'
     content_type: query
     local_id: DependendQuery
-    location_id: '63'
-  - bookmark: null
+  - bookmark: '131'
     content_type: form
     local_id: Plant invoeren
-    location_id: '131'
   - bookmark: null
     content_type: report
     local_id: vwPlant
-    location_id: '215'
-  - bookmark: null
+  - bookmark: '711'
     content_type: textdocument
     local_id: Untitled
-    location_id: '711'
   uses:
   - bookmark: null
     content_type: table
@@ -7842,30 +7823,24 @@ table_defs:
     local_id: ./testdb.odb
   title: Family
   used_by:
-  - bookmark: null
+  - bookmark: '15'
     content_type: table
     local_id: Plant
-    location_id: '15'
-  - bookmark: null
+  - bookmark: '88'
     content_type: query
     local_id: FamilyLookup
-    location_id: '88'
-  - bookmark: null
+  - bookmark: '103'
     content_type: form
     local_id: Family
-    location_id: '103'
-  - bookmark: null
+  - bookmark: '176'
     content_type: form
     local_id: PlantListboxDirectSQL
-    location_id: '176'
-  - bookmark: null
+  - bookmark: '191'
     content_type: form
     local_id: Related subform
-    location_id: '191'
   - bookmark: null
     content_type: report
     local_id: Family
-    location_id: '202'
   uses: []
 - columns:
   - autoincrement: false
@@ -7942,10 +7917,9 @@ table_defs:
     local_id: ./testdb.odb
   title: Person
   used_by:
-  - bookmark: null
+  - bookmark: '120'
     content_type: form
     local_id: Formulier1
-    location_id: '120'
   uses: []
 - columns:
   - autoincrement: false
@@ -8045,38 +8019,30 @@ table_defs:
     local_id: ./testdb.odb
   title: Plant
   used_by:
-  - bookmark: null
+  - bookmark: '44'
     content_type: view
     local_id: view1
-    location_id: '44'
-  - bookmark: null
+  - bookmark: '101'
     content_type: query
     local_id: vwPlant
-    location_id: '101'
-  - bookmark: null
+  - bookmark: '123'
     content_type: form
     local_id: Plant
-    location_id: '123'
-  - bookmark: null
+  - bookmark: '136'
     content_type: form
     local_id: PlantListbox
-    location_id: '136'
-  - bookmark: null
+  - bookmark: '150'
     content_type: form
     local_id: PlantListboxDirectSQL
-    location_id: '150'
-  - bookmark: null
+  - bookmark: '184'
     content_type: form
     local_id: Related subform
-    location_id: '184'
-  - bookmark: null
+  - bookmark: '213'
     content_type: report
     local_id: ReportCommandTypeSQL
-    location_id: '213'
-  - bookmark: null
+  - bookmark: '486'
     content_type: basicfunction
     local_id: ReferToTable.Module1.Library1
-    location_id: '486'
   uses:
   - bookmark: null
     content_type: table
@@ -8106,14 +8072,12 @@ textdocument_defs:
   path: ./Untitled.odt
   title: Untitled
   used_by:
-  - bookmark: null
+  - bookmark: '227'
     content_type: basicfunction
     local_id: UsesDocument.Module1.Standard
-    location_id: '227'
-  - bookmark: null
+  - bookmark: '239'
     content_type: basicfunction
     local_id: UsesDocumentFilename.Module1.Standard
-    location_id: '239'
   uses:
   - bookmark: null
     content_type: query
@@ -8549,26 +8513,21 @@ view_defs:
     title: token8.view1
     type: 200
   used_by:
-  - bookmark: null
+  - bookmark: '25'
     content_type: view
     local_id: DependendView
-    location_id: '25'
-  - bookmark: null
+  - bookmark: '33'
     content_type: view
     local_id: DependendView
-    location_id: '33'
-  - bookmark: null
+  - bookmark: '66'
     content_type: query
     local_id: DependendQuery
-    location_id: '66'
-  - bookmark: null
+  - bookmark: '199'
     content_type: form
     local_id: view1
-    location_id: '199'
-  - bookmark: null
+  - bookmark: '498'
     content_type: basicfunction
     local_id: ReferToView.Module1.Library1
-    location_id: '498'
   uses:
   - bookmark: null
     content_type: table

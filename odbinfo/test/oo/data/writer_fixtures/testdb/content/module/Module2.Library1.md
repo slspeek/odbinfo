@@ -14,11 +14,10 @@ callables:
   title: CalleeSub.Module2.Library1
   tokens: []
   used_by:
-  - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-    bookmark: null
+  - !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: '406'
     content_type: basicfunction
     local_id: CallerSub.Module1.Library1
-    location_id: '406'
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   library: Library1
@@ -33,11 +32,10 @@ callables:
   title: CalleeTwoSub.Module2.Library1
   tokens: []
   used_by:
-  - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-    bookmark: null
+  - !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: '430'
     content_type: basicfunction
     local_id: CallerTwo.Module1.Library1
-    location_id: '430'
   uses: []
 library: Library1
 name: Module2

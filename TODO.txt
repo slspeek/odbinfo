@@ -1,7 +1,13 @@
-Only PageOwner has a title, the rest must be made to work by obj_id,
+Configuration: places to look for textdocuments
+
+Slug := title-obj_id if title else name-obj_id
+Only PageOwner needs a unique title, the rest must be made to work by Slug,
 needs change of Metadata.index
 Get rid of TitleFromParents etc
 Make a conversion of obj_id to Identifier for PageOwners
+
+graph: 
+
 
 More of pathlib instead of os.path
 

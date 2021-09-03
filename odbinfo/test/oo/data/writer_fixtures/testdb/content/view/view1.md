@@ -54,31 +54,26 @@ tokens:
   title: token8.view1
   type: 200
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '25'
   content_type: view
   local_id: DependendView
-  location_id: '25'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '33'
   content_type: view
   local_id: DependendView
-  location_id: '33'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '66'
   content_type: query
   local_id: DependendQuery
-  location_id: '66'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '199'
   content_type: form
   local_id: view1
-  location_id: '199'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '498'
   content_type: basicfunction
   local_id: ReferToView.Module1.Library1
-  location_id: '498'
 uses:
 - *id001
 ---

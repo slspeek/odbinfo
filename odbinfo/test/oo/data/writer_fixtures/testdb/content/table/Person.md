@@ -73,10 +73,9 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
 title: Person
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '120'
   content_type: form
   local_id: Formulier1
-  location_id: '120'
 uses: []
 ---

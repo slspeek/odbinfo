@@ -50,16 +50,14 @@ callables:
   title: CalleeOtherLib.Module1.Standard
   tokens: []
   used_by:
-  - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-    bookmark: null
+  - !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: '442'
     content_type: basicfunction
     local_id: CallerOtherLib.Module1.Library1
-    location_id: '442'
-  - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-    bookmark: null
+  - !!python/object:odbinfo.pure.datatype.base.Identifier
+    bookmark: '448'
     content_type: basicfunction
     local_id: CallerOtherLib.Module1.Library1
-    location_id: '448'
   uses: []
 - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
   library: Standard

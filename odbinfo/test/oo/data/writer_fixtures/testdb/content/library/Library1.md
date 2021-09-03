@@ -16,36 +16,30 @@ modules:
     title: Main.Module1.Library1
     tokens: []
     used_by:
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '144'
       content_type: form
       local_id: PlantListbox
-      location_id: '144'
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '147'
       content_type: form
       local_id: PlantListbox
-      location_id: '147'
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '148'
       content_type: form
       local_id: PlantListbox
-      location_id: '148'
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '178'
       content_type: form
       local_id: PlantListboxDirectSQL
-      location_id: '178'
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '181'
       content_type: form
       local_id: PlantListboxDirectSQL
-      location_id: '181'
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '182'
       content_type: form
       local_id: PlantListboxDirectSQL
-      location_id: '182'
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     library: Library1
@@ -82,11 +76,10 @@ modules:
     title: CalleeSub.Module1.Library1
     tokens: []
     used_by:
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '400'
       content_type: basicfunction
       local_id: CallerSub.Module1.Library1
-      location_id: '400'
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     library: Library1
@@ -159,11 +152,10 @@ modules:
     title: ShadowedCallee.Module1.Library1
     tokens: []
     used_by:
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '460'
       content_type: basicfunction
       local_id: CallerShadowedCallee.Module1.Library1
-      location_id: '460'
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     library: Library1
@@ -292,11 +284,10 @@ modules:
     title: CalleeSub.Module2.Library1
     tokens: []
     used_by:
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '406'
       content_type: basicfunction
       local_id: CallerSub.Module1.Library1
-      location_id: '406'
     uses: []
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
     library: Library1
@@ -311,11 +302,10 @@ modules:
     title: CalleeTwoSub.Module2.Library1
     tokens: []
     used_by:
-    - !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-      bookmark: null
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
+      bookmark: '430'
       content_type: basicfunction
       local_id: CallerTwo.Module1.Library1
-      location_id: '430'
     uses: []
   library: Library1
   name: Module2

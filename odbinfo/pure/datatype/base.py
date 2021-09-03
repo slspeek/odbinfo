@@ -12,12 +12,6 @@ class Identifier:
     bookmark: Optional[str]
 
 
-@dataclass(frozen=True)
-class SourceIdentifier(Identifier):
-    " source location identifier for back linking "
-    location_id: str
-
-
 def content_type(clazz) -> str:
     "returns the Hugo content type of `clazz`"
     return clazz.__name__.lower()
@@ -28,7 +22,7 @@ class Node:
     " DataObject without children "
     obj_id: str = field(init=False, default="OBJID_NOT_SET")
     title: str = field(init=False, default="TITLE_NOT_SET")
-    parent: Optional["NamedNode"] = field(init=False, default=None)
+    parent: Optional["NamedNode"] = field(init=False, default=None, repr=False)
 
     def content_type(self) -> str:
         " returns classname in lowercase "
@@ -73,7 +67,7 @@ class User:
 @dataclass
 class Usable:
     " Mixin for Nodes that can be used by other nodes "
-    used_by: List['SourceIdentifier'] = field(
+    used_by: List['Identifier'] = field(
         init=False, repr=False, default_factory=list)
 
     # def users_match(self, username: str) -> bool:
@@ -116,12 +110,6 @@ def get_identifier(usable) -> Identifier:
                           usable.title, None)
     return Identifier(parent.content_type(),
                       parent.title, usable.obj_id)
-
-
-def get_source_identifier(source: PageOwner, location: Optional[Node]) -> SourceIdentifier:
-    " creates a SourceIdentifier "
-    source_id = "" if not location else location.obj_id
-    return SourceIdentifier(source.content_type(), source.title, None, source_id)
 
 
 # pylint:disable=too-few-public-methods,no-member

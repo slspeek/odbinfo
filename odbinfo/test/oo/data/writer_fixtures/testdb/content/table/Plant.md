@@ -96,46 +96,38 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   local_id: ./testdb.odb
 title: Plant
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '44'
   content_type: view
   local_id: view1
-  location_id: '44'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '101'
   content_type: query
   local_id: vwPlant
-  location_id: '101'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '123'
   content_type: form
   local_id: Plant
-  location_id: '123'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '136'
   content_type: form
   local_id: PlantListbox
-  location_id: '136'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '150'
   content_type: form
   local_id: PlantListboxDirectSQL
-  location_id: '150'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '184'
   content_type: form
   local_id: Related subform
-  location_id: '184'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '213'
   content_type: report
   local_id: ReportCommandTypeSQL
-  location_id: '213'
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '486'
   content_type: basicfunction
   local_id: ReferToTable.Module1.Library1
-  location_id: '486'
 uses:
 - *id001
 ---

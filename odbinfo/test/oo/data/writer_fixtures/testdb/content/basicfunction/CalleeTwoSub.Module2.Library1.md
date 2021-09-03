@@ -47,10 +47,9 @@ tokens:
   text: End Sub
   type: 44
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.SourceIdentifier
-  bookmark: null
+- !!python/object:odbinfo.pure.datatype.base.Identifier
+  bookmark: '430'
   content_type: basicfunction
   local_id: CallerTwo.Module1.Library1
-  location_id: '430'
 uses: []
 ---

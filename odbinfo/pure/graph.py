@@ -112,13 +112,13 @@ def edge(graph, start, end, attrs):
 
 
 def visible_edges(metadata: Metadata, config: GraphConfig) \
-        -> Sequence[Tuple[Tuple[str, str], Tuple[str, str]]]:
+        -> Sequence[Tuple[str, str]]:
     " returns edges to draw in graph "
     uses = []
     for user in metadata.all_active_users():
         # print("In: from:", user.title, " to ", user.link)
         used_node_link = user.link
-        used_node = metadata.index[(
+        used_node = metadata.usable_by_link[(
             used_node_link.content_type, used_node_link.local_id)]
         user_vis_ancestor = visible_ancestor(config, user)
         if not user_vis_ancestor:
@@ -128,8 +128,8 @@ def visible_edges(metadata: Metadata, config: GraphConfig) \
             continue
         # print("Out: from:", user_vis_ancestor.title,
         #       " to ", used_vis_ancestor.title)
-        uses.append(((user_vis_ancestor.content_type(), user_vis_ancestor.title),
-                     (used_vis_ancestor.content_type(), used_vis_ancestor.title)))
+        uses.append((user_vis_ancestor.obj_id,
+                     used_vis_ancestor.obj_id))
     if config.collapse_multiple_uses:
         return list(set(uses))
     return uses

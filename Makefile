@@ -16,7 +16,6 @@ build=$(target)/build
 test-output=$(build)/test-output
 report=$(build)/report
 classdiagram=$(report)/classdiagram
-metadata=$(test-output)/metadata.pickle
 oo=pipenvconf/oo
 pure=pipenvconf/pure
 OOPYTHONPATH=.:$$(cd $(oo) && pipenv --venv)/lib/python3.7/site-packages
@@ -30,7 +29,7 @@ build: mypy metric itest
 
 travis: installantlr clean genparser info check alltest
 
-all: travis install_oxt fixtures mypy_report metric
+all: travis install_oxt fixtures mypy metric
 
 prepare:
 	@echo prepare start

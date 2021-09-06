@@ -107,8 +107,8 @@ def aggregate_uses(metadata: Metadata) -> None:
 def aggregate_used_by(metadata):
     "Collect all used_by"
     for user in metadata.all_active_users():
-        metadata.index[(user.link.content_type, user.link.local_id)
-                       ].used_by.append(get_identifier(user))
+        metadata.usable_by_link[(user.link.content_type, user.link.local_id)
+                                ].used_by.append(get_identifier(user))
 
 
 @timed("Parse queries", indent=4)
@@ -143,7 +143,6 @@ def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
     metadata.set_parents(None)
     metadata.build_parent_index()
     metadata.set_titles()
-    metadata.verify_titles_unique_in_kind()
     metadata.set_obj_ids()
 
     search_dependencies(metadata)

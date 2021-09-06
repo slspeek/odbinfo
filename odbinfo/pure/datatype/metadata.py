@@ -1,13 +1,12 @@
 " Metadata class "
 import itertools
 from dataclasses import dataclass, field
-from functools import partial
 from itertools import chain
-from typing import Iterable, List
+from typing import Iterable, List, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype.base import PageOwner, User
+from odbinfo.pure.datatype.base import Node, PageOwner, Usable, User
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
@@ -46,6 +45,7 @@ class Metadata(PageOwner):
     def __post_init__(self):
         super().__post_init__()
         self.index = {}
+        self.usable_by_link = {}
 
     def build_parent_index(self):
         " set the parents in all objects "
@@ -116,32 +116,17 @@ class Metadata(PageOwner):
     def create_index(self) -> None:
         " make an index of linkable objects "
         for content in self.all_objects():
-            self.index[(content.content_type(), content.title)] = content
+            self.index[content.obj_id] = content
+            if isinstance(content, Usable):
+                content = cast(Node, content)
+                self.usable_by_link[(content.content_type(),
+                                     content.title)] = content
 
     def set_titles(self):
         " set the titles so that they are unique within their content_type "
         for content in self.all_objects():
             # pylint:disable=no-member
             content.set_title()
-
-    def verify_titles_unique_in_kind(self):
-        " verify that titles are unique within their kind"
-        def _print_doubles(titles_minus):
-
-            def select_by_title(title, cand):
-                return title == cand
-
-            for title in titles_minus:
-                if len(list(filter(partial(select_by_title, title), titles_minus))) > 1:
-                    print("Double: ", title)
-
-        all_objs = list(self.all_objects())
-        title_list = list(
-            map(lambda x: f"{x.content_type()}:{x.title}", all_objs))
-        title_set = set(title_list)
-        if not len(all_objs) == len(title_set):
-            _print_doubles(title_list)
-        assert len(all_objs) == len(title_set)
 
     def all_active_users(self):
         " returns all User objects with a link set from the tree "

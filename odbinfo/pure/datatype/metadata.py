@@ -107,11 +107,8 @@ class Metadata(PageOwner):
 
     def set_obj_ids(self) -> None:
         " numbers all contained objects "
-        def set_id(vid, data):
-            data.obj_id = str(vid)
-
-        for vid, obj in zip(itertools.count(), self.all_objects()):
-            set_id(vid, obj)
+        for index, obj in zip(itertools.count(), self.all_objects()):
+            obj.obj_id = str(index)
 
     def create_index(self) -> None:
         " make an index of linkable objects "

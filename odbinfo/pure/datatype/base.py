@@ -34,7 +34,7 @@ class Node:
         return ()
 
     def all_objects(self):
-        " returns all dataobjects for the graph "
+        " returns all nodes in the subtree with self as root "
         return_value = [self]
         for child in self.children():
             return_value = chain(return_value, child.all_objects())
@@ -54,7 +54,7 @@ class NamedNode(Node):
         " sets a unique title "
 
     def users_match(self, username: str) -> bool:
-        " determines whether `username` (possibly) matches this object "
+        " determines whether `username` matches this object "
         return self.name == username
 
 

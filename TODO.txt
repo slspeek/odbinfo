@@ -41,6 +41,7 @@ type file based MetaData, TextDocument
 
 database (driver) information retrieval
 
+More serious unit testing, use factory_boy
 
 Demonstration database Herbarium
 -------------------------------

@@ -24,4 +24,5 @@ def generate_report_test(oodoc, benchmark):
     " generate report "
     config = get_configuration()
     config.general.output_dir = TEST_OUTPUT_TPL.format("test_core")
+    config.graph.user_excludes = []
     benchmark(generate_report, oodoc, config)

@@ -12,7 +12,6 @@ columns:
   readonly: false
   scale: 0
   tablename: Family
-  title: Name_1
   typename: VARCHAR
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -26,7 +25,6 @@ columns:
   readonly: false
   scale: 0
   tablename: Family
-  title: FamilyID_2
   typename: INTEGER
   writable: true
 command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""

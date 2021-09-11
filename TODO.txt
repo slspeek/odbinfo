@@ -15,6 +15,7 @@ UsedBy should become multiset, multiselect when linking back
 e.g. /#301,450,900 or /?select=300,304,600
 
 templates:
+- SubForm id is on Command, should be entire row
 - Form; controls linked to sun API docs.
 - refactor render-subform
 - render-token-callable leaves empty id in html

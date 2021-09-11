@@ -344,8 +344,8 @@ form_defs:
       convertemptytonull: ''
       datafield: ''
       eventlisteners:
-      - event: form:performaction
-        link: null
+      - link: null
+        name: form:performaction
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -371,13 +371,13 @@ form_defs:
       convertemptytonull: ''
       datafield: ''
       eventlisteners:
-      - event: form:performaction
-        link: null
+      - link: null
+        name: form:performaction
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-      - event: form:approveaction
-        link: null
+      - link: null
+        name: form:approveaction
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -488,8 +488,8 @@ form_defs:
       convertemptytonull: ''
       datafield: ''
       eventlisteners:
-      - event: form:performaction
-        link: null
+      - link: null
+        name: form:performaction
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -515,13 +515,13 @@ form_defs:
       convertemptytonull: ''
       datafield: ''
       eventlisteners:
-      - event: form:performaction
-        link: null
+      - link: null
+        name: form:performaction
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-      - event: form:approveaction
-        link: null
+      - link: null
+        name: form:approveaction
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -1331,10 +1331,10 @@ table_defs:
   uses: []
 textdocument_defs:
 - fields:
-  - column: naam
-    database: testdb
+  - database: testdb
     index: 0
     link: null
+    name: naam
     obj_id: OBJID_NOT_SET
     parent: null
     table: vwPlant

@@ -25,7 +25,6 @@ subforms:
     label: id
     name: lblid
     obj_id: '137'
-    title: lblid
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control3
@@ -37,7 +36,6 @@ subforms:
     label: naam
     name: lblnaam
     obj_id: '138'
-    title: lblnaam
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control5
@@ -49,7 +47,6 @@ subforms:
     label: RFamliyID
     name: lblRFamliyID
     obj_id: '139'
-    title: lblRFamliyID
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control2
@@ -61,7 +58,6 @@ subforms:
     label: ''
     name: fmtid
     obj_id: '140'
-    title: fmtid
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control4
@@ -73,7 +69,6 @@ subforms:
     label: ''
     name: txtnaam
     obj_id: '141'
-    title: txtnaam
     type: TextField
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
@@ -93,7 +88,6 @@ subforms:
     listsourcetype: query
     name: fmtRFamliyID
     obj_id: '142'
-    title: fmtRFamliyID
     type: ListBox
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control7
@@ -101,11 +95,11 @@ subforms:
     datafield: ''
     eventlisteners:
     - !!python/object:odbinfo.pure.datatype.ui.EventListener
-      event: form:performaction
       link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
+      name: form:performaction
       obj_id: '144'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''
@@ -113,7 +107,6 @@ subforms:
     label: Say hello
     name: Knop 1
     obj_id: '143'
-    title: Knop 1
     type: CommandButton
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control8
@@ -125,7 +118,6 @@ subforms:
     label: Knop
     name: Knop 2
     obj_id: '145'
-    title: Knop 2
     type: CommandButton
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control9
@@ -133,19 +125,19 @@ subforms:
     datafield: ''
     eventlisteners:
     - !!python/object:odbinfo.pure.datatype.ui.EventListener
-      event: form:performaction
       link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
+      name: form:performaction
       obj_id: '147'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     - !!python/object:odbinfo.pure.datatype.ui.EventListener
-      event: form:approveaction
       link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
+      name: form:approveaction
       obj_id: '148'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''
@@ -153,7 +145,6 @@ subforms:
     label: Call to script
     name: Knop 3
     obj_id: '146'
-    title: Knop 3
     type: CommandButton
   depth: 0
   detailfields: ''
@@ -165,7 +156,6 @@ subforms:
   name: MainForm
   obj_id: '136'
   subforms: []
-  title: MainForm
 title: PlantListbox
 used_by: []
 uses:

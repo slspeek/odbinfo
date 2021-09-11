@@ -25,7 +25,6 @@ subforms:
     label: id
     name: lblid
     obj_id: '200'
-    title: lblid
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control2
@@ -37,7 +36,6 @@ subforms:
     label: ''
     name: fmtid
     obj_id: '201'
-    title: fmtid
     type: FormattedField
   depth: 0
   detailfields: ''
@@ -49,7 +47,6 @@ subforms:
   name: MainForm
   obj_id: '199'
   subforms: []
-  title: MainForm
 title: view1
 used_by: []
 uses:

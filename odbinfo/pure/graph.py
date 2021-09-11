@@ -62,7 +62,7 @@ def make_node(config: GraphConfig,
                                             node.content_type()),
                    href=href(node),
                    id=node.obj_id,
-                   _attributes=config.type_attrs[node.content_type()])
+                   _attributes=config.type_attrs.get(node.content_type(), {}))
 
 
 def visible_ancestor(config: GraphConfig, node):
@@ -81,7 +81,7 @@ def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode, end: NamedN
     attrs = config.relation_attrs.get(
         (start.content_type(), end.content_type()), {})
     attrs["edgetooltip"] = "{} -> {}".format(
-        start.title, end.title)
+        start.name, end.name)
     edge(graph, start,
          end, attrs)
 

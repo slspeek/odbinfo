@@ -11,7 +11,6 @@ columns:
   precision: 0
   scale: 0
   tablename: Family
-  title: Family.FamilyID
   typename: INTEGER
 - !!python/object:odbinfo.pure.datatype.tabular.Column
   autoincrement: false
@@ -23,7 +22,6 @@ columns:
   precision: 100
   scale: 0
   tablename: Family
-  title: Family.Name
   typename: VARCHAR
 - !!python/object:odbinfo.pure.datatype.tabular.Column
   autoincrement: false
@@ -35,7 +33,6 @@ columns:
   precision: 0
   scale: 0
   tablename: Family
-  title: Family.Desc
   typename: LONGVARCHAR
 description: ''
 indexes:
@@ -47,7 +44,6 @@ indexes:
   name: SYS_IDX_48
   obj_id: '3'
   primary: false
-  title: SYS_IDX_48
   unique: true
 keys:
 - !!python/object:odbinfo.pure.datatype.tabular.Key
@@ -59,7 +55,6 @@ keys:
   referenced_table: ''
   relatedcolumns:
   - ''
-  title: SYS_PK_49
   typename: Primary
   update_rule: Cascade
 name: Family

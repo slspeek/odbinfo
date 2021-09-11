@@ -12,7 +12,6 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: id_1
   typename: NUMERIC
   writable: true
 command: 'SELECT "view1"."id"

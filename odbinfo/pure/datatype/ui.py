@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
 
-from odbinfo.pure.datatype.base import NamedNode, Node, User, WebPage
+from odbinfo.pure.datatype.base import NamedNode, User, WebPage
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
 
@@ -37,12 +37,11 @@ class Commander(AbstractCommander):
 
 
 @dataclass
-class DatabaseDisplay(User, Node):
+class DatabaseDisplay(User, NamedNode):
     " Field in TextDocument "
     database: str
     table: str
     tabletype: str
-    column: str
     index: int = field(init=False)
 
 
@@ -62,9 +61,9 @@ class TextDocument(WebPage):
 
 
 @dataclass
-class EventListener(User, Node):
+class EventListener(User, NamedNode):
     " Control eventlistener "
-    event: str
+    # event: str
     script: str
 
     def parsescript(self) -> str:

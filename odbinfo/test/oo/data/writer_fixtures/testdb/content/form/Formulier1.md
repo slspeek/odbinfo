@@ -25,7 +25,6 @@ subforms:
     name: Formulier.Command
     obj_id: '111'
     table_tokens: []
-    title: Formulier.Command
     tokens:
     - text: SELECT
       type: 131
@@ -69,8 +68,6 @@ subforms:
     name: Formulier2
     obj_id: '110'
     subforms: []
-    title: Formulier2
-  title: Formulier
 - !!python/object:odbinfo.pure.datatype.ui.SubForm
   allowdeletes: 'true'
   allowinserts: 'true'
@@ -84,7 +81,6 @@ subforms:
   name: Formulier 1
   obj_id: '121'
   subforms: []
-  title: Formulier 1
 title: Formulier1
 used_by: []
 uses:

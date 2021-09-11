@@ -12,7 +12,6 @@ columns:
   readonly: false
   scale: 0
   tablename: Plant
-  title: id_1
   typename: NUMERIC
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -26,7 +25,6 @@ columns:
   readonly: false
   scale: 0
   tablename: Plant
-  title: naam_2
   typename: VARCHAR
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -40,7 +38,6 @@ columns:
   readonly: false
   scale: 0
   tablename: Plant
-  title: RFamliyID_3
   typename: INTEGER
   writable: true
 command: 'SELECT *

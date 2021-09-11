@@ -9,11 +9,7 @@ def make_site():
     """ Generate report on database metadata """
     # pylint: disable=undefined-variable
     doc = XSCRIPTCONTEXT.getDocument()
-    start_time = time.time()
     reportdir = generate_report(doc)
-    end_time = time.time()
-    print("ODBInfo: report written to {} in {} seconds.".format(
-        reportdir, end_time-start_time))
 
 
 def verify_installation():

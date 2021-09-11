@@ -59,10 +59,10 @@ def _database_displays(doc_path) -> List[DatabaseDisplay]:
         def display(data):
             return \
                 DatabaseDisplay(
+                    data["@text:column-name"],
                     data["@text:database-name"],
                     data["@text:table-name"],
-                    data["@text:table-type"],
-                    data["@text:column-name"]
+                    data["@text:table-type"]
                 )
         with ZipFile(doc_path) as file:
             body = _body_elem(file, "content.xml")["office:text"]

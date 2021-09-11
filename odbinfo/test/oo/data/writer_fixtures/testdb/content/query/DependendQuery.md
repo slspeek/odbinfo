@@ -12,7 +12,6 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: Name_1
   typename: VARCHAR
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -26,7 +25,6 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: FamilyID_2
   typename: INTEGER
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -40,7 +38,6 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: id_3
   typename: NUMERIC
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -54,7 +51,6 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: naam_4
   typename: VARCHAR
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -68,7 +64,6 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: RFamliyID_5
   typename: INTEGER
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -82,7 +77,6 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: id_6
   typename: NUMERIC
   writable: true
 command: 'SELECT *

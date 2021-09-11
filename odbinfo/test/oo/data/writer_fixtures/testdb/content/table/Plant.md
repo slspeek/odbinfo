@@ -11,7 +11,6 @@ columns:
   precision: 100
   scale: 0
   tablename: Plant
-  title: Plant.id
   typename: NUMERIC
 - !!python/object:odbinfo.pure.datatype.tabular.Column
   autoincrement: false
@@ -23,7 +22,6 @@ columns:
   precision: 100
   scale: 0
   tablename: Plant
-  title: Plant.naam
   typename: VARCHAR
 - !!python/object:odbinfo.pure.datatype.tabular.Column
   autoincrement: false
@@ -35,7 +33,6 @@ columns:
   precision: 0
   scale: 0
   tablename: Plant
-  title: Plant.RFamliyID
   typename: INTEGER
 description: ''
 indexes:
@@ -47,7 +44,6 @@ indexes:
   name: SYS_IDX_46
   obj_id: '16'
   primary: false
-  title: SYS_IDX_46
   unique: true
 - !!python/object:odbinfo.pure.datatype.tabular.Index
   catalog: ''
@@ -57,7 +53,6 @@ indexes:
   name: SYS_IDX_80
   obj_id: '17'
   primary: false
-  title: SYS_IDX_80
   unique: false
 keys:
 - !!python/object:odbinfo.pure.datatype.tabular.Key
@@ -69,7 +64,6 @@ keys:
   referenced_table: ''
   relatedcolumns:
   - ''
-  title: SYS_PK_47
   typename: Primary
   update_rule: Cascade
 - !!python/object:odbinfo.pure.datatype.tabular.Key
@@ -85,7 +79,6 @@ keys:
   referenced_table: Family
   relatedcolumns:
   - FamilyID
-  title: SYS_FK_79
   typename: Foreign
   update_rule: No_Action
 name: Plant

@@ -52,11 +52,11 @@ class NamedNode(Node):
     "Has a name"
     name: str
 
-    def __post_init__(self):
-        self.title = self.name
-
-    def set_title(self):
-        " sets a unique title "
+    # def __post_init__(self):
+    #     self.title = self.name
+    #
+    # def set_title(self):
+    #     " sets a unique title "
 
     def users_match(self, username: str) -> bool:
         " determines whether `username` matches this object "
@@ -95,6 +95,9 @@ class WebPage(UseAggregator, Usable, NamedNode):
         " an object with a parent_link "
     parent_link: Optional['Identifier'] = field(init=False, default=None)
     title: str = field(init=False, default="TITLE_NOT_SET")
+
+    def __post_init__(self):
+        self.title = self.name
 
     def set_parents(self, parent: Optional['WebPage']) -> None:
         " recursively set parents "

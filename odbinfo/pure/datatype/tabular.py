@@ -39,8 +39,6 @@ class BaseColumn(NamedNode):
     scale: str
 
     def __post_init__(self):
-        # super().__post_init__()
-        self.title = f"{self.tablename}.{self.name}"
         self.nullable = COLUMNVALUES[self.nullable]
 
 
@@ -52,13 +50,6 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
     issigned: bool
     writable: bool
     readonly: bool
-
-    def __post_init__(self):
-        super().__post_init__()
-        self.title = f"{self.name}_{self.position}"
-
-    def set_title(self):
-        self.title += f".{self.parent.name}"
 
 
 @dataclass
@@ -74,7 +65,6 @@ class EmbeddedQuery(NamedNode):
     table_tokens: List[Token] = field(init=False, default_factory=list)
 
     def __post_init__(self):
-        super().__post_init__()
         self.command = format_sql(self.command)
 
     def children(self):
@@ -84,6 +74,11 @@ class EmbeddedQuery(NamedNode):
 @dataclass
 class Query(EmbeddedQuery, WebPage):
     " Query properties "
+
+    def __post_init__(self):
+        super().__post_init__()
+        self.title = self.name
+        self.command = format_sql(self.command)
 
 
 @dataclass
@@ -113,7 +108,7 @@ class Key(User, NamedNode):  # pylint: disable=too-many-instance-attributes
     update_rule: object
 
     def __post_init__(self):
-        super().__post_init__()
+        # super().__post_init__()
         self.typename = KEYTYPES[self.typename]
         self.update_rule = KEYRULES[self.update_rule]
         self.delete_rule = KEYRULES[self.delete_rule]

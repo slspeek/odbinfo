@@ -19,7 +19,16 @@ TYPE_ATTRS = {
     "view": {"shape": "hexagon"},
     "query": {"shape": "ellipse"},
     "embeddedquery": {"shape": "ellipse"},
+    "eventlistener": {"shape": "ellipse",
+                      "style": "filled", "fillcolor": "lightblue"},
     "form": {"shape": "rect", "style": "filled", "fillcolor": "#ffcc99"},
+    "key": {},
+    "index": {},
+    "column": {},
+    "querycolumn": {},
+    "pythonlibrary": {},
+    "pythonmodule": {},
+    "databasedisplay": {},
     "report": {"shape": "rectangle"},
     "dialog": {"shape": "trapezium"},
     "module": {"shape": "component"},
@@ -45,19 +54,30 @@ RELATION_ATTRS = {
     ("query", "query"): {"arrowhead": "dot"}
 }
 
-EXCLUDED_TYPES = ["eventlistener", "metadata", "key", "index",
-                  "token", "querycolumn", "column", "pythonlibrary",
-                  "pythonmodule", "databasedisplay"]
+EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",
+                             "library",
+                             "querycolumn", "column", "pythonlibrary",
+                             "pythonmodule", "databasedisplay"]
+
+
+# EXCLUDED_TYPES: List[str] = []
+
+ALLWAYS_EXCLUDED = ["metadata", "token"]
 
 
 @dataclass
 class GraphConfig:
     " Graph options "
-    excludes: List[str]
+    user_excludes: List[str]
     type_attrs: dict
     relation_attrs: dict
     collapse_multiple_uses: bool
     relevant_controls: bool
+
+    @property
+    def excludes(self):
+        "property 'excluded' consists off ALLWAYS_EXCLUDED and user_excludes"
+        return ALLWAYS_EXCLUDED + self.user_excludes
 
 
 @dataclass

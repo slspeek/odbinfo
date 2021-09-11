@@ -10,7 +10,6 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
   name: ReportCommandTypeSQL.Command
   obj_id: '204'
   table_tokens: []
-  title: ReportCommandTypeSQL.Command
   tokens:
   - text: SELECT
     type: 131

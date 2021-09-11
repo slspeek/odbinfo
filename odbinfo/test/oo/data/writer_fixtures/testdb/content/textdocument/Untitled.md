@@ -2,13 +2,13 @@
 !!python/object:odbinfo.pure.datatype.ui.TextDocument
 fields:
 - !!python/object:odbinfo.pure.datatype.ui.DatabaseDisplay
-  column: naam
   database: testdb
   index: 0
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: query
     local_id: vwPlant
+  name: naam
   obj_id: '711'
   table: vwPlant
   tabletype: query

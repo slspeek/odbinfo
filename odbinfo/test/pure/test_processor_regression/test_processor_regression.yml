@@ -470,11 +470,11 @@ form_defs:
       convertemptytonull: ''
       datafield: ''
       eventlisteners:
-      - event: form:performaction
-        link:
+      - link:
           bookmark: null
           content_type: basicfunction
           local_id: Main.Module1.Library1
+        name: form:performaction
         obj_id: '144'
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -500,19 +500,19 @@ form_defs:
       convertemptytonull: ''
       datafield: ''
       eventlisteners:
-      - event: form:performaction
-        link:
+      - link:
           bookmark: null
           content_type: basicfunction
           local_id: Main.Module1.Library1
+        name: form:performaction
         obj_id: '147'
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-      - event: form:approveaction
-        link:
+      - link:
           bookmark: null
           content_type: basicfunction
           local_id: Main.Module1.Library1
+        name: form:approveaction
         obj_id: '148'
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -801,11 +801,11 @@ form_defs:
       convertemptytonull: ''
       datafield: ''
       eventlisteners:
-      - event: form:performaction
-        link:
+      - link:
           bookmark: null
           content_type: basicfunction
           local_id: Main.Module1.Library1
+        name: form:performaction
         obj_id: '178'
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -831,19 +831,19 @@ form_defs:
       convertemptytonull: ''
       datafield: ''
       eventlisteners:
-      - event: form:performaction
-        link:
+      - link:
           bookmark: null
           content_type: basicfunction
           local_id: Main.Module1.Library1
+        name: form:performaction
         obj_id: '181'
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-      - event: form:approveaction
-        link:
+      - link:
           bookmark: null
           content_type: basicfunction
           local_id: Main.Module1.Library1
+        name: form:approveaction
         obj_id: '182'
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
@@ -7287,13 +7287,13 @@ table_defs:
     local_id: Family
 textdocument_defs:
 - fields:
-  - column: naam
-    database: testdb
+  - database: testdb
     index: 0
     link:
       bookmark: null
       content_type: query
       local_id: vwPlant
+    name: naam
     obj_id: '711'
     parent: null
     table: vwPlant

@@ -75,7 +75,6 @@ tokens:
     local_id: CalleeSub.Module2.Library1
   obj_id: '684'
   text: CalleeSub
-  title: token5.Module2.Library1
   type: 181
 - index: 6
   text: (
@@ -126,7 +125,6 @@ tokens:
     local_id: CalleeTwoSub.Module2.Library1
   obj_id: '697'
   text: CalleeTwoSub
-  title: token18.Module2.Library1
   type: 181
 - index: 19
   text: (

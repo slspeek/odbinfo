@@ -25,7 +25,7 @@ subforms:
     label: id
     name: lblid
     obj_id: '124'
-    title: control1.MainForm.Plant
+    title: lblid
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control3
@@ -37,7 +37,7 @@ subforms:
     label: naam
     name: lblnaam
     obj_id: '125'
-    title: control3.MainForm.Plant
+    title: lblnaam
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control5
@@ -49,7 +49,7 @@ subforms:
     label: RFamliyID
     name: lblRFamliyID
     obj_id: '126'
-    title: control5.MainForm.Plant
+    title: lblRFamliyID
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control2
@@ -61,7 +61,7 @@ subforms:
     label: ''
     name: fmtid
     obj_id: '127'
-    title: control2.MainForm.Plant
+    title: fmtid
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control6
@@ -73,7 +73,7 @@ subforms:
     label: ''
     name: fmtRFamliyID
     obj_id: '128'
-    title: control6.MainForm.Plant
+    title: fmtRFamliyID
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control4
@@ -85,7 +85,7 @@ subforms:
     label: ''
     name: txtnaam
     obj_id: '129'
-    title: control4.MainForm.Plant
+    title: txtnaam
     type: TextField
   depth: 0
   detailfields: ''
@@ -97,7 +97,7 @@ subforms:
   name: MainForm
   obj_id: '123'
   subforms: []
-  title: MainForm.Plant
+  title: MainForm
 title: Plant
 used_by: []
 uses:

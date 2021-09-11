@@ -42,7 +42,6 @@ tokens:
     local_id: view1
   obj_id: '498'
   text: '"view1"'
-  title: token125.ReferToView.Module1.Library1
   type: 172
 - index: 126
   text: '

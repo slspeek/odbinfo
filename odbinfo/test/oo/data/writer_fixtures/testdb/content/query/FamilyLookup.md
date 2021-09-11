@@ -12,7 +12,7 @@ columns:
   readonly: false
   scale: 0
   tablename: Family
-  title: Name_1.FamilyLookup
+  title: Name_1
   typename: VARCHAR
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -26,7 +26,7 @@ columns:
   readonly: false
   scale: 0
   tablename: Family
-  title: FamilyID_2.FamilyLookup
+  title: FamilyID_2
   typename: INTEGER
   writable: true
 command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
@@ -85,7 +85,6 @@ tokens:
     local_id: Family
   obj_id: '88'
   text: '"Family"'
-  title: token18.FamilyLookup
   type: 200
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.Identifier

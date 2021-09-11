@@ -12,7 +12,7 @@ columns:
   readonly: false
   scale: 0
   tablename: Plant
-  title: id_1.view1
+  title: id_1
   typename: NUMERIC
   writable: true
 command: 'SELECT "id"
@@ -51,7 +51,6 @@ tokens:
     local_id: Plant
   obj_id: '44'
   text: '"Plant"'
-  title: token8.view1
   type: 200
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.Identifier

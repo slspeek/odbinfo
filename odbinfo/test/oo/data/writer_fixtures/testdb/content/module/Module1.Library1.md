@@ -255,7 +255,6 @@ tokens:
     local_id: Main.Module1.Library1
   obj_id: '518'
   text: Main
-  title: token5.Module1.Library1
   type: 181
 - index: 6
   text: "\n\t"
@@ -300,7 +299,6 @@ tokens:
     local_id: CallerSub.Module1.Library1
   obj_id: '529'
   text: CallerSub
-  title: token16.Module1.Library1
   type: 181
 - index: 17
   text: (
@@ -318,7 +316,6 @@ tokens:
     local_id: Module1.Library1
   obj_id: '533'
   text: CalleeSub
-  title: token20.Module1.Library1
   type: 181
 - index: 21
   text: (
@@ -342,7 +339,6 @@ tokens:
     local_id: Module2.Library1
   obj_id: '539'
   text: CalleeSub
-  title: token26.Module1.Library1
   type: 181
 - index: 27
   text: (
@@ -381,7 +377,6 @@ tokens:
     local_id: CalleeSub.Module1.Library1
   obj_id: '548'
   text: CalleeSub
-  title: token35.Module1.Library1
   type: 181
 - index: 36
   text: (
@@ -432,7 +427,6 @@ tokens:
     local_id: CallerTwo.Module1.Library1
   obj_id: '561'
   text: CallerTwo
-  title: token48.Module1.Library1
   type: 181
 - index: 49
   text: (
@@ -450,7 +444,6 @@ tokens:
     local_id: Module2.Library1
   obj_id: '565'
   text: CalleeTwoSub
-  title: token52.Module1.Library1
   type: 181
 - index: 53
   text: (
@@ -489,7 +482,6 @@ tokens:
     local_id: CallerOtherLib.Module1.Library1
   obj_id: '574'
   text: CallerOtherLib
-  title: token61.Module1.Library1
   type: 181
 - index: 62
   text: (
@@ -507,7 +499,6 @@ tokens:
     local_id: Module1.Standard
   obj_id: '578'
   text: CalleeOtherLib
-  title: token65.Module1.Library1
   type: 181
 - index: 66
   text: (
@@ -531,7 +522,6 @@ tokens:
     local_id: Module1.Standard
   obj_id: '584'
   text: CalleeOtherLib
-  title: token71.Module1.Library1
   type: 181
 - index: 72
   text: (
@@ -570,7 +560,6 @@ tokens:
     local_id: CallerShadowedCallee.Module1.Library1
   obj_id: '593'
   text: CallerShadowedCallee
-  title: token80.Module1.Library1
   type: 181
 - index: 81
   text: (
@@ -588,7 +577,6 @@ tokens:
     local_id: Module1.Library1
   obj_id: '597'
   text: ShadowedCallee
-  title: token84.Module1.Library1
   type: 181
 - index: 85
   text: (
@@ -627,7 +615,6 @@ tokens:
     local_id: ShadowedCallee.Module1.Library1
   obj_id: '606'
   text: ShadowedCallee
-  title: token93.Module1.Library1
   type: 181
 - index: 94
   text: (
@@ -678,7 +665,6 @@ tokens:
     local_id: ReferToTable.Module1.Library1
   obj_id: '619'
   text: ReferToTable
-  title: token106.Module1.Library1
   type: 181
 - index: 107
   text: (
@@ -699,7 +685,6 @@ tokens:
   link: *id001
   obj_id: '625'
   text: '"Plant"'
-  title: token112.Module1.Library1
   type: 172
 - index: 113
   text: '
@@ -732,7 +717,6 @@ tokens:
     local_id: ReferToView.Module1.Library1
   obj_id: '632'
   text: ReferToView
-  title: token119.Module1.Library1
   type: 181
 - index: 120
   text: (
@@ -753,7 +737,6 @@ tokens:
   link: *id002
   obj_id: '638'
   text: '"view1"'
-  title: token125.Module1.Library1
   type: 172
 - index: 126
   text: '
@@ -786,7 +769,6 @@ tokens:
     local_id: ReferToQuery.Module1.Library1
   obj_id: '645'
   text: ReferToQuery
-  title: token132.Module1.Library1
   type: 181
 - index: 133
   text: (
@@ -807,7 +789,6 @@ tokens:
   link: *id003
   obj_id: '651'
   text: '"FamilyLookup"'
-  title: token138.Module1.Library1
   type: 172
 - index: 139
   text: '

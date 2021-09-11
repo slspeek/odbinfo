@@ -3,7 +3,7 @@ from typing import Sequence, Tuple, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import (Control, ListBox, Metadata, PageOwner,
+from odbinfo.pure.datatype import (Control, ListBox, Metadata, WebPage,
                                    content_type)
 from odbinfo.pure.datatype.base import NamedNode
 from odbinfo.pure.datatype.config import GraphConfig
@@ -16,11 +16,11 @@ def hugo_filename(name: str) -> str:
 
 def href(obj):
     """ returns a href html attribute """
-    if isinstance(obj, PageOwner):
+    if isinstance(obj, WebPage):
         return f"../{obj.content_type()}/{hugo_filename(obj.title)}/index.html"
 
     node = obj.parent
-    while not isinstance(node, PageOwner):
+    while not isinstance(node, WebPage):
         node = node.parent
     return f"../{node.content_type()}/{hugo_filename(node.title)}/index.html#{obj.obj_id}"
 
@@ -118,8 +118,8 @@ def visible_edges(metadata: Metadata, config: GraphConfig) \
     for user in metadata.all_active_users():
         # print("In: from:", user.title, " to ", user.link)
         used_node_link = user.link
-        used_node = metadata.usable_by_link[(
-            used_node_link.content_type, used_node_link.local_id)]
+        used_node = metadata.usable_by_link[
+            used_node_link]
         user_vis_ancestor = visible_ancestor(config, user)
         if not user_vis_ancestor:
             continue

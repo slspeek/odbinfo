@@ -12,7 +12,7 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: Name_1.DependendQuery
+  title: Name_1
   typename: VARCHAR
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -26,7 +26,7 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: FamilyID_2.DependendQuery
+  title: FamilyID_2
   typename: INTEGER
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -40,7 +40,7 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: id_3.DependendQuery
+  title: id_3
   typename: NUMERIC
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -54,7 +54,7 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: naam_4.DependendQuery
+  title: naam_4
   typename: VARCHAR
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -68,7 +68,7 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: RFamliyID_5.DependendQuery
+  title: RFamliyID_5
   typename: INTEGER
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -82,7 +82,7 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: id_6.DependendQuery
+  title: id_6
   typename: NUMERIC
   writable: true
 command: 'SELECT *
@@ -121,7 +121,6 @@ tokens:
     local_id: FamilyLookup
   obj_id: '60'
   text: '"FamilyLookup"'
-  title: token8.DependendQuery
   type: 200
 - text: ','
   type: 5
@@ -133,7 +132,6 @@ tokens:
     local_id: vwPlant
   obj_id: '63'
   text: '"vwPlant"'
-  title: token11.DependendQuery
   type: 200
 - text: ','
   type: 5
@@ -145,7 +143,6 @@ tokens:
     local_id: view1
   obj_id: '66'
   text: '"view1"'
-  title: token14.DependendQuery
   type: 200
 used_by: []
 uses:

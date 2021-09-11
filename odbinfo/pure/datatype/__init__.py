@@ -1,5 +1,5 @@
 """ Defines the main datatype MetaData """
-from odbinfo.pure.datatype.base import (Identifier, Node, PageOwner, Token,
+from odbinfo.pure.datatype.base import (Identifier, Node, Token, WebPage,
                                         content_type, get_identifier)
 from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, Library,
                                         Module, PythonLibrary, PythonModule)

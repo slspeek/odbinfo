@@ -1,12 +1,4 @@
-
 Configuration: places to look for textdocuments
-
-Property test with abstractproperties: does a dataclass
-implement such an abstractproperty
-
-Only PageOwner needs a unique title
-Get rid of TitleFromParents etc
-
 
 More of pathlib instead of os.path
 
@@ -18,7 +10,9 @@ Relevant function filter
 
 Module: uses? Separate PageOwner from UseAggregator
 
-Uses should become a multiset
+Uses should become a multiset, multiselect sources on mouseover link
+UsedBy should become multiset, multiselect when linking back
+e.g. /#301,450,900 or /?select=300,304,600
 
 templates:
 - Form; controls linked to sun API docs.
@@ -41,7 +35,6 @@ type file based MetaData, TextDocument
 
 database (driver) information retrieval
 
-More serious unit testing, use factory_boy
 
 Demonstration database Herbarium
 -------------------------------
@@ -52,11 +45,12 @@ Macros that open browser on interesting Plant sites
 
 Testing
 -------
+More serious unit testing, use factory_boy
 make e2e test (BaseDocumenter2dot example)
 test_basic_parser_slow.py: parametrize and regression
 
 
-look at Identifier construction at dependency.py:69
+look at Identifier construction at dependency.py:85
 
 
 

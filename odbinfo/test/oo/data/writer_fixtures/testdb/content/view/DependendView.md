@@ -12,7 +12,7 @@ columns:
   readonly: false
   scale: 0
   tablename: SYSTEM_SUBQUERY
-  title: id_1.DependendView
+  title: id_1
   typename: NUMERIC
   writable: true
 command: 'SELECT "view1"."id"
@@ -37,7 +37,6 @@ tokens:
     local_id: view1
   obj_id: '25'
   text: '"view1"'
-  title: token2.DependendView
   type: 200
 - text: .
   type: 2
@@ -61,7 +60,6 @@ tokens:
     local_id: view1
   obj_id: '33'
   text: '"view1"'
-  title: token10.DependendView
   type: 200
 used_by: []
 uses:

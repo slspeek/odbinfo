@@ -36,7 +36,6 @@ tokens:
     local_id: CalleeOtherLib.Module1.Standard
   obj_id: '442'
   text: CalleeOtherLib
-  title: token65.CallerOtherLib.Module1.Library1
   type: 181
 - index: 66
   text: (
@@ -60,7 +59,6 @@ tokens:
     local_id: CalleeOtherLib.Module1.Standard
   obj_id: '448'
   text: CalleeOtherLib
-  title: token71.CallerOtherLib.Module1.Library1
   type: 181
 - index: 72
   text: (

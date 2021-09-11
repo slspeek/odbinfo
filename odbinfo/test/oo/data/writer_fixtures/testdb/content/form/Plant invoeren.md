@@ -27,7 +27,7 @@ subforms:
       label: id
       name: id
       obj_id: '133'
-      title: control2.MainForm_Grid.MainForm.Plant invoeren
+      title: ''
       type: ooo:FormattedField
     - !!python/object:odbinfo.pure.datatype.ui.Control
       controlid: control3
@@ -39,11 +39,11 @@ subforms:
       label: naam
       name: naam
       obj_id: '134'
-      title: control3.MainForm_Grid.MainForm.Plant invoeren
+      title: ''
       type: ooo:TextField
     name: MainForm_Grid
     obj_id: '132'
-    title: MainForm_Grid.MainForm.Plant invoeren
+    title: MainForm_Grid
     type: Grid
   depth: 0
   detailfields: ''
@@ -55,7 +55,7 @@ subforms:
   name: MainForm
   obj_id: '131'
   subforms: []
-  title: MainForm.Plant invoeren
+  title: MainForm
 title: Plant invoeren
 used_by: []
 uses:

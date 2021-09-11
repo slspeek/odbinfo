@@ -36,7 +36,6 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
       local_id: Plant
     obj_id: '213'
     text: '"Plant"'
-    title: token8.ReportCommandTypeSQL.Command
     type: 200
   - text: ;
     type: 1

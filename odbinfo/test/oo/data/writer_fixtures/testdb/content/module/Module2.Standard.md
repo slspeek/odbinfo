@@ -52,7 +52,6 @@ tokens:
     local_id: Main.Module2.Standard
   obj_id: '374'
   text: Main
-  title: token5.Module2.Standard
   type: 181
 - index: 6
   text: "\n\t"

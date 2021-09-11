@@ -22,7 +22,6 @@ form_defs:
         name: FamlilyID
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control2
         type: ooo:FormattedField
       - controlid: control3
         convertemptytonull: 'true'
@@ -34,7 +33,6 @@ form_defs:
         name: Name
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control3
         type: ooo:TextField
       - controlid: control4
         convertemptytonull: 'true'
@@ -46,12 +44,10 @@ form_defs:
         name: Desc
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control4
         type: ooo:TextField
       name: MainForm_Grid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: MainForm_Grid
       type: Grid
     depth: null
     detailfields: ''
@@ -62,7 +58,6 @@ form_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     subforms: []
-    title: MainForm
   title: Family
   used_by: []
   uses: []
@@ -102,8 +97,6 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       subforms: []
-      title: Formulier2
-    title: Formulier
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
@@ -119,7 +112,6 @@ form_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     subforms: []
-    title: Formulier 1
   title: Formulier1
   used_by: []
   uses: []
@@ -145,7 +137,6 @@ form_defs:
       name: lblid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control1
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control3
       convertemptytonull: ''
@@ -157,7 +148,6 @@ form_defs:
       name: lblnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control3
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control5
       convertemptytonull: ''
@@ -169,7 +159,6 @@ form_defs:
       name: lblRFamliyID
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control5
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
@@ -181,7 +170,6 @@ form_defs:
       name: fmtid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control2
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control6
       convertemptytonull: 'true'
@@ -193,7 +181,6 @@ form_defs:
       name: fmtRFamliyID
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control6
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control4
       convertemptytonull: 'true'
@@ -205,7 +192,6 @@ form_defs:
       name: txtnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control4
       type: ooo:com.sun.star.form.component.TextField
     depth: null
     detailfields: ''
@@ -216,7 +202,6 @@ form_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     subforms: []
-    title: MainForm
   title: Plant
   used_by: []
   uses: []
@@ -243,7 +228,6 @@ form_defs:
         name: id
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control2
         type: ooo:FormattedField
       - controlid: control3
         convertemptytonull: 'true'
@@ -255,12 +239,10 @@ form_defs:
         name: naam
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control3
         type: ooo:TextField
       name: MainForm_Grid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: MainForm_Grid
       type: Grid
     depth: null
     detailfields: ''
@@ -271,7 +253,6 @@ form_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     subforms: []
-    title: MainForm
   title: Plant invoeren
   used_by: []
   uses: []
@@ -297,7 +278,6 @@ form_defs:
       name: lblid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control1
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control3
       convertemptytonull: ''
@@ -309,7 +289,6 @@ form_defs:
       name: lblnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control3
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control5
       convertemptytonull: ''
@@ -321,7 +300,6 @@ form_defs:
       name: lblRFamliyID
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control5
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
@@ -333,7 +311,6 @@ form_defs:
       name: fmtid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control2
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control4
       convertemptytonull: 'true'
@@ -345,7 +322,6 @@ form_defs:
       name: txtnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control4
       type: ooo:com.sun.star.form.component.TextField
     - boundcolumn: '1'
       controlid: control6
@@ -363,7 +339,6 @@ form_defs:
       name: fmtRFamliyID
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control6
       type: ooo:com.sun.star.form.component.ListBox
     - controlid: control7
       convertemptytonull: ''
@@ -374,14 +349,12 @@ form_defs:
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-        title: TITLE_NOT_SET
       formfor: ''
       inputrequired: ''
       label: Say hello
       name: Knop 1
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control7
       type: ooo:com.sun.star.form.component.CommandButton
     - controlid: control8
       convertemptytonull: ''
@@ -393,7 +366,6 @@ form_defs:
       name: Knop 2
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control8
       type: ooo:com.sun.star.form.component.CommandButton
     - controlid: control9
       convertemptytonull: ''
@@ -404,20 +376,17 @@ form_defs:
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-        title: TITLE_NOT_SET
       - event: form:approveaction
         link: null
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-        title: TITLE_NOT_SET
       formfor: ''
       inputrequired: ''
       label: Call to script
       name: Knop 3
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control9
       type: ooo:com.sun.star.form.component.CommandButton
     depth: null
     detailfields: ''
@@ -428,7 +397,6 @@ form_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     subforms: []
-    title: MainForm
   title: PlantListbox
   used_by: []
   uses: []
@@ -454,7 +422,6 @@ form_defs:
       name: lblid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control1
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control3
       convertemptytonull: ''
@@ -466,7 +433,6 @@ form_defs:
       name: lblnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control3
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control5
       convertemptytonull: ''
@@ -478,7 +444,6 @@ form_defs:
       name: lblRFamliyID
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control5
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
@@ -490,7 +455,6 @@ form_defs:
       name: fmtid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control2
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control4
       convertemptytonull: 'true'
@@ -502,7 +466,6 @@ form_defs:
       name: txtnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control4
       type: ooo:com.sun.star.form.component.TextField
     - boundcolumn: '1'
       controlid: control6
@@ -520,7 +483,6 @@ form_defs:
       name: fmtRFamliyID
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control6
       type: ooo:com.sun.star.form.component.ListBox
     - controlid: control7
       convertemptytonull: ''
@@ -531,14 +493,12 @@ form_defs:
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-        title: TITLE_NOT_SET
       formfor: ''
       inputrequired: ''
       label: Say hello
       name: Knop 1
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control7
       type: ooo:com.sun.star.form.component.CommandButton
     - controlid: control8
       convertemptytonull: ''
@@ -550,7 +510,6 @@ form_defs:
       name: Knop 2
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control8
       type: ooo:com.sun.star.form.component.CommandButton
     - controlid: control9
       convertemptytonull: ''
@@ -561,20 +520,17 @@ form_defs:
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-        title: TITLE_NOT_SET
       - event: form:approveaction
         link: null
         obj_id: OBJID_NOT_SET
         parent: null
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-        title: TITLE_NOT_SET
       formfor: ''
       inputrequired: ''
       label: Call to script
       name: Knop 3
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control9
       type: ooo:com.sun.star.form.component.CommandButton
     depth: null
     detailfields: ''
@@ -585,7 +541,6 @@ form_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     subforms: []
-    title: MainForm
   title: PlantListboxDirectSQL
   used_by: []
   uses: []
@@ -611,7 +566,6 @@ form_defs:
       name: lblid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control7
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control9
       convertemptytonull: ''
@@ -623,7 +577,6 @@ form_defs:
       name: lblnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control9
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control11
       convertemptytonull: ''
@@ -635,7 +588,6 @@ form_defs:
       name: lblRFamliyID
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control11
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control8
       convertemptytonull: 'true'
@@ -647,7 +599,6 @@ form_defs:
       name: fmtid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control8
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control12
       convertemptytonull: 'true'
@@ -659,7 +610,6 @@ form_defs:
       name: fmtRFamliyID
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control12
       type: ooo:com.sun.star.form.component.FormattedField
     - controlid: control10
       convertemptytonull: 'true'
@@ -671,7 +621,6 @@ form_defs:
       name: txtnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control10
       type: ooo:com.sun.star.form.component.TextField
     depth: null
     detailfields: ''
@@ -698,7 +647,6 @@ form_defs:
         name: lblFamilyID
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control1
         type: ooo:com.sun.star.form.component.FixedText
       - controlid: control3
         convertemptytonull: ''
@@ -710,7 +658,6 @@ form_defs:
         name: lblName
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control3
         type: ooo:com.sun.star.form.component.FixedText
       - controlid: control5
         convertemptytonull: ''
@@ -722,7 +669,6 @@ form_defs:
         name: lblDesc
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control5
         type: ooo:com.sun.star.form.component.FixedText
       - controlid: control2
         convertemptytonull: 'true'
@@ -734,7 +680,6 @@ form_defs:
         name: fmtFamilyID
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control2
         type: ooo:com.sun.star.form.component.FormattedField
       - controlid: control4
         convertemptytonull: 'true'
@@ -746,7 +691,6 @@ form_defs:
         name: txtName
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control4
         type: ooo:com.sun.star.form.component.TextField
       - controlid: control6
         convertemptytonull: 'true'
@@ -758,7 +702,6 @@ form_defs:
         name: txtDesc
         obj_id: OBJID_NOT_SET
         parent: null
-        title: control6
         type: ooo:com.sun.star.form.component.TextField
       depth: null
       detailfields: '"FamilyID"'
@@ -769,8 +712,6 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       subforms: []
-      title: SubForm
-    title: MainForm
   title: Related subform
   used_by: []
   uses: []
@@ -796,7 +737,6 @@ form_defs:
       name: lblid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control1
       type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
@@ -808,7 +748,6 @@ form_defs:
       name: fmtid
       obj_id: OBJID_NOT_SET
       parent: null
-      title: control2
       type: ooo:com.sun.star.form.component.FormattedField
     depth: null
     detailfields: ''
@@ -819,7 +758,6 @@ form_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     subforms: []
-    title: MainForm
   title: view1
   used_by: []
   uses: []
@@ -955,7 +893,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
-    title: Name_1
     typename: VARCHAR
     writable: true
   - autoincrement: false
@@ -969,7 +906,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
-    title: FamilyID_2
     typename: INTEGER
     writable: true
   - autoincrement: false
@@ -983,7 +919,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
-    title: id_3
     typename: NUMERIC
     writable: true
   - autoincrement: false
@@ -997,7 +932,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
-    title: naam_4
     typename: VARCHAR
     writable: true
   - autoincrement: false
@@ -1011,7 +945,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
-    title: RFamliyID_5
     typename: INTEGER
     writable: true
   - autoincrement: false
@@ -1025,7 +958,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
-    title: id_6
     typename: NUMERIC
     writable: true
   command: 'SELECT *
@@ -1052,7 +984,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: Family
-    title: Name_1
     typename: VARCHAR
     writable: true
   - autoincrement: false
@@ -1066,7 +997,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: Family
-    title: FamilyID_2
     typename: INTEGER
     writable: true
   command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
@@ -1091,7 +1021,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: Plant
-    title: id_1
     typename: NUMERIC
     writable: true
   - autoincrement: false
@@ -1105,7 +1034,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: Plant
-    title: naam_2
     typename: VARCHAR
     writable: true
   - autoincrement: false
@@ -1119,7 +1047,6 @@ query_defs:
     readonly: false
     scale: 0
     tablename: Plant
-    title: RFamliyID_3
     typename: INTEGER
     writable: true
   command: 'SELECT *
@@ -1194,7 +1121,6 @@ table_defs:
     precision: 0
     scale: 0
     tablename: Family
-    title: Family.FamilyID
     typename: INTEGER
   - autoincrement: false
     defaultvalue: ''
@@ -1206,7 +1132,6 @@ table_defs:
     precision: 100
     scale: 0
     tablename: Family
-    title: Family.Name
     typename: VARCHAR
   - autoincrement: false
     defaultvalue: ''
@@ -1218,7 +1143,6 @@ table_defs:
     precision: 0
     scale: 0
     tablename: Family
-    title: Family.Desc
     typename: LONGVARCHAR
   description: ''
   indexes:
@@ -1230,7 +1154,6 @@ table_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     primary: false
-    title: SYS_IDX_48
     unique: true
   keys:
   - columns:
@@ -1243,7 +1166,6 @@ table_defs:
     referenced_table: ''
     relatedcolumns:
     - ''
-    title: SYS_PK_49
     typename: Primary
     update_rule: Cascade
   name: Family
@@ -1264,7 +1186,6 @@ table_defs:
     precision: 100
     scale: 0
     tablename: Person
-    title: Person.Naam
     typename: VARCHAR
   - autoincrement: false
     defaultvalue: ''
@@ -1276,7 +1197,6 @@ table_defs:
     precision: 100
     scale: 0
     tablename: Person
-    title: Person.Adres
     typename: VARCHAR
   - autoincrement: false
     defaultvalue: ''
@@ -1288,7 +1208,6 @@ table_defs:
     precision: 0
     scale: 0
     tablename: Person
-    title: Person.Leeftijd
     typename: INTEGER
   description: ''
   indexes:
@@ -1301,7 +1220,6 @@ table_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     primary: false
-    title: SYS_IDX_50
     unique: true
   keys:
   - columns:
@@ -1316,7 +1234,6 @@ table_defs:
     relatedcolumns:
     - ''
     - ''
-    title: SYS_PK_51
     typename: Primary
     update_rule: Cascade
   name: Person
@@ -1337,7 +1254,6 @@ table_defs:
     precision: 100
     scale: 0
     tablename: Plant
-    title: Plant.id
     typename: NUMERIC
   - autoincrement: false
     defaultvalue: ''
@@ -1349,7 +1265,6 @@ table_defs:
     precision: 100
     scale: 0
     tablename: Plant
-    title: Plant.naam
     typename: VARCHAR
   - autoincrement: false
     defaultvalue: ''
@@ -1361,7 +1276,6 @@ table_defs:
     precision: 0
     scale: 0
     tablename: Plant
-    title: Plant.RFamliyID
     typename: INTEGER
   description: ''
   indexes:
@@ -1373,7 +1287,6 @@ table_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     primary: false
-    title: SYS_IDX_46
     unique: true
   - catalog: ''
     clustered: false
@@ -1383,7 +1296,6 @@ table_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     primary: false
-    title: SYS_IDX_80
     unique: false
   keys:
   - columns:
@@ -1396,7 +1308,6 @@ table_defs:
     referenced_table: ''
     relatedcolumns:
     - ''
-    title: SYS_PK_47
     typename: Primary
     update_rule: Cascade
   - columns:
@@ -1409,7 +1320,6 @@ table_defs:
     referenced_table: Family
     relatedcolumns:
     - FamilyID
-    title: SYS_FK_79
     typename: Foreign
     update_rule: No_Action
   name: Plant
@@ -1429,7 +1339,6 @@ textdocument_defs:
     parent: null
     table: vwPlant
     tabletype: query
-    title: TITLE_NOT_SET
   filename: Untitled.odt
   name: Untitled
   obj_id: OBJID_NOT_SET
@@ -1455,7 +1364,6 @@ view_defs:
     readonly: false
     scale: 0
     tablename: SYSTEM_SUBQUERY
-    title: id_1
     typename: NUMERIC
     writable: true
   command: 'SELECT "view1"."id"
@@ -1482,7 +1390,6 @@ view_defs:
     readonly: false
     scale: 0
     tablename: Plant
-    title: id_1
     typename: NUMERIC
     writable: true
   command: 'SELECT "id"

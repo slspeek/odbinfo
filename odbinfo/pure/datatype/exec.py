@@ -3,11 +3,11 @@ from dataclasses import dataclass, field
 from itertools import chain
 from typing import List, Sequence
 
-from odbinfo.pure.datatype.base import PageOwner, Token
+from odbinfo.pure.datatype.base import Token, WebPage
 
 
 @dataclass
-class PythonModule(PageOwner):
+class PythonModule(WebPage):
     " Python Module "
     library: str
     source: str
@@ -18,7 +18,7 @@ class PythonModule(PageOwner):
 
 
 @dataclass
-class PythonLibrary(PageOwner):
+class PythonLibrary(WebPage):
     " Python library "
     modules: List[PythonModule]
 
@@ -35,7 +35,7 @@ class BasicCall:
 
 # pylint:disable=too-many-instance-attributes
 @dataclass
-class BasicFunction(PageOwner):
+class BasicFunction(WebPage):
     " Basic sub or function "
     library: str
     module: str
@@ -56,7 +56,7 @@ class BasicFunction(PageOwner):
 
 
 @dataclass
-class Module(PageOwner):
+class Module(WebPage):
     " Basic module"
     library: str
     source: str
@@ -74,7 +74,7 @@ class Module(PageOwner):
 
 
 @dataclass
-class Library(PageOwner):
+class Library(WebPage):
     " Basic library"
     modules: List[Module]
 

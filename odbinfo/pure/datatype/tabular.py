@@ -5,7 +5,7 @@ from typing import List, Union
 
 from sql_formatter.core import format_sql
 
-from odbinfo.pure.datatype.base import NamedNode, PageOwner, Token, User
+from odbinfo.pure.datatype.base import NamedNode, Token, User, WebPage
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 KEYTYPES = {1: "Primary",
@@ -82,7 +82,7 @@ class EmbeddedQuery(NamedNode):
 
 
 @dataclass
-class Query(EmbeddedQuery, PageOwner):
+class Query(EmbeddedQuery, WebPage):
     " Query properties "
 
 
@@ -132,7 +132,7 @@ class Index(NamedNode):
 
 
 @dataclass
-class Table(PageOwner):
+class Table(WebPage):
     """ Table properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Table.html
     """

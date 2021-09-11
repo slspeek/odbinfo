@@ -3,8 +3,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
 
-from odbinfo.pure.datatype.base import (NamedNode, Node, PageOwner,
-                                        TitleFromParents, User)
+from odbinfo.pure.datatype.base import NamedNode, Node, User, WebPage
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
 
@@ -46,13 +45,9 @@ class DatabaseDisplay(User, Node):
     column: str
     index: int = field(init=False)
 
-    def set_title(self):
-        " sets a unique title "
-        self.title = f"{self.column}.{self.index}.{self.table}.{self.parent.title}"
-
 
 @dataclass
-class TextDocument(PageOwner):
+class TextDocument(WebPage):
     " ODT or OTT file metadata "
     filename: str
     path: str
@@ -72,18 +67,14 @@ class EventListener(User, Node):
     event: str
     script: str
 
-    def set_title(self):
-        " sets a unique title "
-        self.title = f"{self.parent.title}.{self.event}"
-
     def parsescript(self) -> str:
         "returns {Lib}.{Mod}.{Func} part from script field"
         return (self.script.split(":")[1]).split("?")[0]
-# pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Control(TitleFromParents, NamedNode):
+# pylint: disable=too-many-instance-attributes
+class Control(NamedNode):
     " Form control "
     controlid: str
     datafield: str
@@ -93,9 +84,6 @@ class Control(TitleFromParents, NamedNode):
     formfor: str
     type: str
     eventlisteners: List[EventListener]
-
-    def __post_init__(self):
-        self.title = self.controlid
 
     def children(self):
         return self.eventlisteners
@@ -123,7 +111,7 @@ class ListBox(AbstractCommander, Control):
 
 
 @dataclass
-class Grid(TitleFromParents, NamedNode):
+class Grid(NamedNode):
     " Table view control"
     columns: List[Control]
     type: str
@@ -133,7 +121,8 @@ class Grid(TitleFromParents, NamedNode):
 
 
 @dataclass
-class SubForm(TitleFromParents, Commander, NamedNode):  # pylint: disable=too-many-instance-attributes
+# pylint: disable=too-many-instance-attributes
+class SubForm(Commander, NamedNode):
     " Database subform "
     allowdeletes: str
     allowinserts: str
@@ -152,7 +141,7 @@ class SubForm(TitleFromParents, Commander, NamedNode):  # pylint: disable=too-ma
 
 
 @dataclass
-class Form(PageOwner):
+class Form(WebPage):
     " Toplevel form "
     subforms: List[SubForm]
     height: Optional[int] = field(init=False, default=None)
@@ -160,14 +149,10 @@ class Form(PageOwner):
     def children(self):
         return self.subforms
 
-    # def all_subforms(self) -> List[SubForm]:
-    #     " returns all nested subforms"
-    #     return list(filter(lambda x: isinstance(x, SubForm), self.all_objects()))
-
 
 # pylint:disable=too-many-ancestors
 @dataclass
-class Report(Commander, PageOwner):
+class Report(Commander, WebPage):
     " Report metadata "
     output_type: str
     formulas: List[str]

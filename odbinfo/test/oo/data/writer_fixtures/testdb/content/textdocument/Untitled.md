@@ -12,7 +12,6 @@ fields:
   obj_id: '711'
   table: vwPlant
   tabletype: query
-  title: naam.0.vwPlant.Untitled
 filename: Untitled.odt
 name: Untitled
 obj_id: '710'

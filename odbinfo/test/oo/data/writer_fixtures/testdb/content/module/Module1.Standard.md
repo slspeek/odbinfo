@@ -128,7 +128,6 @@ tokens:
     local_id: UsesDocument.Module1.Standard
   obj_id: '290'
   text: UsesDocument
-  title: token5.Module1.Standard
   type: 181
 - index: 6
   text: (
@@ -149,7 +148,6 @@ tokens:
   link: *id001
   obj_id: '296'
   text: '"Untitled"'
-  title: token11.Module1.Standard
   type: 172
 - index: 12
   text: '
@@ -182,7 +180,6 @@ tokens:
     local_id: UsesDocumentFilename.Module1.Standard
   obj_id: '303'
   text: UsesDocumentFilename
-  title: token18.Module1.Standard
   type: 181
 - index: 19
   text: (
@@ -203,7 +200,6 @@ tokens:
   link: *id002
   obj_id: '309'
   text: '"Untitled.odt"'
-  title: token24.Module1.Standard
   type: 172
 - index: 25
   text: '
@@ -236,7 +232,6 @@ tokens:
     local_id: CalleeOtherLib.Module1.Standard
   obj_id: '316'
   text: CalleeOtherLib
-  title: token31.Module1.Standard
   type: 181
 - index: 32
   text: "\n\t"
@@ -281,7 +276,6 @@ tokens:
     local_id: ShadowedCallee.Module1.Standard
   obj_id: '327'
   text: ShadowedCallee
-  title: token42.Module1.Standard
   type: 181
 - index: 43
   text: (
@@ -332,7 +326,6 @@ tokens:
     local_id: AddOne.Module1.Standard
   obj_id: '340'
   text: AddOne
-  title: token55.Module1.Standard
   type: 181
 - index: 56
   text: (

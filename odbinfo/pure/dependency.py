@@ -6,8 +6,8 @@ from typing import Iterable, Sequence
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
                                    DatabaseDisplay, EmbeddedQuery,
                                    EventListener, Identifier, Key, Metadata,
-                                   Module, PageOwner, Table, TextDocument,
-                                   Token, content_type, get_identifier)
+                                   Module, Table, TextDocument, Token, WebPage,
+                                   content_type)
 from odbinfo.pure.datatype.base import Usable
 from odbinfo.pure.util import timed
 
@@ -160,12 +160,12 @@ def link_token(token: Token, referand):
         # pylint:disable=logging-too-many-args
         logger.warning(
             "Replacing link in token: %s (link=%s:%s) with %s:%s",
-            token.title,
+            str(token.index),
             token.link.content_type,
             token.link.local_id,
             referand.content_type(),
             referand.name)
-    token.link = get_identifier(referand)
+    token.link = referand.identifier
 
 
 def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> None:
@@ -192,12 +192,12 @@ def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> None:
 #
 
 
-def search_string_refs_in_callables(dataobjects: Sequence[PageOwner],
+def search_string_refs_in_callables(dataobjects: Sequence[WebPage],
                                     callables: Sequence[BasicFunction]) -> None:
     """ search for references to table, views, queries or reports
         in callable string literals """
     def search_refs_in_one(acallable: BasicFunction) -> None:
-        def ref_in_one(dataobject: PageOwner) -> None:
+        def ref_in_one(dataobject: WebPage) -> None:
             def compare_ref(string_token: Token) -> None:
                 if dataobject.users_match(string_token.text[1:-1]):
                     link_token(string_token, dataobject)
@@ -219,7 +219,7 @@ def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
     for evl in eventlisteners:
         for func in funcs:
             if f"{func.library}.{func.module}.{func.name}" == evl.parsescript():
-                evl.link = get_identifier(func)
+                evl.link = func.identifier
 
 
 #
@@ -250,32 +250,32 @@ def search_deps_in_queries(dataobjects: Sequence[Usable],
 
 # pylint:disable=line-too-long
 
-def search_deps_in_commander(dataobjects: Sequence[PageOwner],
+def search_deps_in_commander(dataobjects: Sequence[WebPage],
                              commander_seq: Sequence[Commander]) -> None:
     " find uses of dataobject in report"
     def find_deps_in_commander(commander: Commander) -> None:
         " find dependency uses in `report` "
-        def match_one_dep(dependency: PageOwner) -> None:
+        def match_one_dep(dependency: WebPage) -> None:
             if (not commander.get_commandtype() == "command"  # no matching of embedded
                 # queries (COMMAND)
                     and dependency.users_match(commander.get_command())):
-                commander.link = get_identifier(dependency)
+                commander.link = dependency.identifier
         for obj in dataobjects:
             match_one_dep(obj)
     for commander in commander_seq:
         find_deps_in_commander(commander)
 
 
-def search_deps_in_documents(dataobjects: Sequence[PageOwner],
+def search_deps_in_documents(dataobjects: Sequence[WebPage],
                              documents: Sequence[TextDocument]) -> None:
     " find uses of dataobject in document"
     def find_deps_in_doc(document: TextDocument) -> None:
 
-        def find_one_dep(dependency: PageOwner) -> None:
+        def find_one_dep(dependency: WebPage) -> None:
 
             def find_in_databasedisplay(display: DatabaseDisplay) -> None:
                 if dependency.users_match(display.table):
-                    display.link = get_identifier(dependency)
+                    display.link = dependency.identifier
 
             for field in document.fields:
                 find_in_databasedisplay(field)
@@ -298,7 +298,7 @@ def search_tables_in_tables(tables: Sequence[Table]) -> None:
 
             def match_table(othertable: Table) -> None:
                 if othertable.users_match(key.referenced_table):
-                    key.link = get_identifier(othertable)
+                    key.link = othertable.identifier
             for obj in tables:
                 match_table(obj)
         for key in atable.keys:

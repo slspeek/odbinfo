@@ -4,7 +4,7 @@ from typing import Sequence, Union
 
 from odbinfo.pure.datatype import (Control, EmbeddedQuery, Form, Grid, Library,
                                    Metadata, Module, SubForm)
-from odbinfo.pure.datatype.base import UseAggregator, User, get_identifier
+from odbinfo.pure.datatype.base import UseAggregator, User
 from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.dependency import _link_name_tokens, search_dependencies
 from odbinfo.pure.graph import generate_graphs
@@ -107,8 +107,7 @@ def aggregate_uses(metadata: Metadata) -> None:
 def aggregate_used_by(metadata):
     "Collect all used_by"
     for user in metadata.all_active_users():
-        metadata.usable_by_link[(user.link.content_type, user.link.local_id)
-                                ].used_by.append(get_identifier(user))
+        metadata.usable_by_link[user.link].used_by.append(user.identifier)
 
 
 @timed("Parse queries", indent=4)
@@ -142,7 +141,6 @@ def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
 
     metadata.set_parents(None)
     metadata.build_parent_index()
-    metadata.set_titles()
     metadata.set_obj_ids()
 
     search_dependencies(metadata)

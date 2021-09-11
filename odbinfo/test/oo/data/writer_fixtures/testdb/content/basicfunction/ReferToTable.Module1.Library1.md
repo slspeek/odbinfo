@@ -42,7 +42,6 @@ tokens:
     local_id: Plant
   obj_id: '486'
   text: '"Plant"'
-  title: token112.ReferToTable.Module1.Library1
   type: 172
 - index: 113
   text: '

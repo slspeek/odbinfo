@@ -36,7 +36,6 @@ tokens:
     local_id: CalleeTwoSub.Module2.Library1
   obj_id: '430'
   text: CalleeTwoSub
-  title: token52.CallerTwo.Module1.Library1
   type: 181
 - index: 53
   text: (

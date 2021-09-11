@@ -21,12 +21,17 @@ def content_type(clazz) -> str:
 class Node:
     " DataObject without children "
     obj_id: str = field(init=False, default="OBJID_NOT_SET")
-    title: str = field(init=False, default="TITLE_NOT_SET")
+    # title: str = field(init=False, default="TITLE_NOT_SET")
     parent: Optional["NamedNode"] = field(init=False, default=None, repr=False)
 
     def content_type(self) -> str:
         " returns classname in lowercase "
         return content_type(self.__class__)
+
+    @property
+    def identifier(self):
+        "returns a link to this node"
+        return get_identifier(self)
 
     # pylint:disable=no-self-use
     def children(self):
@@ -85,25 +90,26 @@ class UseAggregator:
 
 
 @dataclass
-class PageOwner(UseAggregator, Usable, NamedNode):
+class WebPage(UseAggregator, Usable, NamedNode):
     " has its own page, thus title attribute "\
         " an object with a parent_link "
     parent_link: Optional['Identifier'] = field(init=False, default=None)
+    title: str = field(init=False, default="TITLE_NOT_SET")
 
-    def set_parents(self, parent: Optional['PageOwner']) -> None:
+    def set_parents(self, parent: Optional['WebPage']) -> None:
         " recursively set parents "
-        if isinstance(parent, PageOwner):
+        if isinstance(parent, WebPage):
             self.parent_link = get_identifier(parent)
 
         for child in self.children():
-            if isinstance(child, PageOwner):
+            if isinstance(child, WebPage):
                 child.set_parents(self)
 
 
 def get_identifier(usable) -> Identifier:
     "returns Identifier for `usable`"
     parent = usable
-    while not isinstance(parent, PageOwner):
+    while not isinstance(parent, WebPage):
         parent = parent.parent
     if parent == usable:
         return Identifier(usable.content_type(),
@@ -112,19 +118,19 @@ def get_identifier(usable) -> Identifier:
                       parent.title, usable.obj_id)
 
 
-# pylint:disable=too-few-public-methods,no-member
-class TitleFromParents:
-    " set_title mixin "
-
-    def set_title(self):
-        " sets a unique title "
-        parent = self
-        while True:
-            # statement (s)
-            parent = parent.parent
-            self.title += f".{parent.name}"
-            if isinstance(parent, PageOwner):
-                break
+# # pylint:disable=too-few-public-methods,no-member
+# class TitleFromParents:
+#     " set_title mixin "
+#
+#     def set_title(self):
+#         " sets a unique title "
+#         parent = self
+#         while True:
+#             # statement (s)
+#             parent = parent.parent
+#             self.title += f".{parent.name}"
+#             if isinstance(parent, WebPage):
+#                 break
 
 
 @dataclass
@@ -135,9 +141,9 @@ class Token(User, Node):
     index: int
     hidden: bool
 
-    def __post_init__(self):
-        self.title = f"token{self.index}"
-
-    def set_title(self):
-        " sets a unique title "
-        self.title = f"{self.title}.{self.parent.title}"
+    # def __post_init__(self):
+    #     self.title = f"token{self.index}"
+    #
+    # def set_title(self):
+    #     " sets a unique title "
+    #     self.title = f"{self.title}.{self.parent.title}"

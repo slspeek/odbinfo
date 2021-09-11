@@ -36,7 +36,6 @@ tokens:
     local_id: CalleeSub.Module1.Library1
   obj_id: '400'
   text: CalleeSub
-  title: token20.CallerSub.Module1.Library1
   type: 181
 - index: 21
   text: (
@@ -60,7 +59,6 @@ tokens:
     local_id: CalleeSub.Module2.Library1
   obj_id: '406'
   text: CalleeSub
-  title: token26.CallerSub.Module1.Library1
   type: 181
 - index: 27
   text: (

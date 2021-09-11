@@ -12,7 +12,7 @@ columns:
   readonly: false
   scale: 0
   tablename: Plant
-  title: id_1.vwPlant
+  title: id_1
   typename: NUMERIC
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -26,7 +26,7 @@ columns:
   readonly: false
   scale: 0
   tablename: Plant
-  title: naam_2.vwPlant
+  title: naam_2
   typename: VARCHAR
   writable: true
 - !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
@@ -40,7 +40,7 @@ columns:
   readonly: false
   scale: 0
   tablename: Plant
-  title: RFamliyID_3.vwPlant
+  title: RFamliyID_3
   typename: INTEGER
   writable: true
 command: 'SELECT *
@@ -79,7 +79,6 @@ tokens:
     local_id: Plant
   obj_id: '101'
   text: '"Plant"'
-  title: token8.vwPlant
   type: 200
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.Identifier

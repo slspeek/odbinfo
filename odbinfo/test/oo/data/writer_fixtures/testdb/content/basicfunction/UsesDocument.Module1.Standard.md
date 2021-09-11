@@ -42,7 +42,6 @@ tokens:
     local_id: Untitled
   obj_id: '227'
   text: '"Untitled"'
-  title: token11.UsesDocument.Module1.Standard
   type: 172
 - index: 12
   text: '

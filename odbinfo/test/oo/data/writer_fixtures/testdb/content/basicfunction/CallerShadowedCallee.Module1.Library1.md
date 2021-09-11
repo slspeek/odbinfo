@@ -36,7 +36,6 @@ tokens:
     local_id: ShadowedCallee.Module1.Library1
   obj_id: '460'
   text: ShadowedCallee
-  title: token84.CallerShadowedCallee.Module1.Library1
   type: 181
 - index: 85
   text: (

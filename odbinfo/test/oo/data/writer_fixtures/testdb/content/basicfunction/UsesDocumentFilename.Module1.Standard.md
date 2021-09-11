@@ -42,7 +42,6 @@ tokens:
     local_id: Untitled
   obj_id: '239'
   text: '"Untitled.odt"'
-  title: token24.UsesDocumentFilename.Module1.Standard
   type: 172
 - index: 25
   text: '

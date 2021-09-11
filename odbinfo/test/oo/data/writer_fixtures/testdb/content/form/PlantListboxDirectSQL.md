@@ -25,7 +25,7 @@ subforms:
     label: id
     name: lblid
     obj_id: '151'
-    title: control1.MainForm.PlantListboxDirectSQL
+    title: lblid
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control3
@@ -37,7 +37,7 @@ subforms:
     label: naam
     name: lblnaam
     obj_id: '152'
-    title: control3.MainForm.PlantListboxDirectSQL
+    title: lblnaam
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control5
@@ -49,7 +49,7 @@ subforms:
     label: RFamliyID
     name: lblRFamliyID
     obj_id: '153'
-    title: control5.MainForm.PlantListboxDirectSQL
+    title: lblRFamliyID
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control2
@@ -61,7 +61,7 @@ subforms:
     label: ''
     name: fmtid
     obj_id: '154'
-    title: control2.MainForm.PlantListboxDirectSQL
+    title: fmtid
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control4
@@ -73,7 +73,7 @@ subforms:
     label: ''
     name: txtnaam
     obj_id: '155'
-    title: control4.MainForm.PlantListboxDirectSQL
+    title: txtnaam
     type: TextField
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
@@ -135,7 +135,6 @@ subforms:
           local_id: Family
         obj_id: '176'
         text: '"Family"'
-        title: token18.fmtRFamliyID.Command
         type: 200
     eventlisteners: []
     formfor: ''
@@ -145,7 +144,7 @@ subforms:
     listsourcetype: sql
     name: fmtRFamliyID
     obj_id: '156'
-    title: control6.MainForm.PlantListboxDirectSQL
+    title: fmtRFamliyID
     type: ListBox
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control7
@@ -160,13 +159,12 @@ subforms:
         local_id: Main.Module1.Library1
       obj_id: '178'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-      title: control7.MainForm.PlantListboxDirectSQL.form:performaction
     formfor: ''
     inputrequired: ''
     label: Say hello
     name: Knop 1
     obj_id: '177'
-    title: control7.MainForm.PlantListboxDirectSQL
+    title: Knop 1
     type: CommandButton
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control8
@@ -178,7 +176,7 @@ subforms:
     label: Knop
     name: Knop 2
     obj_id: '179'
-    title: control8.MainForm.PlantListboxDirectSQL
+    title: Knop 2
     type: CommandButton
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control9
@@ -193,7 +191,6 @@ subforms:
         local_id: Main.Module1.Library1
       obj_id: '181'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-      title: control9.MainForm.PlantListboxDirectSQL.form:performaction
     - !!python/object:odbinfo.pure.datatype.ui.EventListener
       event: form:approveaction
       link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
@@ -202,13 +199,12 @@ subforms:
         local_id: Main.Module1.Library1
       obj_id: '182'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-      title: control9.MainForm.PlantListboxDirectSQL.form:approveaction
     formfor: ''
     inputrequired: ''
     label: Call to script
     name: Knop 3
     obj_id: '180'
-    title: control9.MainForm.PlantListboxDirectSQL
+    title: Knop 3
     type: CommandButton
   depth: 0
   detailfields: ''
@@ -220,7 +216,7 @@ subforms:
   name: MainForm
   obj_id: '150'
   subforms: []
-  title: MainForm.PlantListboxDirectSQL
+  title: MainForm
 title: PlantListboxDirectSQL
 used_by: []
 uses:

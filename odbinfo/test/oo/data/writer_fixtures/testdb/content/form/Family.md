@@ -27,7 +27,7 @@ subforms:
       label: FamlilyID
       name: FamlilyID
       obj_id: '105'
-      title: control2.MainForm_Grid.MainForm.Family
+      title: ''
       type: ooo:FormattedField
     - !!python/object:odbinfo.pure.datatype.ui.Control
       controlid: control3
@@ -39,7 +39,7 @@ subforms:
       label: Name
       name: Name
       obj_id: '106'
-      title: control3.MainForm_Grid.MainForm.Family
+      title: ''
       type: ooo:TextField
     - !!python/object:odbinfo.pure.datatype.ui.Control
       controlid: control4
@@ -51,11 +51,11 @@ subforms:
       label: Desc
       name: Desc
       obj_id: '107'
-      title: control4.MainForm_Grid.MainForm.Family
+      title: ''
       type: ooo:TextField
     name: MainForm_Grid
     obj_id: '104'
-    title: MainForm_Grid.MainForm.Family
+    title: MainForm_Grid
     type: Grid
   depth: 0
   detailfields: ''
@@ -67,7 +67,7 @@ subforms:
   name: MainForm
   obj_id: '103'
   subforms: []
-  title: MainForm.Family
+  title: MainForm
 title: Family
 used_by: []
 uses:

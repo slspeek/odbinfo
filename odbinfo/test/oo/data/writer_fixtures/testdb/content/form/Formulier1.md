@@ -51,7 +51,6 @@ subforms:
         local_id: Person
       obj_id: '120'
       text: '"Person"'
-      title: token8.Formulier.Command
       type: 200
   masterfields: ''
   name: Formulier
@@ -70,8 +69,8 @@ subforms:
     name: Formulier2
     obj_id: '110'
     subforms: []
-    title: Formulier2.Formulier.Formulier1
-  title: Formulier.Formulier1
+    title: Formulier2
+  title: Formulier
 - !!python/object:odbinfo.pure.datatype.ui.SubForm
   allowdeletes: 'true'
   allowinserts: 'true'
@@ -85,7 +84,7 @@ subforms:
   name: Formulier 1
   obj_id: '121'
   subforms: []
-  title: Formulier 1.Formulier1
+  title: Formulier 1
 title: Formulier1
 used_by: []
 uses:

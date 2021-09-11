@@ -6,7 +6,7 @@ from typing import Iterable, List, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype.base import Node, PageOwner, Usable, User
+from odbinfo.pure.datatype.base import Node, Usable, User, WebPage
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
@@ -29,7 +29,7 @@ METADATA_CONTENT = ["table",
 
 
 @dataclass
-class Metadata(PageOwner):
+class Metadata(WebPage):
 
     """ Collector class for all metadata read from the odb-file """
     table_defs: List[Table]
@@ -116,14 +116,7 @@ class Metadata(PageOwner):
             self.index[content.obj_id] = content
             if isinstance(content, Usable):
                 content = cast(Node, content)
-                self.usable_by_link[(content.content_type(),
-                                     content.title)] = content
-
-    def set_titles(self):
-        " set the titles so that they are unique within their content_type "
-        for content in self.all_objects():
-            # pylint:disable=no-member
-            content.set_title()
+                self.usable_by_link[content.identifier] = content
 
     def all_active_users(self):
         " returns all User objects with a link set from the tree "

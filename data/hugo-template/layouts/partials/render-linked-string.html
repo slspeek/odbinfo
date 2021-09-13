@@ -1,6 +1,6 @@
-<!---->{{ if .linked_string.link }}<!--
-      -->{{ $url:=partial "link2url" (dict "context" .context "link" .linked_string.link) }}<!--
-      --><a href="{{$url}}">{{ .linked_string.text }}</a><!--
+<!---->{{ if .link }}<!--
+      -->{{ $url:=partial "link2url" (dict "context" .context "link" .link) }}<!--
+      --><a href="{{$url}}">{{ .text }}</a><!--
     -->{{ else }}<!--
-  ---->{{ .linked_string.text}}<!--
+  ---->{{ .text}}<!--
     -->{{ end }}

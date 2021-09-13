@@ -15,12 +15,9 @@ UsedBy should become multiset, multiselect when linking back
 e.g. /#301,450,900 or /?select=300,304,600
 
 templates:
-- SubForm id is on Command, should be entire row
 - Form; controls linked to sun API docs.
-- refactor render-subform
-- render-token-callable leaves empty id in html
-- render-linked-string needs different arguments
-- color highlight strings in render-token templates
+- sql color highlighting, add class attribute to Token
+  should have its part in processor/parser
 - ListBox.listsourcetype needs inventarisation
   https://www.openoffice.org/api/docs/common/ref/com/sun/star/form/ListSourceType.html
   todo: VALUELIST, SQLPASSTHOUGH, TABLEFIELDS
@@ -30,7 +27,7 @@ make upgrade dependencies (20210813 done)
 Extra graphs:
   - for table, queries, Views
   - for basicfunction, library, module
-  - object with direct uses and used_bies
+  - object with direct uses and used_bies, and all_objects (respecting excludes)
 
 type file based MetaData, TextDocument
 

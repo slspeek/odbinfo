@@ -1,0 +1,6 @@
+<!--
+-->{{ if (or (eq .type 172) (eq .type 1))}}<!--
+  --><span class="stringlit" >{{ .text }}</span><!--
+-->{{ else }}<!--
+-->{{ .text }}<!--
+-->{{ end }}

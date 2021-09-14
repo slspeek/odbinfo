@@ -1,5 +1,4 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
-import os
 from functools import partial
 from typing import List
 from zipfile import ZipFile
@@ -14,11 +13,11 @@ from odbinfo.pure.util import timed
 
 
 @timed("Read metadata", indent=2)
-def read_metadata(datasource, odbpath):
+#pylint: disable=unused-argument
+def read_metadata(config, datasource, odbpath):
     """ reads all metadata """
     with open_connection(datasource) as con:
         with ZipFile(odbpath, "r") as odbzip:
-            dbname, _ = os.path.splitext(os.path.basename(odbpath))
             return \
                 Metadata(odbpath,
                          read_tables(con),
@@ -28,7 +27,7 @@ def read_metadata(datasource, odbpath):
                          read_reports(odbzip),
                          read_libraries(odbzip),
                          read_python_libraries(odbzip),
-                         read_text_documents(os.path.dirname(odbpath), dbname))
+                         read_text_documents(config.textdocuments))
 
 
 @timed("Read views", indent=4)

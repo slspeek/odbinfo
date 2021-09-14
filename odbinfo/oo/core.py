@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 import yaml
 
 from odbinfo.oo.reader import read_metadata
-from odbinfo.pure.datatype.config import get_configuration
+from odbinfo.pure.datatype.config import Configuration, get_configuration
 from odbinfo.pure.processor import process_metadata
 from odbinfo.pure.util import timed
 from odbinfo.pure.writer import make_site
@@ -31,19 +31,28 @@ def read_configuration(config_path=default_config_path()):
         return yaml.load(file, Loader=yaml.Loader)
 
 
-@timed("Generate report")
-def generate_report(oodocument, config=read_configuration()):
-    """ Make report """
-    docpath = urlparse(oodocument.URL).path
+def set_configuration_defaults(config: Configuration, docpath: str):
+    " sets sensible defaults "
     name, _ = os.path.splitext(os.path.basename(docpath))
     config.name = name
     if not config.general.output_dir:
         config.general.output_dir = \
             os.path.join(os.path.dirname(docpath), ".odbinfo")
+    if not config.textdocuments.db_registration_id:
+        config.textdocuments.db_registration_id = name
+    if config.textdocuments.search_locations is None:
+        config.textdocuments.search_locations = [os.path.dirname(docpath)]
 
-    metadata = read_metadata(oodocument.DataSource, docpath)
 
-    process_metadata(metadata, config)
+@timed("Generate report")
+def generate_report(oodocument, config=read_configuration()):
+    """ Make report """
+    docpath = urlparse(oodocument.URL).path
+    set_configuration_defaults(config, docpath)
+
+    metadata = read_metadata(config, oodocument.DataSource, docpath)
+
+    process_metadata(config, metadata)
 
     result = make_site(config, metadata)
     return result

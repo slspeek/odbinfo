@@ -31,7 +31,7 @@ def process_and_check(unprocessed, filename, data_regression,
         config = get_configuration()
         config.name, _ = os.path.splitext(os.path.basename(metadata.name))
         print("NAME:", config.name)
-        return (metadata, config), {}
+        return (config, metadata), {}
     processed = benchmark.pedantic(process_metadata, setup=setup)
     # data_regression.check(unprocessed)
     processed.graphs = []

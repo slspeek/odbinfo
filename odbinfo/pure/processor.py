@@ -130,7 +130,7 @@ def preprocess_commanders(metadata: Metadata):
 
 
 @timed("Process metadata", indent=2)
-def process_metadata(metadata: Metadata, config: Configuration) -> Metadata:
+def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     " preprocessing of the data before it is send to hugo "
     preprocess_commanders(metadata)
     _process_libraries(metadata.library_defs)

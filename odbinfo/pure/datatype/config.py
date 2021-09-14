@@ -66,6 +66,13 @@ ALLWAYS_EXCLUDED = ["metadata", "token"]
 
 
 @dataclass
+class TextDocumentsConfig:
+    " Config for the search of textdocuments "
+    db_registration_id: Optional[str]
+    search_locations: Optional[List[str]]
+
+
+@dataclass
 class GraphConfig:
     " Graph options "
     user_excludes: List[str]
@@ -87,6 +94,7 @@ class Configuration:
     name: Optional[str] = field(init=False)
     general: GeneralConfig
     graph: GraphConfig
+    textdocuments: TextDocumentsConfig
 
 
 def get_configuration() -> Configuration:
@@ -100,5 +108,7 @@ def get_configuration() -> Configuration:
                 RELATION_ATTRS,
                 True,
                 True
-            )
+            ),
+            TextDocumentsConfig(None, None)
+
         )

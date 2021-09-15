@@ -86,7 +86,7 @@ obj_id: '13'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
-  local_id: ./testdb.odb
+  local_id: testdb
 title: Plant
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.Identifier

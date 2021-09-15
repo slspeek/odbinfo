@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from itertools import chain
 from typing import List, Sequence
 
-from odbinfo.pure.datatype.base import Token, WebPage
+from odbinfo.pure.datatype.base import Token, WebPage, WebPageWithUses
 
 
 @dataclass
@@ -35,7 +35,7 @@ class BasicCall:
 
 # pylint:disable=too-many-instance-attributes
 @dataclass
-class BasicFunction(WebPage):
+class BasicFunction(WebPageWithUses):
     " Basic sub or function "
     library: str
     module: str

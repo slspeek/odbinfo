@@ -6,9 +6,8 @@ Relevant function filter
 - function that uses something else than a basicfunction
 - function that is used by something else than a basicfunction
 
-Module, Library: uses? Separate WebPage from UseAggregator
-
 Uses should become a multiset, multiselect sources on mouseover link
+https://pypi.org/project/multiset/
 UsedBy should become multiset, multiselect when linking back
 e.g. /#301,450,900 or /?select=300,304,600
 

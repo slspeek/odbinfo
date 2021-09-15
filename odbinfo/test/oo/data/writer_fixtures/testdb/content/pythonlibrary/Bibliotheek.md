@@ -12,15 +12,11 @@ modules:
   source: "# coding: utf-8\nfrom __future__ import unicode_literals\n\ndef script():\n\
     \tprint(\"Hello\")\n"
   title: Bibliotheek.Module.py
-  used_by: []
-  uses: []
 name: Bibliotheek
 obj_id: '706'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
-  local_id: ./testdb.odb
+  local_id: testdb
 title: Bibliotheek
-used_by: []
-uses: []
 ---

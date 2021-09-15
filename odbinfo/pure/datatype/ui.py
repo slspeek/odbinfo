@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
 
-from odbinfo.pure.datatype.base import NamedNode, User, WebPage
+from odbinfo.pure.datatype.base import NamedNode, User, WebPageWithUses
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
 
@@ -46,7 +46,7 @@ class DatabaseDisplay(User, NamedNode):
 
 
 @dataclass
-class TextDocument(WebPage):
+class TextDocument(WebPageWithUses):
     " ODT or OTT file metadata "
     filename: str
     path: str
@@ -140,7 +140,7 @@ class SubForm(Commander, NamedNode):
 
 
 @dataclass
-class Form(WebPage):
+class Form(WebPageWithUses):
     " Toplevel form "
     subforms: List[SubForm]
     height: Optional[int] = field(init=False, default=None)
@@ -151,7 +151,7 @@ class Form(WebPage):
 
 # pylint:disable=too-many-ancestors
 @dataclass
-class Report(Commander, WebPage):
+class Report(Commander, WebPageWithUses):
     " Report metadata "
     output_type: str
     formulas: List[str]

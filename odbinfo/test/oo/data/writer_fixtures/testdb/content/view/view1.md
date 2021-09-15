@@ -22,7 +22,7 @@ obj_id: '34'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
-  local_id: ./testdb.odb
+  local_id: testdb
 table_tokens: []
 title: view1
 tokens:

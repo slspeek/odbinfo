@@ -11,15 +11,11 @@ modules:
     local_id: python
   source: "# coding: utf-8\n\ndef main():\n\tprint(\"Hello from testdb.odb\")\n\n\n"
   title: python.pymodule.py
-  used_by: []
-  uses: []
 name: python
 obj_id: '708'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
-  local_id: ./testdb.odb
+  local_id: testdb
 title: python
-used_by: []
-uses: []
 ---

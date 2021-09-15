@@ -380,10 +380,4 @@ tokens:
 - index: 72
   text: End Function
   type: 40
-used_by: []
-uses:
-- *id001
-- *id002
-- *id001
-- *id002
 ---

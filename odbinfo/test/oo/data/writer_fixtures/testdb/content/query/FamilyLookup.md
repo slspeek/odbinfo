@@ -33,7 +33,7 @@ obj_id: '67'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
-  local_id: ./testdb.odb
+  local_id: testdb
 table_tokens: []
 title: FamilyLookup
 tokens:

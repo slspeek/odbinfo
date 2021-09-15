@@ -1,7 +1,7 @@
 form_defs: []
 graphs: []
 library_defs: []
-name: ./emptydb.odb
+name: emptydb
 obj_id: OBJID_NOT_SET
 parent: null
 parent_link: null
@@ -10,7 +10,5 @@ query_defs: []
 report_defs: []
 table_defs: []
 textdocument_defs: []
-title: ./emptydb.odb
-used_by: []
-uses: []
+title: emptydb
 view_defs: []

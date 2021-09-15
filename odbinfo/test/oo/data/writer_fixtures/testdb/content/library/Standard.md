@@ -17,7 +17,7 @@ modules:
     tokens: []
     used_by: []
     uses:
-    - &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: textdocument
       local_id: Untitled
@@ -35,7 +35,7 @@ modules:
     tokens: []
     used_by: []
     uses:
-    - &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: textdocument
       local_id: Untitled
@@ -104,12 +104,6 @@ modules:
     local_id: Standard
   title: Module1.Standard
   tokens: []
-  used_by: []
-  uses:
-  - *id001
-  - *id002
-  - *id001
-  - *id002
 - !!python/object:odbinfo.pure.datatype.exec.Module
   callables:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
@@ -137,19 +131,11 @@ modules:
     local_id: Standard
   title: Module2.Standard
   tokens: []
-  used_by: []
-  uses: []
 name: Standard
 obj_id: '216'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
-  local_id: ./testdb.odb
+  local_id: testdb
 title: Standard
-used_by: []
-uses:
-- *id001
-- *id002
-- *id001
-- *id002
 ---

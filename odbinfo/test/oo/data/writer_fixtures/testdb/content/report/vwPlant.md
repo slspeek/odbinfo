@@ -16,7 +16,7 @@ output_type: application/vnd.oasis.opendocument.text
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
-  local_id: ./testdb.odb
+  local_id: testdb
 title: vwPlant
 used_by: []
 uses:

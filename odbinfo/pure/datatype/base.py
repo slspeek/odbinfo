@@ -90,7 +90,7 @@ class UseAggregator:
 
 
 @dataclass
-class WebPage(UseAggregator, Usable, NamedNode):
+class WebPage(NamedNode):
     " has its own page, thus title attribute "\
         " an object with a parent_link "
     parent_link: Optional['Identifier'] = field(init=False, default=None)
@@ -107,6 +107,11 @@ class WebPage(UseAggregator, Usable, NamedNode):
         for child in self.children():
             if isinstance(child, WebPage):
                 child.set_parents(self)
+
+
+@dataclass
+class WebPageWithUses(Usable, UseAggregator, WebPage):
+    " WebPage with uses and used_by "
 
 
 def get_identifier(usable) -> Identifier:

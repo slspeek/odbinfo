@@ -55,11 +55,11 @@ modules:
     tokens: []
     used_by: []
     uses:
-    - &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: basicfunction
       local_id: CalleeSub.Module1.Library1
-    - &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: basicfunction
       local_id: CalleeSub.Module2.Library1
@@ -95,7 +95,7 @@ modules:
     tokens: []
     used_by: []
     uses:
-    - &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: basicfunction
       local_id: CalleeTwoSub.Module2.Library1
@@ -113,11 +113,11 @@ modules:
     tokens: []
     used_by: []
     uses:
-    - &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: basicfunction
       local_id: CalleeOtherLib.Module1.Standard
-    - &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: basicfunction
       local_id: CalleeOtherLib.Module1.Standard
@@ -135,7 +135,7 @@ modules:
     tokens: []
     used_by: []
     uses:
-    - &id006 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: basicfunction
       local_id: ShadowedCallee.Module1.Library1
@@ -171,7 +171,7 @@ modules:
     tokens: []
     used_by: []
     uses:
-    - &id007 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: table
       local_id: Plant
@@ -189,7 +189,7 @@ modules:
     tokens: []
     used_by: []
     uses:
-    - &id008 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: view
       local_id: view1
@@ -207,7 +207,7 @@ modules:
     tokens: []
     used_by: []
     uses:
-    - &id009 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: query
       local_id: FamilyLookup
@@ -231,44 +231,6 @@ modules:
     local_id: Library1
   title: Module1.Library1
   tokens: []
-  used_by: []
-  uses:
-  - *id001
-  - *id002
-  - *id003
-  - *id004
-  - *id005
-  - *id006
-  - *id007
-  - *id008
-  - *id009
-  - &id010 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: CalleeSub
-    content_type: module
-    local_id: Module1.Library1
-  - &id011 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: CalleeSub
-    content_type: module
-    local_id: Module2.Library1
-  - &id012 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: CalleeTwoSub
-    content_type: module
-    local_id: Module2.Library1
-  - &id013 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: CalleeOtherLib
-    content_type: module
-    local_id: Module1.Standard
-  - &id014 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: CalleeOtherLib
-    content_type: module
-    local_id: Module1.Standard
-  - &id015 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: ShadowedCallee
-    content_type: module
-    local_id: Module1.Library1
-  - *id007
-  - *id008
-  - *id009
 - !!python/object:odbinfo.pure.datatype.exec.Module
   callables:
   - !!python/object:odbinfo.pure.datatype.exec.BasicFunction
@@ -319,33 +281,11 @@ modules:
     local_id: Library1
   title: Module2.Library1
   tokens: []
-  used_by: []
-  uses: []
 name: Library1
 obj_id: '381'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
-  local_id: ./testdb.odb
+  local_id: testdb
 title: Library1
-used_by: []
-uses:
-- *id001
-- *id002
-- *id003
-- *id004
-- *id005
-- *id006
-- *id007
-- *id008
-- *id009
-- *id010
-- *id011
-- *id012
-- *id013
-- *id014
-- *id015
-- *id007
-- *id008
-- *id009
 ---

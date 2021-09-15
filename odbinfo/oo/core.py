@@ -1,5 +1,4 @@
 """ Core module """
-import os
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -31,26 +30,24 @@ def read_configuration(config_path=default_config_path()):
         return yaml.load(file, Loader=yaml.Loader)
 
 
-def set_configuration_defaults(config: Configuration, docpath: str):
+def set_configuration_defaults(config: Configuration, odbpath: Path):
     " sets sensible defaults "
-    name, _ = os.path.splitext(os.path.basename(docpath))
-    config.name = name
+    config.name = str(odbpath.stem)
     if not config.general.output_dir:
-        config.general.output_dir = \
-            os.path.join(os.path.dirname(docpath), ".odbinfo")
+        config.general.output_dir = str(odbpath.parent / ".odbinfo")
     if not config.textdocuments.db_registration_id:
-        config.textdocuments.db_registration_id = name
+        config.textdocuments.db_registration_id = config.name
     if config.textdocuments.search_locations is None:
-        config.textdocuments.search_locations = [os.path.dirname(docpath)]
+        config.textdocuments.search_locations = [str(odbpath.parent)]
 
 
 @timed("Generate report")
 def generate_report(oodocument, config=read_configuration()):
     """ Make report """
-    docpath = urlparse(oodocument.URL).path
-    set_configuration_defaults(config, docpath)
+    odbpath = Path(urlparse(oodocument.URL).path)
+    set_configuration_defaults(config, odbpath)
 
-    metadata = read_metadata(config, oodocument.DataSource, docpath)
+    metadata = read_metadata(config, oodocument.DataSource, odbpath)
 
     process_metadata(config, metadata)
 

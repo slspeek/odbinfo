@@ -6,7 +6,7 @@ obj_id: '149'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
-  local_id: ./testdb.odb
+  local_id: testdb
 subforms:
 - !!python/object:odbinfo.pure.datatype.ui.SubForm
   allowdeletes: 'false'

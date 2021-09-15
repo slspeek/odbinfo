@@ -5,7 +5,7 @@ from typing import List, Union
 
 from sql_formatter.core import format_sql
 
-from odbinfo.pure.datatype.base import NamedNode, Token, User, WebPage
+from odbinfo.pure.datatype.base import NamedNode, Token, User, WebPageWithUses
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 KEYTYPES = {1: "Primary",
@@ -72,7 +72,7 @@ class EmbeddedQuery(NamedNode):
 
 
 @dataclass
-class Query(EmbeddedQuery, WebPage):
+class Query(EmbeddedQuery, WebPageWithUses):
     " Query properties "
 
     def __post_init__(self):
@@ -82,6 +82,7 @@ class Query(EmbeddedQuery, WebPage):
 
 
 @dataclass
+# pylint: disable=too-many-ancestors
 class View(Query):
     " View properties "
 
@@ -127,7 +128,7 @@ class Index(NamedNode):
 
 
 @dataclass
-class Table(WebPage):
+class Table(WebPageWithUses):
     """ Table properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Table.html
     """

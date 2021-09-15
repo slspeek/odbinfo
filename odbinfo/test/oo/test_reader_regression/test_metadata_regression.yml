@@ -778,8 +778,6 @@ library_defs:
       \nFunction AddOne(arg)\n\tAddOne() = arg + 1\nEnd Function"
     title: Module1.Standard
     tokens: []
-    used_by: []
-    uses: []
   - callables: []
     library: Standard
     name: Module2
@@ -790,15 +788,11 @@ library_defs:
     source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
     title: Module2.Standard
     tokens: []
-    used_by: []
-    uses: []
   name: Standard
   obj_id: OBJID_NOT_SET
   parent: null
   parent_link: null
   title: Standard
-  used_by: []
-  uses: []
 - modules:
   - callables: []
     library: Library1
@@ -817,8 +811,6 @@ library_defs:
       \nSub ReferToQuery()\n\tprint \"FamilyLookup\"\nEnd Sub"
     title: Module1.Library1
     tokens: []
-    used_by: []
-    uses: []
   - callables: []
     library: Library1
     name: Module2
@@ -830,16 +822,12 @@ library_defs:
       \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
     title: Module2.Library1
     tokens: []
-    used_by: []
-    uses: []
   name: Library1
   obj_id: OBJID_NOT_SET
   parent: null
   parent_link: null
   title: Library1
-  used_by: []
-  uses: []
-name: ./testdb.odb
+name: testdb
 obj_id: OBJID_NOT_SET
 parent: null
 parent_link: null
@@ -853,15 +841,11 @@ pythonlibrary_defs:
     source: "# coding: utf-8\nfrom __future__ import unicode_literals\n\ndef script():\n\
       \tprint(\"Hello\")\n"
     title: Bibliotheek.Module.py
-    used_by: []
-    uses: []
   name: Bibliotheek
   obj_id: OBJID_NOT_SET
   parent: null
   parent_link: null
   title: Bibliotheek
-  used_by: []
-  uses: []
 - modules:
   - library: python
     name: pymodule.py
@@ -871,15 +855,11 @@ pythonlibrary_defs:
     source: "# coding: utf-8\n\ndef main():\n\tprint(\"Hello from testdb.odb\")\n\n\
       \n"
     title: python.pymodule.py
-    used_by: []
-    uses: []
   name: python
   obj_id: OBJID_NOT_SET
   parent: null
   parent_link: null
   title: python
-  used_by: []
-  uses: []
 query_defs:
 - columns:
   - autoincrement: false
@@ -1348,9 +1328,7 @@ textdocument_defs:
   title: Untitled
   used_by: []
   uses: []
-title: ./testdb.odb
-used_by: []
-uses: []
+title: testdb
 view_defs:
 - columns:
   - autoincrement: false

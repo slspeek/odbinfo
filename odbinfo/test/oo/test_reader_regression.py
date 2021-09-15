@@ -4,8 +4,8 @@
 # remove use of metadata fixtures, libreoffice should become document fixtures
 #
 import dataclasses
-import os
 import pickle
+from pathlib import Path
 from urllib.parse import urlparse
 
 import pytest
@@ -20,10 +20,10 @@ from odbinfo.test.oo.connect import (  # pylint:disable=unused-import
 def read_metadata_in_test(testdb_doc, monkeypatch, benchmark):
     "read_metadata in test setting"
     dsource = testdb_doc.DataSource
-    dbpath = urlparse(testdb_doc.URL).path
+    dbpath = Path(urlparse(testdb_doc.URL).path)
     # This is to makes sure the /tmp/.. path does not show in the data
-    workdir = os.path.dirname(dbpath)
-    dbfilename = "./" + os.path.basename(dbpath)
+    workdir = dbpath.parent
+    dbfilename = Path(".") / dbpath.name
     monkeypatch.chdir(workdir)
     config = get_configuration()
     set_configuration_defaults(config, dbfilename)

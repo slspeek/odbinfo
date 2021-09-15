@@ -10,6 +10,7 @@ import time
 import webbrowser
 from inspect import ismethod
 from os import path
+from pathlib import Path
 from typing import Dict
 
 import toml
@@ -63,21 +64,20 @@ def _frontmatter(obj, out):
     out.write(FRONT_MATTER_MARK)
 
 
-def clean_old_site(output_dir, name):
+def clean_old_site(output_dir: Path, name: str):
     " remove previous generated site if it exits "
-    reportdir = os.path.join(output_dir, name)
 
-    def rmtree(directory):
-        if os.path.isdir(directory) and os.path.exists(directory):
+    def rmtree(directory: Path):
+        if directory.is_dir() and directory.exists():
             shutil.rmtree(directory)
 
-    rmtree(reportdir)
-    rmtree(f"{reportdir}-local")
+    rmtree(output_dir / name)
+    rmtree(output_dir / f"{name}-local")
 
 
-def new_site(output_dir, name):
+def new_site(output_dir: str, name: str):
     """ Sets up a empty hugo site with odbinfo templates """
-    clean_old_site(output_dir, name)
+    clean_old_site(Path(output_dir), name)
     os.makedirs(output_dir, exist_ok=True)
     with chdir(output_dir):
         run_checked(f"hugo new site {name} > /dev/null",
@@ -206,14 +206,10 @@ def _write_config(config, site_name, metadata):
 def _write_content(metadata: Metadata, name):
     contentlist = _get_metadata_attr(metadata, name)
     if len(contentlist) > 0:
-        # if name == "basicfunction":
-        #     targetpath = f"content/bosicfunction"
-        # else:
-        targetpath = f"content/{name}"
-        os.makedirs(targetpath, exist_ok=True)
+        targetpath = Path("content") / name
+        targetpath.mkdir(parents=True, exist_ok=True)
         for content in contentlist:
-            with open(f"{targetpath}/{content.title}.md", "w") as out:
-                # _frontmatter(dataclasses.asdict(content), out)
+            with open(targetpath / f"{content.title}.md", "w") as out:
                 _frontmatter(content, out)
 
 
@@ -243,7 +239,6 @@ def _convert_local(output_dir, name):
                       f" http://localhost:{port}/ > /dev/null 2>&1")
 
             webserver_proc.kill()
-            #_open_browser(localsite, os.getcwd())
 
 
 def _open_browser(site_dir,

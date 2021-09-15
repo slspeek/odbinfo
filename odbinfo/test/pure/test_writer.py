@@ -1,5 +1,6 @@
 " tests for the writer"
 import os
+from pathlib import Path
 from unittest.mock import MagicMock
 
 import pytest
@@ -20,10 +21,9 @@ def test_chdir_none():
 
 def test_clean_old_site(tmpdir):
     " test cleaning old site "
-    output_dir = str(tmpdir)
     os.makedirs(tmpdir / "exampledb")
     os.makedirs(tmpdir / "exampledb-local")
-    clean_old_site(output_dir, "exampledb")
+    clean_old_site(Path(tmpdir), "exampledb")
 
 
 def test_write_graphs(tmpdir, monkeypatch):

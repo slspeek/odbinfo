@@ -19,7 +19,7 @@ parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
   local_id: testdb
-path: ./Untitled.odt
+path: Untitled.odt
 title: Untitled
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.Identifier

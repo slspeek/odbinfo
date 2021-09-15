@@ -83,7 +83,7 @@ def test_collect_element():
 
 def test_text_document(shared_datadir):
     " find odts "
-    directory = path.dirname(shared_datadir / DEFAULT_TESTDB)
+    directory = (shared_datadir / DEFAULT_TESTDB).parent
     assert len(_text_documents(directory)) == 3
 
 

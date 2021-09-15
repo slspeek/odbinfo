@@ -1324,7 +1324,7 @@ textdocument_defs:
   obj_id: OBJID_NOT_SET
   parent: null
   parent_link: null
-  path: ./Untitled.odt
+  path: Untitled.odt
   title: Untitled
   used_by: []
   uses: []

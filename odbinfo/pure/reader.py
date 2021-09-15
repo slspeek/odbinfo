@@ -2,6 +2,7 @@
 import os
 from functools import partial
 from itertools import starmap
+from pathlib import Path
 from typing import List
 from zipfile import ZipFile
 
@@ -46,17 +47,14 @@ def _body_elem(oozip, path):
     return _office_body(content)
 
 
-def _text_documents(dir_path) -> List[str]:
-    docs = []
-    for root, _, files in os.walk(dir_path):
-        for file in files:
-            if file.endswith('.odt') or file.endswith('.ott'):
-                docs.append(root + '/' + str(file))
-    return docs
+def _text_documents(dir_path: Path) -> List[Path]:
+    return \
+        [file for file in dir_path.iterdir()
+            if file.is_file() and file.suffix in ['.odt', '.ott']]
 
 
-def _database_displays(doc_path) -> List[DatabaseDisplay]:
-    def _unnumbered_database_displays(doc_path) -> List[DatabaseDisplay]:
+def _database_displays(doc_path: Path) -> List[DatabaseDisplay]:
+    def _unnumbered_database_displays(doc_path: Path) -> List[DatabaseDisplay]:
         def display(data):
             return \
                 DatabaseDisplay(
@@ -80,20 +78,18 @@ def read_text_documents(config: TextDocumentsConfig) -> List[TextDocument]:
     docs = []
     if config.search_locations:
         for search_loc in config.search_locations:
-            for doc_path in _text_documents(search_loc):
+            for doc_path in _text_documents(Path(search_loc)):
                 displays = _database_displays(doc_path)
                 displays = list(filter(
                     lambda d: d.database == config.db_registration_id,
                     displays
                 ))
                 if len(displays) > 0:
-                    filename = os.path.basename(doc_path)
-                    name, _ = os.path.splitext(filename)
                     docs.append(
                         TextDocument(
-                            name,
-                            filename,
-                            doc_path,
+                            doc_path.stem,
+                            doc_path.name,
+                            str(doc_path),
                             displays
                         )
                     )

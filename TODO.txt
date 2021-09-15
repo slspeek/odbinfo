@@ -1,3 +1,5 @@
+UNIX redirects in writer system commands must go away
+
 More of pathlib instead of os.path
 
 Makefile: cleanup minimal before distribution

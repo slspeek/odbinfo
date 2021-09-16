@@ -25,10 +25,18 @@ from odbinfo.pure.util import timed
 FRONT_MATTER_MARK = "---\n"
 
 
+def run_quiet(cmd):
+    " run os `cmd`. Returns the CompletedProcess"
+    #pylint: disable=subprocess-run-check
+    return subprocess.run(shlex.split(cmd),
+                          stderr=subprocess.DEVNULL,
+                          stdout=subprocess.DEVNULL)
+
+
 def run_checked(cmd, error_mesg):
     " run os `cmd` and raise RuntimeError with `error_mesg`"
-    exit_code = os.system(cmd)
-    if exit_code != 0:
+    completed_process = run_quiet(cmd)
+    if completed_process.returncode != 0:
         raise RuntimeError(error_mesg)
 
 
@@ -78,12 +86,9 @@ def clean_old_site(output_dir: Path, name: str):
 def new_site(output_dir: str, name: str):
     """ Sets up a empty hugo site with odbinfo templates """
     clean_old_site(Path(output_dir), name)
-    os.makedirs(output_dir, exist_ok=True)
-    with chdir(output_dir):
-        run_checked(f"hugo new site {name} > /dev/null",
-                    f"hugo new site failed to create site: {name}")
-        run_checked(f"cp -r {DATA_DIR}/hugo-template/* {name}",
-                    f"unable to copy additional site sources from {DATA_DIR}")
+    os.makedirs(Path(output_dir), exist_ok=True)
+    shutil.copytree(Path(DATA_DIR) / "hugo-template",
+                    Path(output_dir) / name)
 
 
 def preprocess_metadata(metadata):
@@ -202,7 +207,7 @@ def _write_config(config, site_name, metadata):
                    }, cfg)
 
 
-@timed("Write content ", indent=4, arg=1, name=False)
+@timed("Write content", indent=4, arg=1, name=False)
 def _write_content(metadata: Metadata, name):
     contentlist = _get_metadata_attr(metadata, name)
     if len(contentlist) > 0:
@@ -226,18 +231,19 @@ def _convert_local(output_dir, name):
     result = path.join(output_dir, name)
     with chdir(result):
         port = 1313
-        args = shlex.split("hugo server --disableLiveReload --watch=false "
-                           "  2> /dev/null 1>&2")
+        args = shlex.split("hugo server --disableLiveReload --watch=false ")
         # pylint:disable=consider-using-with
-        webserver_proc = subprocess.Popen(args)
-        with chdir(".."):
-            localsite = f"{name}-local"
-            os.makedirs(localsite)
-            while not _is_port_open(port):
-                time.sleep(0.1)
-            os.system(f"wget -nH --convert-links -P {localsite} -r"
-                      f" http://localhost:{port}/ > /dev/null 2>&1")
-
+        try:
+            webserver_proc = subprocess.Popen(args, stderr=subprocess.DEVNULL,
+                                              stdout=subprocess.DEVNULL)
+            with chdir(".."):
+                localsite = f"{name}-local"
+                os.makedirs(localsite)
+                while not _is_port_open(port):
+                    time.sleep(0.1)
+                run_quiet(f"wget  -nH --convert-links -P {localsite} -r"
+                          f" http://localhost:{port}/ ")
+        finally:
             webserver_proc.kill()
 
 

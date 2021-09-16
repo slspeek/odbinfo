@@ -1,4 +1,7 @@
 UNIX redirects in writer system commands must go away
+use subprocess.run
+
+cp command replaced by python
 
 More of pathlib instead of os.path
 

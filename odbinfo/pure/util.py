@@ -24,8 +24,8 @@ def timed(mesg, indent=0, arg=None, name=True):
             start_time = time.time()
             result = func(*args, **kwargs)
             end_time = time.time()
-            print(message(args) + ' finished in ',
-                  end_time-start_time, " seconds ")
+            print(message(args) + ' finished in %.2f seconds ' %
+                  (end_time-start_time))
 
             return result
         return wrapper

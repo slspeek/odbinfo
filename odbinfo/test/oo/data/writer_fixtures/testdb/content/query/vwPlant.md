@@ -6,7 +6,7 @@ columns:
   issigned: true
   name: id
   nullable: No_Nulls
-  obj_id: '90'
+  obj_id: '123'
   position: 1
   precision: 100
   readonly: false
@@ -19,7 +19,7 @@ columns:
   issigned: false
   name: naam
   nullable: Nullable
-  obj_id: '91'
+  obj_id: '124'
   position: 2
   precision: 2147483647
   readonly: false
@@ -32,7 +32,7 @@ columns:
   issigned: true
   name: RFamliyID
   nullable: Nullable
-  obj_id: '92'
+  obj_id: '125'
   position: 3
   precision: 10
   readonly: false
@@ -43,8 +43,9 @@ columns:
 command: 'SELECT *
 
   FROM   "Plant"'
+literal_values: []
 name: vwPlant
-obj_id: '89'
+obj_id: '122'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
@@ -74,7 +75,7 @@ tokens:
     bookmark: null
     content_type: table
     local_id: Plant
-  obj_id: '101'
+  obj_id: '134'
   text: '"Plant"'
   type: 200
 used_by:
@@ -83,11 +84,11 @@ used_by:
   content_type: query
   local_id: DependendQuery
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '123'
+  bookmark: '156'
   content_type: form
   local_id: ListBoxTest
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '159'
+  bookmark: '192'
   content_type: form
   local_id: Plant invoeren
 - !!python/object:odbinfo.pure.datatype.base.Identifier
@@ -95,7 +96,7 @@ used_by:
   content_type: report
   local_id: vwPlant
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '739'
+  bookmark: '772'
   content_type: textdocument
   local_id: Untitled
 uses:

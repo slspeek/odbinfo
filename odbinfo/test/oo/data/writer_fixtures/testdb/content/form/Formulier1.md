@@ -2,7 +2,7 @@
 !!python/object:odbinfo.pure.datatype.ui.Form
 height: 1
 name: Formulier1
-obj_id: '108'
+obj_id: '141'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
@@ -22,8 +22,9 @@ subforms:
     command: 'SELECT *
 
       FROM   "Person"'
+    literal_values: []
     name: Formulier.Command
-    obj_id: '111'
+    obj_id: '144'
     table_tokens: []
     tokens:
     - text: SELECT
@@ -48,12 +49,12 @@ subforms:
         bookmark: null
         content_type: table
         local_id: Person
-      obj_id: '120'
+      obj_id: '153'
       text: '"Person"'
       type: 200
   masterfields: ''
   name: Formulier
-  obj_id: '109'
+  obj_id: '142'
   subforms:
   - !!python/object:odbinfo.pure.datatype.ui.SubForm
     allowdeletes: 'true'
@@ -66,7 +67,7 @@ subforms:
     detailfields: ''
     masterfields: ''
     name: Formulier2
-    obj_id: '110'
+    obj_id: '143'
     subforms: []
 - !!python/object:odbinfo.pure.datatype.ui.SubForm
   allowdeletes: 'true'
@@ -79,7 +80,7 @@ subforms:
   detailfields: ''
   masterfields: ''
   name: Formulier 1
-  obj_id: '121'
+  obj_id: '154'
   subforms: []
 title: Formulier1
 used_by: []

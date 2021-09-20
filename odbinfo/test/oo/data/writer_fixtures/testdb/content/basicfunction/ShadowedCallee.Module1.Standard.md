@@ -4,7 +4,7 @@ library: Standard
 module: Module1
 name: ShadowedCallee
 name_token_index: 42
-obj_id: '280'
+obj_id: '313'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module

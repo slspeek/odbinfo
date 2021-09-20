@@ -7,8 +7,9 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
   command: 'SELECT *
 
     FROM   "Plant";'
+  literal_values: []
   name: ReportCommandTypeSQL.Command
-  obj_id: '232'
+  obj_id: '265'
   table_tokens: []
   tokens:
   - text: SELECT
@@ -33,7 +34,7 @@ embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
       bookmark: null
       content_type: table
       local_id: Plant
-    obj_id: '241'
+    obj_id: '274'
     text: '"Plant"'
     type: 200
   - text: ;
@@ -42,7 +43,7 @@ formulas:
 - field:[id]
 - field:[naam]
 name: ReportCommandTypeSQL
-obj_id: '231'
+obj_id: '264'
 output_type: application/vnd.oasis.opendocument.text
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null

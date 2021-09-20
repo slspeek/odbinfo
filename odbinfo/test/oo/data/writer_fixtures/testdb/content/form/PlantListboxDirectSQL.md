@@ -2,7 +2,7 @@
 !!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: PlantListboxDirectSQL
-obj_id: '177'
+obj_id: '210'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
@@ -24,7 +24,7 @@ subforms:
     inputrequired: ''
     label: id
     name: lblid
-    obj_id: '179'
+    obj_id: '212'
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control3
@@ -35,7 +35,7 @@ subforms:
     inputrequired: ''
     label: naam
     name: lblnaam
-    obj_id: '180'
+    obj_id: '213'
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control5
@@ -46,7 +46,7 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: lblRFamliyID
-    obj_id: '181'
+    obj_id: '214'
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control2
@@ -57,7 +57,7 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
-    obj_id: '182'
+    obj_id: '215'
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control4
@@ -68,7 +68,7 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
-    obj_id: '183'
+    obj_id: '216'
     type: TextField
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
@@ -79,8 +79,9 @@ subforms:
     embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
       columns: []
       command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
+      literal_values: []
       name: fmtRFamliyID.Command
-      obj_id: '185'
+      obj_id: '218'
       table_tokens: []
       tokens:
       - text: SELECT
@@ -127,7 +128,7 @@ subforms:
           bookmark: null
           content_type: table
           local_id: Family
-        obj_id: '204'
+        obj_id: '237'
         text: '"Family"'
         type: 200
     eventlisteners: []
@@ -137,7 +138,7 @@ subforms:
     listsource: SELECT "Name", "FamilyID" FROM "Family"
     listsourcetype: sql
     name: fmtRFamliyID
-    obj_id: '184'
+    obj_id: '217'
     type: ListBox
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control7
@@ -150,13 +151,13 @@ subforms:
         content_type: basicfunction
         local_id: Main.Module1.Library1
       name: form:performaction
-      obj_id: '206'
+      obj_id: '239'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''
     inputrequired: ''
     label: Say hello
     name: Knop 1
-    obj_id: '205'
+    obj_id: '238'
     type: CommandButton
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control8
@@ -167,7 +168,7 @@ subforms:
     inputrequired: ''
     label: Knop
     name: Knop 2
-    obj_id: '207'
+    obj_id: '240'
     type: CommandButton
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control9
@@ -180,7 +181,7 @@ subforms:
         content_type: basicfunction
         local_id: Main.Module1.Library1
       name: form:performaction
-      obj_id: '209'
+      obj_id: '242'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     - !!python/object:odbinfo.pure.datatype.ui.EventListener
       link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
@@ -188,13 +189,13 @@ subforms:
         content_type: basicfunction
         local_id: Main.Module1.Library1
       name: form:approveaction
-      obj_id: '210'
+      obj_id: '243'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''
     inputrequired: ''
     label: Call to script
     name: Knop 3
-    obj_id: '208'
+    obj_id: '241'
     type: CommandButton
   depth: 0
   detailfields: ''
@@ -204,7 +205,7 @@ subforms:
     local_id: Plant
   masterfields: ''
   name: MainForm
-  obj_id: '178'
+  obj_id: '211'
   subforms: []
 title: PlantListboxDirectSQL
 used_by: []

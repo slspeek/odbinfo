@@ -82,6 +82,7 @@ columns:
 command: 'SELECT *
 
   FROM   "FamilyLookup", "vwPlant", "view1"'
+literal_values: []
 name: DependendQuery
 obj_id: '45'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier

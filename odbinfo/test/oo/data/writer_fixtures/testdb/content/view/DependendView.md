@@ -17,6 +17,7 @@ columns:
 command: 'SELECT "view1"."id"
 
   FROM   "view1"'
+literal_values: []
 name: DependendView
 obj_id: '21'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier

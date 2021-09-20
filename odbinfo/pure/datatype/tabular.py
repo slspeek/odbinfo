@@ -63,6 +63,7 @@ class EmbeddedQuery(NamedNode):
 
     tokens: List[Token] = field(init=False, default_factory=list)
     table_tokens: List[Token] = field(init=False, default_factory=list)
+    literal_values: List[Token] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         self.command = format_sql(self.command)

@@ -1051,6 +1051,7 @@ query_defs:
   command: 'SELECT *
 
     FROM   "FamilyLookup", "vwPlant", "view1"'
+  literal_values: []
   name: DependendQuery
   obj_id: OBJID_NOT_SET
   parent: null
@@ -1088,12 +1089,64 @@ query_defs:
     typename: INTEGER
     writable: true
   command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
+  literal_values: []
   name: FamilyLookup
   obj_id: OBJID_NOT_SET
   parent: null
   parent_link: null
   table_tokens: []
   title: FamilyLookup
+  tokens: []
+  used_by: []
+  uses: []
+- columns:
+  - autoincrement: false
+    issigned: true
+    name: ''
+    nullable: No_Nulls
+    obj_id: OBJID_NOT_SET
+    parent: null
+    position: 1
+    precision: 10
+    readonly: true
+    scale: 0
+    tablename: ''
+    typename: INTEGER
+    writable: false
+  - autoincrement: false
+    issigned: false
+    name: ''
+    nullable: No_Nulls
+    obj_id: OBJID_NOT_SET
+    parent: null
+    position: 2
+    precision: 2147483647
+    readonly: true
+    scale: 0
+    tablename: ''
+    typename: VARCHAR
+    writable: false
+  - autoincrement: false
+    issigned: false
+    name: naam
+    nullable: Nullable
+    obj_id: OBJID_NOT_SET
+    parent: null
+    position: 3
+    precision: 2147483647
+    readonly: false
+    scale: 0
+    tablename: Plant
+    typename: VARCHAR
+    writable: true
+  command: "SELECT 1,\n       'fourtytwo',\n       \"naam\"\nFROM   \"Plant\""
+  literal_values: []
+  name: LiteralValueQuery
+  obj_id: OBJID_NOT_SET
+  parent: null
+  parent_link: null
+  table_tokens: []
+  title: LiteralValueQuery
   tokens: []
   used_by: []
   uses: []
@@ -1140,6 +1193,7 @@ query_defs:
   command: 'SELECT *
 
     FROM   "Plant"'
+  literal_values: []
   name: vwPlant
   obj_id: OBJID_NOT_SET
   parent: null
@@ -1455,6 +1509,7 @@ view_defs:
   command: 'SELECT "view1"."id"
 
     FROM   "view1"'
+  literal_values: []
   name: DependendView
   obj_id: OBJID_NOT_SET
   parent: null
@@ -1481,6 +1536,7 @@ view_defs:
   command: 'SELECT "id"
 
     FROM   "Plant"'
+  literal_values: []
   name: view1
   obj_id: OBJID_NOT_SET
   parent: null

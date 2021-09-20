@@ -14,10 +14,16 @@ class SQLListener(SQLiteParserListener):
     def __init__(self, tokens):
         super().__init__()
         self.tablenames = []
+        self.literal_values = []
         self.tokens = tokens
 
     def enterTable_name(self, ctx):
         self.tablenames.append(
+            self.tokens[ctx.start.tokenIndex]
+        )
+
+    def enterLiteral_value(self, ctx):
+        self.literal_values.append(
             self.tokens[ctx.start.tokenIndex]
         )
 
@@ -34,4 +40,4 @@ def parse(sqlcommand):
 
     walker.walk(listener, tree)
 
-    return listener.tablenames, tokens
+    return tokens, listener.tablenames, listener.literal_values

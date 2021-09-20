@@ -4,7 +4,7 @@ library: Standard
 module: Module1
 name: UsesDocumentFilename
 name_token_index: 18
-obj_id: '258'
+obj_id: '291'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
@@ -40,7 +40,7 @@ tokens:
     bookmark: null
     content_type: textdocument
     local_id: Untitled
-  obj_id: '267'
+  obj_id: '300'
   text: '"Untitled.odt"'
   type: 172
 - index: 25

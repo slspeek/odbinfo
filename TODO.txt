@@ -1,3 +1,13 @@
+Testing
+-------
+Makefile: Unit test coverage goal
+Should Unittests unpickle fixtures?
+More serious unit testing, use factory_boy
+Unittests for reader can use small xml-fragments
+make e2e test (BaseDocumenter2dot example)
+test_basic_parser_slow.py: parametrize and regression
+
+
 Relevant function filter
 - function that uses something else than a basicfunction
 - function that is used by something else than a basicfunction
@@ -9,16 +19,10 @@ e.g. /#301,450,900 or /?select=300,304,600
 
 templates:
 - Form: controls linked to sun API docs.
-- sql color highlighting, add class attribute to Token
-  should have its part in processor/parser
-  - probably in parser (see grammar)
+- sql color highlighting
+  - columnnames 
 
 make upgrade dependencies (20210813 done)
-
-Extra graphs:
-  - for table, queries, Views
-  - for basicfunction, library, module
-  - object with direct uses and used_bies, and all_objects (respecting excludes)
 
 type file based MetaData, TextDocument
 - functionality to include the file with downloadable link (to be configurated)
@@ -30,20 +34,10 @@ Makefile: cleanup minimal before distribution
 More of pathlib instead of os.path
 
 Demonstration database Herbarium
--------------------------------
-Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,
-Attributes, Observations, Locations
-Macros that open browser on interesting Plant sites
-
-
-Testing
--------
-Makefile: Unit test coverage goal
-Should Unittests unpickle fixtures?
-More serious unit testing, use factory_boy
-Unittests for reader can use small xml-fragments
-make e2e test (BaseDocumenter2dot example)
-test_basic_parser_slow.py: parametrize and regression
+- Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,
+  Attributes, Observations, Locations
+  Edibility (pfaf.org)
+  Macros that open browser on interesting Plant sites
 
 
 Configuration
@@ -54,23 +48,28 @@ See BaseDocumenter config too
 
 
 GUI
----
-Settings dialog
-Progress dialog
-print --> logger.info
-logging window (sfriederichs.github.io/how-to/python/gui/logging/2017/12/21/Python-GUI-Logging.html)
+- Settings dialog
+- Progress dialog
+- print --> logger.info
+  logging window (sfriederichs.github.io/how-to/python/gui/logging/2017/12/21/Python-GUI-Logging.html)
 
 
 installation check
-------------------
-UI and suggestions
+- UI and suggestions
 
 better description of the extension
 
 update minimal theme (20210703 ok)
 
+#################################################################################
+############################## release 0.1 ######################################
+#################################################################################
 Later
 -----
+Extra graphs:
+  - for table, queries, Views
+  - for basicfunction, library, module
+  - object with direct uses and used_bies, and all_objects (respecting excludes)
 look at Identifier construction at dependency.py:85
 bypass wget --convert-links with a rewrite in python of public/
 - level 0 strip leading /
@@ -83,6 +82,7 @@ caching of query parsing
 
 direct sql queries must be transformed to Query object
 Threads: writer, parser?
+https://docs.python.org/3.7/library/multiprocessing.html
 i18n gettext in python, hugo {{ T id }}
 make typing more complete (lot of work)
 errors in parser need improvement

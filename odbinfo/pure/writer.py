@@ -110,6 +110,9 @@ def _cleanup_tokens(metadata):
             del token.title
             token.link = None
             del token.link
+        if not token.cls:
+            token.cls = None
+            del token.cls
 
     def replace_qtoken(token: Token) -> Dict:
         del token.index

@@ -30,14 +30,14 @@ def test_parse_select():
 
 def test_parse_error():
     " call parse select"
-    assert len(parse('select * fom "table"')[0]) == 0
+    assert len(parse('select * fom "table"')[1]) == 0
 
 
 @pytest.mark.parametrize("specifier", ["", "both", "leading", "trailing"])
 def test_parse_trim(specifier):
     " call parse trim(from 'foo')"
     assert len(
-        parse(f'select trim({specifier} from "name") from "table"')[0]) == 1
+        parse(f'select trim({specifier} from "name") from "table"')[1]) == 1
 
 
 @pytest.mark.parametrize("specifier", ["year", "month", "day",
@@ -45,17 +45,17 @@ def test_parse_trim(specifier):
 def test_parse_extract(specifier):
     " call parse extract(from)"
     assert len(
-        parse(f'select extract({specifier} from "datefield") from "table"')[0]) == 1
+        parse(f'select extract({specifier} from "datefield") from "table"')[1]) == 1
 
 
 def test_parse_position():
     "position(in)"
     assert len(
-        parse('select position("foo" in "foobar") from "table"')[0]) == 1
+        parse('select position("foo" in "foobar") from "table"')[1]) == 1
 
 
 @pytest.mark.parametrize("forclause", ["", "FOR 3"])
 def test_parse_substring(forclause):
     "substring(from for)"
     assert len(
-        parse(f'select substring("name" FROM 1 {forclause}) from "table"')[0]) == 1
+        parse(f'select substring("name" FROM 1 {forclause}) from "table"')[1]) == 1

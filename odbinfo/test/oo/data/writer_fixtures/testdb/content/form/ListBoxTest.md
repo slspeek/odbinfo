@@ -2,7 +2,7 @@
 !!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: ListBoxTest
-obj_id: '122'
+obj_id: '155'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata
@@ -24,7 +24,7 @@ subforms:
     inputrequired: ''
     label: id
     name: id label
-    obj_id: '124'
+    obj_id: '157'
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control3
@@ -35,7 +35,7 @@ subforms:
     inputrequired: ''
     label: naam
     name: naam label
-    obj_id: '125'
+    obj_id: '158'
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control5
@@ -46,7 +46,7 @@ subforms:
     inputrequired: ''
     label: RFamliyID
     name: RFamliyID label
-    obj_id: '126'
+    obj_id: '159'
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
@@ -57,8 +57,9 @@ subforms:
     embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
       columns: []
       command: "SELECT \"id\",\n       \"naam\"\nFROM   \"Plant\""
+      literal_values: []
       name: id.Command
-      obj_id: '128'
+      obj_id: '161'
       table_tokens: []
       tokens:
       - text: SELECT
@@ -105,7 +106,7 @@ subforms:
           bookmark: null
           content_type: table
           local_id: Plant
-        obj_id: '147'
+        obj_id: '180'
         text: '"Plant"'
         type: 200
     eventlisteners: []
@@ -115,7 +116,7 @@ subforms:
     listsource: select "id", "naam" from "Plant"
     listsourcetype: sql-pass-through
     name: id
-    obj_id: '127'
+    obj_id: '160'
     type: ListBox
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
@@ -134,7 +135,7 @@ subforms:
     listsource: Plant
     listsourcetype: table-fields
     name: naam
-    obj_id: '148'
+    obj_id: '181'
     type: ListBox
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
@@ -149,7 +150,7 @@ subforms:
     listsource: 1, 2, 3
     listsourcetype: valuelist
     name: ListBoxValuesRFamliyID
-    obj_id: '149'
+    obj_id: '182'
     type: ListBox
   depth: 0
   detailfields: ''
@@ -159,7 +160,7 @@ subforms:
     local_id: vwPlant
   masterfields: ''
   name: MainForm
-  obj_id: '123'
+  obj_id: '156'
   subforms: []
 title: ListBoxTest
 used_by: []

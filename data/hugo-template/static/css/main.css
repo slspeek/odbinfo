@@ -111,3 +111,7 @@ footer {
 .stringlit {
   color: yellow;
 }
+
+.literalvalue {
+  color: lightgreen;
+}

@@ -17,6 +17,7 @@ columns:
 command: 'SELECT "id"
 
   FROM   "Plant"'
+literal_values: []
 name: view1
 obj_id: '34'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
@@ -65,11 +66,11 @@ used_by:
   content_type: query
   local_id: DependendQuery
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '227'
+  bookmark: '260'
   content_type: form
   local_id: view1
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '526'
+  bookmark: '559'
   content_type: basicfunction
   local_id: ReferToView.Module1.Library1
 uses:

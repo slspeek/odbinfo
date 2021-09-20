@@ -45,7 +45,10 @@ def _process_libraries(libraries: Sequence[Library]) -> None:
 
 @timed("Parse query", indent=6, arg=0)
 def _process_query(query: EmbeddedQuery) -> None:
-    query.table_tokens, query.tokens = parse(query.command)
+    query.tokens, query.table_tokens, query.literal_values = parse(
+        query.command)
+    for littoken in query.literal_values:
+        littoken.cls = "literalvalue"  # typing: nocheck
 
 
 def set_depth(depth: int, subform: SubForm) -> None:

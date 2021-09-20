@@ -148,6 +148,7 @@ class Token(User, Node):
     type: int
     index: int
     hidden: bool
+    cls: Optional[str] = field(init=False, default=None)
 
     # def __post_init__(self):
     #     self.title = f"token{self.index}"

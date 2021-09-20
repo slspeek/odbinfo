@@ -28,6 +28,7 @@ columns:
   typename: INTEGER
   writable: true
 command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
+literal_values: []
 name: FamilyLookup
 obj_id: '67'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
@@ -90,11 +91,11 @@ used_by:
   content_type: query
   local_id: DependendQuery
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '170'
+  bookmark: '203'
   content_type: form
   local_id: PlantListbox
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '538'
+  bookmark: '571'
   content_type: basicfunction
   local_id: ReferToQuery.Module1.Library1
 uses:

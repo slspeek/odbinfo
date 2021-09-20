@@ -4,7 +4,7 @@ library: Standard
 module: Module1
 name: CalleeOtherLib
 name_token_index: 31
-obj_id: '242'
+obj_id: '270'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
@@ -42,11 +42,11 @@ tokens:
   type: 44
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '442'
+  bookmark: '470'
   content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '448'
+  bookmark: '476'
   content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
 uses: []

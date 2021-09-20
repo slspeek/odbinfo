@@ -56,7 +56,7 @@
         <td colspan={{ (add 1 $depth) }}></td>
         <td>{{ .listsourcetype }}</td>
         <td colspan=3>
-        {{ if (eq .listsourcetype "sql") }} <!-- TODO type rawsql -->
+        {{ if (or (eq .listsourcetype "sql") (eq .listsourcetype "sql-pass-through")) }} 
           {{ partial "render-query-command" (dict "context" $context "query" .embedded_query )}}
         {{ else }}
           {{ partial "render-linked-string" (dict "text" .listsource "link" .link "context" $context) }}

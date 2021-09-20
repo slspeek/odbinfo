@@ -272,6 +272,13 @@ def _read_control(data) -> Control:
 
 
 def _read_listbox(data) -> ListBox:
+    listsourcetype = data.get("@form:list-source-type", "valuelist")
+    listsource = data.get("@form:list-source")
+    if listsourcetype == "valuelist":
+        options = data['form:option']
+        if not isinstance(options, list):
+            options = [options]
+        listsource = ", ".join(map(lambda x: x['@form:value'], options))
     return\
         ListBox(data.get("@form:name", ""),
                 data.get("@form:id", ""),
@@ -284,8 +291,8 @@ def _read_listbox(data) -> ListBox:
                 _read_eventlisteners(data),
                 data.get("@form:bound-column"),
                 data.get("@form:dropdown"),
-                data.get("@form:list-source-type"),
-                data.get("@form:list-source")
+                listsourcetype,
+                listsource
                 )
 
 

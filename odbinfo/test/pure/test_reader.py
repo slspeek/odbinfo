@@ -2,13 +2,38 @@
 import json
 from os import path
 
+import xmltodict
+
 from odbinfo.pure.datatype.config import TextDocumentsConfig
-from odbinfo.pure.reader import (_collect_attribute, _reports, _text_documents,
-                                 read_forms, read_libraries,
+from odbinfo.pure.reader import (_collect_attribute, _read_listbox, _reports,
+                                 _text_documents, read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
 from odbinfo.test.pure.fixtures import empty_odbzip, odbzip
 from odbinfo.test.resource import DEFAULT_TESTDB
+
+LISTBOX_VALUELIST = """
+<form:listbox form:name="ListBoxValuesRFamliyID" form:control-implementation="ooo:com.sun.star.form.component.ListBox" xml:id="control6" form:id="control6" form:dropdown="true" form:data-field="RFamliyID" form:input-required="true" form:bound-column="1">
+<form:properties>
+<form:property form:property-name="ControlTypeinMSO" office:value-type="float" office:value="0"/>
+<form:property form:property-name="DefaultControl" office:value-type="string" office:string-value="com.sun.star.form.control.ListBox"/>
+<form:property form:property-name="MouseWheelBehavior" office:value-type="float" office:value="0"/>
+<form:property form:property-name="ObjIDinMSO" office:value-type="float" office:value="65535"/>
+<form:list-property form:property-name="TypedItemList" office:value-type="float"/>
+</form:properties>
+<form:option form:value="1"/>
+<form:option form:value="2"/>
+<form:option form:value="3"/>
+</form:listbox>
+"""
+
+
+def test_read_listbox_valuelist():
+    "test listbox with valuelist"
+    data = xmltodict.parse(LISTBOX_VALUELIST)["form:listbox"]
+    listbox = _read_listbox(data)
+    assert listbox.listsourcetype == "valuelist"
+    assert listbox.listsource == "1, 2, 3"
 
 
 def test_reports(odbzip):

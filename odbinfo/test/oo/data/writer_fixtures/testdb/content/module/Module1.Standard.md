@@ -6,7 +6,7 @@ callables:
   module: Module1
   name: UsesDocument
   name_token_index: 5
-  obj_id: '218'
+  obj_id: '246'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: module
@@ -24,7 +24,7 @@ callables:
   module: Module1
   name: UsesDocumentFilename
   name_token_index: 18
-  obj_id: '230'
+  obj_id: '258'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: module
@@ -42,7 +42,7 @@ callables:
   module: Module1
   name: CalleeOtherLib
   name_token_index: 31
-  obj_id: '242'
+  obj_id: '270'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: module
@@ -51,11 +51,11 @@ callables:
   tokens: []
   used_by:
   - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '442'
+    bookmark: '470'
     content_type: basicfunction
     local_id: CallerOtherLib.Module1.Library1
   - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '448'
+    bookmark: '476'
     content_type: basicfunction
     local_id: CallerOtherLib.Module1.Library1
   uses: []
@@ -64,7 +64,7 @@ callables:
   module: Module1
   name: ShadowedCallee
   name_token_index: 42
-  obj_id: '252'
+  obj_id: '280'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: module
@@ -78,7 +78,7 @@ callables:
   module: Module1
   name: AddOne
   name_token_index: 55
-  obj_id: '264'
+  obj_id: '292'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: module
@@ -95,7 +95,7 @@ name_indexes:
 - 31
 - 42
 - 55
-obj_id: '217'
+obj_id: '245'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: library
@@ -126,7 +126,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: UsesDocument.Module1.Standard
-  obj_id: '290'
+  obj_id: '318'
   text: UsesDocument
   type: 181
 - index: 6
@@ -146,7 +146,7 @@ tokens:
   type: 185
 - index: 11
   link: *id001
-  obj_id: '296'
+  obj_id: '324'
   text: '"Untitled"'
   type: 172
 - index: 12
@@ -178,7 +178,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: UsesDocumentFilename.Module1.Standard
-  obj_id: '303'
+  obj_id: '331'
   text: UsesDocumentFilename
   type: 181
 - index: 19
@@ -198,7 +198,7 @@ tokens:
   type: 185
 - index: 24
   link: *id002
-  obj_id: '309'
+  obj_id: '337'
   text: '"Untitled.odt"'
   type: 172
 - index: 25
@@ -230,7 +230,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeOtherLib.Module1.Standard
-  obj_id: '316'
+  obj_id: '344'
   text: CalleeOtherLib
   type: 181
 - index: 32
@@ -274,7 +274,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: ShadowedCallee.Module1.Standard
-  obj_id: '327'
+  obj_id: '355'
   text: ShadowedCallee
   type: 181
 - index: 43
@@ -324,7 +324,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: AddOne.Module1.Standard
-  obj_id: '340'
+  obj_id: '368'
   text: AddOne
   type: 181
 - index: 56

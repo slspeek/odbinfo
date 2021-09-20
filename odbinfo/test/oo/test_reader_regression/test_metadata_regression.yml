@@ -116,6 +116,114 @@ form_defs:
   used_by: []
   uses: []
 - height: null
+  name: ListBoxTest
+  obj_id: OBJID_NOT_SET
+  parent: null
+  parent_link: null
+  subforms:
+  - allowdeletes: 'true'
+    allowinserts: 'true'
+    allowupdates: 'true'
+    command: vwPlant
+    commandtype: query
+    controls:
+    - controlid: control1
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control2
+      inputrequired: ''
+      label: id
+      name: id label
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: naam label
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: RFamliyID label
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
+    - boundcolumn: '1'
+      controlid: control2
+      convertemptytonull: ''
+      datafield: id
+      dropdown: 'true'
+      embedded_query: null
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      link: null
+      listsource: select "id", "naam" from "Plant"
+      listsourcetype: sql-pass-through
+      name: id
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.ListBox
+    - boundcolumn: '1'
+      controlid: control4
+      convertemptytonull: ''
+      datafield: naam
+      dropdown: 'true'
+      embedded_query: null
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      link: null
+      listsource: Plant
+      listsourcetype: table-fields
+      name: naam
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.ListBox
+    - boundcolumn: '1'
+      controlid: control6
+      convertemptytonull: ''
+      datafield: RFamliyID
+      dropdown: 'true'
+      embedded_query: null
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'true'
+      label: ''
+      link: null
+      listsource: 1, 2, 3
+      listsourcetype: valuelist
+      name: ListBoxValuesRFamliyID
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.ListBox
+    depth: null
+    detailfields: ''
+    embedded_query: null
+    link: null
+    masterfields: ''
+    name: MainForm
+    obj_id: OBJID_NOT_SET
+    parent: null
+    subforms: []
+  title: ListBoxTest
+  used_by: []
+  uses: []
+- height: null
   name: Plant
   obj_id: OBJID_NOT_SET
   parent: null

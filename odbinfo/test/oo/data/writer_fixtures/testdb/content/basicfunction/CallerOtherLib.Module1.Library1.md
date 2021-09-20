@@ -4,7 +4,7 @@ library: Library1
 module: Module1
 name: CallerOtherLib
 name_token_index: 61
-obj_id: '435'
+obj_id: '463'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
@@ -34,7 +34,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeOtherLib.Module1.Standard
-  obj_id: '442'
+  obj_id: '470'
   text: CalleeOtherLib
   type: 181
 - index: 66
@@ -57,7 +57,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeOtherLib.Module1.Standard
-  obj_id: '448'
+  obj_id: '476'
   text: CalleeOtherLib
   type: 181
 - index: 72

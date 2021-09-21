@@ -26,6 +26,7 @@ def test_clean_old_site(tmpdir):
     clean_old_site(Path(tmpdir), "exampledb")
 
 
+@pytest.mark.slow
 def test_write_graphs(tmpdir, monkeypatch):
     "test write graphs"
     monkeypatch.chdir(tmpdir)

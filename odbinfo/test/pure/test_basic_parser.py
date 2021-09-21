@@ -1,6 +1,6 @@
-# pylint: disable=too-many-lines
-# pylint: disable=protected-access
 " parser tests "
+import pytest
+
 from odbinfo.pure.datatype import BasicFunction
 from odbinfo.pure.parser.basic import (BodyScanner, ModuleScanner,
                                        all_functioncalls, allmacros,
@@ -27,6 +27,7 @@ def bodyscanner(source: str) -> BodyScanner:
     return BodyScanner(tokens)
 
 
+@pytest.mark.slow
 def test_parse():
     " call parse "
     callables = parse("""
@@ -53,6 +54,7 @@ Sub Foo () {BODY} end sub
 """
 
 
+@pytest.mark.slow
 def test_parse_select():
     " call parse select"
     callables = parse(SELECT)
@@ -71,6 +73,7 @@ end sub
 rem end of file"""
 
 
+@pytest.mark.slow
 def test_allmacros():
     " test allmacros"
     scanner = module_scanner(TOKENSOURCECODE)

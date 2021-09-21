@@ -1,9 +1,11 @@
+get_commandtype, get_command --> @properties
+
 Testing
 -------
-Makefile: Unit test coverage goal
-Should Unittests unpickle fixtures?
+Replace test that test nothing, by meaningfull unit tests
 More serious unit testing, use factory_boy
 Unittests for reader can use small xml-fragments
+unit test coverage 90%
 make e2e test (BaseDocumenter2dot example)
 test_basic_parser_slow.py: parametrize and regression
 
@@ -20,7 +22,7 @@ e.g. /#301,450,900 or /?select=300,304,600
 templates:
 - Form: controls linked to sun API docs.
 - sql color highlighting
-  - columnnames 
+  - columnnames
 
 make upgrade dependencies (20210813 done)
 
@@ -66,10 +68,10 @@ update minimal theme (20210703 ok)
 #################################################################################
 Later
 -----
-Extra graphs:
+Extra graphs: (and link all these graphs)
   - for table, queries, Views
   - for basicfunction, library, module
-  - object with direct uses and used_bies, and all_objects (respecting excludes)
+  - WebPage object with direct uses and used_bies, and all_objects (respecting excludes)
 look at Identifier construction at dependency.py:85
 bypass wget --convert-links with a rewrite in python of public/
 - level 0 strip leading /

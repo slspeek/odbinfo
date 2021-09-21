@@ -2,6 +2,7 @@
 import json
 from os import path
 
+import pytest
 import xmltodict
 
 from odbinfo.pure.datatype.config import TextDocumentsConfig
@@ -36,6 +37,7 @@ def test_read_listbox_valuelist():
     assert listbox.listsource == "1, 2, 3"
 
 
+@pytest.mark.slow
 def test_reports(odbzip):
     " _reports  "
     info = _reports(odbzip)
@@ -45,6 +47,7 @@ def test_reports(odbzip):
         # )
 
 
+@pytest.mark.slow
 def test_reports_empty(empty_odbzip):
     " _reports  "
     info = _reports(empty_odbzip)
@@ -54,31 +57,37 @@ def test_reports_empty(empty_odbzip):
         # )
 
 
+@pytest.mark.slow
 def test_libraries_empty(empty_odbzip):
     " no libraries  "
     read_libraries(empty_odbzip)
 
 
+@pytest.mark.slow
 def test_forms_empty(empty_odbzip):
     " no forms  "
     read_forms(empty_odbzip)
 
 
+@pytest.mark.slow
 def test_libraries(odbzip):
     " libraries "
     read_libraries(odbzip)
 
 
+@pytest.mark.slow
 def test_read_reports(odbzip):
     " reports "
     read_reports(odbzip)
 
 
+@pytest.mark.slow
 def test_read_forms(odbzip):
     " forms "
     read_forms(odbzip)
 
 
+@pytest.mark.slow
 def test_pylibraries(odbzip):
     " libraries "
     libs = read_python_libraries(odbzip)
@@ -106,12 +115,14 @@ def test_collect_element():
     assert _collect_attribute(data, "foo") == [{}]
 
 
+@pytest.mark.slow
 def test_text_document(shared_datadir):
     " find odts "
     directory = (shared_datadir / DEFAULT_TESTDB).parent
     assert len(_text_documents(directory)) == 3
 
 
+@pytest.mark.slow
 def test_read_text_documents(shared_datadir):
     " find odts "
     directory = path.dirname(shared_datadir / DEFAULT_TESTDB)

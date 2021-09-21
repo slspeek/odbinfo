@@ -3,11 +3,14 @@ import dataclasses
 import os
 import pickle
 
+import pytest
+
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.processor import process_metadata
 from odbinfo.test.pure.fixtures import empty_metadata_loader, metadata_loader
 
 
+@pytest.mark.slow
 def test_processor_regression(metadata_loader, data_regression, file_regression,
                               benchmark):
     " regression test "
@@ -16,6 +19,7 @@ def test_processor_regression(metadata_loader, data_regression, file_regression,
                       data_regression, file_regression, benchmark)
 
 
+@pytest.mark.slow
 def test_processor_regression_empty(empty_metadata_loader, data_regression,
                                     file_regression, benchmark):
     " regression test on empty database"

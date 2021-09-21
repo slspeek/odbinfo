@@ -60,6 +60,10 @@ coverage: clean prepare
 	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html -m "not veryslow" $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
+unitcoverage:
+	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html:unitcov -m "not slow" $(puretestloc)
+	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser unitcov/index.html
+
 itest: clean prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable -m "not veryslow" $(testloc)
 
@@ -135,7 +139,6 @@ clean:
 	-@if [ -f logje ]; then rm logje; fi
 	-@find . -type d -name __pycache__ -exec rm -rf '{}' \;
 	-@rm -rf $(target)
-	#-@rm -rf src/test/resources/output_dir/graphs
 	@echo $(target) was removed
 
 open_shell: prepare

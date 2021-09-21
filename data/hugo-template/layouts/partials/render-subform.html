@@ -21,12 +21,12 @@
     <td colspan={{$depth}}></td>
     {{ end }}
     <td>{{ .subform.name }}</td>
-    {{ if (eq .subform.commandtype "command")}}
+    {{ if (eq .subform.cmdtype "command")}}
      <td>{{ partial "render-query-command" (dict "context" $context "query" .subform.embedded_query )}} </td>
     {{else}}
-    <td>{{ partial "render-linked-string" (dict "context" $context "text" .subform.command "link" .subform.link) }}</td>
+    <td>{{ partial "render-linked-string" (dict "context" $context "text" .subform.cmd "link" .subform.link) }}</td>
     {{end}}
-    <td>{{ .subform.commandtype }}</td>
+    <td>{{ .subform.cmdtype }}</td>
     <td>{{ .subform.allowdeletes }}</td>
     <td>{{ .subform.allowinserts }}</td>
     <td>{{ .subform.allowupdates }}</td>
@@ -56,7 +56,7 @@
         <td colspan={{ (add 1 $depth) }}></td>
         <td>{{ .listsourcetype }}</td>
         <td colspan=3>
-        {{ if (or (eq .listsourcetype "sql") (eq .listsourcetype "sql-pass-through")) }} 
+        {{ if (or (eq .listsourcetype "sql") (eq .listsourcetype "sql-pass-through")) }}
           {{ partial "render-query-command" (dict "context" $context "query" .embedded_query )}}
         {{ else }}
           {{ partial "render-linked-string" (dict "text" .listsource "link" .link "context" $context) }}

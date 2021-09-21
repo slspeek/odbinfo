@@ -14,26 +14,30 @@ class AbstractCommander(User, ABC):
     # Only if commandtype in ["command", "sql", "sqlpassthrough"]
     embedded_query: Optional[EmbeddedQuery] = field(init=False, default=None)
 
+    @property
     @abstractmethod
-    def get_command(self):
+    def command(self):
         "returns the command str"
 
+    @property
     @abstractmethod
-    def get_commandtype(self):
+    def commandtype(self):
         "returns the commandtype"
 
 
 @dataclass
 class Commander(AbstractCommander):
     " Has a command and commandtype "
-    command: str
-    commandtype: str
+    cmd: str
+    cmdtype: str
 
-    def get_command(self):
-        return self.command
+    @property
+    def command(self):
+        return self.cmd
 
-    def get_commandtype(self):
-        return self.commandtype
+    @property
+    def commandtype(self):
+        return self.cmdtype
 
 
 @dataclass
@@ -96,10 +100,12 @@ class ListBox(AbstractCommander, Control):
     listsourcetype: str
     listsource: str
 
-    def get_command(self):
+    @property
+    def command(self):
         return self.listsource
 
-    def get_commandtype(self):
+    @property
+    def commandtype(self):
         return self.listsourcetype
 
     def children(self):

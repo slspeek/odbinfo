@@ -1,7 +1,7 @@
 ---
 !!python/object:odbinfo.pure.datatype.ui.Report
-command: select * from "Plant";
-commandtype: command
+cmd: select * from "Plant";
+cmdtype: command
 embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
   columns: []
   command: 'SELECT *

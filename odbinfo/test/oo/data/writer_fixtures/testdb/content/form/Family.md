@@ -12,8 +12,8 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: Family
-  commandtype: table
+  cmd: Family
+  cmdtype: table
   controls:
   - !!python/object:odbinfo.pure.datatype.ui.Grid
     columns:

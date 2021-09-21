@@ -1,7 +1,7 @@
 ---
 !!python/object:odbinfo.pure.datatype.ui.Report
-command: vwPlant
-commandtype: query
+cmd: vwPlant
+cmdtype: query
 formulas:
 - field:[id]
 - field:[naam]

@@ -256,9 +256,9 @@ def search_deps_in_commander(dataobjects: Sequence[WebPage],
     def find_deps_in_commander(commander: Commander) -> None:
         " find dependency uses in `report` "
         def match_one_dep(dependency: WebPage) -> None:
-            if (not commander.get_commandtype() == "command"  # no matching of embedded
+            if (not commander.commandtype == "command"  # no matching of embedded
                 # queries (COMMAND)
-                    and dependency.users_match(commander.get_command())):
+                    and dependency.users_match(commander.command)):
                 commander.link = dependency.identifier
         for obj in dataobjects:
             match_one_dep(obj)

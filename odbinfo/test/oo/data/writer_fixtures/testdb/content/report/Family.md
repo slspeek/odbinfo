@@ -1,7 +1,7 @@
 ---
 !!python/object:odbinfo.pure.datatype.ui.Report
-command: Family
-commandtype: table
+cmd: Family
+cmdtype: table
 formulas:
 - field:[FamlilyID]
 - field:[Name]

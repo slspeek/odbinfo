@@ -12,8 +12,8 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: view1
-  commandtype: table
+  cmd: view1
+  cmdtype: table
   controls:
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control1

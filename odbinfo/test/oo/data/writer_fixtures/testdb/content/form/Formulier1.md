@@ -12,8 +12,8 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: select * from "Person"
-  commandtype: command
+  cmd: select * from "Person"
+  cmdtype: command
   controls: []
   depth: 0
   detailfields: ''
@@ -60,8 +60,8 @@ subforms:
     allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: ''
-    commandtype: table
+    cmd: ''
+    cmdtype: table
     controls: []
     depth: 1
     detailfields: ''
@@ -73,8 +73,8 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: ''
-  commandtype: table
+  cmd: ''
+  cmdtype: table
   controls: []
   depth: 0
   detailfields: ''

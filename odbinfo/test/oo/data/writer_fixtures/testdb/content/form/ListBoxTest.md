@@ -12,8 +12,8 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: vwPlant
-  commandtype: query
+  cmd: vwPlant
+  cmdtype: query
   controls:
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control1

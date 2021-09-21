@@ -1,13 +1,11 @@
-get_commandtype, get_command --> @properties
-
 Testing
 -------
 Replace test that test nothing, by meaningfull unit tests
 More serious unit testing, use factory_boy
 Unittests for reader can use small xml-fragments
 unit test coverage 90%
-make e2e test (BaseDocumenter2dot example)
 test_basic_parser_slow.py: parametrize and regression
+make e2e test (BaseDocumenter2dot example)
 
 
 Relevant function filter
@@ -27,7 +25,7 @@ templates:
 make upgrade dependencies (20210813 done)
 
 type file based MetaData, TextDocument
-- functionality to include the file with downloadable link (to be configurated)
+- functionality to include the file with downloadable link (if configurated so)
 
 database (driver) information retrieval
 

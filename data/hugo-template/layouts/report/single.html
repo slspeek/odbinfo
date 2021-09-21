@@ -8,16 +8,16 @@
           <tr>
             <th>Command</th>
             <td  id={{ .Params.obj_id }}>
-              {{ if (eq .Params.commandtype "command") }}
+              {{ if (eq .Params.cmdtype "command") }}
                 {{ partial "render-query-command" (dict "context" . "query" .Params.embedded_query )}}
               {{ else }}
-                {{ partial "render-linked-string" (dict "text" .Params.command "link" .Params.link "context" .) }}
+                {{ partial "render-linked-string" (dict "text" .Params.cmd "link" .Params.link "context" .) }}
               {{ end }}
             </td>
           </tr>
           <tr>
             <th>Command type</th>
-            <td>{{ .Params.commandtype }}</td>
+            <td>{{ .Params.cmdtype }}</td>
           </tr>
           <tr>
             <th>Output type</th>

@@ -12,8 +12,8 @@ subforms:
   allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
-  command: Plant
-  commandtype: table
+  cmd: Plant
+  cmdtype: table
   controls:
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control7
@@ -95,8 +95,8 @@ subforms:
     allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Family
-    commandtype: table
+    cmd: Family
+    cmdtype: table
     controls:
     - !!python/object:odbinfo.pure.datatype.ui.Control
       controlid: control1

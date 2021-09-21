@@ -11,8 +11,8 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Family
-    commandtype: table
+    cmd: Family
+    cmdtype: table
     controls:
     - columns:
       - controlid: control2
@@ -82,8 +82,8 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: select * from "Person"
-    commandtype: command
+    cmd: select * from "Person"
+    cmdtype: command
     controls: []
     depth: 0
     detailfields: ''
@@ -195,8 +195,8 @@ form_defs:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command: ''
-      commandtype: table
+      cmd: ''
+      cmdtype: table
       controls: []
       depth: 1
       detailfields: ''
@@ -210,8 +210,8 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: ''
-    commandtype: table
+    cmd: ''
+    cmdtype: table
     controls: []
     depth: 0
     detailfields: ''
@@ -240,8 +240,8 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: vwPlant
-    commandtype: query
+    cmd: vwPlant
+    cmdtype: query
     controls:
     - controlid: control1
       convertemptytonull: ''
@@ -544,8 +544,8 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
-    commandtype: table
+    cmd: Plant
+    cmdtype: table
     controls:
     - controlid: control1
       convertemptytonull: ''
@@ -643,8 +643,8 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: vwPlant
-    commandtype: query
+    cmd: vwPlant
+    cmdtype: query
     controls:
     - columns:
       - controlid: control2
@@ -703,8 +703,8 @@ form_defs:
   - allowdeletes: 'false'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
-    commandtype: table
+    cmd: Plant
+    cmdtype: table
     controls:
     - controlid: control1
       convertemptytonull: ''
@@ -880,8 +880,8 @@ form_defs:
   - allowdeletes: 'false'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
-    commandtype: table
+    cmd: Plant
+    cmdtype: table
     controls:
     - controlid: control1
       convertemptytonull: ''
@@ -1232,8 +1232,8 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: Plant
-    commandtype: table
+    cmd: Plant
+    cmdtype: table
     controls:
     - controlid: control7
       convertemptytonull: ''
@@ -1316,8 +1316,8 @@ form_defs:
     - allowdeletes: 'true'
       allowinserts: 'true'
       allowupdates: 'true'
-      command: Family
-      commandtype: table
+      cmd: Family
+      cmdtype: table
       controls:
       - controlid: control1
         convertemptytonull: ''
@@ -1418,8 +1418,8 @@ form_defs:
   - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
-    command: view1
-    commandtype: table
+    cmd: view1
+    cmdtype: table
     controls:
     - controlid: control1
       convertemptytonull: ''
@@ -7983,8 +7983,8 @@ query_defs:
     content_type: table
     local_id: Plant
 report_defs:
-- command: Family
-  commandtype: table
+- cmd: Family
+  cmdtype: table
   embedded_query: null
   formulas:
   - field:[FamlilyID]
@@ -8008,8 +8008,8 @@ report_defs:
   - bookmark: null
     content_type: table
     local_id: Family
-- command: select * from "Plant";
-  commandtype: command
+- cmd: select * from "Plant";
+  cmdtype: command
   embedded_query:
     columns: []
     command: 'SELECT *
@@ -8135,8 +8135,8 @@ report_defs:
   - bookmark: null
     content_type: table
     local_id: Plant
-- command: vwPlant
-  commandtype: query
+- cmd: vwPlant
+  cmdtype: query
   embedded_query: null
   formulas:
   - field:[id]

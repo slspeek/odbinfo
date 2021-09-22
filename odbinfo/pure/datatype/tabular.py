@@ -79,7 +79,7 @@ class Query(EmbeddedQuery, WebPageWithUses):
     def __post_init__(self):
         super().__post_init__()
         self.title = self.name
-        self.command = format_sql(self.command)
+        # self.command = format_sql(self.command)
 
 
 @dataclass

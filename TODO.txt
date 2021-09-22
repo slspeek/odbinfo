@@ -12,6 +12,8 @@ Elaborate module doc strings
 Testing
 -------
 Replace test that test nothing, by meaningfull unit tests
+test/pure/datatype/test_base.py
+- get_identifier needs test for case with no webpage ancestor
 test/oo/test_reader_regression.py
 test/pure/test_processor_regression.py
 test/pure/test_datatype.py
@@ -28,7 +30,6 @@ test/pure/test_writer_regression.py
 test/pure/test_scanner.py
 test/pure/test_basic_parser.py
 test/pure/datatype/test_metadata.py
-test/pure/datatype/test_base.py
 test/pure/datatype/test_ui.py
 
 More serious unit testing, use factory_boy

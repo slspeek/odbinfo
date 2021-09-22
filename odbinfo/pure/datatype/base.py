@@ -1,7 +1,7 @@
 " super classes of the datatypes and reference types "
 from dataclasses import dataclass, field
 from itertools import chain
-from typing import List, Optional
+from typing import List, Optional, cast
 
 
 @dataclass(frozen=True)
@@ -19,9 +19,8 @@ def content_type(clazz) -> str:
 
 @dataclass
 class Node:
-    " DataObject without children "
+    " superclass of OO-objects representations "
     obj_id: str = field(init=False, default="OBJID_NOT_SET")
-    # title: str = field(init=False, default="TITLE_NOT_SET")
     parent: Optional["NamedNode"] = field(init=False, default=None, repr=False)
 
     def content_type(self) -> str:
@@ -52,12 +51,6 @@ class NamedNode(Node):
     "Has a name"
     name: str
 
-    # def __post_init__(self):
-    #     self.title = self.name
-    #
-    # def set_title(self):
-    #     " sets a unique title "
-
     def users_match(self, username: str) -> bool:
         " determines whether `username` matches this object "
         return self.name == username
@@ -74,12 +67,6 @@ class Usable:
     " Mixin for Nodes that can be used by other nodes "
     used_by: List['Identifier'] = field(
         init=False, repr=False, default_factory=list)
-
-    # def users_match(self, username: str) -> bool:
-    #     " determines whether `username` (possibly) matches this object "
-    #     # pylint:disable=no-member
-    #     return self.name == username  # type: ignore
-    #     # return False
 
 
 @dataclass
@@ -114,31 +101,19 @@ class WebPageWithUses(Usable, UseAggregator, WebPage):
     " WebPage with uses and used_by "
 
 
-def get_identifier(usable) -> Identifier:
+def get_identifier(usable: Node) -> Identifier:
     "returns Identifier for `usable`"
-    parent = usable
+    parent: Node = usable
     while not isinstance(parent, WebPage):
+        if parent.parent is None:
+            raise RuntimeError("No WebPage ancestor for %s" % usable)
         parent = parent.parent
+    parent = cast(WebPage, parent)
     if parent == usable:
-        return Identifier(usable.content_type(),
-                          usable.title, None)
+        return Identifier(parent.content_type(),
+                          parent.title, None)
     return Identifier(parent.content_type(),
                       parent.title, usable.obj_id)
-
-
-# # pylint:disable=too-few-public-methods,no-member
-# class TitleFromParents:
-#     " set_title mixin "
-#
-#     def set_title(self):
-#         " sets a unique title "
-#         parent = self
-#         while True:
-#             # statement (s)
-#             parent = parent.parent
-#             self.title += f".{parent.name}"
-#             if isinstance(parent, WebPage):
-#                 break
 
 
 @dataclass
@@ -149,10 +124,3 @@ class Token(User, Node):
     index: int
     hidden: bool
     cls: Optional[str] = field(init=False, default=None)
-
-    # def __post_init__(self):
-    #     self.title = f"token{self.index}"
-    #
-    # def set_title(self):
-    #     " sets a unique title "
-    #     self.title = f"{self.title}.{self.parent.title}"

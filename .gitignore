@@ -1,5 +1,6 @@
 
 # Byte-compiled / optimized / DLL files
+unitcov
 mypy-report
 odbinfo/test/pure/data
 .odbinfo

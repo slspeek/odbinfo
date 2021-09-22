@@ -24,6 +24,9 @@ parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
 pythonsources=$$(find -name \*.py -and -not -ipath ./target/\* -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* )
 benchmarking=--benchmark-only --benchmark-autosave
+unit=-m "not slow and not veryslow"
+itests=-m "slow"
+
 
 build: mypy metric itest
 
@@ -61,14 +64,17 @@ coverage: clean prepare
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 unitcoverage:
-	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html:unitcov -m "not slow" $(puretestloc)
+	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html:unitcov $(unit) $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser unitcov/index.html
 
 itest: clean prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable -m "not veryslow" $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable $(itests) $(testloc)
 
 single: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable $(testloc)/${SINGLE}
+
+run: clean prepare
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable $(testloc)/oo/test_core.py::test_generate_report
 
 metadata_fixture: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(ootestloc)/test_reader_regression.py ||$\
@@ -92,7 +98,7 @@ writer_fixture: processor_fixture
 fixtures: writer_fixture
 
 unit:
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable -m "not slow" $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable $(unit) $(testloc)
 
 benchmark:
 	ODBINFO_NO_BROWSE=1 PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} $(benchmarking) $(testloc)
@@ -106,8 +112,7 @@ alltest: prepare
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable  $(testloc)
 
 .ONESHELL:
-serve: clean prepare
-	ODBINFO_NO_BROWSE=1 SINGLE=oo/test_core.py::test_generate_report make single
+serve: run
 	cd $(test-output)/test_core/testdb
 	x-www-browser http://localhost:1313/ &
 	hugo server --disableFastRender --layoutDir ../../../../../data/hugo-template/layouts

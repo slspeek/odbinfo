@@ -19,7 +19,6 @@ def _read_module(odbzip, library_name,  data) -> Module:
 
 
 @pytest.mark.veryslow
-@pytest.mark.slow
 def test_basedocumenter_sources(shared_datadir):
     " parse all basedocumenter sources "
     with ZipFile((shared_datadir / BASEDOCUMENTER),

@@ -1,6 +1,36 @@
+Document the technical design:
+(split modules: new modules: preprocessor, postprocessor, builder)
+Elaborate module doc strings
+- reading stage
+- preprocessing
+- dependency search
+- graphs generation
+- postprocessing
+- writing
+- building
+
 Testing
 -------
 Replace test that test nothing, by meaningfull unit tests
+test/oo/test_reader_regression.py
+test/pure/test_processor_regression.py
+test/pure/test_datatype.py
+test/pure/test_sql_parser.py
+test/pure/test_writer.py
+test/pure/test_writer_make_site.py
+test/pure/test_graph.py
+test/pure/test_init.py
+test/pure/test_dependency.py
+test/pure/test_processor.py
+test/pure/test_basic_parser_slow.py
+test/pure/test_reader.py
+test/pure/test_writer_regression.py
+test/pure/test_scanner.py
+test/pure/test_basic_parser.py
+test/pure/datatype/test_metadata.py
+test/pure/datatype/test_base.py
+test/pure/datatype/test_ui.py
+
 More serious unit testing, use factory_boy
 Unittests for reader can use small xml-fragments
 unit test coverage 90%
@@ -70,7 +100,6 @@ Extra graphs: (and link all these graphs)
   - for table, queries, Views
   - for basicfunction, library, module
   - WebPage object with direct uses and used_bies, and all_objects (respecting excludes)
-look at Identifier construction at dependency.py:85
 bypass wget --convert-links with a rewrite in python of public/
 - level 0 strip leading /
 - level 1 strip leading /, add ../
@@ -92,6 +121,9 @@ datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Repo
 python in python (nice to have)
 others in python (nice to have)
 look into GoHugo submenus
+
+look at Identifier construction at dependency.py:85
+- just use obj_id
 
 Limitations
 -----------

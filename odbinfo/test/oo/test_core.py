@@ -8,13 +8,13 @@ from odbinfo.test.oo.connect import (  # pylint:disable=unused-import
 from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 
-@pytest.mark.slow
+@pytest.mark.veryslow
 def test_generate_report(testdb_doc, benchmark):
     """ test generate-site """
     generate_report_test(testdb_doc, benchmark)
 
 
-@pytest.mark.slow
+@pytest.mark.veryslow
 def test_generate_report_empty(emptydb_doc, benchmark):
     """ test generate-site """
     generate_report_test(emptydb_doc, benchmark)

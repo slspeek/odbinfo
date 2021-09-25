@@ -37,7 +37,6 @@ def process_and_check(unprocessed, filename, data_regression,
         print("NAME:", config.name)
         return (config, metadata), {}
     processed = benchmark.pedantic(process_metadata, setup=setup)
-    # data_regression.check(unprocessed)
     processed.graphs = []
     file_regression.check(pickle.dumps(processed), binary=True,
                           basename=filename, extension=".pickle")

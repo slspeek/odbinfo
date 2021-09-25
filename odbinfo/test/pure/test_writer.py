@@ -7,7 +7,7 @@ import pytest
 from graphviz import Digraph
 
 from odbinfo.pure.writer import (_open_browser, _write_graphs, chdir,
-                                 clean_old_site, new_site, run_checked)
+                                 clean_old_site, new_site, run_cmd)
 from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 
@@ -63,12 +63,12 @@ def test_open_browser_nop():
     open_browser.assert_not_called()
 
 
-def test_run_checked():
-    " run_checked without errors"
-    run_checked("ls", "ERROR command ls failed")
+def test_run_cmd():
+    " run_cmd without errors"
+    run_cmd("ls", error_mesg="ERROR command ls failed")
 
 
-def test_run_checked_errors():
-    " run_checked with errors"
+def test_run_cmd_errors():
+    " run_cmd with errors"
     with pytest.raises(RuntimeError):
-        run_checked("false", "ERROR command false failed")
+        run_cmd("false", error_mesg="ERROR command false failed")

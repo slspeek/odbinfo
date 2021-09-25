@@ -25,19 +25,18 @@ from odbinfo.pure.util import timed
 FRONT_MATTER_MARK = "---\n"
 
 
-def run_quiet(cmd):
-    " run os `cmd`. Returns the CompletedProcess"
-    #pylint: disable=subprocess-run-check
-    return subprocess.run(shlex.split(cmd),
-                          stderr=subprocess.DEVNULL,
-                          stdout=subprocess.DEVNULL)
-
-
-def run_checked(cmd, error_mesg):
-    " run os `cmd` and raise RuntimeError with `error_mesg`"
-    completed_process = run_quiet(cmd)
+def run_cmd(cmd, check=True, error_mesg=None):
+    " run os `cmd` and raise RuntimeError with `error_mesg`, if `check` was set"
+    # pylint:disable=subprocess-run-check
+    completed_process = subprocess.run(shlex.split(cmd),
+                                       capture_output=True)
     if completed_process.returncode != 0:
-        raise RuntimeError(error_mesg)
+        print("System command: ", cmd,
+              "failed (returncode=", completed_process.returncode, ")")
+        print("stdout:", completed_process.stdout.decode("utf-8"))
+        print("stderr:", completed_process.stderr.decode("utf-8"))
+        if check:
+            raise RuntimeError(error_mesg)
 
 
 @contextlib.contextmanager
@@ -149,7 +148,7 @@ def make_site(config, metadata):
     with chdir(os.path.join(output_dir, name)):
         _write_metadata(config, metadata)
         _write_graphs(metadata)
-        run_checked("hugo", "unable to build hugo site")
+        run_cmd("hugo", "unable to build hugo site")
     _convert_local(output_dir, name)
     localsite = f"{output_dir}/{name}-local"
     _open_browser(localsite, os.getcwd())
@@ -244,8 +243,10 @@ def _convert_local(output_dir, name):
                 os.makedirs(localsite)
                 while not _is_port_open(port):
                     time.sleep(0.1)
-                run_quiet(f"wget  -nH --convert-links -P {localsite} -r"
-                          f" http://localhost:{port}/ ")
+                run_cmd("wget  --no-verbose"
+                        f" -nH --convert-links -P {localsite}"
+                        " -r --level=100"
+                        f" http://localhost:{port}/", check=False)
         finally:
             webserver_proc.kill()
 

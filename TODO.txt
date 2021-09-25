@@ -1,3 +1,5 @@
+_text_documents must be made recursive
+
 Document the technical design:
 (split modules: new modules: preprocessor, postprocessor, builder)
 Elaborate module doc strings

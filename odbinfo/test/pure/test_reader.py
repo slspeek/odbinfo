@@ -119,7 +119,7 @@ def test_collect_element():
 def test_text_document(shared_datadir):
     " find odts "
     directory = (shared_datadir / DEFAULT_TESTDB).parent
-    assert len(_text_documents(directory)) == 3
+    assert len(list(_text_documents(directory))) == 3
 
 
 @pytest.mark.slow

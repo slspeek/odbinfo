@@ -3,7 +3,7 @@ import os
 from functools import partial
 from itertools import starmap
 from pathlib import Path
-from typing import List
+from typing import Generator, List
 from zipfile import ZipFile
 
 import xmltodict
@@ -47,17 +47,8 @@ def _body_elem(oozip, path):
     return _office_body(content)
 
 
-def _text_documents_in_dir(dir_path: Path) -> List[Path]:
-    return \
-        [file for file in dir_path.iterdir()
-            if file.is_file() and file.suffix in ['.odt', '.ott']]
-
-
-def _text_documents(dir_path: Path) -> List[Path]:
-    return \
-        (_text_documents_in_dir(dir_path)
-         + sum([_text_documents(dir) for dir
-                in dir_path.iterdir() if dir.is_dir()], []))
+def _text_documents(dir_path: Path) -> Generator[Path, None, None]:
+    return dir_path.glob("**/*.o[dt]t")
 
 
 def _database_displays(doc_path: Path) -> List[DatabaseDisplay]:

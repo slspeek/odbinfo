@@ -9,14 +9,25 @@ Elaborate module doc strings
 - writing
 - building
 
+Grid type hack?
+
+test_metadata
+
+Idea: Metadata get basicfunction field and module field
+refs in library and module to basicfunctions become links (Identifier)
+solves some strange action in writer, clearing the way for
+parallel writing
+
+Idea: Token no longer Nodes, have another way of getting all Tokens
+
 Testing
 -------
+graph regression test(s)
+test_metadata --> unittest.TestCase
 Replace test that test nothing, by meaningfull unit tests
-test/pure/datatype/test_base.py
-- get_identifier needs test for case with no webpage ancestor
+unit test coverage 90%
 test/oo/test_reader_regression.py
 test/pure/test_processor_regression.py
-test/pure/test_datatype.py
 test/pure/test_sql_parser.py
 test/pure/test_writer.py
 test/pure/test_writer_make_site.py
@@ -32,11 +43,12 @@ test/pure/test_basic_parser.py
 test/pure/datatype/test_metadata.py
 test/pure/datatype/test_ui.py
 
-More serious unit testing, use factory_boy
+More serious unit testing, use factory_boy (hard)
 Unittests for reader can use small xml-fragments
-unit test coverage 90%
 test_basic_parser_slow.py: parametrize and regression
 make e2e test (BaseDocumenter2dot example)
+a test for _convert_local, verify there are no more
+localhost:1313 references
 
 
 Relevant function filter
@@ -49,9 +61,11 @@ UsedBy should become multiset, multiselect when linking back
 e.g. /#301,450,900 or /?select=300,304,600
 
 templates:
+- Form: is control.label rendered?
 - Form: controls linked to sun API docs.
 - sql color highlighting
   - columnnames
+
 
 make upgrade dependencies (20210813 done)
 

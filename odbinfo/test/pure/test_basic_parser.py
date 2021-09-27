@@ -92,7 +92,7 @@ def test_extract_stringliterals():
     " test extract_stringliterals"
     tokens = get_basic_tokens("""ModuleFoo.Foo("Hello world!")""")
     print(tokens)
-    acallable = BasicFunction("methodName", "ModuleName", "LibName")
+    acallable = BasicFunction("methodName",  "LibName", "ModuleName")
     acallable.body_tokens = tokens
     strings = extract_stringliterals(acallable)
     assert len(strings) == 1

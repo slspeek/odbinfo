@@ -64,6 +64,13 @@ def test_get_identifier():
         'report', 'Report', 'OBJID_NOT_SET')
 
 
+def test_get_identifier_error():
+    node_wo_parent = Node()
+
+    with pytest.raises(RuntimeError):
+        get_identifier(node_wo_parent)
+
+
 def test_content_type():
     "test content_type"
     assert content_type(WebPage) == "webpage"

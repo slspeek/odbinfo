@@ -11,8 +11,6 @@ Elaborate module doc strings
 
 Grid type hack?
 
-test_metadata
-
 Idea: Metadata get basicfunction field and module field
 refs in library and module to basicfunctions become links (Identifier)
 solves some strange action in writer, clearing the way for
@@ -23,16 +21,12 @@ Idea: Token no longer Nodes, have another way of getting all Tokens
 Testing
 -------
 graph regression test(s)
-test_metadata --> unittest.TestCase
 Replace test that test nothing, by meaningfull unit tests
 unit test coverage 90%
-test/oo/test_reader_regression.py
-test/pure/test_processor_regression.py
 test/pure/test_sql_parser.py
 test/pure/test_writer.py
 test/pure/test_writer_make_site.py
 test/pure/test_graph.py
-test/pure/test_init.py
 test/pure/test_dependency.py
 test/pure/test_processor.py
 test/pure/test_basic_parser_slow.py
@@ -40,10 +34,8 @@ test/pure/test_reader.py
 test/pure/test_writer_regression.py
 test/pure/test_scanner.py
 test/pure/test_basic_parser.py
-test/pure/datatype/test_metadata.py
-test/pure/datatype/test_ui.py
 
-More serious unit testing, use factory_boy (hard)
+
 Unittests for reader can use small xml-fragments
 test_basic_parser_slow.py: parametrize and regression
 make e2e test (BaseDocumenter2dot example)

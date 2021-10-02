@@ -49,10 +49,6 @@ def test_search_callable_in_callable_shadowing():
     all_tokens = sum(
         map(lambda x: x.tokens, callables_one + callables_two), [])
     assert len([token for token in all_tokens if token.link]) == 3
-    # assert len(cases) == 3
-    # # qualified call from ModuleTwo.Wose --> ModuleOne.Foo
-    # print(cases)
-    # assert usecase in cases
 
 
 def test_consider_simple():
@@ -81,6 +77,8 @@ def test_consider_other_lib():
 def test_link_token():
     " test link_token when link already set "
     token = Token("'Plant'", 0, 0, False)
-    token.link = Identifier("report", "Plant", None)
+    link = Identifier("report", "Plant", None)
+    token.link = link
     table = Table("Plant", "", [], [], [])
     link_token(token, table)
+    assert token.link == table.identifier

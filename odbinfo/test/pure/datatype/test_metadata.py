@@ -4,10 +4,11 @@ import unittest
 import pytest
 
 import odbinfo.test.pure.datatype.factory as factory
+from odbinfo.pure.datatype.base import Token
 from odbinfo.pure.datatype.exec import (Library, Module, PythonLibrary,
                                         PythonModule)
 from odbinfo.pure.datatype.metadata import Metadata
-from odbinfo.pure.datatype.tabular import Table
+from odbinfo.pure.datatype.tabular import Query, Table
 
 
 class MetadataTestCase(unittest.TestCase):
@@ -71,3 +72,36 @@ class MetadataTestCase(unittest.TestCase):
         assert self.meta.obj_id == "0"
         assert table_a.obj_id == "1"
         assert table_b.obj_id == "2"
+
+
+class CreateIndexTest(MetadataTestCase):
+
+    def setUp(self):
+        super().setUp()
+        self.table_a = Table("Plant", "All plant attributes", [], [], [])
+        self.table_b = Table("Family", "All family attributes", [], [], [])
+        self.meta.table_defs = [self.table_a, self.table_b]
+
+    def test_create_index(self):
+        self.meta.set_obj_ids()
+        self.meta.create_index()
+        assert self.meta.index["1"] == self.table_a
+        assert self.meta.index["2"] == self.table_b
+        assert self.meta.usable_by_link[self.table_a.identifier] == self.table_a
+        assert self.meta.usable_by_link[self.table_b.identifier] == self.table_b
+
+
+class AllActiveUsersTest(CreateIndexTest):
+
+    def setUp(self):
+        super().setUp()
+        self.token = Token("Plant", 0, 0, False)
+        self.token.link = self.table_a.identifier
+        self.query = Query("myquery", "select * from Plant")
+        self.query.tokens.append(self.token)
+        self.meta.query_defs = [self.query]
+
+    def test_all_active_users(self):
+        active_users = list(self.meta.all_active_users())
+        assert len(active_users) == 1
+        assert self.token in active_users

@@ -9,6 +9,7 @@ Elaborate module doc strings
 - writing
 - building
 
+split dependency.py into searchexec, searchui, searchtabular, __init__
 Grid type hack?
 
 Idea: Metadata get basicfunction field and module field
@@ -128,6 +129,7 @@ datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Repo
 python in python (nice to have)
 others in python (nice to have)
 look into GoHugo submenus
+?make it work for .oxt files too?
 
 look at Identifier construction at dependency.py:85
 - just use obj_id

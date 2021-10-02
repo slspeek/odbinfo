@@ -109,7 +109,7 @@ def get_identifier(usable: Node) -> Identifier:
             raise RuntimeError("No WebPage ancestor for %s" % usable)
         parent = parent.parent
     parent = cast(WebPage, parent)
-    if parent == usable:
+    if parent is usable:
         return Identifier(parent.content_type(),
                           parent.title, None)
     return Identifier(parent.content_type(),

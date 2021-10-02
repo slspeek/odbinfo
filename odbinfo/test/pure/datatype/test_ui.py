@@ -28,9 +28,7 @@ def test_report_children_embedded():
 class TextDocumentTest(unittest.TestCase):
 
     def setUp(self):
-        self.textdoc = TextDocument("plant",
-                                    "plant.odt",
-                                    "template/plant.odt", [])
+        self.textdoc = factory.textdoc()
 
     def test_text_document(self):
         assert self.textdoc.children() == []

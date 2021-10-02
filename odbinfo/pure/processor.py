@@ -127,7 +127,7 @@ def process_queries(metadata: Metadata):
 def preprocess_commanders(metadata: Metadata):
     " if command is a direct query, set an EmbeddedQuery obj"
     for cmdr in metadata.commanders():
-        if cmdr.commandtype in ["command", "sql", "sql-pass-through"]:
+        if cmdr.issqlcommand:
             cmdr.embedded_query = \
                 EmbeddedQuery(f"{cmdr.name}.Command", cmdr.command)
 

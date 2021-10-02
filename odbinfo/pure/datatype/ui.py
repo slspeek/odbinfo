@@ -6,6 +6,8 @@ from typing import List, Optional, Union
 from odbinfo.pure.datatype.base import NamedNode, User, WebPageWithUses
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
+COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
+
 
 @dataclass  # type: ignore
 class AbstractCommander(User, ABC):
@@ -23,6 +25,11 @@ class AbstractCommander(User, ABC):
     @abstractmethod
     def commandtype(self):
         "returns the commandtype"
+
+    @property
+    def issqlcommand(self):
+        "returns True if command contains SQL"
+        return self.commandtype in COMMAND_TYPE_COMMAND
 
 
 @dataclass

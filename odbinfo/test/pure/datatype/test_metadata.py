@@ -105,3 +105,4 @@ class AllActiveUsersTest(CreateIndexTest):
         active_users = list(self.meta.all_active_users())
         assert len(active_users) == 1
         assert self.token in active_users
+        assert self.token in active_users

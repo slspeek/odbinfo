@@ -17,7 +17,10 @@ def report():
 
 
 def report_embeddedquery():
-    areport = report()
+    areport = Report("plants_report",
+                     "select * from plant",
+                     "command",
+                     "doc", [])
     areport.embedded_query = embedded_query()
     return areport
 
@@ -84,3 +87,9 @@ def subform_embeddedquery():
 
 def form():
     return Form("MyForm", [subform()])
+
+
+def textdoc():
+    return TextDocument("plant",
+                        "plant.odt",
+                        "template/plant.odt", [])

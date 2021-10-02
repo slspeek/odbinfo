@@ -9,7 +9,6 @@ Elaborate module doc strings
 - writing
 - building
 
-split dependency.py into searchexec, searchui, searchtabular, __init__
 Grid type hack?
 
 Idea: Metadata get basicfunction field and module field

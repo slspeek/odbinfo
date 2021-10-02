@@ -1,7 +1,6 @@
-" tests for dependency search "
-from odbinfo.pure.datatype import Identifier, Table, Token
-from odbinfo.pure.dependency import (consider, link_token,
-                                     search_callable_in_callable)
+" test dependency search in basicfunctions "
+from odbinfo.pure.dependency.searchexec import (consider,
+                                                search_callable_in_callable)
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 
 SOURCE_MODULEONE = """
@@ -72,13 +71,3 @@ def test_consider_other_lib():
     assert len([token for token in mod1_foo_sub.tokens if token.link]) == 0
     consider(mod2_wose_sub, mod1_foo_sub)
     assert len([token for token in mod2_wose_sub.tokens if token.link]) == 1
-
-
-def test_link_token():
-    " test link_token when link already set "
-    token = Token("'Plant'", 0, 0, False)
-    link = Identifier("report", "Plant", None)
-    token.link = link
-    table = Table("Plant", "", [], [], [])
-    link_token(token, table)
-    assert token.link == table.identifier

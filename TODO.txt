@@ -22,12 +22,11 @@ Testing
 -------
 graph regression test(s)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90%
+unit test coverage 90% (now 63.56%)
 test/pure/test_sql_parser.py
 test/pure/test_writer.py
 test/pure/test_writer_make_site.py
 test/pure/test_graph.py
-test/pure/test_dependency.py
 test/pure/test_processor.py
 test/pure/test_basic_parser_slow.py
 test/pure/test_reader.py

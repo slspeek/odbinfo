@@ -28,7 +28,7 @@ unit=-m "not slow and not veryslow"
 itests=-m "slow"
 
 
-build: mypy metric itest
+build: mypy metric unitcoverage
 
 travis: installantlr clean genparser info check alltest
 

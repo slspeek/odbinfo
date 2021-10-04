@@ -115,3 +115,7 @@ footer {
 .literalvalue {
   color: lightgreen;
 }
+
+li.mark {
+  background-color: #fcf8e3;
+}

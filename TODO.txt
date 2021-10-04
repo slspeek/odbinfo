@@ -1,3 +1,28 @@
+Testing
+-------
+Replace test that test nothing, by meaningfull unit tests
+unit test coverage 90% (now 63.56%)
+test/pure/test_sql_parser.py
+test/pure/test_writer.py
+test/pure/test_writer_make_site.py
+test/pure/test_graph.py
+test/pure/test_processor.py
+test/pure/test_basic_parser_slow.py
+test/pure/test_reader.py
+test/pure/test_writer_regression.py
+test/pure/test_scanner.py
+test/pure/test_basic_parser.py
+
+Unittests for reader can use small xml-fragments
+test_basic_parser_slow.py: parametrize and regression
+make e2e test (BaseDocumenter2dot example)
+a test for _convert_local, verify there are no more
+localhost:1313 references
+
+graph regression test(s)
+graph: look at strict parameter of Digraph for collapse_multiple_uses configuration
+parameter
+
 Document the technical design:
 (split modules: new modules: preprocessor, postprocessor, builder)
 Elaborate module doc strings
@@ -16,32 +41,6 @@ refs in library and module to basicfunctions become links (Identifier)
 solves some strange action in writer, clearing the way for
 parallel writing
 
-Idea: Token no longer Nodes, have another way of getting all Tokens
-
-Testing
--------
-graph regression test(s)
-Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 63.56%)
-test/pure/test_sql_parser.py
-test/pure/test_writer.py
-test/pure/test_writer_make_site.py
-test/pure/test_graph.py
-test/pure/test_processor.py
-test/pure/test_basic_parser_slow.py
-test/pure/test_reader.py
-test/pure/test_writer_regression.py
-test/pure/test_scanner.py
-test/pure/test_basic_parser.py
-
-
-Unittests for reader can use small xml-fragments
-test_basic_parser_slow.py: parametrize and regression
-make e2e test (BaseDocumenter2dot example)
-a test for _convert_local, verify there are no more
-localhost:1313 references
-
-
 Relevant function filter
 - function that uses something else than a basicfunction
 - function that is used by something else than a basicfunction
@@ -52,13 +51,8 @@ UsedBy should become multiset, multiselect when linking back
 e.g. /#301,450,900 or /?select=300,304,600
 
 templates:
-- Form: is control.label rendered?
-- Form: controls linked to sun API docs.
 - sql color highlighting
   - columnnames
-
-
-make upgrade dependencies (20210813 done)
 
 type file based MetaData, TextDocument
 - functionality to include the file with downloadable link (if configurated so)
@@ -69,39 +63,46 @@ Makefile: cleanup minimal before distribution
 
 More of pathlib instead of os.path
 
-Demonstration database Herbarium
-- Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,
-  Attributes, Observations, Locations
-  Edibility (pfaf.org)
-  Macros that open browser on interesting Plant sites
-
-
 Configuration
 -------------
 start with config.xcs, config.xcu and programmatically write and read them
-Link to odb file and related text-documents for download,
 See BaseDocumenter config too
 
-
 GUI
+---
 - Settings dialog
 - Progress dialog
 - print --> logger.info
   logging window (sfriederichs.github.io/how-to/python/gui/logging/2017/12/21/Python-GUI-Logging.html)
-
 
 installation check
 - UI and suggestions
 
 better description of the extension
 
+Pre release
+-----------
+Try out on freewindows version
+
 update minimal theme (20210703 ok)
+
+make upgrade dependencies (20210813 done)
 
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
 Later
 -----
+Idea: Token no longer Nodes, have another way of getting all Tokens
+
+Demonstration database Herbarium
+- Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,
+  Attributes, Observations, Locations
+  Edibility (pfaf.org)
+  Macros that open browser on interesting Plant sites
+
+Generate graph legend
+
 Extra graphs: (and link all these graphs)
   - for table, queries, Views
   - for basicfunction, library, module
@@ -126,7 +127,11 @@ field are done last as they are nice to have
 datafield-referer class as super for Control, QueryColumn, DatabaseDisplay (Report field)
 python in python (nice to have)
 others in python (nice to have)
-look into GoHugo submenus
+
+templates:
+- look into GoHugo submenus
+- Form: controls linked to sun API docs.
+
 ?make it work for .oxt files too?
 
 look at Identifier construction at dependency.py:85

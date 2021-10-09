@@ -3,9 +3,9 @@ import unittest
 
 from odbinfo.pure.datatype import (Identifier, Library, Module, WebPage,
                                    content_type)
-from odbinfo.pure.dependency.searchexec import (_link_name_tokens, consider,
-                                                rewrite_module_callable_links,
-                                                search_callable_in_callable)
+from odbinfo.pure.dependency.searchexec import (
+    _link_name_tokens, consider, rewrite_module_callable_links,
+    search_callable_in_callable, search_string_refs_in_callables)
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.processor import _process_library
 
@@ -91,13 +91,22 @@ def test_remove_recursive_calls():
     search_callable_in_callable(callables)
 
 
-class ModuleOneTest(unittest.TestCase):
+class ModuleTest(unittest.TestCase):
+    " module based test"
+
+    def process_module(self, module: str):
+        "parses `module` and puts result in self.module"
+        # pylint:disable=attribute-defined-outside-init
+        self.module = Module("Module", "Lib", module)
+        lib = Library("Lib", [self.module])
+        _process_library(lib)
+
+
+class ModuleOneTest(ModuleTest):
     " a processed Module "
 
     def setUp(self):
-        self.module = Module("Module", "Lib", SOURCE_MODULEONE)
-        lib = Library("Lib", [self.module])
-        _process_library(lib)
+        self.process_module(SOURCE_MODULEONE)
         search_callable_in_callable(self.module.callables)
 
 
@@ -131,3 +140,25 @@ class LinkNameTokens(ModuleOneTest):
         func = self.module.callables[0]
         name_token = self.module.tokens[func.name_token_index]
         assert name_token.link == func.identifier
+
+
+STRING_REF_MODULE = """
+Function WithRefs()
+    Call("ref_one", "other_ref")
+End Function
+"""
+
+
+class StringRefsInCallables(ModuleTest):
+    " search_string_refs_in_callables "
+
+    def setUp(self):
+        self.process_module(STRING_REF_MODULE)
+        self.withref = self.module.callables[0]
+        self.webpage = WebPage("ref_one")
+
+    def test_match(self):
+        "match ref_one"
+        search_string_refs_in_callables(
+            [self.webpage], self.module.callables)
+        assert self.withref.strings[0].link == self.webpage.identifier

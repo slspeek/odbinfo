@@ -1,7 +1,7 @@
 " test dependency search in tabulars "
 import unittest
 
-from odbinfo.pure.datatype import Token, EmbeddedQuery
+from odbinfo.pure.datatype import EmbeddedQuery, Token
 from odbinfo.pure.dependency.searchtabular import (search_deps_in_queries,
                                                    search_tables_in_tables)
 from odbinfo.test.pure.datatype import factory

@@ -140,3 +140,6 @@ class Table(WebPageWithUses):
 
     def children(self):
         return chain(self.keys, self.indexes, self.columns)
+
+
+Tabular = Union[Table, View, Query, EmbeddedQuery]

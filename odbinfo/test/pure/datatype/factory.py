@@ -1,12 +1,24 @@
 " factory of test objects "
-from odbinfo.pure.datatype.tabular import EmbeddedQuery
+from odbinfo.pure.datatype.tabular import EmbeddedQuery, Key, Table
 from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
                                       ListBox, Report, SubForm, TextDocument)
 
 
+def foreignkey_famliy():
+    return Key("myFK", [], [], "family", 3, 1, 1)
+
+
+def table_plant():
+    return Table("plant", "", [foreignkey_famliy()], [], [])
+
+
+def table_family():
+    return Table("family", "", [], [], [])
+
+
 def embedded_query():
     return EmbeddedQuery(
-        "name", "select * from Plant")
+        "myEmbeddedQuery", "select * from Plant")
 
 
 def report():

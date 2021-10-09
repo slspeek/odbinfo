@@ -64,7 +64,7 @@ coverage: clean prepare
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 unitcoverage:
-	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=90 --cov-config=./.coveragerc --cov-report html:unitcov $(unit) $(puretestloc)
+	python -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=90 --cov-config=./.coveragerc --cov-report html:unitcov $(unit) $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser unitcov/index.html
 
 itest: clean prepare

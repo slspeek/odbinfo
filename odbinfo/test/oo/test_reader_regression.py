@@ -45,7 +45,7 @@ def read_metadata_regression_test(testdb_doc, filename, data_regression,
 # pylint:disable=too-many-arguments
 
 
-@pytest.mark.slow
+@pytest.mark.veryslow
 def test_metadata_regression(testdb_doc, data_regression,
                              file_regression, shared_datadir, monkeypatch,
                              benchmark):
@@ -57,7 +57,7 @@ def test_metadata_regression(testdb_doc, data_regression,
 # pylint:disable=too-many-arguments
 
 
-@pytest.mark.slow
+@pytest.mark.veryslow
 def test_metadata_regression_empty(emptydb_doc, data_regression,
                                    file_regression, shared_datadir, monkeypatch,
                                    benchmark):

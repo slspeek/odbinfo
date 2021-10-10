@@ -3,8 +3,7 @@ from typing import Sequence, Tuple, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import (Control, ListBox, Metadata, WebPage,
-                                   content_type)
+from odbinfo.pure.datatype import Control, ListBox, Metadata, content_type
 from odbinfo.pure.datatype.base import NamedNode
 from odbinfo.pure.datatype.config import GraphConfig
 
@@ -16,13 +15,11 @@ def hugo_filename(name: str) -> str:
 
 def href(obj):
     """ returns a href html attribute """
-    if isinstance(obj, WebPage):
-        return f"../{obj.content_type()}/{hugo_filename(obj.title)}/index.html"
-
-    node = obj.parent
-    while not isinstance(node, WebPage):
-        node = node.parent
-    return f"../{node.content_type()}/{hugo_filename(node.title)}/index.html#{obj.obj_id}"
+    link = obj.identifier
+    url = f"../{link.content_type}/{hugo_filename(link.local_id)}/index.html"
+    if link.bookmark:
+        url = f"{url}#{link.bookmark}"
+    return url
 
 
 def _is_control_visible(control: Control):

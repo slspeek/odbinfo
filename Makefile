@@ -135,7 +135,7 @@ check_main: pycompile format
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="odbinfo/test/pure,odbinfo/test/pure/datatype,odbinfo/test/pure/dependency,odbinfo/test/oo" odbinfo
 
 check_test: pycompile format
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest odbinfo/test
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest -dC0116,C0115,R0201,W0201 odbinfo/test
 
 .PHONY:
 clean:

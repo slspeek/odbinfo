@@ -8,14 +8,14 @@ from odbinfo.test.pure.fixtures import (empty_metadata_processed,
 from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 
-@pytest.mark.slow
+@pytest.mark.veryslow
 def test_make_site(metadata_processed):
     """ Run without database scan """
     name = "testdb"
     make_site_test(name, metadata_processed)
 
 
-@pytest.mark.slow
+@pytest.mark.veryslow
 def test_make_site_empty(empty_metadata_processed):
     """ Run without database scan """
     name = "emptydb"

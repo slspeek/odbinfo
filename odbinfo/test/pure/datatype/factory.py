@@ -43,7 +43,7 @@ def eventlistener():
                          "language=Basic&location=document")
 
 
-def control():
+def irrelevant_control():
     return Control("ControlName",
                    "control1",
                    "datafield",
@@ -52,7 +52,13 @@ def control():
                    "label",
                    "formfor",
                    "type",
-                   [eventlistener()])
+                   [])
+
+
+def control():
+    acontrol = irrelevant_control()
+    acontrol.eventlisteners.append(eventlistener())
+    return acontrol
 
 
 def listbox():
@@ -69,6 +75,12 @@ def listbox():
                    True,
                    "rawsql",
                    'SELECT * FROM "Plant"')
+
+
+def listbox_embeddedquery():
+    result = listbox()
+    result.embedded_query = embedded_query()
+    return result
 
 
 def subform_empty():

@@ -1,4 +1,5 @@
 "test for graph module"
+
 import pytest
 
 from odbinfo.pure.datatype import Control

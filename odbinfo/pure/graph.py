@@ -131,7 +131,7 @@ def visible_edges(metadata: Metadata, config: GraphConfig) \
         uses.append((user_vis_ancestor.obj_id,
                      used_vis_ancestor.obj_id))
     if config.collapse_multiple_uses:
-        return list(set(uses))
+        return list(dict.fromkeys(uses))
     return uses
 
 

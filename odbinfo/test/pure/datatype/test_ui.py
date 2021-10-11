@@ -81,7 +81,7 @@ def test_grid_children():
 
 def test_subform():
     subform = factory.subform()
-    control = factory.control()
+    control = subform.controls[0]
 
     assert subform.children() == [control]
 

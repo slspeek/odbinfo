@@ -1,10 +1,10 @@
 " Graphviz graph generation "
-from typing import Sequence, Tuple, cast
+from typing import Dict, Sequence, Tuple, cast
 
 from graphviz import Digraph
 
 from odbinfo.pure.datatype import Control, ListBox, Metadata, content_type
-from odbinfo.pure.datatype.base import NamedNode
+from odbinfo.pure.datatype.base import NamedNode, Node
 from odbinfo.pure.datatype.config import GraphConfig
 
 
@@ -13,7 +13,7 @@ def hugo_filename(name: str) -> str:
     return name.replace(" ", "-").lower()
 
 
-def href(obj):
+def href(obj: Node) -> str:
     """ returns a href html attribute """
     link = obj.identifier
     url = f"../{link.content_type}/{hugo_filename(link.local_id)}/index.html"
@@ -22,7 +22,7 @@ def href(obj):
     return url
 
 
-def _is_control_visible(control: Control):
+def _is_control_visible(control: Control) -> bool:
     if control.eventlisteners:
         return True
     if isinstance(control, ListBox):
@@ -73,14 +73,28 @@ def visible_ancestor(config: GraphConfig, node):
     return parent
 
 
-def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode, end: NamedNode):
-    " make edge from `start` to `end` with attributes specified by `config`"
+def edge_attributes(config: GraphConfig,
+                    start: NamedNode, end: NamedNode) -> Dict[str, str]:
+    "composes the node attributes"
     attrs = config.relation_attrs.get(
         (start.content_type(), end.content_type()), {})
     attrs["edgetooltip"] = "{} -> {}".format(
         start.name, end.name)
+    return attrs
+
+
+def edge(graph, start, end, attrs):
+    " make an edge in `graph`"
+    graph.edge(start.obj_id,
+               end.obj_id,
+               _attributes=attrs)
+
+
+def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode, end: NamedNode):
+    " make edge from `start` to `end` with attributes specified by `config`"
+
     edge(graph, start,
-         end, attrs)
+         end, edge_attributes(config, start, end))
 
 
 def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
@@ -101,14 +115,7 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
         edge(graph, node, avisible_ancestor, attrs)
 
 
-def edge(graph, start, end, attrs):
-    " make an edge in `graph`"
-    graph.edge(str(start.obj_id),
-               str(end.obj_id),
-               _attributes=attrs)
-
-
-def visible_edges(metadata: Metadata, config: GraphConfig) \
+def visible_dependency_edges(metadata: Metadata, config: GraphConfig) \
         -> Sequence[Tuple[str, str]]:
     " returns edges to draw in graph "
     uses = []
@@ -134,7 +141,7 @@ def visible_edges(metadata: Metadata, config: GraphConfig) \
 
 def make_dependency_edges(metadata, config, graph):
     " make edges for all dependencies "
-    uses = visible_edges(metadata, config)
+    uses = visible_dependency_edges(metadata, config)
     for use in uses:
         start = metadata.index[use[0]]
         end = metadata.index[use[1]]

@@ -99,7 +99,9 @@ def subform_empty():
 
 def subform():
     asubform = subform_empty()
-    asubform.controls = [control()]
+    acontrol = control()
+    acontrol.parent = asubform
+    asubform.controls = [acontrol]
     return asubform
 
 
@@ -110,7 +112,10 @@ def subform_embeddedquery():
 
 
 def form():
-    return Form("MyForm", [subform()])
+    asubform = subform()
+    form = Form("MyForm", [asubform])
+    asubform.parent = form
+    return form
 
 
 def textdoc():

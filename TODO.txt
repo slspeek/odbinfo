@@ -2,11 +2,10 @@ Testing
 -------
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 68.50%)
+unit test coverage 90% (now 71.03%)
 test/pure/test_sql_parser.py
 test/pure/test_writer.py
 test/pure/test_writer_make_site.py
-test/pure/test_graph.py
 test/pure/test_processor.py
 test/pure/test_basic_parser_slow.py
 test/pure/test_reader.py
@@ -21,6 +20,7 @@ a test for _convert_local, verify there are no more
 localhost:1313 references
 
 graph regression test
+graph: get parent-edge attributes in configuration
 graph: look at strict parameter of Digraph for collapse_multiple_uses configuration
 parameter
 

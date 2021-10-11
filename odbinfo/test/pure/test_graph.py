@@ -3,11 +3,15 @@
 import unittest
 
 import pytest
+from graphviz import Digraph
 
-from odbinfo.pure.datatype import Control, content_type
+from odbinfo.pure.datatype import Control, Key, Table, content_type
 from odbinfo.pure.datatype.config import get_configuration
-from odbinfo.pure.graph import (_is_control_visible, generate_main_graph, href,
-                                hugo_filename, is_visible, visible_edges)
+from odbinfo.pure.graph import (_is_control_visible, edge, edge_attributes,
+                                generate_main_graph, href, hugo_filename,
+                                is_visible, make_edge, make_node,
+                                make_parent_edge, visible_ancestor,
+                                visible_dependency_edges)
 from odbinfo.test.pure.datatype import factory
 from odbinfo.test.pure.fixtures import metadata_processed
 
@@ -15,7 +19,7 @@ from odbinfo.test.pure.fixtures import metadata_processed
 @pytest.mark.slow
 def test_visible_edges(metadata_processed, data_regression):
     conf = get_configuration().graph
-    data_regression.check(visible_edges(metadata_processed, conf))
+    data_regression.check(visible_dependency_edges(metadata_processed, conf))
 
 
 class HugoFilename(unittest.TestCase):
@@ -105,26 +109,186 @@ class IsVisibleOtherTypes(ConfTest):
         assert is_visible(self.conf, self.node)
 
 
+class MakeNodeInvisibleNode(ConfTest):
+    def setUp(self):
+        super().setUp()
+        self.node = factory.table_plant()
+        self.conf.user_excludes = [self.node.content_type()]
+        self.graph = Digraph("odbinfo")
+
+    def test_do_nothing(self):
+        make_node(self.conf, self.graph, self.node)
+        assert len(self.graph.body) == 0
+
+
+class GraphTest(ConfTest):
+    def setUp(self):
+        super().setUp()
+        self.graph = Digraph("odbinfo")
+
+
+class MakeNodeVisibleNode(GraphTest):
+
+    def setUp(self):
+        super().setUp()
+        self.node = factory.table_plant()
+        self.node.obj_id = "42"
+
+    def test_name_and_id(self):
+        make_node(self.conf, self.graph, self.node)
+
+        assert len(self.graph.body) == 1
+        assert self.graph.body[0].index("42") > -1
+        assert self.graph.body[0].index('id=42') > -1
+
+    def test_label(self):
+        make_node(self.conf, self.graph, self.node)
+
+        assert len(self.graph.body) == 1
+        assert self.graph.body[0].index('label=plant') > -1
+
+    def test_tooltip(self):
+        make_node(self.conf, self.graph, self.node)
+
+        assert len(self.graph.body) == 1
+        assert self.graph.body[0].index('tooltip="plant (table)"') > -1
+
+
+class MakeNodeVisibleControlLabel(ConfTest):
+
+    def setUp(self):
+        super().setUp()
+        self.form = factory.form()
+        self.node = self.form.subforms[0].controls[0]
+
+        self.node.obj_id = "42"
+        self.node.label = "labelvalue"
+        self.graph = Digraph("odbinfo")
+
+    def test_label(self):
+        make_node(self.conf, self.graph, self.node)
+
+        assert len(self.graph.body) == 1
+        assert self.graph.body[0].index('label=labelvalue') > -1
+
+    def test_no_label(self):
+        self.node.label = ""
+        make_node(self.conf, self.graph, self.node)
+
+        assert len(self.graph.body) == 1
+        assert self.graph.body[0].index('label=ControlName') > -1
+
+
+class VisibleAncestorIdentity(ConfTest):
+
+    def test_identity(self):
+        self.webpage = factory.table_plant()
+        assert visible_ancestor(self.conf, self.webpage) == self.webpage
+
+    def test_no_ancestor(self):
+        self.control = factory.control()
+        self.conf.user_excludes = [content_type(Control)]
+        assert visible_ancestor(self.conf, self.control) is None
+
+    def test_higher_ancestor(self):
+        self.subform = factory.subform()
+        self.control = self.subform.controls[0]
+        self.conf.user_excludes = [content_type(Control)]
+        assert visible_ancestor(self.conf, self.control) == self.subform
+
+
+class EdgeAttributes(ConfTest):
+    def setUp(self):
+        super().setUp()
+        self.start = factory.table_plant()
+        self.end = factory.table_family()
+
+    def test_tooltip(self):
+        assert edge_attributes(self.conf, self.start, self.end)[
+            "edgetooltip"] == "plant -> family"
+
+    def test_configured_attribute(self):
+        assert edge_attributes(self.conf, self.start, self.end).items() \
+            <= self.conf.relation_attrs[(content_type(Table),
+                                         content_type(Table))].items()
+
+
+class Edge(GraphTest):
+
+    def setUp(self):
+        super().setUp()
+        self.start = factory.table_plant()
+        self.start.obj_id = "1"
+        self.end = factory.table_family()
+        self.end.obj_id = "2"
+
+    def test_edge(self):
+        edge(self.graph, self.start, self.end, {})
+        line = self.graph.body[0]
+        assert line == "\t1 -> 2"
+
+
+class MakeEdge(Edge):
+
+    def test_edge(self):
+        make_edge(self.conf, self.graph, self.start, self.end)
+        line = self.graph.body[0]
+        assert line == """\t1 -> 2 [edgetooltip="plant -> family"]"""
+
+
+class MakeParentEdge(GraphTest):
+    def setUp(self):
+        super().setUp()
+        self.conf.user_excludes = []
+        self.plant = factory.table_plant()
+        self.plant.obj_id = "table_id"
+
+        self.key = self.plant.keys[0]
+        self.key.obj_id = "key_id"
+
+    def test_no_parent(self):
+        make_parent_edge(self.conf, self.graph, self.key)
+        assert len(self.graph.body) == 0
+
+    def test_key_not_visible(self):
+        self.conf.user_excludes = [content_type(Key)]
+        self.key.parent = self.plant
+        make_parent_edge(self.conf, self.graph, self.key)
+        assert len(self.graph.body) == 0
+
+    def test_no_visible_ancestor(self):
+        self.conf.user_excludes = [content_type(Table)]
+        self.key.parent = self.plant
+        make_parent_edge(self.conf, self.graph, self.key)
+        assert len(self.graph.body) == 0
+
+    def test_edge(self):
+        self.key.parent = self.plant
+        make_parent_edge(self.conf, self.graph, self.key)
+        line = self.graph.body[0]
+        assert line.index("\tkey_id -> table_id") > -1
+
+
 @pytest.mark.slow
-def test_visible_edges_no_collapse(metadata_processed):
+def test_visible_edges_no_collapse(metadata_processed, data_regression):
     conf = get_configuration().graph
     conf.collapse_multiple_uses = False
     conf.excludes.append("table")
-    visible_edges(metadata_processed, conf)
+    data_regression.check(visible_dependency_edges(metadata_processed, conf))
 
 
 @pytest.mark.slow
-def test_visible_edges_tables_excluded(metadata_processed):
+def test_visible_edges_tables_excluded(metadata_processed, data_regression):
     "tables excluded"
     conf = get_configuration().graph
     conf.excludes.append("table")
-    visible_edges(metadata_processed, conf)
+    data_regression.check(visible_dependency_edges(metadata_processed, conf))
 
 
 @pytest.mark.slow
-def test_generate_main_graph(metadata_processed):
+def test_generate_main_graph(metadata_processed, data_regression):
     "run generate_main_graph with relevant_controls off for coverage"
     conf = get_configuration()
     conf.name = "test_generate_main_graph"
     conf.graph.relevant_controls = False
-    generate_main_graph(metadata_processed, conf)
+    data_regression.check(generate_main_graph(metadata_processed, conf).source)

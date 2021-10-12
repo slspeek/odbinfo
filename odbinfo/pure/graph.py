@@ -106,12 +106,9 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
         if not avisible_ancestor:
             return
 
-        attrs = {}
+        attrs = dict(config.parent_edge_attrs)
         attrs["edgetooltip"] = "{} is child of {}"\
             .format(node.name, avisible_ancestor.name)
-        attrs["style"] = "dashed"
-        attrs["color"] = "#ffcc99"
-        attrs["arrowhead"] = "none"
         edge(graph, node, avisible_ancestor, attrs)
 
 
@@ -154,7 +151,7 @@ def generate_main_graph(metadata, config):
     graph.attr("graph", rankdir="LR")
     graph.attr("graph", label=config.name,
                labelloc="top", fontsize="24")
-    graph.attr("graph", tooltip="")
+    # graph.attr("graph", tooltip="")
     for node in metadata.all_objects():
         make_node(config.graph, graph, node)
         make_parent_edge(config.graph, graph, node)

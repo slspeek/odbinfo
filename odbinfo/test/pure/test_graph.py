@@ -18,12 +18,6 @@ from odbinfo.test.pure.datatype import factory
 from odbinfo.test.pure.fixtures import metadata_processed
 
 
-@pytest.mark.slow
-def test_visible_edges(metadata_processed, data_regression):
-    conf = get_configuration().graph
-    data_regression.check(visible_dependency_edges(metadata_processed, conf))
-
-
 class HugoFilename(unittest.TestCase):
     def setUp(self):
         pass
@@ -269,6 +263,7 @@ class MakeParentEdge(GraphTest):
         make_parent_edge(self.conf, self.graph, self.key)
         line = self.graph.body[0]
         assert line.index("\tkey_id -> table_id") > -1
+        assert len(self.conf.parent_edge_attrs.items()) == 3
 
 
 class VisibleDependencyEdges(ConfTest):
@@ -329,7 +324,7 @@ class GenerateMainGraph(unittest.TestCase):
         self.graph = generate_main_graph(
             self.meta, self.conf)
         # print(self.graph.source)
-        assert len(self.graph.body) == (3  # initial lines
+        assert len(self.graph.body) == (2  # initial lines
                                         + 4  # objects
                                         + 2  # parent edges
                                         + 1  # dependency edge
@@ -341,3 +336,11 @@ class GenerateGraphs(GenerateMainGraph):
     def test_generate_graphs(self):
         graphs = generate_graphs(self.meta, self.conf)
         assert len(graphs) == 1
+
+
+@pytest.mark.slow
+def test_generate_main_graph(metadata_processed, data_regression):
+    "run generate_main_graph"
+    conf = get_configuration()
+    conf.name = "test_generate_main_graph"
+    data_regression.check(generate_main_graph(metadata_processed, conf).source)

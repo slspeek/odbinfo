@@ -1,26 +1,27 @@
+Forms have the order of the controls wrong due to the limitations of xml2dict
+see xml.dom.minidom
+Unittests for reader can use small xml-fragments
+test/pure/test_reader.py
+
 Testing
 -------
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 73.31%)
+unit test coverage 90% (now 75.22%)
 test/pure/test_sql_parser.py
 test/pure/test_writer.py
 test/pure/test_writer_make_site.py
 test/pure/test_processor.py
 test/pure/test_basic_parser_slow.py
-test/pure/test_reader.py
 test/pure/test_writer_regression.py
 test/pure/test_scanner.py
 test/pure/test_basic_parser.py
 
-Unittests for reader can use small xml-fragments
 test_basic_parser_slow.py: parametrize and regression
 make e2e test (BaseDocumenter2dot example)
 a test for _convert_local, verify there are no more
 localhost:1313 references
 
-graph regression test
-graph: get parent-edge attributes in configuration
 graph: look at strict parameter of Digraph for collapse_multiple_uses configuration
 parameter
 

@@ -11,6 +11,12 @@ class GeneralConfig:
     base_url: str
 
 
+PARENT_EDGE_ATTRS = {
+    "style": "dashed",
+    "color": "#ffcc99",
+    "arrowhead": "none",
+}
+
 TYPE_ATTRS = {
     "listbox": {},
     "library": {},
@@ -78,6 +84,7 @@ class GraphConfig:
     user_excludes: List[str]
     type_attrs: dict
     relation_attrs: dict
+    parent_edge_attrs: dict
     collapse_multiple_uses: bool
     relevant_controls: bool
 
@@ -106,6 +113,7 @@ def get_configuration() -> Configuration:
                 EXCLUDED_TYPES,
                 TYPE_ATTRS,
                 RELATION_ATTRS,
+                PARENT_EDGE_ATTRS,
                 True,
                 True
             ),

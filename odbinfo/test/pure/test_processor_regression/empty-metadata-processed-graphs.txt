@@ -1,5 +1,4 @@
 digraph emptydb {
 	graph [rankdir=LR]
 	graph [fontsize=24 label=emptydb labelloc=top]
-	graph [tooltip=""]
 }

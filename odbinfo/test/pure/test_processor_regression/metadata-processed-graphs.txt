@@ -1,7 +1,6 @@
 digraph testdb {
 	graph [rankdir=LR]
 	graph [fontsize=24 label=testdb labelloc=top]
-	graph [tooltip=""]
 	1 [label=Family href="../table/family/index.html" id=1 tooltip="Family (table)" fillcolor="#a7c3eb" shape=cylinder style=filled]
 	7 [label=Person href="../table/person/index.html" id=7 tooltip="Person (table)" fillcolor="#a7c3eb" shape=cylinder style=filled]
 	13 [label=Plant href="../table/plant/index.html" id=13 tooltip="Plant (table)" fillcolor="#a7c3eb" shape=cylinder style=filled]

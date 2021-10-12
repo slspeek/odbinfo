@@ -5,11 +5,13 @@ import unittest
 import pytest
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import Control, Key, Table, content_type
+from odbinfo.pure.datatype import (Control, Form, Key, ListBox, SubForm, Table,
+                                   content_type)
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.graph import (_is_control_visible, edge, edge_attributes,
-                                generate_main_graph, href, hugo_filename,
-                                is_visible, make_edge, make_node,
+                                generate_graphs, generate_main_graph, href,
+                                hugo_filename, is_visible,
+                                make_dependency_edges, make_edge, make_node,
                                 make_parent_edge, visible_ancestor,
                                 visible_dependency_edges)
 from odbinfo.test.pure.datatype import factory
@@ -49,8 +51,10 @@ class Href(unittest.TestCase):
 
 
 class ConfTest(unittest.TestCase):
+
     def setUp(self):
         self.conf = get_configuration().graph
+        self.conf.name = "conftest"
 
 
 class IsVisibleExcludes(ConfTest):
@@ -179,7 +183,7 @@ class MakeNodeVisibleControlLabel(ConfTest):
         assert self.graph.body[0].index('label=ControlName') > -1
 
 
-class VisibleAncestorIdentity(ConfTest):
+class VisibleAncestor(ConfTest):
 
     def test_identity(self):
         self.webpage = factory.table_plant()
@@ -247,48 +251,93 @@ class MakeParentEdge(GraphTest):
         self.key.obj_id = "key_id"
 
     def test_no_parent(self):
+        self.key.parent = None
         make_parent_edge(self.conf, self.graph, self.key)
         assert len(self.graph.body) == 0
 
     def test_key_not_visible(self):
         self.conf.user_excludes = [content_type(Key)]
-        self.key.parent = self.plant
         make_parent_edge(self.conf, self.graph, self.key)
         assert len(self.graph.body) == 0
 
     def test_no_visible_ancestor(self):
         self.conf.user_excludes = [content_type(Table)]
-        self.key.parent = self.plant
         make_parent_edge(self.conf, self.graph, self.key)
         assert len(self.graph.body) == 0
 
     def test_edge(self):
-        self.key.parent = self.plant
         make_parent_edge(self.conf, self.graph, self.key)
         line = self.graph.body[0]
         assert line.index("\tkey_id -> table_id") > -1
 
 
-@pytest.mark.slow
-def test_visible_edges_no_collapse(metadata_processed, data_regression):
-    conf = get_configuration().graph
-    conf.collapse_multiple_uses = False
-    conf.excludes.append("table")
-    data_regression.check(visible_dependency_edges(metadata_processed, conf))
+class VisibleDependencyEdges(ConfTest):
+
+    def setUp(self):
+        super().setUp()
+        self.meta = factory.metadata()
+
+    def test_no_edges(self):
+        assert len(visible_dependency_edges(self.meta, self.conf)) == 0
+
+    def test_one_edge(self):
+        self.meta.table_defs[0].keys[0].link = self.meta.table_defs[1].identifier
+        assert len(visible_dependency_edges(self.meta, self.conf)) == 1
+
+    def test_one_edge_no_collapse(self):
+        self.conf.collapse_multiple_uses = False
+        self.test_one_edge()
 
 
-@pytest.mark.slow
-def test_visible_edges_tables_excluded(metadata_processed, data_regression):
-    "tables excluded"
-    conf = get_configuration().graph
-    conf.excludes.append("table")
-    data_regression.check(visible_dependency_edges(metadata_processed, conf))
+class VisibleDependencyEdgesNoVisibleAncestor(ConfTest):
+
+    def setUp(self):
+        super().setUp()
+        self.meta = factory.metadata_listbox()
+
+    def test_no_edge_user_not_visible(self):
+        self.conf.user_excludes = [content_type(
+            ListBox), content_type(SubForm), content_type(Form)]
+        assert len(visible_dependency_edges(self.meta, self.conf)) == 0
+
+    def test_no_edge_used_not_visible(self):
+        self.conf.user_excludes = [content_type(Table)]
+        assert len(visible_dependency_edges(self.meta, self.conf)) == 0
 
 
-@pytest.mark.slow
-def test_generate_main_graph(metadata_processed, data_regression):
-    "run generate_main_graph with relevant_controls off for coverage"
-    conf = get_configuration()
-    conf.name = "test_generate_main_graph"
-    conf.graph.relevant_controls = False
-    data_regression.check(generate_main_graph(metadata_processed, conf).source)
+class MakeDepencyEdges(GraphTest):
+
+    def setUp(self):
+        super().setUp()
+        self.meta = factory.metadata_listbox()
+
+    def test_one_edge(self):
+        make_dependency_edges(
+            self.meta, self.conf, self.graph)
+        assert len(self.graph.body) == 1
+
+
+class GenerateMainGraph(unittest.TestCase):
+
+    def setUp(self):
+        super().setUp()
+        self.meta = factory.metadata_listbox()
+        self.conf = get_configuration()
+        self.conf.name = "testrun"
+
+    def test_generate_main_graph(self):
+        self.graph = generate_main_graph(
+            self.meta, self.conf)
+        # print(self.graph.source)
+        assert len(self.graph.body) == (3  # initial lines
+                                        + 4  # objects
+                                        + 2  # parent edges
+                                        + 1  # dependency edge
+                                        )
+
+
+class GenerateGraphs(GenerateMainGraph):
+
+    def test_generate_graphs(self):
+        graphs = generate_graphs(self.meta, self.conf)
+        assert len(graphs) == 1

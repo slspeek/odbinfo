@@ -1,4 +1,5 @@
 " factory of test objects "
+from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Key, Table
 from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
                                       ListBox, Report, SubForm, TextDocument)
@@ -9,7 +10,10 @@ def foreignkey_famliy():
 
 
 def table_plant():
-    return Table("plant", "", [foreignkey_famliy()], [], [])
+    foreign = foreignkey_famliy()
+    plant = Table("plant", "", [foreign], [], [])
+    foreign.parent = plant
+    return plant
 
 
 def table_family():
@@ -118,7 +122,47 @@ def form():
     return form
 
 
+def form_with(control):
+    asubform = subform_empty()
+    control.parent = asubform
+    asubform.controls.append(control)
+    form = Form("FormWith", [asubform])
+    asubform.parent = form
+    return form
+
+
 def textdoc():
     return TextDocument("plant",
                         "plant.odt",
                         "template/plant.odt", [])
+
+
+def metadata_empty():
+    return Metadata("testdata", [], [], [], [], [], [], [], [])
+
+
+def metadata():
+    meta = metadata_empty()
+    plant = table_plant()
+    family = table_family()
+    plant.parent = family.parent = meta
+    meta.table_defs.append(plant)
+    meta.table_defs.append(family)
+    meta.set_obj_ids()
+    meta.build_parent_index()
+    meta.create_index()
+    return meta
+
+
+def metadata_listbox():
+    meta = metadata_empty()
+    plant = table_plant()
+    meta.table_defs.append(plant)
+    alistbox = listbox()
+    alistbox.link = plant.identifier
+    form = form_with(alistbox)
+    meta.form_defs.append(form)
+    meta.set_obj_ids()
+    meta.build_parent_index()
+    meta.create_index()
+    return meta

@@ -3,7 +3,8 @@ import os
 from functools import partial
 from itertools import starmap
 from pathlib import Path
-from typing import Generator, List
+from typing import Generator, List, Tuple, Union, cast
+from xml.dom.minidom import Document, Element, Node, parseString
 from zipfile import ZipFile
 
 import xmltodict
@@ -45,6 +46,11 @@ def _collect_attribute(data, attribute):
 def _body_elem(oozip, path):
     content = _parse_xml(oozip, path)
     return _office_body(content)
+
+
+def document(oozip: ZipFile, path: str) -> Document:
+    " return dom.Document with contents of `path` in `oozip`"
+    return parseString(oozip.read(path))
 
 
 def _text_documents(dir_path: Path) -> Generator[Path, None, None]:
@@ -199,14 +205,9 @@ def _read_module(odbzip, library_name,  data) -> Module:
     return Module(name, library_name, data["script:module"]["#text"])
 
 
-def read_forms(odbzip):
-    """ Reads form metadata from `odbzip` """
-    return [Form(name, _read_subforms(data)) for name, data in _forms(odbzip)]
-
-
-def _read_subforms(data) -> List[SubForm]:
-    return mapiflist(_read_subform, data["form:form"])
-
+#
+# Forms
+#
 
 def _read_form_controls(name, value) -> List[Control]:
     if name == "form:grid":
@@ -214,6 +215,15 @@ def _read_form_controls(name, value) -> List[Control]:
     if name == "form:listbox":
         return mapiflist(_read_listbox, value)
     return mapiflist(_read_control, value)
+
+
+def _read_subforms(data) -> List[SubForm]:
+    return mapiflist(_read_subform, data["form:form"])
+
+
+def read_subforms(office_form_elem: Element):
+    "read the subforms of a form"
+    return list(map(read_subform, child_elements_by_tagname(office_form_elem, "form:form")))
 
 
 def _read_subform(data):
@@ -238,6 +248,45 @@ def _read_subform(data):
                    subforms)
 
 
+def attr_default(elem, attr, def_value):
+    "return `def_value` if `elem` has no attribute `attr` else the attribute value"
+    value = elem.getAttribute(attr)
+    if value == "":
+        return def_value
+    return value
+
+
+def child_elements_by_tagname(elem: Element, tagname: str) -> List[Element]:
+    " direct child element by tagName"
+    elements = []
+    for node in elem.childNodes:
+        if node.nodeType == Node.ELEMENT_NODE:
+            elem = cast(Element, node)
+            if elem.tagName == tagname:
+                elements.append(elem)
+    return elements
+
+
+def read_subform(form_form_elem: Element):
+    "read a SubForm from `form_form_elem`"
+    controls: List[Union[Control, Grid]] = []
+    subforms: List[SubForm] = [
+        read_subform(elem) for elem in child_elements_by_tagname(form_form_elem, "form:form")
+    ]
+
+    return SubForm(form_form_elem.getAttribute("form:name"),
+                   form_form_elem.getAttribute("form:command"),
+                   attr_default(form_form_elem,
+                                "form:command-type", "command"),
+                   attr_default(form_form_elem, "form:allow-deletes", "true"),
+                   attr_default(form_form_elem, "form:allow-updates", "true"),
+                   attr_default(form_form_elem, "form:allow-inserts", "true"),
+                   form_form_elem.getAttribute("form:master-fields"),
+                   form_form_elem.getAttribute("form:detail-fields"),
+                   controls,
+                   subforms)
+
+
 def _read_grid(data):
     gridname = data["@form:name"]
     controls = mapiflist(_read_grid_control, data["form:column"])
@@ -246,7 +295,7 @@ def _read_grid(data):
 
 def _read_eventlisteners(data) -> List[EventListener]:
     def read_listener(oolistn):
-        return \
+        return\
             EventListener(oolistn["@script:event-name"],
                           oolistn["@xlink:href"])
     eventlisteners = []
@@ -257,7 +306,7 @@ def _read_eventlisteners(data) -> List[EventListener]:
 
 
 def _read_control(data) -> Control:
-    return\
+    return \
         Control(data.get("@form:name", ""),
                 data.get("@form:id", ""),
                 data.get("@form:data-field", ""),
@@ -311,10 +360,9 @@ def _office_body(info):
 
 
 def _forms(odbzip):
-    forms = []
     index = _body_elem(odbzip, "content.xml")["office:database"]
     if "db:forms" not in index:
-        return forms
+        return []
 
     index = index["db:forms"]
     dbcomponent = index["db:component"]
@@ -325,8 +373,30 @@ def _forms(odbzip):
         info = info["office:forms"]
         return (frm["@db:name"], info)
 
-    forms = mapiflist(form, dbcomponent)
-    return forms
+    return mapiflist(form, dbcomponent)
+
+
+def forms(odbzip: ZipFile) -> List[Tuple[str, Element]]:
+    " return a tuple with the form name and <office:forms> element "
+    xmldoc = document(odbzip, "content.xml")
+    forms_elements = xmldoc.documentElement.getElementsByTagName("db:forms")
+    if not forms_elements:
+        return []
+    forms_elem = forms_elements[0]
+
+    def read_form(form_elem: Element) -> Element:
+        relpath = form_elem.getAttribute("xlink:href") + "/content.xml"
+        form_doc = document(odbzip, relpath)
+        return form_doc.documentElement.getElementsByTagName("office:forms")[0]
+
+    return \
+        [(form_comp.getAttribute("db:name"), read_form(form_comp))
+         for form_comp in forms_elem.getElementsByTagName("db:component")]
+
+
+def read_forms(odbzip):
+    """ Reads form metadata from `odbzip` """
+    return [Form(name, _read_subforms(data)) for name, data in _forms(odbzip)]
 
 
 def _parse_xml(odbzip, file):

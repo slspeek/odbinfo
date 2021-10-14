@@ -3,7 +3,7 @@ import os
 from functools import partial
 from itertools import starmap
 from pathlib import Path
-from typing import Generator, List, Tuple, Union, cast
+from typing import Generator, List, Optional, Tuple, Union, cast
 from xml.dom.minidom import Document, Element, Node, parseString
 from zipfile import ZipFile
 
@@ -257,7 +257,7 @@ def attr_default(elem, attr, def_value):
 
 
 def child_elements_by_tagname(elem: Element, tagname: str) -> List[Element]:
-    " direct child element by tagName"
+    " direct-child-elements by tagName"
     elements = []
     for node in elem.childNodes:
         if node.nodeType == Node.ELEMENT_NODE:
@@ -268,7 +268,7 @@ def child_elements_by_tagname(elem: Element, tagname: str) -> List[Element]:
 
 
 def read_subform(form_form_elem: Element):
-    "read a SubForm from `form_form_elem`"
+    "read a SubForm from `form_form_elem` (<form:form>)"
     controls: List[Union[Control, Grid]] = []
     subforms: List[SubForm] = [
         read_subform(elem) for elem in child_elements_by_tagname(form_form_elem, "form:form")
@@ -305,6 +305,29 @@ def _read_eventlisteners(data) -> List[EventListener]:
     return eventlisteners
 
 
+def office_eventlisteners_elem(control_elem: Element) -> Optional[Element]:
+    "find <office:event-listeners> under `control_elem`"
+    off_evl_elem = control_elem.getElementsByTagName("office:event-listeners")
+    if not off_evl_elem:
+        return None
+    return off_evl_elem[0]
+
+
+def read_eventlisteners(control_elem: Element) -> List[EventListener]:
+    "reads the <script:event-listener> under <office:event-listeners> under `control_elem`"
+    office_evlis_elem = office_eventlisteners_elem(control_elem)
+    if not office_evlis_elem:
+        return []
+
+    def read_listener(script_ev_listener: Element):
+        return\
+            EventListener(script_ev_listener.getAttribute("script:event-name"),
+                          script_ev_listener.getAttribute("xlink:href"))
+
+    return [read_listener(elem) for elem in
+            office_evlis_elem.getElementsByTagName("script:event-listener")]
+
+
 def _read_control(data) -> Control:
     return \
         Control(data.get("@form:name", ""),
@@ -316,6 +339,47 @@ def _read_control(data) -> Control:
                 data.get("@form:for", ""),
                 data.get("@form:control-implementation", ""),
                 _read_eventlisteners(data))
+
+
+def read_control(control_elem) -> Control:
+    "returns Control read from `control_elem` (<form:button>, ...) "
+    return \
+        Control(control_elem.getAttribute("form:name"),
+                control_elem.getAttribute("form:id"),
+                control_elem.getAttribute("form:data-field"),
+                control_elem.getAttribute("form:input-required"),
+                control_elem.getAttribute("form:convert-empty-to-null"),
+                control_elem.getAttribute("form:label"),
+                control_elem.getAttribute("form:for"),
+                control_elem.getAttribute("form:control-implementation"),
+                read_eventlisteners(control_elem))
+
+
+def read_listbox(listbox_elem: Element) -> ListBox:
+    "returns a ListBox from `listbox_elem` (<form:listbox>)"
+    listsourcetype = attr_default(
+        listbox_elem, "form:list-source-type", "valuelist")
+    listsource = listbox_elem.getAttribute("form:list-source")
+    if listsourcetype == "valuelist":
+        options = listbox_elem.getElementsByTagName('form:option')
+        listsource = ", ".join(
+            map(lambda x: x.getAttribute('form:value'), options))
+
+    return\
+        ListBox(listbox_elem.getAttribute("form:name"),
+                listbox_elem.getAttribute("form:id"),
+                listbox_elem.getAttribute("form:data-field"),
+                listbox_elem.getAttribute("form:input-required"),
+                listbox_elem.getAttribute("form:convert-empty-to-null"),
+                listbox_elem.getAttribute("form:label"),
+                listbox_elem.getAttribute("form:for"),
+                listbox_elem.getAttribute("form:control-implementation"),
+                read_eventlisteners(listbox_elem),
+                listbox_elem.getAttribute("form:boundcolumn"),
+                listbox_elem.getAttribute("form:dropdown"),
+                listsourcetype,
+                listsource
+                )
 
 
 def _read_listbox(data) -> ListBox:

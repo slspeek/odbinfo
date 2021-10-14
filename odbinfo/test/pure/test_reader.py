@@ -1,23 +1,53 @@
 """ Reader tests """
 import json
+import unittest
 import xml
-from os import path
+from xml.dom.minidom import parseString
 
 import pytest
 import xmltodict
 
 from odbinfo.pure.datatype.config import TextDocumentsConfig
 from odbinfo.pure.reader import (_collect_attribute, _read_listbox, _reports,
-                                 _text_documents, document, forms, read_forms,
-                                 read_libraries, read_python_libraries,
-                                 read_reports, read_subforms,
-                                 read_text_documents)
+                                 _text_documents, document, forms,
+                                 read_control, read_eventlisteners, read_forms,
+                                 read_libraries, read_listbox,
+                                 read_python_libraries, read_reports,
+                                 read_subforms, read_text_documents)
 from odbinfo.test.pure.fixtures import empty_odbzip, odbzip
 from odbinfo.test.resource import DEFAULT_TESTDB
 
 # pylint:disable=line-too-long
+OFFICE_EVENT_LISTENERS = """
+<control>
+<office:event-listeners xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" >
+    <script:event-listener script:language="ooo:script" script:event-name="form:performaction" xlink:href="vnd.sun.star.script:Library1.Module1.Main?language=Basic&amp;location=document" xlink:type="simple"/>
+</office:event-listeners>
+</control>
+"""
+
+
+class ReadEventlisteners(unittest.TestCase):
+
+    def setUp(self):
+        self.office_evlis_elem = parseString(
+            OFFICE_EVENT_LISTENERS).documentElement
+        self.listeners = read_eventlisteners(self.office_evlis_elem)
+
+    def test_count(self):
+        assert len(self.listeners) == 1
+
+    def test_script(self):
+        assert self.listeners[0].script == \
+            'vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document'
+
+    def test_event(self):
+        assert self.listeners[0].name == 'form:performaction'
+
+
+# pylint:disable=line-too-long
 LISTBOX_VALUELIST = """
-<form:listbox form:name="ListBoxValuesRFamliyID" form:control-implementation="ooo:com.sun.star.form.component.ListBox" xml:id="control6" form:id="control6" form:dropdown="true" form:data-field="RFamliyID" form:input-required="true" form:bound-column="1">
+<form:listbox form:name="ListBoxValuesRFamliyID" form:control-implementation="ooo:com.sun.star.form.component.ListBox" xml:id="control6" form:id="control6" form:dropdown="true" form:data-field="RFamliyID" form:input-required="true" form:bound-column="1" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0"  xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0">
 <form:properties>
 <form:property form:property-name="ControlTypeinMSO" office:value-type="float" office:value="0"/>
 <form:property form:property-name="DefaultControl" office:value-type="string" office:string-value="com.sun.star.form.control.ListBox"/>
@@ -30,6 +60,96 @@ LISTBOX_VALUELIST = """
 <form:option form:value="3"/>
 </form:listbox>
 """
+
+
+class ReadListBoxValueList(unittest.TestCase):
+
+    def setUp(self):
+        self.listbox_elem = parseString(LISTBOX_VALUELIST).documentElement
+        self.listbox = read_listbox(self.listbox_elem)
+
+    def test_listbox_name(self):
+        assert self.listbox.name == "ListBoxValuesRFamliyID"
+
+    def test_listbox_id(self):
+        assert self.listbox.controlid == "control6"
+
+    def test_listbox_data_field(self):
+        assert self.listbox.datafield == "RFamliyID"
+
+    def test_listbox_inputrequired(self):
+        assert self.listbox.inputrequired == "true"
+
+    def test_listbox_convert_empty_to_null(self):
+        assert self.listbox.convertemptytonull == ""
+
+    def test_listbox_label(self):
+        assert self.listbox.label == ""
+
+    def test_listbox_for(self):
+        assert self.listbox.formfor == ""
+
+    def test_listbox_implementation(self):
+        assert self.listbox.type == "ooo:com.sun.star.form.component.ListBox"
+
+    def test_listbox_boundcolumn(self):
+        assert self.listbox.boundcolumn == ""
+
+    def test_listbox_dropdown(self):
+        assert self.listbox.dropdown == "true"
+
+    def test_listbox_listsourcetype(self):
+        assert self.listbox.listsourcetype == "valuelist"
+
+    def test_listbox_listsource(self):
+        assert self.listbox.listsource == "1, 2, 3"
+
+
+# pylint:disable=line-too-long
+BUTTON_ELEMENT = """
+<form:button form:name="Knop 1" form:control-implementation="ooo:com.sun.star.form.component.CommandButton" xml:id="control7" form:id="control7" form:label="Say hello" office:target-frame="" form:delay-for-repeat="PT0.050000000S" form:image-position="center" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0"  xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"  xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+<form:properties>
+<form:property form:property-name="DefaultControl" office:value-type="string" office:string-value="com.sun.star.form.control.CommandButton"/>
+</form:properties>
+<office:event-listeners>
+<script:event-listener script:language="ooo:script" script:event-name="form:performaction" xlink:href="vnd.sun.star.script:Library1.Module1.Main?language=Basic&amp;location=document" xlink:type="simple"/>
+</office:event-listeners>
+</form:button>
+"""
+
+
+class ReadControlButton(unittest.TestCase):
+
+    def setUp(self):
+        self.control_elem = parseString(BUTTON_ELEMENT).documentElement
+        self.control = read_control(self.control_elem)
+
+    def test_control_name(self):
+        assert self.control.name == "Knop 1"
+
+    def test_control_id(self):
+        assert self.control.controlid == "control7"
+
+    def test_control_data_field(self):
+        assert self.control.datafield == ""
+
+    def test_control_inputrequired(self):
+        assert self.control.inputrequired == ""
+
+    def test_control_convert_empty_to_null(self):
+        assert self.control.convertemptytonull == ""
+
+    def test_control_label(self):
+        assert self.control.label == "Say hello"
+
+    def test_control_for(self):
+        assert self.control.formfor == ""
+
+    def test_control_implementation(self):
+        assert self.control.type == "ooo:com.sun.star.form.component.CommandButton"
+
+    def test_control_eventlisteners(self):
+        assert len(self.control.eventlisteners) == 1
 
 
 @pytest.mark.slow
@@ -203,6 +323,6 @@ def test_text_document(shared_datadir):
 @pytest.mark.slow
 def test_read_text_documents(shared_datadir):
     " find odts "
-    directory = path.dirname(shared_datadir / DEFAULT_TESTDB)
+    directory = (shared_datadir / DEFAULT_TESTDB).parent
 
     print(read_text_documents(TextDocumentsConfig("testdb", [directory])))

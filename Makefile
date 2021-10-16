@@ -32,7 +32,7 @@ build: mypy metric unitcoverage
 
 travis: installantlr clean genparser info check alltest
 
-all: travis install_oxt fixtures mypy metric
+all: mypy metric travis install_oxt 
 
 prepare:
 	@echo prepare start

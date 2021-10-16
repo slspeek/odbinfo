@@ -1,13 +1,17 @@
-Forms have the order of the controls wrong due to the limitations of xml2dict
-see xml.dom.minidom
-Unittests for reader can use small xml-fragments
+use xml.dom.minidom for the rest of the pure/reader
+Unittests for reader can use xml-fragments
 test/pure/test_reader.py
+
+SubForm reading should respect order of subforms and controls
+FormItem = Union[SubForm, Control, ListBox, Grid]
+
+Node should have to_dict method for writing out
 
 Testing
 -------
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 75.22%)
+unit test coverage 90% (now 77.37%)
 test/pure/test_sql_parser.py
 test/pure/test_writer.py
 test/pure/test_writer_make_site.py

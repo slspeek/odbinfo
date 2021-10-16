@@ -26,28 +26,6 @@ subforms:
     name: id label
     obj_id: '157'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control3
-    convertemptytonull: ''
-    datafield: ''
-    eventlisteners: []
-    formfor: control4
-    inputrequired: ''
-    label: naam
-    name: naam label
-    obj_id: '158'
-    type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control5
-    convertemptytonull: ''
-    datafield: ''
-    eventlisteners: []
-    formfor: control6
-    inputrequired: ''
-    label: RFamliyID
-    name: RFamliyID label
-    obj_id: '159'
-    type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
     controlid: control2
@@ -59,7 +37,7 @@ subforms:
       command: "SELECT \"id\",\n       \"naam\"\nFROM   \"Plant\""
       literal_values: []
       name: id.Command
-      obj_id: '161'
+      obj_id: '159'
       table_tokens: []
       tokens:
       - text: SELECT
@@ -106,7 +84,7 @@ subforms:
           bookmark: null
           content_type: table
           local_id: Plant
-        obj_id: '180'
+        obj_id: '178'
         text: '"Plant"'
         type: 200
     eventlisteners: []
@@ -116,8 +94,19 @@ subforms:
     listsource: select "id", "naam" from "Plant"
     listsourcetype: sql-pass-through
     name: id
-    obj_id: '160'
+    obj_id: '158'
     type: ListBox
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control3
+    convertemptytonull: ''
+    datafield: ''
+    eventlisteners: []
+    formfor: control4
+    inputrequired: ''
+    label: naam
+    name: naam label
+    obj_id: '179'
+    type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
     controlid: control4
@@ -135,8 +124,19 @@ subforms:
     listsource: Plant
     listsourcetype: table-fields
     name: naam
-    obj_id: '181'
+    obj_id: '180'
     type: ListBox
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control5
+    convertemptytonull: ''
+    datafield: ''
+    eventlisteners: []
+    formfor: control6
+    inputrequired: ''
+    label: RFamliyID
+    name: RFamliyID label
+    obj_id: '181'
+    type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
     controlid: control6

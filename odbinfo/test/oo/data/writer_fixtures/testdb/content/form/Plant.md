@@ -27,28 +27,6 @@ subforms:
     obj_id: '185'
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control3
-    convertemptytonull: ''
-    datafield: ''
-    eventlisteners: []
-    formfor: control4
-    inputrequired: ''
-    label: naam
-    name: lblnaam
-    obj_id: '186'
-    type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control5
-    convertemptytonull: ''
-    datafield: ''
-    eventlisteners: []
-    formfor: control6
-    inputrequired: ''
-    label: RFamliyID
-    name: lblRFamliyID
-    obj_id: '187'
-    type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control2
     convertemptytonull: 'true'
     datafield: id
@@ -57,19 +35,19 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
-    obj_id: '188'
+    obj_id: '186'
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control6
-    convertemptytonull: 'true'
-    datafield: RFamliyID
+    controlid: control3
+    convertemptytonull: ''
+    datafield: ''
     eventlisteners: []
-    formfor: ''
-    inputrequired: 'false'
-    label: ''
-    name: fmtRFamliyID
-    obj_id: '189'
-    type: FormattedField
+    formfor: control4
+    inputrequired: ''
+    label: naam
+    name: lblnaam
+    obj_id: '187'
+    type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control4
     convertemptytonull: 'true'
@@ -79,8 +57,30 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
-    obj_id: '190'
+    obj_id: '188'
     type: TextField
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control5
+    convertemptytonull: ''
+    datafield: ''
+    eventlisteners: []
+    formfor: control6
+    inputrequired: ''
+    label: RFamliyID
+    name: lblRFamliyID
+    obj_id: '189'
+    type: FixedText
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control6
+    convertemptytonull: 'true'
+    datafield: RFamliyID
+    eventlisteners: []
+    formfor: ''
+    inputrequired: 'false'
+    label: ''
+    name: fmtRFamliyID
+    obj_id: '190'
+    type: FormattedField
   depth: 0
   detailfields: ''
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier

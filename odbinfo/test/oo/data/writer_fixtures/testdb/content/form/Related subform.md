@@ -27,28 +27,6 @@ subforms:
     obj_id: '246'
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control9
-    convertemptytonull: ''
-    datafield: ''
-    eventlisteners: []
-    formfor: control10
-    inputrequired: ''
-    label: naam
-    name: lblnaam
-    obj_id: '247'
-    type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control11
-    convertemptytonull: ''
-    datafield: ''
-    eventlisteners: []
-    formfor: control12
-    inputrequired: ''
-    label: RFamliyID
-    name: lblRFamliyID
-    obj_id: '248'
-    type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control8
     convertemptytonull: 'true'
     datafield: id
@@ -57,19 +35,19 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
-    obj_id: '249'
+    obj_id: '247'
     type: FormattedField
   - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control12
-    convertemptytonull: 'true'
-    datafield: RFamliyID
+    controlid: control9
+    convertemptytonull: ''
+    datafield: ''
     eventlisteners: []
-    formfor: ''
-    inputrequired: 'false'
-    label: ''
-    name: fmtRFamliyID
-    obj_id: '250'
-    type: FormattedField
+    formfor: control10
+    inputrequired: ''
+    label: naam
+    name: lblnaam
+    obj_id: '248'
+    type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control10
     convertemptytonull: 'true'
@@ -79,8 +57,30 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
-    obj_id: '251'
+    obj_id: '249'
     type: TextField
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control11
+    convertemptytonull: ''
+    datafield: ''
+    eventlisteners: []
+    formfor: control12
+    inputrequired: ''
+    label: RFamliyID
+    name: lblRFamliyID
+    obj_id: '250'
+    type: FixedText
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control12
+    convertemptytonull: 'true'
+    datafield: RFamliyID
+    eventlisteners: []
+    formfor: ''
+    inputrequired: 'false'
+    label: ''
+    name: fmtRFamliyID
+    obj_id: '251'
+    type: FormattedField
   depth: 0
   detailfields: ''
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
@@ -110,28 +110,6 @@ subforms:
       obj_id: '253'
       type: FixedText
     - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control3
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control4
-      inputrequired: ''
-      label: Name
-      name: lblName
-      obj_id: '254'
-      type: FixedText
-    - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control5
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control6
-      inputrequired: ''
-      label: Desc
-      name: lblDesc
-      obj_id: '255'
-      type: FixedText
-    - !!python/object:odbinfo.pure.datatype.ui.Control
       controlid: control2
       convertemptytonull: 'true'
       datafield: FamilyID
@@ -140,8 +118,19 @@ subforms:
       inputrequired: 'true'
       label: ''
       name: fmtFamilyID
-      obj_id: '256'
+      obj_id: '254'
       type: FormattedField
+    - !!python/object:odbinfo.pure.datatype.ui.Control
+      controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: Name
+      name: lblName
+      obj_id: '255'
+      type: FixedText
     - !!python/object:odbinfo.pure.datatype.ui.Control
       controlid: control4
       convertemptytonull: 'true'
@@ -151,8 +140,19 @@ subforms:
       inputrequired: 'false'
       label: ''
       name: txtName
-      obj_id: '257'
+      obj_id: '256'
       type: TextField
+    - !!python/object:odbinfo.pure.datatype.ui.Control
+      controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: Desc
+      name: lblDesc
+      obj_id: '257'
+      type: FixedText
     - !!python/object:odbinfo.pure.datatype.ui.Control
       controlid: control6
       convertemptytonull: 'true'

@@ -254,28 +254,6 @@ form_defs:
       obj_id: '157'
       parent: null
       type: FixedText
-    - controlid: control3
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control4
-      inputrequired: ''
-      label: naam
-      name: naam label
-      obj_id: '158'
-      parent: null
-      type: FixedText
-    - controlid: control5
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control6
-      inputrequired: ''
-      label: RFamliyID
-      name: RFamliyID label
-      obj_id: '159'
-      parent: null
-      type: FixedText
     - boundcolumn: '1'
       controlid: control2
       convertemptytonull: ''
@@ -286,7 +264,7 @@ form_defs:
         command: "SELECT \"id\",\n       \"naam\"\nFROM   \"Plant\""
         literal_values: []
         name: id.Command
-        obj_id: '161'
+        obj_id: '159'
         parent: null
         table_tokens:
         - cls: null
@@ -296,7 +274,7 @@ form_defs:
             bookmark: null
             content_type: table
             local_id: Plant
-          obj_id: '180'
+          obj_id: '178'
           parent: null
           text: '"Plant"'
           type: 200
@@ -305,7 +283,7 @@ form_defs:
           hidden: false
           index: 0
           link: null
-          obj_id: '162'
+          obj_id: '160'
           parent: null
           text: SELECT
           type: 131
@@ -313,7 +291,7 @@ form_defs:
           hidden: true
           index: 1
           link: null
-          obj_id: '163'
+          obj_id: '161'
           parent: null
           text: ' '
           type: 207
@@ -321,7 +299,7 @@ form_defs:
           hidden: false
           index: 2
           link: null
-          obj_id: '164'
+          obj_id: '162'
           parent: null
           text: '"id"'
           type: 200
@@ -329,7 +307,7 @@ form_defs:
           hidden: false
           index: 3
           link: null
-          obj_id: '165'
+          obj_id: '163'
           parent: null
           text: ','
           type: 5
@@ -337,7 +315,7 @@ form_defs:
           hidden: true
           index: 4
           link: null
-          obj_id: '166'
+          obj_id: '164'
           parent: null
           text: '
 
@@ -347,7 +325,7 @@ form_defs:
           hidden: true
           index: 5
           link: null
-          obj_id: '167'
+          obj_id: '165'
           parent: null
           text: ' '
           type: 207
@@ -355,7 +333,7 @@ form_defs:
           hidden: true
           index: 6
           link: null
-          obj_id: '168'
+          obj_id: '166'
           parent: null
           text: ' '
           type: 207
@@ -363,7 +341,7 @@ form_defs:
           hidden: true
           index: 7
           link: null
-          obj_id: '169'
+          obj_id: '167'
           parent: null
           text: ' '
           type: 207
@@ -371,7 +349,7 @@ form_defs:
           hidden: true
           index: 8
           link: null
-          obj_id: '170'
+          obj_id: '168'
           parent: null
           text: ' '
           type: 207
@@ -379,7 +357,7 @@ form_defs:
           hidden: true
           index: 9
           link: null
-          obj_id: '171'
+          obj_id: '169'
           parent: null
           text: ' '
           type: 207
@@ -387,7 +365,7 @@ form_defs:
           hidden: true
           index: 10
           link: null
-          obj_id: '172'
+          obj_id: '170'
           parent: null
           text: ' '
           type: 207
@@ -395,7 +373,7 @@ form_defs:
           hidden: true
           index: 11
           link: null
-          obj_id: '173'
+          obj_id: '171'
           parent: null
           text: ' '
           type: 207
@@ -403,7 +381,7 @@ form_defs:
           hidden: false
           index: 12
           link: null
-          obj_id: '174'
+          obj_id: '172'
           parent: null
           text: '"naam"'
           type: 200
@@ -411,7 +389,7 @@ form_defs:
           hidden: true
           index: 13
           link: null
-          obj_id: '175'
+          obj_id: '173'
           parent: null
           text: '
 
@@ -421,7 +399,7 @@ form_defs:
           hidden: false
           index: 14
           link: null
-          obj_id: '176'
+          obj_id: '174'
           parent: null
           text: FROM
           type: 77
@@ -429,7 +407,7 @@ form_defs:
           hidden: true
           index: 15
           link: null
-          obj_id: '177'
+          obj_id: '175'
           parent: null
           text: ' '
           type: 207
@@ -437,7 +415,7 @@ form_defs:
           hidden: true
           index: 16
           link: null
-          obj_id: '178'
+          obj_id: '176'
           parent: null
           text: ' '
           type: 207
@@ -445,7 +423,7 @@ form_defs:
           hidden: true
           index: 17
           link: null
-          obj_id: '179'
+          obj_id: '177'
           parent: null
           text: ' '
           type: 207
@@ -456,7 +434,7 @@ form_defs:
             bookmark: null
             content_type: table
             local_id: Plant
-          obj_id: '180'
+          obj_id: '178'
           parent: null
           text: '"Plant"'
           type: 200
@@ -468,9 +446,20 @@ form_defs:
       listsource: select "id", "naam" from "Plant"
       listsourcetype: sql-pass-through
       name: id
-      obj_id: '160'
+      obj_id: '158'
       parent: null
       type: ListBox
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: naam label
+      obj_id: '179'
+      parent: null
+      type: FixedText
     - boundcolumn: '1'
       controlid: control4
       convertemptytonull: ''
@@ -488,9 +477,20 @@ form_defs:
       listsource: Plant
       listsourcetype: table-fields
       name: naam
-      obj_id: '181'
+      obj_id: '180'
       parent: null
       type: ListBox
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: RFamliyID label
+      obj_id: '181'
+      parent: null
+      type: FixedText
     - boundcolumn: '1'
       controlid: control6
       convertemptytonull: ''
@@ -558,28 +558,6 @@ form_defs:
       obj_id: '185'
       parent: null
       type: FixedText
-    - controlid: control3
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control4
-      inputrequired: ''
-      label: naam
-      name: lblnaam
-      obj_id: '186'
-      parent: null
-      type: FixedText
-    - controlid: control5
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control6
-      inputrequired: ''
-      label: RFamliyID
-      name: lblRFamliyID
-      obj_id: '187'
-      parent: null
-      type: FixedText
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -588,20 +566,20 @@ form_defs:
       inputrequired: 'true'
       label: ''
       name: fmtid
-      obj_id: '188'
+      obj_id: '186'
       parent: null
       type: FormattedField
-    - controlid: control6
-      convertemptytonull: 'true'
-      datafield: RFamliyID
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
       eventlisteners: []
-      formfor: ''
-      inputrequired: 'false'
-      label: ''
-      name: fmtRFamliyID
-      obj_id: '189'
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      obj_id: '187'
       parent: null
-      type: FormattedField
+      type: FixedText
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -610,9 +588,31 @@ form_defs:
       inputrequired: 'false'
       label: ''
       name: txtnaam
-      obj_id: '190'
+      obj_id: '188'
       parent: null
       type: TextField
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      obj_id: '189'
+      parent: null
+      type: FixedText
+    - controlid: control6
+      convertemptytonull: 'true'
+      datafield: RFamliyID
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: fmtRFamliyID
+      obj_id: '190'
+      parent: null
+      type: FormattedField
     depth: 0
     detailfields: ''
     embedded_query: null
@@ -717,28 +717,6 @@ form_defs:
       obj_id: '198'
       parent: null
       type: FixedText
-    - controlid: control3
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control4
-      inputrequired: ''
-      label: naam
-      name: lblnaam
-      obj_id: '199'
-      parent: null
-      type: FixedText
-    - controlid: control5
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control6
-      inputrequired: ''
-      label: RFamliyID
-      name: lblRFamliyID
-      obj_id: '200'
-      parent: null
-      type: FixedText
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -747,9 +725,20 @@ form_defs:
       inputrequired: 'true'
       label: ''
       name: fmtid
-      obj_id: '201'
+      obj_id: '199'
       parent: null
       type: FormattedField
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      obj_id: '200'
+      parent: null
+      type: FixedText
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -758,9 +747,20 @@ form_defs:
       inputrequired: 'false'
       label: ''
       name: txtnaam
-      obj_id: '202'
+      obj_id: '201'
       parent: null
       type: TextField
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      obj_id: '202'
+      parent: null
+      type: FixedText
     - boundcolumn: '1'
       controlid: control6
       convertemptytonull: ''
@@ -894,28 +894,6 @@ form_defs:
       obj_id: '212'
       parent: null
       type: FixedText
-    - controlid: control3
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control4
-      inputrequired: ''
-      label: naam
-      name: lblnaam
-      obj_id: '213'
-      parent: null
-      type: FixedText
-    - controlid: control5
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control6
-      inputrequired: ''
-      label: RFamliyID
-      name: lblRFamliyID
-      obj_id: '214'
-      parent: null
-      type: FixedText
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -924,9 +902,20 @@ form_defs:
       inputrequired: 'true'
       label: ''
       name: fmtid
-      obj_id: '215'
+      obj_id: '213'
       parent: null
       type: FormattedField
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      obj_id: '214'
+      parent: null
+      type: FixedText
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -935,9 +924,20 @@ form_defs:
       inputrequired: 'false'
       label: ''
       name: txtnaam
-      obj_id: '216'
+      obj_id: '215'
       parent: null
       type: TextField
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      obj_id: '216'
+      parent: null
+      type: FixedText
     - boundcolumn: '1'
       controlid: control6
       convertemptytonull: ''
@@ -1246,28 +1246,6 @@ form_defs:
       obj_id: '246'
       parent: null
       type: FixedText
-    - controlid: control9
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control10
-      inputrequired: ''
-      label: naam
-      name: lblnaam
-      obj_id: '247'
-      parent: null
-      type: FixedText
-    - controlid: control11
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control12
-      inputrequired: ''
-      label: RFamliyID
-      name: lblRFamliyID
-      obj_id: '248'
-      parent: null
-      type: FixedText
     - controlid: control8
       convertemptytonull: 'true'
       datafield: id
@@ -1276,20 +1254,20 @@ form_defs:
       inputrequired: 'true'
       label: ''
       name: fmtid
-      obj_id: '249'
+      obj_id: '247'
       parent: null
       type: FormattedField
-    - controlid: control12
-      convertemptytonull: 'true'
-      datafield: RFamliyID
+    - controlid: control9
+      convertemptytonull: ''
+      datafield: ''
       eventlisteners: []
-      formfor: ''
-      inputrequired: 'false'
-      label: ''
-      name: fmtRFamliyID
-      obj_id: '250'
+      formfor: control10
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      obj_id: '248'
       parent: null
-      type: FormattedField
+      type: FixedText
     - controlid: control10
       convertemptytonull: 'true'
       datafield: naam
@@ -1298,9 +1276,31 @@ form_defs:
       inputrequired: 'false'
       label: ''
       name: txtnaam
-      obj_id: '251'
+      obj_id: '249'
       parent: null
       type: TextField
+    - controlid: control11
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control12
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      obj_id: '250'
+      parent: null
+      type: FixedText
+    - controlid: control12
+      convertemptytonull: 'true'
+      datafield: RFamliyID
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: fmtRFamliyID
+      obj_id: '251'
+      parent: null
+      type: FormattedField
     depth: 0
     detailfields: ''
     embedded_query: null
@@ -1330,28 +1330,6 @@ form_defs:
         obj_id: '253'
         parent: null
         type: FixedText
-      - controlid: control3
-        convertemptytonull: ''
-        datafield: ''
-        eventlisteners: []
-        formfor: control4
-        inputrequired: ''
-        label: Name
-        name: lblName
-        obj_id: '254'
-        parent: null
-        type: FixedText
-      - controlid: control5
-        convertemptytonull: ''
-        datafield: ''
-        eventlisteners: []
-        formfor: control6
-        inputrequired: ''
-        label: Desc
-        name: lblDesc
-        obj_id: '255'
-        parent: null
-        type: FixedText
       - controlid: control2
         convertemptytonull: 'true'
         datafield: FamilyID
@@ -1360,9 +1338,20 @@ form_defs:
         inputrequired: 'true'
         label: ''
         name: fmtFamilyID
-        obj_id: '256'
+        obj_id: '254'
         parent: null
         type: FormattedField
+      - controlid: control3
+        convertemptytonull: ''
+        datafield: ''
+        eventlisteners: []
+        formfor: control4
+        inputrequired: ''
+        label: Name
+        name: lblName
+        obj_id: '255'
+        parent: null
+        type: FixedText
       - controlid: control4
         convertemptytonull: 'true'
         datafield: Name
@@ -1371,9 +1360,20 @@ form_defs:
         inputrequired: 'false'
         label: ''
         name: txtName
-        obj_id: '257'
+        obj_id: '256'
         parent: null
         type: TextField
+      - controlid: control5
+        convertemptytonull: ''
+        datafield: ''
+        eventlisteners: []
+        formfor: control6
+        inputrequired: ''
+        label: Desc
+        name: lblDesc
+        obj_id: '257'
+        parent: null
+        type: FixedText
       - controlid: control6
         convertemptytonull: 'true'
         datafield: Desc
@@ -8421,10 +8421,10 @@ table_defs:
   - bookmark: '134'
     content_type: query
     local_id: vwPlant
-  - bookmark: '180'
+  - bookmark: '178'
     content_type: form
     local_id: ListBoxTest
-  - bookmark: '181'
+  - bookmark: '180'
     content_type: form
     local_id: ListBoxTest
   - bookmark: '184'

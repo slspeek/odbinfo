@@ -1,21 +1,40 @@
 """ Reader tests """
+
 import json
 import unittest
-import xml
-from xml.dom.minidom import parseString
+from xml.dom.minidom import Element, parseString
 
 import pytest
-import xmltodict
 
 from odbinfo.pure.datatype.config import TextDocumentsConfig
-from odbinfo.pure.reader import (_collect_attribute, _read_listbox, _reports,
-                                 _text_documents, document, forms,
-                                 read_control, read_eventlisteners, read_forms,
+from odbinfo.pure.reader import (_collect_attribute, _reports, _text_documents,
+                                 child_elements, document, forms, read_control,
+                                 read_eventlisteners, read_forms, read_grid,
                                  read_libraries, read_listbox,
                                  read_python_libraries, read_reports,
                                  read_subforms, read_text_documents)
 from odbinfo.test.pure.fixtures import empty_odbzip, odbzip
 from odbinfo.test.resource import DEFAULT_TESTDB
+
+
+def document_element(source: str) -> Element:
+    return parseString(source).documentElement
+
+
+class ChildElement(unittest.TestCase):
+
+    def setUp(self):
+        self.xml = "<tag><foo></foo><bar/></tag>"
+        self.root = document_element(self.xml)
+
+    def test_two_elem(self):
+        assert len(child_elements(self.root)) == 2
+
+    def test_empty(self):
+        self.xml = "<tag></tag>"
+        self.root = document_element(self.xml)
+        assert len(child_elements(self.root)) == 0
+
 
 # pylint:disable=line-too-long
 OFFICE_EVENT_LISTENERS = """
@@ -30,8 +49,8 @@ OFFICE_EVENT_LISTENERS = """
 class ReadEventlisteners(unittest.TestCase):
 
     def setUp(self):
-        self.office_evlis_elem = parseString(
-            OFFICE_EVENT_LISTENERS).documentElement
+        self.office_evlis_elem = document_element(
+            OFFICE_EVENT_LISTENERS)
         self.listeners = read_eventlisteners(self.office_evlis_elem)
 
     def test_count(self):
@@ -65,7 +84,7 @@ LISTBOX_VALUELIST = """
 class ReadListBoxValueList(unittest.TestCase):
 
     def setUp(self):
-        self.listbox_elem = parseString(LISTBOX_VALUELIST).documentElement
+        self.listbox_elem = document_element(LISTBOX_VALUELIST)
         self.listbox = read_listbox(self.listbox_elem)
 
     def test_listbox_name(self):
@@ -93,7 +112,7 @@ class ReadListBoxValueList(unittest.TestCase):
         assert self.listbox.type == "ooo:com.sun.star.form.component.ListBox"
 
     def test_listbox_boundcolumn(self):
-        assert self.listbox.boundcolumn == ""
+        assert self.listbox.boundcolumn == "1"
 
     def test_listbox_dropdown(self):
         assert self.listbox.dropdown == "true"
@@ -121,7 +140,7 @@ BUTTON_ELEMENT = """
 class ReadControlButton(unittest.TestCase):
 
     def setUp(self):
-        self.control_elem = parseString(BUTTON_ELEMENT).documentElement
+        self.control_elem = document_element(BUTTON_ELEMENT)
         self.control = read_control(self.control_elem)
 
     def test_control_name(self):
@@ -221,18 +240,42 @@ RELATED_SUBFORM = """<?xml version="1.0" encoding="UTF-8"?>
 
 
 def test_read_subform_related_subform():
-    doc = xml.dom.minidom.parseString(RELATED_SUBFORM)
-    subforms = read_subforms(doc.documentElement)
+    doc = document_element(RELATED_SUBFORM)
+    subforms = read_subforms(doc)
     assert len(subforms[0].subforms) == 1
     print(subforms)
 
 
-def test_read_listbox_valuelist():
-    "test listbox with valuelist"
-    data = xmltodict.parse(LISTBOX_VALUELIST)["form:listbox"]
-    listbox = _read_listbox(data)
-    assert listbox.listsourcetype == "valuelist"
-    assert listbox.listsource == "1, 2, 3"
+#pylint: disable = line-too-long
+GRID_ELEMENT = """
+<form:grid form:name="MainForm_Grid" form:control-implementation="ooo:com.sun.star.form.component.GridControl" xml:id="control1" form:id="control1"  xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0"  xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"  xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+<form:properties>
+<form:property form:property-name="DefaultControl" office:value-type="string" office:string-value="com.sun.star.form.control.GridControl"/>
+</form:properties>
+<form:column form:name="id" form:control-implementation="ooo:FormattedField" form:label="id">
+<form:formatted-text xml:id="control2" form:id="control2" form:data-field="id" form:input-required="false" form:convert-empty-to-null="true">
+<form:properties>
+</form:properties>
+</form:formatted-text>
+</form:column>
+<form:column form:name="naam" form:control-implementation="ooo:TextField" form:label="naam">
+<form:text xml:id="control3" form:id="control3" form:data-field="naam" form:input-required="false" form:convert-empty-to-null="true">
+<form:properties>
+</form:properties>
+</form:text>
+</form:column>
+</form:grid>
+"""
+
+
+class ReadGrid(unittest.TestCase):
+
+    def setUp(self):
+        self.grid_elem = document_element(GRID_ELEMENT)
+
+    def test_read_grid(self):
+        self.grid = read_grid(self.grid_elem)
+        assert len(self.grid.columns) == 2
 
 
 @pytest.mark.slow

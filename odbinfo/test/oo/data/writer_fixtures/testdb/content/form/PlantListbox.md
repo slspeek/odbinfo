@@ -27,28 +27,6 @@ subforms:
     obj_id: '198'
     type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control3
-    convertemptytonull: ''
-    datafield: ''
-    eventlisteners: []
-    formfor: control4
-    inputrequired: ''
-    label: naam
-    name: lblnaam
-    obj_id: '199'
-    type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control5
-    convertemptytonull: ''
-    datafield: ''
-    eventlisteners: []
-    formfor: control6
-    inputrequired: ''
-    label: RFamliyID
-    name: lblRFamliyID
-    obj_id: '200'
-    type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control2
     convertemptytonull: 'true'
     datafield: id
@@ -57,8 +35,19 @@ subforms:
     inputrequired: 'true'
     label: ''
     name: fmtid
-    obj_id: '201'
+    obj_id: '199'
     type: FormattedField
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control3
+    convertemptytonull: ''
+    datafield: ''
+    eventlisteners: []
+    formfor: control4
+    inputrequired: ''
+    label: naam
+    name: lblnaam
+    obj_id: '200'
+    type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.Control
     controlid: control4
     convertemptytonull: 'true'
@@ -68,8 +57,19 @@ subforms:
     inputrequired: 'false'
     label: ''
     name: txtnaam
-    obj_id: '202'
+    obj_id: '201'
     type: TextField
+  - !!python/object:odbinfo.pure.datatype.ui.Control
+    controlid: control5
+    convertemptytonull: ''
+    datafield: ''
+    eventlisteners: []
+    formfor: control6
+    inputrequired: ''
+    label: RFamliyID
+    name: lblRFamliyID
+    obj_id: '202'
+    type: FixedText
   - !!python/object:odbinfo.pure.datatype.ui.ListBox
     boundcolumn: '1'
     controlid: control6

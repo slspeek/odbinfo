@@ -138,28 +138,6 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control3
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control4
-      inputrequired: ''
-      label: naam
-      name: naam label
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control5
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control6
-      inputrequired: ''
-      label: RFamliyID
-      name: RFamliyID label
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
     - boundcolumn: '1'
       controlid: control2
       convertemptytonull: ''
@@ -177,6 +155,17 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.ListBox
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: naam label
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
     - boundcolumn: '1'
       controlid: control4
       convertemptytonull: ''
@@ -194,6 +183,17 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.ListBox
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: RFamliyID label
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
     - boundcolumn: '1'
       controlid: control6
       convertemptytonull: ''
@@ -246,28 +246,6 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control3
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control4
-      inputrequired: ''
-      label: naam
-      name: lblnaam
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control5
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control6
-      inputrequired: ''
-      label: RFamliyID
-      name: lblRFamliyID
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -279,17 +257,17 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.FormattedField
-    - controlid: control6
-      convertemptytonull: 'true'
-      datafield: RFamliyID
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
       eventlisteners: []
-      formfor: ''
-      inputrequired: 'false'
-      label: ''
-      name: fmtRFamliyID
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: lblnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      type: ooo:com.sun.star.form.component.FormattedField
+      type: ooo:com.sun.star.form.component.FixedText
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -301,6 +279,28 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.TextField
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control6
+      convertemptytonull: 'true'
+      datafield: RFamliyID
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: fmtRFamliyID
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FormattedField
     depth: null
     detailfields: ''
     embedded_query: null
@@ -387,28 +387,6 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control3
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control4
-      inputrequired: ''
-      label: naam
-      name: lblnaam
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control5
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control6
-      inputrequired: ''
-      label: RFamliyID
-      name: lblRFamliyID
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -420,6 +398,17 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.FormattedField
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -431,6 +420,17 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.TextField
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
     - boundcolumn: '1'
       controlid: control6
       convertemptytonull: ''
@@ -531,28 +531,6 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control3
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control4
-      inputrequired: ''
-      label: naam
-      name: lblnaam
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control5
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control6
-      inputrequired: ''
-      label: RFamliyID
-      name: lblRFamliyID
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
     - controlid: control2
       convertemptytonull: 'true'
       datafield: id
@@ -564,6 +542,17 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.FormattedField
+    - controlid: control3
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control4
+      inputrequired: ''
+      label: naam
+      name: lblnaam
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
     - controlid: control4
       convertemptytonull: 'true'
       datafield: naam
@@ -575,6 +564,17 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.TextField
+    - controlid: control5
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control6
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
     - boundcolumn: '1'
       controlid: control6
       convertemptytonull: ''
@@ -675,28 +675,6 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control9
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control10
-      inputrequired: ''
-      label: naam
-      name: lblnaam
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
-    - controlid: control11
-      convertemptytonull: ''
-      datafield: ''
-      eventlisteners: []
-      formfor: control12
-      inputrequired: ''
-      label: RFamliyID
-      name: lblRFamliyID
-      obj_id: OBJID_NOT_SET
-      parent: null
-      type: ooo:com.sun.star.form.component.FixedText
     - controlid: control8
       convertemptytonull: 'true'
       datafield: id
@@ -708,17 +686,17 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.FormattedField
-    - controlid: control12
-      convertemptytonull: 'true'
-      datafield: RFamliyID
+    - controlid: control9
+      convertemptytonull: ''
+      datafield: ''
       eventlisteners: []
-      formfor: ''
-      inputrequired: 'false'
-      label: ''
-      name: fmtRFamliyID
+      formfor: control10
+      inputrequired: ''
+      label: naam
+      name: lblnaam
       obj_id: OBJID_NOT_SET
       parent: null
-      type: ooo:com.sun.star.form.component.FormattedField
+      type: ooo:com.sun.star.form.component.FixedText
     - controlid: control10
       convertemptytonull: 'true'
       datafield: naam
@@ -730,6 +708,28 @@ form_defs:
       obj_id: OBJID_NOT_SET
       parent: null
       type: ooo:com.sun.star.form.component.TextField
+    - controlid: control11
+      convertemptytonull: ''
+      datafield: ''
+      eventlisteners: []
+      formfor: control12
+      inputrequired: ''
+      label: RFamliyID
+      name: lblRFamliyID
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FixedText
+    - controlid: control12
+      convertemptytonull: 'true'
+      datafield: RFamliyID
+      eventlisteners: []
+      formfor: ''
+      inputrequired: 'false'
+      label: ''
+      name: fmtRFamliyID
+      obj_id: OBJID_NOT_SET
+      parent: null
+      type: ooo:com.sun.star.form.component.FormattedField
     depth: null
     detailfields: ''
     embedded_query: null
@@ -756,28 +756,6 @@ form_defs:
         obj_id: OBJID_NOT_SET
         parent: null
         type: ooo:com.sun.star.form.component.FixedText
-      - controlid: control3
-        convertemptytonull: ''
-        datafield: ''
-        eventlisteners: []
-        formfor: control4
-        inputrequired: ''
-        label: Name
-        name: lblName
-        obj_id: OBJID_NOT_SET
-        parent: null
-        type: ooo:com.sun.star.form.component.FixedText
-      - controlid: control5
-        convertemptytonull: ''
-        datafield: ''
-        eventlisteners: []
-        formfor: control6
-        inputrequired: ''
-        label: Desc
-        name: lblDesc
-        obj_id: OBJID_NOT_SET
-        parent: null
-        type: ooo:com.sun.star.form.component.FixedText
       - controlid: control2
         convertemptytonull: 'true'
         datafield: FamilyID
@@ -789,6 +767,17 @@ form_defs:
         obj_id: OBJID_NOT_SET
         parent: null
         type: ooo:com.sun.star.form.component.FormattedField
+      - controlid: control3
+        convertemptytonull: ''
+        datafield: ''
+        eventlisteners: []
+        formfor: control4
+        inputrequired: ''
+        label: Name
+        name: lblName
+        obj_id: OBJID_NOT_SET
+        parent: null
+        type: ooo:com.sun.star.form.component.FixedText
       - controlid: control4
         convertemptytonull: 'true'
         datafield: Name
@@ -800,6 +789,17 @@ form_defs:
         obj_id: OBJID_NOT_SET
         parent: null
         type: ooo:com.sun.star.form.component.TextField
+      - controlid: control5
+        convertemptytonull: ''
+        datafield: ''
+        eventlisteners: []
+        formfor: control6
+        inputrequired: ''
+        label: Desc
+        name: lblDesc
+        obj_id: OBJID_NOT_SET
+        parent: null
+        type: ooo:com.sun.star.form.component.FixedText
       - controlid: control6
         convertemptytonull: 'true'
         datafield: Desc

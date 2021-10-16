@@ -32,7 +32,7 @@ build: mypy metric unitcoverage
 
 travis: installantlr clean genparser info check alltest
 
-all: mypy metric travis install_oxt 
+all: mypy metric travis install_oxt
 
 prepare:
 	@echo prepare start
@@ -132,7 +132,7 @@ pycompile:
 check: pycompile check_main check_test
 
 check_main: pycompile format
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="odbinfo/test/pure,odbinfo/test/pure/datatype,odbinfo/test/pure/dependency,odbinfo/test/oo" odbinfo
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="odbinfo/test/pure,odbinfo/test/pure/datatype,odbinfo/test/pure/reader,odbinfo/test/pure/dependency,odbinfo/test/oo" odbinfo
 
 check_test: pycompile format
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest -dC0116,C0115,R0201,W0201 odbinfo/test

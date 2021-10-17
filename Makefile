@@ -174,8 +174,9 @@ doc: prepare
 .ONESHELL:
 unziptestdb:
 	-rm -rf $(ootestloc)/data/databases/unzipped
-	cd $(ootestloc)/data/databases && mkdir unzipped
+	cd $(ootestloc)/data/databases && mkdir unzipped && mkdir unzipped_doc
 	cd unzipped && unzip ../testdb.odb
+	cd ../unzipped_doc && unzip ../Untitled.odt
 
 .ONESHELL:
 genparser:

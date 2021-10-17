@@ -3,7 +3,6 @@
 fields:
 - !!python/object:odbinfo.pure.datatype.ui.DatabaseDisplay
   database: testdb
-  index: 0
   link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: query

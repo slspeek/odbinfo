@@ -1474,7 +1474,6 @@ table_defs:
 textdocument_defs:
 - fields:
   - database: testdb
-    index: 0
     link: null
     name: naam
     obj_id: OBJID_NOT_SET

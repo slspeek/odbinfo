@@ -8,7 +8,7 @@ from odbinfo.pure.reader.common import (_collect_attribute, child_elements,
 from odbinfo.test.pure.fixtures import odbzip
 
 
-class ChildElements(unittest.TestCase):
+class XMLTest(unittest.TestCase):
 
     def setUp(self):
         self.xml = "<tag><foo></foo><bar/></tag>"
@@ -16,6 +16,12 @@ class ChildElements(unittest.TestCase):
     @property
     def root(self):
         return document_element(self.xml)
+
+
+class ChildElements(XMLTest):
+
+    def setUp(self):
+        self.xml = "<tag><foo></foo><bar/></tag>"
 
     def test_two_elem(self):
         assert len(child_elements(self.root)) == 2

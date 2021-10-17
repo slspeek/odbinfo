@@ -53,7 +53,6 @@ class DatabaseDisplay(User, NamedNode):
     database: str
     table: str
     tabletype: str
-    index: int = field(init=False)
 
 
 @dataclass

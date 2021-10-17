@@ -8452,7 +8452,6 @@ table_defs:
 textdocument_defs:
 - fields:
   - database: testdb
-    index: 0
     link:
       bookmark: null
       content_type: query

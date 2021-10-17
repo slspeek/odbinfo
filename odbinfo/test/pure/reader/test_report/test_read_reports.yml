@@ -1,0 +1,47 @@
+- cmd: Family
+  cmdtype: table
+  embedded_query: null
+  formulas:
+  - field:[FamlilyID]
+  - field:[Name]
+  - field:[Desc]
+  link: null
+  name: Family
+  obj_id: OBJID_NOT_SET
+  output_type: application/vnd.oasis.opendocument.text
+  parent: null
+  parent_link: null
+  title: Family
+  used_by: []
+  uses: []
+- cmd: select * from "Plant";
+  cmdtype: command
+  embedded_query: null
+  formulas:
+  - field:[id]
+  - field:[naam]
+  link: null
+  name: ReportCommandTypeSQL
+  obj_id: OBJID_NOT_SET
+  output_type: application/vnd.oasis.opendocument.text
+  parent: null
+  parent_link: null
+  title: ReportCommandTypeSQL
+  used_by: []
+  uses: []
+- cmd: vwPlant
+  cmdtype: query
+  embedded_query: null
+  formulas:
+  - field:[id]
+  - field:[naam]
+  - field:[RFamliyID]
+  link: null
+  name: vwPlant
+  obj_id: OBJID_NOT_SET
+  output_type: application/vnd.oasis.opendocument.text
+  parent: null
+  parent_link: null
+  title: vwPlant
+  used_by: []
+  uses: []

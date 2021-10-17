@@ -142,4 +142,5 @@ def test_text_document(shared_datadir):
 def test_read_text_documents(shared_datadir):
     " find odts "
     directory = (shared_datadir / DEFAULT_TESTDB).parent
-    assert len(read_text_documents(TextDocumentsConfig("testdb", [directory])))
+    assert len(read_text_documents(
+        TextDocumentsConfig("testdb", [directory]))) == 1

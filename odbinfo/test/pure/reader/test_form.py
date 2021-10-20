@@ -9,11 +9,12 @@ from odbinfo.pure.reader.form import (forms, read_control, read_eventlisteners,
                                       read_forms, read_grid, read_listbox,
                                       read_subforms)
 from odbinfo.test.pure.fixtures import empty_odbzip, odbzip
+from odbinfo.test.pure.reader.test_common import OO_NAMESPACES
 
 # pylint:disable=line-too-long
-OFFICE_EVENT_LISTENERS = """
+OFFICE_EVENT_LISTENERS = f"""
 <control>
-<office:event-listeners xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<office:event-listeners {OO_NAMESPACES} >
     <script:event-listener script:language="ooo:script" script:event-name="form:performaction" xlink:href="vnd.sun.star.script:Library1.Module1.Main?language=Basic&amp;location=document" xlink:type="simple"/>
 </office:event-listeners>
 </control>
@@ -39,8 +40,8 @@ class ReadEventlisteners(unittest.TestCase):
 
 
 # pylint:disable=line-too-long
-LISTBOX_VALUELIST = """
-<form:listbox form:name="ListBoxValuesRFamliyID" form:control-implementation="ooo:com.sun.star.form.component.ListBox" xml:id="control6" form:id="control6" form:dropdown="true" form:data-field="RFamliyID" form:input-required="true" form:bound-column="1" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0"  xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0">
+LISTBOX_VALUELIST = f"""
+<form:listbox form:name="ListBoxValuesRFamliyID" form:control-implementation="ooo:com.sun.star.form.component.ListBox" xml:id="control6" form:id="control6" form:dropdown="true" form:data-field="RFamliyID" form:input-required="true" form:bound-column="1" {OO_NAMESPACES}>
 <form:properties>
 <form:property form:property-name="ControlTypeinMSO" office:value-type="float" office:value="0"/>
 <form:property form:property-name="DefaultControl" office:value-type="string" office:string-value="com.sun.star.form.control.ListBox"/>
@@ -99,8 +100,8 @@ class ReadListBoxValueList(unittest.TestCase):
 
 
 # pylint:disable=line-too-long
-BUTTON_ELEMENT = """
-<form:button form:name="Knop 1" form:control-implementation="ooo:com.sun.star.form.component.CommandButton" xml:id="control7" form:id="control7" form:label="Say hello" office:target-frame="" form:delay-for-repeat="PT0.050000000S" form:image-position="center" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0"  xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"  xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+BUTTON_ELEMENT = f"""
+<form:button form:name="Knop 1" form:control-implementation="ooo:com.sun.star.form.component.CommandButton" xml:id="control7" form:id="control7" form:label="Say hello" office:target-frame="" form:delay-for-repeat="PT0.050000000S" form:image-position="center" {OO_NAMESPACES}>
 <form:properties>
 <form:property form:property-name="DefaultControl" office:value-type="string" office:string-value="com.sun.star.form.control.CommandButton"/>
 </form:properties>
@@ -145,8 +146,8 @@ class ReadControlButton(unittest.TestCase):
         assert len(self.control.eventlisteners) == 1
 
 
-RELATED_SUBFORM = """<?xml version="1.0" encoding="UTF-8"?>
-<office:forms form:automatic-focus="false" form:apply-design-mode="false" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ooo="http://openoffice.org/2004/office" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" office:version="1.2">
+RELATED_SUBFORM = f"""<?xml version="1.0" encoding="UTF-8"?>
+<office:forms form:automatic-focus="false" form:apply-design-mode="false" {OO_NAMESPACES} office:version="1.2">
 <form:form form:name="MainForm" form:command="Plant" form:apply-filter="true" form:command-type="table" form:control-implementation="ooo:com.sun.star.form.component.Form" office:target-frame="">
 <form:properties>
 <form:property form:property-name="PropertyChangeNotificationEnabled" office:value-type="boolean" office:boolean-value="true"/>
@@ -199,8 +200,8 @@ def test_read_subform_related_subform():
 
 
 #pylint: disable = line-too-long
-GRID_ELEMENT = """
-<form:grid form:name="MainForm_Grid" form:control-implementation="ooo:com.sun.star.form.component.GridControl" xml:id="control1" form:id="control1"  xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0"  xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"  xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+GRID_ELEMENT = f"""
+<form:grid form:name="MainForm_Grid" form:control-implementation="ooo:com.sun.star.form.component.GridControl" xml:id="control1" form:id="control1"  {OO_NAMESPACES}>
 <form:properties>
 <form:property form:property-name="DefaultControl" office:value-type="string" office:string-value="com.sun.star.form.control.GridControl"/>
 </form:properties>

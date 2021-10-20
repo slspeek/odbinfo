@@ -1,16 +1,18 @@
-use xml.dom.minidom for the rest of the pure/reader
-Unittests for reader can use xml-fragments
-
 SubForm reading should respect order of subforms and controls
 FormItem = Union[SubForm, Control, ListBox, Grid]
 
 Node should have to_dict method for writing out
+Idea: Metadata get basicfunction field and module field
+refs in library and module to basicfunctions become links (Identifier)
+solves some strange action in writer, clearing the way for
+parallel writing
+Grid type hack?
 
 Testing
 -------
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 79.55%)
+unit test coverage 90% (now 82.61%)
 test/pure/test_sql_parser.py
 test/pure/test_writer.py
 test/pure/test_writer_make_site.py
@@ -38,13 +40,6 @@ Elaborate module doc strings
 - postprocessing
 - writing
 - building
-
-Grid type hack?
-
-Idea: Metadata get basicfunction field and module field
-refs in library and module to basicfunctions become links (Identifier)
-solves some strange action in writer, clearing the way for
-parallel writing
 
 Relevant function filter
 - function that uses something else than a basicfunction

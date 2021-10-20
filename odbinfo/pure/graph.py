@@ -55,8 +55,7 @@ def make_node(config: GraphConfig,
                 label = control.label
         graph.node(str(node.obj_id),
                    label=label,
-                   tooltip="{} ({})".format(node.name,
-                                            node.content_type()),
+                   tooltip=f"{node.name} ({node.content_type()})",
                    href=href(node),
                    id=node.obj_id,
                    _attributes=config.type_attrs.get(node.content_type(), {}))
@@ -78,8 +77,7 @@ def edge_attributes(config: GraphConfig,
     "composes the node attributes"
     attrs = config.relation_attrs.get(
         (start.content_type(), end.content_type()), {})
-    attrs["edgetooltip"] = "{} -> {}".format(
-        start.name, end.name)
+    attrs["edgetooltip"] = f"{start.name} -> {end.name}"
     return attrs
 
 
@@ -107,8 +105,9 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
             return
 
         attrs = dict(config.parent_edge_attrs)
-        attrs["edgetooltip"] = "{} is child of {}"\
-            .format(node.name, avisible_ancestor.name)
+        attrs["edgetooltip"] =\
+            f"{node.name} is child of {avisible_ancestor.name}"
+
         edge(graph, node, avisible_ancestor, attrs)
 
 

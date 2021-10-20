@@ -5,11 +5,23 @@ from functools import partial
 from zipfile import ZipFile
 
 import pytest
+import xmltodict
 
 from odbinfo.pure.datatype import Module
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
-from odbinfo.pure.reader.common import _parse_xml, mapiflist
 from odbinfo.test.resource import BASEDOCUMENTER
+
+
+def mapiflist(function, maybelist):
+    """ apply `function` on singletonlist `maybelist`
+        if `maybelist` is not a list"""
+    if not isinstance(maybelist, list):
+        maybelist = [maybelist]
+    return list(map(function, maybelist))
+
+
+def _parse_xml(odbzip, file):
+    return xmltodict.parse(odbzip.read(file))
 
 
 def _read_module(odbzip, library_name,  data) -> Module:

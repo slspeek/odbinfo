@@ -3,8 +3,8 @@ import unittest
 
 import pytest
 
-from odbinfo.pure.reader.common import (_collect_attribute, child_elements,
-                                        document, document_element)
+from odbinfo.pure.reader.common import (child_elements, document,
+                                        document_element)
 from odbinfo.test.pure.fixtures import odbzip
 
 # pylint:disable=line-too-long
@@ -45,21 +45,3 @@ def test_document(odbzip):
     doc = document(odbzip, "content.xml")
     # print(doc.toprettyxml())
     assert doc.tagName == "office:document-content"
-
-
-def test_collect_attribute():
-    " simple test "
-    data = {"elem": {"@foo": "bar"}, "@foo": "foo"}
-    assert _collect_attribute(data, "@foo") == ["bar", "foo"]
-
-
-def test_collect_attribute1():
-    " simple test "
-    data = {"@foo": "bar"}
-    assert _collect_attribute(data, "@foo") == ["bar"]
-
-
-def test_collect_element():
-    " simple test "
-    data = {"@foo": "bar", "foo": {}}
-    assert _collect_attribute(data, "foo") == [{}]

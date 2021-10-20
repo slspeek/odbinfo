@@ -89,8 +89,9 @@ def get_context():
                 "waiting on uno connection for %0.1f seconds", float(i)/10)
             time.sleep(0.1)
     else:
-        raise Exception("Gave up waiting for libreoffice after {} seconds"
-                        .format(OFFICE_TIME_OUT))
+        raise \
+            Exception("Gave up waiting for libreoffice"
+                      f" after {OFFICE_TIME_OUT} seconds")
     return ctx
 
 

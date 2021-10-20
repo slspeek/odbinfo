@@ -23,10 +23,10 @@ def read_configuration(config_path=default_config_path()):
         if not config_path.parent.exists():
             config_path.parent.mkdir()
         config = get_configuration()
-        with config_path.open(mode='w') as output_file:
+        with config_path.open(mode='w', encoding='utf-8') as output_file:
             yaml.dump(config, output_file)
         return config
-    with config_path.open() as file:
+    with config_path.open(encoding='utf-8') as file:
         return yaml.load(file, Loader=yaml.Loader)
 
 

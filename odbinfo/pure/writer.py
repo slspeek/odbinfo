@@ -199,7 +199,7 @@ def _write_config(config, site_name, metadata):
                   "name": "picture",
                   "weight": 2})
 
-    with open("config.toml", "w") as cfg:
+    with open("config.toml", "w", encoding='utf-8') as cfg:
         toml.dump({"title": site_name,
                    "baseURL": config.general.base_url,
                    "languageCode": "en-us",
@@ -216,7 +216,9 @@ def _write_content(metadata: Metadata, name):
         targetpath = Path("content") / name
         targetpath.mkdir(parents=True, exist_ok=True)
         for content in contentlist:
-            with open(targetpath / f"{content.title}.md", "w") as out:
+            with open(targetpath / f"{content.title}.md",
+                      "w",
+                      encoding='utf-8') as out:
                 _frontmatter(content, out)
 
 

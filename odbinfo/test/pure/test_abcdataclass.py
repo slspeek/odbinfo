@@ -20,7 +20,7 @@ def test_a():
         "subclass"
         name: str
     with pytest.raises(TypeError):
-        SubClass()  # pylint: disable=abstract-class-instantiated
+        SubClass("MyName")  # pylint: disable=abstract-class-instantiated
 
 
 def test_classvar():

@@ -106,7 +106,7 @@ def get_identifier(usable: Node) -> Identifier:
     parent: Node = usable
     while not isinstance(parent, WebPage):
         if parent.parent is None:
-            raise RuntimeError("No WebPage ancestor for %s" % usable)
+            raise RuntimeError(f"No WebPage ancestor for {usable}")
         parent = parent.parent
     parent = cast(WebPage, parent)
     if parent is usable:

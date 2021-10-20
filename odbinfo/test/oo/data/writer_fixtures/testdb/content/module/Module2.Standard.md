@@ -6,7 +6,7 @@ callables:
   module: Module2
   name: Main
   name_token_index: 5
-  obj_id: '420'
+  obj_id: '421'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: module
@@ -19,7 +19,7 @@ library: Standard
 name: Module2
 name_indexes:
 - 5
-obj_id: '419'
+obj_id: '420'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: library
@@ -50,7 +50,7 @@ tokens:
     bookmark: null
     content_type: basicfunction
     local_id: Main.Module2.Standard
-  obj_id: '435'
+  obj_id: '436'
   text: Main
   type: 181
 - index: 6
@@ -73,4 +73,9 @@ tokens:
 - index: 11
   text: End Sub
   type: 44
+- index: 12
+  text: '
+
+    '
+  type: 183
 ---

@@ -42,11 +42,11 @@ tokens:
   type: 44
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '503'
+  bookmark: '505'
   content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '509'
+  bookmark: '511'
   content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
 uses: []

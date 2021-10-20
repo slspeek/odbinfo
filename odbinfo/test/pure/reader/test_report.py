@@ -6,7 +6,7 @@ import pytest
 
 from odbinfo.pure.reader.report import read_reports
 from odbinfo.test.pure.fixtures import empty_odbzip, odbzip
-from odbinfo.test.pure.reader.test_common import OO_NAMESPACES
+from odbinfo.test.pure.reader.test_common import OO_NAMESPACES, ZipFileMock
 
 
 @pytest.mark.slow
@@ -200,10 +200,6 @@ data = {"content.xml": ODB_ELEMENT, "reports/Obj11/content.xml": RPT_ELEMENT}
 
 def test_reports():
     # pylint:disable=too-few-public-methods
-    class ZipFileMock:
-        def read(self, path):
-            pass
-
     fakezip = ZipFileMock()
 
     def read(file: str) -> str:
@@ -258,10 +254,6 @@ ODB_ELEMENT_NO_REPORTS = f"""<?xml version="1.0" encoding="UTF-8"?>
 
 def test_no_reports():
     # pylint:disable=too-few-public-methods
-    class ZipFileMock:
-        def read(self, path):
-            pass
-
     fakezip = ZipFileMock()
     fakezip.read = Mock(return_value=ODB_ELEMENT_NO_REPORTS)
     assert len(read_reports(fakezip)) == 0

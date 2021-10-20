@@ -1,46 +1,48 @@
 " reading python and basic libraries "
 import os
-from functools import partial
 from typing import List
+from xml.dom.minidom import Element
+from zipfile import ZipFile
 
 from odbinfo.pure.datatype import Library, Module, PythonLibrary, PythonModule
-from odbinfo.pure.reader.common import _parse_xml, mapiflist
+from odbinfo.pure.reader.common import document
 
 
-def _manifest_fileentries(odbzip):
-    manifest = _parse_xml(odbzip, "META-INF/manifest.xml")
-    return manifest["manifest:manifest"]["manifest:file-entry"]
+def manifest_fileentries(odbzip: ZipFile) -> List[Element]:
+    " returns the <manifest:file-entry> elements from `odbzip`"
+    manifest = document(odbzip, "META-INF/manifest.xml")
+    return manifest.getElementsByTagName("manifest:file-entry")
 
 
-def read_python_libraries(odbzip):
+def read_python_libraries(odbzip: ZipFile) -> List[PythonLibrary]:
     " Read python libraries from `odbzip`"
     libraries = []
-    for entry in _manifest_fileentries(odbzip):
-        fullpath = entry["@manifest:full-path"]
+    for entry in manifest_fileentries(odbzip):
+        fullpath = entry.getAttribute("manifest:full-path")
         if fullpath.startswith("Scripts/python")\
-                and entry["@manifest:media-type"] == "application/binary":
+                and entry.getAttribute("manifest:media-type") == "application/binary":
             libraries.append(
-                _read_python_library(odbzip, fullpath)
+                read_python_library(odbzip, fullpath)
             )
     return libraries
 
 
-def _read_python_library(odbzip, fullpath):
-    name = os.path.basename(fullpath.rstrip("/"))
-    # if name == "python":
-    #     name = "DEFAULT"
+def read_python_library(odbzip: ZipFile, prefix: str) -> PythonLibrary:
+    " reads one python library from `odbzip` that has file prefix `prefix`"
+    libname = os.path.basename(prefix.rstrip("/"))
     modules = []
-    for entry in _manifest_fileentries(odbzip):
-        entrypath = entry["@manifest:full-path"]
-        if entrypath.startswith(fullpath)\
-                and entry["@manifest:media-type"] == "":
+    for entry in manifest_fileentries(odbzip):
+        entrypath = entry.getAttribute("manifest:full-path")
+        if entrypath.startswith(prefix)\
+                and entry.getAttribute("manifest:media-type") == "":
             modname = os.path.basename(entrypath)
-            if fullpath + modname == entrypath:
-                modules.append(_read_python_module(odbzip, entrypath, name))
-    return PythonLibrary(name, modules)
+            if prefix + modname == entrypath:
+                modules.append(read_python_module(odbzip, entrypath, libname))
+    return PythonLibrary(libname, modules)
 
 
-def _read_python_module(odbzip, fullpath, library):
+def read_python_module(odbzip: ZipFile, fullpath: str, library: str) -> PythonModule:
+    "reads a python module file from `odbzip`"
     return PythonModule(
         os.path.basename(fullpath),
         library,
@@ -48,9 +50,10 @@ def _read_python_module(odbzip, fullpath, library):
     )
 
 
-def _has_libraries(odbzip) -> bool:
-    for entry in _manifest_fileentries(odbzip):
-        if entry["@manifest:full-path"].startswith("Basic"):
+def has_libraries(odbzip) -> bool:
+    " return True if `odbzip` contains Basic libraries"
+    for entry in manifest_fileentries(odbzip):
+        if entry.getAttribute("manifest:full-path").startswith("Basic"):
             return True
     return False
 
@@ -58,23 +61,38 @@ def _has_libraries(odbzip) -> bool:
 def read_libraries(odbzip) -> List[Library]:
     " Reads Basic libraries "
     libraries = []
-    if _has_libraries(odbzip):
-        script_lc = _parse_xml(odbzip, "Basic/script-lc.xml")
-        data = script_lc["library:libraries"]["library:library"]
-        read_library = partial(_read_library, odbzip)
-        libraries.extend(mapiflist(read_library, data))
+    if has_libraries(odbzip):
+        script_lc = document(odbzip, "Basic/script-lc.xml")
+        libraries = \
+            [read_library(odbzip, elem.getAttribute("library:name")) for elem in
+                script_lc.getElementsByTagName("library:library")]
     return libraries
 
 
-def _read_library(odbzip, data) -> Library:
-    name = data["@library:name"]
-    script_lb = _parse_xml(odbzip, f"Basic/{name}/script-lb.xml")
-    data = script_lb["library:library"]["library:element"]
-    read_module = partial(_read_module, odbzip, name)
-    return Library(name, mapiflist(read_module, data))
+def read_library(odbzip: ZipFile, libname: str) -> Library:
+    " reads `libname` from `odbzip`"
+    script_lb = document(odbzip, f"Basic/{libname}/script-lb.xml")
+    lib_elems = script_lb.getElementsByTagName("library:element")
+    return Library(libname,
+                   [read_module(odbzip,
+                                libname,
+                                elem.getAttribute("library:name")) for elem
+                    in lib_elems])
 
 
-def _read_module(odbzip, library_name,  data) -> Module:
-    name = data["@library:name"]
-    data = _parse_xml(odbzip, f"Basic/{library_name}/{name}.xml")
-    return Module(name, library_name, data["script:module"]["#text"])
+def _get_text(elem: Element) -> str:
+    def gettext(nodelist):
+        tnodes = []
+        for node in nodelist:
+            if node.nodeType == node.TEXT_NODE:
+                tnodes.append(node.data)
+        return ''.join(tnodes)
+    return gettext(elem.childNodes)
+
+
+def read_module(odbzip: ZipFile, library_name: str,  module_name: str) -> Module:
+    " read one Basic module from `odbzip` from "
+    module_doc = document(odbzip, f"Basic/{library_name}/{module_name}.xml")
+    return Module(module_name,
+                  library_name,
+                  _get_text(module_doc))

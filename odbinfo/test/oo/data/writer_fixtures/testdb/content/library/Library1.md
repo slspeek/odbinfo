@@ -8,7 +8,7 @@ modules:
     module: Module1
     name: Main
     name_token_index: 5
-    obj_id: '444'
+    obj_id: '446'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -46,7 +46,7 @@ modules:
     module: Module1
     name: CallerSub
     name_token_index: 16
-    obj_id: '454'
+    obj_id: '456'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -68,7 +68,7 @@ modules:
     module: Module1
     name: CalleeSub
     name_token_index: 35
-    obj_id: '472'
+    obj_id: '474'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -77,7 +77,7 @@ modules:
     tokens: []
     used_by:
     - !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: '461'
+      bookmark: '463'
       content_type: basicfunction
       local_id: CallerSub.Module1.Library1
     uses: []
@@ -86,7 +86,7 @@ modules:
     module: Module1
     name: CallerTwo
     name_token_index: 48
-    obj_id: '484'
+    obj_id: '486'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -104,7 +104,7 @@ modules:
     module: Module1
     name: CallerOtherLib
     name_token_index: 61
-    obj_id: '496'
+    obj_id: '498'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -126,7 +126,7 @@ modules:
     module: Module1
     name: CallerShadowedCallee
     name_token_index: 80
-    obj_id: '514'
+    obj_id: '516'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -144,7 +144,7 @@ modules:
     module: Module1
     name: ShadowedCallee
     name_token_index: 93
-    obj_id: '526'
+    obj_id: '528'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -153,7 +153,7 @@ modules:
     tokens: []
     used_by:
     - !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: '521'
+      bookmark: '523'
       content_type: basicfunction
       local_id: CallerShadowedCallee.Module1.Library1
     uses: []
@@ -162,7 +162,7 @@ modules:
     module: Module1
     name: ReferToTable
     name_token_index: 106
-    obj_id: '538'
+    obj_id: '540'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -180,7 +180,7 @@ modules:
     module: Module1
     name: ReferToView
     name_token_index: 119
-    obj_id: '550'
+    obj_id: '552'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -198,7 +198,7 @@ modules:
     module: Module1
     name: ReferToQuery
     name_token_index: 132
-    obj_id: '562'
+    obj_id: '564'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -224,7 +224,7 @@ modules:
   - 106
   - 119
   - 132
-  obj_id: '443'
+  obj_id: '445'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: library
@@ -238,7 +238,7 @@ modules:
     module: Module2
     name: CalleeSub
     name_token_index: 5
-    obj_id: '716'
+    obj_id: '720'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -247,7 +247,7 @@ modules:
     tokens: []
     used_by:
     - !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: '467'
+      bookmark: '469'
       content_type: basicfunction
       local_id: CallerSub.Module1.Library1
     uses: []
@@ -256,7 +256,7 @@ modules:
     module: Module2
     name: CalleeTwoSub
     name_token_index: 18
-    obj_id: '728'
+    obj_id: '732'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -265,7 +265,7 @@ modules:
     tokens: []
     used_by:
     - !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: '491'
+      bookmark: '493'
       content_type: basicfunction
       local_id: CallerTwo.Module1.Library1
     uses: []
@@ -274,7 +274,7 @@ modules:
   name_indexes:
   - 5
   - 18
-  obj_id: '715'
+  obj_id: '719'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: library
@@ -282,7 +282,7 @@ modules:
   title: Module2.Library1
   tokens: []
 name: Library1
-obj_id: '442'
+obj_id: '444'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata

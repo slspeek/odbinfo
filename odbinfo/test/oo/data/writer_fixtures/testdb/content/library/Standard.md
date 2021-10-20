@@ -53,11 +53,11 @@ modules:
     tokens: []
     used_by:
     - !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: '503'
+      bookmark: '505'
       content_type: basicfunction
       local_id: CallerOtherLib.Module1.Library1
     - !!python/object:odbinfo.pure.datatype.base.Identifier
-      bookmark: '509'
+      bookmark: '511'
       content_type: basicfunction
       local_id: CallerOtherLib.Module1.Library1
     uses: []
@@ -111,7 +111,7 @@ modules:
     module: Module2
     name: Main
     name_token_index: 5
-    obj_id: '420'
+    obj_id: '421'
     parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
       bookmark: null
       content_type: module
@@ -124,7 +124,7 @@ modules:
   name: Module2
   name_indexes:
   - 5
-  obj_id: '419'
+  obj_id: '420'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: library

@@ -4,7 +4,7 @@ modules:
 - !!python/object:odbinfo.pure.datatype.exec.PythonModule
   library: python
   name: pymodule.py
-  obj_id: '770'
+  obj_id: '776'
   parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
     bookmark: null
     content_type: pythonlibrary
@@ -12,7 +12,7 @@ modules:
   source: "# coding: utf-8\n\ndef main():\n\tprint(\"Hello from testdb.odb\")\n\n\n"
   title: python.pymodule.py
 name: python
-obj_id: '769'
+obj_id: '775'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: metadata

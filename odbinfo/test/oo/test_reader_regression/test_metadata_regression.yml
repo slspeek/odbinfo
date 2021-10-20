@@ -883,7 +883,7 @@ library_defs:
       End Sub\n\nSub UsesDocumentFilename()\n\tprint \"Untitled.odt\"\nEnd Sub\n\n\
       Sub CalleeOtherLib\n\tprint \"Standard.Module1.CalleeOtherLib\"\nEnd Sub\n\n\
       Sub ShadowedCallee()\n\tprint \"Standard.Module1.ShadowedCallee\"\nEnd Sub\n\
-      \nFunction AddOne(arg)\n\tAddOne() = arg + 1\nEnd Function"
+      \nFunction AddOne(arg)\n\tAddOne() = arg + 1\nEnd Function\n"
     title: Module1.Standard
     tokens: []
   - callables: []
@@ -893,7 +893,7 @@ library_defs:
     obj_id: OBJID_NOT_SET
     parent: null
     parent_link: null
-    source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub"
+    source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub\n"
     title: Module2.Standard
     tokens: []
   name: Standard
@@ -916,7 +916,7 @@ library_defs:
       End Sub\n\nSub CallerShadowedCallee()\n\tShadowedCallee()\nEnd Sub\n\nSub ShadowedCallee()\n\
       \tprint \"Library1.Module1.ShadowedCallee\"\nEnd Sub\n\nSub ReferToTable()\n\
       \tprint \"Plant\"\nEnd Sub\n\nSub ReferToView()\n\tprint \"view1\"\nEnd Sub\n\
-      \nSub ReferToQuery()\n\tprint \"FamilyLookup\"\nEnd Sub"
+      \nSub ReferToQuery()\n\tprint \"FamilyLookup\"\nEnd Sub\t\n\n"
     title: Module1.Library1
     tokens: []
   - callables: []
@@ -927,7 +927,8 @@ library_defs:
     parent: null
     parent_link: null
     source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
-      \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub"
+      \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub\n\
+      \n"
     title: Module2.Library1
     tokens: []
   name: Library1

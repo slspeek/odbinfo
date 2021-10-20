@@ -4,7 +4,7 @@ library: Library1
 module: Module1
 name: ShadowedCallee
 name_token_index: 93
-obj_id: '526'
+obj_id: '528'
 parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
   bookmark: null
   content_type: module
@@ -48,7 +48,7 @@ tokens:
   type: 44
 used_by:
 - !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '521'
+  bookmark: '523'
   content_type: basicfunction
   local_id: CallerShadowedCallee.Module1.Library1
 uses: []

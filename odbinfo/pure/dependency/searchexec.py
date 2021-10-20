@@ -56,7 +56,7 @@ def remove_recursive_calls(funcs: Sequence[BasicFunction]):
         "of the return value"
     for function in funcs:
         for call in function.calls:
-            if call.name_token.text == function.name:
+            if call.name_token.text.lower() == function.name.lower():
                 call.name_token.link = None
 
 

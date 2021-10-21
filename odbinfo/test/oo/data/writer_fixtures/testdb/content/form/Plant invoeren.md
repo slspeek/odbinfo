@@ -1,24 +1,20 @@
 ---
-!!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: Plant invoeren
 obj_id: '191'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
-- !!python/object:odbinfo.pure.datatype.ui.SubForm
-  allowdeletes: 'true'
+- allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
   cmd: vwPlant
   cmdtype: query
   controls:
-  - !!python/object:odbinfo.pure.datatype.ui.Grid
-    columns:
-    - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control2
+  - columns:
+    - controlid: control2
       convertemptytonull: 'true'
       datafield: id
       eventlisteners: []
@@ -28,8 +24,7 @@ subforms:
       name: id
       obj_id: '194'
       type: ooo:FormattedField
-    - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control3
+    - controlid: control3
       convertemptytonull: 'true'
       datafield: naam
       eventlisteners: []
@@ -44,7 +39,7 @@ subforms:
     type: Grid
   depth: 0
   detailfields: ''
-  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001
     bookmark: null
     content_type: query
     local_id: vwPlant

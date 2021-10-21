@@ -1,11 +1,10 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.BasicFunction
 library: Library1
 module: Module1
 name: ShadowedCallee
 name_token_index: 93
 obj_id: '528'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: module
   local_id: Module1.Library1
@@ -47,8 +46,7 @@ tokens:
   text: End Sub
   type: 44
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '523'
+- bookmark: '523'
   content_type: basicfunction
   local_id: CallerShadowedCallee.Module1.Library1
 uses: []

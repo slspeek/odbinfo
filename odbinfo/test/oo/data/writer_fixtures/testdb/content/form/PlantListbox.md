@@ -1,22 +1,19 @@
 ---
-!!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: PlantListbox
 obj_id: '196'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
-- !!python/object:odbinfo.pure.datatype.ui.SubForm
-  allowdeletes: 'false'
+- allowdeletes: 'false'
   allowinserts: 'true'
   allowupdates: 'true'
   cmd: Plant
   cmdtype: table
   controls:
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control1
+  - controlid: control1
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -26,8 +23,7 @@ subforms:
     name: lblid
     obj_id: '198'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control2
+  - controlid: control2
     convertemptytonull: 'true'
     datafield: id
     eventlisteners: []
@@ -37,8 +33,7 @@ subforms:
     name: fmtid
     obj_id: '199'
     type: FormattedField
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control3
+  - controlid: control3
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -48,8 +43,7 @@ subforms:
     name: lblnaam
     obj_id: '200'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control4
+  - controlid: control4
     convertemptytonull: 'true'
     datafield: naam
     eventlisteners: []
@@ -59,8 +53,7 @@ subforms:
     name: txtnaam
     obj_id: '201'
     type: TextField
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control5
+  - controlid: control5
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -70,8 +63,7 @@ subforms:
     name: lblRFamliyID
     obj_id: '202'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.ListBox
-    boundcolumn: '1'
+  - boundcolumn: '1'
     controlid: control6
     convertemptytonull: ''
     datafield: RFamliyID
@@ -80,7 +72,7 @@ subforms:
     formfor: ''
     inputrequired: 'true'
     label: ''
-    link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+    link: &id002
       bookmark: null
       content_type: query
       local_id: FamilyLookup
@@ -89,13 +81,11 @@ subforms:
     name: fmtRFamliyID
     obj_id: '203'
     type: ListBox
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control7
+  - controlid: control7
     convertemptytonull: ''
     datafield: ''
     eventlisteners:
-    - !!python/object:odbinfo.pure.datatype.ui.EventListener
-      link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - link: &id003
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
@@ -108,8 +98,7 @@ subforms:
     name: Knop 1
     obj_id: '204'
     type: CommandButton
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control8
+  - controlid: control8
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -119,21 +108,18 @@ subforms:
     name: Knop 2
     obj_id: '206'
     type: CommandButton
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control9
+  - controlid: control9
     convertemptytonull: ''
     datafield: ''
     eventlisteners:
-    - !!python/object:odbinfo.pure.datatype.ui.EventListener
-      link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - link: &id004
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
       name: form:performaction
       obj_id: '208'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-    - !!python/object:odbinfo.pure.datatype.ui.EventListener
-      link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - link: &id005
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
@@ -148,7 +134,7 @@ subforms:
     type: CommandButton
   depth: 0
   detailfields: ''
-  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001
     bookmark: null
     content_type: table
     local_id: Plant

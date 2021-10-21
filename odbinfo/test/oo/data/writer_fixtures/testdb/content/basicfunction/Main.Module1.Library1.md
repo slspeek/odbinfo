@@ -1,11 +1,10 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.BasicFunction
 library: Library1
 module: Module1
 name: Main
 name_token_index: 5
 obj_id: '446'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: module
   local_id: Module1.Library1
@@ -41,28 +40,22 @@ tokens:
   text: End Sub
   type: 44
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '205'
+- bookmark: '205'
   content_type: form
   local_id: PlantListbox
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '208'
+- bookmark: '208'
   content_type: form
   local_id: PlantListbox
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '209'
+- bookmark: '209'
   content_type: form
   local_id: PlantListbox
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '239'
+- bookmark: '239'
   content_type: form
   local_id: PlantListboxDirectSQL
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '242'
+- bookmark: '242'
   content_type: form
   local_id: PlantListboxDirectSQL
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '243'
+- bookmark: '243'
   content_type: form
   local_id: PlantListboxDirectSQL
 uses: []

@@ -1,11 +1,10 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.BasicFunction
 library: Library1
 module: Module1
 name: ReferToView
 name_token_index: 119
 obj_id: '552'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: module
   local_id: Module1.Library1
@@ -36,7 +35,7 @@ tokens:
   text: ' '
   type: 185
 - index: 125
-  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001
     bookmark: null
     content_type: view
     local_id: view1

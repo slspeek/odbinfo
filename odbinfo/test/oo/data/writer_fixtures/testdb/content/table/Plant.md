@@ -1,8 +1,6 @@
 ---
-!!python/object:odbinfo.pure.datatype.tabular.Table
 columns:
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: Unique key for the plant
   name: id
@@ -12,8 +10,7 @@ columns:
   scale: 0
   tablename: Plant
   typename: NUMERIC
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: Naam aan de plant gegeven
   name: naam
@@ -23,8 +20,7 @@ columns:
   scale: 0
   tablename: Plant
   typename: VARCHAR
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: null
   name: RFamliyID
@@ -36,8 +32,7 @@ columns:
   typename: INTEGER
 description: ''
 indexes:
-- !!python/object:odbinfo.pure.datatype.tabular.Index
-  catalog: ''
+- catalog: ''
   clustered: false
   columns:
   - id
@@ -45,8 +40,7 @@ indexes:
   obj_id: '16'
   primary: false
   unique: true
-- !!python/object:odbinfo.pure.datatype.tabular.Index
-  catalog: ''
+- catalog: ''
   clustered: false
   columns:
   - RFamliyID
@@ -55,8 +49,7 @@ indexes:
   primary: false
   unique: false
 keys:
-- !!python/object:odbinfo.pure.datatype.tabular.Key
-  columns:
+- columns:
   - id
   delete_rule: Cascade
   name: SYS_PK_47
@@ -66,11 +59,10 @@ keys:
   - ''
   typename: Primary
   update_rule: Cascade
-- !!python/object:odbinfo.pure.datatype.tabular.Key
-  columns:
+- columns:
   - RFamliyID
   delete_rule: No_Action
-  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001
     bookmark: null
     content_type: table
     local_id: Family
@@ -83,54 +75,43 @@ keys:
   update_rule: No_Action
 name: Plant
 obj_id: '13'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 title: Plant
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '44'
+- bookmark: '44'
   content_type: view
   local_id: view1
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '121'
+- bookmark: '121'
   content_type: query
   local_id: LiteralValueQuery
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '134'
+- bookmark: '134'
   content_type: query
   local_id: vwPlant
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '178'
+- bookmark: '178'
   content_type: form
   local_id: ListBoxTest
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '180'
+- bookmark: '180'
   content_type: form
   local_id: ListBoxTest
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '184'
+- bookmark: '184'
   content_type: form
   local_id: Plant
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '197'
+- bookmark: '197'
   content_type: form
   local_id: PlantListbox
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '211'
+- bookmark: '211'
   content_type: form
   local_id: PlantListboxDirectSQL
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '245'
+- bookmark: '245'
   content_type: form
   local_id: Related subform
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '274'
+- bookmark: '274'
   content_type: report
   local_id: ReportCommandTypeSQL
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '549'
+- bookmark: '549'
   content_type: basicfunction
   local_id: ReferToTable.Module1.Library1
 uses:

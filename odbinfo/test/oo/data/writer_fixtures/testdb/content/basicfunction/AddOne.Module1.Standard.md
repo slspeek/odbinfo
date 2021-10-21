@@ -1,11 +1,10 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.BasicFunction
 library: Standard
 module: Module1
 name: AddOne
 name_token_index: 55
 obj_id: '325'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: module
   local_id: Module1.Standard

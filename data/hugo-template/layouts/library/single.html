@@ -9,8 +9,8 @@
 
         <ol class="list-group">
           {{ range .Params.modules }}
-          {{ $url := partial "find-in-section" (dict "context" $dot "section" "module" "title" .title)}}
-          <li class="list-group-item"><h4><a href="{{$url}}">{{.title}}</a></h4></li>
+          {{ $url := partial "link2url" (dict "context" $dot "link" .)}}
+          <li class="list-group-item"><h4><a href="{{$url}}">{{.local_id}}</a></h4></li>
           {{ end }}
         </ol>
 

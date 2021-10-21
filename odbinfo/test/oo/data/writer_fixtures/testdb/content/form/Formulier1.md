@@ -1,15 +1,13 @@
 ---
-!!python/object:odbinfo.pure.datatype.ui.Form
 height: 1
 name: Formulier1
 obj_id: '141'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
-- !!python/object:odbinfo.pure.datatype.ui.SubForm
-  allowdeletes: 'true'
+- allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
   cmd: select * from "Person"
@@ -17,7 +15,7 @@ subforms:
   controls: []
   depth: 0
   detailfields: ''
-  embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
+  embedded_query:
     columns: []
     command: 'SELECT *
 
@@ -25,30 +23,44 @@ subforms:
     literal_values: []
     name: Formulier.Command
     obj_id: '144'
-    table_tokens: []
-    tokens:
-    - text: SELECT
-      type: 131
-    - text: ' '
-      type: 207
-    - text: '*'
-      type: 7
-    - text: '
-
-        '
-      type: 207
-    - text: FROM
-      type: 77
-    - text: ' '
-      type: 207
-    - text: ' '
-      type: 207
-    - text: ' '
-      type: 207
-    - link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+    table_tokens:
+    - index: 8
+      link: &id001
         bookmark: null
         content_type: table
         local_id: Person
+      obj_id: '153'
+      text: '"Person"'
+      type: 200
+    tokens:
+    - index: 0
+      text: SELECT
+      type: 131
+    - index: 1
+      text: ' '
+      type: 207
+    - index: 2
+      text: '*'
+      type: 7
+    - index: 3
+      text: '
+
+        '
+      type: 207
+    - index: 4
+      text: FROM
+      type: 77
+    - index: 5
+      text: ' '
+      type: 207
+    - index: 6
+      text: ' '
+      type: 207
+    - index: 7
+      text: ' '
+      type: 207
+    - index: 8
+      link: *id001
       obj_id: '153'
       text: '"Person"'
       type: 200
@@ -56,8 +68,7 @@ subforms:
   name: Formulier
   obj_id: '142'
   subforms:
-  - !!python/object:odbinfo.pure.datatype.ui.SubForm
-    allowdeletes: 'true'
+  - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
     cmd: ''
@@ -69,8 +80,7 @@ subforms:
     name: Formulier2
     obj_id: '143'
     subforms: []
-- !!python/object:odbinfo.pure.datatype.ui.SubForm
-  allowdeletes: 'true'
+- allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
   cmd: ''

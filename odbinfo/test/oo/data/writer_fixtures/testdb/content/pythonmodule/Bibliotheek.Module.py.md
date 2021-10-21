@@ -1,9 +1,8 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.PythonModule
 library: Bibliotheek
 name: Module.py
 obj_id: '774'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: pythonlibrary
   local_id: Bibliotheek

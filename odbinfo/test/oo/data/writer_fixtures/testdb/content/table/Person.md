@@ -1,8 +1,6 @@
 ---
-!!python/object:odbinfo.pure.datatype.tabular.Table
 columns:
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: null
   name: Naam
@@ -12,8 +10,7 @@ columns:
   scale: 0
   tablename: Person
   typename: VARCHAR
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: Woonadres
   name: Adres
@@ -23,8 +20,7 @@ columns:
   scale: 0
   tablename: Person
   typename: VARCHAR
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: null
   name: Leeftijd
@@ -36,8 +32,7 @@ columns:
   typename: INTEGER
 description: ''
 indexes:
-- !!python/object:odbinfo.pure.datatype.tabular.Index
-  catalog: ''
+- catalog: ''
   clustered: false
   columns:
   - Naam
@@ -47,8 +42,7 @@ indexes:
   primary: false
   unique: true
 keys:
-- !!python/object:odbinfo.pure.datatype.tabular.Key
-  columns:
+- columns:
   - Adres
   - Naam
   delete_rule: Cascade
@@ -62,14 +56,13 @@ keys:
   update_rule: Cascade
 name: Person
 obj_id: '7'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 title: Person
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '153'
+- bookmark: '153'
   content_type: form
   local_id: Formulier1
 uses: []

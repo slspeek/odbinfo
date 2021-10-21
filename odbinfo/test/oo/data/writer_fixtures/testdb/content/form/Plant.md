@@ -1,22 +1,19 @@
 ---
-!!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: Plant
 obj_id: '183'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
-- !!python/object:odbinfo.pure.datatype.ui.SubForm
-  allowdeletes: 'true'
+- allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
   cmd: Plant
   cmdtype: table
   controls:
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control1
+  - controlid: control1
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -26,8 +23,7 @@ subforms:
     name: lblid
     obj_id: '185'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control2
+  - controlid: control2
     convertemptytonull: 'true'
     datafield: id
     eventlisteners: []
@@ -37,8 +33,7 @@ subforms:
     name: fmtid
     obj_id: '186'
     type: FormattedField
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control3
+  - controlid: control3
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -48,8 +43,7 @@ subforms:
     name: lblnaam
     obj_id: '187'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control4
+  - controlid: control4
     convertemptytonull: 'true'
     datafield: naam
     eventlisteners: []
@@ -59,8 +53,7 @@ subforms:
     name: txtnaam
     obj_id: '188'
     type: TextField
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control5
+  - controlid: control5
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -70,8 +63,7 @@ subforms:
     name: lblRFamliyID
     obj_id: '189'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control6
+  - controlid: control6
     convertemptytonull: 'true'
     datafield: RFamliyID
     eventlisteners: []
@@ -83,7 +75,7 @@ subforms:
     type: FormattedField
   depth: 0
   detailfields: ''
-  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001
     bookmark: null
     content_type: table
     local_id: Plant

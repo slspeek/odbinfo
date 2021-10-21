@@ -1,214 +1,35 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.Module
 callables:
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: Main
-  name_token_index: 5
-  obj_id: '446'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: Main.Module1.Library1
-  tokens: []
-  used_by:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '205'
-    content_type: form
-    local_id: PlantListbox
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '208'
-    content_type: form
-    local_id: PlantListbox
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '209'
-    content_type: form
-    local_id: PlantListbox
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '239'
-    content_type: form
-    local_id: PlantListboxDirectSQL
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '242'
-    content_type: form
-    local_id: PlantListboxDirectSQL
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '243'
-    content_type: form
-    local_id: PlantListboxDirectSQL
-  uses: []
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: CallerSub
-  name_token_index: 16
-  obj_id: '456'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: CallerSub.Module1.Library1
-  tokens: []
-  used_by: []
-  uses:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: basicfunction
-    local_id: CalleeSub.Module1.Library1
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: basicfunction
-    local_id: CalleeSub.Module2.Library1
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: CalleeSub
-  name_token_index: 35
-  obj_id: '474'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: CalleeSub.Module1.Library1
-  tokens: []
-  used_by:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '463'
-    content_type: basicfunction
-    local_id: CallerSub.Module1.Library1
-  uses: []
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: CallerTwo
-  name_token_index: 48
-  obj_id: '486'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: CallerTwo.Module1.Library1
-  tokens: []
-  used_by: []
-  uses:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: basicfunction
-    local_id: CalleeTwoSub.Module2.Library1
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: CallerOtherLib
-  name_token_index: 61
-  obj_id: '498'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: CallerOtherLib.Module1.Library1
-  tokens: []
-  used_by: []
-  uses:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: basicfunction
-    local_id: CalleeOtherLib.Module1.Standard
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: basicfunction
-    local_id: CalleeOtherLib.Module1.Standard
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: CallerShadowedCallee
-  name_token_index: 80
-  obj_id: '516'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: CallerShadowedCallee.Module1.Library1
-  tokens: []
-  used_by: []
-  uses:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: basicfunction
-    local_id: ShadowedCallee.Module1.Library1
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: ShadowedCallee
-  name_token_index: 93
-  obj_id: '528'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: ShadowedCallee.Module1.Library1
-  tokens: []
-  used_by:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '523'
-    content_type: basicfunction
-    local_id: CallerShadowedCallee.Module1.Library1
-  uses: []
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: ReferToTable
-  name_token_index: 106
-  obj_id: '540'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: ReferToTable.Module1.Library1
-  tokens: []
-  used_by: []
-  uses:
-  - &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: table
-    local_id: Plant
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: ReferToView
-  name_token_index: 119
-  obj_id: '552'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: ReferToView.Module1.Library1
-  tokens: []
-  used_by: []
-  uses:
-  - &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: view
-    local_id: view1
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module1
-  name: ReferToQuery
-  name_token_index: 132
-  obj_id: '564'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Library1
-  title: ReferToQuery.Module1.Library1
-  tokens: []
-  used_by: []
-  uses:
-  - &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: query
-    local_id: FamilyLookup
+- bookmark: null
+  content_type: basicfunction
+  local_id: Main.Module1.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: CallerSub.Module1.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: CalleeSub.Module1.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: CallerTwo.Module1.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: CallerOtherLib.Module1.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: CallerShadowedCallee.Module1.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: ShadowedCallee.Module1.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: ReferToTable.Module1.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: ReferToView.Module1.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: ReferToQuery.Module1.Library1
 library: Library1
 name: Module1
 name_indexes:
@@ -223,10 +44,18 @@ name_indexes:
 - 119
 - 132
 obj_id: '445'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: library
   local_id: Library1
+source: "REM  *****  BASIC  *****\n\nSub Main\n\tError \"Mijn fout\"\nEnd Sub\n\n\
+  Sub CallerSub()\n\tCalleeSub()\n\tModule2.CalleeSub()\nEnd Sub\n\nSub CalleeSub()\n\
+  \tprint \"Module1.CalleeSub\"\nEnd Sub\n\nsub CallerTwo()\n\tCalleeTwoSub()\nEnd\
+  \ Sub\n\nSub CallerOtherLib()\n\tCalleeOtherLib()\n\tModule1.CalleeOtherLib()\n\
+  End Sub\n\nSub CallerShadowedCallee()\n\tShadowedCallee()\nEnd Sub\n\nSub ShadowedCallee()\n\
+  \tprint \"Library1.Module1.ShadowedCallee\"\nEnd Sub\n\nSub ReferToTable()\n\tprint\
+  \ \"Plant\"\nEnd Sub\n\nSub ReferToView()\n\tprint \"view1\"\nEnd Sub\n\nSub ReferToQuery()\n\
+  \tprint \"FamilyLookup\"\nEnd Sub\t\n\n"
 title: Module1.Library1
 tokens:
 - index: 0
@@ -249,7 +78,7 @@ tokens:
   text: ' '
   type: 185
 - index: 5
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: Main.Module1.Library1
@@ -293,7 +122,7 @@ tokens:
   text: ' '
   type: 185
 - index: 16
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: CallerSub.Module1.Library1
@@ -310,7 +139,7 @@ tokens:
   text: "\n\t"
   type: 183
 - index: 20
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: CalleeSub
     content_type: module
     local_id: Module1.Library1
@@ -333,7 +162,7 @@ tokens:
   text: .
   type: 150
 - index: 26
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: CalleeSub
     content_type: module
     local_id: Module2.Library1
@@ -371,7 +200,7 @@ tokens:
   text: ' '
   type: 185
 - index: 35
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeSub.Module1.Library1
@@ -421,7 +250,7 @@ tokens:
   text: ' '
   type: 185
 - index: 48
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: CallerTwo.Module1.Library1
@@ -438,7 +267,7 @@ tokens:
   text: "\n\t"
   type: 183
 - index: 52
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: CalleeTwoSub
     content_type: module
     local_id: Module2.Library1
@@ -476,7 +305,7 @@ tokens:
   text: ' '
   type: 185
 - index: 61
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: CallerOtherLib.Module1.Library1
@@ -493,7 +322,7 @@ tokens:
   text: "\n\t"
   type: 183
 - index: 65
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: CalleeOtherLib
     content_type: module
     local_id: Module1.Standard
@@ -516,7 +345,7 @@ tokens:
   text: .
   type: 150
 - index: 71
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: CalleeOtherLib
     content_type: module
     local_id: Module1.Standard
@@ -554,7 +383,7 @@ tokens:
   text: ' '
   type: 185
 - index: 80
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: CallerShadowedCallee.Module1.Library1
@@ -571,7 +400,7 @@ tokens:
   text: "\n\t"
   type: 183
 - index: 84
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: ShadowedCallee
     content_type: module
     local_id: Module1.Library1
@@ -609,7 +438,7 @@ tokens:
   text: ' '
   type: 185
 - index: 93
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: ShadowedCallee.Module1.Library1
@@ -659,7 +488,7 @@ tokens:
   text: ' '
   type: 185
 - index: 106
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: ReferToTable.Module1.Library1
@@ -682,7 +511,10 @@ tokens:
   text: ' '
   type: 185
 - index: 112
-  link: *id001
+  link:
+    bookmark: null
+    content_type: table
+    local_id: Plant
   obj_id: '688'
   text: '"Plant"'
   type: 172
@@ -711,7 +543,7 @@ tokens:
   text: ' '
   type: 185
 - index: 119
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: ReferToView.Module1.Library1
@@ -734,7 +566,10 @@ tokens:
   text: ' '
   type: 185
 - index: 125
-  link: *id002
+  link:
+    bookmark: null
+    content_type: view
+    local_id: view1
   obj_id: '701'
   text: '"view1"'
   type: 172
@@ -763,7 +598,7 @@ tokens:
   text: ' '
   type: 185
 - index: 132
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: ReferToQuery.Module1.Library1
@@ -786,7 +621,10 @@ tokens:
   text: ' '
   type: 185
 - index: 138
-  link: *id003
+  link:
+    bookmark: null
+    content_type: query
+    local_id: FamilyLookup
   obj_id: '714'
   text: '"FamilyLookup"'
   type: 172

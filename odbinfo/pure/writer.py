@@ -95,31 +95,18 @@ def preprocess_metadata(metadata):
     for obj in metadata.all_objects():
         obj.parent = None
         del obj.parent
-    _cleanup_tokens(metadata)
+    # _cleanup_tokens(metadata)
 
 
 def _cleanup_tokens(metadata):
-    def clean_token(token):
-        del token.hidden
-
-        if not token.link:
-            token.obj_id = None
-            del token.obj_id
-            token.title = None
-            del token.title
-            token.link = None
-            del token.link
-        if not token.cls:
-            token.cls = None
-            del token.cls
 
     def replace_qtoken(token: Token) -> Dict:
         del token.index
-        clean_token(token)
+        token.clean_token()
         return token.__dict__
 
     def replace_bftoken(token: Token) -> Dict:
-        clean_token(token)
+        token.clean_token()
         return token.__dict__
 
     for query in (list(metadata.embeddedquery_defs())
@@ -170,7 +157,7 @@ def _write_metadata(config: Configuration, metadata: Metadata):
     _write_config(config, config.name, metadata)
     for content in METADATA_CONTENT:
         _write_content(metadata, content)
-        clear_fields_after(metadata, content)
+        # clear_fields_after(metadata, content)
 
 
 def _get_metadata_attr(metadata: Metadata, attribute: str):
@@ -219,7 +206,7 @@ def _write_content(metadata: Metadata, name):
             with open(targetpath / f"{content.title}.md",
                       "w",
                       encoding='utf-8') as out:
-                _frontmatter(content, out)
+                _frontmatter(content.to_dict(), out)
 
 
 def _is_port_open(port):

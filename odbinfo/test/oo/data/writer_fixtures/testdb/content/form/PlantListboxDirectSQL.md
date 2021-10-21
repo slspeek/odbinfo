@@ -1,22 +1,19 @@
 ---
-!!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: PlantListboxDirectSQL
 obj_id: '210'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
-- !!python/object:odbinfo.pure.datatype.ui.SubForm
-  allowdeletes: 'false'
+- allowdeletes: 'false'
   allowinserts: 'true'
   allowupdates: 'true'
   cmd: Plant
   cmdtype: table
   controls:
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control1
+  - controlid: control1
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -26,8 +23,7 @@ subforms:
     name: lblid
     obj_id: '212'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control2
+  - controlid: control2
     convertemptytonull: 'true'
     datafield: id
     eventlisteners: []
@@ -37,8 +33,7 @@ subforms:
     name: fmtid
     obj_id: '213'
     type: FormattedField
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control3
+  - controlid: control3
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -48,8 +43,7 @@ subforms:
     name: lblnaam
     obj_id: '214'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control4
+  - controlid: control4
     convertemptytonull: 'true'
     datafield: naam
     eventlisteners: []
@@ -59,8 +53,7 @@ subforms:
     name: txtnaam
     obj_id: '215'
     type: TextField
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control5
+  - controlid: control5
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -70,64 +63,87 @@ subforms:
     name: lblRFamliyID
     obj_id: '216'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.ListBox
-    boundcolumn: '1'
+  - boundcolumn: '1'
     controlid: control6
     convertemptytonull: ''
     datafield: RFamliyID
     dropdown: 'true'
-    embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
+    embedded_query:
       columns: []
       command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
       literal_values: []
       name: fmtRFamliyID.Command
       obj_id: '218'
-      table_tokens: []
-      tokens:
-      - text: SELECT
-        type: 131
-      - text: ' '
-        type: 207
-      - text: '"Name"'
-        type: 200
-      - text: ','
-        type: 5
-      - text: '
-
-          '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: '"FamilyID"'
-        type: 200
-      - text: '
-
-          '
-        type: 207
-      - text: FROM
-        type: 77
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+      table_tokens:
+      - index: 18
+        link: &id001
           bookmark: null
           content_type: table
           local_id: Family
+        obj_id: '237'
+        text: '"Family"'
+        type: 200
+      tokens:
+      - index: 0
+        text: SELECT
+        type: 131
+      - index: 1
+        text: ' '
+        type: 207
+      - index: 2
+        text: '"Name"'
+        type: 200
+      - index: 3
+        text: ','
+        type: 5
+      - index: 4
+        text: '
+
+          '
+        type: 207
+      - index: 5
+        text: ' '
+        type: 207
+      - index: 6
+        text: ' '
+        type: 207
+      - index: 7
+        text: ' '
+        type: 207
+      - index: 8
+        text: ' '
+        type: 207
+      - index: 9
+        text: ' '
+        type: 207
+      - index: 10
+        text: ' '
+        type: 207
+      - index: 11
+        text: ' '
+        type: 207
+      - index: 12
+        text: '"FamilyID"'
+        type: 200
+      - index: 13
+        text: '
+
+          '
+        type: 207
+      - index: 14
+        text: FROM
+        type: 77
+      - index: 15
+        text: ' '
+        type: 207
+      - index: 16
+        text: ' '
+        type: 207
+      - index: 17
+        text: ' '
+        type: 207
+      - index: 18
+        link: *id001
         obj_id: '237'
         text: '"Family"'
         type: 200
@@ -140,13 +156,11 @@ subforms:
     name: fmtRFamliyID
     obj_id: '217'
     type: ListBox
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control7
+  - controlid: control7
     convertemptytonull: ''
     datafield: ''
     eventlisteners:
-    - !!python/object:odbinfo.pure.datatype.ui.EventListener
-      link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - link: &id003
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
@@ -159,8 +173,7 @@ subforms:
     name: Knop 1
     obj_id: '238'
     type: CommandButton
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control8
+  - controlid: control8
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -170,21 +183,18 @@ subforms:
     name: Knop 2
     obj_id: '240'
     type: CommandButton
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control9
+  - controlid: control9
     convertemptytonull: ''
     datafield: ''
     eventlisteners:
-    - !!python/object:odbinfo.pure.datatype.ui.EventListener
-      link: &id004 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - link: &id004
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
       name: form:performaction
       obj_id: '242'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-    - !!python/object:odbinfo.pure.datatype.ui.EventListener
-      link: &id005 !!python/object:odbinfo.pure.datatype.base.Identifier
+    - link: &id005
         bookmark: null
         content_type: basicfunction
         local_id: Main.Module1.Library1
@@ -199,7 +209,7 @@ subforms:
     type: CommandButton
   depth: 0
   detailfields: ''
-  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id002
     bookmark: null
     content_type: table
     local_id: Plant
@@ -210,8 +220,8 @@ subforms:
 title: PlantListboxDirectSQL
 used_by: []
 uses:
-- *id001
 - *id002
+- *id001
 - *id003
 - *id004
 - *id005

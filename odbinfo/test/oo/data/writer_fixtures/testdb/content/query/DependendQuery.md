@@ -1,8 +1,6 @@
 ---
-!!python/object:odbinfo.pure.datatype.tabular.Query
 columns:
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: false
   name: Name
   nullable: Nullable
@@ -14,8 +12,7 @@ columns:
   tablename: SYSTEM_SUBQUERY
   typename: VARCHAR
   writable: true
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: true
   name: FamilyID
   nullable: Nullable
@@ -27,8 +24,7 @@ columns:
   tablename: SYSTEM_SUBQUERY
   typename: INTEGER
   writable: true
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: true
   name: id
   nullable: Nullable
@@ -40,8 +36,7 @@ columns:
   tablename: SYSTEM_SUBQUERY
   typename: NUMERIC
   writable: true
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: false
   name: naam
   nullable: Nullable
@@ -53,8 +48,7 @@ columns:
   tablename: SYSTEM_SUBQUERY
   typename: VARCHAR
   writable: true
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: true
   name: RFamliyID
   nullable: Nullable
@@ -66,8 +60,7 @@ columns:
   tablename: SYSTEM_SUBQUERY
   typename: INTEGER
   writable: true
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: true
   name: id
   nullable: Nullable
@@ -85,57 +78,87 @@ command: 'SELECT *
 literal_values: []
 name: DependendQuery
 obj_id: '45'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
-table_tokens: []
-title: DependendQuery
-tokens:
-- text: SELECT
-  type: 131
-- text: ' '
-  type: 207
-- text: '*'
-  type: 7
-- text: '
-
-    '
-  type: 207
-- text: FROM
-  type: 77
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+table_tokens:
+- index: 8
+  link: &id001
     bookmark: null
     content_type: query
     local_id: FamilyLookup
   obj_id: '60'
   text: '"FamilyLookup"'
   type: 200
-- text: ','
-  type: 5
-- text: ' '
-  type: 207
-- link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+- index: 11
+  link: &id002
     bookmark: null
     content_type: query
     local_id: vwPlant
   obj_id: '63'
   text: '"vwPlant"'
   type: 200
-- text: ','
-  type: 5
-- text: ' '
-  type: 207
-- link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
+- index: 14
+  link: &id003
     bookmark: null
     content_type: view
     local_id: view1
+  obj_id: '66'
+  text: '"view1"'
+  type: 200
+title: DependendQuery
+tokens:
+- index: 0
+  text: SELECT
+  type: 131
+- index: 1
+  text: ' '
+  type: 207
+- index: 2
+  text: '*'
+  type: 7
+- index: 3
+  text: '
+
+    '
+  type: 207
+- index: 4
+  text: FROM
+  type: 77
+- index: 5
+  text: ' '
+  type: 207
+- index: 6
+  text: ' '
+  type: 207
+- index: 7
+  text: ' '
+  type: 207
+- index: 8
+  link: *id001
+  obj_id: '60'
+  text: '"FamilyLookup"'
+  type: 200
+- index: 9
+  text: ','
+  type: 5
+- index: 10
+  text: ' '
+  type: 207
+- index: 11
+  link: *id002
+  obj_id: '63'
+  text: '"vwPlant"'
+  type: 200
+- index: 12
+  text: ','
+  type: 5
+- index: 13
+  text: ' '
+  type: 207
+- index: 14
+  link: *id003
   obj_id: '66'
   text: '"view1"'
   type: 200

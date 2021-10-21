@@ -1,11 +1,10 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.BasicFunction
 library: Standard
 module: Module1
 name: UsesDocument
 name_token_index: 5
 obj_id: '279'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: module
   local_id: Module1.Standard
@@ -36,7 +35,7 @@ tokens:
   text: ' '
   type: 185
 - index: 11
-  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001
     bookmark: null
     content_type: textdocument
     local_id: Untitled

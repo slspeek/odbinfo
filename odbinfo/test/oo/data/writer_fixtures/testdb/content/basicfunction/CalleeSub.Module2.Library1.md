@@ -1,11 +1,10 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.BasicFunction
 library: Library1
 module: Module2
 name: CalleeSub
 name_token_index: 5
 obj_id: '720'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: module
   local_id: Module2.Library1
@@ -47,8 +46,7 @@ tokens:
   text: End Sub
   type: 44
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '469'
+- bookmark: '469'
   content_type: basicfunction
   local_id: CallerSub.Module1.Library1
 uses: []

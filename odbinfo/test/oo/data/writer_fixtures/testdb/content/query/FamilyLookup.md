@@ -1,8 +1,6 @@
 ---
-!!python/object:odbinfo.pure.datatype.tabular.Query
 columns:
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: false
   name: Name
   nullable: Nullable
@@ -14,8 +12,7 @@ columns:
   tablename: Family
   typename: VARCHAR
   writable: true
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: true
   name: FamilyID
   nullable: No_Nulls
@@ -31,71 +28,92 @@ command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
 literal_values: []
 name: FamilyLookup
 obj_id: '67'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
-table_tokens: []
-title: FamilyLookup
-tokens:
-- text: SELECT
-  type: 131
-- text: ' '
-  type: 207
-- text: '"Name"'
-  type: 200
-- text: ','
-  type: 5
-- text: '
-
-    '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: '"FamilyID"'
-  type: 200
-- text: '
-
-    '
-  type: 207
-- text: FROM
-  type: 77
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+table_tokens:
+- index: 18
+  link: &id001
     bookmark: null
     content_type: table
     local_id: Family
   obj_id: '88'
   text: '"Family"'
   type: 200
+title: FamilyLookup
+tokens:
+- index: 0
+  text: SELECT
+  type: 131
+- index: 1
+  text: ' '
+  type: 207
+- index: 2
+  text: '"Name"'
+  type: 200
+- index: 3
+  text: ','
+  type: 5
+- index: 4
+  text: '
+
+    '
+  type: 207
+- index: 5
+  text: ' '
+  type: 207
+- index: 6
+  text: ' '
+  type: 207
+- index: 7
+  text: ' '
+  type: 207
+- index: 8
+  text: ' '
+  type: 207
+- index: 9
+  text: ' '
+  type: 207
+- index: 10
+  text: ' '
+  type: 207
+- index: 11
+  text: ' '
+  type: 207
+- index: 12
+  text: '"FamilyID"'
+  type: 200
+- index: 13
+  text: '
+
+    '
+  type: 207
+- index: 14
+  text: FROM
+  type: 77
+- index: 15
+  text: ' '
+  type: 207
+- index: 16
+  text: ' '
+  type: 207
+- index: 17
+  text: ' '
+  type: 207
+- index: 18
+  link: *id001
+  obj_id: '88'
+  text: '"Family"'
+  type: 200
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '60'
+- bookmark: '60'
   content_type: query
   local_id: DependendQuery
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '203'
+- bookmark: '203'
   content_type: form
   local_id: PlantListbox
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '573'
+- bookmark: '573'
   content_type: basicfunction
   local_id: ReferToQuery.Module1.Library1
 uses:

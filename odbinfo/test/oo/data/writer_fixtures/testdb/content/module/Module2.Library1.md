@@ -1,52 +1,23 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.Module
 callables:
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module2
-  name: CalleeSub
-  name_token_index: 5
-  obj_id: '720'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module2.Library1
-  title: CalleeSub.Module2.Library1
-  tokens: []
-  used_by:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '469'
-    content_type: basicfunction
-    local_id: CallerSub.Module1.Library1
-  uses: []
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Library1
-  module: Module2
-  name: CalleeTwoSub
-  name_token_index: 18
-  obj_id: '732'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module2.Library1
-  title: CalleeTwoSub.Module2.Library1
-  tokens: []
-  used_by:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '493'
-    content_type: basicfunction
-    local_id: CallerTwo.Module1.Library1
-  uses: []
+- bookmark: null
+  content_type: basicfunction
+  local_id: CalleeSub.Module2.Library1
+- bookmark: null
+  content_type: basicfunction
+  local_id: CalleeTwoSub.Module2.Library1
 library: Library1
 name: Module2
 name_indexes:
 - 5
 - 18
 obj_id: '719'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: library
   local_id: Library1
+source: "REM  *****  BASIC  *****\n\nSub CalleeSub()\n\tprint \"Module2.CalleeSub\"\
+  \nEnd Sub\n\nSub CalleeTwoSub()\n\tprint \"Module2.CalleeTwoSub\"\nEnd Sub\n\n"
 title: Module2.Library1
 tokens:
 - index: 0
@@ -69,7 +40,7 @@ tokens:
   text: ' '
   type: 185
 - index: 5
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeSub.Module2.Library1
@@ -119,7 +90,7 @@ tokens:
   text: ' '
   type: 185
 - index: 18
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeTwoSub.Module2.Library1

@@ -1,8 +1,6 @@
 ---
-!!python/object:odbinfo.pure.datatype.tabular.Query
 columns:
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: true
   name: id
   nullable: No_Nulls
@@ -14,8 +12,7 @@ columns:
   tablename: Plant
   typename: NUMERIC
   writable: true
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: false
   name: naam
   nullable: Nullable
@@ -27,8 +24,7 @@ columns:
   tablename: Plant
   typename: VARCHAR
   writable: true
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: true
   name: RFamliyID
   nullable: Nullable
@@ -46,57 +42,66 @@ command: 'SELECT *
 literal_values: []
 name: vwPlant
 obj_id: '122'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
-table_tokens: []
-title: vwPlant
-tokens:
-- text: SELECT
-  type: 131
-- text: ' '
-  type: 207
-- text: '*'
-  type: 7
-- text: '
-
-    '
-  type: 207
-- text: FROM
-  type: 77
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+table_tokens:
+- index: 8
+  link: &id001
     bookmark: null
     content_type: table
     local_id: Plant
   obj_id: '134'
   text: '"Plant"'
   type: 200
+title: vwPlant
+tokens:
+- index: 0
+  text: SELECT
+  type: 131
+- index: 1
+  text: ' '
+  type: 207
+- index: 2
+  text: '*'
+  type: 7
+- index: 3
+  text: '
+
+    '
+  type: 207
+- index: 4
+  text: FROM
+  type: 77
+- index: 5
+  text: ' '
+  type: 207
+- index: 6
+  text: ' '
+  type: 207
+- index: 7
+  text: ' '
+  type: 207
+- index: 8
+  link: *id001
+  obj_id: '134'
+  text: '"Plant"'
+  type: 200
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '63'
+- bookmark: '63'
   content_type: query
   local_id: DependendQuery
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '156'
+- bookmark: '156'
   content_type: form
   local_id: ListBoxTest
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '192'
+- bookmark: '192'
   content_type: form
   local_id: Plant invoeren
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
+- bookmark: null
   content_type: report
   local_id: vwPlant
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '778'
+- bookmark: '778'
   content_type: textdocument
   local_id: Untitled
 uses:

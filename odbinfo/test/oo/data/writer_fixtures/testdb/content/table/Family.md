@@ -1,8 +1,6 @@
 ---
-!!python/object:odbinfo.pure.datatype.tabular.Table
 columns:
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: null
   name: FamilyID
@@ -12,8 +10,7 @@ columns:
   scale: 0
   tablename: Family
   typename: INTEGER
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: null
   name: Name
@@ -23,8 +20,7 @@ columns:
   scale: 0
   tablename: Family
   typename: VARCHAR
-- !!python/object:odbinfo.pure.datatype.tabular.Column
-  autoincrement: false
+- autoincrement: false
   defaultvalue: ''
   description: null
   name: Desc
@@ -36,8 +32,7 @@ columns:
   typename: LONGVARCHAR
 description: ''
 indexes:
-- !!python/object:odbinfo.pure.datatype.tabular.Index
-  catalog: ''
+- catalog: ''
   clustered: false
   columns:
   - FamilyID
@@ -46,8 +41,7 @@ indexes:
   primary: false
   unique: true
 keys:
-- !!python/object:odbinfo.pure.datatype.tabular.Key
-  columns:
+- columns:
   - FamilyID
   delete_rule: Cascade
   name: SYS_PK_49
@@ -59,34 +53,28 @@ keys:
   update_rule: Cascade
 name: Family
 obj_id: '1'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 title: Family
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '15'
+- bookmark: '15'
   content_type: table
   local_id: Plant
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '88'
+- bookmark: '88'
   content_type: query
   local_id: FamilyLookup
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '136'
+- bookmark: '136'
   content_type: form
   local_id: Family
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '237'
+- bookmark: '237'
   content_type: form
   local_id: PlantListboxDirectSQL
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '252'
+- bookmark: '252'
   content_type: form
   local_id: Related subform
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: null
+- bookmark: null
   content_type: report
   local_id: Family
 uses: []

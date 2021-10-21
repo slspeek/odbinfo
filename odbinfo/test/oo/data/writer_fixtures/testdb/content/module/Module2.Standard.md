@@ -1,29 +1,18 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.Module
 callables:
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Standard
-  module: Module2
-  name: Main
-  name_token_index: 5
-  obj_id: '421'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module2.Standard
-  title: Main.Module2.Standard
-  tokens: []
-  used_by: []
-  uses: []
+- bookmark: null
+  content_type: basicfunction
+  local_id: Main.Module2.Standard
 library: Standard
 name: Module2
 name_indexes:
 - 5
 obj_id: '420'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: library
   local_id: Standard
+source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub\n"
 title: Module2.Standard
 tokens:
 - index: 0
@@ -46,7 +35,7 @@ tokens:
   text: ' '
   type: 185
 - index: 5
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: Main.Module2.Standard

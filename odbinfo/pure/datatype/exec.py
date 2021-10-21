@@ -1,7 +1,7 @@
 " Executable datatypes and its containers "
 from dataclasses import dataclass, field
 from itertools import chain
-from typing import List, Sequence
+from typing import List
 
 from odbinfo.pure.datatype.base import Token, WebPage, WebPageWithUses
 
@@ -40,8 +40,8 @@ class BasicFunction(WebPageWithUses):
     library: str
     module: str
     name_token_index: int = field(init=False)
-    tokens: Sequence[Token] = field(init=False, default_factory=list)
-    body_tokens: Sequence[Token] = field(
+    tokens: List[Token] = field(init=False, default_factory=list)
+    body_tokens: List[Token] = field(
         init=False, repr=False, default_factory=list)
     calls: List[BasicCall] = field(init=False, default_factory=list)
     strings: List[Token] = field(init=False, repr=False,  default_factory=list)
@@ -53,6 +53,15 @@ class BasicFunction(WebPageWithUses):
 
     def children(self):
         return self.tokens
+
+    def to_dict(self):
+        self.body_tokens = None
+        del self.body_tokens
+        self.strings = None
+        del self.strings
+        self.calls = None
+        del self.calls
+        return super().to_dict()
 
 
 @dataclass
@@ -72,6 +81,12 @@ class Module(WebPage):
     def children(self):
         return chain(self.callables, self.tokens)
 
+    def to_dict(self):
+        callable_links = [func.identifier.__dict__ for func in self.callables]
+        rdict = super().to_dict()
+        rdict["callables"] = callable_links
+        return rdict
+
 
 @dataclass
 class Library(WebPage):
@@ -80,3 +95,9 @@ class Library(WebPage):
 
     def children(self):
         return self.modules
+
+    def to_dict(self):
+        module_links = [module.identifier.__dict__ for module in self.modules]
+        rdict = super().to_dict()
+        rdict["modules"] = module_links
+        return rdict

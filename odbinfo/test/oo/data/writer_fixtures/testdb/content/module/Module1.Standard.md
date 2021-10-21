@@ -1,92 +1,20 @@
 ---
-!!python/object:odbinfo.pure.datatype.exec.Module
 callables:
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Standard
-  module: Module1
-  name: UsesDocument
-  name_token_index: 5
-  obj_id: '279'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Standard
-  title: UsesDocument.Module1.Standard
-  tokens: []
-  used_by: []
-  uses:
-  - &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: textdocument
-    local_id: Untitled
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Standard
-  module: Module1
-  name: UsesDocumentFilename
-  name_token_index: 18
-  obj_id: '291'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Standard
-  title: UsesDocumentFilename.Module1.Standard
-  tokens: []
-  used_by: []
-  uses:
-  - &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: textdocument
-    local_id: Untitled
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Standard
-  module: Module1
-  name: CalleeOtherLib
-  name_token_index: 31
-  obj_id: '303'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Standard
-  title: CalleeOtherLib.Module1.Standard
-  tokens: []
-  used_by:
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '505'
-    content_type: basicfunction
-    local_id: CallerOtherLib.Module1.Library1
-  - !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: '511'
-    content_type: basicfunction
-    local_id: CallerOtherLib.Module1.Library1
-  uses: []
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Standard
-  module: Module1
-  name: ShadowedCallee
-  name_token_index: 42
-  obj_id: '313'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Standard
-  title: ShadowedCallee.Module1.Standard
-  tokens: []
-  used_by: []
-  uses: []
-- !!python/object:odbinfo.pure.datatype.exec.BasicFunction
-  library: Standard
-  module: Module1
-  name: AddOne
-  name_token_index: 55
-  obj_id: '325'
-  parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
-    bookmark: null
-    content_type: module
-    local_id: Module1.Standard
-  title: AddOne.Module1.Standard
-  tokens: []
-  used_by: []
-  uses: []
+- bookmark: null
+  content_type: basicfunction
+  local_id: UsesDocument.Module1.Standard
+- bookmark: null
+  content_type: basicfunction
+  local_id: UsesDocumentFilename.Module1.Standard
+- bookmark: null
+  content_type: basicfunction
+  local_id: CalleeOtherLib.Module1.Standard
+- bookmark: null
+  content_type: basicfunction
+  local_id: ShadowedCallee.Module1.Standard
+- bookmark: null
+  content_type: basicfunction
+  local_id: AddOne.Module1.Standard
 library: Standard
 name: Module1
 name_indexes:
@@ -96,10 +24,15 @@ name_indexes:
 - 42
 - 55
 obj_id: '278'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: library
   local_id: Standard
+source: "REM  *****  BASIC  *****\n\nSub UsesDocument()\n\tprint \"Untitled\"\nEnd\
+  \ Sub\n\nSub UsesDocumentFilename()\n\tprint \"Untitled.odt\"\nEnd Sub\n\nSub CalleeOtherLib\n\
+  \tprint \"Standard.Module1.CalleeOtherLib\"\nEnd Sub\n\nSub ShadowedCallee()\n\t\
+  print \"Standard.Module1.ShadowedCallee\"\nEnd Sub\n\nFunction AddOne(arg)\n\tAddOne()\
+  \ = arg + 1\nEnd Function\n"
 title: Module1.Standard
 tokens:
 - index: 0
@@ -122,7 +55,7 @@ tokens:
   text: ' '
   type: 185
 - index: 5
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: UsesDocument.Module1.Standard
@@ -145,7 +78,10 @@ tokens:
   text: ' '
   type: 185
 - index: 11
-  link: *id001
+  link:
+    bookmark: null
+    content_type: textdocument
+    local_id: Untitled
   obj_id: '357'
   text: '"Untitled"'
   type: 172
@@ -174,7 +110,7 @@ tokens:
   text: ' '
   type: 185
 - index: 18
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: UsesDocumentFilename.Module1.Standard
@@ -197,7 +133,10 @@ tokens:
   text: ' '
   type: 185
 - index: 24
-  link: *id002
+  link:
+    bookmark: null
+    content_type: textdocument
+    local_id: Untitled
   obj_id: '370'
   text: '"Untitled.odt"'
   type: 172
@@ -226,7 +165,7 @@ tokens:
   text: ' '
   type: 185
 - index: 31
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: CalleeOtherLib.Module1.Standard
@@ -270,7 +209,7 @@ tokens:
   text: ' '
   type: 185
 - index: 42
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: ShadowedCallee.Module1.Standard
@@ -320,7 +259,7 @@ tokens:
   text: ' '
   type: 185
 - index: 55
-  link: !!python/object:odbinfo.pure.datatype.base.Identifier
+  link:
     bookmark: null
     content_type: basicfunction
     local_id: AddOne.Module1.Standard

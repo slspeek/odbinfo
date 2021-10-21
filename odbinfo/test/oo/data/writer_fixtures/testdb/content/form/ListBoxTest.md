@@ -1,22 +1,19 @@
 ---
-!!python/object:odbinfo.pure.datatype.ui.Form
 height: 0
 name: ListBoxTest
 obj_id: '155'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
-- !!python/object:odbinfo.pure.datatype.ui.SubForm
-  allowdeletes: 'true'
+- allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
   cmd: vwPlant
   cmdtype: query
   controls:
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control1
+  - controlid: control1
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -26,64 +23,87 @@ subforms:
     name: id label
     obj_id: '157'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.ListBox
-    boundcolumn: '1'
+  - boundcolumn: '1'
     controlid: control2
     convertemptytonull: ''
     datafield: id
     dropdown: 'true'
-    embedded_query: !!python/object:odbinfo.pure.datatype.tabular.EmbeddedQuery
+    embedded_query:
       columns: []
       command: "SELECT \"id\",\n       \"naam\"\nFROM   \"Plant\""
       literal_values: []
       name: id.Command
       obj_id: '159'
-      table_tokens: []
-      tokens:
-      - text: SELECT
-        type: 131
-      - text: ' '
-        type: 207
-      - text: '"id"'
-        type: 200
-      - text: ','
-        type: 5
-      - text: '
-
-          '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: '"naam"'
-        type: 200
-      - text: '
-
-          '
-        type: 207
-      - text: FROM
-        type: 77
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - text: ' '
-        type: 207
-      - link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+      table_tokens:
+      - index: 18
+        link: &id001
           bookmark: null
           content_type: table
           local_id: Plant
+        obj_id: '178'
+        text: '"Plant"'
+        type: 200
+      tokens:
+      - index: 0
+        text: SELECT
+        type: 131
+      - index: 1
+        text: ' '
+        type: 207
+      - index: 2
+        text: '"id"'
+        type: 200
+      - index: 3
+        text: ','
+        type: 5
+      - index: 4
+        text: '
+
+          '
+        type: 207
+      - index: 5
+        text: ' '
+        type: 207
+      - index: 6
+        text: ' '
+        type: 207
+      - index: 7
+        text: ' '
+        type: 207
+      - index: 8
+        text: ' '
+        type: 207
+      - index: 9
+        text: ' '
+        type: 207
+      - index: 10
+        text: ' '
+        type: 207
+      - index: 11
+        text: ' '
+        type: 207
+      - index: 12
+        text: '"naam"'
+        type: 200
+      - index: 13
+        text: '
+
+          '
+        type: 207
+      - index: 14
+        text: FROM
+        type: 77
+      - index: 15
+        text: ' '
+        type: 207
+      - index: 16
+        text: ' '
+        type: 207
+      - index: 17
+        text: ' '
+        type: 207
+      - index: 18
+        link: *id001
         obj_id: '178'
         text: '"Plant"'
         type: 200
@@ -96,8 +116,7 @@ subforms:
     name: id
     obj_id: '158'
     type: ListBox
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control3
+  - controlid: control3
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -107,8 +126,7 @@ subforms:
     name: naam label
     obj_id: '179'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.ListBox
-    boundcolumn: '1'
+  - boundcolumn: '1'
     controlid: control4
     convertemptytonull: ''
     datafield: naam
@@ -117,7 +135,7 @@ subforms:
     formfor: ''
     inputrequired: 'false'
     label: ''
-    link: &id003 !!python/object:odbinfo.pure.datatype.base.Identifier
+    link: &id003
       bookmark: null
       content_type: table
       local_id: Plant
@@ -126,8 +144,7 @@ subforms:
     name: naam
     obj_id: '180'
     type: ListBox
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control5
+  - controlid: control5
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -137,8 +154,7 @@ subforms:
     name: RFamliyID label
     obj_id: '181'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.ListBox
-    boundcolumn: '1'
+  - boundcolumn: '1'
     controlid: control6
     convertemptytonull: ''
     datafield: RFamliyID
@@ -154,7 +170,7 @@ subforms:
     type: ListBox
   depth: 0
   detailfields: ''
-  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id002
     bookmark: null
     content_type: query
     local_id: vwPlant
@@ -165,7 +181,7 @@ subforms:
 title: ListBoxTest
 used_by: []
 uses:
-- *id001
 - *id002
+- *id001
 - *id003
 ---

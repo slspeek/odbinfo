@@ -1,22 +1,19 @@
 ---
-!!python/object:odbinfo.pure.datatype.ui.Form
 height: 1
 name: Related subform
 obj_id: '244'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
-- !!python/object:odbinfo.pure.datatype.ui.SubForm
-  allowdeletes: 'true'
+- allowdeletes: 'true'
   allowinserts: 'true'
   allowupdates: 'true'
   cmd: Plant
   cmdtype: table
   controls:
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control7
+  - controlid: control7
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -26,8 +23,7 @@ subforms:
     name: lblid
     obj_id: '246'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control8
+  - controlid: control8
     convertemptytonull: 'true'
     datafield: id
     eventlisteners: []
@@ -37,8 +33,7 @@ subforms:
     name: fmtid
     obj_id: '247'
     type: FormattedField
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control9
+  - controlid: control9
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -48,8 +43,7 @@ subforms:
     name: lblnaam
     obj_id: '248'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control10
+  - controlid: control10
     convertemptytonull: 'true'
     datafield: naam
     eventlisteners: []
@@ -59,8 +53,7 @@ subforms:
     name: txtnaam
     obj_id: '249'
     type: TextField
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control11
+  - controlid: control11
     convertemptytonull: ''
     datafield: ''
     eventlisteners: []
@@ -70,8 +63,7 @@ subforms:
     name: lblRFamliyID
     obj_id: '250'
     type: FixedText
-  - !!python/object:odbinfo.pure.datatype.ui.Control
-    controlid: control12
+  - controlid: control12
     convertemptytonull: 'true'
     datafield: RFamliyID
     eventlisteners: []
@@ -83,7 +75,7 @@ subforms:
     type: FormattedField
   depth: 0
   detailfields: ''
-  link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+  link: &id001
     bookmark: null
     content_type: table
     local_id: Plant
@@ -91,15 +83,13 @@ subforms:
   name: MainForm
   obj_id: '245'
   subforms:
-  - !!python/object:odbinfo.pure.datatype.ui.SubForm
-    allowdeletes: 'true'
+  - allowdeletes: 'true'
     allowinserts: 'true'
     allowupdates: 'true'
     cmd: Family
     cmdtype: table
     controls:
-    - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control1
+    - controlid: control1
       convertemptytonull: ''
       datafield: ''
       eventlisteners: []
@@ -109,8 +99,7 @@ subforms:
       name: lblFamilyID
       obj_id: '253'
       type: FixedText
-    - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control2
+    - controlid: control2
       convertemptytonull: 'true'
       datafield: FamilyID
       eventlisteners: []
@@ -120,8 +109,7 @@ subforms:
       name: fmtFamilyID
       obj_id: '254'
       type: FormattedField
-    - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control3
+    - controlid: control3
       convertemptytonull: ''
       datafield: ''
       eventlisteners: []
@@ -131,8 +119,7 @@ subforms:
       name: lblName
       obj_id: '255'
       type: FixedText
-    - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control4
+    - controlid: control4
       convertemptytonull: 'true'
       datafield: Name
       eventlisteners: []
@@ -142,8 +129,7 @@ subforms:
       name: txtName
       obj_id: '256'
       type: TextField
-    - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control5
+    - controlid: control5
       convertemptytonull: ''
       datafield: ''
       eventlisteners: []
@@ -153,8 +139,7 @@ subforms:
       name: lblDesc
       obj_id: '257'
       type: FixedText
-    - !!python/object:odbinfo.pure.datatype.ui.Control
-      controlid: control6
+    - controlid: control6
       convertemptytonull: 'true'
       datafield: Desc
       eventlisteners: []
@@ -166,7 +151,7 @@ subforms:
       type: TextField
     depth: 1
     detailfields: '"FamilyID"'
-    link: &id002 !!python/object:odbinfo.pure.datatype.base.Identifier
+    link: &id002
       bookmark: null
       content_type: table
       local_id: Family

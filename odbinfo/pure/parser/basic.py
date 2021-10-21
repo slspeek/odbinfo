@@ -49,12 +49,12 @@ class ModuleScanner(Scanner):
     def _callable(self, start: int, bodystart: int,
                   bodyend: int, end: int, name_token: Token) -> BasicFunction:
         acallable = BasicFunction(name_token.text, self.library, self.module)
-        acallable.body_tokens = self.tokens[bodystart:bodyend]
+        acallable.body_tokens = list(self.tokens[bodystart:bodyend])
         acallable.name_token_index = name_token.index
 
         start_index = self.tokens[start].index
         end_index = self.tokens[end - 1].index
-        acallable.tokens = self.alltokens[start_index:end_index + 1]
+        acallable.tokens = list(self.alltokens[start_index:end_index + 1])
 
         analyze_callable(acallable)
         return acallable

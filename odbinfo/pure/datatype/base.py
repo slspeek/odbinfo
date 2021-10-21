@@ -1,7 +1,7 @@
 " super classes of the datatypes and reference types "
 from dataclasses import dataclass, field
 from itertools import chain
-from typing import List, Optional, cast
+from typing import Any, List, Optional, cast
 
 
 @dataclass(frozen=True)
@@ -15,6 +15,25 @@ class Identifier:
 def content_type(clazz) -> str:
     "returns the Hugo content type of `clazz`"
     return clazz.__name__.lower()
+
+
+def list_to_dict(values):
+    " convert list values to dict "
+    if values:
+        if isinstance(values[0], (Node, Identifier)):
+            return [to_dict(i) for i in values]
+    return values
+
+
+def to_dict(value: Any):
+    " returns dictionay representation of `value`"
+    if isinstance(value, List):
+        return list_to_dict(value)
+    if isinstance(value, Node):
+        return value.to_dict()
+    if isinstance(value, Identifier):
+        return value.__dict__
+    return value
 
 
 @dataclass
@@ -44,6 +63,15 @@ class Node:
             return_value = chain(return_value, child.all_objects())
 
         return return_value
+
+    def to_dict(self):
+        " dictionay representation "
+        sdict = dict(self.__dict__)
+        if "parent" in sdict:
+            del sdict["parent"]
+        for key, value in sdict.items():
+            sdict[key] = to_dict(value)
+        return sdict
 
 
 @dataclass
@@ -117,10 +145,28 @@ def get_identifier(usable: Node) -> Identifier:
 
 
 @dataclass
-class Token(User, Node):
+class Token(User, Node):  # pylint:disable=too-many-instance-attributes
     "lexer token"
     text: str
     type: int
     index: int
     hidden: bool
     cls: Optional[str] = field(init=False, default=None)
+
+    def clean_token(self):
+        " cleanup before writing"
+        self.hidden = None
+        del self.hidden
+
+        if not self.link:
+            self.obj_id = None
+            del self.obj_id
+            self.link = None
+            del self.link
+        if not self.cls:
+            self.cls = None
+            del self.cls
+
+    def to_dict(self):
+        self.clean_token()
+        return super().to_dict()

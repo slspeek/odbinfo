@@ -1,8 +1,6 @@
 ---
-!!python/object:odbinfo.pure.datatype.tabular.View
 columns:
-- !!python/object:odbinfo.pure.datatype.tabular.QueryColumn
-  autoincrement: false
+- autoincrement: false
   issigned: true
   name: id
   nullable: No_Nulls
@@ -20,57 +18,66 @@ command: 'SELECT "id"
 literal_values: []
 name: view1
 obj_id: '34'
-parent_link: !!python/object:odbinfo.pure.datatype.base.Identifier
+parent_link:
   bookmark: null
   content_type: metadata
   local_id: testdb
-table_tokens: []
-title: view1
-tokens:
-- text: SELECT
-  type: 131
-- text: ' '
-  type: 207
-- text: '"id"'
-  type: 200
-- text: '
-
-    '
-  type: 207
-- text: FROM
-  type: 77
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- text: ' '
-  type: 207
-- link: &id001 !!python/object:odbinfo.pure.datatype.base.Identifier
+table_tokens:
+- index: 8
+  link: &id001
     bookmark: null
     content_type: table
     local_id: Plant
   obj_id: '44'
   text: '"Plant"'
   type: 200
+title: view1
+tokens:
+- index: 0
+  text: SELECT
+  type: 131
+- index: 1
+  text: ' '
+  type: 207
+- index: 2
+  text: '"id"'
+  type: 200
+- index: 3
+  text: '
+
+    '
+  type: 207
+- index: 4
+  text: FROM
+  type: 77
+- index: 5
+  text: ' '
+  type: 207
+- index: 6
+  text: ' '
+  type: 207
+- index: 7
+  text: ' '
+  type: 207
+- index: 8
+  link: *id001
+  obj_id: '44'
+  text: '"Plant"'
+  type: 200
 used_by:
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '25'
+- bookmark: '25'
   content_type: view
   local_id: DependendView
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '33'
+- bookmark: '33'
   content_type: view
   local_id: DependendView
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '66'
+- bookmark: '66'
   content_type: query
   local_id: DependendQuery
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '260'
+- bookmark: '260'
   content_type: form
   local_id: view1
-- !!python/object:odbinfo.pure.datatype.base.Identifier
-  bookmark: '561'
+- bookmark: '561'
   content_type: basicfunction
   local_id: ReferToView.Module1.Library1
 uses:

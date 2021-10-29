@@ -3,7 +3,6 @@ height: 0
 name: Plant invoeren
 obj_id: '191'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
@@ -39,8 +38,7 @@ subforms:
     type: Grid
   depth: 0
   detailfields: ''
-  link: &id001
-    bookmark: null
+  link:
     content_type: query
     local_id: vwPlant
   masterfields: ''
@@ -50,5 +48,6 @@ subforms:
 title: Plant invoeren
 used_by: []
 uses:
-- *id001
+- content_type: query
+  local_id: vwPlant
 ---

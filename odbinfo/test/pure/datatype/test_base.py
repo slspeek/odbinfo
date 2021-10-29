@@ -4,6 +4,25 @@ import pytest
 from odbinfo.pure.datatype import (EmbeddedQuery, Identifier, Report, Table,
                                    content_type, get_identifier)
 from odbinfo.pure.datatype.base import NamedNode, Node, WebPage
+from odbinfo.test.pure.datatype import factory
+
+
+def test_to_dict_identitifier_no_bookmark():
+    identifier = Identifier("foo", "bar", None)
+    assert identifier.to_dict() == {'content_type': "foo", 'local_id': "bar"}
+
+
+def test_to_dict_identitifier():
+    identifier = Identifier("foo", "bar", "barbar")
+    assert identifier.to_dict() == {'content_type': "foo",
+                                    'local_id': "bar",
+                                    "bookmark": "barbar"}
+
+
+def test_node_to_dict():
+    table = factory.table_plant()
+    adict = table.to_dict()
+    assert adict["keys"][0] == factory.foreignkey_famliy().to_dict()
 
 
 def test_node_empty_children():

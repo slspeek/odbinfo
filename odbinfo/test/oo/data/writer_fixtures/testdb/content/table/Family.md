@@ -54,7 +54,6 @@ keys:
 name: Family
 obj_id: '1'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 title: Family
@@ -74,8 +73,7 @@ used_by:
 - bookmark: '252'
   content_type: form
   local_id: Related subform
-- bookmark: null
-  content_type: report
+- content_type: report
   local_id: Family
 uses: []
 ---

@@ -19,13 +19,10 @@ literal_values: []
 name: view1
 obj_id: '34'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 table_tokens:
-- index: 8
-  link: &id001
-    bookmark: null
+- link:
     content_type: table
     local_id: Plant
   obj_id: '44'
@@ -33,34 +30,27 @@ table_tokens:
   type: 200
 title: view1
 tokens:
-- index: 0
-  text: SELECT
+- text: SELECT
   type: 131
-- index: 1
-  text: ' '
+- text: ' '
   type: 207
-- index: 2
-  text: '"id"'
+- text: '"id"'
   type: 200
-- index: 3
-  text: '
+- text: '
 
     '
   type: 207
-- index: 4
-  text: FROM
+- text: FROM
   type: 77
-- index: 5
-  text: ' '
+- text: ' '
   type: 207
-- index: 6
-  text: ' '
+- text: ' '
   type: 207
-- index: 7
-  text: ' '
+- text: ' '
   type: 207
-- index: 8
-  link: *id001
+- link:
+    content_type: table
+    local_id: Plant
   obj_id: '44'
   text: '"Plant"'
   type: 200
@@ -81,5 +71,6 @@ used_by:
   content_type: basicfunction
   local_id: ReferToView.Module1.Library1
 uses:
-- *id001
+- content_type: table
+  local_id: Plant
 ---

@@ -5,7 +5,6 @@ name: ShadowedCallee
 name_token_index: 42
 obj_id: '313'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module1.Standard
 title: ShadowedCallee.Module1.Standard

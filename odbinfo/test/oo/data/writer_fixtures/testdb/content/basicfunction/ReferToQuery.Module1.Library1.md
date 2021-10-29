@@ -5,7 +5,6 @@ name: ReferToQuery
 name_token_index: 132
 obj_id: '564'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module1.Library1
 title: ReferToQuery.Module1.Library1
@@ -35,8 +34,7 @@ tokens:
   text: ' '
   type: 185
 - index: 138
-  link: &id001
-    bookmark: null
+  link:
     content_type: query
     local_id: FamilyLookup
   obj_id: '573'
@@ -52,5 +50,6 @@ tokens:
   type: 44
 used_by: []
 uses:
-- *id001
+- content_type: query
+  local_id: FamilyLookup
 ---

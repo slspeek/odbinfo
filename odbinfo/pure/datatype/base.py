@@ -1,15 +1,31 @@
 " super classes of the datatypes and reference types "
+from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from itertools import chain
 from typing import Any, List, Optional, cast
 
 
+# pylint:disable=too-few-public-methods
+class Dictable(ABC):
+    "Dictionary representable"
+
+    @abstractmethod
+    def to_dict(self):
+        " dictionary representation "
+
+
 @dataclass(frozen=True)
-class Identifier:
+class Identifier(Dictable):
     " Unique id for ooobjects "
     content_type: str
     local_id: str
     bookmark: Optional[str]
+
+    def to_dict(self):
+        adict = dict(self.__dict__)
+        if not self.bookmark:
+            del adict["bookmark"]
+        return adict
 
 
 def content_type(clazz) -> str:
@@ -20,8 +36,8 @@ def content_type(clazz) -> str:
 def list_to_dict(values):
     " convert list values to dict "
     if values:
-        if isinstance(values[0], (Node, Identifier)):
-            return [to_dict(i) for i in values]
+        if isinstance(values[0], Dictable):
+            return [d.to_dict() for d in values]
     return values
 
 
@@ -29,15 +45,13 @@ def to_dict(value: Any):
     " returns dictionay representation of `value`"
     if isinstance(value, List):
         return list_to_dict(value)
-    if isinstance(value, Node):
+    if isinstance(value, Dictable):
         return value.to_dict()
-    if isinstance(value, Identifier):
-        return value.__dict__
     return value
 
 
 @dataclass
-class Node:
+class Node(Dictable):
     " superclass of OO-objects representations "
     obj_id: str = field(init=False, default="OBJID_NOT_SET")
     parent: Optional["NamedNode"] = field(init=False, default=None, repr=False)
@@ -65,7 +79,6 @@ class Node:
         return return_value
 
     def to_dict(self):
-        " dictionay representation "
         sdict = dict(self.__dict__)
         if "parent" in sdict:
             del sdict["parent"]
@@ -153,20 +166,19 @@ class Token(User, Node):  # pylint:disable=too-many-instance-attributes
     hidden: bool
     cls: Optional[str] = field(init=False, default=None)
 
-    def clean_token(self):
-        " cleanup before writing"
-        self.hidden = None
-        del self.hidden
-
+    def to_dict(self):
+        adict = super().to_dict()
+        del adict["hidden"]
         if not self.link:
-            self.obj_id = None
-            del self.obj_id
-            self.link = None
-            del self.link
-        if not self.cls:
-            self.cls = None
-            del self.cls
+            del adict["obj_id"]
+        return adict
+
+
+@dataclass
+class SQLToken(Token):
+    "SQL lexer token"
 
     def to_dict(self):
-        self.clean_token()
-        return super().to_dict()
+        adict = super().to_dict()
+        del adict["index"]
+        return adict

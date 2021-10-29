@@ -3,7 +3,6 @@ height: 0
 name: PlantListbox
 obj_id: '196'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
@@ -72,8 +71,7 @@ subforms:
     formfor: ''
     inputrequired: 'true'
     label: ''
-    link: &id002
-      bookmark: null
+    link:
       content_type: query
       local_id: FamilyLookup
     listsource: FamilyLookup
@@ -85,8 +83,7 @@ subforms:
     convertemptytonull: ''
     datafield: ''
     eventlisteners:
-    - link: &id003
-        bookmark: null
+    - link:
         content_type: basicfunction
         local_id: Main.Module1.Library1
       name: form:performaction
@@ -112,15 +109,13 @@ subforms:
     convertemptytonull: ''
     datafield: ''
     eventlisteners:
-    - link: &id004
-        bookmark: null
+    - link:
         content_type: basicfunction
         local_id: Main.Module1.Library1
       name: form:performaction
       obj_id: '208'
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
-    - link: &id005
-        bookmark: null
+    - link:
         content_type: basicfunction
         local_id: Main.Module1.Library1
       name: form:approveaction
@@ -134,8 +129,7 @@ subforms:
     type: CommandButton
   depth: 0
   detailfields: ''
-  link: &id001
-    bookmark: null
+  link:
     content_type: table
     local_id: Plant
   masterfields: ''
@@ -145,9 +139,14 @@ subforms:
 title: PlantListbox
 used_by: []
 uses:
-- *id001
-- *id002
-- *id003
-- *id004
-- *id005
+- content_type: table
+  local_id: Plant
+- content_type: query
+  local_id: FamilyLookup
+- content_type: basicfunction
+  local_id: Main.Module1.Library1
+- content_type: basicfunction
+  local_id: Main.Module1.Library1
+- content_type: basicfunction
+  local_id: Main.Module1.Library1
 ---

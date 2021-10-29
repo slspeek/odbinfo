@@ -56,6 +56,7 @@ class DatabaseDisplay(User, NamedNode):
 
 
 @dataclass
+# pylint:disable=too-many-ancestors
 class TextDocument(WebPageWithUses):
     " ODT or OTT file metadata "
     filename: str
@@ -152,6 +153,7 @@ class SubForm(Commander, NamedNode):
 
 
 @dataclass
+# pylint:disable=too-many-ancestors
 class Form(WebPageWithUses):
     " Toplevel form "
     subforms: List[SubForm]

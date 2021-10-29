@@ -11,13 +11,11 @@ import webbrowser
 from inspect import ismethod
 from os import path
 from pathlib import Path
-from typing import Dict
 
 import toml
 import yaml
 
-from odbinfo.pure.datatype import (BasicFunction, Metadata, Module, Token,
-                                   content_type)
+from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.metadata import METADATA_CONTENT
 from odbinfo.pure.util import timed
@@ -90,41 +88,6 @@ def new_site(output_dir: str, name: str):
                     Path(output_dir) / name)
 
 
-def preprocess_metadata(metadata):
-    " clear some fields for speed "
-    for obj in metadata.all_objects():
-        obj.parent = None
-        del obj.parent
-    # _cleanup_tokens(metadata)
-
-
-def _cleanup_tokens(metadata):
-
-    def replace_qtoken(token: Token) -> Dict:
-        del token.index
-        token.clean_token()
-        return token.__dict__
-
-    def replace_bftoken(token: Token) -> Dict:
-        token.clean_token()
-        return token.__dict__
-
-    for query in (list(metadata.embeddedquery_defs())
-                  + metadata.query_defs + metadata.view_defs):
-        query.tokens = list(map(replace_qtoken, query.tokens))
-        query.table_tokens = []
-
-    for module in metadata.module_defs():
-        del module.source
-        module.tokens = list(map(replace_bftoken, module.tokens))
-
-    for function in metadata.basicfunction_defs():
-        del function.body_tokens
-        del function.calls
-        function.tokens = list(map(replace_bftoken, function.tokens))
-        del function.strings
-
-
 @timed("Write and build hugo site", indent=2)
 def make_site(config, metadata):
     """ Builds report in `output_dir` with `name` from `metadata` """
@@ -142,22 +105,10 @@ def make_site(config, metadata):
     return localsite
 
 
-def clear_fields_after(metadata: Metadata, acontent_type: str) -> None:
-    " clear tokens after basicfunctions were written "
-    if acontent_type == content_type(BasicFunction):
-        for func in metadata.basicfunction_defs():
-            func.tokens = []
-    if acontent_type == content_type(Module):
-        for module in metadata.module_defs():
-            module.tokens = []
-
-
 def _write_metadata(config: Configuration, metadata: Metadata):
-    preprocess_metadata(metadata)
     _write_config(config, config.name, metadata)
     for content in METADATA_CONTENT:
         _write_content(metadata, content)
-        # clear_fields_after(metadata, content)
 
 
 def _get_metadata_attr(metadata: Metadata, attribute: str):

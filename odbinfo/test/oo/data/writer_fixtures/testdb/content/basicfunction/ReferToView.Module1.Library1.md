@@ -5,7 +5,6 @@ name: ReferToView
 name_token_index: 119
 obj_id: '552'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module1.Library1
 title: ReferToView.Module1.Library1
@@ -35,8 +34,7 @@ tokens:
   text: ' '
   type: 185
 - index: 125
-  link: &id001
-    bookmark: null
+  link:
     content_type: view
     local_id: view1
   obj_id: '561'
@@ -52,5 +50,6 @@ tokens:
   type: 44
 used_by: []
 uses:
-- *id001
+- content_type: view
+  local_id: view1
 ---

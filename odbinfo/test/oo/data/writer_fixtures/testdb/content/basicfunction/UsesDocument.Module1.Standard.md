@@ -5,7 +5,6 @@ name: UsesDocument
 name_token_index: 5
 obj_id: '279'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module1.Standard
 title: UsesDocument.Module1.Standard
@@ -35,8 +34,7 @@ tokens:
   text: ' '
   type: 185
 - index: 11
-  link: &id001
-    bookmark: null
+  link:
     content_type: textdocument
     local_id: Untitled
   obj_id: '288'
@@ -52,5 +50,6 @@ tokens:
   type: 44
 used_by: []
 uses:
-- *id001
+- content_type: textdocument
+  local_id: Untitled
 ---

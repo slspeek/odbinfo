@@ -79,29 +79,22 @@ literal_values: []
 name: DependendQuery
 obj_id: '45'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 table_tokens:
-- index: 8
-  link: &id001
-    bookmark: null
+- link:
     content_type: query
     local_id: FamilyLookup
   obj_id: '60'
   text: '"FamilyLookup"'
   type: 200
-- index: 11
-  link: &id002
-    bookmark: null
+- link:
     content_type: query
     local_id: vwPlant
   obj_id: '63'
   text: '"vwPlant"'
   type: 200
-- index: 14
-  link: &id003
-    bookmark: null
+- link:
     content_type: view
     local_id: view1
   obj_id: '66'
@@ -109,62 +102,56 @@ table_tokens:
   type: 200
 title: DependendQuery
 tokens:
-- index: 0
-  text: SELECT
+- text: SELECT
   type: 131
-- index: 1
-  text: ' '
+- text: ' '
   type: 207
-- index: 2
-  text: '*'
+- text: '*'
   type: 7
-- index: 3
-  text: '
+- text: '
 
     '
   type: 207
-- index: 4
-  text: FROM
+- text: FROM
   type: 77
-- index: 5
-  text: ' '
+- text: ' '
   type: 207
-- index: 6
-  text: ' '
+- text: ' '
   type: 207
-- index: 7
-  text: ' '
+- text: ' '
   type: 207
-- index: 8
-  link: *id001
+- link:
+    content_type: query
+    local_id: FamilyLookup
   obj_id: '60'
   text: '"FamilyLookup"'
   type: 200
-- index: 9
-  text: ','
+- text: ','
   type: 5
-- index: 10
-  text: ' '
+- text: ' '
   type: 207
-- index: 11
-  link: *id002
+- link:
+    content_type: query
+    local_id: vwPlant
   obj_id: '63'
   text: '"vwPlant"'
   type: 200
-- index: 12
-  text: ','
+- text: ','
   type: 5
-- index: 13
-  text: ' '
+- text: ' '
   type: 207
-- index: 14
-  link: *id003
+- link:
+    content_type: view
+    local_id: view1
   obj_id: '66'
   text: '"view1"'
   type: 200
 used_by: []
 uses:
-- *id001
-- *id002
-- *id003
+- content_type: query
+  local_id: FamilyLookup
+- content_type: query
+  local_id: vwPlant
+- content_type: view
+  local_id: view1
 ---

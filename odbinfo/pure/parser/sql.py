@@ -1,6 +1,7 @@
 """ Facade fot the SQLiteParser """
 from antlr4 import ParseTreeWalker
 
+from odbinfo.pure.datatype.base import SQLToken
 from odbinfo.pure.parser.scanner import get_token_stream, get_tokens
 from odbinfo.pure.parser.sqlite.SQLiteLexer import SQLiteLexer
 from odbinfo.pure.parser.sqlite.SQLiteParser import SQLiteParser
@@ -32,7 +33,7 @@ def parse(sqlcommand):
     " Returns parsetree object "
     # print("Parsing: ", sqlcommand)
     stream = get_token_stream(sqlcommand, SQLiteLexer)
-    tokens = get_tokens(stream)
+    tokens = get_tokens(stream, SQLToken)
     parser = SQLiteParser(stream)
     tree = parser.parse()
     walker = ParseTreeWalker()

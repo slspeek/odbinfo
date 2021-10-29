@@ -3,7 +3,6 @@ height: 1
 name: Formulier1
 obj_id: '141'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
@@ -24,43 +23,34 @@ subforms:
     name: Formulier.Command
     obj_id: '144'
     table_tokens:
-    - index: 8
-      link: &id001
-        bookmark: null
+    - link:
         content_type: table
         local_id: Person
       obj_id: '153'
       text: '"Person"'
       type: 200
     tokens:
-    - index: 0
-      text: SELECT
+    - text: SELECT
       type: 131
-    - index: 1
-      text: ' '
+    - text: ' '
       type: 207
-    - index: 2
-      text: '*'
+    - text: '*'
       type: 7
-    - index: 3
-      text: '
+    - text: '
 
         '
       type: 207
-    - index: 4
-      text: FROM
+    - text: FROM
       type: 77
-    - index: 5
-      text: ' '
+    - text: ' '
       type: 207
-    - index: 6
-      text: ' '
+    - text: ' '
       type: 207
-    - index: 7
-      text: ' '
+    - text: ' '
       type: 207
-    - index: 8
-      link: *id001
+    - link:
+        content_type: table
+        local_id: Person
       obj_id: '153'
       text: '"Person"'
       type: 200
@@ -95,5 +85,6 @@ subforms:
 title: Formulier1
 used_by: []
 uses:
-- *id001
+- content_type: table
+  local_id: Person
 ---

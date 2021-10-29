@@ -1,8 +1,7 @@
 ---
 fields:
 - database: testdb
-  link: &id001
-    bookmark: null
+  link:
     content_type: query
     local_id: vwPlant
   name: naam
@@ -13,7 +12,6 @@ filename: Untitled.odt
 name: Untitled
 obj_id: '777'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 path: Untitled.odt
@@ -26,5 +24,6 @@ used_by:
   content_type: basicfunction
   local_id: UsesDocumentFilename.Module1.Standard
 uses:
-- *id001
+- content_type: query
+  local_id: vwPlant
 ---

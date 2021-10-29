@@ -62,8 +62,7 @@ keys:
 - columns:
   - RFamliyID
   delete_rule: No_Action
-  link: &id001
-    bookmark: null
+  link:
     content_type: table
     local_id: Family
   name: SYS_FK_79
@@ -76,7 +75,6 @@ keys:
 name: Plant
 obj_id: '13'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 title: Plant
@@ -115,5 +113,6 @@ used_by:
   content_type: basicfunction
   local_id: ReferToTable.Module1.Library1
 uses:
-- *id001
+- content_type: table
+  local_id: Family
 ---

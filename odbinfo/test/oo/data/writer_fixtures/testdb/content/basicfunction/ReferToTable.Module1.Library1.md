@@ -5,7 +5,6 @@ name: ReferToTable
 name_token_index: 106
 obj_id: '540'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module1.Library1
 title: ReferToTable.Module1.Library1
@@ -35,8 +34,7 @@ tokens:
   text: ' '
   type: 185
 - index: 112
-  link: &id001
-    bookmark: null
+  link:
     content_type: table
     local_id: Plant
   obj_id: '549'
@@ -52,5 +50,6 @@ tokens:
   type: 44
 used_by: []
 uses:
-- *id001
+- content_type: table
+  local_id: Plant
 ---

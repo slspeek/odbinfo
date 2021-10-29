@@ -9,7 +9,6 @@ modules:
 name: Standard
 obj_id: '277'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 title: Standard

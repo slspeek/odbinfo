@@ -3,7 +3,6 @@ height: 0
 name: ListBoxTest
 obj_id: '155'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
@@ -35,75 +34,56 @@ subforms:
       name: id.Command
       obj_id: '159'
       table_tokens:
-      - index: 18
-        link: &id001
-          bookmark: null
+      - link:
           content_type: table
           local_id: Plant
         obj_id: '178'
         text: '"Plant"'
         type: 200
       tokens:
-      - index: 0
-        text: SELECT
+      - text: SELECT
         type: 131
-      - index: 1
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 2
-        text: '"id"'
+      - text: '"id"'
         type: 200
-      - index: 3
-        text: ','
+      - text: ','
         type: 5
-      - index: 4
-        text: '
+      - text: '
 
           '
         type: 207
-      - index: 5
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 6
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 7
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 8
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 9
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 10
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 11
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 12
-        text: '"naam"'
+      - text: '"naam"'
         type: 200
-      - index: 13
-        text: '
+      - text: '
 
           '
         type: 207
-      - index: 14
-        text: FROM
+      - text: FROM
         type: 77
-      - index: 15
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 16
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 17
-        text: ' '
+      - text: ' '
         type: 207
-      - index: 18
-        link: *id001
+      - link:
+          content_type: table
+          local_id: Plant
         obj_id: '178'
         text: '"Plant"'
         type: 200
@@ -135,8 +115,7 @@ subforms:
     formfor: ''
     inputrequired: 'false'
     label: ''
-    link: &id003
-      bookmark: null
+    link:
       content_type: table
       local_id: Plant
     listsource: Plant
@@ -170,8 +149,7 @@ subforms:
     type: ListBox
   depth: 0
   detailfields: ''
-  link: &id002
-    bookmark: null
+  link:
     content_type: query
     local_id: vwPlant
   masterfields: ''
@@ -181,7 +159,10 @@ subforms:
 title: ListBoxTest
 used_by: []
 uses:
-- *id002
-- *id001
-- *id003
+- content_type: query
+  local_id: vwPlant
+- content_type: table
+  local_id: Plant
+- content_type: table
+  local_id: Plant
 ---

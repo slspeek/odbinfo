@@ -130,4 +130,4 @@ def functioncall(parser):
 
 def get_basic_tokens(basiccode) -> List[Token]:
     " Tokenize `basiccode` "
-    return get_tokens(get_token_stream(basiccode, OOBasicLexer))
+    return get_tokens(get_token_stream(basiccode, OOBasicLexer), Token)

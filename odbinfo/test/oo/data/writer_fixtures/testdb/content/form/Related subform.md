@@ -3,7 +3,6 @@ height: 1
 name: Related subform
 obj_id: '244'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
@@ -75,8 +74,7 @@ subforms:
     type: FormattedField
   depth: 0
   detailfields: ''
-  link: &id001
-    bookmark: null
+  link:
     content_type: table
     local_id: Plant
   masterfields: ''
@@ -151,8 +149,7 @@ subforms:
       type: TextField
     depth: 1
     detailfields: '"FamilyID"'
-    link: &id002
-      bookmark: null
+    link:
       content_type: table
       local_id: Family
     masterfields: '"RFamliyID"'
@@ -162,6 +159,8 @@ subforms:
 title: Related subform
 used_by: []
 uses:
-- *id001
-- *id002
+- content_type: table
+  local_id: Plant
+- content_type: table
+  local_id: Family
 ---

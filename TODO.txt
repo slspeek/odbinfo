@@ -4,20 +4,14 @@ token subclass querytoken to elemininate index in to_dict
 
 SubForm reading should respect order of subforms and controls
 FormItem = Union[SubForm, Control, ListBox, Grid]
-
-Node should have to_dict method for writing out
-Library.modules as links (Identifier)
-Module.callables as links (Identifier)
-solves some strange action in writer, clearing the way for
-parallel writing
-
 Grid type hack?
+
 
 Testing
 -------
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 82.61%)
+unit test coverage 90% (now 84.44%)
 test/pure/test_sql_parser.py
 test/pure/test_writer.py
 test/pure/test_writer_make_site.py

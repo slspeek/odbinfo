@@ -57,7 +57,6 @@ keys:
 name: Person
 obj_id: '7'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 title: Person

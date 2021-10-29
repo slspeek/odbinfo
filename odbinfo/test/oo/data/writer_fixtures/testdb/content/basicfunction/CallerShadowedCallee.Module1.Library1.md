@@ -5,7 +5,6 @@ name: CallerShadowedCallee
 name_token_index: 80
 obj_id: '516'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module1.Library1
 title: CallerShadowedCallee.Module1.Library1
@@ -29,8 +28,7 @@ tokens:
   text: "\n\t"
   type: 183
 - index: 84
-  link: &id001
-    bookmark: null
+  link:
     content_type: basicfunction
     local_id: ShadowedCallee.Module1.Library1
   obj_id: '523'
@@ -52,5 +50,6 @@ tokens:
   type: 44
 used_by: []
 uses:
-- *id001
+- content_type: basicfunction
+  local_id: ShadowedCallee.Module1.Library1
 ---

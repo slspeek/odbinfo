@@ -5,7 +5,6 @@ name: CalleeSub
 name_token_index: 35
 obj_id: '474'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module1.Library1
 title: CalleeSub.Module1.Library1

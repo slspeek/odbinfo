@@ -5,7 +5,6 @@ name: CallerTwo
 name_token_index: 48
 obj_id: '486'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module1.Library1
 title: CallerTwo.Module1.Library1
@@ -29,8 +28,7 @@ tokens:
   text: "\n\t"
   type: 183
 - index: 52
-  link: &id001
-    bookmark: null
+  link:
     content_type: basicfunction
     local_id: CalleeTwoSub.Module2.Library1
   obj_id: '493'
@@ -52,5 +50,6 @@ tokens:
   type: 44
 used_by: []
 uses:
-- *id001
+- content_type: basicfunction
+  local_id: CalleeTwoSub.Module2.Library1
 ---

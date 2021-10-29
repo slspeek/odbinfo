@@ -68,7 +68,7 @@ EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",
 
 # EXCLUDED_TYPES: List[str] = []
 
-ALLWAYS_EXCLUDED = ["metadata", "token"]
+ALLWAYS_EXCLUDED = ["metadata", "token", "sqltoken"]
 
 
 @dataclass

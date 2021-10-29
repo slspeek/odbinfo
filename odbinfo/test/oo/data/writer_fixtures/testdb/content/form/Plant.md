@@ -3,7 +3,6 @@ height: 0
 name: Plant
 obj_id: '183'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
@@ -75,8 +74,7 @@ subforms:
     type: FormattedField
   depth: 0
   detailfields: ''
-  link: &id001
-    bookmark: null
+  link:
     content_type: table
     local_id: Plant
   masterfields: ''
@@ -86,5 +84,6 @@ subforms:
 title: Plant
 used_by: []
 uses:
-- *id001
+- content_type: table
+  local_id: Plant
 ---

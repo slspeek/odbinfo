@@ -29,13 +29,10 @@ literal_values: []
 name: FamilyLookup
 obj_id: '67'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 table_tokens:
-- index: 18
-  link: &id001
-    bookmark: null
+- link:
     content_type: table
     local_id: Family
   obj_id: '88'
@@ -43,66 +40,49 @@ table_tokens:
   type: 200
 title: FamilyLookup
 tokens:
-- index: 0
-  text: SELECT
+- text: SELECT
   type: 131
-- index: 1
-  text: ' '
+- text: ' '
   type: 207
-- index: 2
-  text: '"Name"'
+- text: '"Name"'
   type: 200
-- index: 3
-  text: ','
+- text: ','
   type: 5
-- index: 4
-  text: '
+- text: '
 
     '
   type: 207
-- index: 5
-  text: ' '
+- text: ' '
   type: 207
-- index: 6
-  text: ' '
+- text: ' '
   type: 207
-- index: 7
-  text: ' '
+- text: ' '
   type: 207
-- index: 8
-  text: ' '
+- text: ' '
   type: 207
-- index: 9
-  text: ' '
+- text: ' '
   type: 207
-- index: 10
-  text: ' '
+- text: ' '
   type: 207
-- index: 11
-  text: ' '
+- text: ' '
   type: 207
-- index: 12
-  text: '"FamilyID"'
+- text: '"FamilyID"'
   type: 200
-- index: 13
-  text: '
+- text: '
 
     '
   type: 207
-- index: 14
-  text: FROM
+- text: FROM
   type: 77
-- index: 15
-  text: ' '
+- text: ' '
   type: 207
-- index: 16
-  text: ' '
+- text: ' '
   type: 207
-- index: 17
-  text: ' '
+- text: ' '
   type: 207
-- index: 18
-  link: *id001
+- link:
+    content_type: table
+    local_id: Family
   obj_id: '88'
   text: '"Family"'
   type: 200
@@ -117,5 +97,6 @@ used_by:
   content_type: basicfunction
   local_id: ReferToQuery.Module1.Library1
 uses:
-- *id001
+- content_type: table
+  local_id: Family
 ---

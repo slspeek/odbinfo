@@ -3,7 +3,6 @@ height: 0
 name: view1
 obj_id: '259'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 subforms:
@@ -35,8 +34,7 @@ subforms:
     type: FormattedField
   depth: 0
   detailfields: ''
-  link: &id001
-    bookmark: null
+  link:
     content_type: view
     local_id: view1
   masterfields: ''
@@ -46,5 +44,6 @@ subforms:
 title: view1
 used_by: []
 uses:
-- *id001
+- content_type: view
+  local_id: view1
 ---

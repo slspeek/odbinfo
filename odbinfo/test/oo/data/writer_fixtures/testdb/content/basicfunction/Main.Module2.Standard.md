@@ -5,7 +5,6 @@ name: Main
 name_token_index: 5
 obj_id: '421'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module2.Standard
 title: Main.Module2.Standard

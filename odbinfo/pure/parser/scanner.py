@@ -1,5 +1,5 @@
 """ Generic token scanner """
-from typing import List, Optional, Sequence
+from typing import Optional, Sequence
 
 import antlr4
 from antlr4 import CommonTokenStream, InputStream
@@ -14,19 +14,19 @@ def get_token_stream(source_code, lexer) -> CommonTokenStream:
     return CommonTokenStream(lexer)
 
 
-def get_tokens(stream) -> List[Token]:
+def get_tokens(stream, token_class):
     "Read `stream` and return the tokens"
     stream.fill()
     # exclude EOF token, by leaving the last token out
     atokens = stream.tokens[:-1]
 
-    return list(map(convert_token, atokens))
+    return [convert_token(atoken, token_class) for atoken in atokens]
 
 
-def convert_token(atoken) -> Token:
+def convert_token(atoken, token_class):
     " convert antlr4 token to Token "
     return\
-        Token(
+        token_class(
             atoken.text,
             atoken.type,
             atoken.tokenIndex,

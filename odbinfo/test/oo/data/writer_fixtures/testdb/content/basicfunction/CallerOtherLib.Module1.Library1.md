@@ -5,7 +5,6 @@ name: CallerOtherLib
 name_token_index: 61
 obj_id: '498'
 parent_link:
-  bookmark: null
   content_type: module
   local_id: Module1.Library1
 title: CallerOtherLib.Module1.Library1
@@ -29,8 +28,7 @@ tokens:
   text: "\n\t"
   type: 183
 - index: 65
-  link: &id001
-    bookmark: null
+  link:
     content_type: basicfunction
     local_id: CalleeOtherLib.Module1.Standard
   obj_id: '505'
@@ -52,8 +50,7 @@ tokens:
   text: .
   type: 150
 - index: 71
-  link: &id002
-    bookmark: null
+  link:
     content_type: basicfunction
     local_id: CalleeOtherLib.Module1.Standard
   obj_id: '511'
@@ -75,6 +72,8 @@ tokens:
   type: 44
 used_by: []
 uses:
-- *id001
-- *id002
+- content_type: basicfunction
+  local_id: CalleeOtherLib.Module1.Standard
+- content_type: basicfunction
+  local_id: CalleeOtherLib.Module1.Standard
 ---

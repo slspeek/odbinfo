@@ -39,23 +39,18 @@ columns:
 command: "SELECT 1,\n       'fourtytwo',\n       \"naam\"\nFROM   \"Plant\""
 literal_values:
 - cls: literalvalue
-  index: 2
   text: '1'
   type: 201
 - cls: literalvalue
-  index: 12
   text: '''fourtytwo'''
   type: 203
 name: LiteralValueQuery
 obj_id: '89'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 table_tokens:
-- index: 28
-  link: &id001
-    bookmark: null
+- link:
     content_type: table
     local_id: Plant
   obj_id: '121'
@@ -63,104 +58,78 @@ table_tokens:
   type: 200
 title: LiteralValueQuery
 tokens:
-- index: 0
-  text: SELECT
+- text: SELECT
   type: 131
-- index: 1
-  text: ' '
+- text: ' '
   type: 207
 - cls: literalvalue
-  index: 2
   text: '1'
   type: 201
-- index: 3
-  text: ','
+- text: ','
   type: 5
-- index: 4
-  text: '
+- text: '
 
     '
   type: 207
-- index: 5
-  text: ' '
+- text: ' '
   type: 207
-- index: 6
-  text: ' '
+- text: ' '
   type: 207
-- index: 7
-  text: ' '
+- text: ' '
   type: 207
-- index: 8
-  text: ' '
+- text: ' '
   type: 207
-- index: 9
-  text: ' '
+- text: ' '
   type: 207
-- index: 10
-  text: ' '
+- text: ' '
   type: 207
-- index: 11
-  text: ' '
+- text: ' '
   type: 207
 - cls: literalvalue
-  index: 12
   text: '''fourtytwo'''
   type: 203
-- index: 13
-  text: ','
+- text: ','
   type: 5
-- index: 14
-  text: '
+- text: '
 
     '
   type: 207
-- index: 15
-  text: ' '
+- text: ' '
   type: 207
-- index: 16
-  text: ' '
+- text: ' '
   type: 207
-- index: 17
-  text: ' '
+- text: ' '
   type: 207
-- index: 18
-  text: ' '
+- text: ' '
   type: 207
-- index: 19
-  text: ' '
+- text: ' '
   type: 207
-- index: 20
-  text: ' '
+- text: ' '
   type: 207
-- index: 21
-  text: ' '
+- text: ' '
   type: 207
-- index: 22
-  text: '"naam"'
+- text: '"naam"'
   type: 200
-- index: 23
-  text: '
+- text: '
 
     '
   type: 207
-- index: 24
-  text: FROM
+- text: FROM
   type: 77
-- index: 25
-  text: ' '
+- text: ' '
   type: 207
-- index: 26
-  text: ' '
+- text: ' '
   type: 207
-- index: 27
-  text: ' '
+- text: ' '
   type: 207
-- index: 28
-  link: *id001
+- link:
+    content_type: table
+    local_id: Plant
   obj_id: '121'
   text: '"Plant"'
   type: 200
 used_by: []
 uses:
-- *id001
+- content_type: table
+  local_id: Plant
 ---

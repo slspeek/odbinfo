@@ -9,7 +9,6 @@ modules:
 name: Library1
 obj_id: '444'
 parent_link:
-  bookmark: null
   content_type: metadata
   local_id: testdb
 title: Library1

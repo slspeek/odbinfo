@@ -33,7 +33,6 @@ class BasicCall:
     module_token: Token
 
 
-# pylint:disable=too-many-ancestors
 # pylint:disable=too-many-instance-attributes
 @dataclass
 class BasicFunction(WebPageWithUses):

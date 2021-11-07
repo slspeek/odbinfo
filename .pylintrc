@@ -1,2 +1,5 @@
 [MASTER]
 ignore=odbinfo/pure/parser/sqlite,odbinfo/pure/parser/oobasic
+
+[DESIGN]
+max-parents=12

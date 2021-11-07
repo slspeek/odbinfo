@@ -73,7 +73,6 @@ class EmbeddedQuery(NamedNode):
 
 
 @dataclass
-# pylint: disable=too-many-ancestors
 class Query(EmbeddedQuery, WebPageWithUses):
     " Query properties "
 
@@ -84,7 +83,6 @@ class Query(EmbeddedQuery, WebPageWithUses):
 
 
 @dataclass
-# pylint: disable=too-many-ancestors
 class View(Query):
     " View properties "
 
@@ -130,7 +128,6 @@ class Index(NamedNode):
 
 
 @dataclass
-# pylint: disable=too-many-ancestors
 class Table(WebPageWithUses):
     """ Table properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Table.html

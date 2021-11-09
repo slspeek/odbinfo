@@ -1,5 +1,3 @@
-metadata.set_parents should have better name: set_parent_links
-
 token subclass querytoken to elemininate index in to_dict
 
 SubForm reading should respect order of subforms and controls

@@ -57,7 +57,7 @@ def test_node_users_match():
                            get_identifier(WebPage("parent")))])
 def test_webpage_set_parents_single_none(parent, parent_link):
     single = WebPage("index")
-    single.set_parents(parent)
+    single.set_parent_links(parent)
     assert single.parent_link == parent_link
 
 
@@ -71,7 +71,7 @@ def test_webpage_set_parents_with_children():
             return [child, non_page]
 
     page = AWebPage("page")
-    page.set_parents(None)
+    page.set_parent_links(None)
     assert page.parent_link is None
     assert child.parent_link == get_identifier(page)
 

@@ -127,14 +127,14 @@ class WebPage(NamedNode):
     def __post_init__(self):
         self.title = self.name
 
-    def set_parents(self, parent: Optional['WebPage']) -> None:
+    def set_parent_links(self, parent: Optional['WebPage']) -> None:
         " recursively set parents "
         if isinstance(parent, WebPage):
             self.parent_link = get_identifier(parent)
 
         for child in self.children():
             if isinstance(child, WebPage):
-                child.set_parents(self)
+                child.set_parent_links(self)
 
 
 @dataclass

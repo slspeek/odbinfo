@@ -142,7 +142,7 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     for form in metadata.form_defs:
         process_form(form)
 
-    metadata.set_parents(None)
+    metadata.set_parent_links(None)
     metadata.build_parent_index()
     metadata.set_obj_ids()
 

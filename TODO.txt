@@ -1,17 +1,26 @@
-token subclass querytoken to elemininate index in to_dict
-
 SubForm reading should respect order of subforms and controls
 FormItem = Union[SubForm, Control, ListBox, Grid]
 Grid type hack?
 
+writer
+  - testability demands running the hugo command separate function
+  - os.chdir for hugo command OK, not for _write_content, _write_graphs there
+  the output_dir should passed as argument
+  - _convert_local should use python webserver:
+    https://docs.python.org/3.7/library/http.server.html
+      -serve_forever
+      -shutdown
 
 Testing
 -------
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
 unit test coverage 90% (now 84.44%)
-test/pure/test_sql_parser.py
 test/pure/test_writer.py
+regression of template behaviour
+- input is writer-fixture
+- output /public
+test/pure/test_sql_parser.py
 test/pure/test_writer_make_site.py
 test/pure/test_processor.py
 test/pure/test_basic_parser_slow.py
@@ -37,8 +46,9 @@ Elaborate module doc strings
 - building
 
 Relevant function filter
-- function that uses something else than a basicfunction
 - function that is used by something else than a basicfunction
+- function that uses something else than a basicfunction
+- everthing 'in between' the above (hard to determine)
 
 Uses should become a multiset, multiselect sources on mouseover link
 https://pypi.org/project/multiset/
@@ -47,7 +57,12 @@ e.g. /#301,450,900 or /?select=300,304,600
 
 templates:
 - control in graph
+- basic color highlighting
+  - IDENTIFIER
 - sql color highlighting
+  - all via cls attribute in Token, no comparison of types in templates anymore
+    (token-text.html STRINGLITERAL = 172 from OOBasicLexer)
+    to_dict should exclude type attribute
   - columnnames
 
 type file based MetaData, TextDocument

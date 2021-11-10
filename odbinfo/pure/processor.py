@@ -48,7 +48,7 @@ def _process_query(query: EmbeddedQuery) -> None:
     query.tokens, query.table_tokens, query.literal_values = parse(
         query.command)
     for littoken in query.literal_values:
-        littoken.cls = "literalvalue"  # typing: nocheck
+        littoken.cls = "literalvalue"
 
 
 def set_depth(depth: int, subform: SubForm) -> None:

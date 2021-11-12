@@ -1,7 +1,8 @@
 " tests for the writer"
 import os
+import webbrowser
 from pathlib import Path
-from unittest.mock import MagicMock
+from unittest.mock import patch
 
 import pytest
 from graphviz import Digraph
@@ -15,7 +16,15 @@ def test_chdir_none():
     " test chdir on its default "
     cur_dir = os.getcwd()
     with chdir():
-        os.chdir("/")
+        assert os.getcwd() == cur_dir
+    assert os.getcwd() == cur_dir
+
+
+def test_chdir_root():
+    " test chdir on its default "
+    cur_dir = os.getcwd()
+    with chdir("/"):
+        assert os.getcwd() == "/"
     assert os.getcwd() == cur_dir
 
 
@@ -51,16 +60,20 @@ def test_new_site():
 
 def test_open_browser():
     " test the _open_browser function "
-    open_browser = MagicMock()
-    _open_browser("site", "/home", env_info="0", open_browser=open_browser)
-    open_browser.assert_called_with("file:///home/site/index.html")
+    with patch.object(webbrowser, 'open') as openmock:
+        with patch.object(os, 'getcwd', return_value="/home"):
+            with patch.object(os, 'getenv', return_value="0"):
+                _open_browser("site")
+    openmock.assert_called_with("file:///home/site/index.html")
 
 
 def test_open_browser_nop():
     " test the _open_browser function doing nothing"
-    open_browser = MagicMock()
-    _open_browser("site", "/home", env_info="1", open_browser=open_browser)
-    open_browser.assert_not_called()
+    with patch.object(webbrowser, 'open') as openmock:
+        with patch.object(os, 'getcwd', return_value="/home"):
+            with patch.object(os, 'getenv', return_value="1"):
+                _open_browser("site")
+    openmock.assert_not_called()
 
 
 def test_run_cmd():
@@ -72,3 +85,8 @@ def test_run_cmd_errors():
     " run_cmd with errors"
     with pytest.raises(RuntimeError):
         run_cmd("false", error_mesg="ERROR command false failed")
+
+
+def test_run_cmd_errors_no_check():
+    " run_cmd with errors, but no check"
+    run_cmd("false", check=False)

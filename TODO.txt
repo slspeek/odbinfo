@@ -1,25 +1,29 @@
-SubForm reading should respect order of subforms and controls
-FormItem = Union[SubForm, Control, ListBox, Grid]
-Grid type hack?
+if config.general.output_dir is absolute, does open_browser still work?
 
 writer
-  - testability demands running the hugo command separate function
   - os.chdir for hugo command OK, not for _write_content, _write_graphs there
   the output_dir should passed as argument
+  - convert_local should use portfinder
   - _convert_local should use python webserver:
     https://docs.python.org/3.7/library/http.server.html
       -serve_forever
-      -shutdown
+      -shutdown --> .socket.close()
+  test/pure/test_writer.py
+  regression of template behaviour
+  - testability demands running the hugo command separate function
+  - input is writer-fixture
+  - output /public
+
+SubForm reading should respect order of subforms and controls
+FormItem = Union[SubForm, Control, ListBox, Grid]
+Grid type hack?
 
 Testing
 -------
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 84.44%)
-test/pure/test_writer.py
-regression of template behaviour
-- input is writer-fixture
-- output /public
+unit test coverage 90% (now 84.89%)
+
 test/pure/test_sql_parser.py
 test/pure/test_writer_make_site.py
 test/pure/test_processor.py

@@ -9,6 +9,7 @@ import subprocess
 import time
 import webbrowser
 from inspect import ismethod
+from itertools import count
 from os import path
 from pathlib import Path
 
@@ -69,7 +70,7 @@ def _frontmatter(obj, out):
     out.write(FRONT_MATTER_MARK)
 
 
-def clean_old_site(output_dir: Path, name: str):
+def clean_old_site(output_dir: Path, name: str) -> None:
     " remove previous generated site if it exits "
 
     def rmtree(directory: Path):
@@ -80,7 +81,7 @@ def clean_old_site(output_dir: Path, name: str):
     rmtree(output_dir / f"{name}-local")
 
 
-def new_site(output_dir: str, name: str):
+def new_site(output_dir: str, name: str) -> None:
     """ Sets up a empty hugo site with odbinfo templates """
     clean_old_site(Path(output_dir), name)
     os.makedirs(Path(output_dir), exist_ok=True)
@@ -101,12 +102,12 @@ def make_site(config, metadata):
         run_cmd("hugo", "unable to build hugo site")
     _convert_local(output_dir, name)
     localsite = f"{output_dir}/{name}-local"
-    _open_browser(localsite, os.getcwd())
+    _open_browser(localsite)
     return localsite
 
 
 def _write_metadata(config: Configuration, metadata: Metadata):
-    _write_config(config, config.name, metadata)
+    write_config(config,  metadata)
     for content in METADATA_CONTENT:
         _write_content(metadata, content)
 
@@ -118,33 +119,31 @@ def _get_metadata_attr(metadata: Metadata, attribute: str):
     return meta_attribute
 
 
-def _write_config(config, site_name, metadata):
-    def _menu(pairs):
-        name, weight = pairs
-        meta_attribute = _get_metadata_attr(metadata, name)
-        if len(meta_attribute) > 0:
-            return {"url": f"/{name}/index.html",
-                    "name": name,
-                    "weight": weight}
-        return None
-    menus_defs = list(
-        zip(METADATA_CONTENT, range(3, len(METADATA_CONTENT) + 3)))
-    menus = list(filter(lambda x: x is not None, map(_menu, menus_defs)))
+def write_config(config: Configuration, metadata: Metadata) -> None:
+    " write out Hugo config.toml "
+    present_content = [content for content in METADATA_CONTENT
+                       if len(_get_metadata_attr(metadata, content)) > 0]
+    menus = [{"url": f"/{name}/index.html",
+              "name": name,
+              "weight": weight}
+             for name, weight in
+             zip(present_content, count(3))]
+
     menus.append({"url": "/",
                   "name": "home",
                   "weight": 1})
-    menus.append({"url": f"/svg/{site_name}.gv.svg",
+    menus.append({"url": f"/svg/{config.name}.gv.svg",
                   "name": "picture",
                   "weight": 2})
 
-    with open("config.toml", "w", encoding='utf-8') as cfg:
-        toml.dump({"title": site_name,
+    with open("config.toml", "w", encoding='utf-8') as out:
+        toml.dump({"title": config.name,
                    "baseURL": config.general.base_url,
                    "languageCode": "en-us",
                    "theme": "minimal",
                    "menu": {"main": menus,
                             }
-                   }, cfg)
+                   }, out)
 
 
 @timed("Write content", indent=4, arg=1, name=False)
@@ -191,12 +190,8 @@ def _convert_local(output_dir, name):
             webserver_proc.kill()
 
 
-def _open_browser(site_dir,
-                  cwd,
-                  open_browser=webbrowser.open,
-                  env_info=os.getenv("ODBINFO_NO_BROWSE", default="0")
-                  ):
-    if env_info == "0":
-        site_abs_path = path.join(cwd, site_dir, "index.html")
+def _open_browser(site_dir):
+    if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":
+        site_abs_path = path.join(os.getcwd(), site_dir, "index.html")
         site_uri = pathlib.Path(site_abs_path).as_uri()
-        open_browser(site_uri)
+        webbrowser.open(site_uri)

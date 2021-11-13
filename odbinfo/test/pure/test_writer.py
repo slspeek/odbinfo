@@ -7,8 +7,10 @@ from unittest.mock import patch
 import pytest
 from graphviz import Digraph
 
-from odbinfo.pure.writer import (_open_browser, _write_graphs, chdir,
-                                 clean_old_site, new_site, run_cmd)
+from odbinfo.pure.writer import (chdir, clean_old_site, localsite, new_site,
+                                 open_browser, present_contenttypes, run_cmd,
+                                 write_graphs)
+from odbinfo.test.pure.datatype import factory
 from odbinfo.test.resource import TEST_OUTPUT_TPL
 
 
@@ -28,34 +30,35 @@ def test_chdir_root():
     assert os.getcwd() == cur_dir
 
 
+def test_localsite_name():
+    assert localsite(Path("foo/bar")) == Path("foo/bar-local")
+
+
 def test_clean_old_site(tmpdir):
     " test cleaning old site "
     os.makedirs(tmpdir / "exampledb")
     os.makedirs(tmpdir / "exampledb-local")
-    clean_old_site(Path(tmpdir), "exampledb")
+    clean_old_site(Path(tmpdir) / "exampledb")
+    assert not (tmpdir / "exampledb").exists()
+    assert not (tmpdir / "exampledb").exists()
 
 
 @pytest.mark.slow
-def test_write_graphs(tmpdir, monkeypatch):
+def test_write_graphs(tmpdir):
     "test write graphs"
-    monkeypatch.chdir(tmpdir)
-    graph = Digraph()
-
-    # pylint:disable=too-few-public-methods
-    class Meta:
-        "for test only"
-        graphs = []
-
-    obj = Meta()
-    obj.graphs = [graph]
-    _write_graphs(obj)
+    write_graphs([Digraph("foo")], tmpdir)
+    assert (tmpdir / "static" / "svg" / "foo.gv.svg").exists()
+    assert (tmpdir / "static" / "svg" / "foo.gv").exists()
 
 
 @pytest.mark.slow
 def test_new_site():
     """ test new site scaffolding """
-    new_site(TEST_OUTPUT_TPL.format(""), "test-site")
-    assert os.path.exists(TEST_OUTPUT_TPL.format("test-site"))
+    site_path = Path(TEST_OUTPUT_TPL.format("test-site"))
+    assert not site_path.exists()
+    new_site(site_path)
+    assert site_path.exists()
+    assert (site_path / "static").exists()
 
 
 def test_open_browser():
@@ -63,8 +66,17 @@ def test_open_browser():
     with patch.object(webbrowser, 'open') as openmock:
         with patch.object(os, 'getcwd', return_value="/home"):
             with patch.object(os, 'getenv', return_value="0"):
-                _open_browser("site")
+                open_browser(Path("site"))
     openmock.assert_called_with("file:///home/site/index.html")
+
+
+def test_open_browser_absolutepath():
+    " test the _open_browser function "
+    with patch.object(webbrowser, 'open') as openmock:
+        with patch.object(os, 'getcwd', return_value="/home"):
+            with patch.object(os, 'getenv', return_value="0"):
+                open_browser(Path("/site"))
+    openmock.assert_called_with("file:///site/index.html")
 
 
 def test_open_browser_nop():
@@ -72,7 +84,7 @@ def test_open_browser_nop():
     with patch.object(webbrowser, 'open') as openmock:
         with patch.object(os, 'getcwd', return_value="/home"):
             with patch.object(os, 'getenv', return_value="1"):
-                _open_browser("site")
+                open_browser(Path("site"))
     openmock.assert_not_called()
 
 
@@ -90,3 +102,8 @@ def test_run_cmd_errors():
 def test_run_cmd_errors_no_check():
     " run_cmd with errors, but no check"
     run_cmd("false", check=False)
+
+
+def test_present_contenttypes():
+    metadata = factory.metadata_listbox()
+    assert present_contenttypes(metadata) == ['table', 'form']

@@ -1,10 +1,11 @@
 """ writer regression tests """
 import os
+from pathlib import Path
 
 import pytest
 
 from odbinfo.pure.datatype.config import get_configuration
-from odbinfo.pure.writer import _write_metadata, chdir
+from odbinfo.pure.writer import write_metadata
 from odbinfo.test.pure.fixtures import (empty_metadata_processed,
                                         empty_metadata_processed_loader,
                                         metadata_processed,
@@ -15,11 +16,10 @@ from odbinfo.test.resource import TEST_OUTPUT_TPL
 def write_writer_fixture(output_dir, name, metadata):
     " generate report and verify"
     conf = get_configuration()
-    site_dir = f"{output_dir}/{name}"
+    site_dir = Path(output_dir) / name
     os.makedirs(site_dir, exist_ok=True)
     conf.name = name
-    with chdir(site_dir):
-        _write_metadata(conf, metadata)
+    write_metadata(conf, metadata, site_dir)
 
 
 @pytest.mark.slow
@@ -53,11 +53,10 @@ def benchmark_writer(output_dir, name, data_loader, benchmark):
 
     def setup():
         metadata = data_loader()
-        return (conf, metadata), {}
+        return (conf, metadata, Path(output_dir) / name), {}
     site_dir = f"{output_dir}/{name}"
     os.makedirs(site_dir, exist_ok=True)
-    with chdir(site_dir):
-        benchmark.pedantic(_write_metadata, setup=setup)
+    benchmark.pedantic(write_metadata, setup=setup)
 
 
 @pytest.mark.slow

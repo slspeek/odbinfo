@@ -32,7 +32,7 @@ def read_configuration(config_path=default_config_path()):
 
 def set_configuration_defaults(config: Configuration, odbpath: Path):
     " sets sensible defaults "
-    config.name = str(odbpath.stem)
+    config.name = odbpath.stem
     if not config.general.output_dir:
         config.general.output_dir = str(odbpath.parent / ".odbinfo")
     if not config.textdocuments.db_registration_id:

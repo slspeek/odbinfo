@@ -1,7 +1,6 @@
 """ Writing out to hugo site format """
 import contextlib
 import os
-import pathlib
 import shlex
 import shutil
 import socket
@@ -12,9 +11,11 @@ from inspect import ismethod
 from itertools import count
 from os import path
 from pathlib import Path
+from typing import Dict, List, Sequence
 
 import toml
 import yaml
+from graphviz import Digraph
 
 from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.datatype.config import Configuration
@@ -50,6 +51,11 @@ def chdir(dirname=None):
         os.chdir(curdir)
 
 
+def localsite(site_path: Path) -> Path:
+    "returns the local site_path for `site_path`"
+    return site_path.parent / f"{site_path.name}-local"
+
+
 # We are at odbinfo/pure/writer.py and data resides besides odbinfo
 # so we go up three times, and then into 'data'
 DATA_DIR = path.join(path.dirname(path.dirname(path.dirname(__file__))),
@@ -57,59 +63,90 @@ DATA_DIR = path.join(path.dirname(path.dirname(path.dirname(__file__))),
 
 
 @timed("Write graphs", indent=4)
-def _write_graphs(metadata):
-    for graph in metadata.graphs:
-        graph.save(directory="static/svg")
+def write_graphs(graphs: Sequence[Digraph], output_path: Path):
+    "Renders the graphs"
+    for graph in graphs:
+        graph.save(directory=output_path / "static" / "svg")
         graph.render(format="svg")
 
 
-def _frontmatter(obj, out):
-    """ Writes `adict` to yaml and marks it as frontmatter """
+def frontmatter(adict: Dict[str, str], out) -> None:
+    """ Writes `adict` in yaml to `out` and marks it as frontmatter """
     out.write(FRONT_MATTER_MARK)
-    yaml.dump(obj, out)
+    yaml.dump(adict, out)
     out.write(FRONT_MATTER_MARK)
 
 
-def clean_old_site(output_dir: Path, name: str) -> None:
-    " remove previous generated site if it exits "
+def clean_old_site(site_path: Path) -> None:
+    " remove previously generated site if it exits "
 
     def rmtree(directory: Path):
         if directory.is_dir() and directory.exists():
             shutil.rmtree(directory)
 
-    rmtree(output_dir / name)
-    rmtree(output_dir / f"{name}-local")
+    rmtree(site_path)
+    rmtree(localsite(site_path))
 
 
-def new_site(output_dir: str, name: str) -> None:
+def new_site(site_path: Path) -> None:
     """ Sets up a empty hugo site with odbinfo templates """
-    clean_old_site(Path(output_dir), name)
-    os.makedirs(Path(output_dir), exist_ok=True)
+    clean_old_site(site_path)
+    os.makedirs(site_path.parent, exist_ok=True)
     shutil.copytree(Path(DATA_DIR) / "hugo-template",
-                    Path(output_dir) / name)
+                    site_path)
 
 
-@timed("Write and build hugo site", indent=2)
-def make_site(config, metadata):
-    """ Builds report in `output_dir` with `name` from `metadata` """
-    name = config.name
-    output_dir = config.general.output_dir
-    new_site(output_dir, name)
-
-    with chdir(os.path.join(output_dir, name)):
-        _write_metadata(config, metadata)
-        _write_graphs(metadata)
+def build_site(site_path: Path) -> None:
+    "Run the hugo system command in `working_dir`"
+    with chdir(site_path):
         run_cmd("hugo", "unable to build hugo site")
-    _convert_local(output_dir, name)
-    localsite = f"{output_dir}/{name}-local"
-    _open_browser(localsite)
-    return localsite
 
 
-def _write_metadata(config: Configuration, metadata: Metadata):
-    write_config(config,  metadata)
-    for content in METADATA_CONTENT:
-        _write_content(metadata, content)
+def _is_port_open(port):
+    # pylint: disable=no-member
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        result = sock.connect_ex(('127.0.0.1', port))
+        if result == 0:
+            return True
+        return False
+
+
+def convert_local(site_path: Path) -> None:
+    " Uses wget to rewrite hugo website to locally browsable site"
+    localsite_path = localsite(site_path)
+    os.makedirs(localsite_path)
+
+    with chdir(site_path):
+        port = 1313
+        args = shlex.split("hugo server --disableLiveReload --watch=false ")
+        # pylint:disable=consider-using-with
+        try:
+            webserver_proc = subprocess.Popen(args, stderr=subprocess.DEVNULL,
+                                              stdout=subprocess.DEVNULL)
+            with chdir(".."):
+                while not _is_port_open(port):
+                    time.sleep(0.1)
+                run_cmd("wget  --no-verbose"
+                        f" -nH --convert-links -P {localsite_path.name}"
+                        " -r --level=100"
+                        f" http://localhost:{port}/", check=False)
+        finally:
+            webserver_proc.kill()
+
+
+def open_browser(site_dir: Path) -> None:
+    "Opens a webbrowser on `site_dir`"
+    if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":
+        site_abs_path = site_dir.resolve() / "index.html"
+        webbrowser.open(site_abs_path.as_uri())
+
+
+def write_metadata(config: Configuration, metadata: Metadata, site_path: Path):
+    "writes out the `metadata` at `site_path`"
+    present_content = present_contenttypes(metadata)
+    write_config(config,  present_content, site_path)
+    for content in present_content:
+        write_content(metadata, content, site_path)
 
 
 def _get_metadata_attr(metadata: Metadata, attribute: str):
@@ -119,10 +156,14 @@ def _get_metadata_attr(metadata: Metadata, attribute: str):
     return meta_attribute
 
 
-def write_config(config: Configuration, metadata: Metadata) -> None:
+def present_contenttypes(metadata: Metadata) -> List[str]:
+    "returns the content_types that are present in this `metadata`"
+    return [content for content in METADATA_CONTENT
+            if len(_get_metadata_attr(metadata, content)) > 0]
+
+
+def write_config(config: Configuration, present_content: Sequence[str], site_path: Path) -> None:
     " write out Hugo config.toml "
-    present_content = [content for content in METADATA_CONTENT
-                       if len(_get_metadata_attr(metadata, content)) > 0]
     menus = [{"url": f"/{name}/index.html",
               "name": name,
               "weight": weight}
@@ -136,7 +177,7 @@ def write_config(config: Configuration, metadata: Metadata) -> None:
                   "name": "picture",
                   "weight": 2})
 
-    with open("config.toml", "w", encoding='utf-8') as out:
+    with open(site_path / "config.toml", "w", encoding='utf-8') as out:
         toml.dump({"title": config.name,
                    "baseURL": config.general.base_url,
                    "languageCode": "en-us",
@@ -147,51 +188,31 @@ def write_config(config: Configuration, metadata: Metadata) -> None:
 
 
 @timed("Write content", indent=4, arg=1, name=False)
-def _write_content(metadata: Metadata, name):
-    contentlist = _get_metadata_attr(metadata, name)
-    if len(contentlist) > 0:
-        targetpath = Path("content") / name
-        targetpath.mkdir(parents=True, exist_ok=True)
-        for content in contentlist:
-            with open(targetpath / f"{content.title}.md",
-                      "w",
-                      encoding='utf-8') as out:
-                _frontmatter(content.to_dict(), out)
+def write_content(metadata: Metadata, content_type: str, site_path: Path):
+    "writes out `content_type` in subdir of `site_path`"
+    contentlist = _get_metadata_attr(metadata, content_type)
+    targetpath = site_path / "content" / content_type
+    targetpath.mkdir(parents=True, exist_ok=True)
+    for content in contentlist:
+        with open(targetpath / f"{content.title}.md",
+                  "w",
+                  encoding='utf-8') as out:
+            frontmatter(content.to_dict(), out)
 
 
-def _is_port_open(port):
-    # pylint: disable=no-member
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        result = sock.connect_ex(('127.0.0.1', port))
-        if result == 0:
-            return True
-        return False
+@timed("Write and build hugo site", indent=2)
+def make_site(config: Configuration, metadata: Metadata) -> Path:
+    """ Builds report in from `metadata` """
+    if config.general.output_dir is None:
+        raise RuntimeError("Configuration output_dir must be set")
+    site_path = Path(config.general.output_dir) / config.name
 
+    new_site(site_path)
+    write_metadata(config, metadata, site_path)
+    write_graphs(metadata.graphs, site_path)
 
-def _convert_local(output_dir, name):
-    result = path.join(output_dir, name)
-    with chdir(result):
-        port = 1313
-        args = shlex.split("hugo server --disableLiveReload --watch=false ")
-        # pylint:disable=consider-using-with
-        try:
-            webserver_proc = subprocess.Popen(args, stderr=subprocess.DEVNULL,
-                                              stdout=subprocess.DEVNULL)
-            with chdir(".."):
-                localsite = f"{name}-local"
-                os.makedirs(localsite)
-                while not _is_port_open(port):
-                    time.sleep(0.1)
-                run_cmd("wget  --no-verbose"
-                        f" -nH --convert-links -P {localsite}"
-                        " -r --level=100"
-                        f" http://localhost:{port}/", check=False)
-        finally:
-            webserver_proc.kill()
-
-
-def _open_browser(site_dir):
-    if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":
-        site_abs_path = path.join(os.getcwd(), site_dir, "index.html")
-        site_uri = pathlib.Path(site_abs_path).as_uri()
-        webbrowser.open(site_uri)
+    build_site(site_path)
+    convert_local(site_path)
+    localsite_path = localsite(site_path)
+    open_browser(localsite_path)
+    return localsite_path

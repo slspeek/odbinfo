@@ -1,8 +1,7 @@
-if config.general.output_dir is absolute, does open_browser still work?
-
 writer
-  - os.chdir for hugo command OK, not for _write_content, _write_graphs there
-  the output_dir should passed as argument
+  - RuntimeError --> Custom exception
+  - prepare content output dirs (for parallelism)
+
   - convert_local should use portfinder
   - _convert_local should use python webserver:
     https://docs.python.org/3.7/library/http.server.html

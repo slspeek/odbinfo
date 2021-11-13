@@ -98,7 +98,7 @@ class GraphConfig:
 class Configuration:
     " Overall configuration "
 
-    name: Optional[str] = field(init=False)
+    name: str = field(init=False, default="SITE_NAME_NOT_SET")
     general: GeneralConfig
     graph: GraphConfig
     textdocuments: TextDocumentsConfig

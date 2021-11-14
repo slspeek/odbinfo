@@ -1,5 +1,3 @@
-templates: columns in tables do not have ids
-
 writer
   - RuntimeError --> Custom exception
   - prepare content output dirs (for parallelism)
@@ -40,7 +38,6 @@ Elaborate module doc strings
 - preprocessing
 - dependency search
 - graphs generation
-- postprocessing
 - writing
 - building
 
@@ -56,6 +53,7 @@ e.g. /#301,450,900 or /?select=300,304,600
 
 templates:
 - control in graph
+- column in graph
 - basic color highlighting
   - IDENTIFIER
 - sql color highlighting

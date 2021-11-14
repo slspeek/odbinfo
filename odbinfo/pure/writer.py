@@ -7,6 +7,7 @@ import socket
 import subprocess
 import time
 import webbrowser
+from contextlib import closing
 from inspect import ismethod
 from itertools import count
 from os import path
@@ -102,6 +103,15 @@ def build_site(site_path: Path) -> None:
         run_cmd("hugo", "unable to build hugo site")
 
 
+def find_free_port() -> int:
+    "returns a free port number"
+    # pylint: disable=no-member
+    with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
+        sock.bind(('', 0))
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        return sock.getsockname()[1]
+
+
 def _is_port_open(port):
     # pylint: disable=no-member
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
@@ -111,14 +121,24 @@ def _is_port_open(port):
         return False
 
 
+# def run_webserver(port: int) -> http.server.HTTPServer:
+#     "starts a file webserver at `port`"
+#     httpd = http.server.HTTPServer(('', port),
+#                                    http.server.SimpleHTTPRequestHandler)
+#     thread = threading.Thread(target=lambda: httpd.serve_forever())
+#     thread.start()
+#     return httpd
+
+
 def convert_local(site_path: Path) -> None:
     " Uses wget to rewrite hugo website to locally browsable site"
     localsite_path = localsite(site_path)
     os.makedirs(localsite_path)
 
     with chdir(site_path):
-        port = 1313
-        args = shlex.split("hugo server --disableLiveReload --watch=false ")
+        port = find_free_port()
+        args = shlex.split(
+            f"hugo server -p {port} --disableLiveReload --watch=false ")
         # pylint:disable=consider-using-with
         try:
             webserver_proc = subprocess.Popen(args, stderr=subprocess.DEVNULL,
@@ -129,7 +149,8 @@ def convert_local(site_path: Path) -> None:
                 run_cmd("wget  --no-verbose"
                         f" -nH --convert-links -P {localsite_path.name}"
                         " -r --level=100"
-                        f" http://localhost:{port}/", check=False)
+                        f" http://localhost:{port}/", check=True,
+                        error_mesg="Execution of wget failed")
         finally:
             webserver_proc.kill()
 

@@ -1,12 +1,8 @@
+templates: columns in tables do not have ids
+
 writer
   - RuntimeError --> Custom exception
   - prepare content output dirs (for parallelism)
-
-  - convert_local should use portfinder
-  - _convert_local should use python webserver:
-    https://docs.python.org/3.7/library/http.server.html
-      -serve_forever
-      -shutdown --> .socket.close()
   test/pure/test_writer.py
   regression of template behaviour
   - testability demands running the hugo command separate function
@@ -170,6 +166,10 @@ refs in library and module to basicfunctions become links (Identifier)
 solves some strange action in writer, clearing the way for
 parallel writing
 
+- _convert_local should use python webserver: (hugo localserving is very convenient)
+  https://docs.python.org/3.7/library/http.server.html
+    -serve_forever
+    -shutdown --> .socket.close()
 
 
 

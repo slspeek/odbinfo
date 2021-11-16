@@ -142,12 +142,20 @@ class WebPageWithUses(Usable, UseAggregator, WebPage):
     " WebPage with uses and used_by "
 
 
+class NoWebPageAncestorException(Exception):
+    "Inconsistent metadata exception"
+
+    def __init__(self, node: Node):
+        self.node = node
+        super().__init__(f"No WebPage ancestor for {node}")
+
+
 def get_identifier(usable: Node) -> Identifier:
     "returns Identifier for `usable`"
     parent: Node = usable
     while not isinstance(parent, WebPage):
         if parent.parent is None:
-            raise RuntimeError(f"No WebPage ancestor for {usable}")
+            raise NoWebPageAncestorException(usable)
         parent = parent.parent
     parent = cast(WebPage, parent)
     if parent is usable:

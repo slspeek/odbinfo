@@ -4,6 +4,14 @@ from dataclasses import dataclass, field
 from typing import List, Optional
 
 
+class ConfigurationAttributeNotSet(Exception):
+    "For attributes that need to be there"
+
+    def __init__(self, attribute: str):
+        self.attribute = attribute
+        super().__init__(f"Configuration attribute {attribute} was not set")
+
+
 @dataclass
 class GeneralConfig:
     " General options "

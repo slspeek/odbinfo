@@ -1,9 +1,12 @@
 " test base classes "
+import re
+
 import pytest
 
 from odbinfo.pure.datatype import (EmbeddedQuery, Identifier, Report, Table,
                                    content_type, get_identifier)
-from odbinfo.pure.datatype.base import NamedNode, Node, WebPage
+from odbinfo.pure.datatype.base import (NamedNode, Node,
+                                        NoWebPageAncestorException, WebPage)
 from odbinfo.test.pure.datatype import factory
 
 
@@ -86,8 +89,10 @@ def test_get_identifier():
 def test_get_identifier_error():
     node_wo_parent = Node()
 
-    with pytest.raises(RuntimeError):
+    with pytest.raises(NoWebPageAncestorException) as exception:
         get_identifier(node_wo_parent)
+    assert exception.match(
+        re.escape("No WebPage ancestor for Node(obj_id='OBJID_NOT_SET')"))
 
 
 def test_content_type():

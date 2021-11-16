@@ -1,17 +1,24 @@
 " tests for the writer"
 import os
 import webbrowser
+from datetime import datetime
 from pathlib import Path
 from unittest.mock import patch
 
 import pytest
 from graphviz import Digraph
 
-from odbinfo.pure.writer import (chdir, clean_old_site, localsite, new_site,
-                                 open_browser, present_contenttypes, run_cmd,
-                                 write_graphs)
+from odbinfo.pure.writer import (CommandExecutionError, _is_port_open,
+                                 backup_old_site, chdir, find_free_port,
+                                 localsite, new_site, open_browser,
+                                 present_contenttypes, run_cmd, write_graphs)
 from odbinfo.test.pure.datatype import factory
 from odbinfo.test.resource import TEST_OUTPUT_TPL
+
+
+def test_find_free_port():
+    free_port = find_free_port()
+    assert not _is_port_open(free_port)
 
 
 def test_chdir_none():
@@ -34,13 +41,15 @@ def test_localsite_name():
     assert localsite(Path("foo/bar")) == Path("foo/bar-local")
 
 
-def test_clean_old_site(tmpdir):
+def test_backup_old_site(tmpdir):
     " test cleaning old site "
     os.makedirs(tmpdir / "exampledb")
     os.makedirs(tmpdir / "exampledb-local")
-    clean_old_site(Path(tmpdir) / "exampledb")
+    backup_old_site(Path(tmpdir) / "exampledb",
+                    date=datetime(2010, 10, 10, 00, 00, 0))
     assert not (tmpdir / "exampledb").exists()
-    assert not (tmpdir / "exampledb").exists()
+    assert not (tmpdir / "exampledb-local").exists()
+    assert (tmpdir / "exampledb.bak.2010-10-10--00-00-00").exists()
 
 
 @pytest.mark.slow
@@ -90,13 +99,13 @@ def test_open_browser_nop():
 
 def test_run_cmd():
     " run_cmd without errors"
-    run_cmd("ls", error_mesg="ERROR command ls failed")
+    run_cmd("ls")
 
 
 def test_run_cmd_errors():
     " run_cmd with errors"
-    with pytest.raises(RuntimeError):
-        run_cmd("false", error_mesg="ERROR command false failed")
+    with pytest.raises(CommandExecutionError):
+        run_cmd("false")
 
 
 def test_run_cmd_errors_no_check():

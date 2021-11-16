@@ -1,9 +1,7 @@
 writer
-  - RuntimeError --> Custom exception
   - prepare content output dirs (for parallelism)
   test/pure/test_writer.py
   regression of template behaviour
-  - testability demands running the hugo command separate function
   - input is writer-fixture
   - output /public
 
@@ -13,9 +11,10 @@ Grid type hack?
 
 Testing
 -------
+resource.py --> Path
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 84.89%)
+unit test coverage 90% (now 85.81%)
 
 test/pure/test_sql_parser.py
 test/pure/test_writer_make_site.py

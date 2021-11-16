@@ -8,9 +8,9 @@ import subprocess
 import time
 import webbrowser
 from contextlib import closing
+from datetime import datetime
 from inspect import ismethod
 from itertools import count
-from os import path
 from pathlib import Path
 from typing import Dict, List, Sequence
 
@@ -19,15 +19,25 @@ import yaml
 from graphviz import Digraph
 
 from odbinfo.pure.datatype import Metadata
-from odbinfo.pure.datatype.config import Configuration
+from odbinfo.pure.datatype.config import (Configuration,
+                                          ConfigurationAttributeNotSet)
 from odbinfo.pure.datatype.metadata import METADATA_CONTENT
 from odbinfo.pure.util import timed
 
 FRONT_MATTER_MARK = "---\n"
 
 
-def run_cmd(cmd, check=True, error_mesg=None):
-    " run os `cmd` and raise RuntimeError with `error_mesg`, if `check` was set"
+class CommandExecutionError(Exception):
+    "Describes a failed command"
+
+    def __init__(self, cmd, completed_process):
+        self.completed_process = completed_process
+        super().__init__(
+            f"System command: {cmd} failed (returncode={completed_process.returncode})")
+
+
+def run_cmd(cmd, check=True):
+    " run os `cmd` and raise  if `check` was set"
     # pylint:disable=subprocess-run-check
     completed_process = subprocess.run(shlex.split(cmd),
                                        capture_output=True)
@@ -37,7 +47,7 @@ def run_cmd(cmd, check=True, error_mesg=None):
         print("stdout:", completed_process.stdout.decode("utf-8"))
         print("stderr:", completed_process.stderr.decode("utf-8"))
         if check:
-            raise RuntimeError(error_mesg)
+            raise CommandExecutionError(cmd, completed_process)
 
 
 @contextlib.contextmanager
@@ -57,12 +67,6 @@ def localsite(site_path: Path) -> Path:
     return site_path.parent / f"{site_path.name}-local"
 
 
-# We are at odbinfo/pure/writer.py and data resides besides odbinfo
-# so we go up three times, and then into 'data'
-DATA_DIR = path.join(path.dirname(path.dirname(path.dirname(__file__))),
-                     "data")
-
-
 @timed("Write graphs", indent=4)
 def write_graphs(graphs: Sequence[Digraph], output_path: Path):
     "Renders the graphs"
@@ -78,22 +82,29 @@ def frontmatter(adict: Dict[str, str], out) -> None:
     out.write(FRONT_MATTER_MARK)
 
 
-def clean_old_site(site_path: Path) -> None:
-    " remove previously generated site if it exits "
+def rename_timestamp(directory: Path, date: datetime):
+    "rename directory with timestamp"
+    timestamp = date.strftime(".bak.%Y-%m-%d--%H-%M-%S")
+    if directory.exists():
+        directory.rename(directory.parent / f"{directory.name}{timestamp}")
 
-    def rmtree(directory: Path):
-        if directory.is_dir() and directory.exists():
-            shutil.rmtree(directory)
 
-    rmtree(site_path)
-    rmtree(localsite(site_path))
+def backup_old_site(site_path: Path, date: datetime = datetime.now()) -> None:
+    " rename previously generated site to timestamped directory if it exits "
+    rename_timestamp(site_path, date)
+    rename_timestamp(localsite(site_path), date)
+
+
+# We are at odbinfo/pure/writer.py and data resides besides odbinfo
+# so we go up three times, and then into 'data/hugo-template'
+SITE_SKEL_PATH = Path(__file__).parent.parent.parent / "data" / "hugo-template"
 
 
 def new_site(site_path: Path) -> None:
     """ Sets up a empty hugo site with odbinfo templates """
-    clean_old_site(site_path)
+    backup_old_site(site_path)
     os.makedirs(site_path.parent, exist_ok=True)
-    shutil.copytree(Path(DATA_DIR) / "hugo-template",
+    shutil.copytree(SITE_SKEL_PATH,
                     site_path)
 
 
@@ -149,8 +160,7 @@ def convert_local(site_path: Path) -> None:
                 run_cmd("wget  --no-verbose"
                         f" -nH --convert-links -P {localsite_path.name}"
                         " -r --level=100"
-                        f" http://localhost:{port}/", check=True,
-                        error_mesg="Execution of wget failed")
+                        f" http://localhost:{port}/", check=True)
         finally:
             webserver_proc.kill()
 
@@ -225,7 +235,7 @@ def write_content(metadata: Metadata, content_type: str, site_path: Path):
 def make_site(config: Configuration, metadata: Metadata) -> Path:
     """ Builds report in from `metadata` """
     if config.general.output_dir is None:
-        raise RuntimeError("Configuration output_dir must be set")
+        raise ConfigurationAttributeNotSet("general.output_dir")
     site_path = Path(config.general.output_dir) / config.name
 
     new_site(site_path)

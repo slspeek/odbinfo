@@ -11,7 +11,6 @@ Grid type hack?
 
 Testing
 -------
-resource.py --> Path
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
 unit test coverage 90% (now 85.81%)

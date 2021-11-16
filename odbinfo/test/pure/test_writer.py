@@ -13,7 +13,7 @@ from odbinfo.pure.writer import (CommandExecutionError, _is_port_open,
                                  localsite, new_site, open_browser,
                                  present_contenttypes, run_cmd, write_graphs)
 from odbinfo.test.pure.datatype import factory
-from odbinfo.test.resource import TEST_OUTPUT_TPL
+from odbinfo.test.resource import TEST_OUTPUT_PATH
 
 
 def test_find_free_port():
@@ -63,7 +63,7 @@ def test_write_graphs(tmpdir):
 @pytest.mark.slow
 def test_new_site():
     """ test new site scaffolding """
-    site_path = Path(TEST_OUTPUT_TPL.format("test-site"))
+    site_path = TEST_OUTPUT_PATH / "test-site"
     assert not site_path.exists()
     new_site(site_path)
     assert site_path.exists()
@@ -71,7 +71,7 @@ def test_new_site():
 
 
 def test_open_browser():
-    " test the _open_browser function "
+    " test the open_browser function "
     with patch.object(webbrowser, 'open') as openmock:
         with patch.object(os, 'getcwd', return_value="/home"):
             with patch.object(os, 'getenv', return_value="0"):
@@ -80,7 +80,7 @@ def test_open_browser():
 
 
 def test_open_browser_absolutepath():
-    " test the _open_browser function "
+    " test the open_browser function "
     with patch.object(webbrowser, 'open') as openmock:
         with patch.object(os, 'getcwd', return_value="/home"):
             with patch.object(os, 'getenv', return_value="0"):
@@ -89,7 +89,7 @@ def test_open_browser_absolutepath():
 
 
 def test_open_browser_nop():
-    " test the _open_browser function doing nothing"
+    " test the open_browser function doing nothing"
     with patch.object(webbrowser, 'open') as openmock:
         with patch.object(os, 'getcwd', return_value="/home"):
             with patch.object(os, 'getenv', return_value="1"):

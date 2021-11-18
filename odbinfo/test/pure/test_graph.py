@@ -47,8 +47,7 @@ class Href(unittest.TestCase):
 class ConfTest(unittest.TestCase):
 
     def setUp(self):
-        self.conf = get_configuration().graph
-        self.conf.name = "conftest"
+        self.conf = get_configuration("conftest").graph
 
 
 class IsVisibleExcludes(ConfTest):
@@ -317,8 +316,7 @@ class GenerateMainGraph(unittest.TestCase):
     def setUp(self):
         super().setUp()
         self.meta = factory.metadata_listbox()
-        self.conf = get_configuration()
-        self.conf.name = "testrun"
+        self.conf = get_configuration("testrun")
 
     def test_generate_main_graph(self):
         self.graph = generate_main_graph(
@@ -341,6 +339,5 @@ class GenerateGraphs(GenerateMainGraph):
 @pytest.mark.slow
 def test_generate_main_graph(metadata_processed, data_regression):
     "run generate_main_graph"
-    conf = get_configuration()
-    conf.name = "test_generate_main_graph"
+    conf = get_configuration("test_generate_main_graph")
     data_regression.check(generate_main_graph(metadata_processed, conf).source)

@@ -49,7 +49,7 @@ def test_backup_old_site(tmpdir):
                     date=datetime(2010, 10, 10, 00, 00, 0))
     assert not (tmpdir / "exampledb").exists()
     assert not (tmpdir / "exampledb-local").exists()
-    assert (tmpdir / "exampledb.bak.2010-10-10--00-00-00").exists()
+    assert (tmpdir / "exampledb.bak.2010-10-10--00-00-00-000000").exists()
 
 
 @pytest.mark.slow

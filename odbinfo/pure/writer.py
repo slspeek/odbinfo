@@ -19,8 +19,7 @@ import yaml
 from graphviz import Digraph
 
 from odbinfo.pure.datatype import Metadata
-from odbinfo.pure.datatype.config import (Configuration,
-                                          ConfigurationAttributeNotSet)
+from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.metadata import METADATA_CONTENT
 from odbinfo.pure.util import timed
 
@@ -84,13 +83,15 @@ def frontmatter(adict: Dict[str, str], out) -> None:
 
 def rename_timestamp(directory: Path, date: datetime):
     "rename directory with timestamp"
-    timestamp = date.strftime(".bak.%Y-%m-%d--%H-%M-%S")
+    timestamp = date.strftime(".bak.%Y-%m-%d--%H-%M-%S-%f")
     if directory.exists():
         directory.rename(directory.parent / f"{directory.name}{timestamp}")
 
 
-def backup_old_site(site_path: Path, date: datetime = datetime.now()) -> None:
+def backup_old_site(site_path: Path, date: datetime = None) -> None:
     " rename previously generated site to timestamped directory if it exits "
+    if date is None:
+        date = datetime.now()
     rename_timestamp(site_path, date)
     rename_timestamp(localsite(site_path), date)
 
@@ -132,15 +133,6 @@ def _is_port_open(port):
         return False
 
 
-# def run_webserver(port: int) -> http.server.HTTPServer:
-#     "starts a file webserver at `port`"
-#     httpd = http.server.HTTPServer(('', port),
-#                                    http.server.SimpleHTTPRequestHandler)
-#     thread = threading.Thread(target=lambda: httpd.serve_forever())
-#     thread.start()
-#     return httpd
-
-
 def convert_local(site_path: Path) -> None:
     " Uses wget to rewrite hugo website to locally browsable site"
     localsite_path = localsite(site_path)
@@ -172,12 +164,12 @@ def open_browser(site_dir: Path) -> None:
         webbrowser.open(site_abs_path.as_uri())
 
 
-def write_metadata(config: Configuration, metadata: Metadata, site_path: Path):
+def write_metadata(config: Configuration, metadata: Metadata):
     "writes out the `metadata` at `site_path`"
     present_content = present_contenttypes(metadata)
-    write_config(config,  present_content, site_path)
+    write_config(config,  present_content)
     for content in present_content:
-        write_content(metadata, content, site_path)
+        write_content(metadata, content, config.site_path)
 
 
 def _get_metadata_attr(metadata: Metadata, attribute: str):
@@ -193,7 +185,7 @@ def present_contenttypes(metadata: Metadata) -> List[str]:
             if len(_get_metadata_attr(metadata, content)) > 0]
 
 
-def write_config(config: Configuration, present_content: Sequence[str], site_path: Path) -> None:
+def write_config(config: Configuration, present_content: Sequence[str]) -> None:
     " write out Hugo config.toml "
     menus = [{"url": f"/{name}/index.html",
               "name": name,
@@ -208,7 +200,7 @@ def write_config(config: Configuration, present_content: Sequence[str], site_pat
                   "name": "picture",
                   "weight": 2})
 
-    with open(site_path / "config.toml", "w", encoding='utf-8') as out:
+    with open(config.site_path / "config.toml", "w", encoding='utf-8') as out:
         toml.dump({"title": config.name,
                    "baseURL": config.general.base_url,
                    "languageCode": "en-us",
@@ -234,16 +226,12 @@ def write_content(metadata: Metadata, content_type: str, site_path: Path):
 @timed("Write and build hugo site", indent=2)
 def make_site(config: Configuration, metadata: Metadata) -> Path:
     """ Builds report in from `metadata` """
-    if config.general.output_dir is None:
-        raise ConfigurationAttributeNotSet("general.output_dir")
-    site_path = Path(config.general.output_dir) / config.name
+    new_site(config.site_path)
+    write_metadata(config, metadata)
+    write_graphs(metadata.graphs, config.site_path)
 
-    new_site(site_path)
-    write_metadata(config, metadata, site_path)
-    write_graphs(metadata.graphs, site_path)
-
-    build_site(site_path)
-    convert_local(site_path)
-    localsite_path = localsite(site_path)
+    build_site(config.site_path)
+    convert_local(config.site_path)
+    localsite_path = localsite(config.site_path)
     open_browser(localsite_path)
     return localsite_path

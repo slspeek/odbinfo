@@ -1,6 +1,7 @@
 " Configuration classes "
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from pathlib import Path
 from typing import List, Optional
 
 
@@ -106,17 +107,25 @@ class GraphConfig:
 class Configuration:
     " Overall configuration "
 
-    name: str = field(init=False, default="SITE_NAME_NOT_SET")
+    name: str
     general: GeneralConfig
     graph: GraphConfig
     textdocuments: TextDocumentsConfig
 
+    @property
+    def site_path(self) -> Path:
+        "returns the path of the hugo site"
+        if self.general.output_dir is None:
+            raise ConfigurationAttributeNotSet("general.output_dir")
+        return Path(self.general.output_dir) / self.name
 
-def get_configuration() -> Configuration:
+
+def get_configuration(name=None, output_dir=None) -> Configuration:
     " returns configuration "
     return \
         Configuration(
-            GeneralConfig(None, "http://odbinfo.org/"),
+            name,
+            GeneralConfig(output_dir, "http://odbinfo.org/"),
             GraphConfig(
                 EXCLUDED_TYPES,
                 TYPE_ATTRS,

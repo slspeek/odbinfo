@@ -1,6 +1,5 @@
 " Tests for the processor "
 import dataclasses
-import os
 import pickle
 
 import pytest
@@ -32,10 +31,10 @@ def process_and_check(unprocessed, filename, data_regression,
     " do processing and check"
     def setup():
         metadata = unprocessed()
-        config = get_configuration()
-        config.name, _ = os.path.splitext(os.path.basename(metadata.name))
+        config = get_configuration(metadata.name)
         print("NAME:", config.name)
         return (config, metadata), {}
+
     processed = benchmark.pedantic(process_metadata, setup=setup)
     file_regression.check(pickle.dumps(processed), binary=True,
                           basename=filename, extension=".pickle")

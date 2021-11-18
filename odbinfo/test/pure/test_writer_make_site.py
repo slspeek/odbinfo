@@ -24,7 +24,5 @@ def test_make_site_empty(empty_metadata_processed):
 
 def make_site_test(name, metadata):
     " generate report and verify"
-    conf = get_configuration()
-    conf.name = name
-    conf.general.output_dir = str(TEST_OUTPUT_PATH / "make_site_test")
+    conf = get_configuration(name, str(TEST_OUTPUT_PATH / "make_site_test"))
     make_site(conf, metadata)

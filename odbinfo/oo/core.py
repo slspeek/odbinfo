@@ -11,12 +11,12 @@ from odbinfo.pure.util import timed
 from odbinfo.pure.writer import make_site
 
 
-def default_config_path():
+def default_config_path() -> Path:
     " returns the default location of the configuration file "
     return Path.home() / ".odbinfo" / "config.yaml"
 
 
-def read_configuration(config_path=default_config_path()):
+def read_configuration(config_path: Path = default_config_path()):
     " reads configuration from `config_path` if exits "\
         " otherwise a default configuration is written in `config_path`"
     if not config_path.exists():

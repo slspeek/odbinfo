@@ -1,9 +1,10 @@
-directory regression test functionality
+Apply directory_regression to test_writer_regression
+Apply directory_regression to test_core
 
 writer
   - prepare content output dirs (for parallelism)
   test/pure/test_writer.py
-  regression of template behaviour
+  regression of template behaviour (directory_regression)
   - input is writer-fixture
   - output /public
 
@@ -15,7 +16,7 @@ Testing
 -------
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 85.81%)
+unit test coverage 90% (now 85.75%)
 
 test/pure/test_sql_parser.py
 test/pure/test_writer_make_site.py

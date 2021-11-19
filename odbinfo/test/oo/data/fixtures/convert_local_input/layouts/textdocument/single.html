@@ -1,0 +1,60 @@
+{{ partial "header" . }}
+{{ $context:=. }}
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4">
+        <h2>Document: {{ .Params.name }}</h2>
+        <h4>{{ partial "picture-link" . }}</h4>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <td>{{ .Params.name}}</td>
+            </tr>
+            <tr>
+              <th>Path</th>
+              <td>{{ .Params.path }}</td>
+            </tr>
+          </tbody>
+        </table>
+  {{ if .Params.fields }}
+        <table class="table table-bordered">
+          <caption>Fields</caption>
+          <thead>
+            <th>Database</th>
+            <th>Table</th>
+            <th>Table type</th>
+            <th>Column</th>
+          </thead>
+          <tbody>
+    {{ range $index, $val := .Params.fields }}
+            <tr>
+              <td>{{ $val.database }}</td>
+              <td id="{{ .obj_id }}">
+                {{ partial "render-linked-string" (dict "text" $val.table "link" $val.link "context" $context)}}
+              </td>
+              <td>{{ $val.tabletype }}</td>
+              <td>{{ $val.column }}</td>
+            </tr>
+    {{ end }}
+          </tbody>
+        </table>
+  {{ end }}
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+  {{ partial "render-uses" . }}
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+  {{ partial "render-used-by" . }}
+      </div>
+  </div>
+
+
+
+
+</main>
+
+{{ partial "footer" . }}

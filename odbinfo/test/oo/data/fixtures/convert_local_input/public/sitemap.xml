@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/addone.module1.standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/pythonlibrary/bibliotheek/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/pythonmodule/bibliotheek.module.py/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/calleeotherlib.module1.standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/calleesub.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/calleesub.module2.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/calleetwosub.module2.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/callerotherlib.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/callershadowedcallee.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/callersub.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/callertwo.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/query/dependendquery/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/view/dependendview/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/family/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/report/family/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/table/family/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/query/familylookup/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/formulier1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/library/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/library/library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/listboxtest/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/query/literalvaluequery/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/main.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/main.module2.standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/module/module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/module/module1.standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/module/module2.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/module/module2.standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/module/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/table/person/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/plant/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/table/plant/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/plant-invoeren/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/plantlistbox/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/plantlistboxdirectsql/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/pythonlibrary/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/pythonmodule/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/query/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/refertoquery.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/refertotable.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/refertoview.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/related-subform/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/report/reportcommandtypesql/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/report/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/shadowedcallee.module1.library1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/shadowedcallee.module1.standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/library/standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/table/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/textdocument/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/textdocument/untitled/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/usesdocument.module1.standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/basicfunction/usesdocumentfilename.module1.standard/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/view/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/pythonlibrary/python/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/pythonmodule/python.pymodule.py/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/form/view1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/view/view1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/query/vwplant/</loc>
+  </url>
+  
+  <url>
+    <loc>http://odbinfo.org/report/vwplant/</loc>
+  </url>
+  
+</urlset>

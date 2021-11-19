@@ -1,0 +1,6 @@
+<!---->{{ if .link }}<!--
+      -->{{ $url:=partial "link2url" (dict "context" .context "link" .link) }}<!--
+      --><a href="{{$url}}">{{ .text }}</a><!--
+    -->{{ else }}<!--
+  ---->{{ .text}}<!--
+    -->{{ end }}

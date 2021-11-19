@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tables on testdb</title>
+    <link>http://localhost:1313/table/</link>
+    <description>Recent content in Tables on testdb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://localhost:1313/table/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Family</title>
+      <link>http://localhost:1313/table/family/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/table/family/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Person</title>
+      <link>http://localhost:1313/table/person/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/table/person/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Plant</title>
+      <link>http://localhost:1313/table/plant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/table/plant/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

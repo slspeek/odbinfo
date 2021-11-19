@@ -1,9 +1,9 @@
 """ Core module """
 from pathlib import Path
-from urllib.parse import urlparse
 
 import yaml
 
+from odbinfo.oo.ooutil import document_path
 from odbinfo.oo.reader import read_metadata
 from odbinfo.pure.datatype.config import Configuration, get_configuration
 from odbinfo.pure.processor import process_metadata
@@ -42,9 +42,11 @@ def set_configuration_defaults(config: Configuration, odbpath: Path):
 
 
 @timed("Generate report")
-def generate_report(oodocument, config=read_configuration()):
+def generate_report(oodocument, config=read_configuration(), odbpath=None):
     """ Make report """
-    odbpath = Path(urlparse(oodocument.URL).path)
+    if odbpath is None:
+        odbpath = document_path(oodocument)
+
     set_configuration_defaults(config, odbpath)
 
     metadata = read_metadata(config, oodocument.DataSource, odbpath)

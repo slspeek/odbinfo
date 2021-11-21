@@ -41,8 +41,8 @@ def generate_report_test(oodoc, benchmark, directory_regression):
             with patch.object(ooutil, 'document_path',
                               return_value=(Path(".") / odbpath.name)) as doc_path:
                 benchmark(generate_report, oodoc, config)
-        free_port.assert_called_once()
-        doc_path.assert_called_once()
+        free_port.assert_called()
+        doc_path.assert_called()
         # remove the dot generated svg files (depend on dot version)
         for svgfile in localsite(config.site_path).glob("**/*.gv.svg"):
             svgfile.unlink()

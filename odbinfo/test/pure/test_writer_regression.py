@@ -10,6 +10,7 @@ from odbinfo.pure.writer import write_metadata
 from odbinfo.test.pure.fixtures import (empty_metadata_processed,
                                         metadata_processed)
 from odbinfo.test.resource import TEST_OUTPUT_PATH
+from odbinfo.test.util import directory_regression
 
 
 def write_writer_fixture(output_dir: Path, name: str, metadata: Metadata):
@@ -20,24 +21,23 @@ def write_writer_fixture(output_dir: Path, name: str, metadata: Metadata):
 
 
 @pytest.mark.slow
-def test_writer_regression(metadata_processed, shared_datadir):
+def test_writer_regression(metadata_processed, directory_regression):
     """ Run without database scan """
     name = "testdb"
     make_writer_regression_test(name, metadata_processed,
-                                shared_datadir / "writer_fixtures/testdb")
+                                directory_regression)
 
 
 @pytest.mark.slow
-def test_writer_regression_empty(empty_metadata_processed, shared_datadir):
+def test_writer_regression_empty(empty_metadata_processed, directory_regression):
     """ Run without database scan """
     name = "emptydb"
     make_writer_regression_test(name, empty_metadata_processed,
-                                shared_datadir / "writer_fixtures/emptydb")
+                                directory_regression)
 
 
-def make_writer_regression_test(name, metadata, fixture_name: str):
+def make_writer_regression_test(name, metadata, directory_regression):
     " generate report and verify"
     output_dir = TEST_OUTPUT_PATH / "test_writer_regression"
-    write_writer_fixture(output_dir, name, metadata)
-    site_dir = output_dir / name
-    assert os.system(f"diff -r {fixture_name}/ {str(site_dir)}/") == 0
+    write_writer_fixture(output_dir, name,  metadata)
+    directory_regression.check(output_dir / name)

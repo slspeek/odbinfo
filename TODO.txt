@@ -1,5 +1,3 @@
-Apply directory_regression to test_writer_regression
-
 writer
   - prepare content output dirs (for parallelism)
   test/pure/test_writer.py

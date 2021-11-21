@@ -9,7 +9,7 @@ from odbinfo.test.pure.fixtures import (empty_metadata_processed,
                                         metadata_processed)
 from odbinfo.test.regression import directory_regression
 from odbinfo.test.resource import TEST_OUTPUT_PATH
-from odbinfo.test.util import remove_generated_graphs
+from odbinfo.test.util import clear_generated_graphs
 
 
 @pytest.mark.slow
@@ -35,5 +35,5 @@ def perform_template_regression_test(name, metadata, directory_regression):
     write_graphs(metadata.graphs, config.site_path)
     build_site(config.site_path)
 
-    remove_generated_graphs(config.site_path / "public")
+    clear_generated_graphs(config.site_path / "public")
     directory_regression.check(config.site_path / "public")

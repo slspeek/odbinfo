@@ -14,7 +14,7 @@ from odbinfo.test.oo.connect import (  # pylint:disable=unused-import
     emptydb_doc, libreoffice, testdb_doc)
 from odbinfo.test.regression import directory_regression
 from odbinfo.test.resource import TEST_OUTPUT_PATH
-from odbinfo.test.util import remove_generated_graphs
+from odbinfo.test.util import clear_generated_graphs
 
 
 @pytest.mark.veryslow
@@ -47,6 +47,6 @@ def generate_report_test(oodoc, benchmark, directory_regression):
         doc_path.assert_called()
 
         # remove the dot generated svg files (depend on dot version)
-        remove_generated_graphs(localsite(config.site_path))
+        clear_generated_graphs(localsite(config.site_path))
 
         directory_regression.check(localsite(config.site_path))

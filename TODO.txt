@@ -1,5 +1,4 @@
 Apply directory_regression to test_writer_regression
-Apply directory_regression to test_core
 
 writer
   - prepare content output dirs (for parallelism)

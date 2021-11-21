@@ -41,6 +41,10 @@ def test_localsite_name():
     assert localsite(Path("foo/bar")) == Path("foo/bar-local")
 
 
+def test_localsite_short_path():
+    assert localsite(Path("bar")) == Path("bar-local")
+
+
 def test_backup_old_site(tmpdir):
     " test cleaning old site "
     os.makedirs(tmpdir / "exampledb")

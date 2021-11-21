@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Basicfunctions on testdb</title>
+    <link>http://localhost:1313/basicfunction/</link>
+    <description>Recent content in Basicfunctions on testdb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://localhost:1313/basicfunction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AddOne.Module1.Standard</title>
+      <link>http://localhost:1313/basicfunction/addone.module1.standard/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/addone.module1.standard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CalleeOtherLib.Module1.Standard</title>
+      <link>http://localhost:1313/basicfunction/calleeotherlib.module1.standard/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/calleeotherlib.module1.standard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CalleeSub.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/calleesub.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/calleesub.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CalleeSub.Module2.Library1</title>
+      <link>http://localhost:1313/basicfunction/calleesub.module2.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/calleesub.module2.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CalleeTwoSub.Module2.Library1</title>
+      <link>http://localhost:1313/basicfunction/calleetwosub.module2.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/calleetwosub.module2.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CallerOtherLib.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/callerotherlib.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/callerotherlib.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CallerShadowedCallee.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/callershadowedcallee.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/callershadowedcallee.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CallerSub.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/callersub.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/callersub.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CallerTwo.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/callertwo.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/callertwo.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Main.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/main.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/main.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Main.Module2.Standard</title>
+      <link>http://localhost:1313/basicfunction/main.module2.standard/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/main.module2.standard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ReferToQuery.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/refertoquery.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/refertoquery.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ReferToTable.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/refertotable.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/refertotable.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ReferToView.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/refertoview.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/refertoview.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ShadowedCallee.Module1.Library1</title>
+      <link>http://localhost:1313/basicfunction/shadowedcallee.module1.library1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/shadowedcallee.module1.library1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ShadowedCallee.Module1.Standard</title>
+      <link>http://localhost:1313/basicfunction/shadowedcallee.module1.standard/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/shadowedcallee.module1.standard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UsesDocument.Module1.Standard</title>
+      <link>http://localhost:1313/basicfunction/usesdocument.module1.standard/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/usesdocument.module1.standard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UsesDocumentFilename.Module1.Standard</title>
+      <link>http://localhost:1313/basicfunction/usesdocumentfilename.module1.standard/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/basicfunction/usesdocumentfilename.module1.standard/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

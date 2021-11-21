@@ -3,7 +3,7 @@ from pathlib import Path
 
 import yaml
 
-from odbinfo.oo.ooutil import document_path
+from odbinfo.oo import ooutil
 from odbinfo.oo.reader import read_metadata
 from odbinfo.pure.datatype.config import Configuration, get_configuration
 from odbinfo.pure.processor import process_metadata
@@ -42,10 +42,10 @@ def set_configuration_defaults(config: Configuration, odbpath: Path):
 
 
 @timed("Generate report")
-def generate_report(oodocument, config=read_configuration(), odbpath=None):
+def generate_report(oodocument, config=read_configuration()):
     """ Make report """
-    if odbpath is None:
-        odbpath = document_path(oodocument)
+    # breakpoint()
+    odbpath = ooutil.document_path(oodocument)
 
     set_configuration_defaults(config, odbpath)
 

@@ -1,5 +1,4 @@
 """ writer regression tests """
-import os
 from pathlib import Path
 
 import pytest
@@ -16,23 +15,21 @@ from odbinfo.test.util import directory_regression
 def write_writer_fixture(output_dir: Path, name: str, metadata: Metadata):
     " generate report and verify"
     conf = get_configuration(name, output_dir)
-    os.makedirs(conf.site_path, exist_ok=True)
+    conf.site_path.mkdir(exist_ok=True, parents=True)
     write_metadata(conf, metadata)
 
 
 @pytest.mark.slow
 def test_writer_regression(metadata_processed, directory_regression):
     """ Run without database scan """
-    name = "testdb"
-    make_writer_regression_test(name, metadata_processed,
+    make_writer_regression_test("testdb", metadata_processed,
                                 directory_regression)
 
 
 @pytest.mark.slow
 def test_writer_regression_empty(empty_metadata_processed, directory_regression):
     """ Run without database scan """
-    name = "emptydb"
-    make_writer_regression_test(name, empty_metadata_processed,
+    make_writer_regression_test("emptydb", empty_metadata_processed,
                                 directory_regression)
 
 

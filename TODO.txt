@@ -1,9 +1,6 @@
 writer
   - prepare content output dirs (for parallelism)
   test/pure/test_writer.py
-  regression of template behaviour (directory_regression)
-  - input is writer-fixture
-  - output /public
 
 SubForm reading should respect order of subforms and controls
 FormItem = Union[SubForm, Control, ListBox, Grid]

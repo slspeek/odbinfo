@@ -56,3 +56,9 @@ def directory_regression(datadir, original_datadir,  request):
     "directory_regression fixture"
     yield DirectoryRegressionFixture(datadir, original_datadir,
                                      request)
+
+
+def remove_generated_graphs(path: Path):
+    "clear generated graphs as they depend in dot version"
+    for svgfile in path.glob("**/*.gv.svg"):
+        svgfile.unlink()

@@ -7,8 +7,9 @@ from odbinfo.pure.writer import (build_site, new_site, write_graphs,
                                  write_metadata)
 from odbinfo.test.pure.fixtures import (empty_metadata_processed,
                                         metadata_processed)
+from odbinfo.test.regression import directory_regression
 from odbinfo.test.resource import TEST_OUTPUT_PATH
-from odbinfo.test.util import directory_regression, remove_generated_graphs
+from odbinfo.test.util import remove_generated_graphs
 
 
 @pytest.mark.slow

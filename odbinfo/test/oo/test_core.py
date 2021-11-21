@@ -12,8 +12,9 @@ from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.writer import chdir, localsite
 from odbinfo.test.oo.connect import (  # pylint:disable=unused-import
     emptydb_doc, libreoffice, testdb_doc)
+from odbinfo.test.regression import directory_regression
 from odbinfo.test.resource import TEST_OUTPUT_PATH
-from odbinfo.test.util import directory_regression, remove_generated_graphs
+from odbinfo.test.util import remove_generated_graphs
 
 
 @pytest.mark.veryslow

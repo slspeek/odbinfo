@@ -6,7 +6,7 @@ import pytest
 
 from odbinfo.pure import writer
 from odbinfo.pure.writer import convert_local
-from odbinfo.test.util import directory_regression
+from odbinfo.test.regression import directory_regression
 
 
 @pytest.mark.slow

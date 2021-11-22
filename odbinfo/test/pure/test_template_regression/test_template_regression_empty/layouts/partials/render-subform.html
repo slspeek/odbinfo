@@ -1,0 +1,94 @@
+{{ $depth:=.subform.depth }}
+{{ $context := .context }}
+<thead>
+  {{ if (gt $depth 0 ) }}
+  <th colspan={{$depth}}></th>
+  {{ end }}
+  <th>Name</th>
+  <th>Command</th>
+  <th>Command type</th>
+  <th>Allow deletes</th>
+  <th>Allow inserts</th>
+  <th>Allow updates</th>
+  {{ if (gt $depth 0 ) }}
+  <th>Master fields</th>
+  <th>Detail fields</th>
+  {{ end }}
+</thead>
+<tbody>
+  <tr id="{{ .subform.obj_id }}">
+    {{ if (gt $depth 0 ) }}
+    <td colspan={{$depth}}></td>
+    {{ end }}
+    <td>{{ .subform.name }}</td>
+    {{ if (eq .subform.cmdtype "command")}}
+     <td>{{ partial "render-query-command" (dict "context" $context "query" .subform.embedded_query )}} </td>
+    {{else}}
+    <td>{{ partial "render-linked-string" (dict "context" $context "text" .subform.cmd "link" .subform.link) }}</td>
+    {{end}}
+    <td>{{ .subform.cmdtype }}</td>
+    <td>{{ .subform.allowdeletes }}</td>
+    <td>{{ .subform.allowinserts }}</td>
+    <td>{{ .subform.allowupdates }}</td>
+    {{ if (gt $depth 0 ) }}
+    <td>{{ .subform.masterfields }}</td>
+    <td>{{ .subform.detailfields }}</td>
+    {{ end }}
+  </tr>
+</tbody>
+{{ if .subform.controls }}
+  {{ partial "control-header" $depth }}
+  <tbody>
+  {{  range .subform.controls }}
+    {{ if (eq .type "ListBox") }}
+      <tr id="{{ .obj_id }}">
+        {{ partial "indent-column" $depth }}
+        {{ partial "control-data" (dict "context" $context "control" .) }}
+      </tr>
+      <thead>
+        <th colspan={{ (add 1 $depth) }}></th>
+        <th>List sourcetype</th>
+        <th colspan=3>List source</th>
+        <th>Bound column</th>
+        <th>Dropdown</th>
+      </thead>
+      <tr>
+        <td colspan={{ (add 1 $depth) }}></td>
+        <td>{{ .listsourcetype }}</td>
+        <td colspan=3>
+        {{ if (or (eq .listsourcetype "sql") (eq .listsourcetype "sql-pass-through")) }}
+          {{ partial "render-query-command" (dict "context" $context "query" .embedded_query )}}
+        {{ else }}
+          {{ partial "render-linked-string" (dict "text" .listsource "link" .link "context" $context) }}
+        {{ end }}
+        </td>
+        <td>{{ .boundcolumn }}</td>
+        <td>{{ .dropdown }}</td>
+      </tr>
+     {{ else }} <!-- if type=Listbox, other controls in this else  -->
+       <tr id="{{ .obj_id }}">
+        {{ partial "indent-column" $depth }}
+        {{ partial "control-data" (dict "context" $context "control" .) }}
+       </tr>
+      {{ end }}<!-- if type=Listbox -->
+      {{ if (eq .type "Grid" )}}
+        {{ partial "control-header" (add 1 $depth) }}
+       <tbody>
+         {{ range .columns }}
+         <tr id="{{ .obj_id }}">
+           {{ partial "indent-column"  (add $depth 1) }}
+           {{ partial "control-data" (dict "context" $context "control" .) }}
+         </tr>
+         {{ end }}<!-- range .columns -->
+       </tbody>
+       {{ end  }}<!-- if = Grid -->
+     {{ end }}<!-- range subform.controls -->
+{{ end }}<!-- if subform.controls -->
+</tbody>
+{{ range .subform.subforms }}
+  {{ partial "render-subform" (dict "subform" . "context" $context) }}
+{{ end }}
+
+
+
+

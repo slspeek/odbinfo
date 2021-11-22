@@ -1,0 +1,40 @@
+{{ partial "header" . }}
+
+<main>
+    <div class="container">
+        <h2>Report: {{ .Params.name }}</h2>
+        <h4>{{ partial "picture-link" . }}</h4>
+        <table class="table table-bordered">
+          <tr>
+            <th>Command</th>
+            <td  id={{ .Params.obj_id }}>
+              {{ if (eq .Params.cmdtype "command") }}
+                {{ partial "render-query-command" (dict "context" . "query" .Params.embedded_query )}}
+              {{ else }}
+                {{ partial "render-linked-string" (dict "text" .Params.cmd "link" .Params.link "context" .) }}
+              {{ end }}
+            </td>
+          </tr>
+          <tr>
+            <th>Command type</th>
+            <td>{{ .Params.cmdtype }}</td>
+          </tr>
+          <tr>
+            <th>Output type</th>
+            <td>{{ .Params.output_type }}</td>
+          </tr>
+          {{ $fcount := len .Params.formulas }}
+          {{ range $index, $val := .Params.formulas }}
+          <tr>
+            {{ if (eq $index 0) }}
+            <th rowspan="{{ $fcount }}">Formulas</th>
+            {{ end }}
+            <td>{{ $val }}</td>
+          </tr>
+          {{ end }}
+        </table>
+        {{ partial "render-dependencies" . }}
+    </div>
+</main>
+
+{{ partial "footer" . }}

@@ -22,17 +22,28 @@ OOPYTHONPATH=.:$$(cd $(oo) && pipenv --venv)/lib/python3.7/site-packages
 PUREPYTHONPATH=.:$$(cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
 parserlocation=odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
-pythonsources=$$(find -name \*.py -and -not -ipath ./odbinfo/test/pure/test_writer_templates/\* -and -not -ipath ./odbinfo/test/oo/test_core/\* -and -not -ipath ./odbinfo/test/pure/data\* -and -not -ipath ./odbinfo/test/oo/data\* -and -not -ipath ./target/\* -and -not -ipath ./odbinfo/pure/parser/oobasic/\* -and -not -ipath ./odbinfo/pure/parser/sqlite/\* )
-benchmarking=--benchmark-only --benchmark-autosave
+pythonsources=$$(find -name \*.py -and $\
+-not -ipath ./odbinfo/test/pure/test_writer_templates/\* -and $\
+-not -ipath ./odbinfo/test/oo/test_core/\* -and $\
+-not -ipath ./odbinfo/test/pure/test_template_regression/\* -and $\
+-not -ipath ./odbinfo/test/pure/test_convert_local_regression/\* -and $\
+-not -ipath ./odbinfo/test/pure/data\* -and $\
+-not -ipath ./odbinfo/test/oo/data\* -and $\
+-not -ipath ./target/\* -and $\
+-not -ipath ./odbinfo/pure/parser/oobasic/\* -and $\
+-not -ipath ./odbinfo/pure/parser/sqlite/\* )
+benchmarking=--benchmark-only --benchmark-autosave --benchmark-enable
 unit=-m "not slow and not veryslow"
 itests=-m "slow"
-
+PYTEST=PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable
 
 build: mypy metric unitcoverage
 
-travis: installantlr clean genparser info check alltest
+travis: installantlr precommit
 
-all: mypy metric travis install_oxt
+precommit:  clean genparser info check alltest
+
+all: ctags mypy metric travis install_oxt
 
 prepare:
 	@echo prepare start
@@ -68,48 +79,60 @@ unitcoverage:
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser unitcov/index.html
 
 itest: clean prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable $(itests) $(testloc)
+	$(PYTEST) $(itests) $(testloc)
 
 single: prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable $(testloc)/${SINGLE}
+	$(PYTEST) $(testloc)/${SINGLE}
 
 run: clean prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable $(testloc)/oo/test_core.py::test_generate_report
+	$(PYTEST) $(testloc)/oo/test_core.py::test_generate_report
 
 metadata_fixture: prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(ootestloc)/test_reader_regression.py ||$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(ootestloc)/test_reader_regression.py ||$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable  $(ootestloc)/test_reader_regression.py
-	cp -v odbinfo/test/oo/test_reader_regression/*.pickle odbinfo/test/oo/data
+	$(PYTEST) --force-regen $(ootestloc)/test_reader_regression.py ||$\
+	$(PYTEST) --force-regen $(ootestloc)/test_reader_regression.py ||$\
+	$(PYTEST) $(ootestloc)/test_reader_regression.py
+	cp -v odbinfo/test/oo/test_reader_regression/*.pickle $(fixtureloc)
 
 processor_fixture: metadata_fixture
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(puretestloc)/test_processor_regression.py ||$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(puretestloc)/test_processor_regression.py ||$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable --force-regen $(puretestloc)/test_processor_regression.py
-	cp -v odbinfo/test/pure/test_processor_regression/*.pickle odbinfo/test/oo/data
+	$(PYTEST) --force-regen $(puretestloc)/test_processor_regression.py ||$\
+	$(PYTEST) --force-regen $(puretestloc)/test_processor_regression.py ||$\
+	$(PYTEST) --force-regen $(puretestloc)/test_processor_regression.py
+	cp -v odbinfo/test/pure/test_processor_regression/*.pickle $(fixtureloc)
 
-writer_fixture: processor_fixture
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable $(puretestloc)/test_writer_regression.py ||$\
-	(rm -rf $(fixtureloc)/writer_fixtures/* &&$\
-	cp -rv $(test-output)/test_writer_regression/emptydb $(fixtureloc)/writer_fixtures/ &&$\
-	cp -rv $(test-output)/test_writer_regression/testdb $(fixtureloc)/writer_fixtures/  &&$\
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest --benchmark-disable $(puretestloc)/test_writer_regression.py )
 
-fixtures: writer_fixture
+write_site_fixture: processor_fixture
+	$(PYTEST)  --force-regen $(puretestloc)/test_write_site_regression.py || $\
+	((rm -rf $(fixtureloc)/fixtures/template_regression_input || true) && $\
+	cp -r $(puretestloc)/test_write_site_regression $(fixtureloc)/fixtures/template_regression_input)
+
+
+template_fixture: write_site_fixture
+	$(PYTEST)  --force-regen $(puretestloc)/test_template_regression.py
+	((rm -rf $(fixtureloc)/fixtures/convert_local_input || true) && $\
+	cp -r $(puretestloc)/test_template_regression/test_template_regression $(fixtureloc)/fixtures/convert_local_input)
+
+convert_local_fixture: template_fixture
+		$(PYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py
+
+
+fixtures: convert_local_fixture
+	$(PYTEST) --force-regen $(testloc)
+
+
 
 unit:
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable $(unit) $(testloc)
+	$(PYTEST) $(unit) $(testloc)
 
 benchmark:
-	ODBINFO_NO_BROWSE=1 PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} $(benchmarking) $(testloc)
+	ODBINFO_NO_BROWSE=1 $(PYTEST) $(benchmarking) $(testloc)
 
 histogram:
 	# PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $ $(testloc) --benchmark-histogram --benchmark-compare=\*
 	py.test-benchmark compare --histogram=benchmarks/histogram --group-by=func --sort=name
 	py.test-benchmark compare --histogram=benchmarks/histogram
 
-alltest: prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable  $(testloc)
+alltest: clean
+	$(PYTEST) $(testloc)
 
 .ONESHELL:
 serve: run
@@ -205,7 +228,6 @@ metric: clean
 mypy_report:
 	mypy --show-error-codes --disable-error-code  import --html-report mypy-report $(pythonsources)
 
-
 mypy:
-		mypy --show-error-codes --disable-error-code  import $(pythonsources)
+	mypy --show-error-codes --disable-error-code  import $(pythonsources)
 

@@ -1,0 +1,7 @@
+<!---->{{ if in .context.Params.name_indexes (string .token.index)}}<!--
+      --><span  class=link id="{{.token.text}}"><!--
+    -->{{ else }}<!--
+    - --><span><!--
+    -->{{end}}<!--
+    -->{{ partial "render-token-text" (dict "context" .context "token" .token) }}<!--
+    --></span>

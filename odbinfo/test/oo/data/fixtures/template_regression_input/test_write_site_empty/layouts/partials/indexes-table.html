@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+  <thead >
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Unique</th>
+      <th scope="col">PrimaryKey</th>
+      <th scope="col">Clustered</th>
+      <th scope="col">Columns</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{ range .Params.indexes }}
+    <tr>
+      <td>{{ .name }}</td>
+      <td>{{ .unique }}</td>
+      <td>{{ .primary }}</td>
+      <td>{{ .clustered }}</td>
+      <td>{{ partial "commalist" .columns }}</td>
+    </tr>
+  {{ end}}
+  </tbody>
+  </table>

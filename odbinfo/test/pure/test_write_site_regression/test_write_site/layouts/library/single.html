@@ -1,0 +1,20 @@
+{{ partial "header" . }}
+
+{{ $dot := . }}
+<main>
+  <div class="container">
+
+    <h2>{{.Params.name}}</h2>
+    <h4>{{ partial "picture-link" . }}</h4>
+
+        <ol class="list-group">
+          {{ range .Params.modules }}
+          {{ $url := partial "link2url" (dict "context" $dot "link" .)}}
+          <li class="list-group-item"><h4><a href="{{$url}}">{{.local_id}}</a></h4></li>
+          {{ end }}
+        </ol>
+
+  </div>
+</main>
+
+{{ partial "footer" . }}

@@ -1,5 +1,6 @@
 """" Test fixtures """
 import pickle
+from pathlib import Path
 from zipfile import ZipFile
 
 from pytest import fixture
@@ -18,6 +19,13 @@ def load_metadata(shared_datadir, processed=False, empty=False):
     with open(filename, 'rb') as file:
         meta = pickle.load(file)
     return meta
+
+
+@fixture(scope="function")
+def fixture_path(shared_datadir):
+    """ fixture directory """
+
+    yield Path(shared_datadir) / "fixtures"
 
 
 @fixture(scope="function")

@@ -1,5 +1,4 @@
 writer
-  - test_template_regression does too much
   - prepare content output dirs (for parallelism)
   test/pure/test_writer.py
 

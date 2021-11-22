@@ -7,9 +7,10 @@ import pytest
 from odbinfo.oo import ooutil
 from odbinfo.oo.core import generate_report
 from odbinfo.oo.ooutil import document_path
-from odbinfo.pure import writer
+from odbinfo.pure import builder
 from odbinfo.pure.datatype.config import get_configuration
-from odbinfo.pure.writer import chdir, localsite
+from odbinfo.pure.util import chdir
+from odbinfo.pure.writer import localsite
 from odbinfo.test.oo.connect import (  # pylint:disable=unused-import
     emptydb_doc, libreoffice, testdb_doc)
 from odbinfo.test.regression import directory_regression
@@ -38,7 +39,7 @@ def generate_report_test(oodoc, benchmark, directory_regression):
 
     odbpath = document_path(oodoc)
     with chdir(odbpath.parent):
-        with patch.object(writer, 'find_free_port', return_value=1313) as free_port:
+        with patch.object(builder, 'find_free_port', return_value=1313) as free_port:
             with patch.object(ooutil, 'document_path',
                               return_value=(Path(".") / odbpath.name)) as doc_path:
                 benchmark(generate_report, oodoc, config)

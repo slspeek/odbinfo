@@ -1,6 +1,22 @@
 "Utilities"
+import contextlib
+import os
+import shlex
+import subprocess
 import time
 from functools import wraps
+
+
+@contextlib.contextmanager
+def chdir(dirname=None):
+    """ Change directory and back """
+    curdir = os.getcwd()
+    try:
+        if dirname is not None:
+            os.chdir(dirname)
+        yield
+    finally:
+        os.chdir(curdir)
 
 
 def timed(mesg, indent=0, arg=None, name=True):
@@ -30,3 +46,26 @@ def timed(mesg, indent=0, arg=None, name=True):
             return result
         return wrapper
     return decorate
+
+
+class CommandExecutionError(Exception):
+    "Describes a failed command"
+
+    def __init__(self, cmd, completed_process):
+        self.completed_process = completed_process
+        super().__init__(
+            f"System command: {cmd} failed (returncode={completed_process.returncode})")
+
+
+def run_cmd(cmd, check=True):
+    " run os `cmd` and raise  if `check` was set"
+    # pylint:disable=subprocess-run-check
+    completed_process = subprocess.run(shlex.split(cmd),
+                                       capture_output=True)
+    if completed_process.returncode != 0:
+        print("System command: ", cmd,
+              "failed (returncode=", completed_process.returncode, ")")
+        print("stdout:", completed_process.stdout.decode("utf-8"))
+        print("stderr:", completed_process.stderr.decode("utf-8"))
+        if check:
+            raise CommandExecutionError(cmd, completed_process)

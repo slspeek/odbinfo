@@ -1,0 +1,12 @@
+<!--
+-->{{ if .token.obj_id }}<!--
+  --><span class="link {{ .token.cls }}" id="{{ .token.obj_id }}"><!--
+-->{{ else }}<!--
+  -->{{ if .token.cls }}<!--
+    --><span class="{{ .token.cls }}"><!--
+  -->{{ else }}<!--
+    --><span><!--
+  -->{{ end }}<!--
+-->{{ end }}<!--
+-->{{ partial "render-token-text" (dict "context" .context "token" .token) }}<!--
+--></span>

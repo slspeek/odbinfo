@@ -1,0 +1,16 @@
+title = "emptydb"
+baseURL = "http://odbinfo.org/"
+languageCode = "en-us"
+theme = "minimal"
+
+[menu]
+[[menu.main]]
+url = "/"
+name = "home"
+weight = 1
+
+[[menu.main]]
+url = "/svg/emptydb.gv.svg"
+name = "picture"
+weight = 2
+

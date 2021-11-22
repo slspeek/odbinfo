@@ -1,13 +1,6 @@
 """ Writing out to hugo site format """
-import contextlib
 import os
-import shlex
 import shutil
-import socket
-import subprocess
-import time
-import webbrowser
-from contextlib import closing
 from datetime import datetime
 from inspect import ismethod
 from itertools import count
@@ -24,41 +17,6 @@ from odbinfo.pure.datatype.metadata import METADATA_CONTENT
 from odbinfo.pure.util import timed
 
 FRONT_MATTER_MARK = "---\n"
-
-
-class CommandExecutionError(Exception):
-    "Describes a failed command"
-
-    def __init__(self, cmd, completed_process):
-        self.completed_process = completed_process
-        super().__init__(
-            f"System command: {cmd} failed (returncode={completed_process.returncode})")
-
-
-def run_cmd(cmd, check=True):
-    " run os `cmd` and raise  if `check` was set"
-    # pylint:disable=subprocess-run-check
-    completed_process = subprocess.run(shlex.split(cmd),
-                                       capture_output=True)
-    if completed_process.returncode != 0:
-        print("System command: ", cmd,
-              "failed (returncode=", completed_process.returncode, ")")
-        print("stdout:", completed_process.stdout.decode("utf-8"))
-        print("stderr:", completed_process.stderr.decode("utf-8"))
-        if check:
-            raise CommandExecutionError(cmd, completed_process)
-
-
-@contextlib.contextmanager
-def chdir(dirname=None):
-    """ Change directory and back """
-    curdir = os.getcwd()
-    try:
-        if dirname is not None:
-            os.chdir(dirname)
-        yield
-    finally:
-        os.chdir(curdir)
 
 
 def localsite(site_path: Path) -> Path:
@@ -107,61 +65,6 @@ def new_site(site_path: Path) -> None:
     os.makedirs(site_path.parent, exist_ok=True)
     shutil.copytree(SITE_SKEL_PATH,
                     site_path)
-
-
-def build_site(site_path: Path) -> None:
-    "Run the hugo system command in `working_dir`"
-    with chdir(site_path):
-        run_cmd("hugo", "unable to build hugo site")
-
-
-def find_free_port() -> int:
-    "returns a free port number"
-    # pylint: disable=no-member
-    with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
-        sock.bind(('', 0))
-        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        return sock.getsockname()[1]
-
-
-def _is_port_open(port):
-    # pylint: disable=no-member
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        result = sock.connect_ex(('127.0.0.1', port))
-        if result == 0:
-            return True
-        return False
-
-
-def convert_local(site_path: Path) -> None:
-    " Uses wget to rewrite hugo website to locally browsable site"
-    localsite_path = localsite(site_path)
-    os.makedirs(localsite_path)
-
-    with chdir(site_path):
-        port = find_free_port()
-        args = shlex.split(
-            f"hugo server -p {port} --disableLiveReload --watch=false ")
-        # pylint:disable=consider-using-with
-        try:
-            webserver_proc = subprocess.Popen(args, stderr=subprocess.DEVNULL,
-                                              stdout=subprocess.DEVNULL)
-            with chdir(".."):
-                while not _is_port_open(port):
-                    time.sleep(0.1)
-                run_cmd("wget  --no-verbose"
-                        f" -nH --convert-links -P {localsite_path.name}"
-                        " -r --level=100"
-                        f" http://localhost:{port}/", check=True)
-        finally:
-            webserver_proc.kill()
-
-
-def open_browser(site_dir: Path) -> None:
-    "Opens a webbrowser on `site_dir`"
-    if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":
-        site_abs_path = site_dir.resolve() / "index.html"
-        webbrowser.open(site_abs_path.as_uri())
 
 
 def write_metadata(config: Configuration, metadata: Metadata):
@@ -223,15 +126,9 @@ def write_content(metadata: Metadata, content_type: str, site_path: Path):
             frontmatter(content.to_dict(), out)
 
 
-@timed("Write and build hugo site", indent=2)
-def make_site(config: Configuration, metadata: Metadata) -> Path:
-    """ Builds report in from `metadata` """
+@timed("Write hugo site", indent=2)
+def write_site(config: Configuration, metadata: Metadata) -> None:
+    """ Writes hugo site from `metadata` """
     new_site(config.site_path)
     write_metadata(config, metadata)
     write_graphs(metadata.graphs, config.site_path)
-
-    build_site(config.site_path)
-    convert_local(config.site_path)
-    localsite_path = localsite(config.site_path)
-    open_browser(localsite_path)
-    return localsite_path

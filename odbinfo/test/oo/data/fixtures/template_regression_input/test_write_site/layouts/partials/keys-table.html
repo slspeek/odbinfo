@@ -1,0 +1,27 @@
+{{ $context := . }}
+<table class="table table-bordered">
+  <thead >
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Columns</th>
+      <th>Referenced table</th>
+      <th>Update rule</th>
+      <th>Delete rule</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range .Params.keys }}
+    <tr>
+      <td>{{ .name }}</td>
+      <td>{{ .typename }}</td>
+      <td>{{ partial "commalist" .columns }}</td>
+      <td>
+        {{ partial "render-linked-string" (dict "context" $context "text" .referenced_table "link" .link)}}
+      </td>
+      <td>{{ .update_rule }}</td>
+      <td>{{ .delete_rule }}</td>
+    </tr>
+    {{ end}}
+  </tbody>
+  </table>

@@ -1,0 +1,12 @@
+{{ $context := .context }}
+{{ if .events }}
+<ol class="list-group">
+  {{ range .events }}
+  <li class="list-group-item" id={{ .obj_id }}>
+  {{ .event }}
+    <a href="{{ partial "link2url" (dict "context" $context "link" .link)}}">{{.link.local_id}}</a>
+  </li>
+{{ end }}
+</ol>
+
+{{ end }}

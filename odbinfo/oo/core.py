@@ -5,10 +5,11 @@ import yaml
 
 from odbinfo.oo import ooutil
 from odbinfo.oo.reader import read_metadata
+from odbinfo.pure.builder import build
 from odbinfo.pure.datatype.config import Configuration, get_configuration
 from odbinfo.pure.processor import process_metadata
 from odbinfo.pure.util import timed
-from odbinfo.pure.writer import make_site
+from odbinfo.pure.writer import write_site
 
 
 def default_config_path() -> Path:
@@ -52,5 +53,6 @@ def generate_report(oodocument, config=read_configuration()):
 
     process_metadata(config, metadata)
 
-    result = make_site(config, metadata)
-    return result
+    write_site(config, metadata)
+
+    build(config.site_path)

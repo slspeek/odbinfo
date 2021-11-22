@@ -1,0 +1,8 @@
+<!---->{{ $all_objects := where .context.Site.Pages "Section" .section}}<!--
+    -->{{ $objects := where $all_objects "Params.title" .title }}<!--
+    -->{{ if (ne (len $objects) 0) }}<!--
+      -->{{$obj := (index $objects 0) }}<!--
+      -->{{$obj.URL}}<!--
+    -->{{ else }}<!--
+      -->{{ errorf "Link not found for: (%s, %s)" .section .title }}<!--
+    -->{{ end }}

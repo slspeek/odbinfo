@@ -1,40 +1,14 @@
 " tests for the writer"
 import os
-import webbrowser
 from datetime import datetime
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 from graphviz import Digraph
 
-from odbinfo.pure.writer import (CommandExecutionError, _is_port_open,
-                                 backup_old_site, chdir, find_free_port,
-                                 localsite, new_site, open_browser,
-                                 present_contenttypes, run_cmd, write_graphs)
+from odbinfo.pure.writer import (backup_old_site, localsite, new_site,
+                                 present_contenttypes, write_graphs)
 from odbinfo.test.pure.datatype import factory
-from odbinfo.test.resource import TEST_OUTPUT_PATH
-
-
-def test_find_free_port():
-    free_port = find_free_port()
-    assert not _is_port_open(free_port)
-
-
-def test_chdir_none():
-    " test chdir on its default "
-    cur_dir = os.getcwd()
-    with chdir():
-        assert os.getcwd() == cur_dir
-    assert os.getcwd() == cur_dir
-
-
-def test_chdir_root():
-    " test chdir on its default "
-    cur_dir = os.getcwd()
-    with chdir("/"):
-        assert os.getcwd() == "/"
-    assert os.getcwd() == cur_dir
 
 
 def test_localsite_name():
@@ -65,56 +39,13 @@ def test_write_graphs(tmpdir):
 
 
 @pytest.mark.slow
-def test_new_site():
+def test_new_site(tmpdir):
     """ test new site scaffolding """
-    site_path = TEST_OUTPUT_PATH / "test-site"
+    site_path = Path(tmpdir) / "test-site"
     assert not site_path.exists()
     new_site(site_path)
     assert site_path.exists()
     assert (site_path / "static").exists()
-
-
-def test_open_browser():
-    " test the open_browser function "
-    with patch.object(webbrowser, 'open') as openmock:
-        with patch.object(os, 'getcwd', return_value="/home"):
-            with patch.object(os, 'getenv', return_value="0"):
-                open_browser(Path("site"))
-    openmock.assert_called_with("file:///home/site/index.html")
-
-
-def test_open_browser_absolutepath():
-    " test the open_browser function "
-    with patch.object(webbrowser, 'open') as openmock:
-        with patch.object(os, 'getcwd', return_value="/home"):
-            with patch.object(os, 'getenv', return_value="0"):
-                open_browser(Path("/site"))
-    openmock.assert_called_with("file:///site/index.html")
-
-
-def test_open_browser_nop():
-    " test the open_browser function doing nothing"
-    with patch.object(webbrowser, 'open') as openmock:
-        with patch.object(os, 'getcwd', return_value="/home"):
-            with patch.object(os, 'getenv', return_value="1"):
-                open_browser(Path("site"))
-    openmock.assert_not_called()
-
-
-def test_run_cmd():
-    " run_cmd without errors"
-    run_cmd("ls")
-
-
-def test_run_cmd_errors():
-    " run_cmd with errors"
-    with pytest.raises(CommandExecutionError):
-        run_cmd("false")
-
-
-def test_run_cmd_errors_no_check():
-    " run_cmd with errors, but no check"
-    run_cmd("false", check=False)
 
 
 def test_present_contenttypes():

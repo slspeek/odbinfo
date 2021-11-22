@@ -27,10 +27,9 @@ localhost:1313 references
 
 
 Document the technical design:
-(split modules: new modules: preprocessor, postprocessor, builder)
 Elaborate module doc strings
 - reading stage
-- preprocessing
+- processing
 - dependency search
 - graphs generation
 - writing

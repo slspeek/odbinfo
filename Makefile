@@ -112,7 +112,8 @@ template_fixture: write_site_fixture
 	cp -r $(puretestloc)/test_template_regression/test_template_regression $(fixtureloc)/fixtures/convert_local_input)
 
 convert_local_fixture: template_fixture
-		$(PYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py
+	$(PYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py || $\
+	$(PYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py
 
 
 fixtures: convert_local_fixture

@@ -2,7 +2,7 @@
 columns:
 - autoincrement: false
   defaultvalue: ''
-  description: null
+  description: Primary key
   name: FamilyID
   nullable: No_Nulls
   obj_id: '4'
@@ -12,7 +12,7 @@ columns:
   typename: INTEGER
 - autoincrement: false
   defaultvalue: ''
-  description: null
+  description: Family name
   name: Name
   nullable: Nullable
   obj_id: '5'
@@ -22,7 +22,7 @@ columns:
   typename: VARCHAR
 - autoincrement: false
   defaultvalue: ''
-  description: null
+  description: Description of the family
   name: Desc
   nullable: Nullable
   obj_id: '6'

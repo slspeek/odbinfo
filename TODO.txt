@@ -1,3 +1,10 @@
+Makefile: fixtures is not idempotent
+dependencysearch should be called from core not processor
+get 'incorrect type' check in pycharm to work for all (hard)
+
+base: get_identifier smells
+builder: convert_local should not hang if gohugo command fails
+
 writer
   - prepare content output dirs (for parallelism)
   test/pure/test_writer.py

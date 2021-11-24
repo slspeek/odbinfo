@@ -1,4 +1,4 @@
-" reading reports "
+""" reading reports """
 from typing import List, Tuple
 from xml.dom.minidom import Element
 
@@ -23,7 +23,7 @@ def _reports(odbzip) -> List[Tuple[str, Element]]:
 
 
 def read_reports(odbzip) -> List[Report]:
-    " Read reports from odb file "
+    """ Read reports from odb file """
     reports = []
     for name, rpt_doc in _reports(odbzip):
         reports.append(Report(name,

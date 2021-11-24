@@ -1,4 +1,4 @@
-" sql parser tests "
+""" sql parser tests """
 import pytest
 
 from odbinfo.pure.parser.sql import parse
@@ -6,13 +6,13 @@ from odbinfo.pure.parser.sql import parse
 
 @pytest.mark.slow
 def test_parse():
-    " call parse "
+    """ call parse """
     parse("")
 
 
 @pytest.mark.slow
 def test_parse_outer_join_escape():
-    " outer join escape "
+    """ outer join escape """
     outer_join_escape = """
     SELECT "personer"."foretag", "personer"."fnamn", "personer"."enamn",
     "befattningnamn"."namn" FROM  { OJ "public"."befattning" "befattning"
@@ -27,20 +27,20 @@ def test_parse_outer_join_escape():
 
 @pytest.mark.slow
 def test_parse_select():
-    " call parse select"
+    """ call parse select"""
     parse('select * from "table", "second_table", (select * from "foo")')
 
 
 @pytest.mark.slow
 def test_parse_error():
-    " call parse select"
+    """ call parse select"""
     assert len(parse('select * fom "table"')[1]) == 0
 
 
 @pytest.mark.slow
 @pytest.mark.parametrize("specifier", ["", "both", "leading", "trailing"])
 def test_parse_trim(specifier):
-    " call parse trim(from 'foo')"
+    """ call parse trim(from 'foo')"""
     assert len(
         parse(f'select trim({specifier} from "name") from "table"')[1]) == 1
 
@@ -49,14 +49,14 @@ def test_parse_trim(specifier):
 @pytest.mark.parametrize("specifier", ["year", "month", "day",
                                        "hour", "minute", "second"])
 def test_parse_extract(specifier):
-    " call parse extract(from)"
+    """ call parse extract(from)"""
     assert len(
         parse(f'select extract({specifier} from "datefield") from "table"')[1]) == 1
 
 
 @pytest.mark.slow
 def test_parse_position():
-    "position(in)"
+    """position(in)"""
     assert len(
         parse('select position("foo" in "foobar") from "table"')[1]) == 1
 
@@ -64,6 +64,6 @@ def test_parse_position():
 @pytest.mark.slow
 @pytest.mark.parametrize("forclause", ["", "FOR 3"])
 def test_parse_substring(forclause):
-    "substring(from for)"
+    """substring(from for)"""
     assert len(
         parse(f'select substring("name" FROM 1 {forclause}) from "table"')[1]) == 1

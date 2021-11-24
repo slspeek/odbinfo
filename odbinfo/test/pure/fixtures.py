@@ -88,7 +88,7 @@ def empty_metadata_processed_loader(shared_datadir):
 
 @fixture(scope="function")
 def odbzip(shared_datadir):
-    " odb file open for reading "
+    """ odb file open for reading """
 
     with ZipFile(shared_datadir / DEFAULT_TESTDB, "r") as zipfile:
         yield zipfile
@@ -96,6 +96,6 @@ def odbzip(shared_datadir):
 
 @fixture(scope="function")
 def empty_odbzip(shared_datadir):
-    " odb file open for reading "
+    """ odb file open for reading """
     with ZipFile(shared_datadir / EMPTYDB, "r") as zipfile:
         yield zipfile

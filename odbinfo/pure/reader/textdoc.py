@@ -1,4 +1,4 @@
-"reading odt and ott files"
+"""reading odt and ott files"""
 from pathlib import Path
 from typing import Generator, List, Sequence
 from xml.dom.minidom import Element
@@ -14,7 +14,7 @@ def _text_documents(dir_path: Path) -> Generator[Path, None, None]:
 
 
 def display(db_display_elem: Element):
-    " reads the attributres of `db_display_elem`"
+    """ reads the attributres of `db_display_elem`"""
     return \
         DatabaseDisplay(
             db_display_elem.getAttribute("text:column-name"),
@@ -25,27 +25,27 @@ def display(db_display_elem: Element):
 
 
 def database_displays(doc_elem: Element) -> List[DatabaseDisplay]:
-    " returns the DatabaseDisplays in `doc_elem` "
+    """ returns the DatabaseDisplays in `doc_elem` """
     return [display(display_elem) for display_elem
             in doc_elem.getElementsByTagName("text:database-display")]
 
 
 def filter_displays(config: TextDocumentsConfig,
                     displays: Sequence[DatabaseDisplay]) -> List[DatabaseDisplay]:
-    " filter by `config`.db_registration_id"
+    """ filter by `config`.db_registration_id"""
     return \
         [display for display in displays if display.database
             == config.db_registration_id]
 
 
 def filtered_displays(config: TextDocumentsConfig, doc_element: Element) -> List[DatabaseDisplay]:
-    " filters the `doc_elem` database-diplays by `config`.db_registration_id"
+    """ filters the `doc_elem` database-diplays by `config`.db_registration_id"""
     return filter_displays(
         config, database_displays(doc_element))
 
 
 def text_document(doc_path: Path, displays: List[DatabaseDisplay]) -> TextDocument:
-    " returns a TextDocument from `doc_path` and `displays`"
+    """ returns a TextDocument from `doc_path` and `displays`"""
     return TextDocument(
         doc_path.stem,
         doc_path.name,
@@ -55,7 +55,7 @@ def text_document(doc_path: Path, displays: List[DatabaseDisplay]) -> TextDocume
 
 
 def read_text_documents(config: TextDocumentsConfig) -> List[TextDocument]:
-    " search odt, ott files and look for database-display fields"
+    """ search odt, ott files and look for database-display fields"""
     docs = []
     if config.search_locations:
         for search_loc in config.search_locations:

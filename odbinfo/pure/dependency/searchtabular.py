@@ -1,4 +1,4 @@
-" search dependencies in tabular objects "
+""" search dependencies in tabular objects """
 from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import EmbeddedQuery, Key, Table, Tabular, Token
@@ -11,9 +11,9 @@ from odbinfo.pure.dependency.util import link_token
 
 def search_deps_in_queries(tabular_seq: Sequence[Tabular],
                            queries: Iterable[EmbeddedQuery]) -> None:
-    " find uses of `tabulars` in `queries` "
+    """ find uses of `tabulars` in `queries` """
     def find_tabulars_in_query(query: EmbeddedQuery) -> None:
-        " find tabular uses in `query` "
+        """ find tabular uses in `query` """
         def find_tabular_in_query(tabular: Tabular) -> None:
             def find_tabular_in_token(token: Token) -> None:
                 if tabular.users_match(token.text[1:-1]):
@@ -31,7 +31,7 @@ def search_deps_in_queries(tabular_seq: Sequence[Tabular],
 
 
 def search_tables_in_tables(tables: Sequence[Table]) -> None:
-    " search for foreign key references amoung tables "
+    """ search for foreign key references amoung tables """
     def search_in_one_table(atable: Table) -> None:
 
         def search_one_key(key: Key) -> None:

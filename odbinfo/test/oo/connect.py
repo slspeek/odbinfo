@@ -1,4 +1,4 @@
-""" LibreOffice starter and connecter test utilities """
+""" LibreOffice starter and connection test utilities """
 import logging
 import shlex
 import subprocess
@@ -43,11 +43,11 @@ def start_office(file):
 # pylint:disable=unused-argument
 @fixture(scope="function")
 def testdb_doc(libreoffice, shared_datadir):
-    " libreoffice document 'testdb.odb' "
+    """ libreoffice document 'testdb.odb' """
     filename = (shared_datadir / DEFAULT_TESTDB).as_uri()
 
-    adesktop = desktop()
-    doc = adesktop.loadComponentFromURL(filename, "_blank", 0, ())
+    a_desktop = desktop()
+    doc = a_desktop.loadComponentFromURL(filename, "_blank", 0, ())
     yield doc
     doc.close(True)
 
@@ -56,11 +56,11 @@ def testdb_doc(libreoffice, shared_datadir):
 # pylint:disable=unused-argument
 @fixture(scope="function")
 def emptydb_doc(libreoffice, shared_datadir):
-    " libreoffice document 'emptydb.odb' "
+    """ libreoffice document 'emptydb.odb' """
     filename = (shared_datadir / EMPTYDB).as_uri()
 
-    adesktop = desktop()
-    doc = adesktop.loadComponentFromURL(filename, "_blank", 0, ())
+    a_desktop = desktop()
+    doc = a_desktop.loadComponentFromURL(filename, "_blank", 0, ())
     yield doc
     doc.close(True)
 
@@ -95,14 +95,14 @@ def get_context():
     return ctx
 
 
-def smgr():
+def service_manager():
     """ Returns a ServiceManager """
     return get_context().ServiceManager
 
 
 def desktop():
     """ Returns a Desktop """
-    return smgr().createInstance("com.sun.star.frame.Desktop")
+    return service_manager().createInstance("com.sun.star.frame.Desktop")
 
 
 def datasource():

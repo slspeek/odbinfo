@@ -23,7 +23,7 @@ def test_template_regression_empty(fixture_path, directory_regression):
 
 
 def perform_template_regression_test(name, fixture_path, directory_regression):
-    " generate report and verify"
+    """ generate report and verify"""
 
     site_path = fixture_path / "template_regression_input" / name
     run_gohugo(site_path)

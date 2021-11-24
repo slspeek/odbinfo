@@ -1,4 +1,4 @@
-" search dependencies in ui "
+""" search dependencies in ui """
 from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import (BasicFunction, Commander, DatabaseDisplay,
@@ -11,7 +11,7 @@ from odbinfo.pure.datatype import (BasicFunction, Commander, DatabaseDisplay,
 
 def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
                                           eventlisteners: Iterable[EventListener]):
-    "searches for references to basic macros in eventlisteners"
+    """searches for references to basic macros in eventlisteners"""
     for evl in eventlisteners:
         for func in funcs:
             if f"{func.library}.{func.module}.{func.name}" == evl.parsescript():
@@ -24,9 +24,9 @@ def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
 
 def search_deps_in_commander(dataobjects: Sequence[WebPage],
                              commander_seq: Sequence[Commander]) -> None:
-    " find uses of dataobject in report"
+    """ find uses of dataobject in report"""
     def find_deps_in_commander(commander: Commander) -> None:
-        " find dependency uses in `report` "
+        """ find dependency uses in `report` """
         def match_one_dep(dependency: WebPage) -> None:
             if (not commander.issqlcommand
                     and dependency.users_match(commander.command)):
@@ -39,7 +39,7 @@ def search_deps_in_commander(dataobjects: Sequence[WebPage],
 
 def search_deps_in_documents(dataobjects: Sequence[WebPage],
                              documents: Sequence[TextDocument]) -> None:
-    " find uses of dataobject in document"
+    """ find uses of dataobject in document"""
     def find_deps_in_doc(document: TextDocument) -> None:
 
         def find_one_dep(dependency: WebPage) -> None:

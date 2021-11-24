@@ -9,25 +9,25 @@ from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find,
 
 
 def scan_basic(alltokens: List[Token], library: str, module: str) -> List[BasicFunction]:
-    " extract procedure names "
+    """ extract procedure names """
     tokens = list(filter(lambda x: not x.hidden, alltokens))
     scanner = ModuleScanner(tokens, alltokens, library, module)
     return scanner.scan()
 
 
 def analyze_callable(acallable: BasicFunction):
-    "Extract and store functioncalls and stringliterals from the body"
+    """Extract and store functioncalls and stringliterals from the body"""
     acallable.calls = extract_functioncalls(acallable)
     acallable.strings = extract_stringliterals(acallable)
 
 
 def extract_functioncalls(acallable: BasicFunction):
-    "Extract functioncalls"
+    """Extract functioncalls"""
     return BodyScanner(acallable.body_tokens).functioncalls()
 
 
 def extract_stringliterals(acallable: BasicFunction) -> List[Token]:
-    "Extract stringliterals"
+    """Extract stringliterals"""
     return list(
         filter(
             lambda t: t.type == OOBasicLexer.STRINGLITERAL,
@@ -37,7 +37,7 @@ def extract_stringliterals(acallable: BasicFunction) -> List[Token]:
 
 # pylint:disable=too-few-public-methods
 class ModuleScanner(Scanner):
-    "scan for procedure names"
+    """scan for procedure names"""
 
     def __init__(self, tokens: List[Token], alltokens: List[Token], library: str, module: str):
         super().__init__(tokens)
@@ -60,7 +60,7 @@ class ModuleScanner(Scanner):
         return acallable
 
     def scan(self) -> List[BasicFunction]:
-        "perform the scan"
+        """perform the scan"""
         callables = []
         callable_infos = allmacros(self)
         if callable_infos:
@@ -71,7 +71,7 @@ class ModuleScanner(Scanner):
 
 
 def signature(parser) -> Tuple[int, int, List[Token]]:
-    " recognize macro signature "
+    """ recognize macro signature """
     start = parser.cursor
     result = a(skip(maybe(anyof(OOBasicLexer.GLOBAL,
                                 OOBasicLexer.PUBLIC,
@@ -87,7 +87,7 @@ def signature(parser) -> Tuple[int, int, List[Token]]:
 
 
 def macro(parser) -> Tuple[int, int, int, int, Token]:
-    " recognize callable "
+    """ recognize callable """
 
     amacro = a(signature, skip(find(anyof(OOBasicLexer.END_FUNCTION,
                                           OOBasicLexer.END_SUB))))(parser)
@@ -97,16 +97,16 @@ def macro(parser) -> Tuple[int, int, int, int, Token]:
 
 
 def allmacros(parser) -> List[Tuple[int, int, int, int, Token]]:
-    " find all macros "
+    """ find all macros """
     macros = maybe(someof(find(macro)))(parser)
     return macros
 
 
 class BodyScanner(Scanner):
-    "Scan for functioncalls"
+    """Scan for functioncalls"""
 
     def functioncalls(self):
-        "find all tokens in functioncalls"
+        """find all tokens in functioncalls"""
         calls = all_functioncalls(self)
         if not calls:
             calls = []
@@ -114,12 +114,12 @@ class BodyScanner(Scanner):
 
 
 def all_functioncalls(parser):
-    "find all functioncalls "
+    """find all functioncalls """
     return maybe(someof(find(functioncall)))(parser)
 
 
 def functioncall(parser):
-    " Parse a function call "
+    """ Parse a function call """
     tokens = a(maybe(OOBasicLexer.IDENTIFIER, skip(OOBasicLexer.DOT)),
                OOBasicLexer.IDENTIFIER,
                skip(maybe(OOBasicLexer.WS), OOBasicLexer.LPAREN))(parser)
@@ -129,5 +129,5 @@ def functioncall(parser):
 
 
 def get_basic_tokens(basiccode) -> List[Token]:
-    " Tokenize `basiccode` "
+    """ Tokenize `basiccode` """
     return get_tokens(get_token_stream(basiccode, OOBasicLexer), Token)

@@ -8,14 +8,14 @@ from odbinfo.pure.datatype import Token
 
 
 def get_token_stream(source_code, lexer) -> CommonTokenStream:
-    " return antlr4.CommonTokenStream on `source_code` with `lexer`"
+    """ return antlr4.CommonTokenStream on `source_code` with `lexer`"""
     input_stream = InputStream(source_code)
     lexer = lexer(input_stream)
     return CommonTokenStream(lexer)
 
 
 def get_tokens(stream, token_class):
-    "Read `stream` and return the tokens"
+    """Read `stream` and return the tokens"""
     stream.fill()
     # exclude EOF token, by leaving the last token out
     atokens = stream.tokens[:-1]
@@ -24,7 +24,7 @@ def get_tokens(stream, token_class):
 
 
 def convert_token(atoken, token_class):
-    " convert antlr4 token to Token "
+    """ convert antlr4 token to Token """
     return\
         token_class(
             atoken.text,
@@ -35,7 +35,7 @@ def convert_token(atoken, token_class):
 
 
 class Scanner:
-    " Holds position "
+    """ Holds position """
 
     def __init__(self, tokens: Sequence[Token]):
         self.tokens = tokens
@@ -45,7 +45,7 @@ class Scanner:
         self.set_cursor(0)
 
     def eat(self, token_type):
-        " consume token"
+        """ consume token"""
         if self.cur_token is not None and self.cur_token.type == token_type:
             token = self.cur_token
             self.step()
@@ -53,30 +53,30 @@ class Scanner:
         return None
 
     def set_cursor(self, position: int):
-        " set cur_node "
+        """ set cur_node """
         if position < self.tokens_length:
             self.cursor = position
             self.cur_token = self.tokens[self.cursor]
 
     def step(self):
-        " Go one token further"
+        """ Go one token further"""
         if self.cur_token is not None:
             self.cursor += 1
             self.set_cursor(self.cursor)
 
 
 class ParserError(Exception):
-    "Parser error"
+    """Parser error"""
 
 
 def unify(*args):
-    " wrap non callables in a()"
+    """ wrap non callables in a()"""
     args = (arg if callable(arg) else a(arg) for arg in args)
     return a(*args)
 
 
 def just(token_type):
-    " just a token of type `type`"
+    """ just a token of type `type`"""
     def inner(parser):
         token = parser.eat(token_type)
         if token is None:
@@ -86,7 +86,7 @@ def just(token_type):
 
 
 def maybe(*args):
-    " maybe read `args`"
+    """ maybe read `args`"""
     def inner(parser):
         mark = parser.cursor
         result = None
@@ -99,14 +99,14 @@ def maybe(*args):
 
 
 def skip(*args):
-    " skip `args` "
+    """ skip `args` """
     def inner(parser):
         unify(*args)(parser)
     return inner
 
 
 def anyof(*args):
-    " eat any of `args`"
+    """ eat any of `args`"""
     def inner(parser):
         for arg in args:
             result = maybe(arg)(parser)
@@ -117,7 +117,7 @@ def anyof(*args):
 
 
 def someof(*args):
-    "eat one or more `args`"
+    """eat one or more `args`"""
     def inner(parser):
         result = unify(*args)(parser)
         while True:
@@ -133,7 +133,7 @@ def someof(*args):
 
 
 def a(*args):
-    "eat `args`"
+    """eat `args`"""
     def inner(parser):
         result = []
         for arg in args:
@@ -150,7 +150,7 @@ def a(*args):
 
 
 def find(*args):
-    " look for `args`"
+    """ look for `args`"""
     def inner(parser):
         mark = parser.cursor
         for cursor in range(parser.cursor, len(parser.tokens)):

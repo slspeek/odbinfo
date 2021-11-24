@@ -1,4 +1,4 @@
-" Tabular like datatypes "
+""" Tabular like datatypes """
 from dataclasses import dataclass, field
 from itertools import chain
 from typing import List, Union
@@ -29,8 +29,8 @@ KEYRULES = {0: "Cascade",
 
 @dataclass
 class BaseColumn(NamedNode):
-    "https://www.openhttps://www.openoffice.org/api/docs/"\
-        "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
+    """https://www.openhttps://www.openoffice.org/api/docs/"\
+        "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"""
     autoincrement: bool
     nullable: Union[str, int]
     tablename: str
@@ -44,8 +44,8 @@ class BaseColumn(NamedNode):
 
 @dataclass
 class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
-    "https://www.openhttps://www.openoffice.org/api/docs/"\
-        "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"
+    """https://www.openhttps://www.openoffice.org/api/docs/"\
+        "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"""
     position: int
     issigned: bool
     writable: bool
@@ -54,10 +54,10 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 @dataclass
 class EmbeddedQuery(NamedNode):
-    " Query object embedded in Report, Listbox or SubForm "\
+    """ Query object embedded in Report, Listbox or SubForm "\
         " Query properties see:"\
         " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
-        " QueryDefinition.html"
+        " QueryDefinition.html"""
     command: str
     columns: List[QueryColumn] = field(init=False, default_factory=list)
 
@@ -74,7 +74,7 @@ class EmbeddedQuery(NamedNode):
 
 @dataclass
 class Query(EmbeddedQuery, WebPageWithUses):
-    " Query properties "
+    """ Query properties """
 
     def __post_init__(self):
         super().__post_init__()
@@ -84,7 +84,7 @@ class Query(EmbeddedQuery, WebPageWithUses):
 
 @dataclass
 class View(Query):
-    " View properties "
+    """ View properties """
 
 
 @dataclass

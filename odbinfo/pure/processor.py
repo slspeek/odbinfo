@@ -14,7 +14,7 @@ from odbinfo.pure.util import timed
 
 
 def copy_tokens(module):
-    "Copies the modules tokens"
+    """Copies the modules tokens"""
     def copy_token(token):
         new_token = dataclasses.replace(token)
         new_token.link = token.link
@@ -52,26 +52,26 @@ def _process_query(query: EmbeddedQuery) -> None:
 
 
 def set_depth(depth: int, subform: SubForm) -> None:
-    " sets depth recursively in `subform`"
+    """ sets depth recursively in `subform`"""
     subform.depth = depth
     for asubform in subform.subforms:
         set_depth(depth + 1, asubform)
 
 
 def height(subform: SubForm) -> int:
-    " max path length to a leaf subform "
+    """ max path length to a leaf subform """
     if subform.subforms:
         return max(height(sf) for sf in subform.subforms) + 1
     return 0
 
 
 def set_form_height(form: Form) -> None:
-    " set the max height into the `form` "
+    """ set the max height into the `form` """
     form.height = max([height(sf) for sf in form.subforms], default=0)
 
 
 def process_subform(subform: SubForm) -> None:
-    " simplifies control.type for all (nested) controls "
+    """ simplifies control.type for all (nested) controls """
     def process_control(control: Union[Control, Grid]) -> None:
         if isinstance(control, Grid):
             return
@@ -85,7 +85,7 @@ def process_subform(subform: SubForm) -> None:
 
 @timed("Process form", arg=0, indent=6)
 def process_form(form: Form) -> None:
-    " calculate depth for its subforms "
+    """ calculate depth for its subforms """
     for subform in form.subforms:
         set_depth(0, subform)
         process_subform(subform)
@@ -93,7 +93,7 @@ def process_form(form: Form) -> None:
 
 
 def aggregate_uses_from_children(user_agg):
-    "Collect aggregated uses from its children "
+    """Collect aggregated uses from its children """
     for user in user_agg.all_objects():
         if isinstance(user, User) and user.link:
             user_agg.uses.append(user.link)
@@ -101,21 +101,21 @@ def aggregate_uses_from_children(user_agg):
 
 @timed("Aggregate uses", indent=4)
 def aggregate_uses(metadata: Metadata) -> None:
-    "Collect all aggregated uses "
+    """Collect all aggregated uses """
     for use_agg in metadata.all_objects():
         if isinstance(use_agg, UseAggregator):
             aggregate_uses_from_children(use_agg)
 
 
 def aggregate_used_by(metadata):
-    "Collect all used_by"
+    """Collect all used_by"""
     for user in metadata.all_active_users():
         metadata.usable_by_link[user.link].used_by.append(user.identifier)
 
 
 @timed("Parse queries", indent=4)
 def process_queries(metadata: Metadata):
-    "process all query-like objects"
+    """process all query-like objects"""
     for query in metadata.query_defs:
         _process_query(query)
     for view in metadata.view_defs:
@@ -125,7 +125,7 @@ def process_queries(metadata: Metadata):
 
 
 def preprocess_commanders(metadata: Metadata):
-    " if command is a direct query, set an EmbeddedQuery obj"
+    """ if command is a direct query, set an EmbeddedQuery obj"""
     for cmdr in metadata.commanders():
         if cmdr.issqlcommand:
             cmdr.embedded_query = \
@@ -134,7 +134,7 @@ def preprocess_commanders(metadata: Metadata):
 
 @timed("Process metadata", indent=2)
 def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
-    " preprocessing of the data before it is send to hugo "
+    """ preprocessing of the data before it is send to hugo """
     preprocess_commanders(metadata)
     _process_libraries(metadata.library_defs)
     process_queries(metadata)

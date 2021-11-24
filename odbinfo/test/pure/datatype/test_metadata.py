@@ -1,4 +1,4 @@
-"tests for metadata"
+"""tests for metadata"""
 import unittest
 
 import pytest

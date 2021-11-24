@@ -1,4 +1,4 @@
-" Metadata class "
+""" Metadata class """
 import itertools
 from dataclasses import dataclass, field
 from itertools import chain
@@ -48,13 +48,13 @@ class Metadata(WebPage):
         self.usable_by_link = {}
 
     def build_parent_index(self):
-        " set the parents in all objects "
+        """ set the parents in all objects """
         for obj in self.all_objects():
             for child in obj.children():
                 child.parent = obj
 
     def basicfunction_defs(self) -> List[BasicFunction]:
-        "collect all callables from libraries"
+        """collect all callables from libraries"""
         result = []
         for lib in self.library_defs:
             for module in lib.modules:
@@ -62,32 +62,32 @@ class Metadata(WebPage):
         return result
 
     def module_defs(self) -> List[Module]:
-        "collect all basic modules from libraries"
+        """collect all basic modules from libraries"""
         result = []
         for lib in self.library_defs:
             result.extend(lib.modules)
         return result
 
     def pythonmodule_defs(self) -> List[PythonModule]:
-        "collect all python modules from libraries"
+        """collect all python modules from libraries"""
         result = []
         for lib in self.pythonlibrary_defs:
             result.extend(lib.modules)
         return result
 
     def embeddedquery_defs(self) -> Iterable[EmbeddedQuery]:
-        " collect all EmbeddedQuery objects "
+        """ collect all EmbeddedQuery objects """
         return \
             (obj for obj in self.all_objects() if obj.__class__ == EmbeddedQuery)
 
     def commanders(self):
-        " collect all AbstractCommander objects"
+        """ collect all AbstractCommander objects"""
         return \
             (obj for obj in self.all_objects()
              if isinstance(obj, AbstractCommander))
 
     def eventlisteners(self):
-        " collect all EventListener objects"
+        """ collect all EventListener objects"""
         return \
             (obj for obj in self.all_objects()
              if isinstance(obj, EventListener))
@@ -106,12 +106,12 @@ class Metadata(WebPage):
             )
 
     def set_obj_ids(self) -> None:
-        " numbers all contained objects "
+        """ numbers all contained objects """
         for index, obj in zip(itertools.count(), self.all_objects()):
             obj.obj_id = str(index)
 
     def create_index(self) -> None:
-        " make an index of linkable objects "
+        """ make an index of linkable objects """
         for content in self.all_objects():
             self.index[content.obj_id] = content
             if isinstance(content, Usable):
@@ -119,7 +119,7 @@ class Metadata(WebPage):
                 self.usable_by_link[content.identifier] = content
 
     def all_active_users(self):
-        " returns all User objects with a link set from the tree "
+        """ returns all User objects with a link set from the tree """
         # exclude tokens in Modules
         # pylint:disable=no-member
 

@@ -10,7 +10,7 @@ from odbinfo.pure.parser.sqlite.SQLiteParserListener import \
 
 
 class SQLListener(SQLiteParserListener):
-    "Collect tablenames"
+    """Collect tablenames"""
 
     def __init__(self, tokens):
         super().__init__()
@@ -30,7 +30,7 @@ class SQLListener(SQLiteParserListener):
 
 
 def parse(sqlcommand):
-    " Returns parsetree object "
+    """ Returns parsetree object """
     # print("Parsing: ", sqlcommand)
     stream = get_token_stream(sqlcommand, SQLiteLexer)
     tokens = get_tokens(stream, SQLToken)

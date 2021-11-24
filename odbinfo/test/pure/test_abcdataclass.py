@@ -1,4 +1,4 @@
-" for my personal understanding of python"
+""" for my personal understanding of python"""
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
@@ -6,27 +6,27 @@ import pytest
 
 
 class AnAbstractClass(ABC):  # pylint: disable=too-few-public-methods
-    "abstract"
+    """abstract"""
     @property
     @abstractmethod
     def name(self):
-        "name property"
+        """name property"""
 
 
 def test_a():
-    "this shows you cannot use dataclasses to implement abstractproperties"
+    """this shows you cannot use dataclasses to implement abstractproperties"""
     @dataclass
     class SubClass(AnAbstractClass):  # pylint: disable=too-few-public-methods
-        "subclass"
+        """subclass"""
         name: str
     with pytest.raises(TypeError):
         SubClass("MyName")  # pylint: disable=abstract-class-instantiated
 
 
 def test_classvar():
-    "test class property"
-    class ClassB():  # pylint: disable=too-few-public-methods
-        " class with class property"
+    """test class property"""
+    class ClassB:  # pylint: disable=too-few-public-methods
+        """ class with class property"""
         name: str = "Hey"
 
     instance = ClassB()

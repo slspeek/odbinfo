@@ -1,4 +1,4 @@
-" builder module: calls gohugo"
+""" builder module: calls gohugo"""
 import os
 import shlex
 import socket
@@ -13,13 +13,13 @@ from odbinfo.pure.writer import localsite
 
 
 def run_gohugo(site_path: Path) -> None:
-    "Run the hugo system command in `site_path` directory"
+    """Run the hugo system command in `site_path` directory"""
     with chdir(site_path):
         run_cmd("hugo", "unable to build hugo site")
 
 
 def find_free_port() -> int:
-    "returns a free port number"
+    """returns a free port number"""
     # pylint: disable=no-member
     with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
         sock.bind(('', 0))
@@ -37,7 +37,7 @@ def _is_port_open(port):
 
 
 def convert_local(site_path: Path) -> None:
-    " Uses wget to rewrite hugo website to locally browsable site"
+    """ Uses wget to rewrite hugo website to locally browsable site"""
     localsite_path = localsite(site_path)
     os.makedirs(localsite_path)
 
@@ -61,7 +61,7 @@ def convert_local(site_path: Path) -> None:
 
 
 def open_browser(site_dir: Path) -> None:
-    "Opens a webbrowser on `site_dir`"
+    """Opens a webbrowser on `site_dir`"""
     if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":
         site_abs_path = site_dir.resolve() / "index.html"
         webbrowser.open(site_abs_path.as_uri())
@@ -69,7 +69,7 @@ def open_browser(site_dir: Path) -> None:
 
 @timed("Build and open hugo site", indent=2)
 def build(site_path: Path):
-    "builds a written site on `site_path`"
+    """builds a written site on `site_path`"""
     run_gohugo(site_path)
     convert_local(site_path)
     open_browser(localsite(site_path))

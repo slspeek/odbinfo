@@ -3,3 +3,7 @@ ignore=odbinfo/pure/parser/sqlite,odbinfo/pure/parser/oobasic
 
 [DESIGN]
 max-parents=12
+
+[MISCELLANEOUS]
+# List of note tags to take in consideration, separated by a comma.
+notes=

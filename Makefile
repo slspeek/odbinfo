@@ -39,11 +39,11 @@ PYTEST=PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-
 
 build: mypy metric unitcoverage
 
-travis: installantlr precommit
+travis: installantlr post_checkout precommit
 
 precommit:  clean genparser info check alltest
 
-all: ctags mypy metric travis install_oxt
+all: ctags mypy metric precommit install_oxt
 
 prepare:
 	@echo prepare start
@@ -102,24 +102,23 @@ processor_fixture: metadata_fixture
 
 write_site_fixture: processor_fixture
 	$(PYTEST)  --force-regen $(puretestloc)/test_write_site_regression.py || $\
-	((rm -rf $(fixtureloc)/fixtures/template_regression_input || true) && $\
+	($(PYTEST)  --force-regen $(puretestloc)/test_write_site_regression.py && $\
+	(rm -rf $(fixtureloc)/fixtures/template_regression_input || true) && $\
 	cp -r $(puretestloc)/test_write_site_regression $(fixtureloc)/fixtures/template_regression_input)
 
 
 template_fixture: write_site_fixture
-	$(PYTEST)  --force-regen $(puretestloc)/test_template_regression.py
-	((rm -rf $(fixtureloc)/fixtures/convert_local_input || true) && $\
+	$(PYTEST)  --force-regen $(puretestloc)/test_template_regression.py || $\
+	($(PYTEST)  --force-regen $(puretestloc)/test_template_regression.py && $\
+	(rm -rf $(fixtureloc)/fixtures/convert_local_input || true) && $\
 	cp -r $(puretestloc)/test_template_regression/test_template_regression $(fixtureloc)/fixtures/convert_local_input)
 
 convert_local_fixture: template_fixture
 	$(PYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py || $\
 	$(PYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py
 
-
-fixtures: convert_local_fixture
-	$(PYTEST) --force-regen $(testloc)
-
-
+fixtures: clean convert_local_fixture
+	$(PYTEST) --force-regen -m "not tooslow" $(testloc)
 
 unit:
 	$(PYTEST) $(unit) $(testloc)
@@ -231,4 +230,10 @@ mypy_report:
 
 mypy:
 	mypy --show-error-codes --disable-error-code  import $(pythonsources)
+
+post_checkout:
+	-mkdir $(puretestloc)/test_write_site_regression/test_write_site_empty/content
+	-mkdir $(puretestloc)/test_writemetadata_regression/test_writemetadata_empty/content
+	-mkdir $(fixtureloc)/fixtures/template_regression_input/test_write_site_empty/content
+	-mkdir $(fixtureloc)/fixtures/template_regression_input/test_write_site_empty/content
 

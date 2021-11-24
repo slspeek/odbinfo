@@ -1,4 +1,4 @@
-" test report reading "
+""" test report reading """
 import dataclasses
 from unittest.mock import Mock
 
@@ -11,13 +11,13 @@ from odbinfo.test.pure.reader.test_common import OO_NAMESPACES, ZipFileMock
 
 @pytest.mark.slow
 def test_read_reports(odbzip, data_regression):
-    " reports "
+    """ reports """
     data_regression.check(list(map(dataclasses.asdict, read_reports(odbzip))))
 
 
 @pytest.mark.slow
 def test_read_reports_empty(empty_odbzip):
-    " read no reports "
+    """ read no reports """
     assert len(read_reports(empty_odbzip)) == 0
 
 

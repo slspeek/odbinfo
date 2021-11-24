@@ -23,7 +23,7 @@ def test_write_site_empty(empty_metadata_processed, directory_regression):
 
 
 def write_site_test(name, metadata, directory_regression):
-    " generate report and verify"
+    """ generate report and verify"""
     conf = get_configuration(name, str(TEST_OUTPUT_PATH / "write_site_test"))
     write_site(conf, metadata)
 

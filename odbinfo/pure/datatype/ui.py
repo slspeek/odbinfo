@@ -1,4 +1,4 @@
-" Graphical User Interface datatypes "
+""" Graphical User Interface datatypes """
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
@@ -11,7 +11,7 @@ COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
 
 @dataclass  # type: ignore
 class AbstractCommander(User, ABC):
-    "Commander interface"
+    """Commander interface"""
 
     # Only if commandtype in ["command", "sql", "sqlpassthrough"]
     embedded_query: Optional[EmbeddedQuery] = field(init=False, default=None)
@@ -19,22 +19,22 @@ class AbstractCommander(User, ABC):
     @property
     @abstractmethod
     def command(self):
-        "returns the command str"
+        """returns the command str"""
 
     @property
     @abstractmethod
     def commandtype(self):
-        "returns the commandtype"
+        """returns the commandtype"""
 
     @property
     def issqlcommand(self):
-        "returns True if command contains SQL"
+        """returns True if command contains SQL"""
         return self.commandtype in COMMAND_TYPE_COMMAND
 
 
 @dataclass
 class Commander(AbstractCommander):
-    " Has a command and commandtype "
+    """ Has a command and commandtype """
     cmd: str
     cmdtype: str
 
@@ -49,7 +49,7 @@ class Commander(AbstractCommander):
 
 @dataclass
 class DatabaseDisplay(User, NamedNode):
-    " Field in TextDocument "
+    """ Field in TextDocument """
     database: str
     table: str
     tabletype: str
@@ -57,7 +57,7 @@ class DatabaseDisplay(User, NamedNode):
 
 @dataclass
 class TextDocument(WebPageWithUses):
-    " ODT or OTT file metadata "
+    """ ODT or OTT file metadata """
     filename: str
     path: str
     fields: List[DatabaseDisplay]
@@ -72,19 +72,19 @@ class TextDocument(WebPageWithUses):
 
 @dataclass
 class EventListener(User, NamedNode):
-    " Control eventlistener "
+    """ Control eventlistener """
     # event: str
     script: str
 
     def parsescript(self) -> str:
-        "returns {Lib}.{Mod}.{Func} part from script field"
+        """returns {Lib}.{Mod}.{Func} part from script field"""
         return (self.script.split(":")[1]).split("?")[0]
 
 
 @dataclass
 # pylint: disable=too-many-instance-attributes
 class Control(NamedNode):
-    " Form control "
+    """ Form control """
     controlid: str
     datafield: str
     inputrequired: bool
@@ -100,7 +100,7 @@ class Control(NamedNode):
 
 @dataclass
 class ListBox(AbstractCommander, Control):
-    " ListBox control"
+    """ ListBox control"""
     boundcolumn: int
     dropdown: bool
     listsourcetype: str
@@ -123,7 +123,7 @@ class ListBox(AbstractCommander, Control):
 
 @dataclass
 class Grid(NamedNode):
-    " Table view control"
+    """ Table view control"""
     columns: List[Control]
     type: str
 
@@ -134,7 +134,7 @@ class Grid(NamedNode):
 @dataclass
 # pylint: disable=too-many-instance-attributes
 class SubForm(Commander, NamedNode):
-    " Database subform "
+    """ Database subform """
     allowdeletes: str
     allowinserts: str
     allowupdates: str
@@ -153,7 +153,7 @@ class SubForm(Commander, NamedNode):
 
 @dataclass
 class Form(WebPageWithUses):
-    " Toplevel form "
+    """ Toplevel form """
     subforms: List[SubForm]
     height: Optional[int] = field(init=False, default=None)
 
@@ -163,7 +163,7 @@ class Form(WebPageWithUses):
 
 @dataclass
 class Report(Commander, WebPageWithUses):
-    " Report metadata "
+    """ Report metadata """
     output_type: str
     formulas: List[str]
 

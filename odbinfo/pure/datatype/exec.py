@@ -1,14 +1,14 @@
-" Executable datatypes and its containers "
+""" Executable datatypes and its containers """
 from dataclasses import dataclass, field
 from itertools import chain
-from typing import List
+from typing import List, Optional
 
 from odbinfo.pure.datatype.base import Token, WebPage, WebPageWithUses
 
 
 @dataclass
 class PythonModule(WebPage):
-    " Python Module "
+    """ Python Module """
     library: str
     source: str
 
@@ -19,7 +19,7 @@ class PythonModule(WebPage):
 
 @dataclass
 class PythonLibrary(WebPage):
-    " Python library "
+    """ Python library """
     modules: List[PythonModule]
 
     def children(self):
@@ -28,15 +28,15 @@ class PythonLibrary(WebPage):
 
 @dataclass
 class BasicCall:
-    " a function or procedure call in parsed basic code"
+    """ a function or procedure call in parsed basic code"""
     name_token: Token
-    module_token: Token
+    module_token: Optional[Token]
 
 
 # pylint:disable=too-many-instance-attributes
 @dataclass
 class BasicFunction(WebPageWithUses):
-    " Basic sub or function "
+    """ Basic sub or function """
     library: str
     module: str
     name_token_index: int = field(init=False)
@@ -55,18 +55,16 @@ class BasicFunction(WebPageWithUses):
         return self.tokens
 
     def to_dict(self):
-        self.body_tokens = None
-        del self.body_tokens
-        self.strings = None
-        del self.strings
-        self.calls = None
-        del self.calls
-        return super().to_dict()
+        result = super().to_dict()
+        del result["body_tokens"]
+        del result["strings"]
+        del result["calls"]
+        return result
 
 
 @dataclass
 class Module(WebPage):
-    " Basic module"
+    """ Basic module"""
     library: str
     source: str
     callables: List[BasicFunction] = field(init=False, default_factory=list)
@@ -90,7 +88,7 @@ class Module(WebPage):
 
 @dataclass
 class Library(WebPage):
-    " Basic library"
+    """ Basic library"""
     modules: List[Module]
 
     def children(self):

@@ -1,4 +1,4 @@
-" factory of test objects "
+""" factory of test objects """
 from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Key, Table
 from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,

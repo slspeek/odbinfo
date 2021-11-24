@@ -1,4 +1,4 @@
-" utilities for dependency search "
+""" utilities for dependency search """
 import logging
 
 from odbinfo.pure.datatype import Token
@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 def link_token(token: Token, referand):
-    "link `token` to `referand`"
+    """link `token` to `referand`"""
 
     if token.link:
         # pylint:disable=logging-too-many-args

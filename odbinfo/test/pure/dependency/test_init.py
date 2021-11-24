@@ -1,4 +1,4 @@
-" test search_dependencies "
+""" test search_dependencies """
 
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.test.pure.datatype import factory

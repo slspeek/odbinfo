@@ -1,4 +1,4 @@
-" Configuration classes "
+""" Configuration classes """
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -6,7 +6,7 @@ from typing import List, Optional
 
 
 class ConfigurationAttributeNotSet(Exception):
-    "For attributes that need to be there"
+    """For attributes that need to be there"""
 
     def __init__(self, attribute: str):
         self.attribute = attribute
@@ -15,7 +15,7 @@ class ConfigurationAttributeNotSet(Exception):
 
 @dataclass
 class GeneralConfig:
-    " General options "
+    """ General options """
     output_dir: Optional[str]
     base_url: str
 
@@ -77,19 +77,19 @@ EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",
 
 # EXCLUDED_TYPES: List[str] = []
 
-ALLWAYS_EXCLUDED = ["metadata", "token", "sqltoken"]
+ALWAYS_EXCLUDED = ["metadata", "token", "sqltoken"]
 
 
 @dataclass
 class TextDocumentsConfig:
-    " Config for the search of textdocuments "
+    """ Config for the search of textdocuments """
     db_registration_id: Optional[str]
     search_locations: Optional[List[str]]
 
 
 @dataclass
 class GraphConfig:
-    " Graph options "
+    """ Graph options """
     user_excludes: List[str]
     type_attrs: dict
     relation_attrs: dict
@@ -99,13 +99,13 @@ class GraphConfig:
 
     @property
     def excludes(self):
-        "property 'excluded' consists off ALLWAYS_EXCLUDED and user_excludes"
-        return ALLWAYS_EXCLUDED + self.user_excludes
+        """property 'excluded' consists off ALWAYS_EXCLUDED and user_excludes"""
+        return ALWAYS_EXCLUDED + self.user_excludes
 
 
 @dataclass
 class Configuration:
-    " Overall configuration "
+    """ Overall configuration """
 
     name: str
     general: GeneralConfig
@@ -114,14 +114,14 @@ class Configuration:
 
     @property
     def site_path(self) -> Path:
-        "returns the path of the hugo site"
+        """returns the path of the hugo site"""
         if self.general.output_dir is None:
             raise ConfigurationAttributeNotSet("general.output_dir")
         return Path(self.general.output_dir) / self.name
 
 
 def get_configuration(name=None, output_dir=None) -> Configuration:
-    " returns configuration "
+    """ returns configuration """
     return \
         Configuration(
             name,
@@ -135,5 +135,4 @@ def get_configuration(name=None, output_dir=None) -> Configuration:
                 True
             ),
             TextDocumentsConfig(None, None)
-
         )

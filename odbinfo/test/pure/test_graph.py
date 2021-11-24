@@ -1,4 +1,4 @@
-"test for graph module"
+"""test for graph module"""
 
 import unittest
 
@@ -18,15 +18,12 @@ from odbinfo.test.pure.datatype import factory
 from odbinfo.test.pure.fixtures import metadata_processed
 
 
-class HugoFilename(unittest.TestCase):
-    def setUp(self):
-        pass
+def test_hugo_filename_to_lower():
+    assert hugo_filename("Foo") == "foo"
 
-    def test_to_lower(self):
-        assert hugo_filename("Foo") == "foo"
 
-    def test_spaces(self):
-        assert hugo_filename("F oo") == "f-oo"
+def test__hugo_filename_spaces():
+    assert hugo_filename("F oo") == "f-oo"
 
 
 class Href(unittest.TestCase):
@@ -338,6 +335,6 @@ class GenerateGraphs(GenerateMainGraph):
 
 @pytest.mark.slow
 def test_generate_main_graph(metadata_processed, data_regression):
-    "run generate_main_graph"
+    """run generate_main_graph"""
     conf = get_configuration("test_generate_main_graph")
     data_regression.check(generate_main_graph(metadata_processed, conf).source)

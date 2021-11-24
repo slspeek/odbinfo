@@ -13,13 +13,13 @@ from odbinfo.pure.writer import write_site
 
 
 def default_config_path() -> Path:
-    " returns the default location of the configuration file "
+    """ returns the default location of the configuration file """
     return Path.home() / ".odbinfo" / "config.yaml"
 
 
 def read_configuration(config_path: Path = default_config_path()):
-    " reads configuration from `config_path` if exits "\
-        " otherwise a default configuration is written in `config_path`"
+    """ reads configuration from `config_path` if exits "\
+        " otherwise a default configuration is written in `config_path`"""
     if not config_path.exists():
         if not config_path.parent.exists():
             config_path.parent.mkdir()
@@ -32,7 +32,7 @@ def read_configuration(config_path: Path = default_config_path()):
 
 
 def set_configuration_defaults(config: Configuration, odbpath: Path):
-    " sets sensible defaults "
+    """ sets sensible defaults """
     config.name = odbpath.stem
     if not config.general.output_dir:
         config.general.output_dir = str(odbpath.parent / ".odbinfo")

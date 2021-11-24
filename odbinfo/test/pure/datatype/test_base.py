@@ -1,4 +1,4 @@
-" test base classes "
+""" test base classes """
 import re
 
 import pytest
@@ -29,15 +29,14 @@ def test_node_to_dict():
 
 
 def test_node_empty_children():
-    " verifies that the default implementation of children returns"\
-        " the empty iterator "
+    """ verifies that the default implementation of children returns"\
+        " the empty iterator """
     node = Node()
     assert not node.children()
 
 
 def test_node_all_objects():
-    " a child occurs in all_objects "
-    node = Node()
+    """ a child occurs in all_objects """
     child = Node()
 
     class ANode(Node):
@@ -49,7 +48,7 @@ def test_node_all_objects():
 
 
 def test_node_users_match():
-    " default implementation of users_match does string equality "
+    """ default implementation of users_match does string equality """
     named = NamedNode("foo")
     assert named.users_match("foo")
 
@@ -96,5 +95,5 @@ def test_get_identifier_error():
 
 
 def test_content_type():
-    "test content_type"
+    """test content_type"""
     assert content_type(WebPage) == "webpage"

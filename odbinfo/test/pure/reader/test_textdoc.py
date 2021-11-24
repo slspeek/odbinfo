@@ -1,4 +1,4 @@
-" test reading odt and ott files "
+""" test reading odt and ott files """
 import unittest
 from pathlib import Path
 
@@ -133,14 +133,14 @@ class TextDocument(unittest.TestCase):
 
 @pytest.mark.slow
 def test_text_document(shared_datadir):
-    " find odts "
+    """ find odts """
     directory = (shared_datadir / DEFAULT_TESTDB).parent
     assert len(list(_text_documents(directory))) == 3
 
 
 @pytest.mark.slow
 def test_read_text_documents(shared_datadir):
-    " find odts "
+    """ find odts """
     directory = (shared_datadir / DEFAULT_TESTDB).parent
     assert len(read_text_documents(
         TextDocumentsConfig("testdb", [directory]))) == 1

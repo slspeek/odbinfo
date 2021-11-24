@@ -1,4 +1,4 @@
-" test module for exec.py "
+""" test module for exec.py """
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 

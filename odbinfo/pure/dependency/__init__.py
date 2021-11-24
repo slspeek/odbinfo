@@ -1,15 +1,6 @@
-" Dependency searcher for metadata "
+""" Dependency searcher for metadata """
 
-import logging
-from functools import partial
-from typing import Iterable, Sequence
-
-from odbinfo.pure.datatype import (BasicCall, BasicFunction, Commander,
-                                   DatabaseDisplay, EmbeddedQuery,
-                                   EventListener, Identifier, Key, Metadata,
-                                   Module, Table, TextDocument, Token, WebPage,
-                                   content_type)
-from odbinfo.pure.datatype.base import Usable
+from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.dependency.searchexec import (
     _link_name_tokens, rewrite_module_callable_links,
     search_callable_in_callable, search_string_refs_in_callables)
@@ -17,10 +8,15 @@ from odbinfo.pure.dependency.searchtabular import *
 from odbinfo.pure.dependency.searchui import *
 from odbinfo.pure.util import timed
 
+__all__ = [
+    "search_dependencies",
+    "_link_name_tokens"
+]
+
 
 @timed("Search dependencies", indent=4)
 def search_dependencies(metadata: Metadata):
-    " dependency search in `metadata`"
+    """ dependency search in `metadata`"""
     search_basicfunction_in_eventlistener(metadata.basicfunction_defs(),
                                           metadata.eventlisteners())
     search_tables_in_tables(metadata.table_defs)

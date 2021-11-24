@@ -20,13 +20,13 @@ FRONT_MATTER_MARK = "---\n"
 
 
 def localsite(site_path: Path) -> Path:
-    "returns the local site_path for `site_path`"
+    """returns the local site_path for `site_path`"""
     return site_path.parent / f"{site_path.name}-local"
 
 
 @timed("Write graphs", indent=4)
 def write_graphs(graphs: Sequence[Digraph], output_path: Path):
-    "Renders the graphs"
+    """Renders the graphs"""
     for graph in graphs:
         graph.save(directory=output_path / "static" / "svg")
         graph.render(format="svg")
@@ -40,14 +40,14 @@ def frontmatter(adict: Dict[str, str], out) -> None:
 
 
 def rename_timestamp(directory: Path, date: datetime):
-    "rename directory with timestamp"
+    """rename directory with timestamp"""
     timestamp = date.strftime(".bak.%Y-%m-%d--%H-%M-%S-%f")
     if directory.exists():
         directory.rename(directory.parent / f"{directory.name}{timestamp}")
 
 
 def backup_old_site(site_path: Path, date: datetime = None) -> None:
-    " rename previously generated site to timestamped directory if it exits "
+    """ rename previously generated site to timestamped directory if it exits """
     if date is None:
         date = datetime.now()
     rename_timestamp(site_path, date)
@@ -68,9 +68,10 @@ def new_site(site_path: Path) -> None:
 
 
 def write_metadata(config: Configuration, metadata: Metadata):
-    "writes out the `metadata` at `site_path`"
+    """writes out the `metadata` at `site_path`"""
     present_content = present_contenttypes(metadata)
     write_config(config,  present_content)
+    (config.site_path / "content").mkdir()
     for content in present_content:
         write_content(metadata, content, config.site_path)
 
@@ -83,13 +84,13 @@ def _get_metadata_attr(metadata: Metadata, attribute: str):
 
 
 def present_contenttypes(metadata: Metadata) -> List[str]:
-    "returns the content_types that are present in this `metadata`"
+    """returns the content_types that are present in this `metadata`"""
     return [content for content in METADATA_CONTENT
             if len(_get_metadata_attr(metadata, content)) > 0]
 
 
 def write_config(config: Configuration, present_content: Sequence[str]) -> None:
-    " write out Hugo config.toml "
+    """ write out Hugo config.toml """
     menus = [{"url": f"/{name}/index.html",
               "name": name,
               "weight": weight}
@@ -115,7 +116,7 @@ def write_config(config: Configuration, present_content: Sequence[str]) -> None:
 
 @timed("Write content", indent=4, arg=1, name=False)
 def write_content(metadata: Metadata, content_type: str, site_path: Path):
-    "writes out `content_type` in subdir of `site_path`"
+    """writes out `content_type` in subdir of `site_path`"""
     contentlist = _get_metadata_attr(metadata, content_type)
     targetpath = site_path / "content" / content_type
     targetpath.mkdir(parents=True, exist_ok=True)

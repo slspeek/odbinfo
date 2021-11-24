@@ -54,7 +54,7 @@ def read_queries(connection, datasource) -> List[Query]:
 
 
 def read_query_columns(connection, query: Query) -> Query:
-    " read query columns "
+    """ read query columns """
     query.columns = _read_query_columns(connection, query.command)
     return query
 

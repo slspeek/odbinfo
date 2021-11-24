@@ -1,4 +1,4 @@
-" tests for the builder module "
+""" tests for the builder module """
 import os
 import webbrowser
 from pathlib import Path
@@ -13,7 +13,7 @@ def test_find_free_port():
 
 
 def test_open_browser():
-    " test the open_browser function "
+    """ test the open_browser function """
     with patch.object(webbrowser, 'open') as openmock:
         with patch.object(os, 'getcwd', return_value="/home"):
             with patch.object(os, 'getenv', return_value="0"):
@@ -22,7 +22,7 @@ def test_open_browser():
 
 
 def test_open_browser_absolutepath():
-    " test the open_browser function "
+    """ test the open_browser function """
     with patch.object(webbrowser, 'open') as openmock:
         with patch.object(os, 'getcwd', return_value="/home"):
             with patch.object(os, 'getenv', return_value="0"):
@@ -31,7 +31,7 @@ def test_open_browser_absolutepath():
 
 
 def test_open_browser_nop():
-    " test the open_browser function doing nothing"
+    """ test the open_browser function doing nothing"""
     with patch.object(webbrowser, 'open') as openmock:
         with patch.object(os, 'getcwd', return_value="/home"):
             with patch.object(os, 'getenv', return_value="1"):

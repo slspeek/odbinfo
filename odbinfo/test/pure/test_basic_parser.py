@@ -1,4 +1,4 @@
-" parser tests "
+""" parser tests """
 import pytest
 
 from odbinfo.pure.datatype import BasicFunction
@@ -10,26 +10,26 @@ from odbinfo.pure.parser.basic import (BodyScanner, ModuleScanner,
 
 
 def parse(source):
-    " wrap parse with default arguments "
+    """ wrap parse with default arguments """
     return scan_basic(get_basic_tokens(source), "Standard", "Module")
 
 
 def module_scanner(source: str) -> ModuleScanner:
-    "Instantiates ModuleScanner on `source`"
+    """Instantiates ModuleScanner on `source`"""
     alltokens = get_basic_tokens(source)
     tokens = list(filter(lambda x: not x.hidden, alltokens))
     return ModuleScanner(tokens, alltokens, "Standard", "Module1")
 
 
 def bodyscanner(source: str) -> BodyScanner:
-    "Instantiates bodyscanner"
+    """Instantiates bodyscanner"""
     tokens = get_basic_tokens(source)
     return BodyScanner(tokens)
 
 
 @pytest.mark.slow
 def test_parse():
-    " call parse "
+    """ call parse """
     callables = parse("""
         function foo(arg)
             bar(0): gnu(9)
@@ -56,7 +56,7 @@ Sub Foo () {BODY} end sub
 
 @pytest.mark.slow
 def test_parse_select():
-    " call parse select"
+    """ call parse select"""
     callables = parse(SELECT)
     assert len(callables) == 1
 
@@ -75,21 +75,21 @@ rem end of file"""
 
 @pytest.mark.slow
 def test_allmacros():
-    " test allmacros"
+    """ test allmacros"""
     scanner = module_scanner(TOKENSOURCECODE)
     macros = allmacros(scanner)
     print("All Macros: ", macros)
 
 
 def test_allmacros_empty():
-    " test allmacros"
+    """ test allmacros"""
     scanner = module_scanner("")
     macros = allmacros(scanner)
     print("All Macros: ", macros)
 
 
 def test_extract_stringliterals():
-    " test extract_stringliterals"
+    """ test extract_stringliterals"""
     tokens = get_basic_tokens("""ModuleFoo.Foo("Hello world!")""")
     print(tokens)
     acallable = BasicFunction("methodName",  "LibName", "ModuleName")
@@ -100,7 +100,7 @@ def test_extract_stringliterals():
 
 
 def test_functioncall():
-    " test functioncall"
+    """ test functioncall"""
     scanner = bodyscanner("ModuleFoo.Foo()")
     call = functioncall(scanner)
     assert call.module_token.text == "ModuleFoo"
@@ -108,7 +108,7 @@ def test_functioncall():
 
 
 def test_allfunctioncalls():
-    " test all_functioncalls"
+    """ test all_functioncalls"""
     scanner = bodyscanner("ModuleFoo.Foo()")
     calls = all_functioncalls(scanner)
     assert calls[0].module_token.text == "ModuleFoo"
@@ -116,7 +116,7 @@ def test_allfunctioncalls():
 
 
 def test_allfunctioncalls_multiple_calls():
-    " test all_functioncalls"
+    """ test all_functioncalls"""
     scanner = bodyscanner("ModuleFoo.Foo() Unqualified() NoCall")
     calls = all_functioncalls(scanner)
     assert calls[0].module_token.text == "ModuleFoo"
@@ -126,13 +126,13 @@ def test_allfunctioncalls_multiple_calls():
 
 
 def test_allfunctioncalls_method():
-    " test functioncalls method"
+    """ test functioncalls method"""
     scanner = bodyscanner("ModuleFoo.Foo() Unqualified() NoCall")
     assert len(scanner.functioncalls()) == 2
 
 
 def test_signature():
-    " test signature"
+    """ test signature"""
     scanner = module_scanner("public static sub foo()\n")
     start, end, name_token = signature(scanner)
 
@@ -141,21 +141,21 @@ def test_signature():
 
 
 def test_macro():
-    " test macro"
+    """ test macro"""
     scanner = module_scanner("sub foo()\nend sub\n")
     amacro = macro(scanner)
     print("Macro: ", amacro)
 
 
 def test_find_signature():
-    " test _signature"
+    """ test _signature"""
     scanner = module_scanner("public static sub sub foo()\n")
     result = maybe(signature)(scanner)
     print(result)
 
 
 def test_get_basic_tokens():
-    "test basic tokenizer"
+    """test basic tokenizer"""
     tokens = get_basic_tokens(TOKENSOURCECODE)
     # for tok in tokens:
     #      print(tok)
@@ -167,12 +167,12 @@ def test_get_basic_tokens():
 
 
 def test_scan_basic_empty():
-    "test scan_basic"
+    """test scan_basic"""
     assert parse("") == []
 
 
 def test_scan_basic():
-    "test scan_basic"
+    """test scan_basic"""
     callables = parse(TOKENSOURCECODE)
     assert len(callables) == 2
     assert len(callables[1].body_tokens) == 0
@@ -185,7 +185,7 @@ end sub"""
 
 
 def test_scan_basic_empty_method():
-    "empty body_tokens"
+    """empty body_tokens"""
     callables = parse(BARSOURCE)
     assert len(callables) == 1
     assert len(callables[0].body_tokens) == 1

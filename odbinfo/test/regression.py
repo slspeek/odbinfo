@@ -1,4 +1,4 @@
-"  Directory regression fixture "
+"""  Directory regression fixture """
 import os
 import shutil
 from pathlib import Path
@@ -8,7 +8,7 @@ from pytest import fixture
 
 
 class DirectoryRegressionFixture:
-    "Provides a directory regression test"
+    """Provides a directory regression test"""
 
     def __init__(self, datadir, original_datadir, request):
         self.datadir = datadir
@@ -16,17 +16,17 @@ class DirectoryRegressionFixture:
         self.request = request
 
     def prepend_path(self, path) -> Path:
-        "prepends `path` function name"
+        """prepends `path` function name"""
         return Path(path) / self.request.function.__name__
 
     @property
     def fixture_path(self):
-        "reading fixture path"
+        """reading fixture path"""
         return self.prepend_path(Path(self.datadir))
 
     @property
     def fixture_original_path(self):
-        "writing fixture path"
+        """writing fixture path"""
         return self.prepend_path(Path(self.original_datadir))
 
     def check(self, path_obtained: Path):
@@ -43,7 +43,7 @@ class DirectoryRegressionFixture:
                 raise asexcep
 
     def recreate_fixture(self, path_obtained: Path):
-        "recreates this fixture with contents of `path_obtained`"
+        """recreates this fixture with contents of `path_obtained`"""
         if self.fixture_path.exists():
             shutil.rmtree(self.original_datadir)
         self.original_datadir.mkdir(exist_ok=True)
@@ -53,6 +53,6 @@ class DirectoryRegressionFixture:
 
 @fixture(scope="function")
 def directory_regression(datadir, original_datadir,  request):
-    "directory_regression fixture"
+    """directory_regression fixture"""
     yield DirectoryRegressionFixture(datadir, original_datadir,
                                      request)

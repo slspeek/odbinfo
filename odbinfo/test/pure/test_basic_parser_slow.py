@@ -1,6 +1,6 @@
 # pylint: disable=too-many-lines
 # pylint: disable=protected-access
-" parser tests "
+""" parser tests """
 from functools import partial
 from zipfile import ZipFile
 
@@ -30,9 +30,9 @@ def _read_module(odbzip, library_name,  data) -> Module:
     return Module(name, "BaseDocumenter", data["script:module"]["#text"])
 
 
-@pytest.mark.veryslow
+@pytest.mark.tooslow
 def test_basedocumenter_sources(shared_datadir):
-    " parse all basedocumenter sources "
+    """ parse all basedocumenter sources """
     with ZipFile((shared_datadir / BASEDOCUMENTER),
                  "r") as based:
         xlb = _parse_xml(based, "BaseDocumenter/script.xlb")

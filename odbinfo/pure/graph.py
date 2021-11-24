@@ -1,4 +1,4 @@
-" Graphviz graph generation "
+""" Graphviz graph generation """
 from typing import Dict, Sequence, Tuple, cast
 
 from graphviz import Digraph
@@ -9,7 +9,7 @@ from odbinfo.pure.datatype.config import GraphConfig
 
 
 def hugo_filename(name: str) -> str:
-    " name converted as hugo converts filename to .Params.filename "
+    """ name converted as hugo converts filename to .Params.filename """
     return name.replace(" ", "-").lower()
 
 
@@ -33,7 +33,7 @@ def _is_control_visible(control: Control) -> bool:
 
 
 def is_visible(config: GraphConfig, node: NamedNode) -> bool:
-    " determines with `config` whether `node` is visible"
+    """ determines with `config` whether `node` is visible"""
     if not node.content_type() in config.excludes:
         if config.relevant_controls:
             if isinstance(node, Control):
@@ -46,7 +46,7 @@ def is_visible(config: GraphConfig, node: NamedNode) -> bool:
 
 def make_node(config: GraphConfig,
               graph: Digraph, node: NamedNode):
-    " adds a node to `graph` for `node` if `config` says so "
+    """ adds a node to `graph` for `node` if `config` says so """
     if is_visible(config, node):
         label = node.name
         if node.content_type() == content_type(Control):
@@ -74,7 +74,7 @@ def visible_ancestor(config: GraphConfig, node):
 
 def edge_attributes(config: GraphConfig,
                     start: NamedNode, end: NamedNode) -> Dict[str, str]:
-    "composes the node attributes"
+    """composes the node attributes"""
     attrs = config.relation_attrs.get(
         (start.content_type(), end.content_type()), {})
     attrs["edgetooltip"] = f"{start.name} -> {end.name}"
@@ -82,21 +82,21 @@ def edge_attributes(config: GraphConfig,
 
 
 def edge(graph, start, end, attrs):
-    " make an edge in `graph`"
+    """ make an edge in `graph`"""
     graph.edge(start.obj_id,
                end.obj_id,
                _attributes=attrs)
 
 
 def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode, end: NamedNode):
-    " make edge from `start` to `end` with attributes specified by `config`"
+    """ make edge from `start` to `end` with attributes specified by `config`"""
 
     edge(graph, start,
          end, edge_attributes(config, start, end))
 
 
 def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
-    " make edge from `node` to `parent` if `config` says so "
+    """ make edge from `node` to `parent` if `config` says so """
     if not node.parent:
         return
     if is_visible(config, node):
@@ -113,7 +113,7 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
 
 def visible_dependency_edges(metadata: Metadata, config: GraphConfig) \
         -> Sequence[Tuple[str, str]]:
-    " returns edges to draw in graph "
+    """ returns edges to draw in graph """
     uses = []
     for user in metadata.all_active_users():
         # print("In: from:", user.title, " to ", user.link)
@@ -136,7 +136,7 @@ def visible_dependency_edges(metadata: Metadata, config: GraphConfig) \
 
 
 def make_dependency_edges(metadata, config, graph):
-    " make edges for all dependencies "
+    """ make edges for all dependencies """
     uses = visible_dependency_edges(metadata, config)
     for use in uses:
         start = metadata.index[use[0]]
@@ -145,7 +145,7 @@ def make_dependency_edges(metadata, config, graph):
 
 
 def generate_main_graph(metadata, config):
-    " returns the main graph "
+    """ returns the main graph """
     graph = Digraph(config.name)
     graph.attr("graph", rankdir="LR")
     graph.attr("graph", label=config.name,
@@ -160,5 +160,5 @@ def generate_main_graph(metadata, config):
 
 
 def generate_graphs(metadata, configuration):
-    " returns a list of graphviz.Digraph objects "
+    """ returns a list of graphviz.Digraph objects """
     return [generate_main_graph(metadata, configuration)]

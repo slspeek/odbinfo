@@ -28,10 +28,15 @@ __all__ = [
     "Key",
     "ListBox",
     "Metadata",
+    "Module",
     "Node",
     "Query",
     "QueryColumn",
+    "Report",
     "Table",
+    "Token",
     "Tabular",
-    "View"
+    "TextDocument",
+    "View",
+    "WebPage"
 ]

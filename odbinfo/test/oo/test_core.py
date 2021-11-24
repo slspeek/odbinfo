@@ -31,7 +31,7 @@ def test_generate_report_empty(emptydb_doc, benchmark, directory_regression):
 
 
 def generate_report_test(oodoc, benchmark, directory_regression):
-    " generate report "
+    """ generate report """
     config = get_configuration()
     config.general.output_dir = str(
         (TEST_OUTPUT_PATH / "test_core").absolute())

@@ -1,4 +1,4 @@
-"test for config module"
+"""test for config module"""
 
 import pytest
 

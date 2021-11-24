@@ -240,11 +240,11 @@ def test_forms(odbzip):
 
 @pytest.mark.slow
 def test_forms_empty(empty_odbzip):
-    " no forms  "
+    """ no forms  """
     read_forms(empty_odbzip)
 
 
 @pytest.mark.slow
 def test_read_forms(odbzip):
-    " forms "
+    """ forms """
     read_forms(odbzip)

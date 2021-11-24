@@ -1,4 +1,4 @@
-" Verify installation "
+""" Verify installation """
 import subprocess
 
 import graphviz
@@ -25,7 +25,7 @@ def _graphviz_version() -> str:
 
 
 def verify_installation():
-    " print versions of required components "
+    """ print versions of required components """
     print("ODBInfo verify installation:")
     print("")
     print("Hugo:")

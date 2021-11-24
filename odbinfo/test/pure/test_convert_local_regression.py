@@ -1,4 +1,4 @@
-"directory_regression test"
+"""directory_regression test"""
 from unittest.mock import patch
 
 import pytest

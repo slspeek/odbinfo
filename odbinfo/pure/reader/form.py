@@ -1,4 +1,4 @@
-"reading forms"
+"""reading forms"""
 from typing import List, Optional, Tuple, Union
 from xml.dom.minidom import Element
 from zipfile import ZipFile
@@ -10,7 +10,7 @@ from odbinfo.pure.reader.common import (attr_default, child_elements,
 
 
 def read_form_item(control_elem: Element) -> Union[Control, Grid]:
-    " case on the tagName of `column_elem` to read the right component"
+    """ case on the tagName of `column_elem` to read the right component"""
     if control_elem.tagName == "form:grid":
         return read_grid(control_elem)
     if control_elem.tagName == "form:listbox":
@@ -19,13 +19,13 @@ def read_form_item(control_elem: Element) -> Union[Control, Grid]:
 
 
 def read_subforms(office_form_elem: Element) -> List[SubForm]:
-    "read the subforms of a form"
+    """read the subforms of a form"""
     return list(map(read_subform,
                     child_elements_by_tagname(office_form_elem, "form:form")))
 
 
 def read_subform(form_form_elem: Element):
-    "read a SubForm from `form_form_elem` (<form:form>)"
+    """read a SubForm from `form_form_elem` (<form:form>)"""
     controls: List[Union[Control, Grid]] = [
         read_form_item(elem) for elem in
         child_elements(form_form_elem)
@@ -49,7 +49,7 @@ def read_subform(form_form_elem: Element):
 
 
 def read_grid(grid_elem: Element) -> Grid:
-    "read a tableview from `grid_elem` <form:grid>"
+    """read a tableview from `grid_elem` <form:grid>"""
     controls = list(
         map(read_grid_control, grid_elem.getElementsByTagName("form:column")))
     return Grid(grid_elem.getAttribute("form:name"),
@@ -58,7 +58,7 @@ def read_grid(grid_elem: Element) -> Grid:
 
 
 def office_eventlisteners_elem(control_elem: Element) -> Optional[Element]:
-    "find <office:event-listeners> under `control_elem`"
+    """find <office:event-listeners> under `control_elem`"""
     off_evl_elem = control_elem.getElementsByTagName("office:event-listeners")
     if not off_evl_elem:
         return None
@@ -66,7 +66,7 @@ def office_eventlisteners_elem(control_elem: Element) -> Optional[Element]:
 
 
 def read_eventlisteners(control_elem: Element) -> List[EventListener]:
-    "reads the <script:event-listener> under <office:event-listeners> under `control_elem`"
+    """reads the <script:event-listener> under <office:event-listeners> under `control_elem`"""
     office_evlis_elem = office_eventlisteners_elem(control_elem)
     if not office_evlis_elem:
         return []
@@ -81,7 +81,7 @@ def read_eventlisteners(control_elem: Element) -> List[EventListener]:
 
 
 def read_control(control_elem) -> Control:
-    "returns Control read from `control_elem` (<form:button>, ...) "
+    """returns Control read from `control_elem` (<form:button>, ...) """
     return \
         Control(control_elem.getAttribute("form:name"),
                 control_elem.getAttribute("form:id"),
@@ -95,7 +95,7 @@ def read_control(control_elem) -> Control:
 
 
 def read_listbox(listbox_elem: Element) -> ListBox:
-    "returns a ListBox from `listbox_elem` (<form:listbox>)"
+    """returns a ListBox from `listbox_elem` (<form:listbox>)"""
     listsourcetype = attr_default(
         listbox_elem, "form:list-source-type", "valuelist")
     listsource = listbox_elem.getAttribute("form:list-source")
@@ -122,7 +122,7 @@ def read_listbox(listbox_elem: Element) -> ListBox:
 
 
 def read_grid_control(column_elem: Element):
-    " reads the grid control from `column_elem`"
+    """ reads the grid control from `column_elem`"""
     elem = child_elements(column_elem)[0]
     control = read_control(elem)
     control.name = column_elem.getAttribute("form:name")
@@ -132,7 +132,7 @@ def read_grid_control(column_elem: Element):
 
 
 def forms(odbzip: ZipFile) -> List[Tuple[str, Element]]:
-    " return a tuple with the form name and <office:forms> element "
+    """ return a tuple with the form name and <office:forms> element """
     forms_elements = document(
         odbzip, "content.xml").getElementsByTagName("db:forms")
     if not forms_elements:

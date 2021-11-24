@@ -1,4 +1,4 @@
-" tests for the writer"
+""" tests for the writer"""
 import os
 from datetime import datetime
 from pathlib import Path
@@ -20,7 +20,7 @@ def test_localsite_short_path():
 
 
 def test_backup_old_site(tmpdir):
-    " test cleaning old site "
+    """ test cleaning old site """
     os.makedirs(tmpdir / "exampledb")
     os.makedirs(tmpdir / "exampledb-local")
     backup_old_site(Path(tmpdir) / "exampledb",
@@ -32,7 +32,7 @@ def test_backup_old_site(tmpdir):
 
 @pytest.mark.slow
 def test_write_graphs(tmpdir):
-    "test write graphs"
+    """test write graphs"""
     write_graphs([Digraph("foo")], tmpdir)
     assert (tmpdir / "static" / "svg" / "foo.gv.svg").exists()
     assert (tmpdir / "static" / "svg" / "foo.gv").exists()

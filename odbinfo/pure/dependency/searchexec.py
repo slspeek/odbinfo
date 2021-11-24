@@ -1,4 +1,4 @@
-" dependency search in basicfunctions "
+""" dependency search in basicfunctions """
 from functools import partial
 from typing import Sequence
 
@@ -12,7 +12,7 @@ from odbinfo.pure.dependency.util import link_token
 
 
 def _rewrite_module_token_links(modules):
-    " scan module tokens for links"
+    """ scan module tokens for links"""
     # process module source tokens to support callable links at module level
     # e.g /Lib1.Mod1/#macro
     # By rewriting Identifier(type="BasicFunction" local_id="call.Mod1.Lib1")
@@ -52,8 +52,8 @@ def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
 
 
 def remove_recursive_calls(funcs: Sequence[BasicFunction]):
-    "remove the probably unintended recursive call made by assignment"\
-        "of the return value"
+    """remove the probably unintended recursive call made by assignment"\
+        "of the return value"""
     for function in funcs:
         for call in function.calls:
             if call.name_token.text.lower() == function.name.lower():
@@ -95,7 +95,7 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
 
 
 def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> None:
-    " find calls in `caller` to `candidate_callee`"
+    """ find calls in `caller` to `candidate_callee`"""
 
     def match_and_not_linked(acall: BasicCall):
         if acall.module_token:

@@ -1,4 +1,4 @@
-"Utilities"
+"""Utilities"""
 import contextlib
 import os
 import shlex
@@ -20,7 +20,7 @@ def chdir(dirname=None):
 
 
 def timed(mesg, indent=0, arg=None, name=True):
-    "Timing decorator"
+    """Timing decorator"""
     def decorate(func):
 
         def message(args):
@@ -49,7 +49,7 @@ def timed(mesg, indent=0, arg=None, name=True):
 
 
 class CommandExecutionError(Exception):
-    "Describes a failed command"
+    """Describes a failed command"""
 
     def __init__(self, cmd, completed_process):
         self.completed_process = completed_process
@@ -58,7 +58,7 @@ class CommandExecutionError(Exception):
 
 
 def run_cmd(cmd, check=True):
-    " run os `cmd` and raise  if `check` was set"
+    """ run os `cmd` and raise  if `check` was set"""
     # pylint:disable=subprocess-run-check
     completed_process = subprocess.run(shlex.split(cmd),
                                        capture_output=True)

@@ -1,4 +1,4 @@
-" test reding of libraries "
+""" test reding of libraries """
 from unittest.mock import Mock
 
 import pytest
@@ -112,6 +112,7 @@ def test_has_libraries_false():
 
 
 # pylint: disable=line-too-long
+# noinspection PyPep8
 BASIC_MODULE = """<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="Module1" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
@@ -195,19 +196,19 @@ def test_read_libraries_empty():
 
 @pytest.mark.slow
 def test_libraries_empty(empty_odbzip):
-    " no libraries  "
+    """ no libraries  """
     read_libraries(empty_odbzip)
 
 
 @pytest.mark.slow
 def test_libraries(odbzip):
-    " libraries "
+    """ libraries """
     read_libraries(odbzip)
 
 
 @pytest.mark.slow
 def test_pylibraries(odbzip):
-    " libraries "
+    """ libraries """
     libs = read_python_libraries(odbzip)
     # print(libs)
     assert len(libs) == 2

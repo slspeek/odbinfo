@@ -16,5 +16,5 @@ def open_connection(datasource):
 
 
 def document_path(oodoc) -> Path:
-    "returns path object for `oodoc`"
+    """returns path object for `oodoc`"""
     return Path(urlparse(oodoc.URL).path)

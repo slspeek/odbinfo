@@ -168,7 +168,7 @@ def test_get_basic_tokens():
 
 def test_scan_basic_empty():
     """test scan_basic"""
-    assert parse("") == []
+    assert not parse("")
 
 
 def test_scan_basic():

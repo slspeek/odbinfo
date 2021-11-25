@@ -66,6 +66,8 @@ def new_site(site_path: Path) -> None:
     shutil.copytree(SITE_SKEL_PATH,
                     site_path)
 
+    (site_path / "themes" / "minimal" / ".git").unlink()
+
 
 def write_metadata(config: Configuration, metadata: Metadata):
     """writes out the `metadata` at `site_path`"""

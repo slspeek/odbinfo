@@ -219,7 +219,7 @@ class Edge(GraphTest):
     def test_edge(self):
         edge(self.graph, self.start, self.end, {})
         line = self.graph.body[0]
-        assert line == "\t1 -> 2"
+        assert line == "\t1 -> 2\n"
 
 
 class MakeEdge(Edge):
@@ -227,7 +227,7 @@ class MakeEdge(Edge):
     def test_edge(self):
         make_edge(self.conf, self.graph, self.start, self.end)
         line = self.graph.body[0]
-        assert line == """\t1 -> 2 [edgetooltip="plant -> family"]"""
+        assert line == """\t1 -> 2 [edgetooltip="plant -> family"]\n"""
 
 
 class MakeParentEdge(GraphTest):

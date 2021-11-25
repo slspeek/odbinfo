@@ -235,5 +235,5 @@ post_checkout:
 	-mkdir $(puretestloc)/test_write_site_regression/test_write_site_empty/content
 	-mkdir $(puretestloc)/test_writemetadata_regression/test_writemetadata_empty/content
 	-mkdir $(fixtureloc)/fixtures/template_regression_input/test_write_site_empty/content
-	-mkdir $(fixtureloc)/fixtures/template_regression_input/test_write_site_empty/content
+
 

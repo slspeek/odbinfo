@@ -9,7 +9,7 @@ logje
 __pycache__/
 *.py[cod]
 *$py.class
-tags
+/tags
 # C extensions
 *.so
 unzipped*

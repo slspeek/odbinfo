@@ -23,6 +23,8 @@
       <excludeFolder url="file://$MODULE_DIR$/.mypy_cache" />
       <excludeFolder url="file://$MODULE_DIR$/.pytest_cache" />
       <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/test_writemetadata_regression" />
+      <excludeFolder url="file://$MODULE_DIR$/odbinfo/pure/parser/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="Pipenv (odbinfo)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

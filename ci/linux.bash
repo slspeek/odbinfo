@@ -1,4 +1,5 @@
 #!/bin/bash
+HUGO_VERSION=0.89.4
 VERSION=6.4.2.2
 set -o errexit
 
@@ -16,5 +17,6 @@ dpkg -i Lib*_Linux_x86-64*deb*/DEBS/*.deb
 twodigitsversion=$(echo $VERSION | cut -c 1-3)
 ln -sf /opt/libreoffice${twodigitsversion}/program /tmp/program
 
-wget https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_0.84.0_Linux-64bit.deb
-dpkg -i hugo_0.84.0_Linux-64bit.deb
+
+wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
+dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb

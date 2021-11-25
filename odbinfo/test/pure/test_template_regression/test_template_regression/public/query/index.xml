@@ -1,15 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Queries on testdb</title>
     <link>http://odbinfo.org/query/</link>
     <description>Recent content in Queries on testdb</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="http://odbinfo.org/query/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="http://odbinfo.org/query/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DependendQuery</title>
       <link>http://odbinfo.org/query/dependendquery/</link>

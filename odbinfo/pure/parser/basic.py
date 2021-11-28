@@ -70,7 +70,7 @@ class ModuleScanner(Scanner):
         return callables
 
 
-def signature(parser) -> Tuple[int, int, List[Token]]:
+def signature(parser) -> Tuple[int, int, Token]:
     """ recognize macro signature """
     start = parser.cursor
     result = a(skip(maybe(anyof(OOBasicLexer.GLOBAL,

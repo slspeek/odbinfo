@@ -8,7 +8,6 @@ from odbinfo.pure.reader.common import document_element
 from odbinfo.pure.reader.form import (forms, read_control, read_eventlisteners,
                                       read_forms, read_grid, read_listbox,
                                       read_subforms)
-from odbinfo.test.pure.fixtures import empty_odbzip, odbzip
 from odbinfo.test.pure.reader.test_common import OO_NAMESPACES
 
 # pylint:disable=line-too-long

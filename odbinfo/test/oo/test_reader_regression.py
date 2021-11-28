@@ -13,8 +13,6 @@ import pytest
 from odbinfo.oo.core import set_configuration_defaults
 from odbinfo.oo.reader import read_metadata
 from odbinfo.pure.datatype.config import get_configuration
-from odbinfo.test.oo.connect import (  # pylint:disable=unused-import
-    emptydb_doc, libreoffice, testdb_doc)
 
 
 def read_metadata_in_test(testdb_doc, monkeypatch, benchmark):

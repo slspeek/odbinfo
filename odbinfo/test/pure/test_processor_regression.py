@@ -6,7 +6,6 @@ import pytest
 
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.processor import process_metadata
-from odbinfo.test.pure.fixtures import empty_metadata_loader, metadata_loader
 
 
 @pytest.mark.slow

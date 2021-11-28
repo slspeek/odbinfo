@@ -7,7 +7,6 @@ from odbinfo.pure.reader.exec import (has_libraries, manifest_fileentries,
                                       read_libraries, read_library,
                                       read_module, read_python_libraries,
                                       read_python_library, read_python_module)
-from odbinfo.test.pure.fixtures import empty_odbzip, odbzip
 from odbinfo.test.pure.reader.test_common import ZipFileMock
 
 # pylint: disable=line-too-long

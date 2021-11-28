@@ -3,8 +3,6 @@
 import pytest
 
 from odbinfo.pure.builder import run_gohugo
-from odbinfo.test.pure.fixtures import fixture_path
-from odbinfo.test.regression import directory_regression
 from odbinfo.test.util import clear_generated_graphs
 
 

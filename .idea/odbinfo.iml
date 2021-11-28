@@ -27,7 +27,7 @@
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/data" />
     </content>
-    <orderEntry type="jdk" jdkName="Pipenv (odbinfo)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="OOPython 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PackageRequirementsSettings">

@@ -6,8 +6,6 @@ import pytest
 
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.writer import write_metadata
-from odbinfo.test.pure.fixtures import (empty_metadata_processed_loader,
-                                        metadata_processed_loader)
 from odbinfo.test.resource import TEST_OUTPUT_PATH
 
 

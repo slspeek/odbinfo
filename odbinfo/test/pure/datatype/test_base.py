@@ -3,7 +3,7 @@ import re
 
 import pytest
 
-from odbinfo.pure.datatype import (EmbeddedQuery, Identifier, Report, Table,
+from odbinfo.pure.datatype import (EmbeddedQuery, Identifier, Report,
                                    content_type, get_identifier)
 from odbinfo.pure.datatype.base import (NamedNode, Node,
                                         NoWebPageAncestorException, WebPage)

@@ -7,6 +7,7 @@ import time
 import uno
 from pytest import fixture
 
+from odbinfo.test.regression import directory_regression
 from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
 
 logger = logging.getLogger(__name__)
@@ -38,9 +39,10 @@ def start_office(file):
     logger.debug("LibreOffice started with %s ", file)
     return office_proc
 
-
-# pylint:disable=redefined-outer-name
 # pylint:disable=unused-argument
+# pylint:disable=redefined-outer-name
+
+
 @fixture(scope="function")
 def testdb_doc(libreoffice, shared_datadir):
     """ libreoffice document 'testdb.odb' """
@@ -51,9 +53,10 @@ def testdb_doc(libreoffice, shared_datadir):
     yield doc
     doc.close(True)
 
-
-# pylint:disable=redefined-outer-name
 # pylint:disable=unused-argument
+# pylint:disable=redefined-outer-name
+
+
 @fixture(scope="function")
 def emptydb_doc(libreoffice, shared_datadir):
     """ libreoffice document 'emptydb.odb' """

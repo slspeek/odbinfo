@@ -3,7 +3,7 @@
 import unittest
 
 import odbinfo.test.pure.datatype.factory as factory
-from odbinfo.pure.datatype.ui import Grid, TextDocument
+from odbinfo.pure.datatype.ui import Grid
 
 
 class ReportTest(unittest.TestCase):

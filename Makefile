@@ -173,7 +173,7 @@ clean:
 	@echo $(target) was removed
 
 open_shell: prepare
-	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i odbinfo/test/pure/fixtures.py
+	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i odbinfo/test/pure/conftest.py
 
 .ONESHELL:
 oxt:

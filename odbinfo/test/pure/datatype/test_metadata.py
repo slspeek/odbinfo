@@ -1,8 +1,6 @@
 """tests for metadata"""
 import unittest
 
-import pytest
-
 import odbinfo.test.pure.datatype.factory as factory
 from odbinfo.pure.datatype.base import Token
 from odbinfo.pure.datatype.exec import (Library, Module, PythonLibrary,

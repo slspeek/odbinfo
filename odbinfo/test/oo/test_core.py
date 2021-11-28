@@ -11,9 +11,6 @@ from odbinfo.pure import builder
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.util import chdir
 from odbinfo.pure.writer import localsite
-from odbinfo.test.oo.connect import (  # pylint:disable=unused-import
-    emptydb_doc, libreoffice, testdb_doc)
-from odbinfo.test.regression import directory_regression
 from odbinfo.test.resource import TEST_OUTPUT_PATH
 from odbinfo.test.util import clear_generated_graphs
 

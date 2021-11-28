@@ -5,8 +5,6 @@ import pytest
 
 from odbinfo.pure import builder
 from odbinfo.pure.builder import convert_local
-from odbinfo.test.pure.fixtures import fixture_path
-from odbinfo.test.regression import directory_regression
 
 
 @pytest.mark.slow

@@ -129,9 +129,8 @@ def someof(*args):
         return result
     return inner
 
-#pylint: disable=invalid-name
 
-
+# pylint: disable=invalid-name
 def a(*args):
     """eat `args`"""
     def inner(parser):

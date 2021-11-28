@@ -15,7 +15,6 @@ from odbinfo.pure.graph import (_is_control_visible, edge, edge_attributes,
                                 make_parent_edge, visible_ancestor,
                                 visible_dependency_edges)
 from odbinfo.test.pure.datatype import factory
-from odbinfo.test.pure.fixtures import metadata_processed
 
 
 def test_hugo_filename_to_lower():
@@ -28,11 +27,13 @@ def test__hugo_filename_spaces():
 
 class Href(unittest.TestCase):
 
-    def test_webpage(self):
+    @staticmethod
+    def test_webpage():
         assert href(factory.table_plant()) == \
             "../table/plant/index.html"
 
-    def test_control(self):
+    @staticmethod
+    def test_control():
         form = factory.form()
         subform = form.subforms[0]
         subform.parent = form

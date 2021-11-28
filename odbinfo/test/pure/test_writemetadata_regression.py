@@ -3,9 +3,6 @@ import pytest
 
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.writer import write_metadata
-from odbinfo.test.pure.fixtures import (empty_metadata_processed,
-                                        metadata_processed)
-from odbinfo.test.regression import directory_regression
 from odbinfo.test.resource import TEST_OUTPUT_PATH
 
 

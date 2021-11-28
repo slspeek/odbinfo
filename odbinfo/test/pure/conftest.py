@@ -5,6 +5,7 @@ from zipfile import ZipFile
 
 from pytest import fixture
 
+from odbinfo.test.regression import directory_regression
 from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
 
 

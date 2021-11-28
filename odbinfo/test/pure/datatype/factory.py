@@ -1,8 +1,8 @@
 """ factory of test objects """
 from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Key, Table
-from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
-                                      ListBox, Report, SubForm, TextDocument)
+from odbinfo.pure.datatype.ui import (Control, EventListener, Form, ListBox,
+                                      Report, SubForm, TextDocument)
 
 
 def foreignkey_famliy():

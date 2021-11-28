@@ -29,7 +29,7 @@ def read_subform(form_form_elem: Element):
     controls: List[Union[Control, Grid]] = [
         read_form_item(elem) for elem in
         child_elements(form_form_elem)
-        if not elem.tagName in ["form:form", "form:properties"]
+        if elem.tagName not in ["form:form", "form:properties"]
     ]
     subforms: List[SubForm] = [
         read_subform(elem) for elem in child_elements_by_tagname(form_form_elem, "form:form")
@@ -72,7 +72,7 @@ def read_eventlisteners(control_elem: Element) -> List[EventListener]:
         return []
 
     def read_listener(script_ev_listener: Element):
-        return\
+        return \
             EventListener(script_ev_listener.getAttribute("script:event-name"),
                           script_ev_listener.getAttribute("xlink:href"))
 
@@ -104,7 +104,7 @@ def read_listbox(listbox_elem: Element) -> ListBox:
         listsource = ", ".join(
             map(lambda x: x.getAttribute('form:value'), options))
 
-    return\
+    return \
         ListBox(listbox_elem.getAttribute("form:name"),
                 listbox_elem.getAttribute("form:id"),
                 listbox_elem.getAttribute("form:data-field"),

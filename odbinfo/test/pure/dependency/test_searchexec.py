@@ -4,7 +4,7 @@ import unittest
 from odbinfo.pure.datatype import (Identifier, Library, Module, WebPage,
                                    content_type)
 from odbinfo.pure.dependency.searchexec import (
-    _link_name_tokens, consider, rewrite_module_callable_links,
+    consider, link_name_tokens, rewrite_module_callable_links,
     search_callable_in_callable, search_string_refs_in_callables)
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.processor import _process_library
@@ -136,7 +136,7 @@ class LinkNameTokens(ModuleOneTest):
 
     def test_link_name_tokens(self):
         """_link_name_tokens"""
-        _link_name_tokens(self.module)
+        link_name_tokens(self.module)
         func = self.module.callables[0]
         name_token = self.module.tokens[func.name_token_index]
         assert name_token.link == func.identifier

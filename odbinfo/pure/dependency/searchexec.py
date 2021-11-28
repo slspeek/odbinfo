@@ -11,44 +11,39 @@ from odbinfo.pure.dependency.util import link_token
 #
 
 
-def _rewrite_module_token_links(modules):
-    """ scan module tokens for links"""
+def link_name_tokens(module: Module):
+    """Link the name tokens to the single function pages"""
+    for name_index, acallable in zip(module.name_indexes, module.callables):
+        link_token(module.tokens[name_index], acallable)
+
+
+def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
+    """ links to callables are rewritten to links to callables in
+        modules (using #bookmarks)"""
+
     # process module source tokens to support callable links at module level
     # e.g /Lib1.Mod1/#macro
     # By rewriting Identifier(type="BasicFunction" local_id="call.Mod1.Lib1")
     # to Identifier("Module", "Mod1.Lib1", bookmark="call")
 
-    def rewrite_module(module: Module):
+    def rewrite_module(basic_module: Module):
         def rewrite_link(link: Identifier):
             if not link.content_type == content_type(BasicFunction):
                 return link
             lmacro, lmodule, llib = link.local_id.split('.')
             return Identifier(content_type(Module), f"{lmodule}.{llib}", lmacro)
 
-        def copy_links(function):
-            for token in function.tokens:
-                module_token = module.tokens[token.index]
+        def copy_links(func):
+            for token in func.tokens:
+                module_token = basic_module.tokens[token.index]
                 if token.link:
                     module_token.link = rewrite_link(token.link)
 
-        for function in module.callables:
+        for function in basic_module.callables:
             copy_links(function)
 
-    for module in modules:
+    for module in module_seq:
         rewrite_module(module)
-
-
-def _link_name_tokens(module: Module):
-    def _link_name(index: int, acallable: BasicFunction):
-        link_token(module.tokens[index], acallable)
-    for name_index, acallable in zip(module.name_indexes, module.callables):
-        _link_name(name_index, acallable)
-
-
-def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
-    """ links to callables are rewritten to links to callables in
-        modules (using #bookmarks)"""
-    _rewrite_module_token_links(module_seq)
 
 
 def remove_recursive_calls(funcs: Sequence[BasicFunction]):

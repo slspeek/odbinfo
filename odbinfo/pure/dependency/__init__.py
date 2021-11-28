@@ -2,7 +2,7 @@
 
 from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.dependency.searchexec import (
-    _link_name_tokens, rewrite_module_callable_links,
+    link_name_tokens, rewrite_module_callable_links,
     search_callable_in_callable, search_string_refs_in_callables)
 from odbinfo.pure.dependency.searchtabular import *
 from odbinfo.pure.dependency.searchui import *
@@ -10,7 +10,7 @@ from odbinfo.pure.util import timed
 
 __all__ = [
     "search_dependencies",
-    "_link_name_tokens"
+    "link_name_tokens"
 ]
 
 

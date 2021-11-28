@@ -1,11 +1,21 @@
-Makefile: fixtures is not idempotent
+move tests to tests/pure, tests/oo
+
 dependencysearch should be called from core not processor
+metadata.graphs = generate_graphs(metadata, config)
+    for module in metadata.module_defs():
+        _link_name_tokens(module)
+Module should probably hide its Tokens in children
+
+datatype.factory -> pytest.fixture
+
+
 get 'incorrect type' check in pycharm to work for all (hard)
 
 base: get_identifier smells
 builder: convert_local should not hang if gohugo command fails
 
 writer
+  - test write_config with StringIO
   - prepare content output dirs (for parallelism)
   test/pure/test_writer.py
 

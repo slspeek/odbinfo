@@ -6,7 +6,7 @@ from odbinfo.pure.datatype import (Control, EmbeddedQuery, Form, Grid, Library,
                                    Metadata, Module, SubForm)
 from odbinfo.pure.datatype.base import UseAggregator, User
 from odbinfo.pure.datatype.config import Configuration
-from odbinfo.pure.dependency import _link_name_tokens, search_dependencies
+from odbinfo.pure.dependency import link_name_tokens, search_dependencies
 from odbinfo.pure.graph import generate_graphs
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.parser.sql import parse
@@ -155,6 +155,6 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
 
     metadata.graphs = generate_graphs(metadata, config)
     for module in metadata.module_defs():
-        _link_name_tokens(module)
+        link_name_tokens(module)
     # for test purposes only
     return metadata

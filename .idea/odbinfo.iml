@@ -25,9 +25,13 @@
       <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/test_writemetadata_regression" />
       <excludeFolder url="file://$MODULE_DIR$/odbinfo/pure/parser/lib" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
+      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/data" />
     </content>
     <orderEntry type="jdk" jdkName="Pipenv (odbinfo)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="PackageRequirementsSettings">
+    <option name="requirementsPath" value="$MODULE_DIR$/Pipfile.lock" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />

@@ -25,10 +25,10 @@ def localsite(site_path: Path) -> Path:
 
 
 @timed("Write graphs", indent=4)
-def write_graphs(graphs: Sequence[Digraph], output_path: Path):
+def write_graphs(graphs: Sequence[Digraph], site_path: Path):
     """Renders the graphs"""
     for graph in graphs:
-        graph.save(directory=output_path / "static" / "svg")
+        graph.save(directory=site_path / "static" / "svg")
         graph.render(format="svg")
 
 

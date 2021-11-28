@@ -34,9 +34,11 @@ pythonsources=$$(find -name \*.py -and $\
 -not -ipath ./odbinfo/pure/parser/oobasic/\* -and $\
 -not -ipath ./odbinfo/pure/parser/sqlite/\* )
 benchmarking=--benchmark-only --benchmark-autosave --benchmark-enable
-unit=-m "not slow and not veryslow"
+unit=-m "not slow and not veryslow and not tooslow"
 itests=-m "slow"
-PYTEST=PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest ${PYTESTOPTS} --benchmark-disable
+OOPYTHON=PYTHONPATH=$(OOPYTHONPATH) $(python)
+OOPYTEST=$(OOPYTHON) -m pytest ${PYTESTOPTS} --benchmark-disable
+PUREPYTHON=PYTHONPATH=$(PUREPYTHONPATH) python
 
 build: mypy metric unitcoverage
 
@@ -54,11 +56,11 @@ prepare:
 
 .ONESHELL:
 info:
-	echo --------------------------------------
-	echo "|           Build information         |"
-	echo --------------------------------------
-	echo python -m site
-	@PYTHONPATH=$(OOPYTHONPATH) $(python) -m site
+	@echo --------------------------------------
+	@echo "|           Build information         |"
+	@echo --------------------------------------
+	@echo python -m site
+	@$(OOPYTHON) -m site
 	@echo
 	@echo PATH=$$PATH
 	@echo
@@ -72,60 +74,60 @@ classdiagram: prepare
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser $(classdiagram)/classes.svg $(classdiagram)/packages.svg
 
 coverage: clean prepare
-	ODBINFO_NO_BROWSE=1 python -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html -m "not veryslow" $(puretestloc)
+	ODBINFO_NO_BROWSE=1 $(PUREPYTHON)  -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html -m "not veryslow and not tooslow" $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 unitcoverage:
-	python -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=90 --cov-config=./.coveragerc --cov-report html:unitcov $(unit) $(puretestloc)
+	$(PUREPYTHON) -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=90 --cov-config=./.coveragerc --cov-report html:unitcov $(unit) $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser unitcov/index.html
 
 itest: clean prepare
-	$(PYTEST) $(itests) $(testloc)
+	$(OOPYTEST) $(itests) $(testloc)
 
 single: prepare
-	$(PYTEST) $(testloc)/${SINGLE}
+	$(OOPYTEST) $(testloc)/${SINGLE}
 
 run: clean prepare
-	$(PYTEST) $(testloc)/oo/test_core.py::test_generate_report
+	$(OOPYTEST) $(testloc)/oo/test_core.py::test_generate_report
 
 metadata_fixture: prepare
-	$(PYTEST) --force-regen $(ootestloc)/test_reader_regression.py ||$\
-	$(PYTEST) --force-regen $(ootestloc)/test_reader_regression.py ||$\
-	$(PYTEST) $(ootestloc)/test_reader_regression.py
+	$(OOPYTEST) --force-regen $(ootestloc)/test_reader_regression.py ||$\
+	$(OOPYTEST) --force-regen $(ootestloc)/test_reader_regression.py ||$\
+	$(OOPYTEST) $(ootestloc)/test_reader_regression.py
 	cp -v odbinfo/test/oo/test_reader_regression/*.pickle $(fixtureloc)
 
 processor_fixture: metadata_fixture
-	$(PYTEST) --force-regen $(puretestloc)/test_processor_regression.py ||$\
-	$(PYTEST) --force-regen $(puretestloc)/test_processor_regression.py ||$\
-	$(PYTEST) --force-regen $(puretestloc)/test_processor_regression.py
+	$(OOPYTEST) --force-regen $(puretestloc)/test_processor_regression.py ||$\
+	$(OOPYTEST) --force-regen $(puretestloc)/test_processor_regression.py ||$\
+	$(OOPYTEST) --force-regen $(puretestloc)/test_processor_regression.py
 	cp -v odbinfo/test/pure/test_processor_regression/*.pickle $(fixtureloc)
 
 
 write_site_fixture: processor_fixture
-	$(PYTEST)  --force-regen $(puretestloc)/test_write_site_regression.py || $\
-	($(PYTEST)  --force-regen $(puretestloc)/test_write_site_regression.py && $\
+	$(OOPYTEST)  --force-regen $(puretestloc)/test_write_site_regression.py || $\
+	($(OOPYTEST)  --force-regen $(puretestloc)/test_write_site_regression.py && $\
 	(rm -rf $(fixtureloc)/fixtures/template_regression_input || true) && $\
 	cp -r $(puretestloc)/test_write_site_regression $(fixtureloc)/fixtures/template_regression_input)
 
 
 template_fixture: write_site_fixture
-	$(PYTEST)  --force-regen $(puretestloc)/test_template_regression.py || $\
-	($(PYTEST)  --force-regen $(puretestloc)/test_template_regression.py && $\
+	$(OOPYTEST)  --force-regen $(puretestloc)/test_template_regression.py || $\
+	($(OOPYTEST)  --force-regen $(puretestloc)/test_template_regression.py && $\
 	(rm -rf $(fixtureloc)/fixtures/convert_local_input || true) && $\
 	cp -r $(puretestloc)/test_template_regression/test_template_regression $(fixtureloc)/fixtures/convert_local_input)
 
 convert_local_fixture: template_fixture
-	$(PYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py || $\
-	$(PYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py
+	$(OOPYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py || $\
+	$(OOPYTEST)  --force-regen $(puretestloc)/test_convert_local_regression.py
 
 fixtures: clean convert_local_fixture
-	$(PYTEST) --force-regen -m "not tooslow" $(testloc)
+	$(OOPYTEST) --force-regen -m "not tooslow" $(testloc)
 
 unit:
-	$(PYTEST) $(unit) $(testloc)
+	$(OOPYTEST) $(unit) $(testloc)
 
 benchmark:
-	ODBINFO_NO_BROWSE=1 $(PYTEST) $(benchmarking) $(testloc)
+	ODBINFO_NO_BROWSE=1 $(OOPYTEST) $(benchmarking) $(testloc)
 
 histogram:
 	# PYTHONPATH=$(OOPYTHONPATH) $(python) -m pytest $ $(testloc) --benchmark-histogram --benchmark-compare=\*
@@ -133,7 +135,7 @@ histogram:
 	py.test-benchmark compare --histogram=benchmarks/histogram
 
 alltest: clean
-	$(PYTEST) $(testloc)
+	$(OOPYTEST) $(testloc)
 
 .ONESHELL:
 serve: run
@@ -147,11 +149,11 @@ qserve:
 	hugo server --disableFastRender --layoutDir ../../../../../data/hugo-template/layouts
 
 format:
-	isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
-	autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
+	$(PUREPYTHON) -m isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
+	$(PUREPYTHON) -m autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
 
-pycompile:
-	 python -m py_compile odbinfo/**/**.py odbinfo/test/**/*.py
+pycompile: # Compiles the sources
+	$(OOPYTHON) -m py_compile odbinfo/**/**.py odbinfo/test/**/*.py
 
 check: pycompile check_main check_test
 
@@ -177,7 +179,7 @@ open_shell: prepare
 oxt:
 	-mkdir -p $(lib) $(dist) $(build)
 	(cd pipenvconf/oo && pipenv lock -r > /tmp/requirements.txt)
-	python -m pip install -r /tmp/requirements.txt \
+	$(PUREPYTHON) -m pip install -r /tmp/requirements.txt \
 	--ignore-installed --target $(lib)
 	cp main.py $(stage)/python
 	cp -r odbinfo data $(lib)
@@ -193,7 +195,7 @@ install_oxt: oxt
 	$(unopkg) add -s $(dist)/odbinfo.oxt
 
 doc: prepare
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pydoc -p 0
+	$(OOPYTHON) -m pydoc -p 0
 
 .ONESHELL:
 unziptestdb:
@@ -224,13 +226,13 @@ ctags:
 	ctags -R odbinfo
 
 metric: clean
-	python -m xenon -b A -m A -a A  $(pythonsources)
+	$(PUREPYTHON) -m xenon -b A -m A -a A  $(pythonsources)
 
 mypy_report:
-	mypy --show-error-codes --disable-error-code  import --html-report mypy-report $(pythonsources)
+	$(PUREPYTHON) -m mypy --show-error-codes --disable-error-code  import --html-report mypy-report $(pythonsources)
 
 mypy:
-	mypy --show-error-codes --disable-error-code  import $(pythonsources)
+	$(PUREPYTHON) -m mypy --show-error-codes --disable-error-code  import $(pythonsources)
 
 post_checkout:
 	-mkdir $(fixtureloc)/fixtures/template_regression_input/test_write_site_empty/content

@@ -50,7 +50,6 @@ all: ctags mypy metric precommit install_oxt
 
 prepare:
 	@echo prepare start
-	if [ ! -d odbinfo/test/pure/data ]; then (cd odbinfo/test/pure && ln -s ../oo/data) fi
 	@-mkdir -p $(build) $(test-output) $(classdiagram)
 	@echo prepare done
 

@@ -16,9 +16,16 @@ logger.setLevel(logging.DEBUG)
 
 # time out in seconds
 OFFICE_TIME_OUT = 20
-SOFFICE_CMD = '/tmp/program/soffice '\
-              '--accept="socket,host=localhost,port=2002;urp;" '\
+SOFFICE_CMD = '/tmp/program/soffice ' \
+              '--accept="socket,host=localhost,port=2002;urp;" ' \
               '--norestore --nologo --nodefault  --headless'
+
+__all__ = [
+    "directory_regression",
+    "libreoffice",
+    "testdb_doc",
+    "emptydb_doc"
+]
 
 
 @fixture(scope="session")
@@ -39,6 +46,7 @@ def start_office(file):
     logger.debug("LibreOffice started with %s ", file)
     return office_proc
 
+
 # pylint:disable=unused-argument
 # pylint:disable=redefined-outer-name
 
@@ -52,6 +60,7 @@ def testdb_doc(libreoffice, shared_datadir):
     doc = a_desktop.loadComponentFromURL(filename, "_blank", 0, ())
     yield doc
     doc.close(True)
+
 
 # pylint:disable=unused-argument
 # pylint:disable=redefined-outer-name
@@ -86,10 +95,10 @@ def get_context():
                 "urp;StarOffice.ComponentContext"
             )
             break
-        except Exception:  # pylint: disable=broad-except
+        except Exception:
             i += 1
             logger.debug(
-                "waiting on uno connection for %0.1f seconds", float(i)/10)
+                "waiting on uno connection for %0.1f seconds", float(i) / 10)
             time.sleep(0.1)
     else:
         raise \

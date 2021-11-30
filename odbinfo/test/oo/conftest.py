@@ -95,7 +95,7 @@ def get_context():
                 "urp;StarOffice.ComponentContext"
             )
             break
-        except Exception:
+        except Exception:  # pylint:disable=broad-except
             i += 1
             logger.debug(
                 "waiting on uno connection for %0.1f seconds", float(i) / 10)

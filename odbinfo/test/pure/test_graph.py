@@ -10,11 +10,10 @@ from odbinfo.pure.datatype import (Control, Form, Key, ListBox, SubForm, Table,
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.graph import (_is_control_visible, edge, edge_attributes,
                                 generate_graphs, generate_main_graph, href,
-                                hugo_filename, is_visible,
+                                hugo_filename, is_visible, label_for_node,
                                 make_dependency_edges, make_edge, make_node,
                                 make_parent_edge, visible_ancestor,
                                 visible_dependency_edges)
-from odbinfo.test.pure.datatype import factory
 
 
 def test_hugo_filename_to_lower():
@@ -25,21 +24,49 @@ def test__hugo_filename_spaces():
     assert hugo_filename("F oo") == "f-oo"
 
 
-class Href(unittest.TestCase):
+def test_href_webpage(table_plant):
+    assert href(table_plant) == \
+        "../table/plant/index.html"
 
-    @staticmethod
-    def test_webpage():
-        assert href(factory.table_plant()) == \
-            "../table/plant/index.html"
 
-    @staticmethod
-    def test_control():
-        form = factory.form()
-        subform = form.subforms[0]
-        subform.parent = form
-        subform.obj_id = "42"
-        assert href(subform) == \
-            "../form/myform/index.html#42"
+def test_href_control(form):
+    subform = form.subforms[0]
+    subform.parent = form
+    subform.obj_id = "42"
+    assert href(subform) == \
+        "../form/myform/index.html#42"
+
+
+def test_is_visible_excludes_excluded(graph_config, control):
+    graph_config.user_excludes = [content_type(Control)]
+    assert not is_visible(graph_config, control)
+
+
+def test_is_visible_excludes_included(graph_config, irrelevant_control):
+    graph_config.user_excludes = []
+    assert not is_visible(graph_config, irrelevant_control)
+
+
+def test_is_visible_no_relevant_controls(graph_config, irrelevant_control):
+    graph_config.relevant_controls = False
+    assert is_visible(graph_config, irrelevant_control)
+
+
+def test_is_visible_relevant_controls(graph_config, irrelevant_control):
+    graph_config.relevant_controls = True
+    assert not is_visible(graph_config, irrelevant_control)
+
+
+def test_is_control_relevant_not_relevant_listbox(listbox):
+    assert not _is_control_visible(listbox)
+
+
+def test_is_control_relevant_listbox(listbox_embeddedquery):
+    assert _is_control_visible(listbox_embeddedquery)
+
+
+def test_is_control_relevant_control(control):
+    assert _is_control_visible(control)
 
 
 class ConfTest(unittest.TestCase):
@@ -48,72 +75,14 @@ class ConfTest(unittest.TestCase):
         self.conf = get_configuration("conftest").graph
 
 
-class IsVisibleExcludes(ConfTest):
-    def setUp(self):
-        super().setUp()
-        self.node = Control("control1", "c1", None, False, True,
-                            "Label", "otherControl", "text", [])
-
-    def test_excluded(self):
-        self.conf.user_excludes = [content_type(Control)]
-        assert not is_visible(self.conf, self.node)
-
-    def test_included(self):
-        self.conf.user_excludes = []
-        assert not is_visible(self.conf, self.node)
+def test_is_visible_table(table_plant, graph_config):
+    assert is_visible(graph_config, table_plant)
 
 
-class IsVisibleControl(ConfTest):
-
-    def setUp(self):
-        super().setUp()
-        self.irrelevant_node = Control("control1", "c1", None, False, True,
-                                       "Label", "otherControl", "text", [])
-
-    def test_no_relevant_controls(self):
-        self.conf.relevant_controls = False
-        assert is_visible(self.conf, self.irrelevant_node)
-
-    def test_relevant_controls(self):
-        self.conf.relevant_controls = True
-        assert not is_visible(self.conf, self.irrelevant_node)
-
-
-class IsControlVisible(unittest.TestCase):
-
-    def test_not_visible_listbox(self):
-        self.listbox = factory.listbox()
-        assert not _is_control_visible(self.listbox)
-
-    def test_visible_listbox(self):
-        self.listbox = factory.listbox_embeddedquery()
-        assert _is_control_visible(self.listbox)
-
-    def test_visible_control(self):
-        self.relevant_control = factory.control()
-        assert _is_control_visible(self.relevant_control)
-
-
-class IsVisibleOtherTypes(ConfTest):
-
-    def setUp(self):
-        super().setUp()
-        self.node = factory.table_plant()
-
-    def test_table(self):
-        assert is_visible(self.conf, self.node)
-
-
-class MakeNodeInvisibleNode(ConfTest):
-    def setUp(self):
-        super().setUp()
-        self.node = factory.table_plant()
-        self.conf.user_excludes = [self.node.content_type()]
-        self.graph = Digraph("odbinfo")
-
-    def test_do_nothing(self):
-        make_node(self.conf, self.graph, self.node)
-        assert len(self.graph.body) == 0
+def test_make_node_do_nothing(graph_config, digraph, table_plant):
+    graph_config.user_excludes = [table_plant.content_type()]
+    make_node(graph_config, digraph, table_plant)
+    assert len(digraph.body) == 0
 
 
 class GraphTest(ConfTest):
@@ -122,220 +91,156 @@ class GraphTest(ConfTest):
         self.graph = Digraph("odbinfo")
 
 
-class MakeNodeVisibleNode(GraphTest):
+def test_make_node_name_and_id(graph_config, digraph, table_plant):
+    make_node(graph_config, digraph, table_plant)
 
-    def setUp(self):
-        super().setUp()
-        self.node = factory.table_plant()
-        self.node.obj_id = "42"
-
-    def test_name_and_id(self):
-        make_node(self.conf, self.graph, self.node)
-
-        assert len(self.graph.body) == 1
-        assert self.graph.body[0].index("42") > -1
-        assert self.graph.body[0].index('id=42') > -1
-
-    def test_label(self):
-        make_node(self.conf, self.graph, self.node)
-
-        assert len(self.graph.body) == 1
-        assert self.graph.body[0].index('label=plant') > -1
-
-    def test_tooltip(self):
-        make_node(self.conf, self.graph, self.node)
-
-        assert len(self.graph.body) == 1
-        assert self.graph.body[0].index('tooltip="plant (table)"') > -1
+    assert len(digraph.body) == 1
+    assert digraph.body[0].count("42") > 0
+    assert digraph.body[0].count('id=42') > 0
 
 
-class MakeNodeVisibleControlLabel(ConfTest):
+def test_make_node_label(graph_config, digraph, table_plant):
+    make_node(graph_config, digraph, table_plant)
 
-    def setUp(self):
-        super().setUp()
-        self.form = factory.form()
-        self.node = self.form.subforms[0].controls[0]
-
-        self.node.obj_id = "42"
-        self.node.label = "labelvalue"
-        self.graph = Digraph("odbinfo")
-
-    def test_label(self):
-        make_node(self.conf, self.graph, self.node)
-
-        assert len(self.graph.body) == 1
-        assert self.graph.body[0].index('label=labelvalue') > -1
-
-    def test_no_label(self):
-        self.node.label = ""
-        make_node(self.conf, self.graph, self.node)
-
-        assert len(self.graph.body) == 1
-        assert self.graph.body[0].index('label=ControlName') > -1
+    assert len(digraph.body) == 1
+    assert digraph.body[0].count('label=plant') > 0
 
 
-class VisibleAncestor(ConfTest):
+def test_make_node_tooltip(graph_config, digraph, table_plant):
+    make_node(graph_config, digraph, table_plant)
 
-    def test_identity(self):
-        self.webpage = factory.table_plant()
-        assert visible_ancestor(self.conf, self.webpage) == self.webpage
-
-    def test_no_ancestor(self):
-        self.control = factory.control()
-        self.conf.user_excludes = [content_type(Control)]
-        assert visible_ancestor(self.conf, self.control) is None
-
-    def test_higher_ancestor(self):
-        self.subform = factory.subform()
-        self.control = self.subform.controls[0]
-        self.conf.user_excludes = [content_type(Control)]
-        assert visible_ancestor(self.conf, self.control) == self.subform
+    assert len(digraph.body) == 1
+    assert digraph.body[0].count('tooltip="plant (table)"') > 0
 
 
-class EdgeAttributes(ConfTest):
-    def setUp(self):
-        super().setUp()
-        self.start = factory.table_plant()
-        self.end = factory.table_family()
-
-    def test_tooltip(self):
-        assert edge_attributes(self.conf, self.start, self.end)[
-            "edgetooltip"] == "plant -> family"
-
-    def test_configured_attribute(self):
-        assert edge_attributes(self.conf, self.start, self.end).items() \
-            <= self.conf.relation_attrs[(content_type(Table),
-                                         content_type(Table))].items()
+def test_label_for_node(irrelevant_control):
+    irrelevant_control.label = "labelvalue"
+    assert label_for_node(irrelevant_control) == "labelvalue"
 
 
-class Edge(GraphTest):
-
-    def setUp(self):
-        super().setUp()
-        self.start = factory.table_plant()
-        self.start.obj_id = "1"
-        self.end = factory.table_family()
-        self.end.obj_id = "2"
-
-    def test_edge(self):
-        edge(self.graph, self.start, self.end, {})
-        line = self.graph.body[0]
-        assert line == "\t1 -> 2\n"
+def test_no_label(irrelevant_control):
+    irrelevant_control.label = ""
+    assert label_for_node(irrelevant_control) == 'ControlName'
 
 
-class MakeEdge(Edge):
-
-    def test_edge(self):
-        make_edge(self.conf, self.graph, self.start, self.end)
-        line = self.graph.body[0]
-        assert line == """\t1 -> 2 [edgetooltip="plant -> family"]\n"""
+# visisible_ancestor
+def test_edge_attributes_tooltip(graph_config, table_plant, table_family):
+    assert edge_attributes(graph_config, table_plant, table_family)[
+        "edgetooltip"] == "plant -> family"
 
 
-class MakeParentEdge(GraphTest):
-    def setUp(self):
-        super().setUp()
-        self.conf.user_excludes = []
-        self.plant = factory.table_plant()
-        self.plant.obj_id = "table_id"
-
-        self.key = self.plant.keys[0]
-        self.key.obj_id = "key_id"
-
-    def test_no_parent(self):
-        self.key.parent = None
-        make_parent_edge(self.conf, self.graph, self.key)
-        assert len(self.graph.body) == 0
-
-    def test_key_not_visible(self):
-        self.conf.user_excludes = [content_type(Key)]
-        make_parent_edge(self.conf, self.graph, self.key)
-        assert len(self.graph.body) == 0
-
-    def test_no_visible_ancestor(self):
-        self.conf.user_excludes = [content_type(Table)]
-        make_parent_edge(self.conf, self.graph, self.key)
-        assert len(self.graph.body) == 0
-
-    def test_edge(self):
-        make_parent_edge(self.conf, self.graph, self.key)
-        line = self.graph.body[0]
-        assert line.index("\tkey_id -> table_id") > -1
-        assert len(self.conf.parent_edge_attrs.items()) == 3
+def test_edge_attributes_configured_attribute(graph_config, table_plant, table_family):
+    assert edge_attributes(graph_config, table_plant, table_family).items() \
+        <= graph_config.relation_attrs[(content_type(Table),
+                                        content_type(Table))].items()
 
 
-class VisibleDependencyEdges(ConfTest):
-
-    def setUp(self):
-        super().setUp()
-        self.meta = factory.metadata()
-
-    def test_no_edges(self):
-        assert len(visible_dependency_edges(self.meta, self.conf)) == 0
-
-    def test_one_edge(self):
-        self.meta.table_defs[0].keys[0].link = self.meta.table_defs[1].identifier
-        assert len(visible_dependency_edges(self.meta, self.conf)) == 1
-
-    def test_one_edge_no_collapse(self):
-        self.conf.collapse_multiple_uses = False
-        self.test_one_edge()
+def test_identity(table_plant, graph_config):
+    assert visible_ancestor(graph_config, table_plant) == table_plant
 
 
-class VisibleDependencyEdgesNoVisibleAncestor(ConfTest):
-
-    def setUp(self):
-        super().setUp()
-        self.meta = factory.metadata_listbox()
-
-    def test_no_edge_user_not_visible(self):
-        self.conf.user_excludes = [content_type(
-            ListBox), content_type(SubForm), content_type(Form)]
-        assert len(visible_dependency_edges(self.meta, self.conf)) == 0
-
-    def test_no_edge_used_not_visible(self):
-        self.conf.user_excludes = [content_type(Table)]
-        assert len(visible_dependency_edges(self.meta, self.conf)) == 0
+def test_no_ancestor(graph_config, control):
+    graph_config.user_excludes = [content_type(Control)]
+    assert visible_ancestor(graph_config, control) is None
 
 
-class MakeDepencyEdges(GraphTest):
-
-    def setUp(self):
-        super().setUp()
-        self.meta = factory.metadata_listbox()
-
-    def test_one_edge(self):
-        make_dependency_edges(
-            self.meta, self.conf, self.graph)
-        assert len(self.graph.body) == 1
+def test_higher_ancestor(subform, graph_config):
+    control = subform.controls[0]
+    graph_config.user_excludes = [content_type(Control)]
+    assert visible_ancestor(graph_config, control) == subform
 
 
-class GenerateMainGraph(unittest.TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.meta = factory.metadata_listbox()
-        self.conf = get_configuration("testrun")
-
-    def test_generate_main_graph(self):
-        self.graph = generate_main_graph(
-            self.meta, self.conf)
-        # print(self.graph.source)
-        assert len(self.graph.body) == (2  # initial lines
-                                        + 4  # objects
-                                        + 2  # parent edges
-                                        + 1  # dependency edge
-                                        )
+def test_edge(digraph, table_plant, table_family):
+    table_plant.obj_id = "1"
+    table_family.obj_id = "2"
+    edge(digraph, table_plant, table_family, {})
+    line = digraph.body[0]
+    assert line == "\t1 -> 2\n"
 
 
-class GenerateGraphs(GenerateMainGraph):
+def test_make_edge(graph_config, digraph, table_plant, table_family):
+    table_plant.obj_id = "1"
+    table_family.obj_id = "2"
+    make_edge(graph_config, digraph, table_plant, table_family)
+    line = digraph.body[0]
+    assert line == """\t1 -> 2 [edgetooltip="plant -> family"]\n"""
 
-    def test_generate_graphs(self):
-        graphs = generate_graphs(self.meta, self.conf)
-        assert len(graphs) == 1
+
+def test_make_parent_edge_no_parent(foreignkey_family, digraph, graph_config):
+    foreignkey_family.parent = None
+    make_parent_edge(graph_config, digraph, foreignkey_family)
+    assert len(digraph.body) == 0
+
+
+def test_make_parent_edge_key_not_visible(table_plant, digraph, graph_config):
+    graph_config.user_excludes = [content_type(Key)]
+    make_parent_edge(graph_config, digraph, table_plant.keys[0])
+    assert len(digraph.body) == 0
+
+
+def test_make_parent_edge_no_visible_ancestor(graph_config, digraph, table_plant):
+    graph_config.user_excludes = [content_type(Table)]
+    make_parent_edge(graph_config, digraph, table_plant.keys[0])
+    assert len(digraph.body) == 0
+
+
+def test_make_parent_edge(graph_config, digraph, table_plant, table_family):
+    graph_config.user_excludes = []
+    table_plant.keys[0].obj_id = "key_id"
+    table_plant.obj_id = "table_id"
+    make_parent_edge(graph_config, digraph, table_plant.keys[0])
+    line = digraph.body[0]
+    assert line.index("\tkey_id -> table_id") > -1
+
+
+# _visible_dependency_edges
+def test_visible_dependency_edges_no_edges(graph_config, metadata_tables):
+    assert len(visible_dependency_edges(metadata_tables, graph_config)) == 0
+
+
+def test_visible_dependency_edges_one_edge(graph_config, metadata_tables):
+    metadata_tables.table_defs[0].keys[0].link = metadata_tables.table_defs[1].identifier
+    assert len(visible_dependency_edges(metadata_tables, graph_config)) == 1
+
+
+def test_visible_dependency_edges_one_edge_no_collapse(graph_config, metadata_tables):
+    graph_config.collapse_multiple_uses = False
+    metadata_tables.table_defs[0].keys[0].link = metadata_tables.table_defs[1].identifier
+    assert len(visible_dependency_edges(metadata_tables, graph_config)) == 1
+
+
+def test_visible_dependency_edges_no_edge_user_not_visible(graph_config, metadata_listbox):
+    graph_config.user_excludes = [content_type(
+        ListBox), content_type(SubForm), content_type(Form)]
+    assert len(visible_dependency_edges(metadata_listbox, graph_config)) == 0
+
+
+def test_visible_dependency_edges_no_edge_used_not_visible(graph_config, metadata_listbox):
+    graph_config.user_excludes = [content_type(Table)]
+    assert len(visible_dependency_edges(metadata_listbox, graph_config)) == 0
+
+
+def test_one_edge(metadata_listbox, graph_config, digraph):
+    make_dependency_edges(
+        metadata_listbox, graph_config, digraph)
+    assert len(digraph.body) == 1
+
+
+def test_generate_main_graph(configuration, metadata_listbox):
+    assert len(generate_main_graph(
+        metadata_listbox, configuration).body) == (2  # initial lines
+                                                   + 4  # objects
+                                                   + 2  # parent edges
+                                                   + 1  # dependency edge
+                                                   )
+
+
+def test_generate_graphs(configuration, metadata_listbox):
+    assert len(generate_graphs(metadata_listbox, configuration)) == 1
 
 
 @pytest.mark.slow
-def test_generate_main_graph(metadata_processed, data_regression):
+def test_generate_main_graph_regression(metadata_processed, data_regression):
     """run generate_main_graph"""
     conf = get_configuration("test_generate_main_graph")
     data_regression.check(generate_main_graph(metadata_processed, conf).source)

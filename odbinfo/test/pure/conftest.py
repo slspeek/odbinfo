@@ -3,15 +3,19 @@ import pickle
 from pathlib import Path
 from zipfile import ZipFile
 
+from graphviz import Digraph
 from pytest import fixture
 
+# pylint:disable=wildcard-import
+# pylint:disable=unused-wildcard-import
+from odbinfo.test.pure.datatype.conftest import *
 from odbinfo.test.regression import directory_regression
 from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
 
 __all__ = [
     "directory_regression",
     "fixture_path",
-    "metadata",
+    "metadata_tables",
     "empty_metadata",
     "metadata_loader",
     "empty_metadata_loader",
@@ -19,8 +23,14 @@ __all__ = [
     "metadata_processed_loader",
     "empty_metadata_processed_loader",
     "empty_metadata_processed",
-    "odbzip"
+    "odbzip",
+    "digraph"
 ]
+
+
+@fixture(scope="function")
+def digraph():
+    return Digraph("test_digraph")
 
 
 def load_metadata(shared_datadir, processed=False, empty=False):
@@ -52,7 +62,7 @@ def metadata(shared_datadir):
 
 @fixture(scope="function")
 def metadata_loader(shared_datadir):
-    """ metadata delayed reader for benchmarking """
+    """ metadata_tables delayed reader for benchmarking """
 
     def inner():
         return load_metadata(shared_datadir)
@@ -68,7 +78,7 @@ def empty_metadata(shared_datadir):
 
 @fixture(scope="function")
 def empty_metadata_loader(shared_datadir):
-    """ empty metadata delayed reader for benchmarking """
+    """ empty metadata_tables delayed reader for benchmarking """
 
     def inner():
         return load_metadata(shared_datadir, empty=True)

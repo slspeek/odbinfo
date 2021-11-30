@@ -8,7 +8,6 @@ from graphviz import Digraph
 
 from odbinfo.pure.writer import (backup_old_site, localsite, new_site,
                                  present_contenttypes, write_graphs)
-from odbinfo.test.pure.datatype import factory
 
 
 def test_localsite_name():
@@ -48,6 +47,5 @@ def test_new_site(tmpdir):
     assert (site_path / "static").exists()
 
 
-def test_present_contenttypes():
-    metadata = factory.metadata_listbox()
-    assert present_contenttypes(metadata) == ['table', 'form']
+def test_present_contenttypes(metadata_listbox):
+    assert present_contenttypes(metadata_listbox) == ['table', 'form']

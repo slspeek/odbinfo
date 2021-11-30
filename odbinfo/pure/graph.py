@@ -44,15 +44,21 @@ def is_visible(config: GraphConfig, node: NamedNode) -> bool:
     return False
 
 
+def label_for_node(node: NamedNode) -> str:
+    """returns a label string for `node`"""
+    label = node.name
+    if node.content_type() == content_type(Control):
+        control = cast(Control, node)
+        if control.label:
+            label = control.label
+    return label
+
+
 def make_node(config: GraphConfig,
               graph: Digraph, node: NamedNode):
     """ adds a node to `graph` for `node` if `config` says so """
     if is_visible(config, node):
-        label = node.name
-        if node.content_type() == content_type(Control):
-            control = cast(Control, node)
-            if control.label:
-                label = control.label
+        label = label_for_node(node)
         graph.node(str(node.obj_id),
                    label=label,
                    tooltip=f"{node.name} ({node.content_type()})",

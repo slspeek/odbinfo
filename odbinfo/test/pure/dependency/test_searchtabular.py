@@ -1,40 +1,25 @@
 """ test dependency search in tabulars """
-import unittest
 
-from odbinfo.pure.datatype import EmbeddedQuery, Token
+from odbinfo.pure.datatype import Token
 from odbinfo.pure.dependency.searchtabular import (search_deps_in_queries,
                                                    search_tables_in_tables)
-from odbinfo.test.pure.datatype import factory
 
 
-class InQueries(unittest.TestCase):
-    """search_deps_in_queries"""
-
-    def setUp(self):
-        self.plant = factory.table_plant()
-        self.query: EmbeddedQuery = factory.embedded_query()
-        self.query.table_tokens = [Token('"plant"', 0, 0, False)]
-
-    def test_match(self):
-        """match"""
-        search_deps_in_queries([self.plant], [self.query])
-        assert self.query.table_tokens[0].link == self.plant.identifier
-
-    def test_non_match(self):
-        """non match"""
-        family = factory.table_family()
-        search_deps_in_queries([family], [self.query])
-        assert self.query.table_tokens[0].link is None
+def test_search_deps_in_queries_match(table_plant, embedded_query):
+    """match"""
+    embedded_query.table_tokens = [Token('"plant"', 0, 0, False)]
+    search_deps_in_queries([table_plant], [embedded_query])
+    assert embedded_query.table_tokens[0].link == table_plant.identifier
 
 
-class TablesInTables(unittest.TestCase):
-    """search_tables_in_tables"""
+def test_search_deps_in_queries_non_match(table_family, embedded_query):
+    """non match"""
+    embedded_query.table_tokens = [Token('"plant"', 0, 0, False)]
+    search_deps_in_queries([table_family], [embedded_query])
+    assert embedded_query.table_tokens[0].link is None
 
-    def setUp(self):
-        self.plant = factory.table_plant()
-        self.family = factory.table_family()
 
-    def test_match(self):
-        """match"""
-        search_tables_in_tables([self.plant, self.family])
-        assert self.plant.keys[0].link == self.family.identifier
+def test_search_tables_in_tables_match(table_plant, table_family):
+    """match"""
+    search_tables_in_tables([table_plant, table_family])
+    assert table_plant.keys[0].link == table_family.identifier

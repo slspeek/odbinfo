@@ -3,10 +3,12 @@ from pytest import fixture
 
 from odbinfo.pure.datatype import BasicFunction, Metadata
 from odbinfo.pure.datatype.config import get_configuration
-from odbinfo.pure.datatype.tabular import EmbeddedQuery, Key, Table
 from odbinfo.pure.datatype.ui import (Control, DatabaseDisplay, EventListener,
                                       Form, ListBox, Report, SubForm,
                                       TextDocument)
+from src.odbinfo.pure.datatype import EmbeddedQuery, Key, Table
+
+# pylint:disable=redefined-outer-name
 
 
 @fixture(scope="function")

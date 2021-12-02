@@ -8,9 +8,9 @@ from pytest import fixture
 
 # pylint:disable=wildcard-import
 # pylint:disable=unused-wildcard-import
-from odbinfo.test.pure.datatype.conftest import *
-from odbinfo.test.regression import directory_regression
-from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
+from tests.pure.datatype.conftest import *
+from tests.regression import directory_regression
+from tests.resource import DEFAULT_TESTDB, EMPTYDB
 
 __all__ = [
     "directory_regression",

@@ -11,8 +11,8 @@ from odbinfo.pure import builder
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.util import chdir
 from odbinfo.pure.writer import localsite
-from odbinfo.test.resource import TEST_OUTPUT_PATH
-from odbinfo.test.util import clear_generated_graphs
+from tests.resource import TEST_OUTPUT_PATH
+from tests.util import clear_generated_graphs
 
 
 @pytest.mark.veryslow
@@ -38,7 +38,7 @@ def generate_report_test(oodoc, benchmark, directory_regression):
     with chdir(odbpath.parent):
         with patch.object(builder, 'find_free_port', return_value=1313) as free_port:
             with patch.object(ooutil, 'document_path',
-                              return_value=(Path(".") / odbpath.name)) as doc_path:
+                              return_value=(Path("") / odbpath.name)) as doc_path:
                 benchmark(generate_report, oodoc, config)
 
         free_port.assert_called()

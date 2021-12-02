@@ -1,3 +1,3 @@
-[submodule "data/hugo-template/themes/minimal"]
-	path = data/hugo-template/themes/minimal
+[submodule "src/hugo-template/themes/minimal"]
+	path = src/hugo-template/themes/minimal
 	url = https://github.com/calintat/minimal.git

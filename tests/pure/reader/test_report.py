@@ -5,7 +5,7 @@ from unittest.mock import Mock
 import pytest
 
 from odbinfo.pure.reader.report import read_reports
-from odbinfo.test.pure.reader.test_common import OO_NAMESPACES, ZipFileMock
+from tests.pure.reader.test_common import OO_NAMESPACES, ZipFileMock
 
 
 @pytest.mark.slow

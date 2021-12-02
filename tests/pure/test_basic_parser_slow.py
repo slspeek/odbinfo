@@ -9,7 +9,7 @@ import xmltodict
 
 from odbinfo.pure.datatype import Module
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
-from odbinfo.test.resource import BASEDOCUMENTER
+from tests.resource import BASEDOCUMENTER
 
 
 def mapiflist(function, maybelist):

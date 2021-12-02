@@ -1,7 +1,6 @@
 """tests for metadata"""
 
-from odbinfo.pure.datatype.exec import (Library, Module, PythonLibrary,
-                                        PythonModule)
+from odbinfo.pure.datatype import Library, Module, PythonLibrary, PythonModule
 
 
 def test_metadata_post_init(metadata_empty):
@@ -35,7 +34,6 @@ def test_pythonmodule_defs(metadata_empty):
 
 def test_embeddedquery_defs(metadata_empty, report_embeddedquery, embedded_query):
     metadata_empty.report_defs = [report_embeddedquery]
-
     assert list(metadata_empty.embeddedquery_defs()) == [
         embedded_query]
 

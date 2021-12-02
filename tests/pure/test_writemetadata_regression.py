@@ -3,7 +3,7 @@ import pytest
 
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.writer import write_metadata
-from odbinfo.test.resource import TEST_OUTPUT_PATH
+from tests.resource import TEST_OUTPUT_PATH
 
 
 @pytest.mark.slow

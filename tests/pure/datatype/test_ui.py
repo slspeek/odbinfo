@@ -4,7 +4,7 @@ from odbinfo.pure.datatype.ui import Grid
 
 
 def test_report_children(report):
-    assert list(report.children()) == []
+    assert not list(report.children())
 
 
 def test_report_cmd(report):
@@ -49,7 +49,7 @@ def test_listbox_children_embedded_query(listbox_embeddedquery):
 
 def test_grid_children():
     grid = Grid("MyGrid", [], "Grid")
-    assert grid.children() == []
+    assert not grid.children()
 
 
 def test_subform(subform):

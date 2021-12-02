@@ -3,7 +3,7 @@
 import pytest
 
 from odbinfo.pure.builder import run_gohugo
-from odbinfo.test.util import clear_generated_graphs
+from tests.util import clear_generated_graphs
 
 
 @pytest.mark.slow

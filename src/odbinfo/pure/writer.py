@@ -56,7 +56,7 @@ def backup_old_site(site_path: Path, date: datetime = None) -> None:
 
 # We are at odbinfo/pure/writer.py and data resides besides odbinfo
 # so we go up three times, and then into 'data/hugo-template'
-SITE_SKEL_PATH = Path(__file__).parent.parent.parent / "data" / "hugo-template"
+SITE_SKEL_PATH = Path(__file__).parent.parent.parent / "hugo-template"
 
 
 def new_site(site_path: Path) -> None:

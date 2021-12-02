@@ -2,30 +2,32 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/oo/data" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/oo/test_core" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/test_graph" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/test_processor_regression" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/test_template_regression" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/test_write_site_regression" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/oometadata" />
       <excludeFolder url="file://$MODULE_DIR$/pipenvconf" />
       <excludeFolder url="file://$MODULE_DIR$/data" />
       <excludeFolder url="file://$MODULE_DIR$/ci" />
       <excludeFolder url="file://$MODULE_DIR$/benchmarks" />
       <excludeFolder url="file://$MODULE_DIR$/.benchmarks" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/pure/parser/grammars" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/pure/parser/oobasic" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/pure/parser/sqlite" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/oo/test_reader_regression" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/test_convert_local_regression" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/reader/data" />
       <excludeFolder url="file://$MODULE_DIR$/.mypy_cache" />
       <excludeFolder url="file://$MODULE_DIR$/.pytest_cache" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/test_writemetadata_regression" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/pure/parser/lib" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
-      <excludeFolder url="file://$MODULE_DIR$/odbinfo/test/pure/data" />
+      <excludeFolder url="file://$MODULE_DIR$/src/odbinfo/pure/parser/sqlite" />
+      <excludeFolder url="file://$MODULE_DIR$/src/odbinfo/pure/parser/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/odbinfo/pure/parser/oobasic" />
+      <excludeFolder url="file://$MODULE_DIR$/src/odbinfo/pure/parser/grammars" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/oo/test_core" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/oo/data" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/oo/test_reader_regression" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/pure/test_convert_local_regression" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/pure/test_template_regression" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/pure/test_processor_regression" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/pure/test_graph" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/pure/test_writemetadata_regression" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/pure/data" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/pure/reader/data" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/pure/test_write_site_regression" />
     </content>
     <orderEntry type="jdk" jdkName="OOPython 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

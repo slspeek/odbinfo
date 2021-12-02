@@ -1,7 +1,7 @@
 """ test the tabular datatypes """
 
 from odbinfo.pure.datatype import Column, Key, Query, QueryColumn
-from odbinfo.pure.datatype.tabular import Table
+from src.odbinfo.pure.datatype.tabular import Table
 
 
 def test_query_column():
@@ -38,4 +38,4 @@ def test_table_post_init():
 
 def test_embeddedquery_children():
     equery = Query("emdedded", 'select * from  Plant')
-    assert list(equery.children()) == []
+    assert not list(equery.children())

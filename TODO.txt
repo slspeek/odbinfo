@@ -4,8 +4,6 @@ Makefile run after 'source env.source'
 
 Makefile classdiagram -> pipenv run
 
-move tests to tests/pure, tests/oo
-
 Add control 'visible' attribute
 
 Basic comments

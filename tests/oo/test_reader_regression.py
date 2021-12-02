@@ -21,7 +21,7 @@ def read_metadata_in_test(testdb_doc, monkeypatch, benchmark):
     dbpath = Path(urlparse(testdb_doc.URL).path)
     # This is to makes sure the /tmp/.. path does not show in the data
     workdir = dbpath.parent
-    dbfilename = Path(".") / dbpath.name
+    dbfilename = Path("") / dbpath.name
     monkeypatch.chdir(workdir)
     config = get_configuration()
     set_configuration_defaults(config, dbfilename)

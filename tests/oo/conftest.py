@@ -7,8 +7,8 @@ import time
 import uno
 from pytest import fixture
 
-from odbinfo.test.regression import directory_regression
-from odbinfo.test.resource import DEFAULT_TESTDB, EMPTYDB
+from tests.regression import directory_regression
+from tests.resource import DEFAULT_TESTDB, EMPTYDB
 
 logger = logging.getLogger(__name__)
 logging.basicConfig()

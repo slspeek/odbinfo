@@ -13,8 +13,8 @@ __pycache__/
 # C extensions
 *.so
 unzipped*
-odbinfo/parser/sqlite
-odbinfo/parser/oobasic
+src/odbinfo/parser/sqlite
+src/odbinfo/parser/oobasic
 
 # Distribution / packaging
 .Python

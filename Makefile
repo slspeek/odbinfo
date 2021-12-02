@@ -4,12 +4,13 @@ python=$(libreoffice)/python
 unopkg=$(libreoffice)/unopkg
 antlr4version=4.9.3
 antlr4jar=antlr-$(antlr4version)-complete.jar
-antlr4=java -jar ../../../../../$(antlrlocation)/$(antlr4jar)
+antlr4=java -jar ../../../../../../$(antlrlocation)/$(antlr4jar)
 target=target
-testloc=odbinfo/test
+testloc=tests
+srcloc=src
 fixtureloc=$(testloc)/oo/data
-puretestloc=odbinfo/test/pure
-ootestloc=odbinfo/test/oo
+puretestloc=$(testloc)/pure
+ootestloc=$(testloc)/oo
 dist=$(target)/dist
 stage=$(dist)/odbinfo_oxt
 lib=$(stage)/python/pythonpath
@@ -19,25 +20,27 @@ report=$(build)/report
 classdiagram=$(report)/classdiagram
 oo=pipenvconf/oo
 pure=pipenvconf/pure
-OOPYTHONPATH=.:$$(cd $(oo) && pipenv --venv)/lib/python3.7/site-packages
-PUREPYTHONPATH=.:$$(cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
-parserlocation=odbinfo/pure/parser
+SOURCE_ROOTS=$(srcloc):$(testloc)
+OOPYTHONPATH=$(SOURCE_ROOTS):$$(cd $(oo) && pipenv --venv)/lib/python3.7/site-packages
+PUREPYTHONPATH=$(SOURCE_ROOTS):$$(cd $(pure) && pipenv --venv)/lib/python3.7/site-packages
+parserlocation=$(srcloc)/odbinfo/pure/parser
 antlrlocation=$(parserlocation)/lib
-pythonsources=$$(find -name \*.py -and $\
--not -ipath ./odbinfo/test/pure/test_writer_templates/\* -and $\
--not -ipath ./odbinfo/test/oo/test_core/\* -and $\
--not -ipath ./odbinfo/test/pure/test_template_regression/\* -and $\
--not -ipath ./odbinfo/test/pure/test_convert_local_regression/\* -and $\
--not -ipath ./odbinfo/test/pure/data\* -and $\
--not -ipath ./odbinfo/test/oo/data\* -and $\
+pythonsources=$$(find $(srcloc) $(testloc) -name \*.py -and $\
+-not -ipath $(testloc)/pure/test_writer_templates/\* -and $\
+-not -ipath $(testloc)/oo/test_core/\* -and $\
+-not -ipath $(testloc)/pure/test_template_regression/\* -and $\
+-not -ipath $(testloc)/pure/test_convert_local_regression/\* -and $\
+-not -ipath $(testloc)/pure/data\* -and $\
+-not -ipath $(testloc)/oo/data\* -and $\
 -not -ipath ./target/\* -and $\
--not -ipath ./odbinfo/pure/parser/oobasic/\* -and $\
--not -ipath ./odbinfo/pure/parser/sqlite/\* )
+-not -ipath $(srcloc)/odbinfo/pure/parser/oobasic/\* -and $\
+-not -ipath $(srcloc)/odbinfo/pure/parser/sqlite/\* )
 benchmarking=--benchmark-only --benchmark-autosave --benchmark-enable
 unit=-m "not slow and not veryslow and not tooslow"
 itests=-m "slow"
 OOPYTHON=PYTHONPATH=$(OOPYTHONPATH) $(python)
 OOPYTEST=$(OOPYTHON) -m pytest ${PYTESTOPTS} --benchmark-disable
+PUREPYTEST=$(PUREPYTHON) -m pytest ${PYTESTOPTS} --benchmark-disable
 PUREPYTHON=PYTHONPATH=$(PUREPYTHONPATH) python
 
 build: mypy metric unitcoverage
@@ -73,7 +76,7 @@ classdiagram: prepare
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser $(classdiagram)/classes.svg $(classdiagram)/packages.svg
 
 coverage: clean prepare
-	ODBINFO_NO_BROWSE=1 $(PUREPYTHON)  -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html -m "not veryslow and not tooslow" $(puretestloc)
+	ODBINFO_NO_BROWSE=1 $(PUREPYTEST)  --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html -m "not veryslow and not tooslow" $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 unitcoverage:
@@ -148,19 +151,19 @@ qserve:
 	hugo server --disableFastRender --layoutDir ../../../../../data/hugo-template/layouts
 
 format:
-	$(PUREPYTHON) -m isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
-	$(PUREPYTHON) -m autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" odbinfo/ main.py
+	$(PUREPYTHON) -m isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" $(srcloc) $(testloc)
+	$(PUREPYTHON) -m autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" $(srcloc) $(testloc)
 
 pycompile: # Compiles the sources
-	$(OOPYTHON) -m py_compile odbinfo/**/**.py odbinfo/test/**/*.py
+	$(OOPYTHON) -m py_compile $(srcloc)/**/**.py $(testloc)/**/*.py
 
 check: pycompile check_main check_test
 
 check_main: pycompile format
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="odbinfo/test/pure,odbinfo/test/pure/datatype,odbinfo/test/pure/reader,odbinfo/test/pure/dependency,odbinfo/test/oo" odbinfo
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="$(parserlocation)/oobasic,$(parserlocation)/sqlite" $(srcloc)
 
 check_test: pycompile format
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest -dC0116,C0115,R0201,W0201 odbinfo/test
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest -dC0116,C0115,R0201,W0201 $(testloc)
 
 .PHONY:
 clean:
@@ -180,9 +183,9 @@ oxt:
 	(cd pipenvconf/oo && pipenv lock -r > /tmp/requirements.txt)
 	$(PUREPYTHON) -m pip install -r /tmp/requirements.txt \
 	--ignore-installed --target $(lib)
-	cp main.py $(stage)/python
-	cp -r odbinfo data $(lib)
-	rm -rf $(lib)/odbinfo/test
+	cp $(srcloc)/main.py $(stage)/python
+	cp -r $(srcloc)/*  $(lib)
+	rm $(lib)/main.py
 	cp -r oometadata/* $(stage)
 	cp LICENSE $(stage)
 	cd $(stage)

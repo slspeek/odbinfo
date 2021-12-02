@@ -10,7 +10,7 @@ def test_python_module():
 
 def test_python_library():
     plib = PythonLibrary("pathlib", [])
-    assert plib.children() == []
+    assert not plib.children()
 
 
 def test_basicfunction():
@@ -21,10 +21,10 @@ def test_basicfunction():
 
 def test_library():
     lib = Library("basiclib", [])
-    assert lib.children() == []
+    assert not lib.children()
 
 
 def test_module():
     module = Module("modname", "libname", "")
     assert module.title == "modname.libname"
-    assert list(module.children()) == []
+    assert not list(module.children())

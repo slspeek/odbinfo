@@ -3,8 +3,8 @@ import pytest
 
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.writer import write_site
-from odbinfo.test.resource import TEST_OUTPUT_PATH
-from odbinfo.test.util import clear_generated_graphs
+from tests.resource import TEST_OUTPUT_PATH
+from tests.util import clear_generated_graphs
 
 
 @pytest.mark.veryslow

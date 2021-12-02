@@ -9,8 +9,9 @@ from odbinfo.pure.reader.textdoc import (_text_documents, database_displays,
                                          display, filter_displays,
                                          filtered_displays,
                                          read_text_documents, text_document)
-from odbinfo.test.pure.reader.test_common import OO_NAMESPACES, XMLTest
-from odbinfo.test.resource import DEFAULT_TESTDB
+from tests.resource import DEFAULT_TESTDB
+
+from ..reader.test_common import OO_NAMESPACES, XMLTest
 
 DISPLAY_ELEMENT = f"""
 <text:database-display {OO_NAMESPACES} office:version="1.2" text:table-name="vwPlant" text:table-type="query" text:column-name="naam" text:database-name="testdb">&lt;naam&gt;</text:database-display>

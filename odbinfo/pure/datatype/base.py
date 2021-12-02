@@ -179,6 +179,8 @@ class Token(User, Node):  # pylint:disable=too-many-instance-attributes
         del adict["hidden"]
         if not self.link:
             del adict["obj_id"]
+            if "link" in adict:
+                del adict["link"]
         return adict
 
 

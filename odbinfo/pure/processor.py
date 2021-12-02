@@ -15,22 +15,18 @@ from odbinfo.pure.util import timed
 
 def copy_tokens(module):
     """Copies the modules tokens"""
-    def copy_token(token):
-        new_token = dataclasses.replace(token)
-        new_token.link = token.link
-        return new_token
-    module.tokens = list(map(copy_token, module.tokens))
+    module.tokens = [dataclasses.replace(token) for token in module.tokens]
 
 
 def _process_library(library: Library) -> None:
     def parse_module(module: Module) -> None:
         # print("parsing: " + module.source)
-        module.tokens =\
+        module.tokens = \
             get_basic_tokens(module.source)
-        module.callables =\
+        module.callables = \
             scan_basic(module.tokens, library.name, module.name)
         copy_tokens(module)
-        module.name_indexes =\
+        module.name_indexes = \
             list(map(lambda c: c.name_token_index, module.callables))
 
     for module in library.modules:
@@ -72,6 +68,7 @@ def set_form_height(form: Form) -> None:
 
 def process_subform(subform: SubForm) -> None:
     """ simplifies control.type for all (nested) controls """
+
     def process_control(control: Union[Control, Grid]) -> None:
         if isinstance(control, Grid):
             return
@@ -145,16 +142,15 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     metadata.set_parent_links(None)
     metadata.build_parent_index()
     metadata.set_obj_ids()
+    for module in metadata.module_defs():
+        link_name_tokens(module)
 
+    # TODO move these 4 lines to dependency module
     search_dependencies(metadata)
-
     metadata.create_index()
-
     aggregate_uses(metadata)
     aggregate_used_by(metadata)
 
     metadata.graphs = generate_graphs(metadata, config)
-    for module in metadata.module_defs():
-        link_name_tokens(module)
     # for test purposes only
     return metadata

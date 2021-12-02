@@ -118,7 +118,7 @@ class Metadata(WebPage):
                 content = cast(Node, content)
                 self.usable_by_link[content.identifier] = content
 
-    def all_active_users(self):
+    def all_active_users(self) -> Iterable[User]:
         """ returns all User objects with a link set from the tree """
         # exclude tokens in Modules
         # pylint:disable=no-member

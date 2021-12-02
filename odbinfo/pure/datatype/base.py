@@ -98,7 +98,7 @@ class NamedNode(Node):
 
 
 @dataclass
-class User:
+class User(Node):
     """ Mixin for Nodes that can use one other node"""
     link: Optional[Identifier] = field(init=False, default=None)
 
@@ -111,7 +111,7 @@ class Usable:
 
 
 @dataclass
-class UseAggregator:
+class UseAggregator(Node):
     """ aggregates uses and used_by """
     uses: List['Identifier'] = field(
         init=False, repr=False, default_factory=list)

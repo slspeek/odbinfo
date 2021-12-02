@@ -89,7 +89,7 @@ def process_form(form: Form) -> None:
     set_form_height(form)
 
 
-def aggregate_uses_from_children(user_agg):
+def aggregate_uses_from_children(user_agg: UseAggregator) -> None:
     """Collect aggregated uses from its children """
     for user in user_agg.all_objects():
         if isinstance(user, User) and user.link:
@@ -104,14 +104,14 @@ def aggregate_uses(metadata: Metadata) -> None:
             aggregate_uses_from_children(use_agg)
 
 
-def aggregate_used_by(metadata):
+def aggregate_used_by(metadata: Metadata) -> None:
     """Collect all used_by"""
     for user in metadata.all_active_users():
         metadata.usable_by_link[user.link].used_by.append(user.identifier)
 
 
 @timed("Parse queries", indent=4)
-def process_queries(metadata: Metadata):
+def process_queries(metadata: Metadata) -> None:
     """process all query-like objects"""
     for query in metadata.query_defs:
         _process_query(query)
@@ -121,7 +121,7 @@ def process_queries(metadata: Metadata):
         _process_query(embedded_query)
 
 
-def preprocess_commanders(metadata: Metadata):
+def preprocess_commanders(metadata: Metadata) -> None:
     """ if command is a direct query, set an EmbeddedQuery obj"""
     for cmdr in metadata.commanders():
         if cmdr.issqlcommand:

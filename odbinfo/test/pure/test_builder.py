@@ -4,12 +4,12 @@ import webbrowser
 from pathlib import Path
 from unittest.mock import patch
 
-from odbinfo.pure.builder import _is_port_open, find_free_port, open_browser
+from odbinfo.pure.builder import find_free_port, is_port_open, open_browser
 
 
 def test_find_free_port():
     free_port = find_free_port()
-    assert not _is_port_open(free_port)
+    assert not is_port_open(free_port)
 
 
 def test_open_browser():

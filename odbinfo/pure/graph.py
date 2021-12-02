@@ -1,11 +1,11 @@
 """ Graphviz graph generation """
-from typing import Dict, Sequence, Tuple, cast
+from typing import Dict, List, Sequence, Tuple, cast
 
 from graphviz import Digraph
 
 from odbinfo.pure.datatype import Control, ListBox, Metadata, content_type
 from odbinfo.pure.datatype.base import NamedNode, Node
-from odbinfo.pure.datatype.config import GraphConfig
+from odbinfo.pure.datatype.config import Configuration, GraphConfig
 
 
 def hugo_filename(name: str) -> str:
@@ -22,7 +22,8 @@ def href(obj: Node) -> str:
     return url
 
 
-def _is_control_visible(control: Control) -> bool:
+def is_control_relevant(control: Control) -> bool:
+    """Checks if a control has eventlisteners or if it is a listbox if a datasource is present"""
     if control.eventlisteners:
         return True
     if isinstance(control, ListBox):
@@ -38,7 +39,7 @@ def is_visible(config: GraphConfig, node: NamedNode) -> bool:
         if config.relevant_controls:
             if isinstance(node, Control):
                 control = cast(Control, node)
-                return _is_control_visible(control)
+                return is_control_relevant(control)
             return True
         return True
     return False
@@ -111,7 +112,7 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
             return
 
         attrs = dict(config.parent_edge_attrs)
-        attrs["edgetooltip"] =\
+        attrs["edgetooltip"] = \
             f"{node.name} is child of {avisible_ancestor.name}"
 
         edge(graph, node, avisible_ancestor, attrs)
@@ -122,18 +123,14 @@ def visible_dependency_edges(metadata: Metadata, config: GraphConfig) \
     """ returns edges to draw in graph """
     uses = []
     for user in metadata.all_active_users():
-        # print("In: from:", user.title, " to ", user.link)
-        used_node_link = user.link
         used_node = metadata.usable_by_link[
-            used_node_link]
+            user.link]
         user_vis_ancestor = visible_ancestor(config, user)
         if not user_vis_ancestor:
             continue
         used_vis_ancestor = visible_ancestor(config, used_node)
         if not used_vis_ancestor:
             continue
-        # print("Out: from:", user_vis_ancestor.title,
-        #       " to ", used_vis_ancestor.title)
         uses.append((user_vis_ancestor.obj_id,
                      used_vis_ancestor.obj_id))
     if config.collapse_multiple_uses:
@@ -141,7 +138,7 @@ def visible_dependency_edges(metadata: Metadata, config: GraphConfig) \
     return uses
 
 
-def make_dependency_edges(metadata, config, graph):
+def make_dependency_edges(metadata: Metadata, config: GraphConfig, graph: Digraph):
     """ make edges for all dependencies """
     uses = visible_dependency_edges(metadata, config)
     for use in uses:
@@ -150,21 +147,26 @@ def make_dependency_edges(metadata, config, graph):
         make_edge(config, graph, start, end)
 
 
-def generate_main_graph(metadata, config):
-    """ returns the main graph """
-    graph = Digraph(config.name)
+def create_digraph(name: str) -> Digraph:
+    """ Creates an empty graphviz.Digraph with `name` and sets some graph attributes"""
+    graph = Digraph(name)
     graph.attr("graph", rankdir="LR")
-    graph.attr("graph", label=config.name,
+    graph.attr("graph", label=name,
                labelloc="top", fontsize="24")
-    # graph.attr("graph", tooltip="")
+    return graph
+
+
+def generate_main_graph(metadata: Metadata, config: Configuration) -> Digraph:
+    """ returns the main graph with all nodes from `metadata` if not excluded in `config`
+        and the edges between them"""
+    graph = create_digraph(config.name)
     for node in metadata.all_objects():
         make_node(config.graph, graph, node)
         make_parent_edge(config.graph, graph, node)
-
     make_dependency_edges(metadata, config.graph, graph)
     return graph
 
 
-def generate_graphs(metadata, configuration):
+def generate_graphs(metadata: Metadata, configuration: Configuration) -> List[Digraph]:
     """ returns a list of graphviz.Digraph objects """
     return [generate_main_graph(metadata, configuration)]

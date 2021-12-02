@@ -27,7 +27,8 @@ def find_free_port() -> int:
         return sock.getsockname()[1]
 
 
-def _is_port_open(port):
+def is_port_open(port):
+    """Returns True if `port` is open, otherwise False"""
     # pylint: disable=no-member
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         result = sock.connect_ex(('127.0.0.1', port))
@@ -50,7 +51,7 @@ def convert_local(site_path: Path) -> None:
             webserver_proc = subprocess.Popen(args, stderr=subprocess.DEVNULL,
                                               stdout=subprocess.DEVNULL)
             with chdir(".."):
-                while not _is_port_open(port):
+                while not is_port_open(port):
                     time.sleep(0.1)
                 run_cmd("wget  --no-verbose"
                         f" -nH --convert-links -P {localsite_path.name}"

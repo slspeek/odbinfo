@@ -8,12 +8,12 @@ from graphviz import Digraph
 from odbinfo.pure.datatype import (Control, Form, Key, ListBox, SubForm, Table,
                                    content_type)
 from odbinfo.pure.datatype.config import get_configuration
-from odbinfo.pure.graph import (_is_control_visible, edge, edge_attributes,
-                                generate_graphs, generate_main_graph, href,
-                                hugo_filename, is_visible, label_for_node,
-                                make_dependency_edges, make_edge, make_node,
-                                make_parent_edge, visible_ancestor,
-                                visible_dependency_edges)
+from odbinfo.pure.graph import (edge, edge_attributes, generate_graphs,
+                                generate_main_graph, href, hugo_filename,
+                                is_control_relevant, is_visible,
+                                label_for_node, make_dependency_edges,
+                                make_edge, make_node, make_parent_edge,
+                                visible_ancestor, visible_dependency_edges)
 
 
 def test_hugo_filename_to_lower():
@@ -58,15 +58,15 @@ def test_is_visible_relevant_controls(graph_config, irrelevant_control):
 
 
 def test_is_control_relevant_not_relevant_listbox(listbox):
-    assert not _is_control_visible(listbox)
+    assert not is_control_relevant(listbox)
 
 
 def test_is_control_relevant_listbox(listbox_embeddedquery):
-    assert _is_control_visible(listbox_embeddedquery)
+    assert is_control_relevant(listbox_embeddedquery)
 
 
 def test_is_control_relevant_control(control):
-    assert _is_control_visible(control)
+    assert is_control_relevant(control)
 
 
 class ConfTest(unittest.TestCase):

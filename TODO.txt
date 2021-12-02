@@ -1,8 +1,14 @@
+processor copy_token unittest
+
 Makefile run after 'source env.source'
 
 Makefile classdiagram -> pipenv run
 
 move tests to tests/pure, tests/oo
+
+Add control 'visible' attribute
+
+Basic comments
 
 dependencysearch should be called from core not processor
 metadata_tables.graphs = generate_graphs(metadata_tables, config)
@@ -71,6 +77,7 @@ templates:
 - column in graph
 - basic color highlighting
   - IDENTIFIER
+  - COMMENTS
 - sql color highlighting
   - all via cls attribute in Token, no comparison of types in templates anymore
     (token-text.html STRINGLITERAL = 172 from OOBasicLexer)

@@ -88,6 +88,7 @@ def get_context():
 
     i = 0
     while i < OFFICE_TIME_OUT * 10:
+        # noinspection PyBroadException
         try:
             # connect to the running office
             ctx = resolver.resolve(

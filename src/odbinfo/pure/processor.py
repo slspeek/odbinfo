@@ -6,6 +6,7 @@ from odbinfo.pure.datatype import (Control, EmbeddedQuery, Form, Grid, Library,
                                    Metadata, Module, SubForm)
 from odbinfo.pure.datatype.base import UseAggregator, User
 from odbinfo.pure.datatype.config import Configuration
+from odbinfo.pure.datatype.ui import AbstractCommander
 from odbinfo.pure.dependency import link_name_tokens, search_dependencies
 from odbinfo.pure.graph import generate_graphs
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
@@ -18,33 +19,48 @@ def copy_tokens(module):
     module.tokens = [dataclasses.replace(token) for token in module.tokens]
 
 
-def _process_library(library: Library) -> None:
-    def parse_module(module: Module) -> None:
-        # print("parsing: " + module.source)
-        module.tokens = \
-            get_basic_tokens(module.source)
-        module.callables = \
-            scan_basic(module.tokens, library.name, module.name)
-        copy_tokens(module)
-        module.name_indexes = \
-            [c.name_token_index for c in module.callables]
+def preprocess_module(module: Module, library_name: str) -> None:
+    """ Tokenizes, parses, copies the tokens and sets the indexes
+        of the tokens that are the names of the procedures """
+    module.tokens = \
+        get_basic_tokens(module.source)
+    module.callables = \
+        scan_basic(module.tokens, library_name, module.name)
+    copy_tokens(module)
+    module.name_indexes = \
+        [c.name_token_index for c in module.callables]
 
+
+def preprocess_library(library: Library) -> None:
+    """preprocess `library` for dependency search"""
     for module in library.modules:
-        parse_module(module)
+        preprocess_module(module, library.name)
 
 
 @timed("Parse basic libraries", indent=4)
-def _process_libraries(libraries: Sequence[Library]) -> None:
+def preprocess_libraries(libraries: Sequence[Library]) -> None:
+    """preprocesses of the of libraries"""
     for lib in libraries:
-        _process_library(lib)
+        preprocess_library(lib)
+
+
+def color_hightlight_query(query: EmbeddedQuery):
+    """Sets the class attribute on the special tokens"""
+    for littoken in query.literal_values:
+        littoken.cls = "literalvalue"
+
+
+def parse_query(query: EmbeddedQuery):
+    """parses `query.command`"""
+    query.tokens, query.table_tokens, query.literal_values = parse(
+        query.command)
 
 
 @timed("Parse query", indent=6, arg=0)
-def _process_query(query: EmbeddedQuery) -> None:
-    query.tokens, query.table_tokens, query.literal_values = parse(
-        query.command)
-    for littoken in query.literal_values:
-        littoken.cls = "literalvalue"
+def preprocess_query(query: EmbeddedQuery) -> None:
+    """preprocesses `query`, that is parses it and does its the color highlighting"""
+    parse_query(query)
+    color_hightlight_query(query)
 
 
 def set_depth(depth: int, subform: SubForm) -> None:
@@ -81,7 +97,7 @@ def process_subform(subform: SubForm) -> None:
 
 
 @timed("Process form", arg=0, indent=6)
-def process_form(form: Form) -> None:
+def preprocess_form(form: Form) -> None:
     """ calculate depth for its subforms """
     for subform in form.subforms:
         set_depth(0, subform)
@@ -111,36 +127,40 @@ def aggregate_used_by(metadata: Metadata) -> None:
 
 
 @timed("Parse queries", indent=4)
-def process_queries(metadata: Metadata) -> None:
+def preprocess_queries(metadata: Metadata) -> None:
     """process all query-like objects"""
     for query in metadata.query_defs:
-        _process_query(query)
+        preprocess_query(query)
     for view in metadata.view_defs:
-        _process_query(view)
+        preprocess_query(view)
     for embedded_query in metadata.embeddedquery_defs():
-        _process_query(embedded_query)
+        preprocess_query(embedded_query)
 
 
-def preprocess_commanders(metadata: Metadata) -> None:
+def preprocess_commanders(commanders: Sequence[AbstractCommander]) -> None:
     """ if command is a direct query, set an EmbeddedQuery obj"""
-    for cmdr in metadata.commanders():
+    for cmdr in commanders:
         if cmdr.issqlcommand:
             cmdr.embedded_query = \
                 EmbeddedQuery(f"{cmdr.name}.Command", cmdr.command)
 
 
+def preprocess_forms(form_defs: Sequence[Form]):
+    """preprocesses all forms in `form_defs`"""
+    for form in form_defs:
+        preprocess_form(form)
+
+
 @timed("Process metadata", indent=2)
 def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
-    """ preprocessing of the data before it is send to hugo """
-    preprocess_commanders(metadata)
-    _process_libraries(metadata.library_defs)
-    process_queries(metadata)
-
-    for form in metadata.form_defs:
-        process_form(form)
+    """ preprocessing of the data before it is written """
+    preprocess_libraries(metadata.library_defs)
+    preprocess_commanders(metadata.commanders())
+    preprocess_queries(metadata)
+    preprocess_forms(metadata.form_defs)
 
     metadata.set_parent_links(None)
-    metadata.build_parent_index()
+    metadata.set_parents()
     metadata.set_obj_ids()
     for module in metadata.module_defs():
         link_name_tokens(module)

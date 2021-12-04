@@ -10,7 +10,7 @@ COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
 
 
 @dataclass  # type: ignore
-class AbstractCommander(User, ABC):
+class AbstractCommander(User, NamedNode, ABC):
     """Commander interface"""
 
     # Only if commandtype in ["command", "sql", "sqlpassthrough"]

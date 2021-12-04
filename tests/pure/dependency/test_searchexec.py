@@ -7,7 +7,7 @@ from odbinfo.pure.dependency.searchexec import (
     consider, link_name_tokens, rewrite_module_callable_links,
     search_callable_in_callable, search_string_refs_in_callables)
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
-from odbinfo.pure.processor import _process_library
+from odbinfo.pure.processor import preprocess_library
 
 SOURCE_MODULEONE = """
 Sub Foo()
@@ -99,7 +99,7 @@ class ModuleTest(unittest.TestCase):
         # pylint:disable=attribute-defined-outside-init
         self.module = Module("Module", "Lib", module)
         lib = Library("Lib", [self.module])
-        _process_library(lib)
+        preprocess_library(lib)
 
 
 class ModuleOneTest(ModuleTest):

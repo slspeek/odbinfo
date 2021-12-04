@@ -47,7 +47,7 @@ class Metadata(WebPage):
         self.index = {}
         self.usable_by_link = {}
 
-    def build_parent_index(self):
+    def set_parents(self):
         """ set the parents in all objects """
         for obj in self.all_objects():
             for child in obj.children():

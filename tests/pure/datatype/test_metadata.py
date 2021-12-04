@@ -11,7 +11,7 @@ def test_metadata_post_init(metadata_empty):
 def test_metadata_build_parent_index(table_plant, metadata_empty):
     metadata_empty.table_defs = [table_plant]
 
-    metadata_empty.build_parent_index()
+    metadata_empty.set_parents()
     assert table_plant.parent == metadata_empty
 
 

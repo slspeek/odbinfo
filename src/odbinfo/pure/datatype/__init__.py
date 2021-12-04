@@ -1,6 +1,6 @@
 """ Defines the main datatype MetaData """
-from odbinfo.pure.datatype.base import (Identifier, Node, Token, WebPage,
-                                        content_type, get_identifier)
+from odbinfo.pure.datatype.base import (Identifier, NamedNode, Node, Token,
+                                        User, WebPage, content_type)
 from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, Library,
                                         Module, PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.metadata import Metadata
@@ -21,7 +21,6 @@ __all__ = [
     "DatabaseDisplay",
     "EmbeddedQuery",
     "EventListener",
-    "get_identifier",
     "Form",
     "Grid",
     "Identifier",
@@ -31,6 +30,7 @@ __all__ = [
     "ListBox",
     "Metadata",
     "Module",
+    "NamedNode",
     "Node",
     "PythonModule",
     "PythonLibrary",
@@ -42,6 +42,7 @@ __all__ = [
     "Token",
     "Tabular",
     "TextDocument",
+    "User",
     "View",
     "WebPage"
 ]

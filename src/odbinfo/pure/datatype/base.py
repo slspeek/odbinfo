@@ -56,6 +56,7 @@ class Node(Dictable):
     obj_id: str = field(init=False, default="OBJID_NOT_SET")
     parent: Optional["NamedNode"] = field(init=False, default=None, repr=False)
 
+    @property
     def content_type(self) -> str:
         """ returns classname in lowercase """
         return content_type(self.__class__)
@@ -159,9 +160,9 @@ def get_identifier(usable) -> Identifier:
         parent = parent.parent
     parent = cast(WebPage, parent)
     if parent is usable:
-        return Identifier(usable.content_type(),
+        return Identifier(usable.content_type,
                           usable.title, None)
-    return Identifier(parent.content_type(),
+    return Identifier(parent.content_type,
                       parent.title, usable.obj_id)
 
 

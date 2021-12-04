@@ -1,10 +1,9 @@
 """ dependency search in basicfunctions """
-from functools import partial
 from typing import Sequence
 
 from odbinfo.pure.datatype import (BasicCall, BasicFunction, Identifier,
                                    Module, Token, WebPage, content_type)
-from odbinfo.pure.dependency.util import link_token
+from odbinfo.pure.dependency.util import link_user_to_usuable
 
 #
 # BasicFunction in BasicFunction
@@ -14,7 +13,7 @@ from odbinfo.pure.dependency.util import link_token
 def link_name_tokens(module: Module):
     """Link the name tokens to the single function pages"""
     for name_index, acallable in zip(module.name_indexes, module.callables):
-        link_token(module.tokens[name_index], acallable)
+        link_user_to_usuable(module.tokens[name_index], acallable)
 
 
 def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
@@ -81,9 +80,8 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
         candidates = (list(filter(filter_own_module, callables))
                       + list(filter(filter_own_library, callables))
                       + list(filter(filter_other_library, callables)))
-        consider_caller = partial(consider, caller)
         for candidate in candidates:
-            consider_caller(candidate)
+            consider(caller, candidate)
     for acallable in callables:
         search_in_one(acallable)
     remove_recursive_calls(callables)
@@ -100,12 +98,9 @@ def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> None:
         return (acall.name_token.text.upper() == candidate_callee.name.upper()
                 and acall.name_token.link is None, acall)
 
-    def process_match(acall: BasicCall):
-        link_token(acall.name_token, candidate_callee)
-
-    for match, ntoken in map(match_and_not_linked, caller.calls):
+    for match, name_token in map(match_and_not_linked, caller.calls):
         if match:
-            process_match(ntoken)
+            link_user_to_usuable(name_token.name_token, candidate_callee)
 
 
 #
@@ -121,7 +116,7 @@ def search_string_refs_in_callables(dataobjects: Sequence[WebPage],
         def ref_in_one(dataobject: WebPage) -> None:
             def compare_ref(string_token: Token) -> None:
                 if dataobject.users_match(string_token.text[1:-1]):
-                    link_token(string_token, dataobject)
+                    link_user_to_usuable(string_token, dataobject)
             for stoken in acallable.strings:
                 compare_ref(stoken)
         for obj in dataobjects:

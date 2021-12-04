@@ -4,7 +4,7 @@ from odbinfo.pure.datatype import Library, Module, PythonLibrary, PythonModule
 
 
 def test_metadata_post_init(metadata_empty):
-    assert metadata_empty.index == {}
+    assert metadata_empty.node_by_id == {}
     assert metadata_empty.usable_by_link == {}
 
 
@@ -20,8 +20,8 @@ def test_basic_defs(metadata_empty):
     lib = Library("lib", [module])
     metadata_empty.library_defs = [lib]
 
-    assert metadata_empty.basicfunction_defs() == []
-    assert metadata_empty.module_defs() == [module]
+    assert metadata_empty.basicfunction_defs == []
+    assert metadata_empty.module_defs == [module]
 
 
 def test_pythonmodule_defs(metadata_empty):
@@ -29,24 +29,24 @@ def test_pythonmodule_defs(metadata_empty):
     lib = PythonLibrary("lib", [module])
     metadata_empty.pythonlibrary_defs = [lib]
 
-    assert metadata_empty.pythonmodule_defs() == [module]
+    assert metadata_empty.pythonmodule_defs == [module]
 
 
 def test_embeddedquery_defs(metadata_empty, report_embeddedquery, embedded_query):
     metadata_empty.report_defs = [report_embeddedquery]
-    assert list(metadata_empty.embeddedquery_defs()) == [
+    assert list(metadata_empty.embeddedquery_defs) == [
         embedded_query]
 
 
 def test_commanders(metadata_empty, report_embeddedquery):
     metadata_empty.report_defs = [report_embeddedquery]
-    assert list(metadata_empty.commanders()) == [report_embeddedquery]
+    assert list(metadata_empty.commanders) == [report_embeddedquery]
 
 
 def test_eventlisteners(metadata_empty, form, eventlistener):
     metadata_empty.form_defs = [form]
 
-    assert list(metadata_empty.eventlisteners()) == [eventlistener]
+    assert list(metadata_empty.eventlisteners) == [eventlistener]
 
 
 def test_set_obj_ids(metadata_empty, table_plant, table_family):
@@ -64,8 +64,8 @@ def test_create_index(metadata_empty, table_plant, table_family):
     metadata_empty.table_defs = [table_plant, table_family]
     metadata_empty.set_obj_ids()
     metadata_empty.create_index()
-    assert metadata_empty.index["1"] == table_plant
-    assert metadata_empty.index["3"] == table_family
+    assert metadata_empty.node_by_id["1"] == table_plant
+    assert metadata_empty.node_by_id["3"] == table_family
     assert metadata_empty.usable_by_link[table_plant.identifier] == table_plant
     assert metadata_empty.usable_by_link[table_family.identifier] == table_family
 
@@ -74,6 +74,6 @@ def test_all_active_users(metadata_tables):
     key = metadata_tables.table_defs[0].keys[0]
     key.link = metadata_tables.table_defs[1].identifier
 
-    active_users = list(metadata_tables.all_active_users())
+    active_users = list(metadata_tables.all_active_users)
     assert len(active_users) == 1
     assert key in active_users

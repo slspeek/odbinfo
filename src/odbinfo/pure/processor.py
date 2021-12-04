@@ -122,7 +122,7 @@ def aggregate_uses(metadata: Metadata) -> None:
 
 def aggregate_used_by(metadata: Metadata) -> None:
     """Collect all used_by"""
-    for user in metadata.all_active_users():
+    for user in metadata.all_active_users:
         metadata.usable_by_link[user.link].used_by.append(user.identifier)
 
 
@@ -133,7 +133,7 @@ def preprocess_queries(metadata: Metadata) -> None:
         preprocess_query(query)
     for view in metadata.view_defs:
         preprocess_query(view)
-    for embedded_query in metadata.embeddedquery_defs():
+    for embedded_query in metadata.embeddedquery_defs:
         preprocess_query(embedded_query)
 
 
@@ -155,11 +155,11 @@ def preprocess_forms(form_defs: Sequence[Form]):
 def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     """ preprocessing of the data before it is written """
     preprocess_libraries(metadata.library_defs)
-    preprocess_commanders(metadata.commanders())
+    preprocess_commanders(metadata.commanders)
     preprocess_queries(metadata)
     preprocess_forms(metadata.form_defs)
 
-    for module in metadata.module_defs():
+    for module in metadata.module_defs:
         link_name_tokens(module)
 
     metadata.set_parents()

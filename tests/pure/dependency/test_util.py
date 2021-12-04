@@ -1,7 +1,7 @@
 """ test the dependency search utilities """
 
 from odbinfo.pure.datatype import Identifier, Table, Token
-from odbinfo.pure.dependency import link_token
+from odbinfo.pure.dependency import link_user_to_usuable
 
 
 def test_link_token():
@@ -10,5 +10,5 @@ def test_link_token():
     link = Identifier("report", "Plant", None)
     token.link = link
     table = Table("Plant", "", [], [], [])
-    link_token(token, table)
+    link_user_to_usuable(token, table)
     assert token.link == table.identifier

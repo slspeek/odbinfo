@@ -80,7 +80,7 @@ def test_is_visible_table(table_plant, graph_config):
 
 
 def test_make_node_do_nothing(graph_config, digraph, table_plant):
-    graph_config.user_excludes = [table_plant.content_type()]
+    graph_config.user_excludes = [table_plant.content_type]
     make_node(graph_config, digraph, table_plant)
     assert len(digraph.body) == 0
 

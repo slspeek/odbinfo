@@ -35,7 +35,7 @@ def is_control_relevant(control: Control) -> bool:
 
 def is_visible(config: GraphConfig, node: NamedNode) -> bool:
     """ determines with `config` whether `node` is visible"""
-    if not node.content_type() in config.excludes:
+    if not node.content_type in config.excludes:
         if config.relevant_controls:
             if isinstance(node, Control):
                 control = cast(Control, node)
@@ -48,7 +48,7 @@ def is_visible(config: GraphConfig, node: NamedNode) -> bool:
 def label_for_node(node: NamedNode) -> str:
     """returns a label string for `node`"""
     label = node.name
-    if node.content_type() == content_type(Control):
+    if node.content_type == content_type(Control):
         control = cast(Control, node)
         if control.label:
             label = control.label
@@ -62,10 +62,10 @@ def make_node(config: GraphConfig,
         label = label_for_node(node)
         graph.node(str(node.obj_id),
                    label=label,
-                   tooltip=f"{node.name} ({node.content_type()})",
+                   tooltip=f"{node.name} ({node.content_type})",
                    href=href(node),
                    id=node.obj_id,
-                   _attributes=config.type_attrs.get(node.content_type(), {}))
+                   _attributes=config.type_attrs.get(node.content_type, {}))
 
 
 def visible_ancestor(config: GraphConfig, node):
@@ -83,7 +83,7 @@ def edge_attributes(config: GraphConfig,
                     start: NamedNode, end: NamedNode) -> Dict[str, str]:
     """composes the node attributes"""
     attrs = config.relation_attrs.get(
-        (start.content_type(), end.content_type()), {})
+        (start.content_type, end.content_type), {})
     attrs["edgetooltip"] = f"{start.name} -> {end.name}"
     return attrs
 
@@ -122,7 +122,7 @@ def visible_dependency_edges(metadata: Metadata, config: GraphConfig) \
         -> Sequence[Tuple[str, str]]:
     """ returns edges to draw in graph """
     uses = []
-    for user in metadata.all_active_users():
+    for user in metadata.all_active_users:
         used_node = metadata.usable_by_link[
             user.link]
         user_vis_ancestor = visible_ancestor(config, user)
@@ -142,8 +142,8 @@ def make_dependency_edges(metadata: Metadata, config: GraphConfig, graph: Digrap
     """ make edges for all dependencies """
     uses = visible_dependency_edges(metadata, config)
     for use in uses:
-        start = metadata.index[use[0]]
-        end = metadata.index[use[1]]
+        start = metadata.node_by_id[use[0]]
+        end = metadata.node_by_id[use[1]]
         make_edge(config, graph, start, end)
 
 

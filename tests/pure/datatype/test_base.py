@@ -4,9 +4,10 @@ import re
 import pytest
 
 from odbinfo.pure.datatype import (EmbeddedQuery, Identifier, Report,
-                                   content_type, get_identifier)
+                                   content_type)
 from odbinfo.pure.datatype.base import (NamedNode, Node,
-                                        NoWebPageAncestorException, WebPage)
+                                        NoWebPageAncestorException, WebPage,
+                                        get_identifier)
 
 
 def test_to_dict_identitifier_no_bookmark():

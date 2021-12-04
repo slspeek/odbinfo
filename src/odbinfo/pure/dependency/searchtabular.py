@@ -2,7 +2,7 @@
 from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import EmbeddedQuery, Key, Table, Tabular, Token
-from odbinfo.pure.dependency.util import link_token
+from odbinfo.pure.dependency.util import link_user_to_usuable
 
 #
 # Queries, Tables, Views in Queries
@@ -17,7 +17,7 @@ def search_deps_in_queries(tabular_seq: Sequence[Tabular],
         def find_tabular_in_query(tabular: Tabular) -> None:
             def find_tabular_in_token(token: Token) -> None:
                 if tabular.users_match(token.text[1:-1]):
-                    link_token(token, tabular)
+                    link_user_to_usuable(token, tabular)
             for token in query.table_tokens:
                 find_tabular_in_token(token)
         for tabular in tabular_seq:

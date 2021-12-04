@@ -2,7 +2,6 @@
 import os
 import shutil
 from datetime import datetime
-from inspect import ismethod
 from itertools import count
 from pathlib import Path
 from typing import Dict, List, Sequence
@@ -78,17 +77,10 @@ def write_metadata(config: Configuration, metadata: Metadata):
         write_content(metadata, content, config.site_path)
 
 
-def _get_metadata_attr(metadata: Metadata, attribute: str):
-    meta_attribute = getattr(metadata, f"{attribute}_defs")
-    if ismethod(meta_attribute):
-        meta_attribute = meta_attribute()
-    return meta_attribute
-
-
 def present_contenttypes(metadata: Metadata) -> List[str]:
     """returns the content_types that are present in this `metadata`"""
     return [content for content in METADATA_CONTENT
-            if len(_get_metadata_attr(metadata, content)) > 0]
+            if len(metadata.get_definitions(content)) > 0]
 
 
 def write_config(config: Configuration, present_content: Sequence[str]) -> None:
@@ -119,7 +111,7 @@ def write_config(config: Configuration, present_content: Sequence[str]) -> None:
 @timed("Write content", indent=4, arg=1, name=False)
 def write_content(metadata: Metadata, content_type: str, site_path: Path):
     """writes out `content_type` in subdir of `site_path`"""
-    contentlist = _get_metadata_attr(metadata, content_type)
+    contentlist = metadata.get_definitions(content_type)
     targetpath = site_path / "content" / content_type
     targetpath.mkdir(parents=True, exist_ok=True)
     for content in contentlist:

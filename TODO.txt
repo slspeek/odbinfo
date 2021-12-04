@@ -14,10 +14,7 @@ metadata_tables.graphs = generate_graphs(metadata_tables, config)
         _link_name_tokens(module)
 Module should probably hide its Tokens in children
 
-datatype.factory -> pytest.fixture
-
-
-get 'incorrect type' check in pycharm to work for all (hard)
+get 'incorrect type' check in pycharm to work for all
 
 base: get_identifier smells
 builder: convert_local should not hang if gohugo command fails

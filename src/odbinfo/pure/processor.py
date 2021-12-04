@@ -159,11 +159,11 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     preprocess_queries(metadata)
     preprocess_forms(metadata.form_defs)
 
-    metadata.set_parent_links(None)
-    metadata.set_parents()
-    metadata.set_obj_ids()
     for module in metadata.module_defs():
         link_name_tokens(module)
+
+    metadata.set_parents()
+    metadata.set_obj_ids()
 
     # TODO move these 4 lines to dependency module
     search_dependencies(metadata)
@@ -172,5 +172,6 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     aggregate_used_by(metadata)
 
     metadata.graphs = generate_graphs(metadata, config)
+    metadata.set_parent_links(None)
     # for test purposes only
     return metadata

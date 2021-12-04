@@ -96,13 +96,13 @@ metadata_fixture: prepare
 	$(OOPYTEST) --force-regen $(ootestloc)/test_reader_regression.py ||$\
 	$(OOPYTEST) --force-regen $(ootestloc)/test_reader_regression.py ||$\
 	$(OOPYTEST) $(ootestloc)/test_reader_regression.py
-	cp -v odbinfo/test/oo/test_reader_regression/*.pickle $(fixtureloc)
+	cp -v $(ootestloc)/test_reader_regression/*.pickle $(fixtureloc)
 
 processor_fixture: metadata_fixture
 	$(OOPYTEST) --force-regen $(puretestloc)/test_processor_regression.py ||$\
 	$(OOPYTEST) --force-regen $(puretestloc)/test_processor_regression.py ||$\
 	$(OOPYTEST) --force-regen $(puretestloc)/test_processor_regression.py
-	cp -v odbinfo/test/pure/test_processor_regression/*.pickle $(fixtureloc)
+	cp -v $(puretestloc)/test_processor_regression/*.pickle $(fixtureloc)
 
 
 write_site_fixture: processor_fixture
@@ -175,7 +175,7 @@ clean:
 	@echo $(target) was removed
 
 open_shell: prepare
-	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i odbinfo/test/pure/conftest.py
+	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i $(puretestloc)/conftest.py
 
 .ONESHELL:
 oxt:

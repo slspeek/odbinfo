@@ -27,7 +27,7 @@ def _process_library(library: Library) -> None:
             scan_basic(module.tokens, library.name, module.name)
         copy_tokens(module)
         module.name_indexes = \
-            list(map(lambda c: c.name_token_index, module.callables))
+            [c.name_token_index for c in module.callables]
 
     for module in library.modules:
         parse_module(module)

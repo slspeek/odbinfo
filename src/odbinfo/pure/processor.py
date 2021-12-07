@@ -133,7 +133,7 @@ def preprocess_queries(metadata: Metadata) -> None:
         preprocess_query(query)
     for view in metadata.view_defs:
         preprocess_query(view)
-    for embedded_query in metadata.embeddedquery_defs:
+    for embedded_query in metadata.embeddedqueries:
         preprocess_query(embedded_query)
 
 

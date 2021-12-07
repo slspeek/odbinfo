@@ -24,6 +24,7 @@ KEYRULES = {0: "Cascade",
             3: "No_Action",
             4: "Set_Default"}
 
+
 # pylint: disable=too-many-instance-attributes
 
 
@@ -53,11 +54,10 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class EmbeddedQuery(NamedNode):
-    """ Query object embedded in Report, Listbox or SubForm "\
-        " Query properties see:"\
-        " www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/"\
-        " QueryDefinition.html"""
+class QueryBase(NamedNode):
+    """ Query properties see:
+        www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/
+        QueryDefinition.html"""
     command: str
     columns: List[QueryColumn] = field(init=False, default_factory=list)
 
@@ -73,7 +73,12 @@ class EmbeddedQuery(NamedNode):
 
 
 @dataclass
-class Query(EmbeddedQuery, WebPageWithUses):
+class EmbeddedQuery(QueryBase):
+    """ Query object embedded in Report, Listbox or SubForm """
+
+
+@dataclass
+class Query(QueryBase, WebPageWithUses):
     """ Query properties """
 
     def __post_init__(self):

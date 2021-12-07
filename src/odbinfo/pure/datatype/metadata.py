@@ -1,6 +1,7 @@
 """ Metadata class """
 import itertools
 from dataclasses import dataclass, field
+from enum import Enum
 from itertools import chain
 from typing import Iterable, List, Sequence, cast
 
@@ -13,17 +14,23 @@ from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
 from odbinfo.pure.datatype.ui import (AbstractCommander, EventListener, Form,
                                       Report, TextDocument)
 
-METADATA_CONTENT = ["table",
-                    "query",
-                    "view",
-                    "form",
-                    "report",
-                    "basicfunction",
-                    "module",
-                    "library",
-                    "pythonlibrary",
-                    "pythonmodule",
-                    "textdocument"]
+
+class TopLevelDisplayedContent(Enum):
+    """These contenttypes have a webpage of their own in the generated report"""
+    TABLE = "table"
+    QUERY = "query"
+    VIEW = "view"
+    FORM = "form"
+    REPORT = "report"
+    BASICFUNCTION = "basicfunction"
+    MODULE = "module"
+    LIBRARY = "library"
+    PYTHONLIBRARY = "pythonlibrary"
+    PYTHONMODULE = "pythonmodule"
+    TEXTDOCUMENT = "textdocument"
+
+    def __str__(self):
+        return self.name.lower()
 
 
 # pylint: disable=too-many-instance-attributes
@@ -42,14 +49,14 @@ class Metadata(WebPage):
     textdocument_defs: List[TextDocument]
     graphs: List[Digraph] = field(init=False, default_factory=list)
 
-    def get_definitions(self, content_type: str) -> Sequence[WebPage]:
-        """returns the definitions of `content_type`"""
-        return getattr(self, f"{content_type}_defs")
-
     def __post_init__(self):
         super().__post_init__()
         self.node_by_id = {}
         self.usable_by_link = {}
+
+    def get_definitions(self, content_type: TopLevelDisplayedContent) -> Sequence[WebPage]:
+        """returns the definitions of `content_type`"""
+        return getattr(self, f"{content_type.name.lower()}_defs")
 
     def set_parents(self):
         """ set the parents in all objects """
@@ -83,10 +90,10 @@ class Metadata(WebPage):
         return result
 
     @property
-    def embeddedquery_defs(self) -> Iterable[EmbeddedQuery]:
+    def embeddedqueries(self) -> Iterable[EmbeddedQuery]:
         """ collect all EmbeddedQuery objects """
         return \
-            (obj for obj in self.all_objects() if obj.__class__ == EmbeddedQuery)
+            (obj for obj in self.all_objects() if isinstance(obj, EmbeddedQuery))
 
     @property
     def commanders(self):

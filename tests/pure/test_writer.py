@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 from graphviz import Digraph
 
+from odbinfo.pure.datatype.metadata import TopLevelDisplayedContent
 from odbinfo.pure.writer import (backup_old_site, localsite, new_site,
                                  present_contenttypes, write_graphs)
 
@@ -48,4 +49,5 @@ def test_new_site(tmpdir):
 
 
 def test_present_contenttypes(metadata_listbox):
-    assert present_contenttypes(metadata_listbox) == ['table', 'form']
+    assert present_contenttypes(metadata_listbox) == [
+        TopLevelDisplayedContent.TABLE, TopLevelDisplayedContent.FORM]

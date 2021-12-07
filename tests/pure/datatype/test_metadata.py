@@ -34,7 +34,7 @@ def test_pythonmodule_defs(metadata_empty):
 
 def test_embeddedquery_defs(metadata_empty, report_embeddedquery, embedded_query):
     metadata_empty.report_defs = [report_embeddedquery]
-    assert list(metadata_empty.embeddedquery_defs) == [
+    assert list(metadata_empty.embeddedqueries) == [
         embedded_query]
 
 

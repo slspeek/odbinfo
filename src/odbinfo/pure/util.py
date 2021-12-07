@@ -30,7 +30,7 @@ def timed(mesg, indent=0, arg=None, name=True):
                 if name:
                     result += args[arg].name
                 else:
-                    result += args[arg]
+                    result += str(args[arg])
             return result
 
         @wraps(func)

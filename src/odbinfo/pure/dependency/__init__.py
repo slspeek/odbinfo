@@ -6,11 +6,13 @@ from odbinfo.pure.dependency.searchexec import (
     search_callable_in_callable, search_string_refs_in_callables)
 from odbinfo.pure.dependency.searchtabular import *
 from odbinfo.pure.dependency.searchui import *
+from odbinfo.pure.dependency.util import link_user_to_usuable
 from odbinfo.pure.util import timed
 
 __all__ = [
     "search_dependencies",
-    "link_name_tokens"
+    "link_name_tokens",
+    "link_user_to_usuable"
 ]
 
 
@@ -43,11 +45,11 @@ def search_dependencies(metadata: Metadata):
     search_deps_in_queries(metadata.view_defs,
                            metadata.view_defs)
     search_deps_in_queries(metadata.table_defs,
-                           metadata.embeddedquery_defs)
+                           metadata.embeddedqueries)
     search_deps_in_queries(metadata.view_defs,
-                           metadata.embeddedquery_defs)
+                           metadata.embeddedqueries)
     search_deps_in_queries(metadata.query_defs,
-                           metadata.embeddedquery_defs)
+                           metadata.embeddedqueries)
     search_deps_in_commander(metadata.table_defs,
                              metadata.commanders)
     search_deps_in_commander(metadata.view_defs,

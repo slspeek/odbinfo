@@ -12,7 +12,7 @@ from graphviz import Digraph
 
 from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.datatype.config import Configuration
-from odbinfo.pure.datatype.metadata import METADATA_CONTENT
+from odbinfo.pure.datatype.metadata import TopLevelDisplayedContent
 from odbinfo.pure.util import timed
 
 FRONT_MATTER_MARK = "---\n"
@@ -77,18 +77,19 @@ def write_metadata(config: Configuration, metadata: Metadata):
         write_content(metadata, content, config.site_path)
 
 
-def present_contenttypes(metadata: Metadata) -> List[str]:
+def present_contenttypes(metadata: Metadata) -> List[TopLevelDisplayedContent]:
     """returns the content_types that are present in this `metadata`"""
-    return [content for content in METADATA_CONTENT
+    return [content for content in TopLevelDisplayedContent
             if len(metadata.get_definitions(content)) > 0]
 
 
-def write_config(config: Configuration, present_content: Sequence[str]) -> None:
+def write_config(config: Configuration,
+                 present_content: Sequence[TopLevelDisplayedContent]) -> None:
     """ write out Hugo config.toml """
-    menus = [{"url": f"/{name}/index.html",
-              "name": name,
+    menus = [{"url": f"/{content.value}/index.html",
+              "name": content.value,
               "weight": weight}
-             for name, weight in
+             for content, weight in
              zip(present_content, count(3))]
 
     menus.append({"url": "/",
@@ -109,10 +110,10 @@ def write_config(config: Configuration, present_content: Sequence[str]) -> None:
 
 
 @timed("Write content", indent=4, arg=1, name=False)
-def write_content(metadata: Metadata, content_type: str, site_path: Path):
+def write_content(metadata: Metadata, content_type: TopLevelDisplayedContent, site_path: Path):
     """writes out `content_type` in subdir of `site_path`"""
     contentlist = metadata.get_definitions(content_type)
-    targetpath = site_path / "content" / content_type
+    targetpath = site_path / "content" / content_type.value
     targetpath.mkdir(parents=True, exist_ok=True)
     for content in contentlist:
         with open(targetpath / f"{content.title}.md",

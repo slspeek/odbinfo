@@ -183,9 +183,7 @@ def metadata_tables(metadata_empty, table_plant, table_family):
     table_plant.parent = table_family.parent = metadata_empty
     metadata_empty.table_defs.append(table_plant)
     metadata_empty.table_defs.append(table_family)
-    metadata_empty.set_obj_ids()
-    metadata_empty.set_parents()
-    metadata_empty.create_index()
+    metadata_empty.prepare_indexed_tree()
     return metadata_empty
 
 
@@ -195,7 +193,5 @@ def metadata_listbox(metadata_empty, table_plant, listbox, form_with_listbox):
     listbox.link = table_plant.identifier
     metadata_empty.form_defs.append(form_with_listbox)
 
-    metadata_empty.set_obj_ids()
-    metadata_empty.set_parents()
-    metadata_empty.create_index()
+    metadata_empty.prepare_indexed_tree()
     return metadata_empty

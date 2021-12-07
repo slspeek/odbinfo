@@ -2,8 +2,8 @@
 import dataclasses
 from typing import Sequence, Union
 
-from odbinfo.pure.datatype import (Control, EmbeddedQuery, Form, Grid, Library,
-                                   Metadata, Module, SubForm)
+from odbinfo.pure.datatype import (Control, EmbeddedQuery, Form, Grid,
+                                   Metadata, Module, QueryBase, SubForm)
 from odbinfo.pure.datatype.base import UseAggregator, User
 from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.ui import AbstractCommander
@@ -19,29 +19,24 @@ def copy_tokens(module):
     module.tokens = [dataclasses.replace(token) for token in module.tokens]
 
 
-def preprocess_module(module: Module, library_name: str) -> None:
+def preprocess_module(module: Module) -> None:
     """ Tokenizes, parses, copies the tokens and sets the indexes
         of the tokens that are the names of the procedures """
     module.tokens = \
         get_basic_tokens(module.source)
     module.callables = \
-        scan_basic(module.tokens, library_name, module.name)
+        scan_basic(module.tokens, module.library, module.name)
     copy_tokens(module)
     module.name_indexes = \
         [c.name_token_index for c in module.callables]
+    link_name_tokens(module)
 
 
-def preprocess_library(library: Library) -> None:
-    """preprocess `library` for dependency search"""
-    for module in library.modules:
-        preprocess_module(module, library.name)
-
-
-@timed("Parse basic libraries", indent=4)
-def preprocess_libraries(libraries: Sequence[Library]) -> None:
+@timed("Parse basic modules", indent=4)
+def preprocess_modules(modules: Sequence[Module]) -> None:
     """preprocesses of the of libraries"""
-    for lib in libraries:
-        preprocess_library(lib)
+    for module in modules:
+        preprocess_module(module)
 
 
 def color_hightlight_query(query: EmbeddedQuery):
@@ -129,12 +124,8 @@ def aggregate_used_by(metadata: Metadata) -> None:
 @timed("Parse queries", indent=4)
 def preprocess_queries(metadata: Metadata) -> None:
     """process all query-like objects"""
-    for query in metadata.query_defs:
+    for query in metadata.by_content_type(QueryBase):
         preprocess_query(query)
-    for view in metadata.view_defs:
-        preprocess_query(view)
-    for embedded_query in metadata.embeddedqueries:
-        preprocess_query(embedded_query)
 
 
 def preprocess_commanders(commanders: Sequence[AbstractCommander]) -> None:
@@ -154,20 +145,18 @@ def preprocess_forms(form_defs: Sequence[Form]):
 @timed("Process metadata", indent=2)
 def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     """ preprocessing of the data before it is written """
-    preprocess_libraries(metadata.library_defs)
+    preprocess_modules(metadata.module_defs)
+    for module in metadata.module_defs:
+        link_name_tokens(module)
+
     preprocess_commanders(metadata.commanders)
     preprocess_queries(metadata)
     preprocess_forms(metadata.form_defs)
 
-    for module in metadata.module_defs:
-        link_name_tokens(module)
+    metadata.prepare_indexed_tree()
 
-    metadata.set_parents()
-    metadata.set_obj_ids()
-
-    # TODO move these 4 lines to dependency module
+    # TODO move these 3 lines to dependency module
     search_dependencies(metadata)
-    metadata.create_index()
     aggregate_uses(metadata)
     aggregate_used_by(metadata)
 

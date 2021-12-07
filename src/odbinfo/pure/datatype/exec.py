@@ -99,3 +99,8 @@ class Library(WebPage):
         rdict = super().to_dict()
         rdict["modules"] = module_links
         return rdict
+
+    @property
+    def basicfunctions(self) -> List[BasicFunction]:
+        """returns all basicfunctions in this library"""
+        return sum((module.callables for module in self.modules), [])

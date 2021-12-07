@@ -163,7 +163,7 @@ check_main: pycompile format
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="$(parserlocation)/oobasic,$(parserlocation)/sqlite" $(srcloc)
 
 check_test: pycompile format
-	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest -dC0116,C0115,R0201,W0201 $(testloc)
+	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --load-plugins=pylint_pytest -dC0116,C0115,R0201,W0201,W0212 $(testloc)
 
 .PHONY:
 clean:

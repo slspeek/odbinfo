@@ -11,7 +11,7 @@ def test_metadata_post_init(metadata_empty):
 def test_metadata_build_parent_index(table_plant, metadata_empty):
     metadata_empty.table_defs = [table_plant]
 
-    metadata_empty.set_parents()
+    metadata_empty._set_parents()
     assert table_plant.parent == metadata_empty
 
 
@@ -52,7 +52,7 @@ def test_eventlisteners(metadata_empty, form, eventlistener):
 def test_set_obj_ids(metadata_empty, table_plant, table_family):
     metadata_empty.table_defs = [table_plant, table_family]
 
-    metadata_empty.set_obj_ids()
+    metadata_empty._set_obj_ids()
 
     assert metadata_empty.obj_id == "0"
     assert table_plant.obj_id == "1"
@@ -62,8 +62,8 @@ def test_set_obj_ids(metadata_empty, table_plant, table_family):
 
 def test_create_index(metadata_empty, table_plant, table_family):
     metadata_empty.table_defs = [table_plant, table_family]
-    metadata_empty.set_obj_ids()
-    metadata_empty.create_index()
+    metadata_empty._set_obj_ids()
+    metadata_empty._create_index()
     assert metadata_empty.node_by_id["1"] == table_plant
     assert metadata_empty.node_by_id["3"] == table_family
     assert metadata_empty.usable_by_link[table_plant.identifier] == table_plant

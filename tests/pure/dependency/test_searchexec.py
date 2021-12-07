@@ -1,13 +1,12 @@
 """ test dependency search in basicfunctions """
 import unittest
 
-from odbinfo.pure.datatype import (Identifier, Library, Module, WebPage,
-                                   content_type)
+from odbinfo.pure.datatype import Identifier, Module, WebPage, content_type
 from odbinfo.pure.dependency.searchexec import (
     consider, link_name_tokens, rewrite_module_callable_links,
     search_callable_in_callable, search_string_refs_in_callables)
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
-from odbinfo.pure.processor import preprocess_library
+from odbinfo.pure.processor import preprocess_modules
 
 SOURCE_MODULEONE = """
 Sub Foo()
@@ -94,12 +93,11 @@ def test_remove_recursive_calls():
 class ModuleTest(unittest.TestCase):
     """ module based test"""
 
-    def process_module(self, module: str):
+    def process_module(self, module_source: str):
         """parses `module` and puts result in self.module"""
         # pylint:disable=attribute-defined-outside-init
-        self.module = Module("Module", "Lib", module)
-        lib = Library("Lib", [self.module])
-        preprocess_library(lib)
+        self.module = Module("Module", "Lib", module_source)
+        preprocess_modules([self.module])
 
 
 class ModuleOneTest(ModuleTest):

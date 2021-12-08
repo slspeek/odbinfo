@@ -1,6 +1,18 @@
 """tests for metadata"""
 
-from odbinfo.pure.datatype import Library, Module, PythonLibrary, PythonModule
+from odbinfo.pure.datatype import (Form, Library, ListBox, Module,
+                                   PythonLibrary, PythonModule, Table)
+
+
+def test_by_content_type_simple(metadata_tables, table_plant, table_family):
+    assert list(metadata_tables.by_content_type(Table)) == [
+        table_plant, table_family]
+
+
+def test_by_content_type_two_kinds(metadata_listbox):
+    result = list(metadata_listbox.by_content_type(Form, ListBox))
+    assert len(result) == 2
+    print(result)
 
 
 def test_metadata_post_init(metadata_empty):

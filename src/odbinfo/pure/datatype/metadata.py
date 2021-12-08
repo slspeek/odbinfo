@@ -74,11 +74,11 @@ class Metadata(WebPage):
         """collect all python modules from libraries"""
         return sum((lib.modules for lib in self.pythonlibrary_defs), [])
 
-    def by_content_type(self, content_type_class: type):
+    def by_content_type(self, *content_type_class):
         """returns as iterator for all instances of `content_type_class`"""
         return \
-            (obj for obj in self.all_objects()
-             if isinstance(obj, content_type_class))
+            [obj for obj in self.all_objects()
+             if isinstance(obj, tuple(content_type_class))]
 
     @property
     def embeddedqueries(self) -> Iterable[EmbeddedQuery]:

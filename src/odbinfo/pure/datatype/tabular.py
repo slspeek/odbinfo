@@ -146,4 +146,4 @@ class Table(WebPageWithUses):
         return chain(self.keys, self.indexes, self.columns)
 
 
-Tabular = Union[Table, View, Query, EmbeddedQuery]
+Tabular = Union[Table, View, Query]

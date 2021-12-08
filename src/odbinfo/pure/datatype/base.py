@@ -11,7 +11,8 @@ class Dictable(ABC):
 
     @abstractmethod
     def to_dict(self):
-        """ dictionary representation """
+        """ returns dictionary representation
+            used for the write-out to the hugo site"""
 
 
 @dataclass(frozen=True)
@@ -93,10 +94,6 @@ class NamedNode(Node):
     """Has a name"""
     name: str
 
-    def users_match(self, username: str) -> bool:
-        """ determines whether `username` matches this object """
-        return self.name == username
-
 
 @dataclass
 class User(Node):
@@ -105,10 +102,14 @@ class User(Node):
 
 
 @dataclass
-class Usable:
+class Usable(NamedNode):
     """ Mixin for Nodes that can be used by other nodes """
     used_by: List['Identifier'] = field(
         init=False, repr=False, default_factory=list)
+
+    def users_match(self, username: str) -> bool:
+        """ determines whether `username` matches this object """
+        return self.name == username
 
 
 @dataclass
@@ -158,16 +159,16 @@ def get_identifier(usable) -> Identifier:
         if parent.parent is None:
             raise NoWebPageAncestorException(usable)
         parent = parent.parent
-    parent = cast(WebPage, parent)
-    if parent is usable:
+    webpage: WebPage = cast(WebPage, parent)
+    if webpage is usable:
         return Identifier(usable.content_type,
                           usable.title, None)
-    return Identifier(parent.content_type,
-                      parent.title, usable.obj_id)
+    return Identifier(webpage.content_type,
+                      webpage.title, usable.obj_id)
 
 
 @dataclass
-class Token(User, Node):  # pylint:disable=too-many-instance-attributes
+class Token(User, Node):
     """lexer token"""
     text: str
     type: int

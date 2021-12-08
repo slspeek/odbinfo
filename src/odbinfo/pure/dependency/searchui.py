@@ -2,7 +2,7 @@
 from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import (BasicFunction, Commander, DatabaseDisplay,
-                                   EventListener, TextDocument, WebPage)
+                                   EventListener, TextDocument, Usable)
 
 #
 # BasicFunction in EventListener
@@ -22,12 +22,12 @@ def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
 #
 
 
-def search_deps_in_commander(dataobjects: Sequence[WebPage],
+def search_deps_in_commander(dataobjects: Sequence[Usable],
                              commander_seq: Sequence[Commander]) -> None:
     """ find uses of dataobject in report"""
     def find_deps_in_commander(commander: Commander) -> None:
         """ find dependency uses in `report` """
-        def match_one_dep(dependency: WebPage) -> None:
+        def match_one_dep(dependency: Usable) -> None:
             if (not commander.issqlcommand
                     and dependency.users_match(commander.command)):
                 commander.link = dependency.identifier
@@ -37,12 +37,12 @@ def search_deps_in_commander(dataobjects: Sequence[WebPage],
         find_deps_in_commander(commander)
 
 
-def search_deps_in_documents(dataobjects: Sequence[WebPage],
+def search_deps_in_documents(dataobjects: Sequence[Usable],
                              documents: Sequence[TextDocument]) -> None:
     """ find uses of dataobject in document"""
     def find_deps_in_doc(document: TextDocument) -> None:
 
-        def find_one_dep(dependency: WebPage) -> None:
+        def find_one_dep(dependency: Usable) -> None:
 
             def find_in_databasedisplay(display: DatabaseDisplay) -> None:
                 if dependency.users_match(display.table):

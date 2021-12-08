@@ -1,3 +1,17 @@
+Code clean up
+--------------
+dependency
+    - all searches except callable_in_callable,
+       should be one function taking a source and potential target for a type combination
+       the double loops should be generalized
+    - UserAggregator? gets link_uses(Usable) (How  will BasicFunction fit in (consider))
+        - table scans its keys
+        - query scans table-tokens
+        - etc ..
+
+Introduce <ContentType>Raw classes make them member of <ContentType> classes
+as they are preprocessed
+
 processor copy_token unittest
 
 Makefile run after 'source env.source'
@@ -112,6 +126,7 @@ Try out on freewindows version
 update minimal theme (20210703 ok)
 
 make upgrade dependencies (20210813 done)
+
 
 #################################################################################
 ############################## release 0.1 ######################################

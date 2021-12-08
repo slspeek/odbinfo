@@ -1,48 +1,12 @@
 """ dependency search in basicfunctions """
 from typing import Sequence
 
-from odbinfo.pure.datatype import (BasicCall, BasicFunction, Identifier,
-                                   Module, Token, WebPage, content_type)
+from odbinfo.pure.datatype import BasicCall, BasicFunction, Token, Usable
 from odbinfo.pure.dependency.util import link_user_to_usuable
 
 #
 # BasicFunction in BasicFunction
 #
-
-
-def link_name_tokens(module: Module):
-    """Link the name tokens to the single function pages"""
-    for name_index, acallable in zip(module.name_indexes, module.callables):
-        link_user_to_usuable(module.tokens[name_index], acallable)
-
-
-def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
-    """ links to callables are rewritten to links to callables in
-        modules (using #bookmarks)"""
-
-    # process module source tokens to support callable links at module level
-    # e.g /Lib1.Mod1/#macro
-    # By rewriting Identifier(type="BasicFunction" local_id="call.Mod1.Lib1")
-    # to Identifier("Module", "Mod1.Lib1", bookmark="call")
-
-    def rewrite_module(basic_module: Module):
-        def rewrite_link(link: Identifier):
-            if not link.content_type == content_type(BasicFunction):
-                return link
-            lmacro, lmodule, llib = link.local_id.split('.')
-            return Identifier(content_type(Module), f"{lmodule}.{llib}", lmacro)
-
-        def copy_links(func):
-            for token in func.tokens:
-                module_token = basic_module.tokens[token.index]
-                if token.link:
-                    module_token.link = rewrite_link(token.link)
-
-        for function in basic_module.callables:
-            copy_links(function)
-
-    for module in module_seq:
-        rewrite_module(module)
 
 
 def remove_recursive_calls(funcs: Sequence[BasicFunction]):
@@ -108,12 +72,12 @@ def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> None:
 #
 
 
-def search_string_refs_in_callables(dataobjects: Sequence[WebPage],
+def search_string_refs_in_callables(dataobjects: Sequence[Usable],
                                     callables: Sequence[BasicFunction]) -> None:
     """ search for references to table, views, queries or reports
         in callable string literals """
     def search_refs_in_one(acallable: BasicFunction) -> None:
-        def ref_in_one(dataobject: WebPage) -> None:
+        def ref_in_one(dataobject: Usable) -> None:
             def compare_ref(string_token: Token) -> None:
                 if dataobject.users_match(string_token.text[1:-1]):
                     link_user_to_usuable(string_token, dataobject)

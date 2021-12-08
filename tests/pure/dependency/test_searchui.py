@@ -1,6 +1,6 @@
 """ test dependency search in ui """
 
-from odbinfo.pure.datatype.base import WebPage
+from odbinfo.pure.datatype.base import Usable
 from odbinfo.pure.dependency.searchui import (
     search_basicfunction_in_eventlistener, search_deps_in_commander,
     search_deps_in_documents)
@@ -27,7 +27,7 @@ def test_search_deps_in_document_match(table_plant, textdoc):
 
 def test_search_deps_in_document_no_match(textdoc):
     """no match"""
-    search_deps_in_documents([WebPage("not_plant")], [textdoc])
+    search_deps_in_documents([Usable("not_plant")], [textdoc])
     assert not textdoc.fields[0].link
 
 

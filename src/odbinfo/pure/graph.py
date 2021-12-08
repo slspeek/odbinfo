@@ -35,7 +35,7 @@ def is_control_relevant(control: Control) -> bool:
 
 def is_visible(config: GraphConfig, node: NamedNode) -> bool:
     """ determines with `config` whether `node` is visible"""
-    if not node.content_type in config.excludes:
+    if node.content_type not in config.excludes:
         if config.relevant_controls:
             if isinstance(node, Control):
                 control = cast(Control, node)

@@ -1,12 +1,13 @@
 """ test dependency search in basicfunctions """
 import unittest
 
-from odbinfo.pure.datatype import Identifier, Module, WebPage, content_type
+from odbinfo.pure.datatype import (Identifier, Module, Table, WebPage,
+                                   content_type)
 from odbinfo.pure.dependency.searchexec import (
-    consider, link_name_tokens, rewrite_module_callable_links,
-    search_callable_in_callable, search_string_refs_in_callables)
+    consider, search_callable_in_callable, search_string_refs_in_callables)
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
-from odbinfo.pure.processor import preprocess_modules
+from odbinfo.pure.processor import (link_name_tokens, preprocess_modules,
+                                    rewrite_module_callable_links)
 
 SOURCE_MODULEONE = """
 Sub Foo()
@@ -153,7 +154,7 @@ class StringRefsInCallables(ModuleTest):
     def setUp(self):
         self.process_module(STRING_REF_MODULE)
         self.withref = self.module.callables[0]
-        self.webpage = WebPage("ref_one")
+        self.webpage = Table("ref_one", "", [], [], [])
 
     def test_match(self):
         """match ref_one"""

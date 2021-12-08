@@ -5,9 +5,8 @@ import pytest
 
 from odbinfo.pure.datatype import (EmbeddedQuery, Identifier, Report,
                                    content_type)
-from odbinfo.pure.datatype.base import (NamedNode, Node,
-                                        NoWebPageAncestorException, WebPage,
-                                        get_identifier)
+from odbinfo.pure.datatype.base import (Node, NoWebPageAncestorException,
+                                        WebPage, get_identifier)
 
 
 def test_to_dict_identitifier_no_bookmark():
@@ -45,10 +44,9 @@ def test_node_all_objects():
     assert child in node.all_objects()
 
 
-def test_node_users_match():
+def test_node_users_match(table_plant):
     """ default implementation of users_match does string equality """
-    named = NamedNode("foo")
-    assert named.users_match("foo")
+    assert table_plant.users_match("plant")
 
 
 @pytest.mark.parametrize("parent,parent_link",

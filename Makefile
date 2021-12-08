@@ -225,7 +225,7 @@ installantlr:
 	curl -O https://www.antlr.org/download/$(antlr4jar)
 
 ctags:
-	ctags -R odbinfo
+	ctags -R $(srcloc) $(testloc)
 
 metric: clean
 	$(PUREPYTHON) -m xenon -b A -m A -a A  $(pythonsources)

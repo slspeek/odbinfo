@@ -54,6 +54,12 @@ class BasicFunction(WebPageWithUses):
     def children(self):
         return self.tokens
 
+    @property
+    def script_url(self):
+        """As matched in EventListener"""
+        return \
+            f"{self.library}.{self.module}.{self.name}"
+
     def to_dict(self):
         result = super().to_dict()
         del result["body_tokens"]

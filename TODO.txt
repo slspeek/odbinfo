@@ -1,5 +1,6 @@
 Code clean up
 --------------
+map call -> [comprehension]
 all_objects, by_content_type --> Iterator
 search_combinations makes lists first
 
@@ -45,7 +46,7 @@ Testing
 -------
 ? pip install pylint-unittest(https://pypi.org/project/pylint-testcode-plugin/)
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 85.75%)
+unit test coverage 90% (now 84.05%)
 
 test/pure/test_sql_parser.py
 test/pure/test_writer_make_site.py

@@ -1,11 +1,12 @@
 """ Graphical User Interface datatypes """
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import List, Optional, Union
+from typing import List, Optional, Union, cast
 
 from odbinfo.pure.datatype import Usable
 from odbinfo.pure.datatype.base import (Dependent, NamedNode, User,
                                         WebPageWithUses)
+from odbinfo.pure.datatype.exec import BasicFunction
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
 COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
@@ -82,14 +83,20 @@ class TextDocument(WebPageWithUses):
 
 
 @dataclass
-class EventListener(User, NamedNode):
+class EventListener(User, NamedNode, Dependent):
     """ Control eventlistener """
-    # event: str
     script: str
 
     def parsescript(self) -> str:
         """returns {Lib}.{Mod}.{Func} part from script field"""
         return (self.script.split(":")[1]).split("?")[0]
+
+    def link_uses(self, target: Usable):
+        if not isinstance(target, BasicFunction):
+            return
+        func = cast(BasicFunction, target)
+        if func.script_url == self.parsescript():
+            self.link_to(func)
 
 
 @dataclass

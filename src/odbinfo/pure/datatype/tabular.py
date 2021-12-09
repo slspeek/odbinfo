@@ -78,17 +78,21 @@ class EmbeddedQuery(QueryBase):
 
 
 @dataclass
-class Query(QueryBase, WebPageWithUses):
+class QueryPage(QueryBase, WebPageWithUses):
     """ Query properties """
 
     def __post_init__(self):
         super().__post_init__()
         self.title = self.name
-        # self.command = format_sql(self.command)
 
 
 @dataclass
-class View(Query):
+class Query(QueryPage):
+    """ Query properties """
+
+
+@dataclass
+class View(QueryPage):
     """ View properties """
 
 

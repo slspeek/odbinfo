@@ -31,8 +31,10 @@ def search_dependencies(metadata: Metadata) -> None:
                                                              Report,
                                                              TextDocument),
                                     metadata.basicfunction_defs)
+    search_deps_in_queries(metadata.by_content_type(Table, View),
+                           metadata.by_content_type(View))
     search_deps_in_queries(metadata.by_content_type(Table, Query, View),
-                           metadata.by_content_type(Query, View, EmbeddedQuery))
+                           metadata.by_content_type(Query, EmbeddedQuery))
     search_deps_in_commander(metadata.by_content_type(Table, Query, View),
                              metadata.commanders)
     search_deps_in_documents(metadata.by_content_type(Table, Query, View),

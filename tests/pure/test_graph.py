@@ -240,7 +240,8 @@ def test_generate_graphs(configuration, metadata_listbox):
 
 
 @pytest.mark.slow
-def test_generate_main_graph_regression(metadata_processed, data_regression):
+def test_generate_main_graph_regression(metadata_processed, file_regression):
     """run generate_main_graph"""
     conf = get_configuration("test_generate_main_graph")
-    data_regression.check(generate_main_graph(metadata_processed, conf).source)
+    file_regression.check(
+        "".join(generate_main_graph(metadata_processed, conf).source))

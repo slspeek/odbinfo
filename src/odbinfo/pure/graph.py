@@ -3,7 +3,8 @@ from typing import Dict, List, Sequence, Tuple, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import Control, ListBox, Metadata, content_type
+from odbinfo.pure.datatype import (Control, ControlBase, ListBox, Metadata,
+                                   content_type)
 from odbinfo.pure.datatype.base import NamedNode, Node
 from odbinfo.pure.datatype.config import Configuration, GraphConfig
 
@@ -22,7 +23,7 @@ def href(obj: Node) -> str:
     return url
 
 
-def is_control_relevant(control: Control) -> bool:
+def is_control_relevant(control: ControlBase) -> bool:
     """Checks if a control has eventlisteners or if it is a listbox if a datasource is present"""
     if control.eventlisteners:
         return True
@@ -33,12 +34,13 @@ def is_control_relevant(control: Control) -> bool:
     return False
 
 
+# TODO move to datatypes
 def is_visible(config: GraphConfig, node: NamedNode) -> bool:
     """ determines with `config` whether `node` is visible"""
     if node.content_type not in config.excludes:
         if config.relevant_controls:
-            if isinstance(node, Control):
-                control = cast(Control, node)
+            if isinstance(node, ControlBase):
+                control = cast(ControlBase, node)
                 return is_control_relevant(control)
             return True
         return True

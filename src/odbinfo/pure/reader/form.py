@@ -9,7 +9,7 @@ from odbinfo.pure.reader.common import (attr_default, child_elements,
                                         child_elements_by_tagname, document)
 
 
-def read_form_item(control_elem: Element) -> Union[Control, Grid]:
+def read_form_item(control_elem: Element) -> Union[Control, Grid, ListBox]:
     """ case on the tagName of `column_elem` to read the right component"""
     if control_elem.tagName == "form:grid":
         return read_grid(control_elem)
@@ -26,7 +26,7 @@ def read_subforms(office_form_elem: Element) -> List[SubForm]:
 
 def read_subform(form_form_elem: Element):
     """read a SubForm from `form_form_elem` (<form:form>)"""
-    controls: List[Union[Control, Grid]] = [
+    controls: List[Union[Control, ListBox, Grid]] = [
         read_form_item(elem) for elem in
         child_elements(form_form_elem)
         if elem.tagName not in ["form:form", "form:properties"]

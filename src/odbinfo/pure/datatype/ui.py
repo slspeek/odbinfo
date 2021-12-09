@@ -83,7 +83,7 @@ class EventListener(User, NamedNode):
 
 @dataclass
 # pylint: disable=too-many-instance-attributes
-class Control(NamedNode):
+class ControlBase(NamedNode):
     """ Form control """
     controlid: str
     datafield: str
@@ -99,7 +99,12 @@ class Control(NamedNode):
 
 
 @dataclass
-class ListBox(AbstractCommander, Control):
+class Control(ControlBase):
+    """ Form control """
+
+
+@dataclass
+class ListBox(AbstractCommander, ControlBase):
     """ ListBox control"""
     boundcolumn: int
     dropdown: bool
@@ -115,7 +120,6 @@ class ListBox(AbstractCommander, Control):
         return self.listsourcetype
 
     def children(self):
-
         if self.embedded_query:
             return self.eventlisteners + [self.embedded_query]
         return self.eventlisteners
@@ -140,7 +144,7 @@ class SubForm(Commander, NamedNode):
     allowupdates: str
     masterfields: str
     detailfields: str
-    controls: List[Union[Control, Grid]]
+    controls: List[Union[Control, Grid, ListBox]]
     subforms: List['SubForm']
     depth: Optional[int] = field(init=False, default=None)
 

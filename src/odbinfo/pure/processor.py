@@ -3,7 +3,7 @@ import dataclasses
 from typing import Sequence, Union
 
 from odbinfo.pure.datatype import (BasicFunction, Control, EmbeddedQuery, Form,
-                                   Grid, Identifier, Metadata, Module,
+                                   Grid, Identifier, ListBox, Metadata, Module,
                                    QueryBase, SubForm, content_type)
 from odbinfo.pure.datatype.base import UseAggregator, User
 from odbinfo.pure.datatype.config import Configuration
@@ -91,7 +91,7 @@ def process_subform(subform: SubForm) -> None:
     """ simplifies control.type for all (nested) controls """
 
     # TODO move to Control
-    def process_control(control: Union[Control, Grid]) -> None:
+    def process_control(control: Union[Control, Grid, ListBox]) -> None:
         if isinstance(control, Grid):
             return
         control.type = control.type.split(".")[-1]

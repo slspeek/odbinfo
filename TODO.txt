@@ -1,10 +1,5 @@
 Code clean up
 --------------
-Fix datatype hierarchy
-    View -> QueryBase
-    Control -> ControlBase
-    ListBox -> ControlBase
-
 dependency
     - all searches except callable_in_callable,
        should be one function taking a source and potential target for a type combination

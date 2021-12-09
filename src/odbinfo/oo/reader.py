@@ -1,12 +1,12 @@
 """ Reads the metadata from a running LibreOffice and from the odb file """
-from functools import partial
 from pathlib import Path
 from typing import List
 from zipfile import ZipFile
 
 from odbinfo.oo.ooutil import open_connection
 from odbinfo.pure.datatype import (Column, Index, Key, Metadata, Query,
-                                   QueryColumn, Table, View)
+                                   QueryBase, QueryColumn, Table, View)
+from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
@@ -14,8 +14,7 @@ from odbinfo.pure.util import timed
 
 
 @timed("Read metadata", indent=2)
-#pylint: disable=unused-argument
-def read_metadata(config, datasource, odbpath: Path):
+def read_metadata(config: Configuration, datasource, odbpath: Path) -> Metadata:
     """ reads all metadata """
     with open_connection(datasource) as con:
         with ZipFile(odbpath, "r") as odbzip:
@@ -49,14 +48,14 @@ def read_queries(connection, datasource) -> List[Query]:
     queries: List[Query] = [Query(ooquery.Name, ooquery.Command) for ooquery in
                             datasource.QueryDefinitions]
 
-    read_query_func = partial(read_query_columns, connection)
-    return list(map(read_query_func, queries))
+    for query in queries:
+        read_query_columns(connection, query)
+    return queries
 
 
-def read_query_columns(connection, query: Query) -> Query:
+def read_query_columns(connection, query: QueryBase) -> None:
     """ read query columns """
     query.columns = _read_query_columns(connection, query.command)
-    return query
 
 
 def _read_query_columns(connection, command) -> List[QueryColumn]:

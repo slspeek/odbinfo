@@ -168,7 +168,7 @@ def get_identifier(usable) -> Identifier:
 
 
 @dataclass
-class Token(User, Node):
+class TokenBase(User, Node):
     """lexer token"""
     text: str
     type: int
@@ -187,10 +187,15 @@ class Token(User, Node):
 
 
 @dataclass
-class SQLToken(Token):
+class SQLToken(TokenBase):
     """SQL lexer token"""
 
     def to_dict(self):
         adict = super().to_dict()
         del adict["index"]
         return adict
+
+
+@dataclass
+class Token(TokenBase):
+    """Token for BasicFunctions"""

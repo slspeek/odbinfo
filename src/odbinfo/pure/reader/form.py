@@ -20,8 +20,8 @@ def read_form_item(control_elem: Element) -> Union[Control, Grid, ListBox]:
 
 def read_subforms(office_form_elem: Element) -> List[SubForm]:
     """read the subforms of a form"""
-    return list(map(read_subform,
-                    child_elements_by_tagname(office_form_elem, "form:form")))
+    return [read_subform(form_form_elem) for form_form_elem in
+            child_elements_by_tagname(office_form_elem, "form:form")]
 
 
 def read_subform(form_form_elem: Element):

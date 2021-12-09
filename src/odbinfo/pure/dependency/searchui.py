@@ -1,12 +1,12 @@
 """ search dependencies in ui """
-from typing import Iterable, Sequence
+from typing import Iterable
 
-from odbinfo.pure.datatype import (BasicFunction, Commander, DatabaseDisplay,
-                                   EventListener, TextDocument, Usable)
+from odbinfo.pure.datatype import (BasicFunction, EventListener)
+
+
 #
 # BasicFunction in EventListener
 #
-from odbinfo.pure.dependency.util import search_combinations
 
 
 def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
@@ -18,34 +18,4 @@ def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
                 evl.link = func.identifier
 
 
-#
-# DataObject (query, view, table) in Report, SubForm
-#
 
-
-def search_deps_in_commander(dataobjects: Sequence[Usable],
-                             commander_seq: Sequence[Commander]) -> None:
-    """ find uses of dataobject in report"""
-    search_combinations(sources=commander_seq, targets=dataobjects)
-
-
-def search_deps_in_documents(dataobjects: Sequence[Usable],
-                             documents: Sequence[TextDocument]) -> None:
-    """ find uses of dataobject in document"""
-
-    def find_deps_in_doc(document: TextDocument) -> None:
-
-        def find_one_dep(dependency: Usable) -> None:
-
-            def find_in_databasedisplay(display: DatabaseDisplay) -> None:
-                if dependency.users_match(display.table):
-                    display.link = dependency.identifier
-
-            for field in document.fields:
-                find_in_databasedisplay(field)
-
-        for obj in dataobjects:
-            find_one_dep(obj)
-
-    for doc in documents:
-        find_deps_in_doc(doc)

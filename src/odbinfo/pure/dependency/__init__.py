@@ -1,11 +1,11 @@
 """ Dependency searcher for metadata """
 
 from odbinfo.pure.datatype import (EmbeddedQuery, Key, Metadata, Query, Report,
-                                   Table, TextDocument, View)
+                                   Table, TextDocument, View, DatabaseDisplay)
 from odbinfo.pure.dependency.searchexec import (
     search_callable_in_callable, search_string_refs_in_callables)
 from odbinfo.pure.dependency.searchui import (
-    search_basicfunction_in_eventlistener, search_deps_in_documents)
+    search_basicfunction_in_eventlistener)
 from odbinfo.pure.dependency.util import search_combinations
 from odbinfo.pure.util import timed
 
@@ -34,5 +34,5 @@ def search_dependencies(metadata: Metadata) -> None:
                         metadata.by_content_type(Table, Query, View))
     search_combinations(metadata.commanders,
                         metadata.by_content_type(Table, Query, View))
-    search_deps_in_documents(metadata.by_content_type(Table, Query, View),
-                             metadata.textdocument_defs)
+    search_combinations(metadata.by_content_type(DatabaseDisplay),
+                             metadata.by_content_type(Table, Query, View))

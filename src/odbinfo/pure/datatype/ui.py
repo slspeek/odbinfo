@@ -55,11 +55,15 @@ class Commander(AbstractCommander):
 
 
 @dataclass
-class DatabaseDisplay(User, NamedNode):
+class DatabaseDisplay(User, NamedNode, Dependent):
     """ Field in TextDocument """
     database: str
     table: str
     tabletype: str
+
+    def link_uses(self, target: Usable):
+        if target.users_match(self.table):
+            self.link_to(target)
 
 
 @dataclass

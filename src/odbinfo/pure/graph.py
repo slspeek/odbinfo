@@ -48,6 +48,7 @@ def is_visible(config: GraphConfig, node: NamedNode) -> bool:
 def label_for_node(node: NamedNode) -> str:
     """returns a label string for `node`"""
     label = node.name
+    # TODO override in Control
     if node.content_type == content_type(Control):
         control = cast(Control, node)
         if control.label:

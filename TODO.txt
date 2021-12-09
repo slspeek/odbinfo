@@ -1,13 +1,10 @@
 Code clean up
 --------------
+Token -> BasicToken
 dependency
-    - all searches except callable_in_callable,
-       should be one function taking a source and potential target for a type combination
-       the double loops should be generalized
     - Dependant (New) gets link_uses(Usable) (How  will BasicFunction fit in (consider))
-        - table scans its keys
         - query scans table-tokens
-        - etc ..
+        - basicfunction scans calls or stringliterals depending on targettype
 
 Preprocessable type for stuff that needs preprocessing
 

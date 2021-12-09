@@ -5,7 +5,9 @@ from typing import List, Union
 
 from sql_formatter.core import format_sql
 
-from odbinfo.pure.datatype.base import NamedNode, Token, User, WebPageWithUses
+from odbinfo.pure.datatype import Usable
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, Token, User,
+                                        WebPageWithUses)
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 KEYTYPES = {1: "Primary",
@@ -106,7 +108,7 @@ class Column(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class Key(User, NamedNode):  # pylint: disable=too-many-instance-attributes
+class Key(User, NamedNode, Dependent):  # pylint: disable=too-many-instance-attributes
     """ Database key properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
@@ -122,6 +124,10 @@ class Key(User, NamedNode):  # pylint: disable=too-many-instance-attributes
         self.typename = KEYTYPES[self.typename]
         self.update_rule = KEYRULES[self.update_rule]
         self.delete_rule = KEYRULES[self.delete_rule]
+
+    def link_uses(self, target: Usable):
+        if target.users_match(self.referenced_table):
+            self.link = target.identifier
 
 
 @dataclass

@@ -199,3 +199,11 @@ class SQLToken(TokenBase):
 @dataclass
 class Token(TokenBase):
     """Token for BasicFunctions"""
+
+
+class Dependent(ABC):
+    """Depends on zero of more Usable instances"""
+
+    @abstractmethod
+    def link_uses(self, target: Usable):
+        """Match `target` among its Users"""

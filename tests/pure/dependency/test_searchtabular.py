@@ -2,7 +2,7 @@
 
 from odbinfo.pure.datatype import Token
 from odbinfo.pure.dependency.searchtabular import (search_deps_in_queries,
-                                                   search_tables_in_tables)
+                                                   search_tables_in_keys)
 
 
 def test_search_deps_in_queries_match(table_plant, embedded_query):
@@ -19,7 +19,7 @@ def test_search_deps_in_queries_non_match(table_family, embedded_query):
     assert embedded_query.table_tokens[0].link is None
 
 
-def test_search_tables_in_tables_match(table_plant, table_family):
+def test_search_tables_in_keys_match(table_plant, table_family):
     """match"""
-    search_tables_in_tables([table_plant, table_family])
+    search_tables_in_keys([table_plant, table_family], [table_plant.keys[0]])
     assert table_plant.keys[0].link == table_family.identifier

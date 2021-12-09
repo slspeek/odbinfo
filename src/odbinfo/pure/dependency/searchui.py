@@ -3,10 +3,10 @@ from typing import Iterable, Sequence
 
 from odbinfo.pure.datatype import (BasicFunction, Commander, DatabaseDisplay,
                                    EventListener, TextDocument, Usable)
-
 #
 # BasicFunction in EventListener
 #
+from odbinfo.pure.dependency.util import search_combinations
 
 
 def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
@@ -17,6 +17,7 @@ def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
             if f"{func.library}.{func.module}.{func.name}" == evl.parsescript():
                 evl.link = func.identifier
 
+
 #
 # DataObject (query, view, table) in Report, SubForm
 #
@@ -25,21 +26,13 @@ def search_basicfunction_in_eventlistener(funcs: Iterable[BasicFunction],
 def search_deps_in_commander(dataobjects: Sequence[Usable],
                              commander_seq: Sequence[Commander]) -> None:
     """ find uses of dataobject in report"""
-    def find_deps_in_commander(commander: Commander) -> None:
-        """ find dependency uses in `report` """
-        def match_one_dep(dependency: Usable) -> None:
-            if (not commander.issqlcommand
-                    and dependency.users_match(commander.command)):
-                commander.link = dependency.identifier
-        for obj in dataobjects:
-            match_one_dep(obj)
-    for commander in commander_seq:
-        find_deps_in_commander(commander)
+    search_combinations(sources=commander_seq, targets=dataobjects)
 
 
 def search_deps_in_documents(dataobjects: Sequence[Usable],
                              documents: Sequence[TextDocument]) -> None:
     """ find uses of dataobject in document"""
+
     def find_deps_in_doc(document: TextDocument) -> None:
 
         def find_one_dep(dependency: Usable) -> None:
@@ -50,7 +43,9 @@ def search_deps_in_documents(dataobjects: Sequence[Usable],
 
             for field in document.fields:
                 find_in_databasedisplay(field)
+
         for obj in dataobjects:
             find_one_dep(obj)
+
     for doc in documents:
         find_deps_in_doc(doc)

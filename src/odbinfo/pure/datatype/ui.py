@@ -3,14 +3,16 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
 
-from odbinfo.pure.datatype.base import NamedNode, User, WebPageWithUses
+from odbinfo.pure.datatype import Usable
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, User,
+                                        WebPageWithUses)
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
 COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
 
 
 @dataclass  # type: ignore
-class AbstractCommander(User, NamedNode, ABC):
+class AbstractCommander(User, NamedNode, Dependent, ABC):
     """Commander interface"""
 
     # Only if commandtype in ["command", "sql", "sqlpassthrough"]
@@ -30,6 +32,11 @@ class AbstractCommander(User, NamedNode, ABC):
     def issqlcommand(self):
         """returns True if command contains SQL"""
         return self.commandtype in COMMAND_TYPE_COMMAND
+
+    def link_uses(self, target: Usable):
+        if not self.issqlcommand and \
+                target.users_match(self.command):
+            self.link_to(target)
 
 
 @dataclass

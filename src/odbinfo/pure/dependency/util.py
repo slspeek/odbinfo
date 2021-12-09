@@ -4,7 +4,7 @@ from typing import Sequence
 from odbinfo.pure.datatype import Dependent, Usable
 
 
-def product_search(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
+def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
     """ search for uses of `targets` in `sources`"""
     for source in sources:
         for target in targets:

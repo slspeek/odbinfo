@@ -1,8 +1,11 @@
 """ super classes of the datatypes and reference types """
+import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from itertools import chain
 from typing import Any, List, Optional, cast
+
+logger = logging.getLogger(__name__)
 
 
 # pylint:disable=too-few-public-methods
@@ -99,6 +102,18 @@ class NamedNode(Node):
 class User(Node):
     """ Mixin for Nodes that can use one other node"""
     link: Optional[Identifier] = field(init=False, default=None)
+
+    def link_to(self, target: "Usable"):
+        """links this object to `target`"""
+        if self.link:
+            logger.warning(
+                "Replacing link in user: %s:%s (link was %s) with %s",
+                self.content_type,
+                self.obj_id,
+                self.link,
+                target.identifier
+            )
+        self.link = target.identifier
 
 
 @dataclass

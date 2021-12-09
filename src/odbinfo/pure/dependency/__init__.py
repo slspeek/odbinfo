@@ -9,12 +9,10 @@ from odbinfo.pure.dependency.searchtabular import (search_deps_in_queries,
 from odbinfo.pure.dependency.searchui import (
     search_basicfunction_in_eventlistener, search_deps_in_commander,
     search_deps_in_documents)
-from odbinfo.pure.dependency.util import link_user_to_usuable
 from odbinfo.pure.util import timed
 
 __all__ = [
     "search_dependencies",
-    "link_user_to_usuable"
 ]
 
 

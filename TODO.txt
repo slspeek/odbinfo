@@ -3,7 +3,6 @@ Code clean up
 Token -> BasicToken
 dependency
     - Dependant (New) gets link_uses(Usable) (How  will BasicFunction fit in (consider))
-        - query scans table-tokens
         - basicfunction scans calls or stringliterals depending on targettype
 
 Preprocessable type for stuff that needs preprocessing

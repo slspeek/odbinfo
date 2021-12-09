@@ -8,7 +8,7 @@ from odbinfo.pure.datatype import (BasicFunction, Control, EmbeddedQuery, Form,
 from odbinfo.pure.datatype.base import UseAggregator, User
 from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.ui import AbstractCommander
-from odbinfo.pure.dependency import link_user_to_usuable, search_dependencies
+from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.graph import generate_graphs
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.parser.sql import parse
@@ -159,7 +159,7 @@ def preprocess_forms(form_defs: Sequence[Form]):
 def link_name_tokens(module: Module):
     """Link the name tokens to the single function pages"""
     for name_index, acallable in zip(module.name_indexes, module.callables):
-        link_user_to_usuable(module.tokens[name_index], acallable)
+        module.tokens[name_index].link_to(acallable)
 
 
 def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:

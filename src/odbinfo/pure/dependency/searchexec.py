@@ -2,7 +2,6 @@
 from typing import Sequence
 
 from odbinfo.pure.datatype import BasicCall, BasicFunction, Token, Usable
-from odbinfo.pure.dependency.util import link_user_to_usuable
 
 #
 # BasicFunction in BasicFunction
@@ -62,9 +61,9 @@ def consider(caller: BasicFunction, candidate_callee: BasicFunction) -> None:
         return (acall.name_token.text.upper() == candidate_callee.name.upper()
                 and acall.name_token.link is None, acall)
 
-    for match, name_token in map(match_and_not_linked, caller.calls):
+    for match, fn_call in map(match_and_not_linked, caller.calls):
         if match:
-            link_user_to_usuable(name_token.name_token, candidate_callee)
+            fn_call.name_token.link_to(candidate_callee)
 
 
 #
@@ -80,7 +79,7 @@ def search_string_refs_in_callables(dataobjects: Sequence[Usable],
         def ref_in_one(dataobject: Usable) -> None:
             def compare_ref(string_token: Token) -> None:
                 if dataobject.users_match(string_token.text[1:-1]):
-                    link_user_to_usuable(string_token, dataobject)
+                    string_token.link_to(dataobject)
             for stoken in acallable.strings:
                 compare_ref(stoken)
         for obj in dataobjects:

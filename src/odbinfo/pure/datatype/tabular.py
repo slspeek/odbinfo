@@ -10,6 +10,7 @@ from odbinfo.pure.datatype.base import (Dependent, NamedNode, Token, User,
                                         WebPageWithUses)
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
+
 KEYTYPES = {1: "Primary",
             2: "Unique",
             3: "Foreign"}
@@ -56,7 +57,7 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class QueryBase(NamedNode):
+class QueryBase(NamedNode, Dependent):
     """ Query properties see:
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/
         QueryDefinition.html"""
@@ -72,6 +73,14 @@ class QueryBase(NamedNode):
 
     def children(self):
         return chain(self.columns, self.tokens)
+
+    def link_uses(self, target: Usable):
+        def find_tabular_in_token(token: Token) -> None:
+            if target.users_match(token.text[1:-1]):
+                token.link_to(target)
+
+        for token in self.table_tokens:
+            find_tabular_in_token(token)
 
 
 @dataclass

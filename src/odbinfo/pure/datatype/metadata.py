@@ -7,7 +7,7 @@ from typing import Iterable, List, Sequence, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype.base import Node, Token, Usable, User, WebPage
+from odbinfo.pure.datatype.base import BasicToken, Node, Usable, User, WebPage
 from odbinfo.pure.datatype.exec import (BasicFunction, Library, Module,
                                         PythonLibrary, PythonModule)
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
@@ -135,4 +135,4 @@ class Metadata(WebPage):
 
         return \
             (obj for obj in self.by_content_type(User)
-                if obj.link and not (isinstance(obj.parent, Module) and isinstance(obj, Token)))
+             if obj.link and not (isinstance(obj.parent, Module) and isinstance(obj, BasicToken)))

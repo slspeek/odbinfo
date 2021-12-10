@@ -4,6 +4,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional
 
+from odbinfo.pure.datatype import Metadata
+from odbinfo.pure.datatype.base import BasicToken, SQLToken, content_type
+
 
 class ConfigurationAttributeNotSet(Exception):
     """For attributes that need to be there"""
@@ -77,7 +80,8 @@ EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",
 
 # EXCLUDED_TYPES: List[str] = []
 
-ALWAYS_EXCLUDED = ["metadata", "token", "sqltoken"]
+ALWAYS_EXCLUDED = [content_type(clazz)
+                   for clazz in [BasicToken, SQLToken, Metadata]]
 
 
 @dataclass

@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from itertools import chain
 from typing import List, Optional
 
-from odbinfo.pure.datatype.base import Token, WebPage, WebPageWithUses
+from odbinfo.pure.datatype.base import BasicToken, WebPage, WebPageWithUses
 
 
 @dataclass
@@ -29,8 +29,8 @@ class PythonLibrary(WebPage):
 @dataclass
 class BasicCall:
     """ a function or procedure call in parsed basic code"""
-    name_token: Token
-    module_token: Optional[Token]
+    name_token: BasicToken
+    module_token: Optional[BasicToken]
 
 
 # pylint:disable=too-many-instance-attributes
@@ -40,11 +40,12 @@ class BasicFunction(WebPageWithUses):
     library: str
     module: str
     name_token_index: int = field(init=False)
-    tokens: List[Token] = field(init=False, default_factory=list)
-    body_tokens: List[Token] = field(
+    tokens: List[BasicToken] = field(init=False, default_factory=list)
+    body_tokens: List[BasicToken] = field(
         init=False, repr=False, default_factory=list)
     calls: List[BasicCall] = field(init=False, default_factory=list)
-    strings: List[Token] = field(init=False, repr=False,  default_factory=list)
+    strings: List[BasicToken] = field(
+        init=False, repr=False, default_factory=list)
     title: str = field(init=False)
 
     def __post_init__(self):
@@ -75,7 +76,7 @@ class Module(WebPage):
     source: str
     callables: List[BasicFunction] = field(init=False, default_factory=list)
     title: str = field(init=False)
-    tokens: List[Token] = field(init=False, default_factory=list)
+    tokens: List[BasicToken] = field(init=False, default_factory=list)
     name_indexes: List[int] = field(init=False, default_factory=list)
 
     def __post_init__(self):

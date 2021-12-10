@@ -1,7 +1,7 @@
 """ scanner tests """
 import pytest
 
-from odbinfo.pure.datatype import Token
+from odbinfo.pure.datatype import BasicToken
 from odbinfo.pure.parser.basic import get_basic_tokens
 from odbinfo.pure.parser.scanner import (ParserError, Scanner, a, anyof, find,
                                          just, maybe)
@@ -9,7 +9,7 @@ from odbinfo.pure.parser.scanner import (ParserError, Scanner, a, anyof, find,
 
 def get_token(text: str, token_type: int):
     """Constructs a token with some defaults """
-    return Token(text, token_type, 0, False)
+    return BasicToken(text, token_type, 0, False)
 
 
 def test_just():

@@ -183,7 +183,7 @@ def get_identifier(usable) -> Identifier:
 
 
 @dataclass
-class TokenBase(User, Node):
+class Token(User, Node):
     """lexer token"""
     text: str
     type: int
@@ -202,7 +202,7 @@ class TokenBase(User, Node):
 
 
 @dataclass
-class SQLToken(TokenBase):
+class SQLToken(Token):
     """SQL lexer token"""
 
     def to_dict(self):
@@ -212,8 +212,8 @@ class SQLToken(TokenBase):
 
 
 @dataclass
-class Token(TokenBase):
-    """Token for BasicFunctions"""
+class BasicToken(Token):
+    """BasicToken for BasicFunctions"""
 
 
 class Dependent(ABC):

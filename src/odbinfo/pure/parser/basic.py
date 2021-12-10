@@ -1,14 +1,14 @@
 """ Hand crafted scanner on the the tokens provided by OOBasicLexer """
 from typing import List, Tuple
 
-from odbinfo.pure.datatype import BasicCall, BasicFunction, Token
+from odbinfo.pure.datatype import BasicCall, BasicFunction, BasicToken
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find,
                                          get_token_stream, get_tokens, maybe,
                                          skip, someof)
 
 
-def scan_basic(alltokens: List[Token], library: str, module: str) -> List[BasicFunction]:
+def scan_basic(alltokens: List[BasicToken], library: str, module: str) -> List[BasicFunction]:
     """ extract procedure names """
     tokens = list(filter(lambda x: not x.hidden, alltokens))
     scanner = ModuleScanner(tokens, alltokens, library, module)
@@ -26,7 +26,7 @@ def extract_functioncalls(acallable: BasicFunction):
     return BodyScanner(acallable.body_tokens).functioncalls()
 
 
-def extract_stringliterals(acallable: BasicFunction) -> List[Token]:
+def extract_stringliterals(acallable: BasicFunction) -> List[BasicToken]:
     """Extract stringliterals"""
     return list(
         filter(
@@ -39,15 +39,18 @@ def extract_stringliterals(acallable: BasicFunction) -> List[Token]:
 class ModuleScanner(Scanner):
     """scan for procedure names"""
 
-    def __init__(self, tokens: List[Token], alltokens: List[Token], library: str, module: str):
+    def __init__(self,
+                 tokens: List[BasicToken],
+                 alltokens: List[BasicToken],
+                 library: str, module: str):
         super().__init__(tokens)
-        self.alltokens: List[Token] = alltokens
+        self.alltokens: List[BasicToken] = alltokens
         self.library = library
         self.module = module
 
     # pylint: disable=too-many-arguments
     def _callable(self, start: int, bodystart: int,
-                  bodyend: int, end: int, name_token: Token) -> BasicFunction:
+                  bodyend: int, end: int, name_token: BasicToken) -> BasicFunction:
         acallable = BasicFunction(name_token.text, self.library, self.module)
         acallable.body_tokens = list(self.tokens[bodystart:bodyend])
         acallable.name_token_index = name_token.index
@@ -70,7 +73,7 @@ class ModuleScanner(Scanner):
         return callables
 
 
-def signature(parser) -> Tuple[int, int, Token]:
+def signature(parser) -> Tuple[int, int, BasicToken]:
     """ recognize macro signature """
     start = parser.cursor
     result = a(skip(maybe(anyof(OOBasicLexer.GLOBAL,
@@ -86,7 +89,7 @@ def signature(parser) -> Tuple[int, int, Token]:
     return start, end, id_token
 
 
-def macro(parser) -> Tuple[int, int, int, int, Token]:
+def macro(parser) -> Tuple[int, int, int, int, BasicToken]:
     """ recognize callable """
 
     amacro = a(signature, skip(find(anyof(OOBasicLexer.END_FUNCTION,
@@ -96,7 +99,7 @@ def macro(parser) -> Tuple[int, int, int, int, Token]:
     return start, sigend, end - 1, end, name_token
 
 
-def allmacros(parser) -> List[Tuple[int, int, int, int, Token]]:
+def allmacros(parser) -> List[Tuple[int, int, int, int, BasicToken]]:
     """ find all macros """
     macros = maybe(someof(find(macro)))(parser)
     return macros
@@ -128,6 +131,6 @@ def functioncall(parser):
     return BasicCall(tokens[0], None)
 
 
-def get_basic_tokens(basiccode) -> List[Token]:
+def get_basic_tokens(basiccode) -> List[BasicToken]:
     """ Tokenize `basiccode` """
-    return get_tokens(get_token_stream(basiccode, OOBasicLexer), Token)
+    return get_tokens(get_token_stream(basiccode, OOBasicLexer), BasicToken)

@@ -4,7 +4,7 @@ from typing import Optional, Sequence
 import antlr4
 from antlr4 import CommonTokenStream, InputStream
 
-from odbinfo.pure.datatype import Token
+from odbinfo.pure.datatype import BasicToken
 
 
 def get_token_stream(source_code, lexer) -> CommonTokenStream:
@@ -24,7 +24,7 @@ def get_tokens(stream, token_class):
 
 
 def convert_token(atoken, token_class):
-    """ convert antlr4 token to Token """
+    """ convert antlr4 token to BasicToken """
     return\
         token_class(
             atoken.text,
@@ -37,11 +37,11 @@ def convert_token(atoken, token_class):
 class Scanner:
     """ Holds position """
 
-    def __init__(self, tokens: Sequence[Token]):
+    def __init__(self, tokens: Sequence[BasicToken]):
         self.tokens = tokens
         self.tokens_length = len(tokens)
         self.cursor = 0
-        self.cur_token: Optional[Token] = None
+        self.cur_token: Optional[BasicToken] = None
         self.set_cursor(0)
 
     def eat(self, token_type):

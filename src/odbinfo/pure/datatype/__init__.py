@@ -1,6 +1,6 @@
 """ Defines the main datatype MetaData """
-from odbinfo.pure.datatype.base import (Dependent, Identifier, NamedNode, Node,
-                                        Token, Usable, User, WebPage,
+from odbinfo.pure.datatype.base import (BasicToken, Dependent, Identifier,
+                                        NamedNode, Node, Usable, User, WebPage,
                                         content_type)
 from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, Library,
                                         Module, PythonLibrary, PythonModule)
@@ -44,7 +44,7 @@ __all__ = [
     "Report",
     "SubForm",
     "Table",
-    "Token",
+    "BasicToken",
     "Tabular",
     "TextDocument",
     "User",

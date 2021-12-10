@@ -1,7 +1,7 @@
 """ dependency search in basicfunctions """
 from typing import Sequence
 
-from odbinfo.pure.datatype import BasicCall, BasicFunction, Token, Usable
+from odbinfo.pure.datatype import BasicCall, BasicFunction, BasicToken, Usable
 
 #
 # BasicFunction in BasicFunction
@@ -77,7 +77,7 @@ def search_string_refs_in_callables(dataobjects: Sequence[Usable],
         in callable string literals """
     def search_refs_in_one(acallable: BasicFunction) -> None:
         def ref_in_one(dataobject: Usable) -> None:
-            def compare_ref(string_token: Token) -> None:
+            def compare_ref(string_token: BasicToken) -> None:
                 if dataobject.users_match(string_token.text[1:-1]):
                     string_token.link_to(dataobject)
             for stoken in acallable.strings:

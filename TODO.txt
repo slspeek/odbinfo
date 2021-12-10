@@ -1,9 +1,10 @@
 Code clean up
 --------------
-Token -> BasicToken
 dependency
     - Dependant (New) gets link_uses(Usable) (How  will BasicFunction fit in (consider))
         - basicfunction scans calls or stringliterals depending on targettype
+        - BasicCall should have a link_use(BasicFunction) method
+        - BasicToken color_highlight method
 
 Preprocessable type for stuff that needs preprocessing
 
@@ -84,7 +85,7 @@ templates:
   - IDENTIFIER
   - COMMENTS
 - sql color highlighting
-  - all via cls attribute in Token, no comparison of types in templates anymore
+  - all via cls attribute in BasicToken, no comparison of types in templates anymore
     (token-text.html STRINGLITERAL = 172 from OOBasicLexer)
     to_dict should exclude type attribute
   - columnnames
@@ -129,7 +130,7 @@ make upgrade dependencies (20210813 done)
 #################################################################################
 Later
 -----
-Idea: Token no longer Nodes, have another way of getting all Tokens
+Idea: BasicToken no longer Nodes, have another way of getting all Tokens
 
 Demonstration database Herbarium
 - Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,

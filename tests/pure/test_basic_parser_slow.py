@@ -17,7 +17,7 @@ def mapiflist(function, maybelist):
         if `maybelist` is not a list"""
     if not isinstance(maybelist, list):
         maybelist = [maybelist]
-    return list(map(function, maybelist))
+    return [function(x) for x in maybelist]
 
 
 def _parse_xml(odbzip, file):

@@ -50,8 +50,8 @@ def read_subform(form_form_elem: Element):
 
 def read_grid(grid_elem: Element) -> Grid:
     """read a tableview from `grid_elem` <form:grid>"""
-    controls = list(
-        map(read_grid_control, grid_elem.getElementsByTagName("form:column")))
+    controls = [read_grid_control(elem) for elem in
+                grid_elem.getElementsByTagName("form:column")]
     return Grid(grid_elem.getAttribute("form:name"),
                 controls,
                 "Grid")
@@ -101,8 +101,7 @@ def read_listbox(listbox_elem: Element) -> ListBox:
     listsource = listbox_elem.getAttribute("form:list-source")
     if listsourcetype == "valuelist":
         options = listbox_elem.getElementsByTagName('form:option')
-        listsource = ", ".join(
-            map(lambda x: x.getAttribute('form:value'), options))
+        listsource = ", ".join(x.getAttribute('form:value') for x in options)
 
     return \
         ListBox(listbox_elem.getAttribute("form:name"),

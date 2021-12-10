@@ -1,9 +1,5 @@
 Code clean up
 --------------
-map call -> [comprehension]
-all_objects, by_content_type --> Iterator
-search_combinations makes lists first
-
 Token -> BasicToken
 dependency
     - Dependant (New) gets link_uses(Usable) (How  will BasicFunction fit in (consider))
@@ -188,6 +184,9 @@ KeyColumns, IndexColumns not used fully
 
 Decided not to
 --------------
+all_objects, by_content_type --> Iterator
+search_combinations makes lists first
+
 graph: look at strict parameter of Digraph for collapse_multiple_uses configuration
 parameter
 

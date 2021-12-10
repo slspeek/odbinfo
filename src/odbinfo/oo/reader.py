@@ -91,9 +91,9 @@ def read_tables(connection) -> List[Table]:
 
 
 def _read_table(ootable) -> Table:
-    columns = list(map(_read_column, ootable.Columns))
-    keys = list(map(_read_key, ootable.Keys))
-    indexes = list(map(_read_index, ootable.Indexes))
+    columns = [_read_column(oocolumn) for oocolumn in ootable.Columns]
+    keys = [_read_key(ookey) for ookey in ootable.Keys]
+    indexes = [_read_index(ooindex) for ooindex in ootable.Indexes]
     return \
         Table(ootable.Name,
               ootable.Description,

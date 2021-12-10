@@ -38,7 +38,7 @@ def process_and_check(unprocessed, filename, data_regression,
     file_regression.check(pickle.dumps(processed), binary=True,
                           basename=filename, extension=".pickle")
 
-    graphs_txt = "----------\n".join(map(lambda g: g.source, processed.graphs))
+    graphs_txt = "----------\n".join(g.source for g in processed.graphs)
     file_regression.check(graphs_txt, binary=False,
                           basename=f"{filename}-graphs", extension=".txt")
 

@@ -48,17 +48,16 @@ def test_search_callable_in_callable():
     """ total search test"""
     callables = _scan_basic(SOURCE_MODULEONE, "LibBars", "ModuleBarBar")
     search_callable_in_callable(callables)
-    all_tokens = sum(map(lambda x: x.tokens, callables), [])
+    all_tokens = sum((x.tokens for x in callables), [])
     assert len([token for token in all_tokens if token.link]) == 1
 
 
 def test_search_callable_in_callable_shadowing():
     """ total search test"""
-    callables_one = _scan_basic(SOURCE_MODULEONE,  "Lib", "ModuleOne",)
-    callables_two = _scan_basic(SOURCE_MODULETWO,  "Lib", "ModuleTwo")
+    callables_one = _scan_basic(SOURCE_MODULEONE, "Lib", "ModuleOne", )
+    callables_two = _scan_basic(SOURCE_MODULETWO, "Lib", "ModuleTwo")
     search_callable_in_callable(callables_one + callables_two)
-    all_tokens = sum(
-        map(lambda x: x.tokens, callables_one + callables_two), [])
+    all_tokens = sum((x.tokens for x in callables_one + callables_two), [])
     assert len([token for token in all_tokens if token.link]) == 3
 
 

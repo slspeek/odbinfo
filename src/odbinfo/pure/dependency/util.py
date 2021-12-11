@@ -8,4 +8,4 @@ def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable])
     """ search for uses of `targets` in `sources`"""
     for source in sources:
         for target in targets:
-            source.link_uses(target)
+            source.consider_uses(target)

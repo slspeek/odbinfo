@@ -220,5 +220,5 @@ class Dependent(ABC):
     """Depends on zero of more Usable instances"""
 
     @abstractmethod
-    def link_uses(self, target: Usable):
+    def consider_uses(self, target: Usable):
         """Match `target` among its Users"""

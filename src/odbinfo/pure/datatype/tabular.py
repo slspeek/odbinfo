@@ -74,7 +74,7 @@ class QueryBase(NamedNode, Dependent):
     def children(self):
         return chain(self.columns, self.tokens)
 
-    def link_uses(self, target: Usable):
+    def consider_uses(self, target: Usable):
         def find_tabular_in_token(token: BasicToken) -> None:
             if target.users_match(token.text[1:-1]):
                 token.link_to(target)
@@ -134,7 +134,7 @@ class Key(User, NamedNode, Dependent):  # pylint: disable=too-many-instance-attr
         self.update_rule = KEYRULES[self.update_rule]
         self.delete_rule = KEYRULES[self.delete_rule]
 
-    def link_uses(self, target: Usable):
+    def consider_uses(self, target: Usable):
         if target.users_match(self.referenced_table):
             self.link = target.identifier
 

@@ -34,7 +34,7 @@ class AbstractCommander(User, NamedNode, Dependent, ABC):
         """returns True if command contains SQL"""
         return self.commandtype in COMMAND_TYPE_COMMAND
 
-    def link_uses(self, target: Usable):
+    def consider_uses(self, target: Usable):
         if not self.issqlcommand and \
                 target.users_match(self.command):
             self.link_to(target)
@@ -62,7 +62,7 @@ class DatabaseDisplay(User, NamedNode, Dependent):
     table: str
     tabletype: str
 
-    def link_uses(self, target: Usable):
+    def consider_uses(self, target: Usable):
         if target.users_match(self.table):
             self.link_to(target)
 
@@ -91,7 +91,7 @@ class EventListener(User, NamedNode, Dependent):
         """returns {Lib}.{Mod}.{Func} part from script field"""
         return (self.script.split(":")[1]).split("?")[0]
 
-    def link_uses(self, target: Usable):
+    def consider_uses(self, target: Usable):
         if not isinstance(target, BasicFunction):
             return
         func = cast(BasicFunction, target)

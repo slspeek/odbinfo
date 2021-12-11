@@ -4,7 +4,7 @@ import unittest
 from odbinfo.pure.datatype import (Identifier, Module, Table, WebPage,
                                    content_type)
 from odbinfo.pure.dependency.searchexec import (
-    consider, search_callable_in_callable, search_string_refs_in_callables)
+    search_callable_in_callable, search_string_refs_in_callables)
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.processor import (link_name_tokens, preprocess_modules,
                                     rewrite_module_callable_links)
@@ -66,9 +66,9 @@ def test_consider_simple():
     callables = _scan_basic(SOURCE_MODULEONE, "Library", "ModuleOne")
     foo_sub = callables[0]
     bar_sub = callables[1]
-    consider(foo_sub, bar_sub)
+    foo_sub.consider_calls(bar_sub)
     assert len([token for token in foo_sub.tokens if token.link]) == 1
-    consider(bar_sub, foo_sub)
+    bar_sub.consider_calls(foo_sub)
     assert len([token for token in bar_sub.tokens if token.link]) == 0
 
 
@@ -78,9 +78,9 @@ def test_consider_other_lib():
     mod1_foo_sub = callables[0]
     callables = _scan_basic(SOURCE_MODULETWO, "LibraryTwo", "ModuleTwo")
     mod2_wose_sub = callables[0]
-    consider(mod1_foo_sub, mod2_wose_sub)
+    mod1_foo_sub.consider_calls(mod2_wose_sub)
     assert len([token for token in mod1_foo_sub.tokens if token.link]) == 0
-    consider(mod2_wose_sub, mod1_foo_sub)
+    mod2_wose_sub.consider_calls(mod1_foo_sub)
     assert len([token for token in mod2_wose_sub.tokens if token.link]) == 1
 
 

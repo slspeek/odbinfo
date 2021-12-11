@@ -6,8 +6,19 @@ from typing import List, Union
 from sql_formatter.core import format_sql
 
 from odbinfo.pure.datatype import Usable
-from odbinfo.pure.datatype.base import (BasicToken, Dependent, NamedNode, User,
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, Token, User,
                                         WebPageWithUses)
+
+
+@dataclass
+class SQLToken(Token):
+    """SQL lexer token"""
+
+    def to_dict(self):
+        adict = super().to_dict()
+        del adict["index"]
+        return adict
+
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 
@@ -64,9 +75,9 @@ class QueryBase(NamedNode, Dependent):
     command: str
     columns: List[QueryColumn] = field(init=False, default_factory=list)
 
-    tokens: List[BasicToken] = field(init=False, default_factory=list)
-    table_tokens: List[BasicToken] = field(init=False, default_factory=list)
-    literal_values: List[BasicToken] = field(init=False, default_factory=list)
+    tokens: List[SQLToken] = field(init=False, default_factory=list)
+    table_tokens: List[SQLToken] = field(init=False, default_factory=list)
+    literal_values: List[SQLToken] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         self.command = format_sql(self.command)
@@ -75,7 +86,7 @@ class QueryBase(NamedNode, Dependent):
         return chain(self.columns, self.tokens)
 
     def consider_uses(self, target: Usable):
-        def find_tabular_in_token(token: BasicToken) -> None:
+        def find_tabular_in_token(token: SQLToken) -> None:
             if target.users_match(token.text[1:-1]):
                 token.link_to(target)
 

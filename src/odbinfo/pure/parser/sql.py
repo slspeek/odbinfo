@@ -1,7 +1,7 @@
 """ Facade fot the SQLiteParser """
 from antlr4 import ParseTreeWalker
 
-from odbinfo.pure.datatype.base import SQLToken
+from odbinfo.pure.datatype.tabular import SQLToken
 from odbinfo.pure.parser.scanner import get_token_stream, get_tokens
 from odbinfo.pure.parser.sqlite.SQLiteLexer import SQLiteLexer
 from odbinfo.pure.parser.sqlite.SQLiteParser import SQLiteParser

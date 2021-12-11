@@ -1,15 +1,9 @@
 Code clean up
 --------------
-dependency
-    - Dependant (New) gets link_uses(Usable) (How  will BasicFunction fit in (consider))
-        - basicfunction scans calls or stringliterals depending on targettype
-        - BasicCall should have a link_use(BasicFunction) method
-        - BasicToken color_highlight method
-
 Preprocessable type for stuff that needs preprocessing
 
-Introduce <ContentType>Raw classes make them member of <ContentType> classes
-as they are preprocessed
+
+- BasicToken color_highlight method
 
 processor copy_token unittest
 
@@ -130,7 +124,8 @@ make upgrade dependencies (20210813 done)
 #################################################################################
 Later
 -----
-Idea: BasicToken no longer Nodes, have another way of getting all Tokens
+Introduce <ContentType>Raw classes make them member of <ContentType> classes
+as they are preprocessed
 
 Demonstration database Herbarium
 - Species, Genus, Family, Order, Class, Phylum, Kingdom, Domain,

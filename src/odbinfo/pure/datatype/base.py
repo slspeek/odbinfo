@@ -201,21 +201,6 @@ class Token(User, Node):
         return adict
 
 
-@dataclass
-class SQLToken(Token):
-    """SQL lexer token"""
-
-    def to_dict(self):
-        adict = super().to_dict()
-        del adict["index"]
-        return adict
-
-
-@dataclass
-class BasicToken(Token):
-    """BasicToken for BasicFunctions"""
-
-
 class Dependent(ABC):
     """Depends on zero of more Usable instances"""
 

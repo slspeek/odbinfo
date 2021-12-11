@@ -163,7 +163,7 @@ def link_name_tokens(module: Module):
 
 
 def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
-    """ links to callables are rewritten to links to callables in
+    """ links to targets are rewritten to links to targets in
         modules (using #bookmarks)"""
 
     # process module source tokens to support callable links at module level

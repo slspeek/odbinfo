@@ -70,7 +70,7 @@ class ParserError(Exception):
 
 
 def unify(*args):
-    """ wrap non callables in a()"""
+    """ wrap non targets in a()"""
     args = (arg if callable(arg) else a(arg) for arg in args)
     return a(*args)
 

@@ -1,9 +1,9 @@
 """ Defines the main datatype MetaData """
-from odbinfo.pure.datatype.base import (BasicToken, Dependent, Identifier,
-                                        NamedNode, Node, Usable, User, WebPage,
-                                        content_type)
-from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, Library,
-                                        Module, PythonLibrary, PythonModule)
+from odbinfo.pure.datatype.base import (Dependent, Identifier, NamedNode, Node,
+                                        Usable, User, WebPage, content_type)
+from odbinfo.pure.datatype.exec import (BasicCall, BasicFunction, BasicToken,
+                                        Library, Module, PythonLibrary,
+                                        PythonModule)
 from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import (Column, EmbeddedQuery, Index, Key,
                                            Query, QueryBase, QueryColumn,

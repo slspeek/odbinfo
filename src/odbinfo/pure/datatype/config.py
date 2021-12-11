@@ -5,7 +5,9 @@ from pathlib import Path
 from typing import List, Optional
 
 from odbinfo.pure.datatype import Metadata
-from odbinfo.pure.datatype.base import BasicToken, SQLToken, content_type
+from odbinfo.pure.datatype.base import content_type
+from odbinfo.pure.datatype.exec import BasicToken
+from odbinfo.pure.datatype.tabular import SQLToken
 
 
 class ConfigurationAttributeNotSet(Exception):
@@ -76,7 +78,6 @@ EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",
                              "library",
                              "querycolumn", "column", "pythonlibrary",
                              "pythonmodule", "databasedisplay"]
-
 
 # EXCLUDED_TYPES: List[str] = []
 

@@ -1,7 +1,7 @@
 """ scanner tests """
 import pytest
 
-from odbinfo.pure.datatype import BasicToken
+from odbinfo.pure.datatype.base import BasicToken
 from odbinfo.pure.parser.basic import get_basic_tokens
 from odbinfo.pure.parser.scanner import (ParserError, Scanner, a, anyof, find,
                                          just, maybe)

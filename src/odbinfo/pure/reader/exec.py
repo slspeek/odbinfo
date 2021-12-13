@@ -4,7 +4,8 @@ from typing import List
 from xml.dom.minidom import Element
 from zipfile import ZipFile
 
-from odbinfo.pure.datatype import Library, Module, PythonLibrary, PythonModule
+from odbinfo.pure.datatype.exec import (Library, Module, PythonLibrary,
+                                        PythonModule)
 from odbinfo.pure.reader.common import document
 
 

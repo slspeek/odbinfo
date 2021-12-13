@@ -1,9 +1,12 @@
 """Dependency search matrix"""
 from typing import Sequence
 
-from odbinfo.pure.datatype import (BasicFunction, DatabaseDisplay, Dependent,
-                                   EmbeddedQuery, Key, Metadata, Query, Report,
-                                   Table, TextDocument, Usable, View)
+from odbinfo.pure.datatype.base import Dependent, Usable
+from odbinfo.pure.datatype.basicfunction import BasicFunction
+from odbinfo.pure.datatype.metadata import Metadata
+from odbinfo.pure.datatype.tabular import (EmbeddedQuery, Key, Query, Table,
+                                           View)
+from odbinfo.pure.datatype.ui import DatabaseDisplay, Report, TextDocument
 from odbinfo.pure.util import timed
 
 

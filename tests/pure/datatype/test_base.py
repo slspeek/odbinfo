@@ -3,10 +3,12 @@ import re
 
 import pytest
 
-from odbinfo.pure.datatype import (EmbeddedQuery, Identifier, Report,
-                                   content_type)
-from odbinfo.pure.datatype.base import (Node, NoWebPageAncestorException,
-                                        WebPage, get_identifier, hugo_filename)
+from odbinfo.pure.datatype.base import (Identifier, Node,
+                                        NoWebPageAncestorException, WebPage,
+                                        content_type, get_identifier,
+                                        hugo_filename)
+from odbinfo.pure.datatype.tabular import EmbeddedQuery
+from odbinfo.pure.datatype.ui import Report
 
 
 def test_hugo_filename_to_lower():

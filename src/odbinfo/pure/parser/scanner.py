@@ -4,7 +4,7 @@ from typing import Optional, Sequence
 import antlr4
 from antlr4 import CommonTokenStream, InputStream
 
-from odbinfo.pure.datatype import BasicToken
+from odbinfo.pure.datatype.base import BasicToken
 
 
 def get_token_stream(source_code, lexer) -> CommonTokenStream:

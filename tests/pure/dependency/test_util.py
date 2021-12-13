@@ -1,6 +1,7 @@
 """ test the dependency search utilities """
 
-from odbinfo.pure.datatype import BasicToken, Identifier, Table
+from odbinfo.pure.datatype.base import BasicToken, Identifier
+from odbinfo.pure.datatype.tabular import Table
 
 
 def test_link_to():

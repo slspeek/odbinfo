@@ -1,45 +1,26 @@
 """ Processor module """
-import dataclasses
 from typing import Sequence, Union
 
-from odbinfo.pure.datatype import (BasicFunction, Control, EmbeddedQuery, Form,
-                                   Grid, Identifier, ListBox, Metadata, Module,
-                                   QueryBase, SubForm, content_type)
-from odbinfo.pure.datatype.base import UseAggregator, User
+from odbinfo.pure.datatype.base import (Identifier, UseAggregator, User,
+                                        content_type)
+from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import Configuration
-from odbinfo.pure.datatype.ui import AbstractCommander
+from odbinfo.pure.datatype.exec import Module
+from odbinfo.pure.datatype.metadata import Metadata
+from odbinfo.pure.datatype.tabular import EmbeddedQuery, QueryBase
+from odbinfo.pure.datatype.ui import (AbstractCommander, Control, Form, Grid,
+                                      ListBox, SubForm)
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.graph import generate_graphs
-from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.parser.sql import parse
 from odbinfo.pure.util import timed
-
-
-# TODO: move into Module
-def copy_tokens(module):
-    """Copies the modules tokens"""
-    module.tokens = [dataclasses.replace(token) for token in module.tokens]
-
-
-# TODO: move into Module
-def preprocess_module(module: Module) -> None:
-    """ Tokenizes, parses, copies the tokens and sets the indexes
-        of the tokens that are the names of the procedures """
-    module.tokens = \
-        get_basic_tokens(module.source)
-    module.callables = \
-        scan_basic(module.tokens, module.library, module.name)
-    copy_tokens(module)
-    module.name_indexes = \
-        [c.name_token_index for c in module.callables]
-    link_name_tokens(module)
 
 
 @timed("Parse basic modules", indent=4)
 def preprocess_modules(modules: Sequence[Module]) -> None:
     """preprocesses of the of libraries"""
     for module in modules:
-        preprocess_module(module)
+        module.preprocess()
 
 
 # TODO: move to QueryBase
@@ -72,18 +53,10 @@ def set_depth(depth: int, subform: SubForm) -> None:
         set_depth(depth + 1, asubform)
 
 
-# TODO: move to SubForm, and simplify no if needed
-def height(subform: SubForm) -> int:
-    """ max path length to a leaf subform """
-    if subform.subforms:
-        return max(height(sf) for sf in subform.subforms) + 1
-    return 0
-
-
 # TODO: move to Form
 def set_form_height(form: Form) -> None:
     """ set the max height into the `form` """
-    form.height = max([height(sf) for sf in form.subforms], default=0)
+    form.height = max([sf.height for sf in form.subforms], default=0)
 
 
 # TODO: move to SubForm
@@ -153,13 +126,6 @@ def preprocess_forms(form_defs: Sequence[Form]):
     """preprocesses all forms in `form_defs`"""
     for form in form_defs:
         preprocess_form(form)
-
-
-# TODO move to Module
-def link_name_tokens(module: Module):
-    """Link the name tokens to the single function pages"""
-    for name_index, acallable in zip(module.name_indexes, module.callables):
-        module.tokens[name_index].link_to(acallable)
 
 
 def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:

@@ -2,7 +2,7 @@
 from typing import List, Tuple
 from xml.dom.minidom import Element
 
-from odbinfo.pure.datatype import Report
+from odbinfo.pure.datatype.ui import Report
 from odbinfo.pure.reader.common import attr_default, document
 
 

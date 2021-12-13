@@ -3,10 +3,9 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union, cast
 
-from odbinfo.pure.datatype import Usable
-from odbinfo.pure.datatype.base import (Dependent, NamedNode, User,
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, Usable, User,
                                         WebPageWithUses)
-from odbinfo.pure.datatype.exec import BasicFunction
+from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
 COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
@@ -191,6 +190,11 @@ class SubForm(Commander, NamedNode):
     controls: List[Union[Control, Grid, ListBox]]
     subforms: List['SubForm']
     depth: Optional[int] = field(init=False, default=None)
+
+    @property
+    def height(self) -> int:
+        """ max path length to a leaf subform """
+        return max((sf.height + 1 for sf in self.subforms), default=0)
 
     def children(self):
         return_value = self.controls + self.subforms

@@ -1,7 +1,7 @@
 """ test the tabular datatypes """
 
-from odbinfo.pure.datatype import Column, Key, Query, QueryColumn
-from src.odbinfo.pure.datatype.tabular import Table
+from src.odbinfo.pure.datatype.tabular import (Column, Key, Query, QueryColumn,
+                                               Table)
 
 
 def test_query_column():

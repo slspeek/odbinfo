@@ -5,9 +5,8 @@ from typing import List, Union
 
 from sql_formatter.core import format_sql
 
-from odbinfo.pure.datatype import Usable
-from odbinfo.pure.datatype.base import (Dependent, NamedNode, Token, User,
-                                        WebPageWithUses)
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, Token, Usable,
+                                        User, WebPageWithUses)
 
 
 @dataclass

@@ -1,7 +1,8 @@
 """tests for metadata"""
-
-from odbinfo.pure.datatype import (Form, Library, ListBox, Module,
-                                   PythonLibrary, PythonModule, Table)
+from odbinfo.pure.datatype.exec import (Library, Module, PythonLibrary,
+                                        PythonModule)
+from odbinfo.pure.datatype.tabular import Table
+from odbinfo.pure.datatype.ui import Form, ListBox
 
 
 def test_by_content_type_simple(metadata_tables, table_plant, table_family):

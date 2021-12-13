@@ -1,6 +1,6 @@
 """ ui classes test """
 
-from odbinfo.pure.datatype.ui import Grid
+from odbinfo.pure.datatype.ui import Grid, SubForm
 
 
 def test_report_children(report):
@@ -64,3 +64,17 @@ def test_subform_children_embedded(subform_embeddedquery):
 
 def test_form_children(form):
     assert form.children() == form.subforms
+
+
+def test_height_one():
+    """ test height of subform tree """
+    root = SubForm("", "", "", "", "", "", "", "", [], [])
+    child = SubForm("", "", "", "", "", "", "", "", [], [])
+    root.subforms.append(child)
+    assert root.height == 1
+
+
+def test_height_zero():
+    """ test height of subform tree """
+    root = SubForm("", "", "", "", "", "", "", "", [], [])
+    assert root.height == 0

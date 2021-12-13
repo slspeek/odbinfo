@@ -10,9 +10,8 @@ import toml
 import yaml
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.datatype.config import Configuration
-from odbinfo.pure.datatype.metadata import TopLevelDisplayedContent
+from odbinfo.pure.datatype.metadata import Metadata, TopLevelDisplayedContent
 from odbinfo.pure.util import timed
 
 FRONT_MATTER_MARK = "---\n"

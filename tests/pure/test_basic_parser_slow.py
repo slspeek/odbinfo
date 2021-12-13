@@ -7,7 +7,7 @@ from zipfile import ZipFile
 import pytest
 import xmltodict
 
-from odbinfo.pure.datatype import Module
+from odbinfo.pure.datatype.exec import Module
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from tests.resource import BASEDOCUMENTER
 

@@ -4,8 +4,8 @@ from typing import Generator, List, Sequence
 from xml.dom.minidom import Element
 from zipfile import ZipFile
 
-from odbinfo.pure.datatype import DatabaseDisplay, TextDocument
 from odbinfo.pure.datatype.config import TextDocumentsConfig
+from odbinfo.pure.datatype.ui import DatabaseDisplay, TextDocument
 from odbinfo.pure.reader.common import document
 
 

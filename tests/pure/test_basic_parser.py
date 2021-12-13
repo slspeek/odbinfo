@@ -1,7 +1,7 @@
 """ parser tests """
 import pytest
 
-from odbinfo.pure.datatype import BasicFunction
+from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.parser.basic import (BodyScanner, ModuleScanner,
                                        all_functioncalls, allmacros,
                                        extract_stringliterals, functioncall,
@@ -92,7 +92,7 @@ def test_extract_stringliterals():
     """ test extract_stringliterals"""
     tokens = get_basic_tokens("""ModuleFoo.Foo("Hello world!")""")
     print(tokens)
-    acallable = BasicFunction("methodName",  "LibName", "ModuleName")
+    acallable = BasicFunction("methodName", "LibName", "ModuleName")
     acallable.body_tokens = tokens
     strings = extract_stringliterals(acallable)
     assert len(strings) == 1

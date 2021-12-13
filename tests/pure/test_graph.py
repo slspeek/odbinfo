@@ -5,9 +5,10 @@ import unittest
 import pytest
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import (Control, Form, Key, ListBox, SubForm, Table,
-                                   content_type)
+from odbinfo.pure.datatype.base import content_type
 from odbinfo.pure.datatype.config import get_configuration
+from odbinfo.pure.datatype.tabular import Key, Table
+from odbinfo.pure.datatype.ui import Control, Form, ListBox, SubForm
 from odbinfo.pure.graph import (edge, edge_attributes, generate_graphs,
                                 generate_main_graph, make_dependency_edges,
                                 make_edge, make_node, make_parent_edge,

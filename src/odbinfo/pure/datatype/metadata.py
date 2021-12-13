@@ -7,9 +7,10 @@ from typing import Iterable, List, Sequence, cast
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype.base import Node, Usable, User, WebPage
-from odbinfo.pure.datatype.exec import (BasicFunction, BasicToken, Library,
-                                        Module, PythonLibrary, PythonModule)
+from odbinfo.pure.datatype.base import BasicToken, Node, Usable, User, WebPage
+from odbinfo.pure.datatype.basicfunction import BasicFunction
+from odbinfo.pure.datatype.exec import (Library, Module, PythonLibrary,
+                                        PythonModule)
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
 from odbinfo.pure.datatype.ui import (AbstractCommander, EventListener, Form,
                                       Report, TextDocument)

@@ -4,9 +4,10 @@ from typing import List
 from zipfile import ZipFile
 
 from odbinfo.oo.ooutil import open_connection
-from odbinfo.pure.datatype import (Column, Index, Key, Metadata, Query,
-                                   QueryBase, QueryColumn, Table, View)
 from odbinfo.pure.datatype.config import Configuration
+from odbinfo.pure.datatype.metadata import Metadata
+from odbinfo.pure.datatype.tabular import (Column, Index, Key, Query,
+                                           QueryBase, QueryColumn, Table, View)
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)

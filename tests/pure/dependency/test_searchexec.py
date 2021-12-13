@@ -1,11 +1,12 @@
 """ test dependency search in basicfunctions """
 import unittest
 
-from odbinfo.pure.datatype import (Identifier, Module, Table, WebPage,
-                                   content_type)
+from odbinfo.pure.datatype.base import Identifier, WebPage, content_type
+from odbinfo.pure.datatype.exec import Module
+from odbinfo.pure.datatype.tabular import Table
 from odbinfo.pure.dependency import search_callable_in_callable
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
-from odbinfo.pure.processor import (link_name_tokens, preprocess_modules,
+from odbinfo.pure.processor import (preprocess_modules,
                                     rewrite_module_callable_links)
 
 SOURCE_MODULEONE = """
@@ -133,7 +134,7 @@ class LinkNameTokens(ModuleOneTest):
 
     def test_link_name_tokens(self):
         """_link_name_tokens"""
-        link_name_tokens(self.module)
+        self.module.link_name_tokens()
         func = self.module.callables[0]
         name_token = self.module.tokens[func.name_token_index]
         assert name_token.link == func.identifier

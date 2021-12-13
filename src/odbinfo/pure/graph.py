@@ -3,9 +3,9 @@ from typing import Dict, List, Sequence, Tuple
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.datatype.base import NamedNode
 from odbinfo.pure.datatype.config import Configuration, GraphConfig
+from odbinfo.pure.datatype.metadata import Metadata
 
 
 def make_node(config: GraphConfig,
@@ -49,7 +49,6 @@ def edge(graph, start, end, attrs):
 
 def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode, end: NamedNode):
     """ make edge from `start` to `end` with attributes specified by `config`"""
-
     edge(graph, start,
          end, edge_attributes(config, start, end))
 

@@ -1,7 +1,8 @@
 """ Hand crafted scanner on the the tokens provided by OOBasicLexer """
 from typing import List, Tuple
 
-from odbinfo.pure.datatype import BasicCall, BasicFunction, BasicToken
+from odbinfo.pure.datatype.base import BasicToken
+from odbinfo.pure.datatype.basicfunction import BasicCall, BasicFunction
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
 from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find,
                                          get_token_stream, get_tokens, maybe,

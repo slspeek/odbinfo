@@ -196,19 +196,19 @@ class NoWebPageAncestorException(Exception):
         super().__init__(f"No WebPage ancestor for {node}")
 
 
-def get_identifier(usable) -> Identifier:
-    """returns Identifier for `usable`"""
-    parent: Node = usable
+def get_identifier(node) -> Identifier:
+    """returns Identifier for `node`"""
+    parent: Node = node
     while not isinstance(parent, WebPage):
         if parent.parent is None:
-            raise NoWebPageAncestorException(usable)
+            raise NoWebPageAncestorException(node)
         parent = parent.parent
     webpage: WebPage = cast(WebPage, parent)
-    if webpage is usable:
-        return Identifier(usable.content_type,
-                          usable.title, None)
+    if webpage is node:
+        return Identifier(node.content_type,
+                          node.title, None)
     return Identifier(webpage.content_type,
-                      webpage.title, usable.obj_id)
+                      webpage.title, node.obj_id)
 
 
 @dataclass
@@ -230,9 +230,31 @@ class Token(User, Node):
         return adict
 
 
+def equals_ignore_case(left: str, right: str) -> bool:
+    """Compares `left` to `right` ignoring case"""
+    return left.upper() == right.upper()
+
+
+@dataclass
+class BasicToken(Token):
+    """BasicToken for BasicFunctions"""
+
+    def match(self, target: str):
+        """Matches `target` ignoring case to the text attribute"""
+        return equals_ignore_case(self.text, target)
+
+
 class Dependent(ABC):
     """Depends on zero of more Usable instances"""
 
     @abstractmethod
     def consider_uses(self, target: Usable):
         """Match `target` among its Users"""
+
+
+class Preprocessable(ABC):
+    """Classes that need processing before dependency search"""
+
+    @abstractmethod
+    def preprocess(self):
+        """Does the preparation for the dependency search"""

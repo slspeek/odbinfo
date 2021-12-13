@@ -3,8 +3,8 @@ from typing import List, Optional, Tuple, Union
 from xml.dom.minidom import Element
 from zipfile import ZipFile
 
-from odbinfo.pure.datatype import (Control, EventListener, Form, Grid, ListBox,
-                                   SubForm)
+from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
+                                      ListBox, SubForm)
 from odbinfo.pure.reader.common import (attr_default, child_elements,
                                         child_elements_by_tagname, document)
 

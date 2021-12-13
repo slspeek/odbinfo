@@ -1,13 +1,14 @@
 """ factory of test objects """
 from pytest import fixture
 
-from odbinfo.pure.datatype import (BasicFunction, Control, DatabaseDisplay,
-                                   EmbeddedQuery, EventListener, Form, Key,
-                                   ListBox, Metadata, Report, SubForm, Table,
-                                   TextDocument)
+from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import get_configuration
-
 # pylint:disable=redefined-outer-name
+from odbinfo.pure.datatype.metadata import Metadata
+from odbinfo.pure.datatype.tabular import EmbeddedQuery, Key, Table
+from odbinfo.pure.datatype.ui import (Control, DatabaseDisplay, EventListener,
+                                      Form, ListBox, Report, SubForm,
+                                      TextDocument)
 
 
 @fixture(scope="function")

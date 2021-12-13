@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union, cast
 
-from odbinfo.pure.datatype.base import (Dependent, NamedNode, Usable, User,
-                                        WebPageWithUses)
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
+                                        Usable, User, WebPageWithUses)
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
@@ -12,7 +12,7 @@ COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
 
 
 @dataclass  # type: ignore
-class AbstractCommander(User, NamedNode, Dependent, ABC):
+class AbstractCommander(User, NamedNode, Dependent, Preprocessable,  ABC):
     """Commander interface"""
 
     # Only if commandtype in ["command", "sql", "sqlpassthrough"]
@@ -37,6 +37,11 @@ class AbstractCommander(User, NamedNode, Dependent, ABC):
         if not self.issqlcommand and \
                 target.users_match(self.command):
             self.link_to(target)
+
+    def preprocess(self):
+        if self.issqlcommand:
+            self.embedded_query = \
+                EmbeddedQuery(f"{self.name}.Command", self.command)
 
 
 @dataclass

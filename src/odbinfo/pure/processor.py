@@ -113,13 +113,10 @@ def preprocess_queries(metadata: Metadata) -> None:
         preprocess_query(query)
 
 
-# TODO move to AbstactCommander
 def preprocess_commanders(commanders: Sequence[AbstractCommander]) -> None:
     """ if command is a direct query, set an EmbeddedQuery obj"""
     for cmdr in commanders:
-        if cmdr.issqlcommand:
-            cmdr.embedded_query = \
-                EmbeddedQuery(f"{cmdr.name}.Command", cmdr.command)
+        cmdr.preprocess()
 
 
 def preprocess_forms(form_defs: Sequence[Form]):

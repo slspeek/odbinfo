@@ -244,6 +244,16 @@ class BasicToken(Token):
         return equals_ignore_case(self.text, target)
 
 
+@dataclass
+class SQLToken(Token):
+    """SQL lexer token"""
+
+    def to_dict(self):
+        adict = super().to_dict()
+        del adict["index"]
+        return adict
+
+
 class Dependent(ABC):
     """Depends on zero of more Usable instances"""
 

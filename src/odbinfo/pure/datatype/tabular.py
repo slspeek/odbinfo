@@ -5,19 +5,8 @@ from typing import List, Union
 
 from sql_formatter.core import format_sql
 
-from odbinfo.pure.datatype.base import (Dependent, NamedNode, Token, Usable,
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, SQLToken, Usable,
                                         User, WebPageWithUses)
-
-
-@dataclass
-class SQLToken(Token):
-    """SQL lexer token"""
-
-    def to_dict(self):
-        adict = super().to_dict()
-        del adict["index"]
-        return adict
-
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 
@@ -85,12 +74,14 @@ class QueryBase(NamedNode, Dependent):
         return chain(self.columns, self.tokens)
 
     def consider_uses(self, target: Usable):
-        def find_tabular_in_token(token: SQLToken) -> None:
+        for token in self.table_tokens:
             if target.users_match(token.text[1:-1]):
                 token.link_to(target)
 
-        for token in self.table_tokens:
-            find_tabular_in_token(token)
+    def color_hightlight_query(self):
+        """Sets the class attribute on the special tokens"""
+        for littoken in self.literal_values:
+            littoken.cls = "literalvalue"
 
 
 @dataclass

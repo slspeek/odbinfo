@@ -45,7 +45,7 @@ def _read_view(connection, ooview) -> View:
 
 @timed("Read queries", indent=4)
 def read_queries(connection, datasource) -> List[Query]:
-    """ Reads query metadata from `datasource` """
+    """ Reads self metadata from `datasource` """
     queries: List[Query] = [Query(ooquery.Name, ooquery.Command) for ooquery in
                             datasource.QueryDefinitions]
 
@@ -55,7 +55,7 @@ def read_queries(connection, datasource) -> List[Query]:
 
 
 def read_query_columns(connection, query: QueryBase) -> None:
-    """ read query columns """
+    """ read self columns """
     query.columns = _read_query_columns(connection, query.command)
 
 

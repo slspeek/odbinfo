@@ -24,13 +24,6 @@ def preprocess_modules(modules: Sequence[Module]) -> None:
 
 
 # TODO: move to QueryBase
-def color_hightlight_query(query: QueryBase):
-    """Sets the class attribute on the special tokens"""
-    for littoken in query.literal_values:
-        littoken.cls = "literalvalue"
-
-
-# TODO: move to QueryBase
 def parse_query(query: QueryBase):
     """parses `query.command`"""
     query.tokens, query.table_tokens, query.literal_values = parse(
@@ -42,7 +35,7 @@ def parse_query(query: QueryBase):
 def preprocess_query(query: EmbeddedQuery) -> None:
     """preprocesses `query`, that is parses it and does its the color highlighting"""
     parse_query(query)
-    color_hightlight_query(query)
+    query.color_hightlight_query()
 
 
 # TODO: move to SubForm
@@ -84,7 +77,6 @@ def preprocess_form(form: Form) -> None:
     set_form_height(form)
 
 
-# TODO: Move to UseAggregator
 def aggregate_uses_from_children(user_agg: UseAggregator) -> None:
     """Collect aggregated uses from its children """
     for user in user_agg.all_objects():

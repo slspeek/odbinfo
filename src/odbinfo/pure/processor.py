@@ -7,12 +7,11 @@ from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.exec import Module
 from odbinfo.pure.datatype.metadata import Metadata
-from odbinfo.pure.datatype.tabular import EmbeddedQuery, QueryBase
+from odbinfo.pure.datatype.tabular import QueryBase
 from odbinfo.pure.datatype.ui import (AbstractCommander, Control, Form, Grid,
                                       ListBox, SubForm)
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.graph import generate_graphs
-from odbinfo.pure.parser.sql import parse
 from odbinfo.pure.util import timed
 
 
@@ -21,21 +20,6 @@ def preprocess_modules(modules: Sequence[Module]) -> None:
     """preprocesses of the of libraries"""
     for module in modules:
         module.preprocess()
-
-
-# TODO: move to QueryBase
-def parse_query(query: QueryBase):
-    """parses `query.command`"""
-    query.tokens, query.table_tokens, query.literal_values = parse(
-        query.command)
-
-
-# TODO: move to QueryBase
-@timed("Parse query", indent=6, arg=0)
-def preprocess_query(query: EmbeddedQuery) -> None:
-    """preprocesses `query`, that is parses it and does its the color highlighting"""
-    parse_query(query)
-    query.color_hightlight_query()
 
 
 # TODO: move to SubForm
@@ -102,7 +86,7 @@ def aggregate_used_by(metadata: Metadata) -> None:
 def preprocess_queries(metadata: Metadata) -> None:
     """process all query-like objects"""
     for query in metadata.by_content_type(QueryBase):
-        preprocess_query(query)
+        query.preprocess()
 
 
 def preprocess_commanders(commanders: Sequence[AbstractCommander]) -> None:

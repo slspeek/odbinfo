@@ -7,8 +7,9 @@ from sql_formatter.core import format_sql
 
 from odbinfo.pure.datatype.base import (Dependent, NamedNode, SQLToken, Usable,
                                         User, WebPageWithUses)
-
+from odbinfo.pure.parser.sql import parse
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
+from odbinfo.pure.util import timed
 
 KEYTYPES = {1: "Primary",
             2: "Unique",
@@ -67,8 +68,17 @@ class QueryBase(NamedNode, Dependent):
     table_tokens: List[SQLToken] = field(init=False, default_factory=list)
     literal_values: List[SQLToken] = field(init=False, default_factory=list)
 
-    def __post_init__(self):
+    def parse_query(self):
+        """parses `query.command`"""
+        self.tokens, self.table_tokens, self.literal_values = parse(
+            self.command)
+
+    @timed("Parse query", indent=6, arg=0)
+    def preprocess(self) -> None:
+        """preprocesses `query`, that is parses it and does its the color highlighting"""
         self.command = format_sql(self.command)
+        self.parse_query()
+        self.color_hightlight_query()
 
     def children(self):
         return chain(self.columns, self.tokens)
@@ -94,7 +104,6 @@ class QueryPage(QueryBase, WebPageWithUses):
     """ Query properties """
 
     def __post_init__(self):
-        super().__post_init__()
         self.title = self.name
 
 

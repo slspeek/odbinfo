@@ -14,7 +14,7 @@ def test_query_column():
 def test_query():
     """ test __post_init__"""
     query = Query("plants", "select * from plants")
-    assert query.command == "SELECT *\nFROM   plants"
+    assert query.title == "plants"
 
 
 def test_column():

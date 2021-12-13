@@ -1,19 +1,14 @@
 ---
 callables:
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: UsesDocument.Module1.Standard
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: UsesDocumentFilename.Module1.Standard
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CalleeOtherLib.Module1.Standard
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: ShadowedCallee.Module1.Standard
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: AddOne.Module1.Standard
 library: Standard
 name: Module1

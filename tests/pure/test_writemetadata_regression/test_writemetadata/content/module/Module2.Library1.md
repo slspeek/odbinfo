@@ -1,10 +1,8 @@
 ---
 callables:
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CalleeSub.Module2.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CalleeTwoSub.Module2.Library1
 library: Library1
 name: Module2

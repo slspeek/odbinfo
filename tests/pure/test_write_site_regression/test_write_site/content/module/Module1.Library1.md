@@ -1,34 +1,24 @@
 ---
 callables:
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: Main.Module1.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CallerSub.Module1.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CalleeSub.Module1.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CallerTwo.Module1.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CallerShadowedCallee.Module1.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: ShadowedCallee.Module1.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: ReferToTable.Module1.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: ReferToView.Module1.Library1
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: ReferToQuery.Module1.Library1
 library: Library1
 name: Module1

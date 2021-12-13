@@ -1,7 +1,6 @@
 ---
 callables:
-- bookmark: null
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: Main.Module2.Standard
 library: Standard
 name: Module2

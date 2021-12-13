@@ -146,7 +146,7 @@ class Module(WebPage):
     def to_dict(self):
         rdict = super().to_dict()
         rdict["callables"] = [
-            func.identifier.__dict__ for func in self.callables]
+            func.identifier.to_dict() for func in self.callables]
         return rdict
 
 
@@ -160,7 +160,8 @@ class Library(WebPage):
 
     def to_dict(self):
         rdict = super().to_dict()
-        rdict["modules"] = [module.identifier.__dict__ for module in self.modules]
+        rdict["modules"] = [module.identifier.to_dict()
+                            for module in self.modules]
         return rdict
 
     @property

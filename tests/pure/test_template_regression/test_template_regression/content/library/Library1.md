@@ -1,10 +1,8 @@
 ---
 modules:
-- bookmark: null
-  content_type: module
+- content_type: module
   local_id: Module1.Library1
-- bookmark: null
-  content_type: module
+- content_type: module
   local_id: Module2.Library1
 name: Library1
 obj_id: '444'

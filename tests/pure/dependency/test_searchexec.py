@@ -3,8 +3,8 @@ import unittest
 
 from odbinfo.pure.datatype import (Identifier, Module, Table, WebPage,
                                    content_type)
-from odbinfo.pure.dependency.searchexec import (
-    search_callable_in_callable, search_string_refs_in_callables)
+from odbinfo.pure.dependency import (search_callable_in_callable, search_combinations
+                                     )
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.processor import (link_name_tokens, preprocess_modules,
                                     rewrite_module_callable_links)
@@ -157,6 +157,5 @@ class StringRefsInCallables(ModuleTest):
 
     def test_match(self):
         """match ref_one"""
-        search_string_refs_in_callables(
-            [self.webpage], self.module.callables)
+        self.module.callables[0].consider_uses(self.webpage)
         assert self.withref.strings[0].link == self.webpage.identifier

@@ -6,7 +6,28 @@ import pytest
 from odbinfo.pure.datatype import (EmbeddedQuery, Identifier, Report,
                                    content_type)
 from odbinfo.pure.datatype.base import (Node, NoWebPageAncestorException,
-                                        WebPage, get_identifier)
+                                        WebPage, get_identifier, hugo_filename)
+
+
+def test_hugo_filename_to_lower():
+    assert hugo_filename("Foo") == "foo"
+
+
+def test__hugo_filename_spaces():
+    assert hugo_filename("F oo") == "f-oo"
+
+
+def test_href_webpage(table_plant):
+    assert table_plant.href == \
+        "../table/plant/index.html"
+
+
+def test_href_control(form):
+    subform = form.subforms[0]
+    subform.parent = form
+    subform.obj_id = "42"
+    assert subform.href == \
+        "../form/myform/index.html#42"
 
 
 def test_to_dict_identitifier_no_bookmark():

@@ -4,9 +4,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional
 
-from odbinfo.pure.datatype import Metadata
 from odbinfo.pure.datatype.base import content_type
 from odbinfo.pure.datatype.exec import BasicToken
+from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import SQLToken
 
 

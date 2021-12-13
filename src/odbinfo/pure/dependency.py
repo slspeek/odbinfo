@@ -14,11 +14,6 @@ def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable])
             source.consider_uses(target)
 
 
-__all__ = [
-    "search_dependencies",
-]
-
-
 #
 # BasicFunction in BasicFunction
 #

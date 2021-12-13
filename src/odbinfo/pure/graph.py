@@ -1,72 +1,21 @@
 """ Graphviz graph generation """
-from typing import Dict, List, Sequence, Tuple, cast
+from typing import Dict, List, Sequence, Tuple
 
 from graphviz import Digraph
 
-from odbinfo.pure.datatype import (Control, ControlBase, ListBox, Metadata,
-                                   content_type)
-from odbinfo.pure.datatype.base import NamedNode, Node
+from odbinfo.pure.datatype import Metadata
+from odbinfo.pure.datatype.base import NamedNode
 from odbinfo.pure.datatype.config import Configuration, GraphConfig
-
-
-def hugo_filename(name: str) -> str:
-    """ name converted as hugo converts filename to .Params.filename """
-    return name.replace(" ", "-").lower()
-
-
-def href(obj: Node) -> str:
-    """ returns a href html attribute """
-    link = obj.identifier
-    url = f"../{link.content_type}/{hugo_filename(link.local_id)}/index.html"
-    if link.bookmark:
-        url = f"{url}#{link.bookmark}"
-    return url
-
-
-def is_control_relevant(control: ControlBase) -> bool:
-    """Checks if a control has eventlisteners or if it is a listbox if a datasource is present"""
-    if control.eventlisteners:
-        return True
-    if isinstance(control, ListBox):
-        listbox = cast(ListBox, control)
-        if listbox.embedded_query or listbox.link:
-            return True
-    return False
-
-
-# TODO move to datatypes
-def is_visible(config: GraphConfig, node: NamedNode) -> bool:
-    """ determines with `config` whether `node` is visible"""
-    if node.content_type not in config.excludes:
-        if config.relevant_controls:
-            if isinstance(node, ControlBase):
-                control = cast(ControlBase, node)
-                return is_control_relevant(control)
-            return True
-        return True
-    return False
-
-
-def label_for_node(node: NamedNode) -> str:
-    """returns a label string for `node`"""
-    label = node.name
-    # TODO override in Control
-    if node.content_type == content_type(Control):
-        control = cast(Control, node)
-        if control.label:
-            label = control.label
-    return label
 
 
 def make_node(config: GraphConfig,
               graph: Digraph, node: NamedNode):
     """ adds a node to `graph` for `node` if `config` says so """
-    if is_visible(config, node):
-        label = label_for_node(node)
+    if node.is_visible(config):
         graph.node(str(node.obj_id),
-                   label=label,
+                   label=node.graph_label,
                    tooltip=f"{node.name} ({node.content_type})",
-                   href=href(node),
+                   href=node.href,
                    id=node.obj_id,
                    _attributes=config.type_attrs.get(node.content_type, {}))
 
@@ -75,7 +24,7 @@ def visible_ancestor(config: GraphConfig, node):
     """ returns `node` if is visible, else first ancestor that is visible
         or None if there is no visible ancestor"""
     parent = node
-    while not is_visible(config, parent):
+    while not parent.is_visible(config):
         parent = parent.parent
         if not parent:
             return None
@@ -109,7 +58,7 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
     """ make edge from `node` to `parent` if `config` says so """
     if not node.parent:
         return
-    if is_visible(config, node):
+    if node.is_visible(config):
         avisible_ancestor = visible_ancestor(config, node.parent)
         if not avisible_ancestor:
             return

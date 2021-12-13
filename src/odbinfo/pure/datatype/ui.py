@@ -115,10 +115,29 @@ class ControlBase(NamedNode):
     def children(self):
         return self.eventlisteners
 
+    def is_visible(self, config) -> bool:
+        if not super().is_visible(config):
+            return False
+        if config.relevant_controls:
+            return self.is_relevant()
+        return True
+
+    def is_relevant(self):
+        """Returns True if this Control is interesting for the depencency graph"""
+        if self.eventlisteners:
+            return True
+        return False
+
 
 @dataclass
 class Control(ControlBase):
     """ Form control """
+
+    @property
+    def graph_label(self):
+        if self.label:
+            return self.label
+        return super().graph_label
 
 
 @dataclass
@@ -136,6 +155,13 @@ class ListBox(AbstractCommander, ControlBase):
     @property
     def commandtype(self):
         return self.listsourcetype
+
+    def is_relevant(self):
+        if super().is_relevant():
+            return True
+        if self.embedded_query or self.link:
+            return True
+        return False
 
     def children(self):
         if self.embedded_query:

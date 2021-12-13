@@ -9,64 +9,41 @@ from odbinfo.pure.datatype import (Control, Form, Key, ListBox, SubForm, Table,
                                    content_type)
 from odbinfo.pure.datatype.config import get_configuration
 from odbinfo.pure.graph import (edge, edge_attributes, generate_graphs,
-                                generate_main_graph, href, hugo_filename,
-                                is_control_relevant, is_visible,
-                                label_for_node, make_dependency_edges,
+                                generate_main_graph, make_dependency_edges,
                                 make_edge, make_node, make_parent_edge,
                                 visible_ancestor, visible_dependency_edges)
 
 
-def test_hugo_filename_to_lower():
-    assert hugo_filename("Foo") == "foo"
-
-
-def test__hugo_filename_spaces():
-    assert hugo_filename("F oo") == "f-oo"
-
-
-def test_href_webpage(table_plant):
-    assert href(table_plant) == \
-        "../table/plant/index.html"
-
-
-def test_href_control(form):
-    subform = form.subforms[0]
-    subform.parent = form
-    subform.obj_id = "42"
-    assert href(subform) == \
-        "../form/myform/index.html#42"
-
-
 def test_is_visible_excludes_excluded(graph_config, control):
     graph_config.user_excludes = [content_type(Control)]
-    assert not is_visible(graph_config, control)
+    assert not control.is_visible(graph_config)
 
 
 def test_is_visible_excludes_included(graph_config, irrelevant_control):
     graph_config.user_excludes = []
-    assert not is_visible(graph_config, irrelevant_control)
+    assert not irrelevant_control.is_visible(graph_config)
 
 
 def test_is_visible_no_relevant_controls(graph_config, irrelevant_control):
     graph_config.relevant_controls = False
-    assert is_visible(graph_config, irrelevant_control)
+    assert irrelevant_control.is_visible(graph_config)
 
 
 def test_is_visible_relevant_controls(graph_config, irrelevant_control):
     graph_config.relevant_controls = True
-    assert not is_visible(graph_config, irrelevant_control)
+    assert not irrelevant_control.is_visible(graph_config)
 
 
 def test_is_control_relevant_not_relevant_listbox(listbox):
-    assert not is_control_relevant(listbox)
+    assert not listbox.is_relevant()
 
 
 def test_is_control_relevant_listbox(listbox_embeddedquery):
-    assert is_control_relevant(listbox_embeddedquery)
+    assert listbox_embeddedquery.is_relevant()
 
 
 def test_is_control_relevant_control(control):
-    assert is_control_relevant(control)
+    assert control.is_relevant()
 
 
 class ConfTest(unittest.TestCase):
@@ -76,7 +53,7 @@ class ConfTest(unittest.TestCase):
 
 
 def test_is_visible_table(table_plant, graph_config):
-    assert is_visible(graph_config, table_plant)
+    assert table_plant.is_visible(graph_config)
 
 
 def test_make_node_do_nothing(graph_config, digraph, table_plant):
@@ -115,12 +92,12 @@ def test_make_node_tooltip(graph_config, digraph, table_plant):
 
 def test_label_for_node(irrelevant_control):
     irrelevant_control.label = "labelvalue"
-    assert label_for_node(irrelevant_control) == "labelvalue"
+    assert irrelevant_control.graph_label == "labelvalue"
 
 
 def test_no_label(irrelevant_control):
     irrelevant_control.label = ""
-    assert label_for_node(irrelevant_control) == 'ControlName'
+    assert irrelevant_control.graph_label == 'ControlName'
 
 
 # visisible_ancestor

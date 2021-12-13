@@ -18,12 +18,25 @@ class Dictable(ABC):
             used for the write-out to the hugo site"""
 
 
+def hugo_filename(name: str) -> str:
+    """ name converted as hugo converts filename to .Params.filename """
+    return name.replace(" ", "-").lower()
+
+
 @dataclass(frozen=True)
 class Identifier(Dictable):
     """ Unique id for ooobjects """
     content_type: str
     local_id: str
     bookmark: Optional[str]
+
+    @property
+    def href(self):
+        """returns href for the graph"""
+        url = f"../{self.content_type}/{hugo_filename(self.local_id)}/index.html"
+        if self.bookmark:
+            url = f"{url}#{self.bookmark}"
+        return url
 
     def to_dict(self):
         adict = dict(self.__dict__)
@@ -70,6 +83,11 @@ class Node(Dictable):
         """returns a link to this node"""
         return get_identifier(self)
 
+    @property
+    def href(self):
+        """returns href fot the graph"""
+        return self.identifier.href
+
     # pylint:disable=no-self-use
     def children(self):
         """ returns a list of child nodes """
@@ -91,11 +109,22 @@ class Node(Dictable):
             sdict[key] = to_dict(value)
         return sdict
 
+    def is_visible(self, config) -> bool:
+        """Is the node visible in the graph"""
+        if self.content_type in config.excludes:
+            return False
+        return True
+
 
 @dataclass
 class NamedNode(Node):
     """Has a name"""
     name: str
+
+    @property
+    def graph_label(self):
+        """Label for the node in the graph"""
+        return self.name
 
 
 @dataclass

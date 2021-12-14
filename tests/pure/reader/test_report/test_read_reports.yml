@@ -17,7 +17,6 @@
 - cmd: select * from "Plant";
   cmdtype: command
   embedded_query:
-    columns: []
     command: 'SELECT *
 
       FROM   "Plant";'

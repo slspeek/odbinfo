@@ -4,7 +4,7 @@ columns:
   issigned: true
   name: id
   nullable: Nullable
-  obj_id: '22'
+  obj_id: '33'
   position: 1
   precision: 100
   readonly: false
@@ -15,25 +15,11 @@ columns:
 command: 'SELECT "view1"."id"
 
   FROM   "view1"'
-literal_values: []
 name: DependendView
 obj_id: '21'
 parent_link:
   content_type: metadata
   local_id: testdb
-table_tokens:
-- link:
-    content_type: view
-    local_id: view1
-  obj_id: '25'
-  text: '"view1"'
-  type: 200
-- link:
-    content_type: view
-    local_id: view1
-  obj_id: '33'
-  text: '"view1"'
-  type: 200
 title: DependendView
 tokens:
 - text: SELECT
@@ -43,7 +29,7 @@ tokens:
 - link:
     content_type: view
     local_id: view1
-  obj_id: '25'
+  obj_id: '24'
   text: '"view1"'
   type: 200
 - text: .
@@ -65,7 +51,7 @@ tokens:
 - link:
     content_type: view
     local_id: view1
-  obj_id: '33'
+  obj_id: '32'
   text: '"view1"'
   type: 200
 used_by: []

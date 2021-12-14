@@ -28,18 +28,9 @@ subforms:
     datafield: id
     dropdown: 'true'
     embedded_query:
-      columns: []
       command: "SELECT \"id\",\n       \"naam\"\nFROM   \"Plant\""
-      literal_values: []
       name: id.Command
       obj_id: '159'
-      table_tokens:
-      - link:
-          content_type: table
-          local_id: Plant
-        obj_id: '178'
-        text: '"Plant"'
-        type: 200
       tokens:
       - text: SELECT
         type: 131

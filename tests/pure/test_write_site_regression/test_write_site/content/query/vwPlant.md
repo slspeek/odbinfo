@@ -4,7 +4,7 @@ columns:
   issigned: true
   name: id
   nullable: No_Nulls
-  obj_id: '123'
+  obj_id: '132'
   position: 1
   precision: 100
   readonly: false
@@ -16,7 +16,7 @@ columns:
   issigned: false
   name: naam
   nullable: Nullable
-  obj_id: '124'
+  obj_id: '133'
   position: 2
   precision: 2147483647
   readonly: false
@@ -28,7 +28,7 @@ columns:
   issigned: true
   name: RFamliyID
   nullable: Nullable
-  obj_id: '125'
+  obj_id: '134'
   position: 3
   precision: 10
   readonly: false
@@ -39,19 +39,11 @@ columns:
 command: 'SELECT *
 
   FROM   "Plant"'
-literal_values: []
 name: vwPlant
 obj_id: '122'
 parent_link:
   content_type: metadata
   local_id: testdb
-table_tokens:
-- link:
-    content_type: table
-    local_id: Plant
-  obj_id: '134'
-  text: '"Plant"'
-  type: 200
 title: vwPlant
 tokens:
 - text: SELECT
@@ -75,11 +67,11 @@ tokens:
 - link:
     content_type: table
     local_id: Plant
-  obj_id: '134'
+  obj_id: '131'
   text: '"Plant"'
   type: 200
 used_by:
-- bookmark: '63'
+- bookmark: '57'
   content_type: query
   local_id: DependendQuery
 - bookmark: '156'

@@ -7,7 +7,7 @@ from odbinfo.oo.ooutil import open_connection
 from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import (Column, Index, Key, Query,
-                                           QueryBase, QueryColumn, Table, View)
+                                           QueryColumn, QueryPage, Table, View)
 from odbinfo.pure.reader import (read_forms, read_libraries,
                                  read_python_libraries, read_reports,
                                  read_text_documents)
@@ -54,7 +54,7 @@ def read_queries(connection, datasource) -> List[Query]:
     return queries
 
 
-def read_query_columns(connection, query: QueryBase) -> None:
+def read_query_columns(connection, query: QueryPage) -> None:
     """ read self columns """
     query.columns = _read_query_columns(connection, query.command)
 

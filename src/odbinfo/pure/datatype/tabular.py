@@ -62,7 +62,6 @@ class QueryBase(NamedNode, Dependent):
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/
         QueryDefinition.html"""
     command: str
-    columns: List[QueryColumn] = field(init=False, default_factory=list)
 
     tokens: List[SQLToken] = field(init=False, default_factory=list)
     table_tokens: List[SQLToken] = field(init=False, default_factory=list)
@@ -83,7 +82,7 @@ class QueryBase(NamedNode, Dependent):
         self.color_hightlight_query()
 
     def children(self):
-        return chain(self.columns, self.tokens)
+        return self.tokens
 
     def consider_uses(self, target: Usable):
         for token in self.table_tokens:
@@ -95,6 +94,12 @@ class QueryBase(NamedNode, Dependent):
         for littoken in self.literal_values:
             littoken.cls = "literalvalue"
 
+    def to_dict(self):
+        rdict = super().to_dict()
+        del rdict["literal_values"]
+        del rdict["table_tokens"]
+        return rdict
+
 
 @dataclass
 class EmbeddedQuery(QueryBase):
@@ -104,11 +109,15 @@ class EmbeddedQuery(QueryBase):
 @dataclass
 class QueryPage(QueryBase, WebPageWithUses):
     """ Query properties """
+    columns: List[QueryColumn] = field(init=False, default_factory=list)
 
     def __post_init__(self):
         WebPageWithUses.__post_init__(self)
         QueryBase.__post_init__(self)
         # self.title = self.name
+
+    def children(self):
+        return chain(super().children(), self.columns)
 
 
 @dataclass

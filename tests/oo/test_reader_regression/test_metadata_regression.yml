@@ -76,7 +76,6 @@ form_defs:
     depth: null
     detailfields: ''
     embedded_query:
-      columns: []
       command: 'SELECT *
 
         FROM   "Person"'
@@ -154,7 +153,6 @@ form_defs:
       datafield: id
       dropdown: 'true'
       embedded_query:
-        columns: []
         command: "SELECT \"id\",\n       \"naam\"\nFROM   \"Plant\""
         literal_values: []
         name: id.Command
@@ -599,7 +597,6 @@ form_defs:
       datafield: RFamliyID
       dropdown: 'true'
       embedded_query:
-        columns: []
         command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
         literal_values: []
         name: fmtRFamliyID.Command
@@ -1250,7 +1247,6 @@ report_defs:
 - cmd: select * from "Plant";
   cmdtype: command
   embedded_query:
-    columns: []
     command: 'SELECT *
 
       FROM   "Plant";'

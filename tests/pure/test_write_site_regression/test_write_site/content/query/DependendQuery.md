@@ -4,7 +4,7 @@ columns:
   issigned: false
   name: Name
   nullable: Nullable
-  obj_id: '46'
+  obj_id: '61'
   position: 1
   precision: 2147483647
   readonly: false
@@ -16,7 +16,7 @@ columns:
   issigned: true
   name: FamilyID
   nullable: Nullable
-  obj_id: '47'
+  obj_id: '62'
   position: 2
   precision: 10
   readonly: false
@@ -28,7 +28,7 @@ columns:
   issigned: true
   name: id
   nullable: Nullable
-  obj_id: '48'
+  obj_id: '63'
   position: 3
   precision: 100
   readonly: false
@@ -40,7 +40,7 @@ columns:
   issigned: false
   name: naam
   nullable: Nullable
-  obj_id: '49'
+  obj_id: '64'
   position: 4
   precision: 2147483647
   readonly: false
@@ -52,7 +52,7 @@ columns:
   issigned: true
   name: RFamliyID
   nullable: Nullable
-  obj_id: '50'
+  obj_id: '65'
   position: 5
   precision: 10
   readonly: false
@@ -64,7 +64,7 @@ columns:
   issigned: true
   name: id
   nullable: Nullable
-  obj_id: '51'
+  obj_id: '66'
   position: 6
   precision: 100
   readonly: false
@@ -75,31 +75,11 @@ columns:
 command: 'SELECT *
 
   FROM   "FamilyLookup", "vwPlant", "view1"'
-literal_values: []
 name: DependendQuery
 obj_id: '45'
 parent_link:
   content_type: metadata
   local_id: testdb
-table_tokens:
-- link:
-    content_type: query
-    local_id: FamilyLookup
-  obj_id: '60'
-  text: '"FamilyLookup"'
-  type: 200
-- link:
-    content_type: query
-    local_id: vwPlant
-  obj_id: '63'
-  text: '"vwPlant"'
-  type: 200
-- link:
-    content_type: view
-    local_id: view1
-  obj_id: '66'
-  text: '"view1"'
-  type: 200
 title: DependendQuery
 tokens:
 - text: SELECT
@@ -123,7 +103,7 @@ tokens:
 - link:
     content_type: query
     local_id: FamilyLookup
-  obj_id: '60'
+  obj_id: '54'
   text: '"FamilyLookup"'
   type: 200
 - text: ','
@@ -133,7 +113,7 @@ tokens:
 - link:
     content_type: query
     local_id: vwPlant
-  obj_id: '63'
+  obj_id: '57'
   text: '"vwPlant"'
   type: 200
 - text: ','
@@ -143,7 +123,7 @@ tokens:
 - link:
     content_type: view
     local_id: view1
-  obj_id: '66'
+  obj_id: '60'
   text: '"view1"'
   type: 200
 used_by: []

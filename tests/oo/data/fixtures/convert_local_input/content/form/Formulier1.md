@@ -15,20 +15,11 @@ subforms:
   depth: 0
   detailfields: ''
   embedded_query:
-    columns: []
     command: 'SELECT *
 
       FROM   "Person"'
-    literal_values: []
     name: Formulier.Command
     obj_id: '144'
-    table_tokens:
-    - link:
-        content_type: table
-        local_id: Person
-      obj_id: '153'
-      text: '"Person"'
-      type: 200
     tokens:
     - text: SELECT
       type: 131

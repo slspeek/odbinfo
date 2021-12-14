@@ -68,18 +68,9 @@ subforms:
     datafield: RFamliyID
     dropdown: 'true'
     embedded_query:
-      columns: []
       command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
-      literal_values: []
       name: fmtRFamliyID.Command
       obj_id: '218'
-      table_tokens:
-      - link:
-          content_type: table
-          local_id: Family
-        obj_id: '237'
-        text: '"Family"'
-        type: 200
       tokens:
       - text: SELECT
         type: 131

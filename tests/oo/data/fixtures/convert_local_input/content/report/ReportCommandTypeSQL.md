@@ -2,20 +2,11 @@
 cmd: select * from "Plant";
 cmdtype: command
 embedded_query:
-  columns: []
   command: 'SELECT *
 
     FROM   "Plant";'
-  literal_values: []
   name: ReportCommandTypeSQL.Command
   obj_id: '265'
-  table_tokens:
-  - link:
-      content_type: table
-      local_id: Plant
-    obj_id: '274'
-    text: '"Plant"'
-    type: 200
   tokens:
   - text: SELECT
     type: 131

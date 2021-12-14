@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union, cast
 
-from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
-                                        Usable, User, WebPageWithUses)
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, Usable, User,
+                                        WebPageWithUses)
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import GraphConfig
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
@@ -13,11 +13,16 @@ COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
 
 
 @dataclass  # type: ignore
-class AbstractCommander(User, NamedNode, Dependent, Preprocessable,  ABC):
+class AbstractCommander(User, NamedNode, Dependent,  ABC):
     """Commander interface"""
 
     # Only if commandtype in ["command", "sql", "sqlpassthrough"]
     embedded_query: Optional[EmbeddedQuery] = field(init=False, default=None)
+
+    def __post_init__(self):
+        if self.issqlcommand:
+            self.embedded_query = \
+                EmbeddedQuery(f"{self.name}.Command", self.command)
 
     @property
     @abstractmethod
@@ -38,11 +43,6 @@ class AbstractCommander(User, NamedNode, Dependent, Preprocessable,  ABC):
         if not self.issqlcommand and \
                 target.users_match(self.command):
             self.link_to(target)
-
-    def preprocess(self):
-        if self.issqlcommand:
-            self.embedded_query = \
-                EmbeddedQuery(f"{self.name}.Command", self.command)
 
 
 @dataclass
@@ -224,6 +224,10 @@ class Report(Commander, WebPageWithUses):
     """ Report metadata """
     output_type: str
     formulas: List[str]
+
+    def __post_init__(self):
+        Commander.__post_init__(self)
+        WebPageWithUses.__post_init__(self)
 
     def children(self):
         if self.embedded_query:

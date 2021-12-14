@@ -75,7 +75,15 @@ form_defs:
     controls: []
     depth: null
     detailfields: ''
-    embedded_query: null
+    embedded_query:
+      columns: []
+      command: select * from "Person"
+      literal_values: []
+      name: Formulier.Command
+      obj_id: OBJID_NOT_SET
+      parent: null
+      table_tokens: []
+      tokens: []
     link: null
     masterfields: ''
     name: Formulier
@@ -143,7 +151,15 @@ form_defs:
       convertemptytonull: ''
       datafield: id
       dropdown: 'true'
-      embedded_query: null
+      embedded_query:
+        columns: []
+        command: select "id", "naam" from "Plant"
+        literal_values: []
+        name: id.Command
+        obj_id: OBJID_NOT_SET
+        parent: null
+        table_tokens: []
+        tokens: []
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
@@ -580,7 +596,15 @@ form_defs:
       convertemptytonull: ''
       datafield: RFamliyID
       dropdown: 'true'
-      embedded_query: null
+      embedded_query:
+        columns: []
+        command: SELECT "Name", "FamilyID" FROM "Family"
+        literal_values: []
+        name: fmtRFamliyID.Command
+        obj_id: OBJID_NOT_SET
+        parent: null
+        table_tokens: []
+        tokens: []
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
@@ -1219,7 +1243,15 @@ report_defs:
   uses: []
 - cmd: select * from "Plant";
   cmdtype: command
-  embedded_query: null
+  embedded_query:
+    columns: []
+    command: select * from "Plant";
+    literal_values: []
+    name: ReportCommandTypeSQL.Command
+    obj_id: OBJID_NOT_SET
+    parent: null
+    table_tokens: []
+    tokens: []
   formulas:
   - field:[id]
   - field:[naam]

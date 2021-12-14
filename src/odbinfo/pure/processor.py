@@ -8,8 +8,7 @@ from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.exec import Module
 from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import QueryBase
-from odbinfo.pure.datatype.ui import (AbstractCommander, Control, Form, Grid,
-                                      ListBox, SubForm)
+from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.graph import generate_graphs
 from odbinfo.pure.util import timed
@@ -89,11 +88,11 @@ def preprocess_queries(metadata: Metadata) -> None:
         query.preprocess()
 
 
-def preprocess_commanders(commanders: Sequence[AbstractCommander]) -> None:
-    """ if command is a direct query, set an EmbeddedQuery obj"""
-    for cmdr in commanders:
-        cmdr.preprocess()
-
+# def preprocess_commanders(commanders: Sequence[AbstractCommander]) -> None:
+#     """ if command is a direct query, set an EmbeddedQuery obj"""
+#     for cmdr in commanders:
+#         cmdr.preprocess()
+#
 
 def preprocess_forms(form_defs: Sequence[Form]):
     """preprocesses all forms in `form_defs`"""
@@ -134,7 +133,7 @@ def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
 def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     """ preprocessing of the data before it is written """
     preprocess_modules(metadata.module_defs)
-    preprocess_commanders(metadata.commanders)
+    # preprocess_commanders(metadata.commanders)
     preprocess_queries(metadata)
     preprocess_forms(metadata.form_defs)
 

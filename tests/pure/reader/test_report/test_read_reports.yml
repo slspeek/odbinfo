@@ -16,7 +16,15 @@
   uses: []
 - cmd: select * from "Plant";
   cmdtype: command
-  embedded_query: null
+  embedded_query:
+    columns: []
+    command: select * from "Plant";
+    literal_values: []
+    name: ReportCommandTypeSQL.Command
+    obj_id: OBJID_NOT_SET
+    parent: null
+    table_tokens: []
+    tokens: []
   formulas:
   - field:[id]
   - field:[naam]

@@ -1,15 +1,10 @@
 Code clean up
 --------------
-Preprocessable type for stuff that needs preprocessing
-
-
-- BasicToken color_highlight method
+- Preprocessable type for stuff that needs preprocessing
 
 processor copy_token unittest
 
 Makefile run after 'source env.source'
-
-Makefile classdiagram -> pipenv run
 
 Add control 'visible' attribute
 
@@ -76,6 +71,7 @@ templates:
 - control in graph
 - column in graph
 - basic color highlighting
+  - BasicToken color_highlight method
   - IDENTIFIER
   - COMMENTS
 - sql color highlighting
@@ -112,12 +108,11 @@ better description of the extension
 
 Pre release
 -----------
-Try out on freewindows version
+Try on windows
 
 update minimal theme (20210703 ok)
 
 make upgrade dependencies (20210813 done)
-
 
 #################################################################################
 ############################## release 0.1 ######################################

@@ -18,7 +18,9 @@
   cmdtype: command
   embedded_query:
     columns: []
-    command: select * from "Plant";
+    command: 'SELECT *
+
+      FROM   "Plant";'
     literal_values: []
     name: ReportCommandTypeSQL.Command
     obj_id: OBJID_NOT_SET

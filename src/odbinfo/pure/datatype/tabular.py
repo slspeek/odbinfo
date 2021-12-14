@@ -68,6 +68,9 @@ class QueryBase(NamedNode, Dependent):
     table_tokens: List[SQLToken] = field(init=False, default_factory=list)
     literal_values: List[SQLToken] = field(init=False, default_factory=list)
 
+    def __post_init__(self):
+        self.command = format_sql(self.command)
+
     def parse_query(self):
         """parses `query.command`"""
         self.tokens, self.table_tokens, self.literal_values = parse(
@@ -76,7 +79,6 @@ class QueryBase(NamedNode, Dependent):
     @timed("Parse query", indent=6, arg=0)
     def preprocess(self) -> None:
         """preprocesses `query`, that is parses it and does its the color highlighting"""
-        self.command = format_sql(self.command)
         self.parse_query()
         self.color_hightlight_query()
 
@@ -104,7 +106,9 @@ class QueryPage(QueryBase, WebPageWithUses):
     """ Query properties """
 
     def __post_init__(self):
-        self.title = self.name
+        WebPageWithUses.__post_init__(self)
+        QueryBase.__post_init__(self)
+        # self.title = self.name
 
 
 @dataclass

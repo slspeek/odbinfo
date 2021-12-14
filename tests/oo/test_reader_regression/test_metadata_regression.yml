@@ -77,7 +77,9 @@ form_defs:
     detailfields: ''
     embedded_query:
       columns: []
-      command: select * from "Person"
+      command: 'SELECT *
+
+        FROM   "Person"'
       literal_values: []
       name: Formulier.Command
       obj_id: OBJID_NOT_SET
@@ -153,7 +155,7 @@ form_defs:
       dropdown: 'true'
       embedded_query:
         columns: []
-        command: select "id", "naam" from "Plant"
+        command: "SELECT \"id\",\n       \"naam\"\nFROM   \"Plant\""
         literal_values: []
         name: id.Command
         obj_id: OBJID_NOT_SET
@@ -598,7 +600,7 @@ form_defs:
       dropdown: 'true'
       embedded_query:
         columns: []
-        command: SELECT "Name", "FamilyID" FROM "Family"
+        command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
         literal_values: []
         name: fmtRFamliyID.Command
         obj_id: OBJID_NOT_SET
@@ -1073,7 +1075,9 @@ query_defs:
     tablename: SYSTEM_SUBQUERY
     typename: NUMERIC
     writable: true
-  command: SELECT * FROM "FamilyLookup", "vwPlant", "view1"
+  command: 'SELECT *
+
+    FROM   "FamilyLookup", "vwPlant", "view1"'
   literal_values: []
   name: DependendQuery
   obj_id: OBJID_NOT_SET
@@ -1111,7 +1115,7 @@ query_defs:
     tablename: Family
     typename: INTEGER
     writable: true
-  command: SELECT "Name", "FamilyID" FROM "Family"
+  command: "SELECT \"Name\",\n       \"FamilyID\"\nFROM   \"Family\""
   literal_values: []
   name: FamilyLookup
   obj_id: OBJID_NOT_SET
@@ -1162,7 +1166,7 @@ query_defs:
     tablename: Plant
     typename: VARCHAR
     writable: true
-  command: SELECT 1, 'fourtytwo', "naam" FROM "Plant"
+  command: "SELECT 1,\n       'fourtytwo',\n       \"naam\"\nFROM   \"Plant\""
   literal_values: []
   name: LiteralValueQuery
   obj_id: OBJID_NOT_SET
@@ -1213,7 +1217,9 @@ query_defs:
     tablename: Plant
     typename: INTEGER
     writable: true
-  command: SELECT * FROM "Plant"
+  command: 'SELECT *
+
+    FROM   "Plant"'
   literal_values: []
   name: vwPlant
   obj_id: OBJID_NOT_SET
@@ -1245,7 +1251,9 @@ report_defs:
   cmdtype: command
   embedded_query:
     columns: []
-    command: select * from "Plant";
+    command: 'SELECT *
+
+      FROM   "Plant";'
     literal_values: []
     name: ReportCommandTypeSQL.Command
     obj_id: OBJID_NOT_SET
@@ -1534,7 +1542,9 @@ view_defs:
     tablename: SYSTEM_SUBQUERY
     typename: NUMERIC
     writable: true
-  command: SELECT  "view1"."id"  FROM "view1"
+  command: 'SELECT "view1"."id"
+
+    FROM   "view1"'
   literal_values: []
   name: DependendView
   obj_id: OBJID_NOT_SET
@@ -1559,7 +1569,9 @@ view_defs:
     tablename: Plant
     typename: NUMERIC
     writable: true
-  command: SELECT "id" FROM "Plant"
+  command: 'SELECT "id"
+
+    FROM   "Plant"'
   literal_values: []
   name: view1
   obj_id: OBJID_NOT_SET

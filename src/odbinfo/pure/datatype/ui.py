@@ -6,6 +6,7 @@ from typing import List, Optional, Union, cast
 from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
                                         Usable, User, WebPageWithUses)
 from odbinfo.pure.datatype.basicfunction import BasicFunction
+from odbinfo.pure.datatype.config import GraphConfig
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 
 COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
@@ -119,7 +120,7 @@ class ControlBase(NamedNode):
     def children(self):
         return self.eventlisteners
 
-    def is_visible(self, config) -> bool:
+    def is_visible(self, config: GraphConfig) -> bool:
         if not super().is_visible(config):
             return False
         if config.relevant_controls:

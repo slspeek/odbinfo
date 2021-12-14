@@ -5,6 +5,8 @@ from dataclasses import dataclass, field
 from itertools import chain
 from typing import Any, List, Optional, cast
 
+from odbinfo.pure.datatype.config import GraphConfig
+
 logger = logging.getLogger(__name__)
 
 
@@ -109,7 +111,7 @@ class Node(Dictable):
             sdict[key] = to_dict(value)
         return sdict
 
-    def is_visible(self, config) -> bool:
+    def is_visible(self, config: GraphConfig) -> bool:
         """Is the node visible in the graph"""
         if self.content_type in config.excludes:
             return False

@@ -1,12 +1,15 @@
 """ Executable datatypes and its containers """
-import dataclasses
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from itertools import chain
-from typing import List
+from typing import TYPE_CHECKING, List
 
 from odbinfo.pure.datatype.base import BasicToken, Preprocessable, WebPage
 from odbinfo.pure.datatype.basicfunction import BasicFunction
-from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
+
+if TYPE_CHECKING:
+    from odbinfo.pure.visitor import PreprocessableVisitor
 
 
 @dataclass
@@ -44,27 +47,6 @@ class Module(WebPage, Preprocessable):
         super().__post_init__()
         self.title = f"{self.name}.{self.library}"
 
-    def link_name_tokens(self):
-        """Link the name tokens to the single function pages"""
-        for name_index, acallable in zip(self.name_indexes, self.callables):
-            self.tokens[name_index].link_to(acallable)
-
-    def copy_tokens(self):
-        """Copies the modules tokens"""
-        self.tokens = [dataclasses.replace(token) for token in self.tokens]
-
-    def preprocess(self):
-        """ Tokenizes, parses, copies the tokens and sets the indexes
-               of the tokens that are the names of the procedures """
-        self.tokens = \
-            get_basic_tokens(self.source)
-        self.callables = \
-            scan_basic(self.tokens, self.library, self.name)
-        self.copy_tokens()
-        self.name_indexes = \
-            [c.name_token_index for c in self.callables]
-        self.link_name_tokens()
-
     def children(self):
         return chain(self.callables, self.tokens)
 
@@ -73,6 +55,9 @@ class Module(WebPage, Preprocessable):
         rdict["callables"] = [
             func.identifier.to_dict() for func in self.callables]
         return rdict
+
+    def accept(self, visitor: PreprocessableVisitor):
+        visitor.visit_module(self)
 
 
 @dataclass

@@ -1,3 +1,6 @@
+[BASIC]
+min-public-methods=0
+
 [MASTER]
 ignore=odbinfo/pure/parser/sqlite,odbinfo/pure/parser/oobasic
 

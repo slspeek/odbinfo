@@ -6,6 +6,7 @@ from zipfile import ZipFile
 from graphviz import Digraph
 from pytest import fixture
 
+from odbinfo.pure.datatype.exec import Module
 # pylint:disable=wildcard-import
 # pylint:disable=unused-wildcard-import
 from tests.pure.datatype.conftest import *
@@ -31,6 +32,15 @@ __all__ = [
 @fixture(scope="function")
 def digraph():
     return Digraph("test_digraph")
+
+
+@fixture(scope="function")
+def module_single_function():
+    return Module("module_single_function", "Lib", """"
+    Sub Foo()
+        print "Foo"
+    End Sub
+    """)
 
 
 def load_metadata(shared_datadir, processed=False, empty=False):

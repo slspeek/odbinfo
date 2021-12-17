@@ -1,8 +1,9 @@
 """ Processor module """
+import dataclasses
 from typing import Sequence, Union
 
-from odbinfo.pure.datatype.base import (Identifier, UseAggregator, User,
-                                        content_type)
+from odbinfo.pure.datatype.base import (Identifier, Preprocessable,
+                                        UseAggregator, User, content_type)
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.exec import Module
@@ -11,14 +12,9 @@ from odbinfo.pure.datatype.tabular import QueryBase
 from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.graph import generate_graphs
+from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.util import timed
-
-
-@timed("Parse basic modules", indent=4)
-def preprocess_modules(modules: Sequence[Module]) -> None:
-    """preprocesses of the of libraries"""
-    for module in modules:
-        module.preprocess()
+from odbinfo.pure.visitor import ModuleVisitor, PreprocessableVisitor
 
 
 # TODO: move to SubForm
@@ -88,12 +84,6 @@ def preprocess_queries(metadata: Metadata) -> None:
         query.preprocess()
 
 
-# def preprocess_commanders(commanders: Sequence[AbstractCommander]) -> None:
-#     """ if command is a direct query, set an EmbeddedQuery obj"""
-#     for cmdr in commanders:
-#         cmdr.preprocess()
-#
-
 def preprocess_forms(form_defs: Sequence[Form]):
     """preprocesses all forms in `form_defs`"""
     for form in form_defs:
@@ -129,11 +119,66 @@ def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
         rewrite_module(module)
 
 
+class ModulePreprocessor(ModuleVisitor):
+    """Preprocesses a Module"""
+    @staticmethod
+    def link_name_tokens(module: Module):
+        """Link the name tokens to the single function pages"""
+        for name_index, acallable in zip(module.name_indexes, module.callables):
+            module.tokens[name_index].link_to(acallable)
+
+    @staticmethod
+    def copy_tokens(module: Module):
+        """Copies the modules tokens"""
+        module.tokens = [dataclasses.replace(token) for token in module.tokens]
+
+    def visit_module(self, module: Module):
+        """ Tokenizes, parses, copies the tokens and sets the indexes
+                       of the tokens that are the names of the procedures """
+        module.tokens = \
+            get_basic_tokens(module.source)
+        module.callables = \
+            scan_basic(module.tokens, module.library, module.name)
+        self.copy_tokens(module)
+        module.name_indexes = \
+            [c.name_token_index for c in module.callables]
+        self.link_name_tokens(module)
+
+
+class Preprocessor(PreprocessableVisitor, ModulePreprocessor):
+    """All preprocessors together"""
+
+    def visit_querybase(self, query: QueryBase):
+        pass
+
+    def visit_form(self, form: Form):
+        pass
+
+    def visit_subform(self, subform: SubForm):
+        pass
+
+    def visit_control(self, control: Control):
+        pass
+
+    def visit_grid(self, grid: Grid):
+        pass
+
+    def visit_listbox(self, listbox: ListBox):
+        pass
+
+
+def preprocess(preprocessables: Sequence[Preprocessable]):
+    """Preprocess all"""
+    visitor = Preprocessor()
+    for node in preprocessables:
+        node.accept(visitor)
+
+
 @timed("Process metadata", indent=2)
 def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     """ preprocessing of the data before it is written """
-    preprocess_modules(metadata.module_defs)
-    # preprocess_commanders(metadata.commanders)
+    preprocess(metadata.by_content_type(Preprocessable))
+
     preprocess_queries(metadata)
     preprocess_forms(metadata.form_defs)
 

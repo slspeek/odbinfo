@@ -1,11 +1,17 @@
 """ super classes of the datatypes and reference types """
+from __future__ import annotations
+
 import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from itertools import chain
-from typing import Any, List, Optional, cast
+from typing import TYPE_CHECKING, Any, List, Optional, cast
 
 from odbinfo.pure.datatype.config import GraphConfig
+
+if TYPE_CHECKING:
+    from odbinfo.pure.visitor import PreprocessableVisitor
+
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +40,8 @@ class Identifier(Dictable):
 
     @property
     def href(self):
-        """returns href for the graph"""
+        """returns href for the graph
+        FIXME: assumes that all graphs will be in 'svg/' subfolder """
         url = f"../{self.content_type}/{hugo_filename(self.local_id)}/index.html"
         if self.bookmark:
             url = f"{url}#{self.bookmark}"
@@ -69,8 +76,25 @@ def to_dict(value: Any):
     return value
 
 
+class TreeNode:
+    """Base class for tree nodes"""
+
+    # pylint:disable=no-self-use
+    def children(self):
+        """ returns a list of child nodes """
+        return ()
+
+    def all_objects(self):
+        """ returns all nodes in the subtree with self as root """
+        return_value = [self]
+        for child in self.children():
+            return_value = chain(return_value, child.all_objects())
+
+        return return_value
+
+
 @dataclass
-class Node(Dictable):
+class Node(Dictable, TreeNode):
     """ superclass of OO-objects representations """
     obj_id: str = field(init=False, default="OBJID_NOT_SET")
     parent: Optional["NamedNode"] = field(init=False, default=None, repr=False)
@@ -90,19 +114,6 @@ class Node(Dictable):
         """returns href fot the graph"""
         return self.identifier.href
 
-    # pylint:disable=no-self-use
-    def children(self):
-        """ returns a list of child nodes """
-        return ()
-
-    def all_objects(self):
-        """ returns all nodes in the subtree with self as root """
-        return_value = [self]
-        for child in self.children():
-            return_value = chain(return_value, child.all_objects())
-
-        return return_value
-
     def to_dict(self):
         sdict = dict(self.__dict__)
         if "parent" in sdict:
@@ -111,6 +122,7 @@ class Node(Dictable):
             sdict[key] = to_dict(value)
         return sdict
 
+    # TODO move out
     def is_visible(self, config: GraphConfig) -> bool:
         """Is the node visible in the graph"""
         if self.content_type in config.excludes:
@@ -267,6 +279,10 @@ class Dependent(ABC):
 class Preprocessable(ABC):
     """Classes that need processing before dependency search"""
 
+    # @abstractmethod
+    # def preprocess(self):
+    #     """Does the preparation for the dependency search"""
+
     @abstractmethod
-    def preprocess(self):
-        """Does the preparation for the dependency search"""
+    def accept(self, visitor: PreprocessableVisitor):
+        """Accept a `visitor`"""

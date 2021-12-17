@@ -117,6 +117,7 @@ class Metadata(WebPage):
     def _create_index(self) -> None:
         """ make an index of linkable objects """
         for content in self.all_objects():
+            # pylint:disable=no-member
             self.node_by_id[content.obj_id] = content
             if isinstance(content, Usable):
                 content = cast(Node, content)

@@ -6,8 +6,7 @@ from odbinfo.pure.datatype.exec import Module
 from odbinfo.pure.datatype.tabular import Table
 from odbinfo.pure.dependency import search_callable_in_callable
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
-from odbinfo.pure.processor import (preprocess_modules,
-                                    rewrite_module_callable_links)
+from odbinfo.pure.processor import Preprocessor, rewrite_module_callable_links
 
 SOURCE_MODULEONE = """
 Sub Foo()
@@ -97,7 +96,7 @@ class ModuleTest(unittest.TestCase):
         """parses `module` and puts result in self.module"""
         # pylint:disable=attribute-defined-outside-init
         self.module = Module("Module", "Lib", module_source)
-        preprocess_modules([self.module])
+        self.module.accept(Preprocessor())
 
 
 class ModuleOneTest(ModuleTest):
@@ -127,17 +126,6 @@ class RewriteModuleLinksTest(ModuleOneTest):
         # other links untouched
         assert self.module.callables[-1].tokens[-1].link == WebPage(
             "foo").identifier
-
-
-class LinkNameTokens(ModuleOneTest):
-    """_link_name_tokens"""
-
-    def test_link_name_tokens(self):
-        """_link_name_tokens"""
-        self.module.link_name_tokens()
-        func = self.module.callables[0]
-        name_token = self.module.tokens[func.name_token_index]
-        assert name_token.link == func.identifier
 
 
 STRING_REF_MODULE = """

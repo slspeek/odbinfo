@@ -1,6 +1,6 @@
 """ Tests for the processor """
 from odbinfo.pure.datatype.ui import SubForm
-from odbinfo.pure.processor import ModulePreprocessor, set_depth
+from odbinfo.pure.processor import FormPreprocessor, ModulePreprocessor
 
 
 def test_set_depth():
@@ -8,9 +8,23 @@ def test_set_depth():
     root = SubForm("", "", "", "", "", "", "", "", [], [])
     child = SubForm("", "", "", "", "", "", "", "", [], [])
     root.subforms.append(child)
-    set_depth(0, root)
+    FormPreprocessor().set_depth(0, root)
     assert root.depth == 0
     assert child.depth == 1
+
+
+def test_height_one():
+    """ test height of subform tree """
+    root = SubForm("", "", "", "", "", "", "", "", [], [])
+    child = SubForm("", "", "", "", "", "", "", "", [], [])
+    root.subforms.append(child)
+    assert FormPreprocessor().height(root) == 1
+
+
+def test_height_zero():
+    """ test height of subform tree """
+    root = SubForm("", "", "", "", "", "", "", "", [], [])
+    assert FormPreprocessor().height(root) == 0
 
 
 def test_link_name_tokens(module_single_function):

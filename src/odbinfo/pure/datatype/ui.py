@@ -3,17 +3,18 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Optional, Union, cast
 
-from odbinfo.pure.datatype.base import (Dependent, NamedNode, Usable, User,
-                                        WebPageWithUses)
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
+                                        Usable, User, WebPageWithUses)
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import GraphConfig
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
+from odbinfo.pure.visitor import PreprocessableVisitor
 
 COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
 
 
 @dataclass  # type: ignore
-class AbstractCommander(User, NamedNode, Dependent,  ABC):
+class AbstractCommander(User, NamedNode, Dependent, ABC):
     """Commander interface"""
 
     # Only if commandtype in ["command", "sql", "sqlpassthrough"]
@@ -135,7 +136,7 @@ class ControlBase(NamedNode):
 
 
 @dataclass
-class Control(ControlBase):
+class Control(ControlBase, Preprocessable):
     """ Form control """
 
     @property
@@ -144,9 +145,12 @@ class Control(ControlBase):
             return self.label
         return super().graph_label
 
+    def accept(self, visitor: PreprocessableVisitor):
+        visitor.visit_control(self)
+
 
 @dataclass
-class ListBox(AbstractCommander, ControlBase):
+class ListBox(AbstractCommander, ControlBase, Preprocessable):
     """ ListBox control"""
     boundcolumn: int
     dropdown: bool
@@ -173,6 +177,9 @@ class ListBox(AbstractCommander, ControlBase):
             return self.eventlisteners + [self.embedded_query]
         return self.eventlisteners
 
+    def accept(self, visitor: PreprocessableVisitor):
+        visitor.visit_listbox(self)
+
 
 @dataclass
 class Grid(NamedNode):
@@ -186,7 +193,7 @@ class Grid(NamedNode):
 
 @dataclass
 # pylint: disable=too-many-instance-attributes
-class SubForm(Commander, NamedNode):
+class SubForm(Commander, NamedNode, Preprocessable):
     """ Database subform """
     allowdeletes: str
     allowinserts: str
@@ -197,26 +204,27 @@ class SubForm(Commander, NamedNode):
     subforms: List['SubForm']
     depth: Optional[int] = field(init=False, default=None)
 
-    @property
-    def height(self) -> int:
-        """ max path length to a leaf subform """
-        return max((sf.height + 1 for sf in self.subforms), default=0)
-
     def children(self):
         return_value = self.controls + self.subforms
         if self.embedded_query:
             return_value += [self.embedded_query]
         return return_value
 
+    def accept(self, visitor: PreprocessableVisitor):
+        visitor.visit_subform(self)
+
 
 @dataclass
-class Form(WebPageWithUses):
+class Form(WebPageWithUses, Preprocessable):
     """ Toplevel form """
     subforms: List[SubForm]
     height: Optional[int] = field(init=False, default=None)
 
     def children(self):
         return self.subforms
+
+    def accept(self, visitor: PreprocessableVisitor):
+        visitor.visit_form(self)
 
 
 @dataclass

@@ -15,47 +15,50 @@ from odbinfo.pure.graph import generate_graphs
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.parser.sql import parse
 from odbinfo.pure.util import timed
-from odbinfo.pure.visitor import (ModuleVisitor, PreprocessableVisitor,
-                                  QueryBaseVisitor)
+from odbinfo.pure.visitor import (FormVisitor, ModuleVisitor,
+                                  PreprocessableVisitor, QueryBaseVisitor)
 
 
-# TODO: move to SubForm
-def set_depth(depth: int, subform: SubForm) -> None:
-    """ sets depth recursively in `subform`"""
-    subform.depth = depth
-    for asubform in subform.subforms:
-        set_depth(depth + 1, asubform)
+class FormPreprocessor(FormVisitor):
+    """Form preprocessor, set the height of the form"""
 
+    def height(self, subform: SubForm) -> int:
+        """ max path length to a leaf subform """
+        return max((self.height(sf) + 1 for sf in subform.subforms), default=0)
 
-# TODO: move to Form
-def set_form_height(form: Form) -> None:
-    """ set the max height into the `form` """
-    form.height = max([sf.height for sf in form.subforms], default=0)
+    @staticmethod
+    def set_depth(depth: int, subform: SubForm) -> None:
+        """ sets depth recursively in `subform`"""
+        subform.depth = depth
+        for asubform in subform.subforms:
+            FormPreprocessor.set_depth(depth + 1, asubform)
 
+    def set_form_height(self, form: Form) -> None:
+        """ set the max height into the `form` """
+        form.height = max([self.height(sf) for
+                           sf in form.subforms], default=0)
 
-# TODO: move to SubForm
-def process_subform(subform: SubForm) -> None:
-    """ simplifies control.type for all (nested) controls """
+    def visit_form(self, form: Form):
+        for subform in form.subforms:
+            self.set_depth(0, subform)
+        self.set_form_height(form)
 
-    # TODO move to Control
-    def process_control(control: Union[Control, Grid, ListBox]) -> None:
-        if isinstance(control, Grid):
-            return
+    def visit_subform(self, subform: SubForm):
+        pass
+
+    @staticmethod
+    def simplify_type(control: Union[Control, ListBox]):
+        """Simplies the Staroffice components type"""
         control.type = control.type.split(".")[-1]
 
-    for control in subform.controls:
-        process_control(control)
-    for asubform in subform.subforms:
-        process_subform(asubform)
+    def visit_control(self, control: Control):
+        self.simplify_type(control)
 
+    def visit_grid(self, grid: Grid):
+        pass
 
-# TODO: move to Form
-def preprocess_form(form: Form) -> None:
-    """ calculate depth for its subforms """
-    for subform in form.subforms:
-        set_depth(0, subform)
-        process_subform(subform)
-    set_form_height(form)
+    def visit_listbox(self, listbox: ListBox):
+        self.simplify_type(listbox)
 
 
 def aggregate_uses_from_children(user_agg: UseAggregator) -> None:
@@ -65,7 +68,6 @@ def aggregate_uses_from_children(user_agg: UseAggregator) -> None:
             user_agg.uses.append(user.link)
 
 
-@timed("Aggregate uses", indent=4)
 def aggregate_uses(metadata: Metadata) -> None:
     """Collect all aggregated uses """
     for use_agg in metadata.all_objects():
@@ -77,12 +79,6 @@ def aggregate_used_by(metadata: Metadata) -> None:
     """Collect all used_by"""
     for user in metadata.all_active_users:
         metadata.usable_by_link[user.link].used_by.append(user.identifier)
-
-
-def preprocess_forms(form_defs: Sequence[Form]):
-    """preprocesses all forms in `form_defs`"""
-    for form in form_defs:
-        preprocess_form(form)
 
 
 def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
@@ -116,6 +112,7 @@ def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
 
 class ModulePreprocessor(ModuleVisitor):
     """Preprocesses a Module"""
+
     @staticmethod
     def link_name_tokens(module: Module):
         """Link the name tokens to the single function pages"""
@@ -155,30 +152,18 @@ class QueryBasePreprocessor(QueryBaseVisitor):
         for littoken in query.literal_values:
             littoken.cls = "literalvalue"
 
-    @timed("Parse query", indent=6, arg=1)
+    @timed("Parse query", indent=4, arg=1)
     def visit_querybase(self, query: QueryBase):
         """preprocesses `query`, that is parses it and does its the color highlighting"""
         self.parse_query(query)
         self.color_hightlight_query(query)
 
 
-class Preprocessor(PreprocessableVisitor, ModulePreprocessor, QueryBasePreprocessor):
+class Preprocessor(PreprocessableVisitor,
+                   ModulePreprocessor,
+                   QueryBasePreprocessor,
+                   FormPreprocessor):
     """All preprocessors together"""
-
-    def visit_form(self, form: Form):
-        pass
-
-    def visit_subform(self, subform: SubForm):
-        pass
-
-    def visit_control(self, control: Control):
-        pass
-
-    def visit_grid(self, grid: Grid):
-        pass
-
-    def visit_listbox(self, listbox: ListBox):
-        pass
 
 
 def preprocess(preprocessables: Sequence[Preprocessable]):
@@ -192,9 +177,6 @@ def preprocess(preprocessables: Sequence[Preprocessable]):
 def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     """ preprocessing of the data before it is written """
     preprocess(metadata.by_content_type(Preprocessable))
-
-    # preprocess_queries(metadata)
-    preprocess_forms(metadata.form_defs)
 
     metadata.prepare_indexed_tree()
 

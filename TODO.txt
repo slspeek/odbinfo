@@ -1,6 +1,5 @@
 make run a bit broken, as graph.svg is emptied on purpose
 
-put preprocessing code into Visitors for Form, SubForm, Control, and Grid
 check the console out put for indentation faults
 
 Code clean up

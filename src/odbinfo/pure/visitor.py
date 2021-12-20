@@ -10,24 +10,8 @@ if TYPE_CHECKING:
     from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
 
 
-class ModuleVisitor(ABC):
-    """ Module visitor interface """
-
-    @abstractmethod
-    def visit_module(self, module: Module):
-        """Visit Module"""
-
-
-class QueryBaseVisitor(ABC):
-    """QueryBase visitor interface"""
-
-    @abstractmethod
-    def visit_querybase(self, query: QueryBase):
-        """Visit QueryBase"""
-
-
-class PreprocessableVisitor(ModuleVisitor, QueryBaseVisitor, ABC):
-    """ Preprocessable visitor interface """
+class FormVisitor(ABC):
+    """ Form visitor interface """
 
     @abstractmethod
     def visit_form(self, form: Form):
@@ -48,3 +32,23 @@ class PreprocessableVisitor(ModuleVisitor, QueryBaseVisitor, ABC):
     @abstractmethod
     def visit_listbox(self, listbox: ListBox):
         """Visit ListBox"""
+
+
+class ModuleVisitor(ABC):
+    """ Module visitor interface """
+
+    @abstractmethod
+    def visit_module(self, module: Module):
+        """Visit Module"""
+
+
+class QueryBaseVisitor(ABC):
+    """QueryBase visitor interface"""
+
+    @abstractmethod
+    def visit_querybase(self, query: QueryBase):
+        """Visit QueryBase"""
+
+
+class PreprocessableVisitor(ModuleVisitor, QueryBaseVisitor, FormVisitor, ABC):
+    """ Preprocessable visitor interface """

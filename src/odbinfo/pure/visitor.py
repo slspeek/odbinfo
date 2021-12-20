@@ -1,25 +1,33 @@
 """Node visitor interfaces"""
+from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING
 
-from odbinfo.pure.datatype.exec import Module
-from odbinfo.pure.datatype.tabular import QueryBase
-from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
+if TYPE_CHECKING:
+    from odbinfo.pure.datatype.exec import Module
+    from odbinfo.pure.datatype.tabular import QueryBase
+    from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
 
 
 class ModuleVisitor(ABC):
     """ Module visitor interface """
+
     @abstractmethod
     def visit_module(self, module: Module):
         """Visit Module"""
 
 
-class PreprocessableVisitor(ModuleVisitor, ABC):
-    """ Preprocessable visitor interface """
+class QueryBaseVisitor(ABC):
+    """QueryBase visitor interface"""
 
     @abstractmethod
     def visit_querybase(self, query: QueryBase):
         """Visit QueryBase"""
+
+
+class PreprocessableVisitor(ModuleVisitor, QueryBaseVisitor, ABC):
+    """ Preprocessable visitor interface """
 
     @abstractmethod
     def visit_form(self, form: Form):

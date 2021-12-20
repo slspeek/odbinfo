@@ -13,8 +13,10 @@ from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.graph import generate_graphs
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
+from odbinfo.pure.parser.sql import parse
 from odbinfo.pure.util import timed
-from odbinfo.pure.visitor import ModuleVisitor, PreprocessableVisitor
+from odbinfo.pure.visitor import (ModuleVisitor, PreprocessableVisitor,
+                                  QueryBaseVisitor)
 
 
 # TODO: move to SubForm
@@ -75,13 +77,6 @@ def aggregate_used_by(metadata: Metadata) -> None:
     """Collect all used_by"""
     for user in metadata.all_active_users:
         metadata.usable_by_link[user.link].used_by.append(user.identifier)
-
-
-@timed("Parse queries", indent=4)
-def preprocess_queries(metadata: Metadata) -> None:
-    """process all query-like objects"""
-    for query in metadata.by_content_type(QueryBase):
-        query.preprocess()
 
 
 def preprocess_forms(form_defs: Sequence[Form]):
@@ -145,11 +140,30 @@ class ModulePreprocessor(ModuleVisitor):
         self.link_name_tokens(module)
 
 
-class Preprocessor(PreprocessableVisitor, ModulePreprocessor):
-    """All preprocessors together"""
+class QueryBasePreprocessor(QueryBaseVisitor):
+    """Preprocessor for QueryBase"""
 
+    @staticmethod
+    def parse_query(query: QueryBase):
+        """parses `query.command`"""
+        query.tokens, query.table_tokens, query.literal_values = parse(
+            query.command)
+
+    @staticmethod
+    def color_hightlight_query(query: QueryBase):
+        """Sets the class attribute on the special tokens"""
+        for littoken in query.literal_values:
+            littoken.cls = "literalvalue"
+
+    @timed("Parse query", indent=6, arg=1)
     def visit_querybase(self, query: QueryBase):
-        pass
+        """preprocesses `query`, that is parses it and does its the color highlighting"""
+        self.parse_query(query)
+        self.color_hightlight_query(query)
+
+
+class Preprocessor(PreprocessableVisitor, ModulePreprocessor, QueryBasePreprocessor):
+    """All preprocessors together"""
 
     def visit_form(self, form: Form):
         pass
@@ -179,7 +193,7 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     """ preprocessing of the data before it is written """
     preprocess(metadata.by_content_type(Preprocessable))
 
-    preprocess_queries(metadata)
+    # preprocess_queries(metadata)
     preprocess_forms(metadata.form_defs)
 
     metadata.prepare_indexed_tree()

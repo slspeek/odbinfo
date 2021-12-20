@@ -5,11 +5,11 @@ from typing import List, Union
 
 from sql_formatter.core import format_sql
 
-from odbinfo.pure.datatype.base import (Dependent, NamedNode, SQLToken, Usable,
-                                        User, WebPageWithUses)
-from odbinfo.pure.parser.sql import parse
+from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
+                                        SQLToken, Usable, User,
+                                        WebPageWithUses)
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
-from odbinfo.pure.util import timed
+from odbinfo.pure.visitor import PreprocessableVisitor
 
 KEYTYPES = {1: "Primary",
             2: "Unique",
@@ -57,7 +57,7 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 
 @dataclass
-class QueryBase(NamedNode, Dependent):
+class QueryBase(NamedNode, Dependent, Preprocessable):
     """ Query properties see:
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/
         QueryDefinition.html"""
@@ -70,17 +70,6 @@ class QueryBase(NamedNode, Dependent):
     def __post_init__(self):
         self.command = format_sql(self.command)
 
-    def parse_query(self):
-        """parses `query.command`"""
-        self.tokens, self.table_tokens, self.literal_values = parse(
-            self.command)
-
-    @timed("Parse query", indent=6, arg=0)
-    def preprocess(self) -> None:
-        """preprocesses `query`, that is parses it and does its the color highlighting"""
-        self.parse_query()
-        self.color_hightlight_query()
-
     def children(self):
         return self.tokens
 
@@ -89,10 +78,8 @@ class QueryBase(NamedNode, Dependent):
             if target.users_match(token.text[1:-1]):
                 token.link_to(target)
 
-    def color_hightlight_query(self):
-        """Sets the class attribute on the special tokens"""
-        for littoken in self.literal_values:
-            littoken.cls = "literalvalue"
+    def accept(self, visitor: PreprocessableVisitor):
+        visitor.visit_querybase(self)
 
     def to_dict(self):
         rdict = super().to_dict()

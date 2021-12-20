@@ -1,6 +1,7 @@
 make run a bit broken, as graph.svg is emptied on purpose
 
-put preprocessing code into Visitors for QueryBase and Form, SubForm, Control, and Grid
+put preprocessing code into Visitors for Form, SubForm, Control, and Grid
+check the console out put for indentation faults
 
 Code clean up
 --------------
@@ -179,6 +180,9 @@ KeyColumns, IndexColumns not used fully
 
 Decided not to
 --------------
+Consider making a recursive call down the children with the containing webpage, setting it in a field of Node
+(then remove all the parent stuff) NO! Because parent is used in the graph extensively
+
 all_objects, by_content_type --> Iterator
 search_combinations makes lists first
 

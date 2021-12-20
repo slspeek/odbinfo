@@ -45,6 +45,9 @@ class AbstractCommander(User, NamedNode, Dependent, ABC):
                 target.users_match(self.command):
             self.link_to(target)
 
+    def accept(self, visitor):
+        pass
+
 
 @dataclass
 class Commander(AbstractCommander):
@@ -64,6 +67,10 @@ class Commander(AbstractCommander):
 @dataclass
 class DatabaseDisplay(User, NamedNode, Dependent):
     """ Field in TextDocument """
+
+    def accept(self, visitor):
+        pass
+
     database: str
     table: str
     tabletype: str
@@ -91,6 +98,10 @@ class TextDocument(WebPageWithUses):
 @dataclass
 class EventListener(User, NamedNode, Dependent):
     """ Control eventlistener """
+
+    def accept(self, visitor):
+        pass
+
     script: str
 
     def parsescript(self) -> str:
@@ -230,6 +241,10 @@ class Form(WebPageWithUses, Preprocessable):
 @dataclass
 class Report(Commander, WebPageWithUses):
     """ Report metadata """
+
+    def accept(self, visitor):
+        pass
+
     output_type: str
     formulas: List[str]
 

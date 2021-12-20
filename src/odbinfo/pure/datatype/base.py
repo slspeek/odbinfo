@@ -10,8 +10,7 @@ from typing import TYPE_CHECKING, Any, List, Optional, cast
 from odbinfo.pure.datatype.config import GraphConfig
 
 if TYPE_CHECKING:
-    from odbinfo.pure.visitor import PreprocessableVisitor
-
+    from odbinfo.pure.visitor import DependentVisitor, PreprocessableVisitor
 
 logger = logging.getLogger(__name__)
 
@@ -275,6 +274,10 @@ class Dependent(ABC):
     def consider_uses(self, target: Usable):
         """Match `target` among its Users"""
 
+    @abstractmethod
+    def accept(self, visitor):
+        """Accept a `visitor`"""
+
 
 class Preprocessable(ABC):
     """Classes that need processing before dependency search"""
@@ -284,5 +287,5 @@ class Preprocessable(ABC):
     #     """Does the preparation for the dependency search"""
 
     @abstractmethod
-    def accept(self, visitor: PreprocessableVisitor):
+    def accept(self, visitor):
         """Accept a `visitor`"""

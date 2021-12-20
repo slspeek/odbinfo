@@ -8,8 +8,8 @@ from sql_formatter.core import format_sql
 from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
                                         SQLToken, Usable, User,
                                         WebPageWithUses)
+
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
-from odbinfo.pure.visitor import PreprocessableVisitor
 
 KEYTYPES = {1: "Primary",
             2: "Unique",
@@ -78,7 +78,7 @@ class QueryBase(NamedNode, Dependent, Preprocessable):
             if target.users_match(token.text[1:-1]):
                 token.link_to(target)
 
-    def accept(self, visitor: PreprocessableVisitor):
+    def accept(self, visitor):
         visitor.visit_querybase(self)
 
     def to_dict(self):
@@ -131,6 +131,10 @@ class Key(User, NamedNode, Dependent):  # pylint: disable=too-many-instance-attr
     """ Database key properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
+
+    def consider_uses(self, target: Usable):
+        pass
+
     columns: List[str]
     relatedcolumns: List[str]
     referenced_table: str
@@ -144,9 +148,8 @@ class Key(User, NamedNode, Dependent):  # pylint: disable=too-many-instance-attr
         self.update_rule = KEYRULES[self.update_rule]
         self.delete_rule = KEYRULES[self.delete_rule]
 
-    def consider_uses(self, target: Usable):
-        if target.users_match(self.referenced_table):
-            self.link = target.identifier
+    def accept(self, visitor):
+        visitor.visit_key(self)
 
 
 @dataclass

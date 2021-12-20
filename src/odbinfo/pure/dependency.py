@@ -1,13 +1,15 @@
 """Dependency search matrix"""
+from abc import ABC
 from typing import Sequence
 
 from odbinfo.pure.datatype.base import Dependent, Usable
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.metadata import Metadata
-from odbinfo.pure.datatype.tabular import (EmbeddedQuery, Key, Query, Table,
-                                           View)
+from odbinfo.pure.datatype.tabular import (EmbeddedQuery, Key, Query,
+                                           QueryBase, Table, View)
 from odbinfo.pure.datatype.ui import DatabaseDisplay, Report, TextDocument
 from odbinfo.pure.util import timed
+from odbinfo.pure.visitor import DependentVisitor, KeyVisitor, QueryBaseVisitor
 
 
 def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
@@ -15,6 +17,42 @@ def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable])
     for source in sources:
         for target in targets:
             source.consider_uses(target)
+
+
+def search_combinations_new(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
+    """ search for uses of `targets` in `sources`"""
+    for source in sources:
+        for target in targets:
+            visitor = DepencencySearch(target)
+            source.accept(visitor)
+
+
+class DependencySearchBase(ABC):
+    """Stores the target"""
+
+    def __init__(self, target: Usable):
+        self.target = target
+
+
+class KeySearch(KeyVisitor, DependencySearchBase):
+    """ Visitor for depencency search in Keys"""
+
+    def visit_key(self, key: Key):
+        if self.target.users_match(key.referenced_table):
+            key.link = self.target.identifier
+
+
+class QueryBaseSearch(QueryBaseVisitor, DependencySearchBase):
+    """ Visitor for depencency search in Query-like objects"""
+
+    def visit_querybase(self, query: QueryBase):
+        for token in query.table_tokens:
+            if self.target.users_match(token.text[1:-1]):
+                token.link_to(self.target)
+
+
+class DepencencySearch(KeySearch, QueryBaseSearch, DependentVisitor):
+    """All dependency search visitors"""
 
 
 #
@@ -78,11 +116,11 @@ def search_dependencies(metadata: Metadata) -> None:
                                                  Report,
                                                  TextDocument))
 
-    search_combinations(metadata.by_content_type(Key), metadata.table_defs)
-    search_combinations(metadata.by_content_type(View),
-                        metadata.by_content_type(Table, View))
-    search_combinations(metadata.by_content_type(Query, EmbeddedQuery),
-                        metadata.by_content_type(Table, Query, View))
+    search_combinations_new(metadata.by_content_type(Key), metadata.table_defs)
+    search_combinations_new(metadata.by_content_type(View),
+                            metadata.by_content_type(Table, View))
+    search_combinations_new(metadata.by_content_type(Query, EmbeddedQuery),
+                            metadata.by_content_type(Table, Query, View))
     search_combinations(metadata.commanders,
                         metadata.by_content_type(Table, Query, View))
     search_combinations(metadata.by_content_type(DatabaseDisplay),

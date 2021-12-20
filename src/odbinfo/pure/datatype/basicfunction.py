@@ -32,6 +32,10 @@ class BasicCall:
 @dataclass
 class BasicFunction(WebPageWithUses, Dependent):
     """ Basic sub or function """
+
+    def accept(self, visitor):
+        pass
+
     library: str
     module: str
     name_token_index: int = field(init=False)

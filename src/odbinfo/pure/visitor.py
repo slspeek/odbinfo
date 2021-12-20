@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from odbinfo.pure.datatype.exec import Module
-    from odbinfo.pure.datatype.tabular import QueryBase
+    from odbinfo.pure.datatype.tabular import Key, QueryBase
     from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
 
 
@@ -52,3 +52,15 @@ class QueryBaseVisitor(ABC):
 
 class PreprocessableVisitor(ModuleVisitor, QueryBaseVisitor, FormVisitor, ABC):
     """ Preprocessable visitor interface """
+
+
+class KeyVisitor:
+    """Visitor interface for Key"""
+
+    @abstractmethod
+    def visit_key(self, key: Key):
+        """visit key"""
+
+
+class DependentVisitor(KeyVisitor, QueryBaseVisitor, ABC):
+    """ Dependent visitor interface"""

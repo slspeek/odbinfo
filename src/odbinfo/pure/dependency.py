@@ -1,15 +1,17 @@
 """Dependency search matrix"""
 from abc import ABC
-from typing import Sequence
+from typing import Sequence, cast
 
 from odbinfo.pure.datatype.base import Dependent, Usable
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import (EmbeddedQuery, Key, Query,
                                            QueryBase, Table, View)
-from odbinfo.pure.datatype.ui import DatabaseDisplay, Report, TextDocument
+from odbinfo.pure.datatype.ui import (DatabaseDisplay, EventListener, Report,
+                                      TextDocument)
 from odbinfo.pure.util import timed
-from odbinfo.pure.visitor import DependentVisitor, KeyVisitor, QueryBaseVisitor
+from odbinfo.pure.visitor import (DependentVisitor, EventListenerVisitor,
+                                  KeyVisitor, QueryBaseVisitor)
 
 
 def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
@@ -51,7 +53,18 @@ class QueryBaseSearch(QueryBaseVisitor, DependencySearchBase):
                 token.link_to(self.target)
 
 
-class DepencencySearch(KeySearch, QueryBaseSearch, DependentVisitor):
+class EventListenerSearch(EventListenerVisitor, DependencySearchBase):
+    """ Visitor for depencency search in EventListeners"""
+
+    def visit_eventlistener(self, eventlistener: EventListener):
+        if not isinstance(self.target, BasicFunction):
+            return
+        func = cast(BasicFunction, self.target)
+        if func.script_url == eventlistener.parsescript():
+            eventlistener.link_to(func)
+
+
+class DepencencySearch(KeySearch, QueryBaseSearch, EventListenerSearch, DependentVisitor):
     """All dependency search visitors"""
 
 
@@ -106,8 +119,8 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
 @timed("Search dependencies", indent=4)
 def search_dependencies(metadata: Metadata) -> None:
     """ dependency search in `metadata`"""
-    search_combinations(metadata.eventlisteners,
-                        metadata.basicfunction_defs)
+    search_combinations_new(metadata.eventlisteners,
+                            metadata.basicfunction_defs)
     search_callable_in_callable(metadata.basicfunction_defs)
     search_combinations(metadata.basicfunction_defs,
                         metadata.by_content_type(Table,

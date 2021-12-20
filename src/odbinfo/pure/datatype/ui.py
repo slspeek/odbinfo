@@ -1,11 +1,10 @@
 """ Graphical User Interface datatypes """
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import List, Optional, Union, cast
+from typing import List, Optional, Union
 
 from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
                                         Usable, User, WebPageWithUses)
-from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import GraphConfig
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 from odbinfo.pure.visitor import PreprocessableVisitor
@@ -99,9 +98,6 @@ class TextDocument(WebPageWithUses):
 class EventListener(User, NamedNode, Dependent):
     """ Control eventlistener """
 
-    def accept(self, visitor):
-        pass
-
     script: str
 
     def parsescript(self) -> str:
@@ -109,11 +105,15 @@ class EventListener(User, NamedNode, Dependent):
         return (self.script.split(":")[1]).split("?")[0]
 
     def consider_uses(self, target: Usable):
-        if not isinstance(target, BasicFunction):
-            return
-        func = cast(BasicFunction, target)
-        if func.script_url == self.parsescript():
-            self.link_to(func)
+        # if not isinstance(target, BasicFunction):
+        #     return
+        # func = cast(BasicFunction, target)
+        # if func.script_url == self.parsescript():
+        #     self.link_to(func)
+        pass
+
+    def accept(self, visitor):
+        visitor.visit_eventlistener(self)
 
 
 @dataclass

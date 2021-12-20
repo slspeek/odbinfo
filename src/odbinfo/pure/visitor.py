@@ -7,7 +7,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from odbinfo.pure.datatype.exec import Module
     from odbinfo.pure.datatype.tabular import Key, QueryBase
-    from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
+    from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
+                                          ListBox, SubForm)
 
 
 class FormVisitor(ABC):
@@ -62,5 +63,13 @@ class KeyVisitor:
         """visit key"""
 
 
-class DependentVisitor(KeyVisitor, QueryBaseVisitor, ABC):
+class EventListenerVisitor:
+    """Visitor interface for EventListener"""
+
+    @abstractmethod
+    def visit_eventlistener(self, eventlistener: EventListener):
+        """visit the eventlistener"""
+
+
+class DependentVisitor(KeyVisitor, QueryBaseVisitor, EventListenerVisitor, ABC):
     """ Dependent visitor interface"""

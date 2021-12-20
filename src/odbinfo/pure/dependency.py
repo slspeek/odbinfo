@@ -11,9 +11,9 @@ from odbinfo.pure.datatype.ui import (AbstractCommander, DatabaseDisplay,
                                       EventListener, ListBox, Report, SubForm,
                                       TextDocument)
 from odbinfo.pure.util import timed
-from odbinfo.pure.visitor import (CommanderVisitor, DependentVisitor,
-                                  EventListenerVisitor, KeyVisitor,
-                                  QueryBaseVisitor)
+from odbinfo.pure.visitor import (CommanderVisitor, DatabaseDisplayVisitor,
+                                  DependentVisitor, EventListenerVisitor,
+                                  KeyVisitor, QueryBaseVisitor)
 
 
 def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
@@ -81,10 +81,19 @@ class CommanderSearch(CommanderVisitor, DependencySearchBase):
         self.visit_commander(subform)
 
 
+class DatabaseDisplaySearch(DatabaseDisplayVisitor, DependencySearchBase):
+    """Dependency search in database display object in text documents"""
+
+    def visit_databasedisplay(self, display: DatabaseDisplay):
+        if self.target.users_match(display.table):
+            display.link_to(self.target)
+
+
 class DepencencySearch(KeySearch,
                        QueryBaseSearch,
                        EventListenerSearch,
                        CommanderSearch,
+                       DatabaseDisplaySearch,
                        DependentVisitor):
     """All dependency search visitors"""
 
@@ -157,5 +166,5 @@ def search_dependencies(metadata: Metadata) -> None:
                             metadata.by_content_type(Table, Query, View))
     search_combinations_new(metadata.commanders,
                             metadata.by_content_type(Table, Query, View))
-    search_combinations(metadata.by_content_type(DatabaseDisplay),
-                        metadata.by_content_type(Table, Query, View))
+    search_combinations_new(metadata.by_content_type(DatabaseDisplay),
+                            metadata.by_content_type(Table, Query, View))

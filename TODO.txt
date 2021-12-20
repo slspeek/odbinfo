@@ -1,6 +1,6 @@
 make run a bit broken, as graph.svg is emptied on purpose
 
-check the console out put for indentation faults
+basicfunction search in Visitor, Dependent interface cleanup
 
 Code clean up
 --------------

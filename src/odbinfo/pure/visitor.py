@@ -8,8 +8,8 @@ if TYPE_CHECKING:
     from odbinfo.pure.datatype.exec import Module
     from odbinfo.pure.datatype.tabular import Key, QueryBase
     from odbinfo.pure.datatype.ui import (AbstractCommander, Control,
-                                          EventListener, Form, Grid, ListBox,
-                                          SubForm)
+                                          DatabaseDisplay, EventListener, Form,
+                                          Grid, ListBox, SubForm)
 
 
 class ListBoxVisitor(ABC):
@@ -80,7 +80,7 @@ class EventListenerVisitor:
         """visit the eventlistener"""
 
 
-class CommanderVisitor(SubFormVisitor, ListBoxVisitor):
+class CommanderVisitor(SubFormVisitor, ListBoxVisitor, ABC):
     """Commander visitor interface"""
 
     @abstractmethod
@@ -88,9 +88,18 @@ class CommanderVisitor(SubFormVisitor, ListBoxVisitor):
         """visit the commander"""
 
 
+class DatabaseDisplayVisitor(ABC):
+    """DatabaseDisplay visitor interface """
+
+    @abstractmethod
+    def visit_databasedisplay(self, display: DatabaseDisplay):
+        """visit a database display"""
+
+
 class DependentVisitor(KeyVisitor,
                        QueryBaseVisitor,
                        EventListenerVisitor,
                        CommanderVisitor,
+                       DatabaseDisplayVisitor,
                        ABC):
     """ Dependent visitor interface"""

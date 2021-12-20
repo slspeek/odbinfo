@@ -5,7 +5,7 @@ min-public-methods=0
 ignore=odbinfo/pure/parser/sqlite,odbinfo/pure/parser/oobasic
 
 [DESIGN]
-max-parents=13
+max-parents=20
 
 [MISCELLANEOUS]
 # List of note tags to take in consideration, separated by a comma.

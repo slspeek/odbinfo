@@ -66,15 +66,14 @@ class DatabaseDisplay(User, NamedNode, Dependent):
     """ Field in TextDocument """
 
     def accept(self, visitor):
-        pass
+        visitor.visit_databasedisplay(self)
 
     database: str
     table: str
     tabletype: str
 
     def consider_uses(self, target: Usable):
-        if target.users_match(self.table):
-            self.link_to(target)
+        pass
 
 
 @dataclass

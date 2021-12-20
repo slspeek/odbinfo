@@ -7,11 +7,13 @@ from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import (EmbeddedQuery, Key, Query,
                                            QueryBase, Table, View)
-from odbinfo.pure.datatype.ui import (DatabaseDisplay, EventListener, Report,
+from odbinfo.pure.datatype.ui import (AbstractCommander, DatabaseDisplay,
+                                      EventListener, ListBox, Report, SubForm,
                                       TextDocument)
 from odbinfo.pure.util import timed
-from odbinfo.pure.visitor import (DependentVisitor, EventListenerVisitor,
-                                  KeyVisitor, QueryBaseVisitor)
+from odbinfo.pure.visitor import (CommanderVisitor, DependentVisitor,
+                                  EventListenerVisitor, KeyVisitor,
+                                  QueryBaseVisitor)
 
 
 def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
@@ -64,7 +66,26 @@ class EventListenerSearch(EventListenerVisitor, DependencySearchBase):
             eventlistener.link_to(func)
 
 
-class DepencencySearch(KeySearch, QueryBaseSearch, EventListenerSearch, DependentVisitor):
+class CommanderSearch(CommanderVisitor, DependencySearchBase):
+    """ Commander depencency search """
+
+    def visit_commander(self, commander: AbstractCommander):
+        if not commander.issqlcommand and \
+                self.target.users_match(commander.command):
+            commander.link_to(self.target)
+
+    def visit_listbox(self, listbox: ListBox):
+        self.visit_commander(listbox)
+
+    def visit_subform(self, subform: SubForm):
+        self.visit_commander(subform)
+
+
+class DepencencySearch(KeySearch,
+                       QueryBaseSearch,
+                       EventListenerSearch,
+                       CommanderSearch,
+                       DependentVisitor):
     """All dependency search visitors"""
 
 
@@ -134,7 +155,7 @@ def search_dependencies(metadata: Metadata) -> None:
                             metadata.by_content_type(Table, View))
     search_combinations_new(metadata.by_content_type(Query, EmbeddedQuery),
                             metadata.by_content_type(Table, Query, View))
-    search_combinations(metadata.commanders,
-                        metadata.by_content_type(Table, Query, View))
+    search_combinations_new(metadata.commanders,
+                            metadata.by_content_type(Table, Query, View))
     search_combinations(metadata.by_content_type(DatabaseDisplay),
                         metadata.by_content_type(Table, Query, View))

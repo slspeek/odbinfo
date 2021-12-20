@@ -7,20 +7,33 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from odbinfo.pure.datatype.exec import Module
     from odbinfo.pure.datatype.tabular import Key, QueryBase
-    from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
-                                          ListBox, SubForm)
+    from odbinfo.pure.datatype.ui import (AbstractCommander, Control,
+                                          EventListener, Form, Grid, ListBox,
+                                          SubForm)
 
 
-class FormVisitor(ABC):
+class ListBoxVisitor(ABC):
+    """ ListBox visitor interface """
+
+    @abstractmethod
+    def visit_listbox(self, listbox: ListBox):
+        """visit listbox"""
+
+
+class SubFormVisitor(ABC):
+    """ SubForm visitor interface"""
+
+    @abstractmethod
+    def visit_subform(self, subform: SubForm):
+        """Visit SubForm"""
+
+
+class FormVisitor(SubFormVisitor, ListBoxVisitor, ABC):
     """ Form visitor interface """
 
     @abstractmethod
     def visit_form(self, form: Form):
         """Visit Form"""
-
-    @abstractmethod
-    def visit_subform(self, subform: SubForm):
-        """Visit SubForm"""
 
     @abstractmethod
     def visit_control(self, control: Control):
@@ -29,10 +42,6 @@ class FormVisitor(ABC):
     @abstractmethod
     def visit_grid(self, grid: Grid):
         """Visit Grid"""
-
-    @abstractmethod
-    def visit_listbox(self, listbox: ListBox):
-        """Visit ListBox"""
 
 
 class ModuleVisitor(ABC):
@@ -71,5 +80,17 @@ class EventListenerVisitor:
         """visit the eventlistener"""
 
 
-class DependentVisitor(KeyVisitor, QueryBaseVisitor, EventListenerVisitor, ABC):
+class CommanderVisitor(SubFormVisitor, ListBoxVisitor):
+    """Commander visitor interface"""
+
+    @abstractmethod
+    def visit_commander(self, commander: AbstractCommander):
+        """visit the commander"""
+
+
+class DependentVisitor(KeyVisitor,
+                       QueryBaseVisitor,
+                       EventListenerVisitor,
+                       CommanderVisitor,
+                       ABC):
     """ Dependent visitor interface"""

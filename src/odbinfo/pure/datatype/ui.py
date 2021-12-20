@@ -40,12 +40,10 @@ class AbstractCommander(User, NamedNode, Dependent, ABC):
         return self.commandtype in COMMAND_TYPE_COMMAND
 
     def consider_uses(self, target: Usable):
-        if not self.issqlcommand and \
-                target.users_match(self.command):
-            self.link_to(target)
+        pass
 
     def accept(self, visitor):
-        pass
+        visitor.visit_abstractcommander(self)
 
 
 @dataclass
@@ -221,7 +219,7 @@ class SubForm(Commander, NamedNode, Preprocessable):
             return_value += [self.embedded_query]
         return return_value
 
-    def accept(self, visitor: PreprocessableVisitor):
+    def accept(self, visitor):
         visitor.visit_subform(self)
 
 
@@ -243,7 +241,7 @@ class Report(Commander, WebPageWithUses):
     """ Report metadata """
 
     def accept(self, visitor):
-        pass
+        visitor.visit_commander(self)
 
     output_type: str
     formulas: List[str]

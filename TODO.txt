@@ -1,22 +1,8 @@
 make run a bit broken, as graph.svg is emptied on purpose
 
-basicfunction search in Visitor, Dependent interface cleanup
-
-Code clean up
---------------
-- Preprocessable type for stuff that needs preprocessing
-
-processor copy_token unittest
-
-Makefile run after 'source env.source'
-
 Add control 'visible' attribute
 
-dependencysearch should be called from core not processor
-metadata_tables.graphs = generate_graphs(metadata_tables, config)
-    for module in metadata_tables.module_defs():
-        _link_name_tokens(module)
-Module should probably hide its Tokens in children No!
+dependencysearch should be called from core not processor?
 
 get 'incorrect type' check in pycharm to work for all
 

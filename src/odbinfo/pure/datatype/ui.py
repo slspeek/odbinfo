@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from typing import List, Optional, Union
 
 from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
-                                        Usable, User, WebPageWithUses)
+                                        User, WebPageWithUses)
 from odbinfo.pure.datatype.config import GraphConfig
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
 from odbinfo.pure.visitor import PreprocessableVisitor
@@ -39,9 +39,6 @@ class AbstractCommander(User, NamedNode, Dependent, ABC):
         """returns True if command contains SQL"""
         return self.commandtype in COMMAND_TYPE_COMMAND
 
-    def consider_uses(self, target: Usable):
-        pass
-
     def accept(self, visitor):
         visitor.visit_abstractcommander(self)
 
@@ -65,15 +62,12 @@ class Commander(AbstractCommander):
 class DatabaseDisplay(User, NamedNode, Dependent):
     """ Field in TextDocument """
 
-    def accept(self, visitor):
-        visitor.visit_databasedisplay(self)
-
     database: str
     table: str
     tabletype: str
 
-    def consider_uses(self, target: Usable):
-        pass
+    def accept(self, visitor):
+        visitor.visit_databasedisplay(self)
 
 
 @dataclass
@@ -100,14 +94,6 @@ class EventListener(User, NamedNode, Dependent):
     def parsescript(self) -> str:
         """returns {Lib}.{Mod}.{Func} part from script field"""
         return (self.script.split(":")[1]).split("?")[0]
-
-    def consider_uses(self, target: Usable):
-        # if not isinstance(target, BasicFunction):
-        #     return
-        # func = cast(BasicFunction, target)
-        # if func.script_url == self.parsescript():
-        #     self.link_to(func)
-        pass
 
     def accept(self, visitor):
         visitor.visit_eventlistener(self)

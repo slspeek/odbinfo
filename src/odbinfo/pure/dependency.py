@@ -11,23 +11,17 @@ from odbinfo.pure.datatype.ui import (AbstractCommander, DatabaseDisplay,
                                       EventListener, ListBox, Report, SubForm,
                                       TextDocument)
 from odbinfo.pure.util import timed
-from odbinfo.pure.visitor import (CommanderVisitor, DatabaseDisplayVisitor,
-                                  DependentVisitor, EventListenerVisitor,
-                                  KeyVisitor, QueryBaseVisitor)
+from odbinfo.pure.visitor import (BasicFunctionVisitor, CommanderVisitor,
+                                  DatabaseDisplayVisitor, DependentVisitor,
+                                  EventListenerVisitor, KeyVisitor,
+                                  QueryBaseVisitor)
 
 
 def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
     """ search for uses of `targets` in `sources`"""
-    for source in sources:
-        for target in targets:
-            source.consider_uses(target)
-
-
-def search_combinations_new(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
-    """ search for uses of `targets` in `sources`"""
-    for source in sources:
-        for target in targets:
-            visitor = DepencencySearch(target)
+    for target in targets:
+        visitor = DepencencySearch(target)
+        for source in sources:
             source.accept(visitor)
 
 
@@ -89,58 +83,87 @@ class DatabaseDisplaySearch(DatabaseDisplayVisitor, DependencySearchBase):
             display.link_to(self.target)
 
 
+class BasicFunctionCallSearch(BasicFunctionVisitor):
+    """ Dependency search in a basic function """
+
+    def __init__(self, target: BasicFunction):
+        self.target = target
+
+    def visit_basicfunction(self, basicfunction: BasicFunction):
+        for function_call in basicfunction.calls:
+            function_call.consider_use(self.target)
+
+
+class BasicFunctionStringSearch(BasicFunctionVisitor, DependencySearchBase):
+    """ Dependency search in a basic function """
+
+    def visit_basicfunction(self, basicfunction: BasicFunction):
+        for string_literal in basicfunction.strings:
+            if self.target.users_match(string_literal.text[1:-1]):
+                string_literal.link_to(self.target)
+
+
+class BasicFunctionRemoveRecurisveCalls(BasicFunctionVisitor):
+    """ Removes the probably unintended link to itself for functions"""
+
+    def visit_basicfunction(self, basicfunction: BasicFunction):
+        """ Removes recursive calls
+            to avoid linking every function to itself
+            because of the way a return value is specified"""
+        for call in basicfunction.calls:
+            if call.module_token:
+                continue
+            if call.name_token.match(basicfunction.name):
+                call.name_token.link = None
+
+
 class DepencencySearch(KeySearch,
                        QueryBaseSearch,
                        EventListenerSearch,
                        CommanderSearch,
                        DatabaseDisplaySearch,
+                       BasicFunctionStringSearch,
                        DependentVisitor):
     """All dependency search visitors"""
 
 
-#
-# BasicFunction in BasicFunction
-#
-
 def remove_recursive_calls(funcs: Sequence[BasicFunction]):
     """remove the probably unintended recursive call made by assignment"\
         "of the return value"""
+    remove_rec_calls_visitor = BasicFunctionRemoveRecurisveCalls()
     for function in funcs:
-        function.remove_recursive_calls()
+        function.accept(remove_rec_calls_visitor)
 
 
 def search_calls(source: BasicFunction, targets: Sequence[BasicFunction]):
     """ search for calls from source in `targets`"""
 
     # source's module
-    def filter_own_module(call: BasicFunction):
-        return (call.module == source.module
-                and call.library == source.library)
+    def filter_own_module(target: BasicFunction) -> bool:
+        return (target.module == source.module
+                and target.library == source.library)
 
     # targets in own library
-    def filter_own_library(call: BasicFunction):
-        return (not (call.module == source.module)
-                and call.library == source.library)
+    def filter_own_library(target: BasicFunction) -> bool:
+        return (not (target.module == source.module)
+                and target.library == source.library)
 
     # targets in other libraries
-    def filter_other_library(call: BasicFunction):
-        return not call.library == source.library
+    def filter_other_library(target: BasicFunction) -> bool:
+        return not target.library == source.library
 
     # the order is crucial as it represents scope in OOBasic
     ordered_targets = (list(filter(filter_own_module, targets))
                        + list(filter(filter_own_library, targets))
                        + list(filter(filter_other_library, targets)))
-    for candidate in ordered_targets:
-        source.consider_calls(candidate)
+    for target in ordered_targets:
+        source.accept(BasicFunctionCallSearch(target))
 
 
 def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
-    """ dependency search amoung the basic targets and linking the
-    parsed tokens to the targets
-    the callable tokens are linked during search
-    the module tokens links are rewritten afterwards
-    find calls from one to another """
-
+    """
+    dependency search amoung the basicfunctions
+    """
     for acallable in callables:
         search_calls(acallable, callables)
     remove_recursive_calls(callables)
@@ -149,22 +172,30 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
 @timed("Search dependencies", indent=4)
 def search_dependencies(metadata: Metadata) -> None:
     """ dependency search in `metadata`"""
-    search_combinations_new(metadata.eventlisteners,
-                            metadata.basicfunction_defs)
     search_callable_in_callable(metadata.basicfunction_defs)
-    search_combinations(metadata.basicfunction_defs,
-                        metadata.by_content_type(Table,
-                                                 Query,
-                                                 View,
-                                                 Report,
-                                                 TextDocument))
 
-    search_combinations_new(metadata.by_content_type(Key), metadata.table_defs)
-    search_combinations_new(metadata.by_content_type(View),
-                            metadata.by_content_type(Table, View))
-    search_combinations_new(metadata.by_content_type(Query, EmbeddedQuery),
-                            metadata.by_content_type(Table, Query, View))
-    search_combinations_new(metadata.commanders,
-                            metadata.by_content_type(Table, Query, View))
-    search_combinations_new(metadata.by_content_type(DatabaseDisplay),
-                            metadata.by_content_type(Table, Query, View))
+    search_combinations(
+        sources=metadata.eventlisteners,
+        targets=metadata.basicfunction_defs)
+    search_combinations(
+        sources=metadata.basicfunction_defs,
+        targets=metadata.by_content_type(Table,
+                                         Query,
+                                         View,
+                                         Report,
+                                         TextDocument))
+    search_combinations(
+        sources=metadata.by_content_type(Key),
+        targets=metadata.table_defs)
+    search_combinations(
+        sources=metadata.by_content_type(View),
+        targets=metadata.by_content_type(Table, View))
+    search_combinations(
+        sources=metadata.by_content_type(Query, EmbeddedQuery),
+        targets=metadata.by_content_type(Table, Query, View))
+    search_combinations(
+        sources=metadata.commanders,
+        targets=metadata.by_content_type(Table, Query, View))
+    search_combinations(
+        sources=metadata.by_content_type(DatabaseDisplay),
+        targets=metadata.by_content_type(Table, Query, View))

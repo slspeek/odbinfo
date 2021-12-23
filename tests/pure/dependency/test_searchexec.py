@@ -2,9 +2,12 @@
 import unittest
 
 from odbinfo.pure.datatype.base import Identifier, WebPage, content_type
+from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.exec import Module
 from odbinfo.pure.datatype.tabular import Table
-from odbinfo.pure.dependency import search_callable_in_callable
+from odbinfo.pure.dependency import (BasicFunctionCallSearch,
+                                     BasicFunctionStringSearch,
+                                     search_callable_in_callable)
 from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
 from odbinfo.pure.processor import Preprocessor, rewrite_module_callable_links
 
@@ -60,14 +63,19 @@ def test_search_callable_in_callable_shadowing():
     assert len([token for token in all_tokens if token.link]) == 3
 
 
+def search(source: BasicFunction, target: BasicFunction):
+    searcher = BasicFunctionCallSearch(target)
+    source.accept(searcher)
+
+
 def test_consider_simple():
     """ Test consider """
     callables = _scan_basic(SOURCE_MODULEONE, "Library", "ModuleOne")
     foo_sub = callables[0]
     bar_sub = callables[1]
-    foo_sub.consider_calls(bar_sub)
+    search(source=foo_sub, target=bar_sub)
     assert len([token for token in foo_sub.tokens if token.link]) == 1
-    bar_sub.consider_calls(foo_sub)
+    search(source=bar_sub, target=foo_sub)
     assert len([token for token in bar_sub.tokens if token.link]) == 0
 
 
@@ -77,9 +85,9 @@ def test_consider_other_lib():
     mod1_foo_sub = callables[0]
     callables = _scan_basic(SOURCE_MODULETWO, "LibraryTwo", "ModuleTwo")
     mod2_wose_sub = callables[0]
-    mod1_foo_sub.consider_calls(mod2_wose_sub)
+    search(mod1_foo_sub, mod2_wose_sub)
     assert len([token for token in mod1_foo_sub.tokens if token.link]) == 0
-    mod2_wose_sub.consider_calls(mod1_foo_sub)
+    search(mod2_wose_sub, mod1_foo_sub)
     assert len([token for token in mod2_wose_sub.tokens if token.link]) == 1
 
 
@@ -145,5 +153,6 @@ class StringRefsInCallables(ModuleTest):
 
     def test_match(self):
         """match ref_one"""
-        self.module.callables[0].consider_uses(self.webpage)
+        visitor = BasicFunctionStringSearch(self.webpage)
+        self.module.callables[0].accept(visitor)
         assert self.withref.strings[0].link == self.webpage.identifier

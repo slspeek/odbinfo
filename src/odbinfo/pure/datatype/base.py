@@ -267,25 +267,17 @@ class SQLToken(Token):
         return adict
 
 
-class Dependent(ABC):
+class Visitable(ABC):
+    """Implementors can be visited"""
+
+    @abstractmethod
+    def accept(self, visitor):
+        """Accept a `visitor`"""
+
+
+class Dependent(Visitable, ABC):
     """Depends on zero of more Usable instances"""
 
-    @abstractmethod
-    def consider_uses(self, target: Usable):
-        """Match `target` among its Users"""
 
-    @abstractmethod
-    def accept(self, visitor):
-        """Accept a `visitor`"""
-
-
-class Preprocessable(ABC):
+class Preprocessable(Visitable, ABC):
     """Classes that need processing before dependency search"""
-
-    # @abstractmethod
-    # def preprocess(self):
-    #     """Does the preparation for the dependency search"""
-
-    @abstractmethod
-    def accept(self, visitor):
-        """Accept a `visitor`"""

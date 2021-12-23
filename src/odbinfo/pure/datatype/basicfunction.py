@@ -2,8 +2,7 @@
 from dataclasses import dataclass, field
 from typing import List, Optional
 
-from odbinfo.pure.datatype.base import (BasicToken, Dependent, Usable,
-                                        WebPageWithUses)
+from odbinfo.pure.datatype.base import BasicToken, Dependent, WebPageWithUses
 
 
 @dataclass
@@ -33,9 +32,6 @@ class BasicCall:
 class BasicFunction(WebPageWithUses, Dependent):
     """ Basic sub or function """
 
-    def accept(self, visitor):
-        pass
-
     library: str
     module: str
     name_token_index: int = field(init=False)
@@ -51,6 +47,9 @@ class BasicFunction(WebPageWithUses, Dependent):
         super().__post_init__()
         self.title = f"{self.name}.{self.module}.{self.library}"
 
+    def accept(self, visitor):
+        visitor.visit_basicfunction(self)
+
     def children(self):
         return self.tokens
 
@@ -59,32 +58,6 @@ class BasicFunction(WebPageWithUses, Dependent):
         """As matched in EventListener"""
         return \
             f"{self.library}.{self.module}.{self.name}"
-
-    def consider_calls(self, target: "BasicFunction"):
-        """ find calls in `source` to `candidate_callee`"""
-        for function_call in self.calls:
-            function_call.consider_use(target)
-
-    def consider_uses(self, target: Usable):
-        if isinstance(target, BasicFunction):
-            raise ValueError("Call consider_calls with a BasicFunction")
-        self.consider_string_references(target)
-
-    def consider_string_references(self, target: Usable):
-        """Consider string references to `target`"""
-        for string_literal in self.strings:
-            if target.users_match(string_literal.text[1:-1]):
-                string_literal.link_to(target)
-
-    def remove_recursive_calls(self):
-        """ Removes recursive calls
-            to avoid linking every function to itself
-            because of the way a return value is specified"""
-        for call in self.calls:
-            if call.module_token:
-                continue
-            if call.name_token.match(self.name):
-                call.name_token.link = None
 
     def to_dict(self):
         result = super().to_dict()

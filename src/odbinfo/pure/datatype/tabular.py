@@ -6,8 +6,7 @@ from typing import List, Union
 from sql_formatter.core import format_sql
 
 from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
-                                        SQLToken, Usable, User,
-                                        WebPageWithUses)
+                                        SQLToken, User, WebPageWithUses)
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 
@@ -73,11 +72,6 @@ class QueryBase(NamedNode, Dependent, Preprocessable):
     def children(self):
         return self.tokens
 
-    def consider_uses(self, target: Usable):
-        for token in self.table_tokens:
-            if target.users_match(token.text[1:-1]):
-                token.link_to(target)
-
     def accept(self, visitor):
         visitor.visit_querybase(self)
 
@@ -131,9 +125,6 @@ class Key(User, NamedNode, Dependent):  # pylint: disable=too-many-instance-attr
     """ Database key properties
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
-
-    def consider_uses(self, target: Usable):
-        pass
 
     columns: List[str]
     relatedcolumns: List[str]

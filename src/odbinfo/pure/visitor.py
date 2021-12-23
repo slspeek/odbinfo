@@ -4,6 +4,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
+from odbinfo.pure.datatype.basicfunction import BasicFunction
+
 if TYPE_CHECKING:
     from odbinfo.pure.datatype.exec import Module
     from odbinfo.pure.datatype.tabular import Key, QueryBase
@@ -96,10 +98,19 @@ class DatabaseDisplayVisitor(ABC):
         """visit a database display"""
 
 
+class BasicFunctionVisitor(ABC):
+    """BasicFucntion visitor interface """
+
+    @abstractmethod
+    def visit_basicfunction(self, basicfunction: BasicFunction):
+        """ visit a basicfunction """
+
+
 class DependentVisitor(KeyVisitor,
                        QueryBaseVisitor,
                        EventListenerVisitor,
                        CommanderVisitor,
                        DatabaseDisplayVisitor,
+                       BasicFunctionVisitor,
                        ABC):
     """ Dependent visitor interface"""

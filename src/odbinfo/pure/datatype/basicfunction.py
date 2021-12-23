@@ -11,19 +11,21 @@ class BasicCall:
     name_token: BasicToken
     module_token: Optional[BasicToken]
 
-    def match_module(self, target: "BasicFunction") -> bool:
+    def match_module(self, module_name: str) -> bool:
         """Match module names"""
         if self.module_token:
-            return self.module_token.match(target.module)
+            return self.module_token.match(module_name)
         # If module_token is not set we have a match
         return True
 
     def consider_use(self, target: "BasicFunction"):
         """Consider `target` for this call"""
-        if not self.match_module(target):
+        if self.name_token.link:
+            # if already linked do nothing
             return
-        if self.name_token.match(target.name) \
-                and not self.name_token.link:
+        if not self.match_module(target.module):
+            return
+        if self.name_token.match(target.name):
             self.name_token.link_to(target)
 
 
@@ -41,7 +43,6 @@ class BasicFunction(WebPageWithUses, Dependent):
     calls: List[BasicCall] = field(init=False, default_factory=list)
     strings: List[BasicToken] = field(
         init=False, repr=False, default_factory=list)
-    title: str = field(init=False)
 
     def __post_init__(self):
         super().__post_init__()
@@ -52,12 +53,6 @@ class BasicFunction(WebPageWithUses, Dependent):
 
     def children(self):
         return self.tokens
-
-    @property
-    def script_url(self):
-        """As matched in EventListener"""
-        return \
-            f"{self.library}.{self.module}.{self.name}"
 
     def to_dict(self):
         result = super().to_dict()

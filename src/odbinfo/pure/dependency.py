@@ -56,7 +56,8 @@ class EventListenerSearch(EventListenerVisitor, DependencySearchBase):
         if not isinstance(self.target, BasicFunction):
             return
         func = cast(BasicFunction, self.target)
-        if func.script_url == eventlistener.parsescript():
+        if f"{func.library}.{func.module}.{func.name}" == \
+                eventlistener.parsescript():
             eventlistener.link_to(func)
 
 

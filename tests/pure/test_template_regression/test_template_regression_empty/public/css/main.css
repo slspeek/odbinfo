@@ -108,6 +108,10 @@ footer {
     border-bottom: var(--border-width) solid var(--accent);
 }
 
+.pages {
+    font-size: larger;
+}
+
 .stringlit {
   color: #e7e7bd;
 }

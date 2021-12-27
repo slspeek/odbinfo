@@ -4,6 +4,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
+from odbinfo.pure.datatype.base import BasicToken
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 
 if TYPE_CHECKING:
@@ -12,6 +13,14 @@ if TYPE_CHECKING:
     from odbinfo.pure.datatype.ui import (AbstractCommander, Control,
                                           DatabaseDisplay, EventListener, Form,
                                           Grid, ListBox, SubForm)
+
+
+class BasicTokenVisitor(ABC):
+    """ BasicToken visitor interface"""
+
+    @abstractmethod
+    def visit_basictoken(self, token: BasicToken):
+        """ visit a BASIC token"""
 
 
 class ListBoxVisitor(ABC):

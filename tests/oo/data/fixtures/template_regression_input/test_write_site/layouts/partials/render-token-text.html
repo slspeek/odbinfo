@@ -1,6 +1,6 @@
 <!---->{{ if .token.link }}<!--
       -->{{ $url:=partial "link2url" (dict "context" .context "link" .token.link ) }}<!--
-      --><a href="{{$url}}">{{ .token.text }}</a><!--
+      --><a class=link href="{{$url}}">{{ .token.text }}</a><!--
     -->{{ else }}<!--
   ---->{{ partial "token-text" .token }}<!--
     -->{{ end }}

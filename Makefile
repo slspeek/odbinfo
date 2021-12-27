@@ -143,12 +143,12 @@ alltest: clean
 serve: run
 	cd $(test-output)/test_core/testdb
 	x-www-browser http://localhost:1313/ &
-	hugo server --disableFastRender --layoutDir ../../../../../data/hugo-template/layouts
+	hugo server --disableFastRender --layoutDir ../../../../../src/hugo-template/layouts
 
 .ONESHELL:
 qserve:
 	cd $(test-output)/test_core/testdb
-	hugo server --disableFastRender --layoutDir ../../../../../data/hugo-template/layouts
+	hugo server --disableFastRender --layoutDir ../../../../../src/hugo-template/layouts
 
 format:
 	$(PUREPYTHON) -m isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" $(srcloc) $(testloc)

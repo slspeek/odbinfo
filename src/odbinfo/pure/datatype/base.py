@@ -236,6 +236,7 @@ class Token(User, Node):
     def to_dict(self):
         adict = super().to_dict()
         del adict["hidden"]
+        del adict["type"]
         if not self.link:
             del adict["obj_id"]
             if "link" in adict:
@@ -246,15 +247,6 @@ class Token(User, Node):
 def equals_ignore_case(left: str, right: str) -> bool:
     """Compares `left` to `right` ignoring case"""
     return left.upper() == right.upper()
-
-
-@dataclass
-class BasicToken(Token):
-    """BasicToken for BasicFunctions"""
-
-    def match(self, target: str):
-        """Matches `target` ignoring case to the text attribute"""
-        return equals_ignore_case(self.text, target)
 
 
 @dataclass
@@ -273,6 +265,18 @@ class Visitable(ABC):
     @abstractmethod
     def accept(self, visitor):
         """Accept a `visitor`"""
+
+
+@dataclass
+class BasicToken(Token, Visitable):
+    """BasicToken for BasicFunctions"""
+
+    def match(self, target: str):
+        """Matches `target` ignoring case to the text attribute"""
+        return equals_ignore_case(self.text, target)
+
+    def accept(self, visitor):
+        visitor.visit_basictoken(self)
 
 
 class Dependent(Visitable, ABC):

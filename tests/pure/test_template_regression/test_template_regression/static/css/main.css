@@ -109,11 +109,19 @@ footer {
 }
 
 .stringlit {
-  color: yellow;
+  color: #e7e7bd;
 }
 
 .literalvalue {
   color: lightgreen;
+}
+
+.identifier {
+    color: orange;
+}
+
+.comment {
+    color: lightgrey;
 }
 
 li.mark {

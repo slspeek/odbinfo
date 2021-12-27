@@ -2,7 +2,7 @@
 import dataclasses
 from typing import Sequence, Union
 
-from odbinfo.pure.datatype.base import (Identifier, Preprocessable,
+from odbinfo.pure.datatype.base import (BasicToken, Identifier, Preprocessable,
                                         UseAggregator, User, content_type)
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import Configuration
@@ -12,11 +12,13 @@ from odbinfo.pure.datatype.tabular import QueryBase
 from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.graph import generate_graphs
-from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
+from odbinfo.pure.parser.basic import (OOBasicLexer, get_basic_tokens,
+                                       scan_basic)
 from odbinfo.pure.parser.sql import parse
 from odbinfo.pure.util import timed
-from odbinfo.pure.visitor import (FormVisitor, ModuleVisitor,
-                                  PreprocessableVisitor, QueryBaseVisitor)
+from odbinfo.pure.visitor import (BasicTokenVisitor, FormVisitor,
+                                  ModuleVisitor, PreprocessableVisitor,
+                                  QueryBaseVisitor)
 
 
 class FormPreprocessor(FormVisitor):
@@ -165,6 +167,28 @@ class Preprocessor(PreprocessableVisitor,
     """All preprocessors together"""
 
 
+BASICTOKEN_CLASSES = {
+    OOBasicLexer.STRINGLITERAL: "stringlit",
+    OOBasicLexer.COMMENT: "comment",
+    OOBasicLexer.IDENTIFIER: "identifier"
+}
+
+
+class Highlighter(BasicTokenVisitor):
+    """ Color highlighter"""
+
+    def visit_basictoken(self, token: BasicToken):
+        if token.type in BASICTOKEN_CLASSES:
+            token.cls = BASICTOKEN_CLASSES[token.type]
+
+
+def highlight_tokens(tokens: Sequence[BasicToken]):
+    """ Visits all `tokens` to do color highlighting"""
+    visitor = Highlighter()
+    for token in tokens:
+        token.accept(visitor)
+
+
 def preprocess(preprocessables: Sequence[Preprocessable]):
     """Preprocess all"""
     visitor = Preprocessor()
@@ -176,7 +200,7 @@ def preprocess(preprocessables: Sequence[Preprocessable]):
 def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     """ preprocessing of the data before it is written """
     preprocess(metadata.by_content_type(Preprocessable))
-
+    highlight_tokens(metadata.by_content_type(BasicToken))
     metadata.prepare_indexed_tree()
 
     # TODO move these 3 lines to dependency module

@@ -9,31 +9,21 @@ embedded_query:
   obj_id: '265'
   tokens:
   - text: SELECT
-    type: 131
   - text: ' '
-    type: 207
   - text: '*'
-    type: 7
   - text: '
 
       '
-    type: 207
   - text: FROM
-    type: 77
   - text: ' '
-    type: 207
   - text: ' '
-    type: 207
   - text: ' '
-    type: 207
   - link:
       content_type: table
       local_id: Plant
     obj_id: '274'
     text: '"Plant"'
-    type: 200
   - text: ;
-    type: 1
 formulas:
 - field:[id]
 - field:[naam]

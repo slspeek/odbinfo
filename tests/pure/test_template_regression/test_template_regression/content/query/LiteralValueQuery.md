@@ -45,75 +45,46 @@ parent_link:
 title: LiteralValueQuery
 tokens:
 - text: SELECT
-  type: 131
 - text: ' '
-  type: 207
 - cls: literalvalue
   text: '1'
-  type: 201
 - text: ','
-  type: 5
 - text: '
 
     '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - cls: literalvalue
   text: '''fourtytwo'''
-  type: 203
 - text: ','
-  type: 5
 - text: '
 
     '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: '"naam"'
-  type: 200
 - text: '
 
     '
-  type: 207
 - text: FROM
-  type: 77
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - link:
     content_type: table
     local_id: Plant
   obj_id: '118'
   text: '"Plant"'
-  type: 200
 used_by: []
 uses:
 - content_type: table

@@ -47,29 +47,20 @@ parent_link:
 title: vwPlant
 tokens:
 - text: SELECT
-  type: 131
 - text: ' '
-  type: 207
 - text: '*'
-  type: 7
 - text: '
 
     '
-  type: 207
 - text: FROM
-  type: 77
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - link:
     content_type: table
     local_id: Plant
   obj_id: '131'
   text: '"Plant"'
-  type: 200
 used_by:
 - bookmark: '57'
   content_type: query

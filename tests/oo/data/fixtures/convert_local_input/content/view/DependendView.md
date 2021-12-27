@@ -23,37 +23,26 @@ parent_link:
 title: DependendView
 tokens:
 - text: SELECT
-  type: 131
 - text: ' '
-  type: 207
 - link:
     content_type: view
     local_id: view1
   obj_id: '24'
   text: '"view1"'
-  type: 200
 - text: .
-  type: 2
 - text: '"id"'
-  type: 200
 - text: '
 
     '
-  type: 207
 - text: FROM
-  type: 77
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - link:
     content_type: view
     local_id: view1
   obj_id: '32'
   text: '"view1"'
-  type: 200
 used_by: []
 uses:
 - content_type: view

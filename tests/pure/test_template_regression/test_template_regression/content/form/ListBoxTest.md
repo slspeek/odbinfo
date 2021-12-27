@@ -33,51 +33,32 @@ subforms:
       obj_id: '159'
       tokens:
       - text: SELECT
-        type: 131
       - text: ' '
-        type: 207
       - text: '"id"'
-        type: 200
       - text: ','
-        type: 5
       - text: '
 
           '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: '"naam"'
-        type: 200
       - text: '
 
           '
-        type: 207
       - text: FROM
-        type: 77
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - link:
           content_type: table
           local_id: Plant
         obj_id: '178'
         text: '"Plant"'
-        type: 200
     eventlisteners: []
     formfor: ''
     inputrequired: 'false'

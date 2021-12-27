@@ -33,51 +33,32 @@ parent_link:
 title: FamilyLookup
 tokens:
 - text: SELECT
-  type: 131
 - text: ' '
-  type: 207
 - text: '"Name"'
-  type: 200
 - text: ','
-  type: 5
 - text: '
 
     '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: '"FamilyID"'
-  type: 200
 - text: '
 
     '
-  type: 207
 - text: FROM
-  type: 77
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - link:
     content_type: table
     local_id: Family
   obj_id: '86'
   text: '"Family"'
-  type: 200
 used_by:
 - bookmark: '54'
   content_type: query

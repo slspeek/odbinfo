@@ -22,29 +22,20 @@ subforms:
     obj_id: '144'
     tokens:
     - text: SELECT
-      type: 131
     - text: ' '
-      type: 207
     - text: '*'
-      type: 7
     - text: '
 
         '
-      type: 207
     - text: FROM
-      type: 77
     - text: ' '
-      type: 207
     - text: ' '
-      type: 207
     - text: ' '
-      type: 207
     - link:
         content_type: table
         local_id: Person
       obj_id: '153'
       text: '"Person"'
-      type: 200
   masterfields: ''
   name: Formulier
   obj_id: '142'

@@ -83,49 +83,34 @@ parent_link:
 title: DependendQuery
 tokens:
 - text: SELECT
-  type: 131
 - text: ' '
-  type: 207
 - text: '*'
-  type: 7
 - text: '
 
     '
-  type: 207
 - text: FROM
-  type: 77
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - text: ' '
-  type: 207
 - link:
     content_type: query
     local_id: FamilyLookup
   obj_id: '54'
   text: '"FamilyLookup"'
-  type: 200
 - text: ','
-  type: 5
 - text: ' '
-  type: 207
 - link:
     content_type: query
     local_id: vwPlant
   obj_id: '57'
   text: '"vwPlant"'
-  type: 200
 - text: ','
-  type: 5
 - text: ' '
-  type: 207
 - link:
     content_type: view
     local_id: view1
   obj_id: '60'
   text: '"view1"'
-  type: 200
 used_by: []
 uses:
 - content_type: query

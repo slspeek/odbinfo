@@ -10,7 +10,7 @@ from odbinfo.pure.reader.common import (attr_default, child_elements,
 
 
 def read_form_item(control_elem: Element) -> Union[Control, Grid, ListBox]:
-    """ case on the tagName of `column_elem` to read the right component"""
+    """ case on the tagName of `control_elem` to read the right component"""
     if control_elem.tagName == "form:grid":
         return read_grid(control_elem)
     if control_elem.tagName == "form:listbox":

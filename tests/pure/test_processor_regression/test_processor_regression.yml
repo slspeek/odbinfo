@@ -1479,7 +1479,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 11
         link:
@@ -1512,7 +1512,7 @@ library_defs:
         content_type: module
         local_id: Module1.Standard
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 11
         link:
@@ -1541,7 +1541,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 5
         link: null
@@ -1589,7 +1589,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 11
         link:
@@ -1640,7 +1640,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 24
         link:
@@ -1673,7 +1673,7 @@ library_defs:
         content_type: module
         local_id: Module1.Standard
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 24
         link:
@@ -1702,7 +1702,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 18
         link: null
@@ -1750,7 +1750,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 24
         link:
@@ -1801,7 +1801,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 35
         link: null
@@ -1831,7 +1831,7 @@ library_defs:
         content_type: module
         local_id: Module1.Standard
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 35
         link: null
@@ -1857,7 +1857,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 31
         link: null
@@ -1889,7 +1889,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 35
         link: null
@@ -1940,7 +1940,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 48
         link: null
@@ -1970,7 +1970,7 @@ library_defs:
         content_type: module
         local_id: Module1.Standard
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 48
         link: null
@@ -1996,7 +1996,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 42
         link: null
@@ -2044,7 +2044,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 48
         link: null
@@ -2073,7 +2073,7 @@ library_defs:
       used_by: []
       uses: []
     - body_tokens:
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 60
         link: null
@@ -2121,7 +2121,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 66
         link: null
@@ -2174,7 +2174,7 @@ library_defs:
       calls:
       - module_token: null
         name_token:
-          cls: null
+          cls: identifier
           hidden: false
           index: 60
           link: null
@@ -2211,7 +2211,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 55
         link: null
@@ -2227,7 +2227,7 @@ library_defs:
         parent: null
         text: (
         type: 157
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 57
         link: null
@@ -2251,7 +2251,7 @@ library_defs:
         parent: null
         text: "\n\t"
         type: 183
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 60
         link: null
@@ -2299,7 +2299,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 66
         link: null
@@ -2380,7 +2380,7 @@ library_defs:
       \nFunction AddOne(arg)\n\tAddOne() = arg + 1\nEnd Function\n"
     title: Module1.Standard
     tokens:
-    - cls: null
+    - cls: comment
       hidden: true
       index: 0
       link: null
@@ -2424,7 +2424,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 5
       link:
@@ -2475,7 +2475,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 11
       link:
@@ -2540,7 +2540,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 18
       link:
@@ -2591,7 +2591,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 24
       link:
@@ -2656,7 +2656,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 31
       link:
@@ -2691,7 +2691,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 35
       link: null
@@ -2753,7 +2753,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 42
       link:
@@ -2804,7 +2804,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 48
       link: null
@@ -2866,7 +2866,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 55
       link:
@@ -2885,7 +2885,7 @@ library_defs:
       parent: null
       text: (
       type: 157
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 57
       link: null
@@ -2909,7 +2909,7 @@ library_defs:
       parent: null
       text: "\n\t"
       type: 183
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 60
       link: null
@@ -2957,7 +2957,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 66
       link: null
@@ -3043,7 +3043,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 9
         link: null
@@ -3073,7 +3073,7 @@ library_defs:
         content_type: module
         local_id: Module2.Standard
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 9
         link: null
@@ -3099,7 +3099,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 5
         link: null
@@ -3131,7 +3131,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 9
         link: null
@@ -3172,7 +3172,7 @@ library_defs:
     source: "REM  *****  BASIC  *****\n\nSub Main\n\tPrint \"hello world\"\nEnd Sub\n"
     title: Module2.Standard
     tokens:
-    - cls: null
+    - cls: comment
       hidden: true
       index: 0
       link: null
@@ -3216,7 +3216,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 5
       link:
@@ -3251,7 +3251,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 9
       link: null
@@ -3314,7 +3314,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 9
         link: null
@@ -3344,7 +3344,7 @@ library_defs:
         content_type: module
         local_id: Module1.Library1
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 9
         link: null
@@ -3370,7 +3370,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 5
         link: null
@@ -3402,7 +3402,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 9
         link: null
@@ -3449,7 +3449,7 @@ library_defs:
         local_id: PlantListboxDirectSQL
       uses: []
     - body_tokens:
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 20
         link:
@@ -3484,7 +3484,7 @@ library_defs:
         parent: null
         text: "\n\t"
         type: 183
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 24
         link: null
@@ -3500,7 +3500,7 @@ library_defs:
         parent: null
         text: .
         type: 150
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 26
         link:
@@ -3540,7 +3540,7 @@ library_defs:
       calls:
       - module_token: null
         name_token:
-          cls: null
+          cls: identifier
           hidden: false
           index: 20
           link:
@@ -3552,7 +3552,7 @@ library_defs:
           text: CalleeSub
           type: 181
       - module_token:
-          cls: null
+          cls: identifier
           hidden: false
           index: 24
           link: null
@@ -3561,7 +3561,7 @@ library_defs:
           text: Module2
           type: 181
         name_token:
-          cls: null
+          cls: identifier
           hidden: false
           index: 26
           link:
@@ -3601,7 +3601,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 16
         link: null
@@ -3633,7 +3633,7 @@ library_defs:
         parent: null
         text: "\n\t"
         type: 183
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 20
         link:
@@ -3668,7 +3668,7 @@ library_defs:
         parent: null
         text: "\n\t"
         type: 183
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 24
         link: null
@@ -3684,7 +3684,7 @@ library_defs:
         parent: null
         text: .
         type: 150
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 26
         link:
@@ -3754,7 +3754,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 41
         link: null
@@ -3784,7 +3784,7 @@ library_defs:
         content_type: module
         local_id: Module1.Library1
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 41
         link: null
@@ -3810,7 +3810,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 35
         link: null
@@ -3858,7 +3858,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 41
         link: null
@@ -3890,7 +3890,7 @@ library_defs:
         local_id: CallerSub.Module1.Library1
       uses: []
     - body_tokens:
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 52
         link:
@@ -3930,7 +3930,7 @@ library_defs:
       calls:
       - module_token: null
         name_token:
-          cls: null
+          cls: identifier
           hidden: false
           index: 52
           link:
@@ -3970,7 +3970,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 48
         link: null
@@ -4002,7 +4002,7 @@ library_defs:
         parent: null
         text: "\n\t"
         type: 183
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 52
         link:
@@ -4053,7 +4053,7 @@ library_defs:
         content_type: basicfunction
         local_id: CalleeTwoSub.Module2.Library1
     - body_tokens:
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 65
         link:
@@ -4088,7 +4088,7 @@ library_defs:
         parent: null
         text: "\n\t"
         type: 183
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 69
         link: null
@@ -4104,7 +4104,7 @@ library_defs:
         parent: null
         text: .
         type: 150
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 71
         link:
@@ -4144,7 +4144,7 @@ library_defs:
       calls:
       - module_token: null
         name_token:
-          cls: null
+          cls: identifier
           hidden: false
           index: 65
           link:
@@ -4156,7 +4156,7 @@ library_defs:
           text: CalleeOtherLib
           type: 181
       - module_token:
-          cls: null
+          cls: identifier
           hidden: false
           index: 69
           link: null
@@ -4165,7 +4165,7 @@ library_defs:
           text: Module1
           type: 181
         name_token:
-          cls: null
+          cls: identifier
           hidden: false
           index: 71
           link:
@@ -4205,7 +4205,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 61
         link: null
@@ -4237,7 +4237,7 @@ library_defs:
         parent: null
         text: "\n\t"
         type: 183
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 65
         link:
@@ -4272,7 +4272,7 @@ library_defs:
         parent: null
         text: "\n\t"
         type: 183
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 69
         link: null
@@ -4288,7 +4288,7 @@ library_defs:
         parent: null
         text: .
         type: 150
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 71
         link:
@@ -4342,7 +4342,7 @@ library_defs:
         content_type: basicfunction
         local_id: CalleeOtherLib.Module1.Standard
     - body_tokens:
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 84
         link:
@@ -4382,7 +4382,7 @@ library_defs:
       calls:
       - module_token: null
         name_token:
-          cls: null
+          cls: identifier
           hidden: false
           index: 84
           link:
@@ -4422,7 +4422,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 80
         link: null
@@ -4454,7 +4454,7 @@ library_defs:
         parent: null
         text: "\n\t"
         type: 183
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 84
         link:
@@ -4521,7 +4521,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 99
         link: null
@@ -4551,7 +4551,7 @@ library_defs:
         content_type: module
         local_id: Module1.Library1
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 99
         link: null
@@ -4577,7 +4577,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 93
         link: null
@@ -4625,7 +4625,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 99
         link: null
@@ -4673,7 +4673,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 112
         link:
@@ -4706,7 +4706,7 @@ library_defs:
         content_type: module
         local_id: Module1.Library1
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 112
         link:
@@ -4735,7 +4735,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 106
         link: null
@@ -4783,7 +4783,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 112
         link:
@@ -4834,7 +4834,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 125
         link:
@@ -4867,7 +4867,7 @@ library_defs:
         content_type: module
         local_id: Module1.Library1
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 125
         link:
@@ -4896,7 +4896,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 119
         link: null
@@ -4944,7 +4944,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 125
         link:
@@ -4995,7 +4995,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 138
         link:
@@ -5028,7 +5028,7 @@ library_defs:
         content_type: module
         local_id: Module1.Library1
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 138
         link:
@@ -5057,7 +5057,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 132
         link: null
@@ -5105,7 +5105,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 138
         link:
@@ -5168,7 +5168,7 @@ library_defs:
       \nSub ReferToQuery()\n\tprint \"FamilyLookup\"\nEnd Sub\t\n\n"
     title: Module1.Library1
     tokens:
-    - cls: null
+    - cls: comment
       hidden: true
       index: 0
       link: null
@@ -5212,7 +5212,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 5
       link:
@@ -5247,7 +5247,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 9
       link: null
@@ -5309,7 +5309,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 16
       link:
@@ -5344,7 +5344,7 @@ library_defs:
       parent: null
       text: "\n\t"
       type: 183
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 20
       link:
@@ -5379,7 +5379,7 @@ library_defs:
       parent: null
       text: "\n\t"
       type: 183
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 24
       link: null
@@ -5395,7 +5395,7 @@ library_defs:
       parent: null
       text: .
       type: 150
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 26
       link:
@@ -5476,7 +5476,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 35
       link:
@@ -5527,7 +5527,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 41
       link: null
@@ -5589,7 +5589,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 48
       link:
@@ -5624,7 +5624,7 @@ library_defs:
       parent: null
       text: "\n\t"
       type: 183
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 52
       link:
@@ -5705,7 +5705,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 61
       link:
@@ -5740,7 +5740,7 @@ library_defs:
       parent: null
       text: "\n\t"
       type: 183
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 65
       link:
@@ -5775,7 +5775,7 @@ library_defs:
       parent: null
       text: "\n\t"
       type: 183
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 69
       link: null
@@ -5791,7 +5791,7 @@ library_defs:
       parent: null
       text: .
       type: 150
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 71
       link:
@@ -5872,7 +5872,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 80
       link:
@@ -5907,7 +5907,7 @@ library_defs:
       parent: null
       text: "\n\t"
       type: 183
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 84
       link:
@@ -5988,7 +5988,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 93
       link:
@@ -6039,7 +6039,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 99
       link: null
@@ -6101,7 +6101,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 106
       link:
@@ -6152,7 +6152,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 112
       link:
@@ -6217,7 +6217,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 119
       link:
@@ -6268,7 +6268,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 125
       link:
@@ -6333,7 +6333,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 132
       link:
@@ -6384,7 +6384,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 138
       link:
@@ -6449,7 +6449,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 11
         link: null
@@ -6479,7 +6479,7 @@ library_defs:
         content_type: module
         local_id: Module2.Library1
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 11
         link: null
@@ -6505,7 +6505,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 5
         link: null
@@ -6553,7 +6553,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 11
         link: null
@@ -6601,7 +6601,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 24
         link: null
@@ -6631,7 +6631,7 @@ library_defs:
         content_type: module
         local_id: Module2.Library1
       strings:
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 24
         link: null
@@ -6657,7 +6657,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: identifier
         hidden: false
         index: 18
         link: null
@@ -6705,7 +6705,7 @@ library_defs:
         parent: null
         text: ' '
         type: 185
-      - cls: null
+      - cls: stringlit
         hidden: false
         index: 24
         link: null
@@ -6752,7 +6752,7 @@ library_defs:
       \n"
     title: Module2.Library1
     tokens:
-    - cls: null
+    - cls: comment
       hidden: true
       index: 0
       link: null
@@ -6796,7 +6796,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 5
       link:
@@ -6847,7 +6847,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 11
       link: null
@@ -6909,7 +6909,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: identifier
       hidden: false
       index: 18
       link:
@@ -6960,7 +6960,7 @@ library_defs:
       parent: null
       text: ' '
       type: 185
-    - cls: null
+    - cls: stringlit
       hidden: false
       index: 24
       link: null

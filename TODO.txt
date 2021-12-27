@@ -1,5 +1,7 @@
 configuration location variable in generate_report
 
+configuration reader so types in config.yml can be removed
+
 make run a bit broken, as graph.svg is emptied on purpose
 
 Add control 'visible' attribute
@@ -62,14 +64,7 @@ e.g. /#301,450,900 or /?select=300,304,600
 templates:
 - control in graph
 - column in graph
-- basic color highlighting
-  - BasicToken color_highlight method
-  - IDENTIFIER
-  - COMMENTS
 - sql color highlighting
-  - all via cls attribute in BasicToken, no comparison of types in templates anymore
-    (token-text.html STRINGLITERAL = 172 from OOBasicLexer)
-    to_dict should exclude type attribute
   - columnnames
 
 type file based MetaData, TextDocument

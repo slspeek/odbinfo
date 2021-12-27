@@ -73,51 +73,32 @@ subforms:
       obj_id: '218'
       tokens:
       - text: SELECT
-        type: 131
       - text: ' '
-        type: 207
       - text: '"Name"'
-        type: 200
       - text: ','
-        type: 5
       - text: '
 
           '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: '"FamilyID"'
-        type: 200
       - text: '
 
           '
-        type: 207
       - text: FROM
-        type: 77
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - text: ' '
-        type: 207
       - link:
           content_type: table
           local_id: Family
         obj_id: '237'
         text: '"Family"'
-        type: 200
     eventlisteners: []
     formfor: ''
     inputrequired: 'true'

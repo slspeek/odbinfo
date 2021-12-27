@@ -187,7 +187,7 @@ class WebPage(NamedNode):
         self.title = self.name
 
     def set_parent_links(self, parent: Optional['WebPage']) -> None:
-        """ recursively set parents """
+        """ recursively set parent links """
         if isinstance(parent, WebPage):
             self.parent_link = parent.identifier
 

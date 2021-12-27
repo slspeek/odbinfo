@@ -52,6 +52,8 @@ def convert_local(site_path: Path) -> None:
                                               stdout=subprocess.DEVNULL)
             with chdir(".."):
                 while not is_port_open(port):
+                    if webserver_proc.poll():
+                        raise RuntimeError("hugo serve finished unexpectedly")
                     time.sleep(0.1)
                 run_cmd("wget  --no-verbose"
                         f" -nH --convert-links -P {localsite_path.name}"

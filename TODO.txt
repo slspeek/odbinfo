@@ -1,3 +1,5 @@
+configuration location variable in generate_report
+
 make run a bit broken, as graph.svg is emptied on purpose
 
 Add control 'visible' attribute
@@ -7,7 +9,7 @@ dependencysearch should be called from core not processor?
 get 'incorrect type' check in pycharm to work for all
 
 base: get_identifier smells
-builder: convert_local should not hang if gohugo command fails
+
 
 writer
   - test write_config with StringIO

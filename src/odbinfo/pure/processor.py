@@ -89,7 +89,6 @@ def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
     # e.g /Lib1.Mod1/#macro
     # By rewriting Identifier(type="BasicFunction" local_id="call.Mod1.Lib1")
     # to Identifier("Module", "Mod1.Lib1", bookmark="call")
-    # TODO: move to Module
     def rewrite_module(basic_module: Module):
         def rewrite_link(link: Identifier):
             if not link.content_type == content_type(BasicFunction):

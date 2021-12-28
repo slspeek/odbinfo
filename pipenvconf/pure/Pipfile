@@ -8,7 +8,7 @@ graphviz = "*"
 pyyaml = "*"
 toml = "*"
 sql_formatter = "*"
-antlr4-python3-runtime = "4.7.2"
+antlr4-python3-runtime = "4.9.3"
 
 [dev-packages]
 xmltodict = "*"
@@ -27,4 +27,4 @@ mypy = "*"
 lxml = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.7.7"

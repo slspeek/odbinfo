@@ -2,6 +2,7 @@ SHELL=/bin/bash
 libreoffice=/tmp/program
 python=$(libreoffice)/python
 unopkg=$(libreoffice)/unopkg
+soffice=$(libreoffice)/soffice
 antlr4version=4.9.3
 antlr4jar=antlr-$(antlr4version)-complete.jar
 antlr4=java -jar ../../../../../../$(antlrlocation)/$(antlr4jar)
@@ -70,6 +71,7 @@ info:
 	@echo
 	@dot -V|head -1
 	@echo
+	@$(soffice) --version
 
 classdiagram: prepare
 	PYTHONPATH=$(OOPYTHONPATH) pyreverse -d $(classdiagram) -o svg odbinfo

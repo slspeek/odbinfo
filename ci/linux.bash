@@ -1,6 +1,6 @@
 #!/bin/bash
 HUGO_VERSION=0.89.4
-VERSION=6.4.2.2
+VERSION=7.0.4.2
 set -o errexit
 
 [[ $(uname) != 'Linux' ]] && exit

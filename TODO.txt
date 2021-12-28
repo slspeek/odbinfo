@@ -8,11 +8,6 @@ Add control 'visible' attribute
 
 dependencysearch should be called from core not processor?
 
-get 'incorrect type' check in pycharm to work for all
-
-base: get_identifier smells
-
-
 writer
   - test write_config with StringIO
   - prepare content output dirs (for parallelism)
@@ -43,7 +38,6 @@ localhost:1313 references
 
 
 Document the technical design:
-Elaborate module doc strings
 - reading stage
 - preprocessing
 - dependency search
@@ -69,21 +63,19 @@ templates:
 
 type file based MetaData, TextDocument
 - functionality to include the file with downloadable link (if configurated so)
+(nice versioning tool)
 
 database (driver) information retrieval
-
-Makefile: cleanup minimal before distribution
-
-More of pathlib instead of os.path
 
 Configuration
 -------------
 start with config.xcs, config.xcu and programmatically write and read them
+first only the location of ymal configuration
 See BaseDocumenter config too
 
 GUI
 ---
-- Settings dialog
+- Settings dialog (Options)
 - Progress dialog
 - print --> logger.info
   logging window (sfriederichs.github.io/how-to/python/gui/logging/2017/12/21/Python-GUI-Logging.html)

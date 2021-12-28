@@ -91,7 +91,7 @@ Try on windows
 
 update minimal theme (20210703 ok)
 
-make upgrade dependencies (20210813 done)
+make upgrade dependencies (20211229 done)
 
 #################################################################################
 ############################## release 0.1 ######################################

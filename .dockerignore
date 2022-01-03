@@ -1,0 +1,7 @@
+target/
+unitcov/
+tags
+.mypy_cache/
+.pytest_cache/
+benchmarks/
+.benchmarks/

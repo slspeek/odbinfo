@@ -28,6 +28,8 @@ RUN pip install pipenv
 
 USER root
 
+RUN apt install -y unzip zip
+
 COPY . /home/build/odbinfo-build
 
 RUN chown -R build:build /home/build/odbinfo-build
@@ -35,3 +37,7 @@ RUN chown -R build:build /home/build/odbinfo-build
 RUN ln -s /opt/libreoffice7.0/program /tmp/program
 
 USER build
+
+RUN  . ~/.profile && cd /home/build/odbinfo-build && bash bootstrap.sh
+
+RUN . ~/.profile && cd /home/build/odbinfo-build && (cd pipenvconf/oo && ODBINFO_NO_BROWSE=1 PIPENV_IGNORE_VIRTUALENVS=1 pipenv run make -C ../..   oxt)

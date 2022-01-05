@@ -4,8 +4,6 @@ configuration reader so types in config.yml can be removed
 
 make run a bit broken, as graph.svg is emptied on purpose
 
-Add control 'visible' attribute
-
 dependencysearch should be called from core not processor?
 
 writer
@@ -20,7 +18,7 @@ Grid type hack?
 Testing
 -------
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 84.54%)
+unit test coverage 90% (now 8%)
 
 test/pure/test_sql_parser.py
 test/pure/test_writer_make_site.py

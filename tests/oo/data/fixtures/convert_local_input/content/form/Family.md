@@ -19,6 +19,7 @@ subforms:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: FamlilyID
       name: FamlilyID
       obj_id: '138'
@@ -29,6 +30,7 @@ subforms:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: Name
       name: Name
       obj_id: '139'
@@ -39,6 +41,7 @@ subforms:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: Desc
       name: Desc
       obj_id: '140'

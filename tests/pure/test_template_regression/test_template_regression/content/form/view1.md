@@ -18,6 +18,7 @@ subforms:
     eventlisteners: []
     formfor: control2
     inputrequired: ''
+    isvisible: true
     label: id
     name: lblid
     obj_id: '261'
@@ -28,6 +29,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'false'
+    isvisible: true
     label: ''
     name: fmtid
     obj_id: '262'

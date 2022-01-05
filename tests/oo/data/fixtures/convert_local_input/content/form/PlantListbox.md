@@ -18,6 +18,7 @@ subforms:
     eventlisteners: []
     formfor: control2
     inputrequired: ''
+    isvisible: true
     label: id
     name: lblid
     obj_id: '198'
@@ -28,6 +29,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'true'
+    isvisible: true
     label: ''
     name: fmtid
     obj_id: '199'
@@ -38,6 +40,7 @@ subforms:
     eventlisteners: []
     formfor: control4
     inputrequired: ''
+    isvisible: true
     label: naam
     name: lblnaam
     obj_id: '200'
@@ -48,6 +51,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'false'
+    isvisible: true
     label: ''
     name: txtnaam
     obj_id: '201'
@@ -58,6 +62,7 @@ subforms:
     eventlisteners: []
     formfor: control6
     inputrequired: ''
+    isvisible: true
     label: RFamliyID
     name: lblRFamliyID
     obj_id: '202'
@@ -70,6 +75,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'true'
+    isvisible: true
     label: ''
     link:
       content_type: query
@@ -91,6 +97,7 @@ subforms:
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''
     inputrequired: ''
+    isvisible: true
     label: Say hello
     name: Knop 1
     obj_id: '204'
@@ -101,6 +108,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: ''
+    isvisible: true
     label: Knop
     name: Knop 2
     obj_id: '206'
@@ -123,6 +131,7 @@ subforms:
       script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
     formfor: ''
     inputrequired: ''
+    isvisible: true
     label: Call to script
     name: Knop 3
     obj_id: '207'

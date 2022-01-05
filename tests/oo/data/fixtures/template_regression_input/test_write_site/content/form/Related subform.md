@@ -18,6 +18,7 @@ subforms:
     eventlisteners: []
     formfor: control8
     inputrequired: ''
+    isvisible: true
     label: id
     name: lblid
     obj_id: '246'
@@ -28,6 +29,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'true'
+    isvisible: true
     label: ''
     name: fmtid
     obj_id: '247'
@@ -38,6 +40,7 @@ subforms:
     eventlisteners: []
     formfor: control10
     inputrequired: ''
+    isvisible: true
     label: naam
     name: lblnaam
     obj_id: '248'
@@ -48,6 +51,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'false'
+    isvisible: true
     label: ''
     name: txtnaam
     obj_id: '249'
@@ -58,6 +62,7 @@ subforms:
     eventlisteners: []
     formfor: control12
     inputrequired: ''
+    isvisible: true
     label: RFamliyID
     name: lblRFamliyID
     obj_id: '250'
@@ -68,6 +73,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'false'
+    isvisible: true
     label: ''
     name: fmtRFamliyID
     obj_id: '251'
@@ -93,6 +99,7 @@ subforms:
       eventlisteners: []
       formfor: control2
       inputrequired: ''
+      isvisible: true
       label: FamilyID
       name: lblFamilyID
       obj_id: '253'
@@ -103,6 +110,7 @@ subforms:
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
+      isvisible: true
       label: ''
       name: fmtFamilyID
       obj_id: '254'
@@ -113,6 +121,7 @@ subforms:
       eventlisteners: []
       formfor: control4
       inputrequired: ''
+      isvisible: true
       label: Name
       name: lblName
       obj_id: '255'
@@ -123,6 +132,7 @@ subforms:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       name: txtName
       obj_id: '256'
@@ -133,6 +143,7 @@ subforms:
       eventlisteners: []
       formfor: control6
       inputrequired: ''
+      isvisible: true
       label: Desc
       name: lblDesc
       obj_id: '257'
@@ -143,6 +154,7 @@ subforms:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       name: txtDesc
       obj_id: '258'

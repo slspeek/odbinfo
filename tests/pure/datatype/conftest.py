@@ -90,6 +90,7 @@ def irrelevant_control():
                    "label",
                    "formfor",
                    "type",
+                   True,
                    [])
 
 
@@ -109,6 +110,7 @@ def listbox():
                    "label",
                    "formfor",
                    "type",
+                   True,
                    [],
                    1,
                    True,

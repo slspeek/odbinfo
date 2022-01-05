@@ -110,6 +110,7 @@ class ControlBase(NamedNode):
     label: str
     formfor: str
     type: str
+    isvisible: bool
     eventlisteners: List[EventListener]
 
     def children(self):

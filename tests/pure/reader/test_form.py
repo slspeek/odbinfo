@@ -5,10 +5,31 @@ import unittest
 import pytest
 
 from odbinfo.pure.reader.common import document_element
-from odbinfo.pure.reader.form import (forms, read_control, read_eventlisteners,
-                                      read_forms, read_grid, read_listbox,
-                                      read_subforms)
+from odbinfo.pure.reader.form import (forms, is_visible, read_control,
+                                      read_eventlisteners, read_forms,
+                                      read_grid, read_listbox, read_subforms)
 from tests.pure.reader.test_common import OO_NAMESPACES
+
+FORM_PROPERTIES = f"""
+<form:properties {OO_NAMESPACES}>
+    <form:property form:property-name="ControlTypeinMSO" office:value-type="float"
+                   office:value="0"/>
+    <form:property form:property-name="DefaultControl" office:value-type="string"
+                   office:string-value="com.sun.star.form.control.FormattedField"/>
+    <form:property form:property-name="EnableVisible" office:value-type="boolean"
+                   office:boolean-value="false"/>
+    <form:property form:property-name="MouseWheelBehavior" office:value-type="float"
+                   office:value="0"/>
+    <form:property form:property-name="ObjIDinMSO" office:value-type="float"
+                   office:value="65535"/>
+</form:properties>
+"""
+
+
+def test_has_enable_visible():
+    element = document_element(FORM_PROPERTIES)
+    assert not is_visible(element)
+
 
 # pylint:disable=line-too-long
 OFFICE_EVENT_LISTENERS = f"""
@@ -198,7 +219,7 @@ def test_read_subform_related_subform():
     print(subforms)
 
 
-#pylint: disable = line-too-long
+# pylint: disable = line-too-long
 GRID_ELEMENT = f"""
 <form:grid form:name="MainForm_Grid" form:control-implementation="ooo:com.sun.star.form.component.GridControl" xml:id="control1" form:id="control1"  {OO_NAMESPACES}>
 <form:properties>

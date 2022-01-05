@@ -21,6 +21,7 @@ form_defs:
         eventlisteners: []
         formfor: ''
         inputrequired: 'false'
+        isvisible: true
         label: FamlilyID
         name: FamlilyID
         obj_id: '138'
@@ -32,6 +33,7 @@ form_defs:
         eventlisteners: []
         formfor: ''
         inputrequired: 'false'
+        isvisible: true
         label: Name
         name: Name
         obj_id: '139'
@@ -43,6 +45,7 @@ form_defs:
         eventlisteners: []
         formfor: ''
         inputrequired: 'false'
+        isvisible: true
         label: Desc
         name: Desc
         obj_id: '140'
@@ -248,6 +251,7 @@ form_defs:
       eventlisteners: []
       formfor: control2
       inputrequired: ''
+      isvisible: true
       label: id
       name: id label
       obj_id: '157'
@@ -439,6 +443,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       link: null
       listsource: select "id", "naam" from "Plant"
@@ -453,6 +458,7 @@ form_defs:
       eventlisteners: []
       formfor: control4
       inputrequired: ''
+      isvisible: true
       label: naam
       name: naam label
       obj_id: '179'
@@ -467,6 +473,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       link:
         bookmark: null
@@ -484,6 +491,7 @@ form_defs:
       eventlisteners: []
       formfor: control6
       inputrequired: ''
+      isvisible: true
       label: RFamliyID
       name: RFamliyID label
       obj_id: '181'
@@ -498,6 +506,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
+      isvisible: true
       label: ''
       link: null
       listsource: 1, 2, 3
@@ -551,6 +560,7 @@ form_defs:
       eventlisteners: []
       formfor: control2
       inputrequired: ''
+      isvisible: false
       label: id
       name: lblid
       obj_id: '185'
@@ -562,6 +572,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
+      isvisible: false
       label: ''
       name: fmtid
       obj_id: '186'
@@ -573,6 +584,7 @@ form_defs:
       eventlisteners: []
       formfor: control4
       inputrequired: ''
+      isvisible: true
       label: naam
       name: lblnaam
       obj_id: '187'
@@ -584,6 +596,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       name: txtnaam
       obj_id: '188'
@@ -595,6 +608,7 @@ form_defs:
       eventlisteners: []
       formfor: control6
       inputrequired: ''
+      isvisible: true
       label: RFamliyID
       name: lblRFamliyID
       obj_id: '189'
@@ -606,6 +620,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       name: fmtRFamliyID
       obj_id: '190'
@@ -651,6 +666,7 @@ form_defs:
         eventlisteners: []
         formfor: ''
         inputrequired: 'false'
+        isvisible: true
         label: id
         name: id
         obj_id: '194'
@@ -662,6 +678,7 @@ form_defs:
         eventlisteners: []
         formfor: ''
         inputrequired: 'false'
+        isvisible: true
         label: naam
         name: naam
         obj_id: '195'
@@ -710,6 +727,7 @@ form_defs:
       eventlisteners: []
       formfor: control2
       inputrequired: ''
+      isvisible: true
       label: id
       name: lblid
       obj_id: '198'
@@ -721,6 +739,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
+      isvisible: true
       label: ''
       name: fmtid
       obj_id: '199'
@@ -732,6 +751,7 @@ form_defs:
       eventlisteners: []
       formfor: control4
       inputrequired: ''
+      isvisible: true
       label: naam
       name: lblnaam
       obj_id: '200'
@@ -743,6 +763,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       name: txtnaam
       obj_id: '201'
@@ -754,6 +775,7 @@ form_defs:
       eventlisteners: []
       formfor: control6
       inputrequired: ''
+      isvisible: true
       label: RFamliyID
       name: lblRFamliyID
       obj_id: '202'
@@ -768,6 +790,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
+      isvisible: true
       label: ''
       link:
         bookmark: null
@@ -793,6 +816,7 @@ form_defs:
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       formfor: ''
       inputrequired: ''
+      isvisible: true
       label: Say hello
       name: Knop 1
       obj_id: '204'
@@ -804,6 +828,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: ''
+      isvisible: true
       label: Knop
       name: Knop 2
       obj_id: '206'
@@ -831,6 +856,7 @@ form_defs:
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       formfor: ''
       inputrequired: ''
+      isvisible: true
       label: Call to script
       name: Knop 3
       obj_id: '207'
@@ -887,6 +913,7 @@ form_defs:
       eventlisteners: []
       formfor: control2
       inputrequired: ''
+      isvisible: true
       label: id
       name: lblid
       obj_id: '212'
@@ -898,6 +925,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
+      isvisible: true
       label: ''
       name: fmtid
       obj_id: '213'
@@ -909,6 +937,7 @@ form_defs:
       eventlisteners: []
       formfor: control4
       inputrequired: ''
+      isvisible: true
       label: naam
       name: lblnaam
       obj_id: '214'
@@ -920,6 +949,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       name: txtnaam
       obj_id: '215'
@@ -931,6 +961,7 @@ form_defs:
       eventlisteners: []
       formfor: control6
       inputrequired: ''
+      isvisible: true
       label: RFamliyID
       name: lblRFamliyID
       obj_id: '216'
@@ -1122,6 +1153,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
+      isvisible: true
       label: ''
       link: null
       listsource: SELECT "Name", "FamilyID" FROM "Family"
@@ -1144,6 +1176,7 @@ form_defs:
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       formfor: ''
       inputrequired: ''
+      isvisible: true
       label: Say hello
       name: Knop 1
       obj_id: '238'
@@ -1155,6 +1188,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: ''
+      isvisible: true
       label: Knop
       name: Knop 2
       obj_id: '240'
@@ -1182,6 +1216,7 @@ form_defs:
         script: vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document
       formfor: ''
       inputrequired: ''
+      isvisible: true
       label: Call to script
       name: Knop 3
       obj_id: '241'
@@ -1238,6 +1273,7 @@ form_defs:
       eventlisteners: []
       formfor: control8
       inputrequired: ''
+      isvisible: true
       label: id
       name: lblid
       obj_id: '246'
@@ -1249,6 +1285,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'true'
+      isvisible: true
       label: ''
       name: fmtid
       obj_id: '247'
@@ -1260,6 +1297,7 @@ form_defs:
       eventlisteners: []
       formfor: control10
       inputrequired: ''
+      isvisible: true
       label: naam
       name: lblnaam
       obj_id: '248'
@@ -1271,6 +1309,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       name: txtnaam
       obj_id: '249'
@@ -1282,6 +1321,7 @@ form_defs:
       eventlisteners: []
       formfor: control12
       inputrequired: ''
+      isvisible: true
       label: RFamliyID
       name: lblRFamliyID
       obj_id: '250'
@@ -1293,6 +1333,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       name: fmtRFamliyID
       obj_id: '251'
@@ -1322,6 +1363,7 @@ form_defs:
         eventlisteners: []
         formfor: control2
         inputrequired: ''
+        isvisible: true
         label: FamilyID
         name: lblFamilyID
         obj_id: '253'
@@ -1333,6 +1375,7 @@ form_defs:
         eventlisteners: []
         formfor: ''
         inputrequired: 'true'
+        isvisible: true
         label: ''
         name: fmtFamilyID
         obj_id: '254'
@@ -1344,6 +1387,7 @@ form_defs:
         eventlisteners: []
         formfor: control4
         inputrequired: ''
+        isvisible: true
         label: Name
         name: lblName
         obj_id: '255'
@@ -1355,6 +1399,7 @@ form_defs:
         eventlisteners: []
         formfor: ''
         inputrequired: 'false'
+        isvisible: true
         label: ''
         name: txtName
         obj_id: '256'
@@ -1366,6 +1411,7 @@ form_defs:
         eventlisteners: []
         formfor: control6
         inputrequired: ''
+        isvisible: true
         label: Desc
         name: lblDesc
         obj_id: '257'
@@ -1377,6 +1423,7 @@ form_defs:
         eventlisteners: []
         formfor: ''
         inputrequired: 'false'
+        isvisible: true
         label: ''
         name: txtDesc
         obj_id: '258'
@@ -1424,6 +1471,7 @@ form_defs:
       eventlisteners: []
       formfor: control2
       inputrequired: ''
+      isvisible: true
       label: id
       name: lblid
       obj_id: '261'
@@ -1435,6 +1483,7 @@ form_defs:
       eventlisteners: []
       formfor: ''
       inputrequired: 'false'
+      isvisible: true
       label: ''
       name: fmtid
       obj_id: '262'

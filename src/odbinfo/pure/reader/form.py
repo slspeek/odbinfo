@@ -80,8 +80,28 @@ def read_eventlisteners(control_elem: Element) -> List[EventListener]:
             office_evlis_elem.getElementsByTagName("script:event-listener")]
 
 
+def is_visible(form_properties_elem: Element):
+    """Looks for EnableVisible property amoung the `form_properties_elem`"""
+
+    for prop_element in form_properties_elem.getElementsByTagName("form:property"):
+        if prop_element.getAttribute("form:property-name") == "EnableVisible":
+            if prop_element.getAttribute("office:boolean-value") == "false":
+                return False
+    return True
+
+
+def is_control_visible(control_element: Element):
+    """Looks for EnableVisible property amoung the properties of `control_element` """
+    properties_element = control_element.getElementsByTagName(
+        "form:properties")
+    if properties_element:
+        return is_visible(properties_element[0])
+    return True
+
+
 def read_control(control_elem) -> Control:
     """returns Control read from `control_elem` (<form:button>, ...) """
+
     return \
         Control(control_elem.getAttribute("form:name"),
                 control_elem.getAttribute("form:id"),
@@ -91,6 +111,7 @@ def read_control(control_elem) -> Control:
                 control_elem.getAttribute("form:label"),
                 control_elem.getAttribute("form:for"),
                 control_elem.getAttribute("form:control-implementation"),
+                is_control_visible(control_elem),
                 read_eventlisteners(control_elem))
 
 
@@ -112,6 +133,7 @@ def read_listbox(listbox_elem: Element) -> ListBox:
                 listbox_elem.getAttribute("form:label"),
                 listbox_elem.getAttribute("form:for"),
                 listbox_elem.getAttribute("form:control-implementation"),
+                is_control_visible(listbox_elem),
                 read_eventlisteners(listbox_elem),
                 listbox_elem.getAttribute("form:bound-column"),
                 listbox_elem.getAttribute("form:dropdown"),

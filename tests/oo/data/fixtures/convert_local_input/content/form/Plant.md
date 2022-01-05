@@ -18,6 +18,7 @@ subforms:
     eventlisteners: []
     formfor: control2
     inputrequired: ''
+    isvisible: false
     label: id
     name: lblid
     obj_id: '185'
@@ -28,6 +29,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'true'
+    isvisible: false
     label: ''
     name: fmtid
     obj_id: '186'
@@ -38,6 +40,7 @@ subforms:
     eventlisteners: []
     formfor: control4
     inputrequired: ''
+    isvisible: true
     label: naam
     name: lblnaam
     obj_id: '187'
@@ -48,6 +51,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'false'
+    isvisible: true
     label: ''
     name: txtnaam
     obj_id: '188'
@@ -58,6 +62,7 @@ subforms:
     eventlisteners: []
     formfor: control6
     inputrequired: ''
+    isvisible: true
     label: RFamliyID
     name: lblRFamliyID
     obj_id: '189'
@@ -68,6 +73,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'false'
+    isvisible: true
     label: ''
     name: fmtRFamliyID
     obj_id: '190'

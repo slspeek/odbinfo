@@ -18,6 +18,7 @@ subforms:
     eventlisteners: []
     formfor: control2
     inputrequired: ''
+    isvisible: true
     label: id
     name: id label
     obj_id: '157'
@@ -62,6 +63,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'false'
+    isvisible: true
     label: ''
     listsource: select "id", "naam" from "Plant"
     listsourcetype: sql-pass-through
@@ -74,6 +76,7 @@ subforms:
     eventlisteners: []
     formfor: control4
     inputrequired: ''
+    isvisible: true
     label: naam
     name: naam label
     obj_id: '179'
@@ -86,6 +89,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'false'
+    isvisible: true
     label: ''
     link:
       content_type: table
@@ -101,6 +105,7 @@ subforms:
     eventlisteners: []
     formfor: control6
     inputrequired: ''
+    isvisible: true
     label: RFamliyID
     name: RFamliyID label
     obj_id: '181'
@@ -113,6 +118,7 @@ subforms:
     eventlisteners: []
     formfor: ''
     inputrequired: 'true'
+    isvisible: true
     label: ''
     listsource: 1, 2, 3
     listsourcetype: valuelist

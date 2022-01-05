@@ -18,7 +18,7 @@ Grid type hack?
 Testing
 -------
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 8%)
+unit test coverage 90% (now 85.76%)
 
 test/pure/test_sql_parser.py
 test/pure/test_writer_make_site.py

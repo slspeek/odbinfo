@@ -9,10 +9,13 @@
     {{ end }}
     {{ $pageNumber := .Paginator.PageNumber }}
     {{ range .Paginator.Pagers }}
+        {{ $first :=(substr (index .Pages 0).Title 0 2) }}
+        {{ $last :=  (substr (index (last 1 .Pages) 0).Title 0 2) }}
+        {{ $label := (print $first "-" $last ) }}
         {{ if (eq $pageNumber .PageNumber) }}
-            &nbsp;{{ .PageNumber }}&nbsp;
+            &nbsp;{{ $label }}&nbsp;
         {{ else }}
-            <a href="{{ .URL }}">&nbsp;{{ .PageNumber }}&nbsp;</a>
+            <a href="{{ .URL }}">&nbsp;{{ $label }}&nbsp;</a>
         {{ end }}
     {{ end }}
 

@@ -22,8 +22,6 @@ RUN pip install pipenv
 
 COPY --chown=build:build . /home/build/odbinfo-build
 
-USER build
-
-RUN  . ~/.profile && cd /home/build/odbinfo-build && bash bootstrap.sh
+RUN . ~/.profile && cd /home/build/odbinfo-build && bash bootstrap.sh
 
 RUN . ~/.profile && cd /home/build/odbinfo-build && (cd pipenvconf/oo && ODBINFO_NO_BROWSE=1 PIPENV_IGNORE_VIRTUALENVS=1 pipenv run make -C ../..   oxt)

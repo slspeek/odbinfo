@@ -20,13 +20,7 @@ RUN ~/.pyenv/bin/pyenv install 3.7.7
 
 RUN pip install pipenv
 
-USER root
-
-COPY . /home/build/odbinfo-build
-
-RUN chown -R build:build /home/build/odbinfo-build
-
-RUN ln -s /opt/libreoffice7.0/program /tmp/program
+COPY --chown=build:build . /home/build/odbinfo-build
 
 USER build
 

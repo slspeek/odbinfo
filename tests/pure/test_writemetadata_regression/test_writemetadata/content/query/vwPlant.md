@@ -62,19 +62,15 @@ tokens:
   obj_id: '131'
   text: '"Plant"'
 used_by:
-- bookmark: '57'
-  content_type: query
+- content_type: query
   local_id: DependendQuery
-- bookmark: '156'
-  content_type: form
+- content_type: form
   local_id: ListBoxTest
-- bookmark: '192'
-  content_type: form
+- content_type: form
   local_id: Plant invoeren
 - content_type: report
   local_id: vwPlant
-- bookmark: '778'
-  content_type: textdocument
+- content_type: textdocument
   local_id: Untitled
 uses:
 - content_type: table

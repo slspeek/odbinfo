@@ -141,6 +141,4 @@ uses:
   local_id: vwPlant
 - content_type: table
   local_id: Plant
-- content_type: table
-  local_id: Plant
 ---

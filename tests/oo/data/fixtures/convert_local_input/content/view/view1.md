@@ -38,20 +38,13 @@ tokens:
   obj_id: '43'
   text: '"Plant"'
 used_by:
-- bookmark: '24'
-  content_type: view
+- content_type: view
   local_id: DependendView
-- bookmark: '32'
-  content_type: view
-  local_id: DependendView
-- bookmark: '60'
-  content_type: query
+- content_type: query
   local_id: DependendQuery
-- bookmark: '260'
-  content_type: form
+- content_type: form
   local_id: view1
-- bookmark: '561'
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: ReferToView.Module1.Library1
 uses:
 - content_type: table

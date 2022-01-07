@@ -79,38 +79,25 @@ parent_link:
   local_id: testdb
 title: Plant
 used_by:
-- bookmark: '43'
-  content_type: view
+- content_type: view
   local_id: view1
-- bookmark: '118'
-  content_type: query
+- content_type: query
   local_id: LiteralValueQuery
-- bookmark: '131'
-  content_type: query
+- content_type: query
   local_id: vwPlant
-- bookmark: '178'
-  content_type: form
+- content_type: form
   local_id: ListBoxTest
-- bookmark: '180'
-  content_type: form
-  local_id: ListBoxTest
-- bookmark: '184'
-  content_type: form
+- content_type: form
   local_id: Plant
-- bookmark: '197'
-  content_type: form
+- content_type: form
   local_id: PlantListbox
-- bookmark: '211'
-  content_type: form
+- content_type: form
   local_id: PlantListboxDirectSQL
-- bookmark: '245'
-  content_type: form
+- content_type: form
   local_id: Related subform
-- bookmark: '274'
-  content_type: report
+- content_type: report
   local_id: ReportCommandTypeSQL
-- bookmark: '549'
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: ReferToTable.Module1.Library1
 uses:
 - content_type: table

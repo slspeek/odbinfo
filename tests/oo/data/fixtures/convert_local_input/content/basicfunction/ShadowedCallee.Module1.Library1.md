@@ -36,8 +36,7 @@ tokens:
 - index: 101
   text: End Sub
 used_by:
-- bookmark: '523'
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CallerShadowedCallee.Module1.Library1
 uses: []
 ---

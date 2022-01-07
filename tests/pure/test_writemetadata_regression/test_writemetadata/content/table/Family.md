@@ -58,20 +58,15 @@ parent_link:
   local_id: testdb
 title: Family
 used_by:
-- bookmark: '15'
-  content_type: table
+- content_type: table
   local_id: Plant
-- bookmark: '86'
-  content_type: query
+- content_type: query
   local_id: FamilyLookup
-- bookmark: '136'
-  content_type: form
+- content_type: form
   local_id: Family
-- bookmark: '237'
-  content_type: form
+- content_type: form
   local_id: PlantListboxDirectSQL
-- bookmark: '252'
-  content_type: form
+- content_type: form
   local_id: Related subform
 - content_type: report
   local_id: Family

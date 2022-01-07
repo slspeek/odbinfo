@@ -1,6 +1,8 @@
 """ Tests for the processor """
+from odbinfo.pure.datatype.base import Identifier
 from odbinfo.pure.datatype.ui import SubForm
-from odbinfo.pure.processor import FormPreprocessor, ModulePreprocessor
+from odbinfo.pure.processor import (FormPreprocessor, ModulePreprocessor,
+                                    undouble_used_by)
 
 
 def test_set_depth():
@@ -35,3 +37,9 @@ def test_link_name_tokens(module_single_function):
     func = module_single_function.callables[0]
     name_token = module_single_function.tokens[func.name_token_index]
     assert name_token.link == func.identifier
+
+
+def test_undouble_used_by():
+    assert undouble_used_by([Identifier("foo", "bar", "67"),
+                             Identifier("foo", "bar", "1")]) == \
+        [Identifier("foo", "bar", None)]

@@ -1,9 +1,10 @@
 """ Processor module """
 import dataclasses
-from typing import Sequence, Union
+from typing import List, Sequence, Union
 
 from odbinfo.pure.datatype.base import (BasicToken, Identifier, Preprocessable,
-                                        UseAggregator, User, content_type)
+                                        Usable, UseAggregator, User,
+                                        content_type)
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.exec import Module
@@ -63,24 +64,33 @@ class FormPreprocessor(FormVisitor):
         self.simplify_type(listbox)
 
 
-def aggregate_uses_from_children(user_agg: UseAggregator) -> None:
+def aggregate_uses_from_children(user_agg: UseAggregator, collapse_multiple_uses: bool) -> None:
     """Collect aggregated uses from its children """
-    for user in user_agg.all_objects():
-        if isinstance(user, User) and user.link:
-            user_agg.uses.append(user.link)
+    for node in user_agg.all_objects():
+        if isinstance(node, User) and node.link:
+            user_agg.uses.append(node.link)
+    if collapse_multiple_uses:
+        user_agg.uses = list(dict.fromkeys(user_agg.uses))
 
 
-def aggregate_uses(metadata: Metadata) -> None:
+def aggregate_uses(metadata: Metadata, collapse_multiple_uses: bool) -> None:
     """Collect all aggregated uses """
-    for use_agg in metadata.all_objects():
-        if isinstance(use_agg, UseAggregator):
-            aggregate_uses_from_children(use_agg)
+    for use_agg in metadata.by_content_type(UseAggregator):
+        aggregate_uses_from_children(use_agg, collapse_multiple_uses)
 
 
-def aggregate_used_by(metadata: Metadata) -> None:
+def undouble_used_by(users: Sequence[Identifier]) -> List[Identifier]:
+    """If two ids have the same content_type and local_id"""
+    return list(dict.fromkeys(Identifier(i.content_type, i.local_id, None) for i in users))
+
+
+def aggregate_used_by(metadata: Metadata, collapse_multiple_uses: bool) -> None:
     """Collect all used_by"""
     for user in metadata.all_active_users:
         metadata.usable_by_link[user.link].used_by.append(user.identifier)
+    if collapse_multiple_uses:
+        for usable in metadata.by_content_type(Usable):
+            usable.used_by = undouble_used_by(usable.used_by)
 
 
 def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
@@ -206,8 +216,8 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     # TODO move these 3 lines to dependency module
     search_dependencies(metadata)
     rewrite_module_callable_links(metadata.module_defs)
-    aggregate_uses(metadata)
-    aggregate_used_by(metadata)
+    aggregate_uses(metadata, config.graph.collapse_multiple_uses)
+    aggregate_used_by(metadata, config.graph.collapse_multiple_uses)
 
     metadata.graphs = generate_graphs(metadata, config)
     metadata.set_parent_links(None)

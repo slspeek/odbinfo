@@ -183,8 +183,4 @@ uses:
   local_id: Family
 - content_type: basicfunction
   local_id: Main.Module1.Library1
-- content_type: basicfunction
-  local_id: Main.Module1.Library1
-- content_type: basicfunction
-  local_id: Main.Module1.Library1
 ---

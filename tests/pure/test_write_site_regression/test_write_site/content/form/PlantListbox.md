@@ -154,8 +154,4 @@ uses:
   local_id: FamilyLookup
 - content_type: basicfunction
   local_id: Main.Module1.Library1
-- content_type: basicfunction
-  local_id: Main.Module1.Library1
-- content_type: basicfunction
-  local_id: Main.Module1.Library1
 ---

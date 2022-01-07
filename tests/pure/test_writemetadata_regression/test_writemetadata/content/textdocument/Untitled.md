@@ -17,11 +17,9 @@ parent_link:
 path: Untitled.odt
 title: Untitled
 used_by:
-- bookmark: '288'
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: UsesDocument.Module1.Standard
-- bookmark: '300'
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: UsesDocumentFilename.Module1.Standard
 uses:
 - content_type: query

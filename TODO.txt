@@ -2,10 +2,6 @@ configuration location variable in generate_report
 
 configuration reader so types in config.yml can be removed
 
-make run a bit broken, as graph.svg is emptied on purpose
-
-dependencysearch should be called from core not processor?
-
 writer
   - test write_config with StringIO
   - prepare content output dirs (for parallelism)
@@ -27,12 +23,6 @@ test/pure/test_basic_parser_slow.py
 test/pure/test_writer_regression.py
 test/pure/test_scanner.py
 test/pure/test_basic_parser.py
-
-test_basic_parser_slow.py: parametrize and regression
-make e2e test (BaseDocumenter2dot example)
-a test for _convert_local, verify there are no more
-localhost:1313 references
-
 
 Document the technical design:
 - reading stage
@@ -93,6 +83,15 @@ make upgrade dependencies (20211229 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
+test_basic_parser_slow.py: parametrize and regression
+make e2e test (BaseDocumenter2dot example)
+a test for _convert_local, verify there are no more
+localhost:1313 references
+
+make run a bit broken, as graph.svg is emptied on purpose
+
+dependencysearch should be called from core not processor?
+
 Later
 -----
 Introduce <ContentType>Raw classes make them member of <ContentType> classes

@@ -36,8 +36,7 @@ tokens:
 - index: 13
   text: End Sub
 used_by:
-- bookmark: '469'
-  content_type: basicfunction
+- content_type: basicfunction
   local_id: CallerSub.Module1.Library1
 uses: []
 ---

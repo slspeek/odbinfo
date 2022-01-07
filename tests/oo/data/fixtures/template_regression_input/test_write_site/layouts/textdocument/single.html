@@ -35,7 +35,7 @@
                 {{ partial "render-linked-string" (dict "text" $val.table "link" $val.link "context" $context)}}
               </td>
               <td>{{ $val.tabletype }}</td>
-              <td>{{ $val.column }}</td>
+              <td>{{ $val.name }}</td>
             </tr>
     {{ end }}
           </tbody>

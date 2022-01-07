@@ -61,7 +61,8 @@ parent_link:
   local_id: testdb
 title: Person
 used_by:
-- content_type: form
+- bookmark: '153'
+  content_type: form
   local_id: Formulier1
 uses: []
 ---

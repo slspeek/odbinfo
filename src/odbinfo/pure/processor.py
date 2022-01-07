@@ -1,6 +1,6 @@
 """ Processor module """
 import dataclasses
-from typing import List, Sequence, Union
+from typing import Dict, List, Sequence, Tuple, Union
 
 from odbinfo.pure.datatype.base import (BasicToken, Identifier, Preprocessable,
                                         Usable, UseAggregator, User,
@@ -81,7 +81,25 @@ def aggregate_uses(metadata: Metadata, collapse_multiple_uses: bool) -> None:
 
 def undouble_used_by(users: Sequence[Identifier]) -> List[Identifier]:
     """If two ids have the same content_type and local_id"""
-    return list(dict.fromkeys(Identifier(i.content_type, i.local_id, None) for i in users))
+
+    def pages():
+        return list(dict.fromkeys((i.content_type, i.local_id) for i in users))
+
+    def collect_ids(apage):
+        return [user for user in users if user.content_type == apage[0] and
+                user.local_id == apage[1]]
+
+    page_list = pages()
+    by_page: Dict[Tuple[str, str], List[Identifier]] = {}
+    for page in page_list:
+        by_page[page] = collect_ids(page)
+
+    result = []
+    for key in page_list:
+        bookmark = ",".join(
+            link.bookmark for link in by_page[key] if link.bookmark)
+        result.append(Identifier(key[0], key[1], bookmark))
+    return result
 
 
 def aggregate_used_by(metadata: Metadata, collapse_multiple_uses: bool) -> None:

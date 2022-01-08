@@ -11,8 +11,11 @@ function offsetAnchor() {
 }
 
 function highlightHash() {
-  var id  = location.hash.substr(1); //Get the word after the hash from the url
-  if (id) $('#'+id).addClass('mark'); // add class highlight to element whose id is the word after the hash
+  var id_list  = location.hash.substr(1); //Get the word after the hash from the url
+  id_list.split(",").forEach(function(id) {
+    $('#'+id).addClass('mark'); // add class highlight to element whose id is the word after the hash
+  })
+
 }
 // Captures click events of all <a> elements with href containing #
 $(document).on('click', 'a[href*="#"]', function(event) {

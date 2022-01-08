@@ -51,6 +51,8 @@ used_by:
   content_type: basicfunction
   local_id: ReferToView.Module1.Library1
 uses:
-- content_type: table
-  local_id: Plant
+- link:
+    content_type: table
+    local_id: Plant
+  sources: '43'
 ---

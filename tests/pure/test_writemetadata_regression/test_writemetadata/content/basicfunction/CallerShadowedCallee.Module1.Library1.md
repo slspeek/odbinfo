@@ -41,6 +41,8 @@ tokens:
   text: End Sub
 used_by: []
 uses:
-- content_type: basicfunction
-  local_id: ShadowedCallee.Module1.Library1
+- link:
+    content_type: basicfunction
+    local_id: ShadowedCallee.Module1.Library1
+  sources: '523'
 ---

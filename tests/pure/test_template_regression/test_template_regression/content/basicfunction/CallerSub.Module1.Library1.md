@@ -59,8 +59,12 @@ tokens:
   text: End Sub
 used_by: []
 uses:
-- content_type: basicfunction
-  local_id: CalleeSub.Module1.Library1
-- content_type: basicfunction
-  local_id: CalleeSub.Module2.Library1
+- link:
+    content_type: basicfunction
+    local_id: CalleeSub.Module1.Library1
+  sources: '463'
+- link:
+    content_type: basicfunction
+    local_id: CalleeSub.Module2.Library1
+  sources: '469'
 ---

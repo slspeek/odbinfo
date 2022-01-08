@@ -3,7 +3,7 @@ import dataclasses
 from typing import Dict, List, Sequence, Tuple, Union
 
 from odbinfo.pure.datatype.base import (BasicToken, Identifier, Preprocessable,
-                                        Usable, UseAggregator, User,
+                                        Usable, UseAggregator, UseLink, User,
                                         content_type)
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.config import Configuration
@@ -64,13 +64,21 @@ class FormPreprocessor(FormVisitor):
         self.simplify_type(listbox)
 
 
+def undouble_uses(usecases: List[UseLink]) -> List[UseLink]:
+    """Merge sources of UseLinks with identical target"""
+    return usecases
+
+
 def aggregate_uses_from_children(user_agg: UseAggregator, collapse_multiple_uses: bool) -> None:
     """Collect aggregated uses from its children """
+    collected_uses = []
     for node in user_agg.all_objects():
         if isinstance(node, User) and node.link:
-            user_agg.uses.append(node.link)
+            collected_uses.append(UseLink(node.link, [node.obj_id]))
     if collapse_multiple_uses:
-        user_agg.uses = list(dict.fromkeys(user_agg.uses))
+        user_agg.uses = undouble_uses(collected_uses)
+    else:
+        user_agg.uses = collected_uses
 
 
 def aggregate_uses(metadata: Metadata, collapse_multiple_uses: bool) -> None:

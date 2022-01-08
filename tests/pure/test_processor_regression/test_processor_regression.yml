@@ -70,9 +70,12 @@ form_defs:
   title: Family
   used_by: []
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Family
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Family
+    sources:
+    - '136'
 - height: 1
   name: Formulier1
   obj_id: '141'
@@ -227,9 +230,12 @@ form_defs:
   title: Formulier1
   used_by: []
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Person
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Person
+    sources:
+    - '153'
 - height: 0
   name: ListBoxTest
   obj_id: '155'
@@ -530,12 +536,24 @@ form_defs:
   title: ListBoxTest
   used_by: []
   uses:
-  - bookmark: null
-    content_type: query
-    local_id: vwPlant
-  - bookmark: null
-    content_type: table
-    local_id: Plant
+  - link:
+      bookmark: null
+      content_type: query
+      local_id: vwPlant
+    sources:
+    - '156'
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '178'
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '180'
 - height: 0
   name: Plant
   obj_id: '183'
@@ -638,9 +656,12 @@ form_defs:
   title: Plant
   used_by: []
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Plant
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '184'
 - height: 0
   name: Plant invoeren
   obj_id: '191'
@@ -700,9 +721,12 @@ form_defs:
   title: Plant invoeren
   used_by: []
   uses:
-  - bookmark: null
-    content_type: query
-    local_id: vwPlant
+  - link:
+      bookmark: null
+      content_type: query
+      local_id: vwPlant
+    sources:
+    - '192'
 - height: 0
   name: PlantListbox
   obj_id: '196'
@@ -874,15 +898,36 @@ form_defs:
   title: PlantListbox
   used_by: []
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Plant
-  - bookmark: null
-    content_type: query
-    local_id: FamilyLookup
-  - bookmark: null
-    content_type: basicfunction
-    local_id: Main.Module1.Library1
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '197'
+  - link:
+      bookmark: null
+      content_type: query
+      local_id: FamilyLookup
+    sources:
+    - '203'
+  - link:
+      bookmark: null
+      content_type: basicfunction
+      local_id: Main.Module1.Library1
+    sources:
+    - '205'
+  - link:
+      bookmark: null
+      content_type: basicfunction
+      local_id: Main.Module1.Library1
+    sources:
+    - '208'
+  - link:
+      bookmark: null
+      content_type: basicfunction
+      local_id: Main.Module1.Library1
+    sources:
+    - '209'
 - height: 0
   name: PlantListboxDirectSQL
   obj_id: '210'
@@ -1228,15 +1273,36 @@ form_defs:
   title: PlantListboxDirectSQL
   used_by: []
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Plant
-  - bookmark: null
-    content_type: table
-    local_id: Family
-  - bookmark: null
-    content_type: basicfunction
-    local_id: Main.Module1.Library1
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '211'
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Family
+    sources:
+    - '237'
+  - link:
+      bookmark: null
+      content_type: basicfunction
+      local_id: Main.Module1.Library1
+    sources:
+    - '239'
+  - link:
+      bookmark: null
+      content_type: basicfunction
+      local_id: Main.Module1.Library1
+    sources:
+    - '242'
+  - link:
+      bookmark: null
+      content_type: basicfunction
+      local_id: Main.Module1.Library1
+    sources:
+    - '243'
 - height: 1
   name: Related subform
   obj_id: '244'
@@ -1429,12 +1495,18 @@ form_defs:
   title: Related subform
   used_by: []
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Plant
-  - bookmark: null
-    content_type: table
-    local_id: Family
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '245'
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Family
+    sources:
+    - '252'
 - height: 0
   name: view1
   obj_id: '259'
@@ -1489,9 +1561,12 @@ form_defs:
   title: view1
   used_by: []
   uses:
-  - bookmark: null
-    content_type: view
-    local_id: view1
+  - link:
+      bookmark: null
+      content_type: view
+      local_id: view1
+    sources:
+    - '260'
 graphs: []
 library_defs:
 - modules:
@@ -1654,9 +1729,12 @@ library_defs:
         type: 44
       used_by: []
       uses:
-      - bookmark: null
-        content_type: textdocument
-        local_id: Untitled
+      - link:
+          bookmark: null
+          content_type: textdocument
+          local_id: Untitled
+        sources:
+        - '288'
     - body_tokens:
       - cls: null
         hidden: false
@@ -1815,9 +1893,12 @@ library_defs:
         type: 44
       used_by: []
       uses:
-      - bookmark: null
-        content_type: textdocument
-        local_id: Untitled
+      - link:
+          bookmark: null
+          content_type: textdocument
+          local_id: Untitled
+        sources:
+        - '300'
     - body_tokens:
       - cls: null
         hidden: false
@@ -3750,12 +3831,18 @@ library_defs:
         type: 44
       used_by: []
       uses:
-      - bookmark: null
-        content_type: basicfunction
-        local_id: CalleeSub.Module1.Library1
-      - bookmark: null
-        content_type: basicfunction
-        local_id: CalleeSub.Module2.Library1
+      - link:
+          bookmark: null
+          content_type: basicfunction
+          local_id: CalleeSub.Module1.Library1
+        sources:
+        - '463'
+      - link:
+          bookmark: null
+          content_type: basicfunction
+          local_id: CalleeSub.Module2.Library1
+        sources:
+        - '469'
     - body_tokens:
       - cls: null
         hidden: false
@@ -4068,9 +4155,12 @@ library_defs:
         type: 44
       used_by: []
       uses:
-      - bookmark: null
-        content_type: basicfunction
-        local_id: CalleeTwoSub.Module2.Library1
+      - link:
+          bookmark: null
+          content_type: basicfunction
+          local_id: CalleeTwoSub.Module2.Library1
+        sources:
+        - '493'
     - body_tokens:
       - cls: identifier
         hidden: false
@@ -4354,9 +4444,18 @@ library_defs:
         type: 44
       used_by: []
       uses:
-      - bookmark: null
-        content_type: basicfunction
-        local_id: CalleeOtherLib.Module1.Standard
+      - link:
+          bookmark: null
+          content_type: basicfunction
+          local_id: CalleeOtherLib.Module1.Standard
+        sources:
+        - '505'
+      - link:
+          bookmark: null
+          content_type: basicfunction
+          local_id: CalleeOtherLib.Module1.Standard
+        sources:
+        - '511'
     - body_tokens:
       - cls: identifier
         hidden: false
@@ -4517,9 +4616,12 @@ library_defs:
         type: 44
       used_by: []
       uses:
-      - bookmark: null
-        content_type: basicfunction
-        local_id: ShadowedCallee.Module1.Library1
+      - link:
+          bookmark: null
+          content_type: basicfunction
+          local_id: ShadowedCallee.Module1.Library1
+        sources:
+        - '523'
     - body_tokens:
       - cls: null
         hidden: false
@@ -4830,9 +4932,12 @@ library_defs:
         type: 44
       used_by: []
       uses:
-      - bookmark: null
-        content_type: table
-        local_id: Plant
+      - link:
+          bookmark: null
+          content_type: table
+          local_id: Plant
+        sources:
+        - '549'
     - body_tokens:
       - cls: null
         hidden: false
@@ -4991,9 +5096,12 @@ library_defs:
         type: 44
       used_by: []
       uses:
-      - bookmark: null
-        content_type: view
-        local_id: view1
+      - link:
+          bookmark: null
+          content_type: view
+          local_id: view1
+        sources:
+        - '561'
     - body_tokens:
       - cls: null
         hidden: false
@@ -5152,9 +5260,12 @@ library_defs:
         type: 44
       used_by: []
       uses:
-      - bookmark: null
-        content_type: query
-        local_id: FamilyLookup
+      - link:
+          bookmark: null
+          content_type: query
+          local_id: FamilyLookup
+        sources:
+        - '573'
     library: Library1
     name: Module1
     name_indexes:
@@ -7335,15 +7446,24 @@ query_defs:
     type: 200
   used_by: []
   uses:
-  - bookmark: null
-    content_type: query
-    local_id: FamilyLookup
-  - bookmark: null
-    content_type: query
-    local_id: vwPlant
-  - bookmark: null
-    content_type: view
-    local_id: view1
+  - link:
+      bookmark: null
+      content_type: query
+      local_id: FamilyLookup
+    sources:
+    - '54'
+  - link:
+      bookmark: null
+      content_type: query
+      local_id: vwPlant
+    sources:
+    - '57'
+  - link:
+      bookmark: null
+      content_type: view
+      local_id: view1
+    sources:
+    - '60'
 - columns:
   - autoincrement: false
     issigned: false
@@ -7564,9 +7684,12 @@ query_defs:
     content_type: basicfunction
     local_id: ReferToQuery.Module1.Library1
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Family
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Family
+    sources:
+    - '86'
 - columns:
   - autoincrement: false
     issigned: true
@@ -7889,9 +8012,12 @@ query_defs:
     type: 200
   used_by: []
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Plant
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '118'
 - columns:
   - autoincrement: false
     issigned: true
@@ -8051,9 +8177,12 @@ query_defs:
     content_type: textdocument
     local_id: Untitled
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Plant
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '131'
 report_defs:
 - cmd: Family
   cmdtype: table
@@ -8077,9 +8206,12 @@ report_defs:
   title: Family
   used_by: []
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Family
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Family
+    sources:
+    - '263'
 - cmd: select * from "Plant";
   cmdtype: command
   embedded_query:
@@ -8203,9 +8335,12 @@ report_defs:
   title: ReportCommandTypeSQL
   used_by: []
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Plant
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '274'
 - cmd: vwPlant
   cmdtype: query
   embedded_query: null
@@ -8228,9 +8363,12 @@ report_defs:
   title: vwPlant
   used_by: []
   uses:
-  - bookmark: null
-    content_type: query
-    local_id: vwPlant
+  - link:
+      bookmark: null
+      content_type: query
+      local_id: vwPlant
+    sources:
+    - '276'
 table_defs:
 - columns:
   - autoincrement: false
@@ -8514,9 +8652,12 @@ table_defs:
     content_type: basicfunction
     local_id: ReferToTable.Module1.Library1
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Family
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Family
+    sources:
+    - '15'
 textdocument_defs:
 - fields:
   - database: testdb
@@ -8547,9 +8688,12 @@ textdocument_defs:
     content_type: basicfunction
     local_id: UsesDocumentFilename.Module1.Standard
   uses:
-  - bookmark: null
-    content_type: query
-    local_id: vwPlant
+  - link:
+      bookmark: null
+      content_type: query
+      local_id: vwPlant
+    sources:
+    - '778'
 title: testdb
 view_defs:
 - columns:
@@ -8700,9 +8844,18 @@ view_defs:
     type: 200
   used_by: []
   uses:
-  - bookmark: null
-    content_type: view
-    local_id: view1
+  - link:
+      bookmark: null
+      content_type: view
+      local_id: view1
+    sources:
+    - '24'
+  - link:
+      bookmark: null
+      content_type: view
+      local_id: view1
+    sources:
+    - '32'
 - columns:
   - autoincrement: false
     issigned: true
@@ -8833,6 +8986,9 @@ view_defs:
     content_type: basicfunction
     local_id: ReferToView.Module1.Library1
   uses:
-  - bookmark: null
-    content_type: table
-    local_id: Plant
+  - link:
+      bookmark: null
+      content_type: table
+      local_id: Plant
+    sources:
+    - '43'

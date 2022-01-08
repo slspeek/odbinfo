@@ -3,7 +3,8 @@
   <h3>Uses</h3>
     <ul class="list-group">
     {{ range .Params.uses }}
-      <li class="list-group-item">{{ partial "render-link" (dict "link" . "context" $context)}}</li>
+      <li class="list-group-item" onmouseenter="highlightIds('{{ .sources }}')" onmouseleave="dehighlightIds('{{ .sources }}')" ><!--
+      -->{{ partial "render-link" (dict "link" .link "context" $context)}}</li>
     {{ end }}
     </ul>
   {{ end }}

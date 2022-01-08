@@ -38,9 +38,8 @@ Relevant function filter
 - everthing 'in between' the above (hard to determine)
 
 Uses should become a multiset, multiselect sources on mouseover link
-https://pypi.org/project/multiset/
-UsedBy should become multiset, multiselect when linking back
-e.g. /#301,450,900 or /?select=300,304,600
+
+UsedBy should display count if count > 1
 
 templates:
 - control in graph

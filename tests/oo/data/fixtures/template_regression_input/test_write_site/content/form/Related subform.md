@@ -171,8 +171,12 @@ subforms:
 title: Related subform
 used_by: []
 uses:
-- content_type: table
-  local_id: Plant
-- content_type: table
-  local_id: Family
+- link:
+    content_type: table
+    local_id: Plant
+  sources: '245'
+- link:
+    content_type: table
+    local_id: Family
+  sources: '252'
 ---

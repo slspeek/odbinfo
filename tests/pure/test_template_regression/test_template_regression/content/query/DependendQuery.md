@@ -113,10 +113,16 @@ tokens:
   text: '"view1"'
 used_by: []
 uses:
-- content_type: query
-  local_id: FamilyLookup
-- content_type: query
-  local_id: vwPlant
-- content_type: view
-  local_id: view1
+- link:
+    content_type: query
+    local_id: FamilyLookup
+  sources: '54'
+- link:
+    content_type: query
+    local_id: vwPlant
+  sources: '57'
+- link:
+    content_type: view
+    local_id: view1
+  sources: '60'
 ---

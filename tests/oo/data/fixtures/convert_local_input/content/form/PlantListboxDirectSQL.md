@@ -177,10 +177,24 @@ subforms:
 title: PlantListboxDirectSQL
 used_by: []
 uses:
-- content_type: table
-  local_id: Plant
-- content_type: table
-  local_id: Family
-- content_type: basicfunction
-  local_id: Main.Module1.Library1
+- link:
+    content_type: table
+    local_id: Plant
+  sources: '211'
+- link:
+    content_type: table
+    local_id: Family
+  sources: '237'
+- link:
+    content_type: basicfunction
+    local_id: Main.Module1.Library1
+  sources: '239'
+- link:
+    content_type: basicfunction
+    local_id: Main.Module1.Library1
+  sources: '242'
+- link:
+    content_type: basicfunction
+    local_id: Main.Module1.Library1
+  sources: '243'
 ---

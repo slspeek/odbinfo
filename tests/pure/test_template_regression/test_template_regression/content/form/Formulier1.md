@@ -67,6 +67,8 @@ subforms:
 title: Formulier1
 used_by: []
 uses:
-- content_type: table
-  local_id: Person
+- link:
+    content_type: table
+    local_id: Person
+  sources: '153'
 ---

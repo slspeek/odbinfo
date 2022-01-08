@@ -87,6 +87,8 @@ tokens:
   text: '"Plant"'
 used_by: []
 uses:
-- content_type: table
-  local_id: Plant
+- link:
+    content_type: table
+    local_id: Plant
+  sources: '118'
 ---

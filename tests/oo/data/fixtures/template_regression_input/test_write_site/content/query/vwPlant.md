@@ -77,6 +77,8 @@ used_by:
   content_type: textdocument
   local_id: Untitled
 uses:
-- content_type: table
-  local_id: Plant
+- link:
+    content_type: table
+    local_id: Plant
+  sources: '131'
 ---

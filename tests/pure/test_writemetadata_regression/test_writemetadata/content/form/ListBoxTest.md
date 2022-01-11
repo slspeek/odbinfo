@@ -137,10 +137,12 @@ subforms:
 title: ListBoxTest
 used_by: []
 uses:
-- content_type: query
-  local_id: vwPlant
-- content_type: table
-  local_id: Plant
-- content_type: table
-  local_id: Plant
+- link:
+    content_type: query
+    local_id: vwPlant
+  sources: '156'
+- link:
+    content_type: table
+    local_id: Plant
+  sources: 178,180
 ---

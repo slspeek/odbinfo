@@ -59,8 +59,8 @@ tokens:
   text: End Sub
 used_by: []
 uses:
-- content_type: basicfunction
-  local_id: CalleeOtherLib.Module1.Standard
-- content_type: basicfunction
-  local_id: CalleeOtherLib.Module1.Standard
+- link:
+    content_type: basicfunction
+    local_id: CalleeOtherLib.Module1.Standard
+  sources: 505,511
 ---

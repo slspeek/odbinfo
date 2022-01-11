@@ -45,8 +45,8 @@ tokens:
   text: '"view1"'
 used_by: []
 uses:
-- content_type: view
-  local_id: view1
-- content_type: view
-  local_id: view1
+- link:
+    content_type: view
+    local_id: view1
+  sources: 24,32
 ---

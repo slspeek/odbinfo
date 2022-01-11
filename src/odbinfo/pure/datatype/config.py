@@ -74,8 +74,6 @@ EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",
                              "querycolumn", "column", "pythonlibrary",
                              "pythonmodule", "databasedisplay"]
 
-# EXCLUDED_TYPES: List[str] = []
-
 ALWAYS_EXCLUDED = ["metadata", "basictoken", "sqltoken"]
 
 

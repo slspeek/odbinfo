@@ -24,6 +24,8 @@ used_by:
   content_type: basicfunction
   local_id: UsesDocumentFilename.Module1.Standard
 uses:
-- content_type: query
-  local_id: vwPlant
+- link:
+    content_type: query
+    local_id: vwPlant
+  sources: '778'
 ---

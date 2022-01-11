@@ -61,6 +61,8 @@ subforms:
 title: Family
 used_by: []
 uses:
-- content_type: table
-  local_id: Family
+- link:
+    content_type: table
+    local_id: Family
+  sources: '136'
 ---

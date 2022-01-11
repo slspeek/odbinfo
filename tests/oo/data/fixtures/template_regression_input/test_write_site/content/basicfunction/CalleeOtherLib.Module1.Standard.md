@@ -32,10 +32,7 @@ tokens:
 - index: 37
   text: End Sub
 used_by:
-- bookmark: '505'
-  content_type: basicfunction
-  local_id: CallerOtherLib.Module1.Library1
-- bookmark: '511'
+- bookmark: 505,511
   content_type: basicfunction
   local_id: CallerOtherLib.Module1.Library1
 uses: []

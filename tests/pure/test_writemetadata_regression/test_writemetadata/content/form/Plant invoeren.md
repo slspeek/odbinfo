@@ -50,6 +50,8 @@ subforms:
 title: Plant invoeren
 used_by: []
 uses:
-- content_type: query
-  local_id: vwPlant
+- link:
+    content_type: query
+    local_id: vwPlant
+  sources: '192'
 ---

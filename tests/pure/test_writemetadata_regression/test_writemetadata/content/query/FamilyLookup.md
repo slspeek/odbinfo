@@ -70,6 +70,8 @@ used_by:
   content_type: basicfunction
   local_id: ReferToQuery.Module1.Library1
 uses:
-- content_type: table
-  local_id: Family
+- link:
+    content_type: table
+    local_id: Family
+  sources: '86'
 ---

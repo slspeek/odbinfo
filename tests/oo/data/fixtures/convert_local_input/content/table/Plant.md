@@ -88,10 +88,7 @@ used_by:
 - bookmark: '131'
   content_type: query
   local_id: vwPlant
-- bookmark: '178'
-  content_type: form
-  local_id: ListBoxTest
-- bookmark: '180'
+- bookmark: 178,180
   content_type: form
   local_id: ListBoxTest
 - bookmark: '184'
@@ -113,6 +110,8 @@ used_by:
   content_type: basicfunction
   local_id: ReferToTable.Module1.Library1
 uses:
-- content_type: table
-  local_id: Family
+- link:
+    content_type: table
+    local_id: Family
+  sources: '15'
 ---

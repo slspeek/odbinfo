@@ -53,6 +53,16 @@ class Identifier(Dictable):
         return adict
 
 
+@dataclass(frozen=True)
+class UseLink(Dictable):
+    """ A link with source ids """
+    link: Identifier
+    sources: List[str]
+
+    def to_dict(self):
+        return {"link": self.link.to_dict(), "sources": ",".join(self.sources)}
+
+
 def content_type(clazz) -> str:
     """returns the Hugo content type of `clazz`"""
     return clazz.__name__.lower()
@@ -172,7 +182,7 @@ class Usable(NamedNode):
 @dataclass
 class UseAggregator(Node):
     """ aggregates uses and used_by """
-    uses: List['Identifier'] = field(
+    uses: List['UseLink'] = field(
         init=False, repr=False, default_factory=list)
 
 

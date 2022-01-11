@@ -10,10 +10,29 @@ function offsetAnchor() {
   }
 }
 
-function highlightHash() {
-  var id  = location.hash.substr(1); //Get the word after the hash from the url
-  if (id) $('#'+id).addClass('mark'); // add class highlight to element whose id is the word after the hash
+
+function highlightIds(id_list) {
+  id_list.split(",").forEach(function(id) {
+    $('#'+id).addClass('mark'); // add class highlight to element whose id is the word after the hash
+  })
 }
+
+function dehighlightIds(id_list) {
+  id_list.split(",").forEach(function(id) {
+    $('#'+id).removeClass('mark'); // add class highlight to element whose id is the word after the hash
+  })
+}
+
+function highlightHash() {
+  var id_list_string  = location.hash.substr(1); //Get the word after the hash from the url
+  highlightIds(id_list_string)
+}
+
+function highlightUse(elem) {
+    console.log(elem.data)
+    highlightIds(elem.data)
+}
+
 // Captures click events of all <a> elements with href containing #
 $(document).on('click', 'a[href*="#"]', function(event) {
 // Click events are captured before hashchanges. Timeout

@@ -43,8 +43,12 @@ def set_configuration_defaults(config: Configuration, odbpath: Path):
 
 
 @timed("Generate report")
-def generate_report(oodocument, config=read_configuration()):
+def generate_report(oodocument, config=None):
     """ Make report """
+
+    if not config:
+        config = read_configuration()
+
     odbpath = ooutil.document_path(oodocument)
 
     set_configuration_defaults(config, odbpath)

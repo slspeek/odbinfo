@@ -1,6 +1,6 @@
 """ Processor module """
 import dataclasses
-from typing import Dict, List, Sequence, Tuple, Union
+from typing import List, Sequence, Union
 
 from odbinfo.pure.datatype.base import (BasicToken, Identifier, Preprocessable,
                                         Usable, UseAggregator, UseLink, User,
@@ -66,7 +66,14 @@ class FormPreprocessor(FormVisitor):
 
 def undouble_uses(usecases: List[UseLink]) -> List[UseLink]:
     """Merge sources of UseLinks with identical target"""
-    return usecases
+
+    def pages():
+        return list(dict.fromkeys(u.link for u in usecases))
+
+    def collect_sources_by_page(apage):
+        return sum([user.sources for user in usecases if user.link == apage], [])
+
+    return [UseLink(page, collect_sources_by_page(page)) for page in pages()]
 
 
 def aggregate_uses_from_children(user_agg: UseAggregator, collapse_multiple_uses: bool) -> None:
@@ -88,7 +95,7 @@ def aggregate_uses(metadata: Metadata, collapse_multiple_uses: bool) -> None:
 
 
 def undouble_used_by(users: Sequence[Identifier]) -> List[Identifier]:
-    """If two ids have the same content_type and local_id"""
+    """If two ids have the same content_type and local_id merge their bookmarks"""
 
     def pages():
         return list(dict.fromkeys((i.content_type, i.local_id) for i in users))
@@ -97,15 +104,10 @@ def undouble_used_by(users: Sequence[Identifier]) -> List[Identifier]:
         return [user for user in users if user.content_type == apage[0] and
                 user.local_id == apage[1]]
 
-    page_list = pages()
-    by_page: Dict[Tuple[str, str], List[Identifier]] = {}
-    for page in page_list:
-        by_page[page] = collect_ids(page)
-
     result = []
-    for key in page_list:
+    for key in pages():
         bookmark = ",".join(
-            link.bookmark for link in by_page[key] if link.bookmark)
+            link.bookmark for link in collect_ids(key) if link.bookmark)
         result.append(Identifier(key[0], key[1], bookmark))
     return result
 

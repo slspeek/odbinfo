@@ -36,7 +36,7 @@ def digraph():
 
 @fixture(scope="function")
 def module_single_function():
-    return Module("module_single_function", "Lib", """"
+    return Module("module_single_function", "Lib", """
     Sub Foo()
         print "Foo"
     End Sub

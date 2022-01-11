@@ -1,3 +1,4 @@
+look critical at token rendering
 configuration location variable in generate_report
 
 configuration reader so types in config.yml can be removed
@@ -6,10 +7,6 @@ writer
   - test write_config with StringIO
   - prepare content output dirs (for parallelism)
   test/pure/test_writer.py
-
-SubForm reading should respect order of subforms and controls
-FormItem = Union[SubForm, Control, ListBox, Grid]
-Grid type hack?
 
 Testing
 -------
@@ -24,34 +21,8 @@ test/pure/test_writer_regression.py
 test/pure/test_scanner.py
 test/pure/test_basic_parser.py
 
-Document the technical design:
-- reading stage
-- preprocessing
-- dependency search
-- graphs generation
-- writing
-- building
-
-Relevant function filter
-- function that is used by something else than a basicfunction
-- function that uses something else than a basicfunction
-- everthing 'in between' the above (hard to determine)
-
-Uses should become a multiset, multiselect sources on mouseover link
-
 UsedBy should display count if count > 1
-
-templates:
-- control in graph
-- column in graph
-- sql color highlighting
-  - columnnames
-
-type file based MetaData, TextDocument
-- functionality to include the file with downloadable link (if configurated so)
-(nice versioning tool)
-
-database (driver) information retrieval
+Split out config properties
 
 Configuration
 -------------
@@ -82,6 +53,34 @@ make upgrade dependencies (20211229 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
+Relevant function filter
+- function that is used by something else than a basicfunction
+- function that uses something else than a basicfunction
+- everthing 'in between' the above (hard to determine)
+
+SubForm reading should respect order of subforms and controls
+FormItem = Union[SubForm, Control, ListBox, Grid]
+Grid type hack?
+
+type file based MetaData, TextDocument
+- functionality to include the file with downloadable link (if configurated so)
+(nice versioning tool)
+
+database (driver) information retrieval
+
+database author info
+
+Document the technical design:
+- reading stage
+- preprocessing
+- dependency search
+- graphs generation
+- writing
+- building
+
+
+make to_dict a visitor
+
 test_basic_parser_slow.py: parametrize and regression
 make e2e test (BaseDocumenter2dot example)
 a test for _convert_local, verify there are no more
@@ -91,8 +90,6 @@ make run a bit broken, as graph.svg is emptied on purpose
 
 dependencysearch should be called from core not processor?
 
-Later
------
 Introduce <ContentType>Raw classes make them member of <ContentType> classes
 as they are preprocessed
 
@@ -131,7 +128,12 @@ others in python (nice to have)
 
 templates:
 - look into GoHugo submenus
-- Form: controls linked to sun API docs.
+- Form: controls linked to sun API docs. And ServiceNames in BasicFunctions
+templates:
+- control in graph
+- column in graph
+- sql color highlighting
+  - columnnames
 
 ?make it work for .oxt files too?
 
@@ -157,11 +159,6 @@ search_combinations makes lists first
 
 graph: look at strict parameter of Digraph for collapse_multiple_uses configuration
 parameter
-
-Idea: Metadata get basicfunction field and module field
-refs in library and module to basicfunctions become links (Identifier)
-solves some strange action in writer, clearing the way for
-parallel writing
 
 - _convert_local should use python webserver: (hugo localserving is very convenient)
   https://docs.python.org/3.7/library/http.server.html

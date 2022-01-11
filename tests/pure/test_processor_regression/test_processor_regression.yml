@@ -548,11 +548,6 @@ form_defs:
       local_id: Plant
     sources:
     - '178'
-  - link:
-      bookmark: null
-      content_type: table
-      local_id: Plant
-    sources:
     - '180'
 - height: 0
   name: Plant
@@ -916,17 +911,7 @@ form_defs:
       local_id: Main.Module1.Library1
     sources:
     - '205'
-  - link:
-      bookmark: null
-      content_type: basicfunction
-      local_id: Main.Module1.Library1
-    sources:
     - '208'
-  - link:
-      bookmark: null
-      content_type: basicfunction
-      local_id: Main.Module1.Library1
-    sources:
     - '209'
 - height: 0
   name: PlantListboxDirectSQL
@@ -1291,17 +1276,7 @@ form_defs:
       local_id: Main.Module1.Library1
     sources:
     - '239'
-  - link:
-      bookmark: null
-      content_type: basicfunction
-      local_id: Main.Module1.Library1
-    sources:
     - '242'
-  - link:
-      bookmark: null
-      content_type: basicfunction
-      local_id: Main.Module1.Library1
-    sources:
     - '243'
 - height: 1
   name: Related subform
@@ -4450,11 +4425,6 @@ library_defs:
           local_id: CalleeOtherLib.Module1.Standard
         sources:
         - '505'
-      - link:
-          bookmark: null
-          content_type: basicfunction
-          local_id: CalleeOtherLib.Module1.Standard
-        sources:
         - '511'
     - body_tokens:
       - cls: identifier
@@ -8850,11 +8820,6 @@ view_defs:
       local_id: view1
     sources:
     - '24'
-  - link:
-      bookmark: null
-      content_type: view
-      local_id: view1
-    sources:
     - '32'
 - columns:
   - autoincrement: false

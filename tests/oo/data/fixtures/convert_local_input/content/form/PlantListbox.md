@@ -159,13 +159,5 @@ uses:
 - link:
     content_type: basicfunction
     local_id: Main.Module1.Library1
-  sources: '205'
-- link:
-    content_type: basicfunction
-    local_id: Main.Module1.Library1
-  sources: '208'
-- link:
-    content_type: basicfunction
-    local_id: Main.Module1.Library1
-  sources: '209'
+  sources: 205,208,209
 ---

@@ -62,9 +62,5 @@ uses:
 - link:
     content_type: basicfunction
     local_id: CalleeOtherLib.Module1.Standard
-  sources: '505'
-- link:
-    content_type: basicfunction
-    local_id: CalleeOtherLib.Module1.Standard
-  sources: '511'
+  sources: 505,511
 ---

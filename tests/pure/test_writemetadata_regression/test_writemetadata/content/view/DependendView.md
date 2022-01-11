@@ -48,9 +48,5 @@ uses:
 - link:
     content_type: view
     local_id: view1
-  sources: '24'
-- link:
-    content_type: view
-    local_id: view1
-  sources: '32'
+  sources: 24,32
 ---

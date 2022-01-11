@@ -144,9 +144,5 @@ uses:
 - link:
     content_type: table
     local_id: Plant
-  sources: '178'
-- link:
-    content_type: table
-    local_id: Plant
-  sources: '180'
+  sources: 178,180
 ---

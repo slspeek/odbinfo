@@ -5,7 +5,6 @@ configuration location variable in generate_report
 configuration reader so types in config.yml can be removed
 
 writer
-  - test write_config with StringIO
   - prepare content output dirs (for parallelism)
   test/pure/test_writer.py
 

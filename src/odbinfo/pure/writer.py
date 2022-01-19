@@ -4,7 +4,7 @@ import shutil
 from datetime import datetime
 from itertools import count
 from pathlib import Path
-from typing import Dict, List, Sequence
+from typing import Any, Dict, List, Sequence
 
 import toml
 import yaml
@@ -70,7 +70,7 @@ def new_site(site_path: Path) -> None:
 def write_metadata(config: Configuration, metadata: Metadata):
     """writes out the `metadata` at `site_path`"""
     present_content = present_contenttypes(metadata)
-    write_config(config,  present_content)
+    write_config(config.site_path, create_config(config, present_content))
     (config.site_path / "content").mkdir()
     for content in present_content:
         write_content(metadata, content, config.site_path)
@@ -82,30 +82,32 @@ def present_contenttypes(metadata: Metadata) -> List[TopLevelDisplayedContent]:
             if len(metadata.get_definitions(content)) > 0]
 
 
-def write_config(config: Configuration,
-                 present_content: Sequence[TopLevelDisplayedContent]) -> None:
+def create_config(config: Configuration,
+                  present_content: Sequence[TopLevelDisplayedContent]) -> Dict[str, Any]:
+    """ create the Hugo configuration """
+    menus = [{"url": "/",
+              "name": "home",
+              "weight": 1}, {"url": f"/svg/{config.name}.gv.svg",
+                             "name": "picture",
+                             "weight": 2}]
+    menus.extend({"url": f"/{content.value}/index.html",
+                  "name": content.value,
+                  "weight": weight}
+                 for content, weight in
+                 zip(present_content, count(3)))
+    return {"title": config.name,
+            "baseURL": config.general.base_url,
+            "languageCode": "en-us",
+            "theme": "minimal",
+            "menu": {"main": menus,
+                     }
+            }
+
+
+def write_config(site_path: Path, config_dict: Dict[str, Any]) -> None:
     """ write out Hugo config.toml """
-    menus = [{"url": f"/{content.value}/index.html",
-              "name": content.value,
-              "weight": weight}
-             for content, weight in
-             zip(present_content, count(3))]
-
-    menus.append({"url": "/",
-                  "name": "home",
-                  "weight": 1})
-    menus.append({"url": f"/svg/{config.name}.gv.svg",
-                  "name": "picture",
-                  "weight": 2})
-
-    with open(config.site_path / "config.toml", "w", encoding='utf-8') as out:
-        toml.dump({"title": config.name,
-                   "baseURL": config.general.base_url,
-                   "languageCode": "en-us",
-                   "theme": "minimal",
-                   "menu": {"main": menus,
-                            }
-                   }, out)
+    with open(site_path / "config.toml", "w", encoding='utf-8') as out:
+        toml.dump(config_dict, out)
 
 
 @timed("Write content", indent=4, arg=1, name=False)

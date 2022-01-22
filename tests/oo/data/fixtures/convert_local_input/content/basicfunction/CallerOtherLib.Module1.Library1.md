@@ -62,5 +62,6 @@ uses:
 - link:
     content_type: basicfunction
     local_id: CalleeOtherLib.Module1.Standard
+  mul: 2
   sources: 505,511
 ---

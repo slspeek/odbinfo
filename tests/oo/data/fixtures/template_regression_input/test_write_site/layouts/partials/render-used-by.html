@@ -4,7 +4,12 @@
     <ul class="list-group">
     {{ range .Params.used_by }}
       <li class="list-group-item"><!--
-    -->{{ partial "render-link" (dict "link" . "context" $context)}}<!--
+      -->{{ $mul:= (len (split .bookmark ",")) }}<!--
+      -->{{ $muls:="" }}<!--
+      -->{{ if (gt $mul 1) }}<!--
+        -->{{ $muls = $mul }}<!--
+      -->{{ end }}<!--
+    -->{{ partial "render-link" (dict "link" . "context" $context "mul" $muls)}}<!--
    --></li>
     {{ end }}
     </ul>

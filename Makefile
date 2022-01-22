@@ -240,8 +240,6 @@ mypy:
 
 post_checkout:
 	-mkdir $(fixtureloc)/fixtures/template_regression_input/test_write_site_empty/content
-	-mkdir $(puretestloc)/test_writemetadata_regression/test_writemetadata_empty/content
-	-mkdir $(puretestloc)/test_write_site_regression/test_write_site_empty/content
 	-mkdir -p $(puretestloc)/test_template_regression/test_template_regression_empty/resources/_gen/{assets,images}
 	-mkdir -p $(puretestloc)/test_template_regression/test_template_regression/resources/_gen/{assets,images}
 	-mkdir $(puretestloc)/test_template_regression/test_template_regression_empty/content

@@ -48,5 +48,6 @@ uses:
 - link:
     content_type: view
     local_id: view1
+  mul: 2
   sources: 24,32
 ---

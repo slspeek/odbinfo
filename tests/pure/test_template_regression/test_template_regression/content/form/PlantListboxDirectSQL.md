@@ -188,5 +188,6 @@ uses:
 - link:
     content_type: basicfunction
     local_id: Main.Module1.Library1
+  mul: 3
   sources: 239,242,243
 ---

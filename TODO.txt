@@ -17,7 +17,6 @@ test/pure/test_writer_regression.py
 test/pure/test_scanner.py
 test/pure/test_basic_parser.py
 
-UsedBy should display count if count > 1
 Split out config properties collapse_multiple_uses
 
 Configuration

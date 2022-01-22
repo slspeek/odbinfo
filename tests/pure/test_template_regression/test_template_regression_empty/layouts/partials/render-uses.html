@@ -4,7 +4,7 @@
     <ul class="list-group">
     {{ range .Params.uses }}
       <li class="list-group-item" onmouseenter="highlightIds('{{ .sources }}')" onmouseleave="dehighlightIds('{{ .sources }}')" ><!--
-      -->{{ partial "render-link" (dict "link" .link "context" $context)}}</li>
+      -->{{ partial "render-link" (dict "link" .link "context" $context "mul" .mul)}}</li>
     {{ end }}
     </ul>
   {{ end }}

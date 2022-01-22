@@ -60,7 +60,11 @@ class UseLink(Dictable):
     sources: List[str]
 
     def to_dict(self):
-        return {"link": self.link.to_dict(), "sources": ",".join(self.sources)}
+        result = {"link": self.link.to_dict(
+        ), "sources": ",".join(self.sources)}
+        if len(self.sources) > 1:
+            result["mul"] = len(self.sources)
+        return result
 
 
 def content_type(clazz) -> str:

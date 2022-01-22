@@ -67,15 +67,6 @@ def new_site(site_path: Path) -> None:
     (site_path / "themes" / "minimal" / ".git").unlink()
 
 
-def write_metadata(config: Configuration, metadata: Metadata):
-    """writes out the `metadata` at `site_path`"""
-    present_content = present_contenttypes(metadata)
-    write_config(config.site_path, create_config(config, present_content))
-    (config.site_path / "content").mkdir()
-    for content in present_content:
-        write_content(metadata, content, config.site_path)
-
-
 def present_contenttypes(metadata: Metadata) -> List[TopLevelDisplayedContent]:
     """returns the content_types that are present in this `metadata`"""
     return [content for content in TopLevelDisplayedContent
@@ -110,17 +101,35 @@ def write_config(site_path: Path, config_dict: Dict[str, Any]) -> None:
         toml.dump(config_dict, out)
 
 
+def content_dir(site_path: Path, content_type: TopLevelDisplayedContent) -> Path:
+    """ Returns the directories where object of type `content_type` are stored """
+    return site_path / "content" / content_type.value
+
+
 @timed("Write content", indent=4, arg=1, name=False)
 def write_content(metadata: Metadata, content_type: TopLevelDisplayedContent, site_path: Path):
     """writes out `content_type` in subdir of `site_path`"""
-    contentlist = metadata.get_definitions(content_type)
-    targetpath = site_path / "content" / content_type.value
-    targetpath.mkdir(parents=True, exist_ok=True)
-    for content in contentlist:
-        with open(targetpath / f"{content.title}.md",
+    for content in metadata.get_definitions(content_type):
+        with open(content_dir(site_path, content_type) / f"{content.title}.md",
                   "w",
                   encoding='utf-8') as out:
             frontmatter(content.to_dict(), out)
+
+
+def create_content_dirs(site_path: Path, present_content: Sequence[TopLevelDisplayedContent]):
+    """ Create content directories """
+    for content_type in present_content:
+        targetpath = content_dir(site_path, content_type)
+        targetpath.mkdir(parents=True, exist_ok=True)
+
+
+def write_metadata(config: Configuration, metadata: Metadata):
+    """writes out the `metadata` at `site_path`"""
+    present_content = present_contenttypes(metadata)
+    write_config(config.site_path, create_config(config, present_content))
+    create_content_dirs(config.site_path, present_content)
+    for content in present_content:
+        write_content(metadata, content, config.site_path)
 
 
 @timed("Write hugo site", indent=2)

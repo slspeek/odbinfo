@@ -4,14 +4,10 @@ configuration location variable in generate_report
 
 configuration reader so types in config.yml can be removed
 
-writer
-  - prepare content output dirs (for parallelism)
-  test/pure/test_writer.py
-
 Testing
 -------
 Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 85.76%)
+unit test coverage 90% (now 85.98%)
 
 test/pure/test_sql_parser.py
 test/pure/test_writer_make_site.py

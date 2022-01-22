@@ -83,3 +83,14 @@ def test_write_config():
         writer.write_config(Path("output_dir"), conf)
     open_mock.assert_called_with(
         Path("output_dir/config.toml"), "w", encoding="utf-8")
+
+
+def test_frontmatter():
+    out = StringIO()
+    writer.frontmatter({"foo": "42"}, out)
+    assert out.getvalue() == """---\nfoo: '42'\n---\n"""
+
+
+def test_content_dir():
+    assert writer.content_dir(Path(
+        "site"), metadata.TopLevelDisplayedContent.TABLE) == Path("site/content/table")

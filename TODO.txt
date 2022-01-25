@@ -1,8 +1,6 @@
+templates: Keys should have ids
+
 look critical at token rendering
-
-configuration location variable in generate_report
-
-configuration reader so types in config.yml can be removed
 
 Testing
 -------
@@ -21,12 +19,17 @@ Split out config properties collapse_multiple_uses
 
 Configuration
 -------------
+split in instance and global conf
+only global is written and read
 start with config.xcs, config.xcu and programmatically write and read them
 first only the location of ymal configuration
+configuration location variable in generate_report
+configuration reader so types in config.yml can be removed
 See BaseDocumenter config too
 
 GUI
 ---
+separate functions for UI calls? Testability is important and UI is untestable.
 - Settings dialog (Options)
 - Progress dialog
 - print --> logger.info
@@ -160,6 +163,8 @@ parameter
     -serve_forever
     -shutdown --> .socket.close()
 
+Shall I use native python ui? Easer to run (test) and write and logging window (below) will work.
+Position of the windows may be weird. CANNOT BE DONE (https://bz.apache.org/ooo/show_bug.cgi?id=30349)
 
 
 

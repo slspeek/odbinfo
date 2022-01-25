@@ -9,6 +9,7 @@ antlr4=java -jar ../../../../../../$(antlrlocation)/$(antlr4jar)
 target=target
 testloc=tests
 srcloc=src
+vendorloc=vendor
 fixtureloc=$(testloc)/oo/data
 puretestloc=$(testloc)/pure
 ootestloc=$(testloc)/oo
@@ -21,7 +22,7 @@ report=$(build)/report
 classdiagram=$(report)/classdiagram
 oo=pipenvconf/oo
 pure=pipenvconf/pure
-SOURCE_ROOTS=$(srcloc):$(testloc)
+SOURCE_ROOTS=$(srcloc):$(testloc):$(vendorloc)/apso:$(vendorloc)/apso/pythonpath
 OOPYTHONPATH=$(SOURCE_ROOTS):${OO_VENV}
 PUREPYTHONPATH=$(SOURCE_ROOTS):${PURE_VENV}
 parserlocation=$(srcloc)/odbinfo/pure/parser
@@ -177,7 +178,7 @@ clean:
 	@echo $(target) was removed
 
 open_shell: prepare
-	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i $(puretestloc)/conftest.py
+	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i
 
 .ONESHELL:
 oxt:
@@ -187,6 +188,9 @@ oxt:
 	--ignore-installed --target $(lib)
 	cp $(srcloc)/main.py $(stage)/python
 	cp -r $(srcloc)/*  $(lib)
+	cp -r $(vendorloc)/apso/* $(lib)
+	cp -r $(vendorloc)/apso/pythonpath/*  $(lib)
+	rm -r $(lib)/pythonpath
 	rm $(lib)/main.py
 	cp -r oometadata/* $(stage)
 	cp LICENSE $(stage)

@@ -5,13 +5,14 @@ from zipfile import ZipFile
 
 from graphviz import Digraph
 from pytest import fixture
+from regression import directory_regression
 
 from odbinfo.pure.datatype.exec import Module
+
+from ..resource import DEFAULT_TESTDB, EMPTYDB
 # pylint:disable=wildcard-import
 # pylint:disable=unused-wildcard-import
-from tests.pure.datatype.conftest import *
-from tests.regression import directory_regression
-from tests.resource import DEFAULT_TESTDB, EMPTYDB
+from .datatype.conftest import *
 
 __all__ = [
     "directory_regression",

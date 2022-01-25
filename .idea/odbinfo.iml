@@ -27,6 +27,7 @@
       <excludeFolder url="file://$MODULE_DIR$/tests/pure/data" />
       <excludeFolder url="file://$MODULE_DIR$/tests/pure/reader/data" />
       <excludeFolder url="file://$MODULE_DIR$/tests/pure/test_write_site_regression" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
     </content>
     <orderEntry type="jdk" jdkName="OOPython 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

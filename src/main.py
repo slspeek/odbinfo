@@ -7,7 +7,7 @@ def make_site():
     """ Generate report on database metadata """
     # pylint: disable=undefined-variable
     doc = XSCRIPTCONTEXT.getDocument()
-    generate_report(doc)
+    generate_report(doc, gui=True)
 
 
 def verify_installation():

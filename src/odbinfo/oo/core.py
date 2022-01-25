@@ -43,7 +43,7 @@ def set_configuration_defaults(config: Configuration, odbpath: Path):
 
 
 @timed("Generate report")
-def generate_report(oodocument, config=None):
+def generate_report(oodocument, config=None, gui=False):
     """ Make report """
 
     if not config:
@@ -60,3 +60,9 @@ def generate_report(oodocument, config=None):
     write_site(config, metadata)
 
     build(config.site_path)
+
+    if gui:
+        # noinspection PyUnresolvedReferences
+        # pylint:disable=import-outside-toplevel
+        from apso_utils import msgbox
+        msgbox("Hello")

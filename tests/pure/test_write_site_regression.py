@@ -1,7 +1,7 @@
 """ writer regression tests """
 import pytest
 
-from odbinfo.pure.datatype.config import get_configuration
+from odbinfo.pure.datatype.config import create_configuration
 from odbinfo.pure.writer import write_site
 from tests.resource import TEST_OUTPUT_PATH
 from tests.util import clear_generated_graphs
@@ -21,7 +21,8 @@ def test_write_site_empty(empty_metadata_processed, directory_regression):
 
 def write_site_test(name, metadata, directory_regression):
     """ generate report and verify"""
-    conf = get_configuration(name, str(TEST_OUTPUT_PATH / "write_site_test"))
+    conf = create_configuration(
+        name, str(TEST_OUTPUT_PATH / "write_site_test"))
     write_site(conf, metadata)
 
     clear_generated_graphs(conf.site_path)

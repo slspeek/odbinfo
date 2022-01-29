@@ -10,9 +10,9 @@ from urllib.parse import urlparse
 
 import pytest
 
-from odbinfo.oo.core import set_configuration_defaults
 from odbinfo.oo.reader import read_metadata
-from odbinfo.pure.datatype.config import get_configuration
+from odbinfo.pure.datatype.config import (create_configuration,
+                                          set_configuration_defaults)
 
 
 def read_metadata_in_test(testdb_doc, monkeypatch, benchmark):
@@ -23,7 +23,7 @@ def read_metadata_in_test(testdb_doc, monkeypatch, benchmark):
     workdir = dbpath.parent
     dbfilename = Path("") / dbpath.name
     monkeypatch.chdir(workdir)
-    config = get_configuration()
+    config = create_configuration()
     set_configuration_defaults(config, dbfilename)
     return benchmark(read_metadata, config, dsource, dbfilename)
 

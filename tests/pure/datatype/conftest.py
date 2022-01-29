@@ -2,7 +2,7 @@
 from pytest import fixture
 
 from odbinfo.pure.datatype.basicfunction import BasicFunction
-from odbinfo.pure.datatype.config import get_configuration
+from odbinfo.pure.datatype.config import create_configuration
 # pylint:disable=redefined-outer-name
 from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import EmbeddedQuery, Key, Table
@@ -13,7 +13,7 @@ from odbinfo.pure.datatype.ui import (Control, DatabaseDisplay, EventListener,
 
 @fixture(scope="function")
 def configuration():
-    return get_configuration("test_config")
+    return create_configuration("test_config")
 
 
 @fixture(scope="function")

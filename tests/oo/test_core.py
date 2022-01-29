@@ -8,7 +8,7 @@ from odbinfo.oo import ooutil
 from odbinfo.oo.core import generate_report
 from odbinfo.oo.ooutil import document_path
 from odbinfo.pure import builder
-from odbinfo.pure.datatype.config import get_configuration
+from odbinfo.pure.datatype.config import create_configuration
 from odbinfo.pure.util import chdir
 from odbinfo.pure.writer import localsite
 from tests.resource import TEST_OUTPUT_PATH
@@ -29,7 +29,7 @@ def test_generate_report_empty(emptydb_doc, benchmark, directory_regression):
 
 def generate_report_test(oodoc, benchmark, directory_regression):
     """ generate report """
-    config = get_configuration()
+    config = create_configuration()
     config.general.output_dir = str(
         (TEST_OUTPUT_PATH / "test_core").absolute())
     config.graph.user_excludes = []

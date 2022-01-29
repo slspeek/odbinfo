@@ -4,6 +4,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional
 
+import yaml
+
+from odbinfo.pure.datatype.dictable import Dictable
+
 
 class ConfigurationAttributeNotSet(Exception):
     """For attributes that need to be there"""
@@ -14,10 +18,19 @@ class ConfigurationAttributeNotSet(Exception):
 
 
 @dataclass
-class GeneralConfig:
+class GeneralConfig(Dictable):
     """ General options """
+
     output_dir: Optional[str]
     base_url: str
+
+    def to_dict(self):
+        return dict(self.__dict__)
+
+    @staticmethod
+    def from_dict(dictionary) -> "GeneralConfig":
+        """ constructs a GeneralConfig object from `dictionary` """
+        return GeneralConfig(dictionary["output_dir"], dictionary["base_url"])
 
 
 PARENT_EDGE_ATTRS = {
@@ -78,10 +91,19 @@ ALWAYS_EXCLUDED = ["metadata", "basictoken", "sqltoken"]
 
 
 @dataclass
-class TextDocumentsConfig:
+class TextDocumentsConfig(Dictable):
     """ Config for the search of textdocuments """
+
     db_registration_id: Optional[str]
     search_locations: Optional[List[str]]
+
+    def to_dict(self):
+        return dict(self.__dict__)
+
+    @staticmethod
+    def from_dict(dictionary) -> "TextDocumentsConfig":
+        """ constructs a TextDocumentsConfig object from `dictionary` """
+        return TextDocumentsConfig(dictionary["db_registration_id"], dictionary["search_locations"])
 
 
 @dataclass
@@ -117,7 +139,7 @@ class Configuration:
         return Path(self.general.output_dir) / self.name
 
 
-def get_configuration(name=None, output_dir=None) -> Configuration:
+def create_configuration(name=None, output_dir=None) -> Configuration:
     """ returns configuration """
     return \
         Configuration(
@@ -133,3 +155,43 @@ def get_configuration(name=None, output_dir=None) -> Configuration:
             ),
             TextDocumentsConfig(None, None)
         )
+
+
+def set_configuration_defaults(config: Configuration, odbpath: Path):
+    """ sets sensible defaults """
+    config.name = odbpath.stem
+    if not config.general.output_dir:
+        config.general.output_dir = str(odbpath.parent / ".odbinfo")
+    if not config.textdocuments.db_registration_id:
+        config.textdocuments.db_registration_id = config.name
+    if config.textdocuments.search_locations is None:
+        config.textdocuments.search_locations = [str(odbpath.parent)]
+
+
+def default_config_path() -> Path:
+    """ returns the default location of the configuration file """
+    return Path.home() / ".odbinfo" / "config.yaml"
+
+
+def load_configuration(config_path: Path) -> Configuration:
+    """ Loads configuration from file `config_path`"""
+    with config_path.open(encoding='utf-8') as file:
+        return yaml.load(file, Loader=yaml.Loader)
+
+
+def write_configuration(config: Configuration, config_path: Path) -> None:
+    """ Writes `config` to `config_path` in YAML format"""
+    with config_path.open(mode='w', encoding='utf-8') as output_file:
+        yaml.dump(config, output_file)
+
+
+def get_configuration(config_path: Path = default_config_path()) -> Configuration:
+    """ reads configuration from `config_path` if exits "\
+        " otherwise a default configuration is written in `config_path`"""
+    if not config_path.exists():
+        if not config_path.parent.exists():
+            config_path.parent.mkdir()
+        config = create_configuration()
+        write_configuration(config, config_path)
+        return config
+    return load_configuration(config_path)

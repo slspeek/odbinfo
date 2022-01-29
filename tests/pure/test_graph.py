@@ -6,7 +6,7 @@ import pytest
 from graphviz import Digraph
 
 from odbinfo.pure.datatype.base import content_type
-from odbinfo.pure.datatype.config import get_configuration
+from odbinfo.pure.datatype.config import create_configuration
 from odbinfo.pure.datatype.tabular import Key, Table
 from odbinfo.pure.datatype.ui import Control, Form, ListBox, SubForm
 from odbinfo.pure.graph import (edge, edge_attributes, generate_graphs,
@@ -50,7 +50,7 @@ def test_is_control_relevant_control(control):
 class ConfTest(unittest.TestCase):
 
     def setUp(self):
-        self.conf = get_configuration("conftest").graph
+        self.conf = create_configuration("conftest").graph
 
 
 def test_is_visible_table(table_plant, graph_config):
@@ -220,6 +220,6 @@ def test_generate_graphs(configuration, metadata_listbox):
 @pytest.mark.slow
 def test_generate_main_graph_regression(metadata_processed, file_regression):
     """run generate_main_graph"""
-    conf = get_configuration("test_generate_main_graph")
+    conf = create_configuration("test_generate_main_graph")
     file_regression.check(
         "".join(generate_main_graph(metadata_processed, conf).source))

@@ -4,14 +4,14 @@ from pathlib import Path
 
 import pytest
 
-from odbinfo.pure.datatype.config import get_configuration
+from odbinfo.pure.datatype.config import create_configuration
 from odbinfo.pure.writer import write_metadata
 from tests.resource import TEST_OUTPUT_PATH
 
 
 def benchmark_writer(output_dir: Path, name, data_loader, benchmark):
     """ generate report and verify"""
-    conf = get_configuration(name=name, output_dir=str(output_dir))
+    conf = create_configuration(name=name, output_dir=str(output_dir))
 
     def setup():
         metadata = data_loader()

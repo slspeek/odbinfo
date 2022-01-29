@@ -32,22 +32,6 @@ def test_href_control(form):
         "../form/myform/index.html#42"
 
 
-def test_to_dict_identitifier_no_bookmark():
-    identifier = Identifier("foo", "bar", None)
-    assert identifier.to_dict() == {'content_type': "foo", 'local_id': "bar"}
-
-
-def test_to_dict_identitifier():
-    identifier = Identifier("foo", "bar", "barbar")
-    assert identifier.to_dict() == {'content_type': "foo",
-                                    'local_id': "bar",
-                                    "bookmark": "barbar"}
-
-
-def test_node_to_dict(table_plant, foreignkey_family):
-    assert table_plant.to_dict()["keys"][0] == foreignkey_family.to_dict()
-
-
 def test_node_empty_children():
     """ verifies that the default implementation of children returns"\
         " the empty iterator """

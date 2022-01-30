@@ -4,16 +4,16 @@ from odbinfo.pure.datatype.base import Identifier
 
 
 def test_from_dict_text():
-    textdocconf = config.TextDocumentsConfig.from_dict(
-        {"db_registration_id": "db_id", "search_locations": ["searchpath1"]})
+    textdocconf = config.TextDocumentsConfig(
+        **{"db_registration_id": "db_id", "search_locations": ["searchpath1"]})
     assert isinstance(textdocconf, config.TextDocumentsConfig)
     assert textdocconf.db_registration_id == "db_id"
     assert textdocconf.search_locations == ["searchpath1"]
 
 
 def test_from_dict_general():
-    genconf = config.GeneralConfig.from_dict(
-        {"output_dir": "out", "base_url": "www.odbinfo.org"})
+    genconf = config.GeneralConfig(
+        **{"output_dir": "out", "base_url": "www.odbinfo.org"})
     assert isinstance(genconf, config.GeneralConfig)
     assert genconf.output_dir == "out"
     assert genconf.base_url == "www.odbinfo.org"

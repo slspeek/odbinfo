@@ -185,7 +185,7 @@ oxt:
 	-mkdir -p $(lib) $(dist) $(build)
 	(cd pipenvconf/oo && pipenv lock -r > /tmp/requirements.txt)
 	$(PUREPYTHON) -m pip install -r /tmp/requirements.txt \
-	--ignore-installed --target $(lib)
+	--ignore-installed --no-binary pydantic --target $(lib)
 	cp $(srcloc)/main.py $(stage)/python
 	cp -r $(srcloc)/*  $(lib)
 	cp -r $(vendorloc)/apso/* $(lib)

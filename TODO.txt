@@ -2,8 +2,6 @@ look critical at token rendering
 
 configuration location variable in generate_report
 
-configuration reader so types in config.yml can be removed
-
 Testing
 -------
 Replace test that test nothing, by meaningfull unit tests

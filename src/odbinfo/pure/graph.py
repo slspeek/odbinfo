@@ -35,7 +35,7 @@ def edge_attributes(config: GraphConfig,
                     start: NamedNode, end: NamedNode) -> Dict[str, str]:
     """composes the node attributes"""
     attrs = config.relation_attrs.get(
-        (start.content_type, end.content_type), {})
+        start.content_type, {}).get(end.content_type, {})
     attrs["edgetooltip"] = f"{start.name} -> {end.name}"
     return attrs
 

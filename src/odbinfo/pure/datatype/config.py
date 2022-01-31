@@ -56,19 +56,26 @@ TYPE_ATTRS = {
     "control": {"shape": "octagon", "style": "filled", "fillcolor": "#d3d3d3"},
     "basicfunction": {"shape": "component"}
 }
-
+# RELATION_ATTRS = {}
 RELATION_ATTRS = {
-    ("table", "table"): {},
-    ("control", "table"): {"arrowhead": "box", "color": "red"},
-    ("control", "query"): {"arrowhead": "dot"},
-    ("subform", "table"): {"arrowhead": "box", "color": "red"},
-    ("basicfunction", "basicfunction"): {"arrowhead": "dot", "color": "#90EE90"},
-    ("form", "table"): {"arrowhead": "box", "color": "red"},
-    ("view", "table"): {"arrowhead": "dot"},
-    ("form", "view"): {"arrowhead": "dot"},
-    ("form", "query"): {"arrowhead": "dot"},
-    ("query", "table"): {"arrowhead": "dot"},
-    ("query", "query"): {"arrowhead": "dot"}
+    "table": {"table": {}
+              },
+    "control": {"table": {"arrowhead": "box", "color": "red"},
+                "query": {"arrowhead": "dot"}
+                },
+    "subform": {"table": {"arrowhead": "box", "color": "red"}
+                },
+    "basicfunction": {"basicfunction": {"arrowhead": "dot", "color": "#90EE90"}
+                      },
+    "form": {"table": {"arrowhead": "box", "color": "red"},
+             "view": {"arrowhead": "dot"},
+             "query": {"arrowhead": "dot"}
+             },
+    "view": {"table": {"arrowhead": "dot"}
+             },
+    "query": {"table": {"arrowhead": "dot"},
+              "query": {"arrowhead": "dot"}
+              },
 }
 
 EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",

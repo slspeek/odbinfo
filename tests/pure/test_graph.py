@@ -109,8 +109,7 @@ def test_edge_attributes_tooltip(graph_config, table_plant, table_family):
 
 def test_edge_attributes_configured_attribute(graph_config, table_plant, table_family):
     assert edge_attributes(graph_config, table_plant, table_family).items() \
-        <= graph_config.relation_attrs[(content_type(Table),
-                                        content_type(Table))].items()
+        <= graph_config.relation_attrs[content_type(Table)][content_type(Table)].items()
 
 
 def test_identity(table_plant, graph_config):

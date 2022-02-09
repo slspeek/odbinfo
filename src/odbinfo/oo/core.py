@@ -1,6 +1,10 @@
 """ Core module """
 
+import logging
+import threading
+
 from odbinfo.oo import ooutil
+from odbinfo.oo.dialog import create_logging_dialog
 from odbinfo.oo.reader import read_metadata
 from odbinfo.pure.builder import build
 from odbinfo.pure.datatype.config import (get_configuration,
@@ -10,10 +14,7 @@ from odbinfo.pure.util import timed
 from odbinfo.pure.writer import write_site
 
 
-@timed("Generate report")
-def generate_report(oodocument, config=None, gui=False):
-    """ Make report """
-
+def _generate_report(oodocument, config=None):
     if not config:
         config = get_configuration()
 
@@ -29,8 +30,19 @@ def generate_report(oodocument, config=None, gui=False):
 
     build(config.site_path)
 
+
+@timed("Generate report")
+def generate_report(oodocument, config=None, gui=False, ctx=None):
+    """ Make report """
+    logging.basicConfig(level=logging.INFO)
+    thread = threading.Thread(target=_generate_report,
+                              args=(oodocument, config))
     if gui:
         # noinspection PyUnresolvedReferences
-        # pylint:disable=import-outside-toplevel
-        from apso_utils import msgbox
-        msgbox("Hello")
+
+        dialog = create_logging_dialog(ctx)
+        thread.start()
+        dialog.execute()
+    else:
+        thread.start()
+    thread.join()

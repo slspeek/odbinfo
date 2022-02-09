@@ -27,8 +27,8 @@ class DialogLogger(logging.Handler):
     # This function is called when a log message is to be handled
     def emit(self, record):
         # Append log message to the widget
-        self.widget.setText(self.widget.getText() +
-                            str(self.format(record) + '\n'))
+        self.widget.insertText(self.widget.getSelection(),
+                               str(self.format(record) + '\n'))
 
 
 class ButtonListener(unohelper.Base, XActionListener):
@@ -61,6 +61,7 @@ def create_logging_dialog(ctx=None):
         "vnd.sun.star.script:odbinfo_ui.LoggingDialog.xdl?"
         "location=application")
     log_text = dlg.getControl("log_text")
+    logging.info(dir(log_text.AccessibleContext))
     logging.info(dir(log_text))
     logging.getLogger().addHandler(DialogLogger(
         log_text, logging.INFO, logging.BASIC_FORMAT))

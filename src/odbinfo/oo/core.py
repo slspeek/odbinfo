@@ -14,6 +14,7 @@ from odbinfo.pure.util import timed
 from odbinfo.pure.writer import write_site
 
 
+@timed("Generate report")
 def _generate_report(oodocument, config=None):
     if not config:
         config = get_configuration()
@@ -31,7 +32,6 @@ def _generate_report(oodocument, config=None):
     build(config.site_path)
 
 
-@timed("Generate report")
 def generate_report(oodocument, config=None, gui=False, ctx=None):
     """ Make report """
     logging.basicConfig(level=logging.INFO)

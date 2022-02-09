@@ -6,8 +6,6 @@ from odbinfo.oo.core import generate_report
 def make_site():
     """ Generate report on database metadata """
     # pylint: disable=undefined-variable
-    ctx = XSCRIPTCONTEXT.getComponentContext()
-    ctx.ServiceManager.createInstance("apso.python.script.organizer.impl")
     doc = XSCRIPTCONTEXT.getDocument()
     generate_report(doc, gui=True, ctx=ctx)
 

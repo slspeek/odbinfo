@@ -1,5 +1,6 @@
 """Utilities"""
 import contextlib
+import logging
 import os
 import shlex
 import subprocess
@@ -36,12 +37,14 @@ def timed(mesg, indent=0, arg=None, name=True):
         @wraps(func)
         def wrapper(*args, **kwargs):
             if arg is None:
-                print(message(args) + ' started ')
+                # pylint:disable=logging-not-lazy
+                logging.info(message(args) + ' started ')
             start_time = time.time()
             result = func(*args, **kwargs)
             end_time = time.time()
-            print(message(args) + f' finished in {(end_time-start_time):.2f} seconds '
-                  )
+            # pylint:disable=logging-not-lazy
+            logging.info(message(args) + f' finished in {(end_time-start_time):.2f} seconds '
+                         )
 
             return result
         return wrapper

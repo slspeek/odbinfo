@@ -9,6 +9,7 @@ antlr4=java -jar ../../../../../../$(antlrlocation)/$(antlr4jar)
 target=target
 testloc=tests
 srcloc=src
+basicloc=basic
 fixtureloc=$(testloc)/oo/data
 puretestloc=$(testloc)/pure
 ootestloc=$(testloc)/oo
@@ -169,6 +170,8 @@ check_test: pycompile format
 
 .PHONY:
 clean:
+	-@if [ -d /tmp/pytest-of-steven ]; then rm -rf /tmp/pytest-of-steven; fi
+	-@if [ -d tests/oo/data/databases/.odbinfo ]; then rm -rf tests/oo/data/databases/.odbinfo; fi
 	-@if [ -f wily-report.html ]; then rm wily-report.html; fi
 	-@if [ -d htmlcov ]; then rm -rf htmlcov; fi
 	-@if [ -f logje ]; then rm logje; fi
@@ -177,16 +180,20 @@ clean:
 	@echo $(target) was removed
 
 open_shell: prepare
-	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i $(puretestloc)/conftest.py
+	PYTHONPATH=$(OOPYTHONPATH) rlwrap $(python) -i
 
 .ONESHELL:
 oxt:
 	-mkdir -p $(lib) $(dist) $(build)
 	(cd pipenvconf/oo && pipenv lock -r > /tmp/requirements.txt)
 	$(PUREPYTHON) -m pip install -r /tmp/requirements.txt \
-	--ignore-installed --target $(lib)
+	--ignore-installed --no-binary pydantic --target $(lib)
 	cp $(srcloc)/main.py $(stage)/python
 	cp -r $(srcloc)/*  $(lib)
+#	cp -r $(vendorloc)/apso/* $(lib)
+#	cp -r $(vendorloc)/apso/pythonpath/*  $(lib)
+	cp -r $(basicloc)/odbinfo_ui $(stage)
+	#rm -r $(lib)/pythonpath
 	rm $(lib)/main.py
 	cp -r oometadata/* $(stage)
 	cp LICENSE $(stage)

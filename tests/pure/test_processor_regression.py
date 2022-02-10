@@ -4,7 +4,7 @@ import pickle
 
 import pytest
 
-from odbinfo.pure.datatype.config import get_configuration
+from odbinfo.pure.datatype.config import create_configuration
 from odbinfo.pure.processor import process_metadata
 
 
@@ -30,7 +30,7 @@ def process_and_check(unprocessed, filename, data_regression,
     """ do processing and check"""
     def setup():
         metadata = unprocessed()
-        config = get_configuration(metadata.name)
+        config = create_configuration(metadata.name)
         print("NAME:", config.name)
         return (config, metadata), {}
 

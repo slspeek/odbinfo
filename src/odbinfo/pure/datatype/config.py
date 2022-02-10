@@ -1,8 +1,10 @@
 """ Configuration classes """
 
-from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional
+
+import yaml
+from pydantic import BaseModel
 
 
 class ConfigurationAttributeNotSet(Exception):
@@ -13,11 +15,11 @@ class ConfigurationAttributeNotSet(Exception):
         super().__init__(f"Configuration attribute {attribute} was not set")
 
 
-@dataclass
-class GeneralConfig:
+class GeneralConfig(BaseModel):
     """ General options """
-    output_dir: Optional[str]
-    base_url: str
+
+    output_dir: Optional[str] = None
+    base_url: str = "http://odbinfo.org/"
 
 
 PARENT_EDGE_ATTRS = {
@@ -54,19 +56,26 @@ TYPE_ATTRS = {
     "control": {"shape": "octagon", "style": "filled", "fillcolor": "#d3d3d3"},
     "basicfunction": {"shape": "component"}
 }
-
+# RELATION_ATTRS = {}
 RELATION_ATTRS = {
-    ("table", "table"): {},
-    ("control", "table"): {"arrowhead": "box", "color": "red"},
-    ("control", "query"): {"arrowhead": "dot"},
-    ("subform", "table"): {"arrowhead": "box", "color": "red"},
-    ("basicfunction", "basicfunction"): {"arrowhead": "dot", "color": "#90EE90"},
-    ("form", "table"): {"arrowhead": "box", "color": "red"},
-    ("view", "table"): {"arrowhead": "dot"},
-    ("form", "view"): {"arrowhead": "dot"},
-    ("form", "query"): {"arrowhead": "dot"},
-    ("query", "table"): {"arrowhead": "dot"},
-    ("query", "query"): {"arrowhead": "dot"}
+    "table": {"table": {}
+              },
+    "control": {"table": {"arrowhead": "box", "color": "red"},
+                "query": {"arrowhead": "dot"}
+                },
+    "subform": {"table": {"arrowhead": "box", "color": "red"}
+                },
+    "basicfunction": {"basicfunction": {"arrowhead": "dot", "color": "#90EE90"}
+                      },
+    "form": {"table": {"arrowhead": "box", "color": "red"},
+             "view": {"arrowhead": "dot"},
+             "query": {"arrowhead": "dot"}
+             },
+    "view": {"table": {"arrowhead": "dot"}
+             },
+    "query": {"table": {"arrowhead": "dot"},
+              "query": {"arrowhead": "dot"}
+              },
 }
 
 EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",
@@ -77,22 +86,21 @@ EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",
 ALWAYS_EXCLUDED = ["metadata", "basictoken", "sqltoken"]
 
 
-@dataclass
-class TextDocumentsConfig:
+class TextDocumentsConfig(BaseModel):
     """ Config for the search of textdocuments """
-    db_registration_id: Optional[str]
-    search_locations: Optional[List[str]]
+
+    db_registration_id: Optional[str] = None
+    search_locations: Optional[List[str]] = None
 
 
-@dataclass
-class GraphConfig:
+class GraphConfig(BaseModel):
     """ Graph options """
-    user_excludes: List[str]
-    type_attrs: dict
-    relation_attrs: dict
-    parent_edge_attrs: dict
-    collapse_multiple_uses: bool
-    relevant_controls: bool
+    user_excludes: List[str] = EXCLUDED_TYPES
+    type_attrs: dict = TYPE_ATTRS
+    relation_attrs: dict = RELATION_ATTRS
+    parent_edge_attrs: dict = PARENT_EDGE_ATTRS
+    collapse_multiple_uses: bool = True
+    relevant_controls: bool = True
 
     @property
     def excludes(self):
@@ -100,14 +108,13 @@ class GraphConfig:
         return ALWAYS_EXCLUDED + self.user_excludes
 
 
-@dataclass
-class Configuration:
+class Configuration(BaseModel):
     """ Overall configuration """
 
-    name: str
-    general: GeneralConfig
-    graph: GraphConfig
-    textdocuments: TextDocumentsConfig
+    name: str = ""
+    general: GeneralConfig = GeneralConfig()
+    graph: GraphConfig = GraphConfig()
+    textdocuments: TextDocumentsConfig = TextDocumentsConfig()
 
     @property
     def site_path(self) -> Path:
@@ -117,19 +124,47 @@ class Configuration:
         return Path(self.general.output_dir) / self.name
 
 
-def get_configuration(name=None, output_dir=None) -> Configuration:
+def create_configuration(name="", output_dir=None) -> Configuration:
     """ returns configuration """
     return \
-        Configuration(
-            name,
-            GeneralConfig(output_dir, "http://odbinfo.org/"),
-            GraphConfig(
-                EXCLUDED_TYPES,
-                TYPE_ATTRS,
-                RELATION_ATTRS,
-                PARENT_EDGE_ATTRS,
-                True,
-                True
-            ),
-            TextDocumentsConfig(None, None)
-        )
+        Configuration(name=name, general={"output_dir": output_dir})
+
+
+def set_configuration_defaults(config: Configuration, odbpath: Path):
+    """ sets sensible defaults """
+    config.name = odbpath.stem
+    if not config.general.output_dir:
+        config.general.output_dir = str(odbpath.parent / ".odbinfo")
+    if not config.textdocuments.db_registration_id:
+        config.textdocuments.db_registration_id = config.name
+    if config.textdocuments.search_locations is None:
+        config.textdocuments.search_locations = [str(odbpath.parent)]
+
+
+def default_config_path() -> Path:
+    """ returns the default location of the configuration file """
+    return Path.home() / ".odbinfo" / "config.yaml"
+
+
+def load_configuration(config_path: Path) -> Configuration:
+    """ Loads configuration from file `config_path`"""
+    with config_path.open(encoding='utf-8') as file:
+        return Configuration(**yaml.load(file, Loader=yaml.Loader))
+
+
+def write_configuration(config: Configuration, config_path: Path) -> None:
+    """ Writes `config` to `config_path` in YAML format"""
+    with config_path.open(mode='w', encoding='utf-8') as output_file:
+        yaml.dump(config.dict(), output_file)
+
+
+def get_configuration(config_path: Path = default_config_path()) -> Configuration:
+    """ reads configuration from `config_path` if exits "\
+        " otherwise a default configuration is written in `config_path`"""
+    if not config_path.exists():
+        if not config_path.parent.exists():
+            config_path.parent.mkdir()
+        config = create_configuration()
+        write_configuration(config, config_path)
+        return config
+    return load_configuration(config_path)

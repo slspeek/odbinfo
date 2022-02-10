@@ -106,7 +106,7 @@ def content_dir(site_path: Path, content_type: TopLevelDisplayedContent) -> Path
     return site_path / "content" / content_type.value
 
 
-@timed("Write content", indent=4, arg=1, name=False)
+@timed("Write content", indent=4, arg=1, name=True)
 def write_content(metadata: Metadata, content_type: TopLevelDisplayedContent, site_path: Path):
     """writes out `content_type` in subdir of `site_path`"""
     for content in metadata.get_definitions(content_type):

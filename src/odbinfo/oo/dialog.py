@@ -75,7 +75,7 @@ def create_logging_dialog(target, *args, ctx=None):
     # logging.info(dir(log_text.AccessibleContext))
     # logging.info(dir(log_text))
     logging.getLogger().addHandler(DialogLogger(
-        log_text, logging.INFO, "%(message)s"))
+        log_text, logging.INFO, "%(levelname)s: %(message)s"))
 
     return dlg
 

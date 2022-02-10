@@ -1,23 +1,23 @@
 """ provides a dialog with actionlistener """
 import logging
+import threading
 
 import unohelper
 from com.sun.star.awt import XActionListener  # pylint: disable=import-error
-from msgbox import MsgBox
 
 # Define a new logging handler class which inherits the logging.Handler class
 
 
 class DialogLogger(logging.Handler):
-    """ Logging handler that updates a textarea widget"""
+    """ Logging handler that updates a textfield widget"""
     # The init function needs the widget which will hold the log messages passed to it as
     # well as other basic information (log level, format, etc.)
 
-    def __init__(self, widget, logLevel, _format):
+    def __init__(self, widget, log_level, _format):
         logging.Handler.__init__(self)
 
         # Basic logging configuration
-        self.setLevel(logLevel)
+        self.setLevel(log_level)
         self.setFormatter(logging.Formatter(_format))
         self.widget = widget
 
@@ -34,8 +34,10 @@ class DialogLogger(logging.Handler):
 class ButtonListener(unohelper.Base, XActionListener):
     """ actionlistener for the start button """
 
-    def __init__(self, ctx, dlg):
+    def __init__(self, ctx, dlg, target, *args):
         super().__init__()
+        self.target = target
+        self.args = args
         self.ctx = ctx
         self.dlg = dlg
 
@@ -44,15 +46,18 @@ class ButtonListener(unohelper.Base, XActionListener):
 
     # pylint: disable=invalid-name
     def actionPerformed(self, _):  # NOQA
-        """ start the running of the queries and report results """
-        msg_box = MsgBox(self.ctx)
-        msg_box.addButton("Yes")
-        msg_box.renderFromBoxSize(150)
-        msg_box.numberOflines = 2
-        msg_box.show("All queries can run", 0, "Success")
+        """ disable start button, focus Close button, start the target on a separate thread """
+        start_button = self.dlg.getControl("start_button")
+        start_button.setEnable(False)
+        close_button = self.dlg.getControl("Close")
+        close_button.setFocus()
+
+        thread = threading.Thread(target=self.target,
+                                  args=self.args)
+        thread.start()
 
 
-def create_logging_dialog(ctx=None):
+def create_logging_dialog(target, *args, ctx=None):
     """ create the verify dialog """
     smgr = ctx.getServiceManager()
     dprovider = smgr.createInstanceWithContext(
@@ -60,18 +65,23 @@ def create_logging_dialog(ctx=None):
     dlg = dprovider.createDialog(
         "vnd.sun.star.script:odbinfo_ui.LoggingDialog.xdl?"
         "location=application")
+    start_button = dlg.getControl("start_button")
+    start_button.addActionListener(ButtonListener(ctx, dlg, target, *args))
+    # logging.info(dir(start_button))
+    start_button.setFocus()
     log_text = dlg.getControl("log_text")
-    logging.info(dir(log_text.AccessibleContext))
-    logging.info(dir(log_text))
+    dlg.setTitle("ODBInfo")
+    logging.info(dir(dlg))
+    # logging.info(dir(log_text.AccessibleContext))
+    # logging.info(dir(log_text))
     logging.getLogger().addHandler(DialogLogger(
-        log_text, logging.INFO, logging.BASIC_FORMAT))
-    # start_button = dlg.getControl("Start")
-    # start_button.addActionListener(ButtonListener(ctx, dlg))
+        log_text, logging.INFO, "%(message)s"))
+
     return dlg
 
 
-def logging_dialog(ctx=None):
-    """ runs the Verify Queries Dialog """
-    dlg = create_logging_dialog(ctx)
-    dlg.execute()
-    dlg.dispose()
+# def logging_dialog(ctx=None):
+#     """ runs the Verify Queries Dialog """
+#     dlg = create_logging_dialog(ctx)
+#     dlg.execute()
+#     dlg.dispose()

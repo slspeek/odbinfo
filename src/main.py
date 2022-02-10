@@ -7,6 +7,7 @@ def make_site():
     """ Generate report on database metadata """
     # pylint: disable=undefined-variable
     doc = XSCRIPTCONTEXT.getDocument()
+    ctx = XSCRIPTCONTEXT.getComponentContext()
     generate_report(doc, gui=True, ctx=ctx)
 
 

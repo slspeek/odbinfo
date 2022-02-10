@@ -1,7 +1,6 @@
 """ Core module """
 
 import logging
-import threading
 
 from odbinfo.oo import ooutil
 from odbinfo.oo.dialog import create_logging_dialog
@@ -35,14 +34,9 @@ def _generate_report(oodocument, config=None):
 def generate_report(oodocument, config=None, gui=False, ctx=None):
     """ Make report """
     logging.basicConfig(level=logging.INFO)
-    thread = threading.Thread(target=_generate_report,
-                              args=(oodocument, config))
     if gui:
-        # noinspection PyUnresolvedReferences
-
-        dialog = create_logging_dialog(ctx)
-        thread.start()
+        dialog = create_logging_dialog(
+            _generate_report, oodocument, config, ctx=ctx)
         dialog.execute()
     else:
-        thread.start()
-    thread.join()
+        _generate_report(oodocument, config)

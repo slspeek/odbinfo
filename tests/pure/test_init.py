@@ -1,7 +1,7 @@
 """ test installation verification """
 import pytest
 
-from odbinfo.pure.init import verify_installation
+from odbinfo.pure.diagnostics import verify_installation
 
 
 @pytest.mark.slow

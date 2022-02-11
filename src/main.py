@@ -1,5 +1,8 @@
 """ Entrypoint for odbinfo extension """
 
+import logging
+
+from odbinfo.oo import dialog
 from odbinfo.oo.core import generate_report
 
 
@@ -13,7 +16,8 @@ def make_site():
 
 def verify_installation():
     """ verify installation """
-    # pylint: disable=redefined-outer-name
-    # pylint: disable=import-outside-toplevel
-    from odbinfo.pure.init import verify_installation
-    verify_installation()
+    logging.basicConfig(level=logging.INFO)
+    # pylint: disable=undefined-variable
+    ctx = XSCRIPTCONTEXT.getComponentContext()
+    dlg = dialog.create_diagnostics_dialog(ctx)
+    dlg.execute()

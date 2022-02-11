@@ -9,16 +9,19 @@ def _run_checked(command) -> str:
     return subprocess.check_output(command, shell=True).decode("UTF-8").split("\n", maxsplit=1)[0]
 
 
-def _hugo_version() -> str:
-    return _run_checked("hugos version")
+def gohugo_version() -> str:
+    """ returns gohugo version"""
+    return _run_checked("hugo version")
 
 
-def _wget_version() -> str:
+def wget_version() -> str:
+    """ returns wget version """
     return _run_checked("wgets -V")
 
 
-def _graphviz_version() -> str:
-    return graphviz.version()
+def graphviz_version() -> str:
+    """ returns graphviz version"""
+    return ".".join(str(x) for x in graphviz.version())
 
 
 def try_run(target) -> Tuple[bool, str]:
@@ -34,10 +37,10 @@ def verify_installation():
     print("ODBInfo verify installation:")
     print("")
     print("Hugo:")
-    print(try_run(_hugo_version))
+    print(try_run(gohugo_version))
     print("")
     print("wget:")
-    print(try_run(_wget_version))
+    print(try_run(wget_version))
     print("")
     print("graphviz:")
-    print(try_run(_graphviz_version))
+    print(try_run(graphviz_version))

@@ -1,5 +1,7 @@
 templates: Keys should have ids
 
+replace ODBINFO_NOBROWSE by open_browser:bool parameter
+
 look critical at token rendering
 
 Testing
@@ -15,29 +17,6 @@ test/pure/test_writer_regression.py
 test/pure/test_scanner.py
 test/pure/test_basic_parser.py
 
-Split out config properties collapse_multiple_uses
-
-Configuration
--------------
-split in instance and global conf
-only global is written and read
-start with config.xcs, config.xcu and programmatically write and read them
-first only the location of ymal configuration
-configuration location variable in generate_report
-configuration reader so types in config.yml can be removed
-See BaseDocumenter config too
-
-GUI
----
-separate functions for UI calls? Testability is important and UI is untestable.
-- Settings dialog (Options)
-- Progress dialog
-- print --> logger.info
-  logging window (sfriederichs.github.io/how-to/python/gui/logging/2017/12/21/Python-GUI-Logging.html)
-
-installation check
-- UI and suggestions
-
 better description of the extension
 
 Pre release
@@ -51,6 +30,25 @@ make upgrade dependencies (20211229 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
+svg stylesheet, class for graph
+
+Configuration
+-------------
+Split out config properties collapse_multiple_uses
+
+split in instance and global conf
+only global is written and read
+start with config.xcs, config.xcu and programmatically write and read them
+first only the location of ymal configuration
+configuration location variable in generate_report
+configuration reader so types in config.yml can be removed
+See BaseDocumenter config too
+
+GUI
+---
+- Settings dialog (Options)
+- Progress dialog
+
 Relevant function filter
 - function that is used by something else than a basicfunction
 - function that uses something else than a basicfunction

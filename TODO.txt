@@ -1,5 +1,3 @@
-templates: Keys should have ids
-
 look critical at token rendering
 
 Testing

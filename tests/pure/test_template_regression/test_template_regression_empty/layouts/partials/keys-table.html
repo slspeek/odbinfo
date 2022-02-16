@@ -16,7 +16,7 @@
       <td>{{ .name }}</td>
       <td>{{ .typename }}</td>
       <td>{{ partial "commalist" .columns }}</td>
-      <td>
+      <td id="{{ .obj_id }}">
         {{ partial "render-linked-string" (dict "context" $context "text" .referenced_table "link" .link)}}
       </td>
       <td>{{ .update_rule }}</td>

@@ -17,7 +17,8 @@ logger = logging.getLogger(__name__)
 
 
 def hugo_filename(name: str) -> str:
-    """ name converted as hugo converts filename to .Params.filename """
+    """ name converted as hugo converts filename to .Params.filename
+        See: https://gohugo.io/functions/anchorize/ """
     return name.replace(" ", "-").lower()
 
 

@@ -1,8 +1,8 @@
 <!--
--->{{$argdict:=dict "context" .context "section" .link.content_type "title" .link.local_id}}<!--
--->{{$bareurl:=partial "find-in-section" $argdict}}<!--
+-->{{ $argdict:=dict "context" .context "section" .link.content_type "title" .link.local_id }}<!--
+-->{{ $bareurl:=partial "find-in-section" $argdict }}<!--
 -->{{ if .link.bookmark }}<!--
   -->{{ $bareurl }}#{{ .link.bookmark }}<!--
 -->{{ else }}<!--
-    -->{{$bareurl }}<!--
+    -->{{ $bareurl }}<!--
 -->{{ end }}

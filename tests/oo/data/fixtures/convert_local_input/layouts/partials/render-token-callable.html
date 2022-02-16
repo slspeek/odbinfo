@@ -1,8 +1,0 @@
-<!--
--->{{ if .token.obj_id }}<!--
-  --><span id="{{ .token.obj_id }}"><!--
--->{{ else }}<!--
-    --><span><!--
--->{{ end }}<!--
--->{{ partial "render-token-text" (dict "context" .context "token" .token) }}<!--
---></span>

@@ -62,14 +62,14 @@
         
 
         
-<script src="../../js/highlight.js"> </script>
+
     </head>
 
     <body>
         
 
         <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container" id="menubar">
+            <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand visible-xs" href="index.html#">Plant</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
@@ -117,242 +117,16 @@
 
 
 <main>
-    <div class="container">
+
+    <div>
         <h2>Plant</h2>
-        <h4><a href="../../svg/testdb.gv.svg#13">Plant in picture</a></h4>
         <h5></h5>
-        <h4>Columns</h4>
-        <table class="table table-bordered">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Default value</th>
-    <th>Description</th>
-    <th>Auto increment</th>
-    <th>Nullable</th>
-    <th>Typename</th>
-    <th>Precision</th>
-    <th>Scale</th>
-  </tr>
-  </thead>
-  <tbody>
-  
-   <tr id="18">
-      <td>
-      id
-      </td>
-      <td>
-      
-      </td>
-      <td>
-      Unique key for the plant
-      </td>
-      <td>
-      false
-      </td>
-      <td>
-        No_Nulls
-      </td>
-      <td>
-      NUMERIC
-      </td>
-      <td>
-      100
-      </td>
-      <td>
-      0
-      </td>
-    </tr>
-
-   <tr id="19">
-      <td>
-      naam
-      </td>
-      <td>
-      
-      </td>
-      <td>
-      Naam aan de plant gegeven
-      </td>
-      <td>
-      false
-      </td>
-      <td>
-        Nullable
-      </td>
-      <td>
-      VARCHAR
-      </td>
-      <td>
-      100
-      </td>
-      <td>
-      0
-      </td>
-    </tr>
-
-   <tr id="20">
-      <td>
-      RFamliyID
-      </td>
-      <td>
-      
-      </td>
-      <td>
-      
-      </td>
-      <td>
-      false
-      </td>
-      <td>
-        Nullable
-      </td>
-      <td>
-      INTEGER
-      </td>
-      <td>
-      0
-      </td>
-      <td>
-      0
-      </td>
-    </tr>
-
-</tbody>
-</table>
-
-        <h4>Keys</h4>
         
-<table class="table table-bordered">
-  <thead >
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Columns</th>
-      <th>Referenced table</th>
-      <th>Update rule</th>
-      <th>Delete rule</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>SYS_PK_47</td>
-      <td>Primary</td>
-      <td>id
-</td>
-      <td id="14">
-        
-      </td>
-      <td>Cascade</td>
-      <td>Cascade</td>
-    </tr>
-    
-    <tr>
-      <td>SYS_FK_79</td>
-      <td>Foreign</td>
-      <td>RFamliyID
-</td>
-      <td id="15">
-        <a href="../family/index.html">Family</a>
-      </td>
-      <td>No_Action</td>
-      <td>No_Action</td>
-    </tr>
-    
-  </tbody>
-  </table>
 
-        <h4>Indexes</h4>
-        <table class="table table-bordered">
-  <thead >
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Unique</th>
-      <th scope="col">PrimaryKey</th>
-      <th scope="col">Clustered</th>
-      <th scope="col">Columns</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-    <tr>
-      <td>SYS_IDX_46</td>
-      <td>true</td>
-      <td>false</td>
-      <td>false</td>
-      <td>id
-</td>
-    </tr>
-  
-    <tr>
-      <td>SYS_IDX_80</td>
-      <td>false</td>
-      <td>false</td>
-      <td>false</td>
-      <td>RFamliyID
-</td>
-    </tr>
-  
-  </tbody>
-  </table>
+    </div>
 
-    <div class="row">
-  <div class="col-lg-4 col-md-12 mb-4">
-  
-  
-  <h3>Uses</h3>
-    <ul class="list-group">
-    
-      <li class="list-group-item" onmouseenter="highlightIds('15')" onmouseleave="dehighlightIds('15')" ><a href='../family/index.html'>Family (table)</a>
-</li>
-    
-    </ul>
-  
+    <div align="start" class="content"></div>
 
-  </div>
-  <div class="col-lg-4 col-md-12 mb-4">
-  
-  
-  <h3>Used by </h3>
-    <ul class="list-group">
-    
-      <li class="list-group-item"><a href='../../view/view1/index.html#43'>view1 (view)</a>
-</li>
-    
-      <li class="list-group-item"><a href='../../query/literalvaluequery/index.html#118'>LiteralValueQuery (query)</a>
-</li>
-    
-      <li class="list-group-item"><a href='../../query/vwplant/index.html#131'>vwPlant (query)</a>
-</li>
-    
-      <li class="list-group-item"><a href='../../form/listboxtest/index.html#178,180'>ListBoxTest (form) 2x</a>
-</li>
-    
-      <li class="list-group-item"><a href='../../form/plant/index.html#184'>Plant (form)</a>
-</li>
-    
-      <li class="list-group-item"><a href='../../form/plantlistbox/index.html#197'>PlantListbox (form)</a>
-</li>
-    
-      <li class="list-group-item"><a href='../../form/plantlistboxdirectsql/index.html#211'>PlantListboxDirectSQL (form)</a>
-</li>
-    
-      <li class="list-group-item"><a href='../../form/related-subform/index.html#245'>Related subform (form)</a>
-</li>
-    
-      <li class="list-group-item"><a href='../../report/reportcommandtypesql/index.html#274'>ReportCommandTypeSQL (report)</a>
-</li>
-    
-      <li class="list-group-item"><a href='../../basicfunction/refertotable.module1.library1/index.html#549'>ReferToTable.Module1.Library1 (basicfunction)</a>
-</li>
-    
-    </ul>
-  
-
-  </div>
-</div>
-  </div>
 </main>
 
         <footer>

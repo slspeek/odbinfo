@@ -64,6 +64,7 @@ def test_make_node_do_nothing(graph_config, digraph, table_plant):
 
 
 class GraphTest(ConfTest):
+
     def setUp(self):
         super().setUp()
         self.graph = Digraph("odbinfo")
@@ -103,11 +104,12 @@ def test_no_label(irrelevant_control):
 
 # visisible_ancestor
 def test_edge_attributes_tooltip(graph_config, table_plant, table_family):
-    assert edge_attributes(graph_config, table_plant, table_family)[
-        "edgetooltip"] == "plant -> family"
+    assert edge_attributes(graph_config, table_plant,
+                           table_family)["edgetooltip"] == "plant -> family"
 
 
-def test_edge_attributes_configured_attribute(graph_config, table_plant, table_family):
+def test_edge_attributes_configured_attribute(graph_config, table_plant,
+                                              table_family):
     assert edge_attributes(graph_config, table_plant, table_family).items() \
         <= graph_config.relation_attrs[content_type(Table)][content_type(Table)].items()
 
@@ -155,7 +157,8 @@ def test_make_parent_edge_key_not_visible(table_plant, digraph, graph_config):
     assert len(digraph.body) == 0
 
 
-def test_make_parent_edge_no_visible_ancestor(graph_config, digraph, table_plant):
+def test_make_parent_edge_no_visible_ancestor(graph_config, digraph,
+                                              table_plant):
     graph_config.user_excludes = [content_type(Table)]
     make_parent_edge(graph_config, digraph, table_plant.keys[0])
     assert len(digraph.body) == 0
@@ -176,40 +179,47 @@ def test_visible_dependency_edges_no_edges(graph_config, metadata_tables):
 
 
 def test_visible_dependency_edges_one_edge(graph_config, metadata_tables):
-    metadata_tables.table_defs[0].keys[0].link = metadata_tables.table_defs[1].identifier
+    metadata_tables.table_defs[0].keys[0].link = metadata_tables.table_defs[
+        1].identifier
     assert len(visible_dependency_edges(metadata_tables, graph_config)) == 1
 
 
-def test_visible_dependency_edges_one_edge_no_collapse(graph_config, metadata_tables):
+def test_visible_dependency_edges_one_edge_no_collapse(graph_config,
+                                                       metadata_tables):
     graph_config.collapse_multiple_uses = False
-    metadata_tables.table_defs[0].keys[0].link = metadata_tables.table_defs[1].identifier
+    metadata_tables.table_defs[0].keys[0].link = metadata_tables.table_defs[
+        1].identifier
     assert len(visible_dependency_edges(metadata_tables, graph_config)) == 1
 
 
-def test_visible_dependency_edges_no_edge_user_not_visible(graph_config, metadata_listbox):
-    graph_config.user_excludes = [content_type(
-        ListBox), content_type(SubForm), content_type(Form)]
+def test_visible_dependency_edges_no_edge_user_not_visible(
+        graph_config, metadata_listbox):
+    graph_config.user_excludes = [
+        content_type(ListBox),
+        content_type(SubForm),
+        content_type(Form)
+    ]
     assert len(visible_dependency_edges(metadata_listbox, graph_config)) == 0
 
 
-def test_visible_dependency_edges_no_edge_used_not_visible(graph_config, metadata_listbox):
+def test_visible_dependency_edges_no_edge_used_not_visible(
+        graph_config, metadata_listbox):
     graph_config.user_excludes = [content_type(Table)]
     assert len(visible_dependency_edges(metadata_listbox, graph_config)) == 0
 
 
 def test_one_edge(metadata_listbox, graph_config, digraph):
-    make_dependency_edges(
-        metadata_listbox, graph_config, digraph)
+    make_dependency_edges(metadata_listbox, graph_config, digraph)
     assert len(digraph.body) == 1
 
 
 def test_generate_main_graph(configuration, metadata_listbox):
-    assert len(generate_main_graph(
-        metadata_listbox, configuration).body) == (2  # initial lines
-                                                   + 4  # objects
-                                                   + 2  # parent edges
-                                                   + 1  # dependency edge
-                                                   )
+    assert len(generate_main_graph(metadata_listbox, configuration).body) == (
+        2  # initial lines
+        + 4  # objects
+        + 2  # parent edges
+        + 1  # dependency edge
+    )
 
 
 def test_generate_graphs(configuration, metadata_listbox):
@@ -220,5 +230,5 @@ def test_generate_graphs(configuration, metadata_listbox):
 def test_generate_main_graph_regression(metadata_processed, file_regression):
     """run generate_main_graph"""
     conf = create_configuration("test_generate_main_graph")
-    file_regression.check(
-        "".join(generate_main_graph(metadata_processed, conf).source))
+    file_regression.check("".join(
+        generate_main_graph(metadata_processed, conf).source))

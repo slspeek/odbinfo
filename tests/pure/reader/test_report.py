@@ -11,8 +11,8 @@ from tests.pure.reader.test_common import OO_NAMESPACES, ZipFileMock
 @pytest.mark.slow
 def test_read_reports(odbzip, data_regression):
     """ reports """
-    data_regression.check([dataclasses.asdict(report)
-                          for report in read_reports(odbzip)])
+    data_regression.check(
+        [dataclasses.asdict(report) for report in read_reports(odbzip)])
 
 
 @pytest.mark.slow

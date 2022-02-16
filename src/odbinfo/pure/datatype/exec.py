@@ -53,7 +53,8 @@ class Module(WebPage, Preprocessable):
     def to_dict(self):
         rdict = super().to_dict()
         rdict["callables"] = [
-            func.identifier.to_dict() for func in self.callables]
+            func.identifier.to_dict() for func in self.callables
+        ]
         return rdict
 
     def accept(self, visitor: PreprocessableVisitor):
@@ -70,8 +71,9 @@ class Library(WebPage):
 
     def to_dict(self):
         rdict = super().to_dict()
-        rdict["modules"] = [module.identifier.to_dict()
-                            for module in self.modules]
+        rdict["modules"] = [
+            module.identifier.to_dict() for module in self.modules
+        ]
         return rdict
 
     @property

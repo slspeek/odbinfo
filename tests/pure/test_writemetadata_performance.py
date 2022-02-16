@@ -25,8 +25,7 @@ def benchmark_writer(output_dir: Path, name, data_loader, benchmark):
 def test_writer_performance(metadata_processed_loader, benchmark):
     """ Run without database scan """
     name = "testdb"
-    make_writer_performance_test(name, metadata_processed_loader,
-                                 benchmark)
+    make_writer_performance_test(name, metadata_processed_loader, benchmark)
 
 
 @pytest.mark.slow

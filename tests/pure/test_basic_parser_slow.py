@@ -24,7 +24,7 @@ def _parse_xml(odbzip, file):
     return xmltodict.parse(odbzip.read(file))
 
 
-def _read_module(odbzip, library_name,  data) -> Module:
+def _read_module(odbzip, library_name, data) -> Module:
     name = data["@library:name"]
     data = _parse_xml(odbzip, f"{library_name}/{name}.xba")
     return Module(name, "BaseDocumenter", data["script:module"]["#text"])
@@ -33,8 +33,7 @@ def _read_module(odbzip, library_name,  data) -> Module:
 @pytest.mark.tooslow
 def test_basedocumenter_sources(shared_datadir):
     """ parse all basedocumenter sources """
-    with ZipFile((shared_datadir / BASEDOCUMENTER),
-                 "r") as based:
+    with ZipFile((shared_datadir / BASEDOCUMENTER), "r") as based:
         xlb = _parse_xml(based, "BaseDocumenter/script.xlb")
         data = xlb["library:library"]["library:element"]
         read_module = partial(_read_module, based, "BaseDocumenter")
@@ -56,8 +55,7 @@ def test_basedocumenter_sources(shared_datadir):
                     """, _BD_UTF8(Replace(_BD_GetLabel("PREFERENCESTITLE"),"""
                     """ "%0", BaseDocumenterTitle))""",
                     """, _BD_UTF8(Replace(_BD_GetLabel("PREFERENCESTITLE"),"""
-                    """ "%0", BaseDocumenterTitle)))"""
-                )
+                    """ "%0", BaseDocumenterTitle)))""")
             #
-            scan_basic(get_basic_tokens(module.source),
-                       "BaseDocumenter", module.name)
+            scan_basic(get_basic_tokens(module.source), "BaseDocumenter",
+                       module.name)

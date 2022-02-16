@@ -51,8 +51,9 @@ def test_read_python_module():
         return {"Scripts/python/Bibliotheek/Module.py": MODULE_FILE}[fullpath]
 
     fakezip.read = read
-    module = read_python_module(
-        fakezip, "Scripts/python/Bibliotheek/Module.py", "Bibliotheek")
+    module = read_python_module(fakezip,
+                                "Scripts/python/Bibliotheek/Module.py",
+                                "Bibliotheek")
 
     assert module.name == "Module.py"
     assert module.library == "Bibliotheek"
@@ -63,13 +64,13 @@ def test_read_python_library():
     fakezip = ZipFileMock()
 
     def read(fullpath):
-        return {"META-INF/manifest.xml": MANIFEST_DOC,
-                "Scripts/python/Bibliotheek/Module.py": MODULE_FILE
-                }[fullpath]
+        return {
+            "META-INF/manifest.xml": MANIFEST_DOC,
+            "Scripts/python/Bibliotheek/Module.py": MODULE_FILE
+        }[fullpath]
 
     fakezip.read = read
-    library = read_python_library(
-        fakezip, "Scripts/python/Bibliotheek/")
+    library = read_python_library(fakezip, "Scripts/python/Bibliotheek/")
 
     assert library.name == "Bibliotheek"
     assert len(library.modules) == 1
@@ -86,14 +87,14 @@ def test_read_python_libraries():
     fakezip = ZipFileMock()
 
     def read(fullpath):
-        return {"META-INF/manifest.xml": MANIFEST_DOC,
-                "Scripts/python/Bibliotheek/Module.py": MODULE_FILE,
-                "Scripts/python/pymodule.py": SECOND_MODULE
-                }[fullpath]
+        return {
+            "META-INF/manifest.xml": MANIFEST_DOC,
+            "Scripts/python/Bibliotheek/Module.py": MODULE_FILE,
+            "Scripts/python/pymodule.py": SECOND_MODULE
+        }[fullpath]
 
     fakezip.read = read
-    libraries = read_python_libraries(
-        fakezip)
+    libraries = read_python_libraries(fakezip)
 
     assert len(libraries) == 2
 
@@ -147,8 +148,10 @@ def test_read_library():
     fakezip = ZipFileMock()
 
     def read(fullpath):
-        return {"Basic/Library1/Module1.xml": BASIC_MODULE,
-                "Basic/Library1/script-lb.xml": SCRIPT_LB}[fullpath]
+        return {
+            "Basic/Library1/Module1.xml": BASIC_MODULE,
+            "Basic/Library1/script-lb.xml": SCRIPT_LB
+        }[fullpath]
 
     fakezip.read = read
     library = read_library(fakezip, "Library1")
@@ -167,10 +170,12 @@ def test_read_libraries():
     fakezip = ZipFileMock()
 
     def read(fullpath):
-        return {"Basic/Library1/Module1.xml": BASIC_MODULE,
-                "Basic/Library1/script-lb.xml": SCRIPT_LB,
-                "Basic/script-lc.xml": SCRIPT_LC,
-                "META-INF/manifest.xml": MANIFEST_DOC}[fullpath]
+        return {
+            "Basic/Library1/Module1.xml": BASIC_MODULE,
+            "Basic/Library1/script-lb.xml": SCRIPT_LB,
+            "Basic/script-lc.xml": SCRIPT_LC,
+            "META-INF/manifest.xml": MANIFEST_DOC
+        }[fullpath]
 
     fakezip.read = read
     libraries = read_libraries(fakezip)
@@ -183,10 +188,13 @@ def test_read_libraries_empty():
     fakezip = ZipFileMock()
 
     def read(fullpath):
-        return {"Basic/Library1/Module1.xml": BASIC_MODULE,
-                "Basic/Library1/script-lb.xml": SCRIPT_LB,
-                "Basic/script-lc.xml": SCRIPT_LC,
-                "META-INF/manifest.xml": "<empty/>"}[fullpath]
+        return {
+            "Basic/Library1/Module1.xml": BASIC_MODULE,
+            "Basic/Library1/script-lb.xml": SCRIPT_LB,
+            "Basic/script-lc.xml": SCRIPT_LC,
+            "META-INF/manifest.xml": "<empty/>"
+        }[fullpath]
+
     fakezip.read = read
 
     libraries = read_libraries(fakezip)

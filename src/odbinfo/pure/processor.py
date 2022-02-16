@@ -38,8 +38,7 @@ class FormPreprocessor(FormVisitor):
 
     def set_form_height(self, form: Form) -> None:
         """ set the max height into the `form` """
-        form.height = max([self.height(sf) for
-                           sf in form.subforms], default=0)
+        form.height = max([self.height(sf) for sf in form.subforms], default=0)
 
     def visit_form(self, form: Form):
         for subform in form.subforms:
@@ -71,12 +70,14 @@ def undouble_uses(usecases: List[UseLink]) -> List[UseLink]:
         return list(dict.fromkeys(u.link for u in usecases))
 
     def collect_sources_by_page(apage):
-        return sum([user.sources for user in usecases if user.link == apage], [])
+        return sum([user.sources for user in usecases if user.link == apage],
+                   [])
 
     return [UseLink(page, collect_sources_by_page(page)) for page in pages()]
 
 
-def aggregate_uses_from_children(user_agg: UseAggregator, collapse_multiple_uses: bool) -> None:
+def aggregate_uses_from_children(user_agg: UseAggregator,
+                                 collapse_multiple_uses: bool) -> None:
     """Collect aggregated uses from its children """
     collected_uses = []
     for node in user_agg.all_objects():
@@ -101,18 +102,21 @@ def undouble_used_by(users: Sequence[Identifier]) -> List[Identifier]:
         return list(dict.fromkeys((i.content_type, i.local_id) for i in users))
 
     def collect_ids(apage):
-        return [user for user in users if user.content_type == apage[0] and
-                user.local_id == apage[1]]
+        return [
+            user for user in users
+            if user.content_type == apage[0] and user.local_id == apage[1]
+        ]
 
     result = []
     for key in pages():
-        bookmark = ",".join(
-            link.bookmark for link in collect_ids(key) if link.bookmark)
+        bookmark = ",".join(link.bookmark for link in collect_ids(key)
+                            if link.bookmark)
         result.append(Identifier(key[0], key[1], bookmark))
     return result
 
 
-def aggregate_used_by(metadata: Metadata, collapse_multiple_uses: bool) -> None:
+def aggregate_used_by(metadata: Metadata,
+                      collapse_multiple_uses: bool) -> None:
     """Collect all used_by"""
     for user in metadata.all_active_users:
         metadata.usable_by_link[user.link].used_by.append(user.identifier)
@@ -130,11 +134,13 @@ def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
     # By rewriting Identifier(type="BasicFunction" local_id="call.Mod1.Lib1")
     # to Identifier("Module", "Mod1.Lib1", bookmark="call")
     def rewrite_module(basic_module: Module):
+
         def rewrite_link(link: Identifier):
             if not link.content_type == content_type(BasicFunction):
                 return link
             lmacro, lmodule, llib = link.local_id.split('.')
-            return Identifier(content_type(Module), f"{lmodule}.{llib}", lmacro)
+            return Identifier(content_type(Module), f"{lmodule}.{llib}",
+                              lmacro)
 
         def copy_links(func):
             for token in func.tokens:
@@ -155,7 +161,8 @@ class ModulePreprocessor(ModuleVisitor):
     @staticmethod
     def link_name_tokens(module: Module):
         """Link the name tokens to the single function pages"""
-        for name_index, acallable in zip(module.name_indexes, module.callables):
+        for name_index, acallable in zip(module.name_indexes,
+                                         module.callables):
             module.tokens[name_index].link_to(acallable)
 
     @staticmethod
@@ -198,10 +205,8 @@ class QueryBasePreprocessor(QueryBaseVisitor):
         self.color_hightlight_query(query)
 
 
-class Preprocessor(PreprocessableVisitor,
-                   ModulePreprocessor,
-                   QueryBasePreprocessor,
-                   FormPreprocessor):
+class Preprocessor(PreprocessableVisitor, ModulePreprocessor,
+                   QueryBasePreprocessor, FormPreprocessor):
     """All preprocessors together"""
 
 

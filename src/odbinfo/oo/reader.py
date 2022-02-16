@@ -15,7 +15,8 @@ from odbinfo.pure.util import timed
 
 
 @timed("Read metadata", indent=2)
-def read_metadata(config: Configuration, datasource, odbpath: Path) -> Metadata:
+def read_metadata(config: Configuration, datasource,
+                  odbpath: Path) -> Metadata:
     """ reads all metadata """
     with open_connection(datasource) as con:
         with ZipFile(odbpath, "r") as odbzip:
@@ -46,8 +47,10 @@ def _read_view(connection, ooview) -> View:
 @timed("Read queries", indent=4)
 def read_queries(connection, datasource) -> List[Query]:
     """ Reads self metadata from `datasource` """
-    queries: List[Query] = [Query(ooquery.Name, ooquery.Command) for ooquery in
-                            datasource.QueryDefinitions]
+    queries: List[Query] = [
+        Query(ooquery.Name, ooquery.Command)
+        for ooquery in datasource.QueryDefinitions
+    ]
 
     for query in queries:
         read_query_columns(connection, query)
@@ -65,19 +68,12 @@ def _read_query_columns(connection, command) -> List[QueryColumn]:
     resultset = stmt.executeQuery(command)
     rsmeta = resultset.getMetaData()
     for i in range(1, rsmeta.getColumnCount() + 1):
-        cols.append(QueryColumn(
-            rsmeta.getColumnName(i),
-            rsmeta.isAutoIncrement(i),
-            rsmeta.isNullable(i),
-            rsmeta.getTableName(i),
-            rsmeta.getColumnTypeName(i),
-            rsmeta.getPrecision(i),
-            rsmeta.getScale(i),
-            i,
-            rsmeta.isSigned(i),
-            rsmeta.isWritable(i),
-            rsmeta.isReadOnly(i)
-        ))
+        cols.append(
+            QueryColumn(rsmeta.getColumnName(i), rsmeta.isAutoIncrement(i),
+                        rsmeta.isNullable(i), rsmeta.getTableName(i),
+                        rsmeta.getColumnTypeName(i), rsmeta.getPrecision(i),
+                        rsmeta.getScale(i), i, rsmeta.isSigned(i),
+                        rsmeta.isWritable(i), rsmeta.isReadOnly(i)))
     return cols
 
 

@@ -31,12 +31,19 @@ def _generate_report(oodocument, config=None, open_browser=False):
     build(config.site_path, open_browser)
 
 
-def generate_report(oodocument, config=None, gui=False, open_browser=False, ctx=None):
+def generate_report(oodocument,
+                    config=None,
+                    gui=False,
+                    open_browser=False,
+                    ctx=None):
     """ Make report """
     logging.basicConfig(level=logging.INFO)
     if gui:
-        dialog = create_logging_dialog(
-            _generate_report, oodocument, config, open_browser, ctx=ctx)
+        dialog = create_logging_dialog(_generate_report,
+                                       oodocument,
+                                       config,
+                                       open_browser,
+                                       ctx=ctx)
         dialog.execute()
     else:
-        _generate_report(oodocument, config,  open_browser)
+        _generate_report(oodocument, config, open_browser)

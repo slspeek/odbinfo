@@ -15,17 +15,10 @@ from ..resource import DEFAULT_TESTDB, EMPTYDB
 from .datatype.conftest import *
 
 __all__ = [
-    "directory_regression",
-    "fixture_path",
-    "metadata_tables",
-    "empty_metadata",
-    "metadata_loader",
-    "empty_metadata_loader",
-    "metadata_processed",
-    "metadata_processed_loader",
-    "empty_metadata_processed_loader",
-    "empty_metadata_processed",
-    "odbzip",
+    "directory_regression", "fixture_path", "metadata_tables",
+    "empty_metadata", "metadata_loader", "empty_metadata_loader",
+    "metadata_processed", "metadata_processed_loader",
+    "empty_metadata_processed_loader", "empty_metadata_processed", "odbzip",
     "digraph"
 ]
 

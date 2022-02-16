@@ -16,8 +16,8 @@ def _reports(odbzip) -> List[Tuple[str, Element]]:
     def report(rpt_elem) -> Tuple[str, Element]:
         relpath = rpt_elem.getAttribute("xlink:href") + "/content.xml"
         return (rpt_elem.getAttribute("db:name"),
-                document(odbzip, relpath)
-                .getElementsByTagName("office:report")[0])
+                document(odbzip,
+                         relpath).getElementsByTagName("office:report")[0])
 
     return [report(rpt_elem) for rpt_elem in db_reports]
 
@@ -26,16 +26,16 @@ def read_reports(odbzip) -> List[Report]:
     """ Read reports from odb file """
     reports = []
     for name, rpt_doc in _reports(odbzip):
-        reports.append(Report(name,
-                              rpt_doc.getAttribute("rpt:command"),
-                              attr_default(
-                                  rpt_doc, "rpt:command-type", "command"),
-                              rpt_doc.getAttribute("office:mimetype"),
-                              _read_report_formulas(rpt_doc))
-                       )
+        reports.append(
+            Report(name, rpt_doc.getAttribute("rpt:command"),
+                   attr_default(rpt_doc, "rpt:command-type", "command"),
+                   rpt_doc.getAttribute("office:mimetype"),
+                   _read_report_formulas(rpt_doc)))
     return reports
 
 
 def _read_report_formulas(rpt_doc: Element) -> List[str]:
-    return [elem.getAttribute("rpt:formula")
-            for elem in rpt_doc.getElementsByTagName("rpt:formatted-text")]
+    return [
+        elem.getAttribute("rpt:formula")
+        for elem in rpt_doc.getElementsByTagName("rpt:formatted-text")
+    ]

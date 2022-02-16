@@ -11,6 +11,5 @@ from odbinfo.pure.builder import convert_local
 def test_convert_local_regression(directory_regression, fixture_path):
     with patch.object(builder, 'find_free_port', return_value=1313):
         convert_local(fixture_path / "convert_local_input")
-        directory_regression.check(
-            fixture_path / "convert_local_input-local",
-        )
+        directory_regression.check(fixture_path /
+                                   "convert_local_input-local", )

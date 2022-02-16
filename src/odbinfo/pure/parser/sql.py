@@ -19,14 +19,10 @@ class SQLListener(SQLiteParserListener):
         self.tokens = tokens
 
     def enterTable_name(self, ctx):
-        self.tablenames.append(
-            self.tokens[ctx.start.tokenIndex]
-        )
+        self.tablenames.append(self.tokens[ctx.start.tokenIndex])
 
     def enterLiteral_value(self, ctx):
-        self.literal_values.append(
-            self.tokens[ctx.start.tokenIndex]
-        )
+        self.literal_values.append(self.tokens[ctx.start.tokenIndex])
 
 
 def parse(sqlcommand):

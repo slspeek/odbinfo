@@ -32,13 +32,30 @@ TYPE_ATTRS = {
     "listbox": {},
     "library": {},
     "textdocument": {},
-    "table": {"shape": "cylinder", "fillcolor": "#a7c3eb", "style": "filled"},
-    "view": {"shape": "hexagon"},
-    "query": {"shape": "ellipse"},
-    "embeddedquery": {"shape": "ellipse"},
-    "eventlistener": {"shape": "ellipse",
-                      "style": "filled", "fillcolor": "lightblue"},
-    "form": {"shape": "rect", "style": "filled", "fillcolor": "#ffcc99"},
+    "table": {
+        "shape": "cylinder",
+        "fillcolor": "#a7c3eb",
+        "style": "filled"
+    },
+    "view": {
+        "shape": "hexagon"
+    },
+    "query": {
+        "shape": "ellipse"
+    },
+    "embeddedquery": {
+        "shape": "ellipse"
+    },
+    "eventlistener": {
+        "shape": "ellipse",
+        "style": "filled",
+        "fillcolor": "lightblue"
+    },
+    "form": {
+        "shape": "rect",
+        "style": "filled",
+        "fillcolor": "#ffcc99"
+    },
     "key": {},
     "index": {},
     "column": {},
@@ -46,42 +63,92 @@ TYPE_ATTRS = {
     "pythonlibrary": {},
     "pythonmodule": {},
     "databasedisplay": {},
-    "report": {"shape": "rectangle"},
-    "dialog": {"shape": "trapezium"},
-    "module": {"shape": "component"},
-    "field": {"shape": "invhouse"},
-    "subform": {"shape": "doubleoctagon",
-                "style": "filled", "fillcolor": "#d3d3d3"},
-    "grid": {"shape": "Mdiamond"},
-    "control": {"shape": "octagon", "style": "filled", "fillcolor": "#d3d3d3"},
-    "basicfunction": {"shape": "component"}
+    "report": {
+        "shape": "rectangle"
+    },
+    "dialog": {
+        "shape": "trapezium"
+    },
+    "module": {
+        "shape": "component"
+    },
+    "field": {
+        "shape": "invhouse"
+    },
+    "subform": {
+        "shape": "doubleoctagon",
+        "style": "filled",
+        "fillcolor": "#d3d3d3"
+    },
+    "grid": {
+        "shape": "Mdiamond"
+    },
+    "control": {
+        "shape": "octagon",
+        "style": "filled",
+        "fillcolor": "#d3d3d3"
+    },
+    "basicfunction": {
+        "shape": "component"
+    }
 }
 # RELATION_ATTRS = {}
 RELATION_ATTRS = {
-    "table": {"table": {}
-              },
-    "control": {"table": {"arrowhead": "box", "color": "red"},
-                "query": {"arrowhead": "dot"}
-                },
-    "subform": {"table": {"arrowhead": "box", "color": "red"}
-                },
-    "basicfunction": {"basicfunction": {"arrowhead": "dot", "color": "#90EE90"}
-                      },
-    "form": {"table": {"arrowhead": "box", "color": "red"},
-             "view": {"arrowhead": "dot"},
-             "query": {"arrowhead": "dot"}
-             },
-    "view": {"table": {"arrowhead": "dot"}
-             },
-    "query": {"table": {"arrowhead": "dot"},
-              "query": {"arrowhead": "dot"}
-              },
+    "table": {
+        "table": {}
+    },
+    "control": {
+        "table": {
+            "arrowhead": "box",
+            "color": "red"
+        },
+        "query": {
+            "arrowhead": "dot"
+        }
+    },
+    "subform": {
+        "table": {
+            "arrowhead": "box",
+            "color": "red"
+        }
+    },
+    "basicfunction": {
+        "basicfunction": {
+            "arrowhead": "dot",
+            "color": "#90EE90"
+        }
+    },
+    "form": {
+        "table": {
+            "arrowhead": "box",
+            "color": "red"
+        },
+        "view": {
+            "arrowhead": "dot"
+        },
+        "query": {
+            "arrowhead": "dot"
+        }
+    },
+    "view": {
+        "table": {
+            "arrowhead": "dot"
+        }
+    },
+    "query": {
+        "table": {
+            "arrowhead": "dot"
+        },
+        "query": {
+            "arrowhead": "dot"
+        }
+    },
 }
 
-EXCLUDED_TYPES: List[str] = ["key", "index", "eventlistener",
-                             "library",
-                             "querycolumn", "column", "pythonlibrary",
-                             "pythonmodule", "databasedisplay"]
+EXCLUDED_TYPES: List[str] = [
+    "key", "index", "eventlistener", "library", "querycolumn", "column",
+    "pythonlibrary", "pythonmodule", "databasedisplay"
+]
 
 ALWAYS_EXCLUDED = ["metadata", "basictoken", "sqltoken"]
 
@@ -158,7 +225,8 @@ def write_configuration(config: Configuration, config_path: Path) -> None:
         yaml.dump(config.dict(), output_file)
 
 
-def get_configuration(config_path: Path = default_config_path()) -> Configuration:
+def get_configuration(config_path: Path = default_config_path()
+                      ) -> Configuration:
     """ reads configuration from `config_path` if exits "\
         " otherwise a default configuration is written in `config_path`"""
     if not config_path.exists():

@@ -71,8 +71,7 @@ class ButtonListener(DialogActionListener):
         close_button = self.dlg.getControl("Close")
         close_button.setFocus()
 
-        thread = threading.Thread(target=self.target,
-                                  args=self.args)
+        thread = threading.Thread(target=self.target, args=self.args)
         thread.start()
 
 
@@ -81,9 +80,8 @@ def create_dialog(ctx, dialog_name: str):
     smgr = ctx.getServiceManager()
     dprovider = smgr.createInstanceWithContext(
         "com.sun.star.awt.DialogProvider", ctx)
-    dlg = dprovider.createDialog(
-        f"vnd.sun.star.script:{dialog_name}.xdl?"
-        "location=application")
+    dlg = dprovider.createDialog(f"vnd.sun.star.script:{dialog_name}.xdl?"
+                                 "location=application")
     return dlg
 
 
@@ -100,8 +98,8 @@ def create_logging_dialog(target, *args, ctx=None):
     logging.info(dir(dlg))
     # logging.info(dir(log_text.AccessibleContext))
     # logging.info(dir(log_text))
-    logging.getLogger().addHandler(DialogLogger(
-        log_text, logging.INFO, "%(levelname)s: %(message)s"))
+    logging.getLogger().addHandler(
+        DialogLogger(log_text, logging.INFO, "%(levelname)s: %(message)s"))
 
     return dlg
 
@@ -111,6 +109,7 @@ def create_logging_dialog(target, *args, ctx=None):
 #     dlg = create_logging_dialog(ctx)
 #     dlg.execute()
 #     dlg.dispose()
+
 
 class GUICommand(abc.ABC):
     """ Command that dispatches on the dialog"""
@@ -159,11 +158,8 @@ class DiagnosticsAction(DialogActionListener):
     def __init__(self, ctx, dlg):
         super().__init__(ctx, dlg)
         self.actions = [
-            CheckAction(dlg,
-                        name,
-                        getattr(diagnostics, f"{name}_version"))
+            CheckAction(dlg, name, getattr(diagnostics, f"{name}_version"))
             for name in ["graphviz", "gohugo", "wget"]
-
         ] + [PathAction(dlg)]
 
         logging.info("Diagnostics constructor finished")

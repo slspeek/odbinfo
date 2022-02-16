@@ -61,38 +61,46 @@ def new_site(site_path: Path) -> None:
     """ Sets up a empty hugo site with odbinfo templates """
     backup_old_site(site_path)
     os.makedirs(site_path.parent, exist_ok=True)
-    shutil.copytree(SITE_SKEL_PATH,
-                    site_path)
+    shutil.copytree(SITE_SKEL_PATH, site_path)
 
     (site_path / "themes" / "minimal" / ".git").unlink()
 
 
 def present_contenttypes(metadata: Metadata) -> List[TopLevelDisplayedContent]:
     """returns the content_types that are present in this `metadata`"""
-    return [content for content in TopLevelDisplayedContent
-            if len(metadata.get_definitions(content)) > 0]
+    return [
+        content for content in TopLevelDisplayedContent
+        if len(metadata.get_definitions(content)) > 0
+    ]
 
 
-def create_config(config: Configuration,
-                  present_content: Sequence[TopLevelDisplayedContent]) -> Dict[str, Any]:
+def create_config(
+        config: Configuration,
+        present_content: Sequence[TopLevelDisplayedContent]) -> Dict[str, Any]:
     """ create the Hugo configuration """
-    menus = [{"url": "/",
-              "name": "home",
-              "weight": 1}, {"url": f"/svg/{config.name}.gv.svg",
-                             "name": "picture",
-                             "weight": 2}]
-    menus.extend({"url": f"/{content.value}/index.html",
-                  "name": content.value,
-                  "weight": weight}
-                 for content, weight in
-                 zip(present_content, count(3)))
-    return {"title": config.name,
-            "baseURL": config.general.base_url,
-            "languageCode": "en-us",
-            "theme": "minimal",
-            "menu": {"main": menus,
-                     }
-            }
+    menus = [{
+        "url": "/",
+        "name": "home",
+        "weight": 1
+    }, {
+        "url": f"/svg/{config.name}.gv.svg",
+        "name": "picture",
+        "weight": 2
+    }]
+    menus.extend({
+        "url": f"/{content.value}/index.html",
+        "name": content.value,
+        "weight": weight
+    } for content, weight in zip(present_content, count(3)))
+    return {
+        "title": config.name,
+        "baseURL": config.general.base_url,
+        "languageCode": "en-us",
+        "theme": "minimal",
+        "menu": {
+            "main": menus,
+        }
+    }
 
 
 def write_config(site_path: Path, config_dict: Dict[str, Any]) -> None:
@@ -101,13 +109,15 @@ def write_config(site_path: Path, config_dict: Dict[str, Any]) -> None:
         toml.dump(config_dict, out)
 
 
-def content_dir(site_path: Path, content_type: TopLevelDisplayedContent) -> Path:
+def content_dir(site_path: Path,
+                content_type: TopLevelDisplayedContent) -> Path:
     """ Returns the directories where object of type `content_type` are stored """
     return site_path / "content" / content_type.value
 
 
 @timed("Write content", indent=4, arg=1, name=True)
-def write_content(metadata: Metadata, content_type: TopLevelDisplayedContent, site_path: Path):
+def write_content(metadata: Metadata, content_type: TopLevelDisplayedContent,
+                  site_path: Path):
     """writes out `content_type` in subdir of `site_path`"""
     for content in metadata.get_definitions(content_type):
         with open(content_dir(site_path, content_type) / f"{content.title}.md",
@@ -116,7 +126,8 @@ def write_content(metadata: Metadata, content_type: TopLevelDisplayedContent, si
             frontmatter(content.to_dict(), out)
 
 
-def create_content_dirs(site_path: Path, present_content: Sequence[TopLevelDisplayedContent]):
+def create_content_dirs(site_path: Path,
+                        present_content: Sequence[TopLevelDisplayedContent]):
     """ Create content directories """
     for content_type in present_content:
         targetpath = content_dir(site_path, content_type)

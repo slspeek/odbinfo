@@ -20,7 +20,8 @@ def test_writemetadata_empty(empty_metadata_processed, directory_regression):
                                           directory_regression)
 
 
-def perform_writemetadata_regression_test(name, metadata, directory_regression):
+def perform_writemetadata_regression_test(name, metadata,
+                                          directory_regression):
     """ generate report and verify"""
     output_dir = str(TEST_OUTPUT_PATH / "test_writemetadata_regression")
     config = create_configuration(name, output_dir)

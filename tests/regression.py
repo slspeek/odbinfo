@@ -34,7 +34,8 @@ class DirectoryRegressionFixture:
          version of `path_obtained`"""
         try:
             assert os.system(
-                f"diff -r {str(self.fixture_path)}/ {str(path_obtained)}/") == 0
+                f"diff -r {str(self.fixture_path)}/ {str(path_obtained)}/"
+            ) == 0
         except AssertionError as asexcep:
             if self.request.config.getoption("force_regen"):
                 self.recreate_fixture(path_obtained)
@@ -47,12 +48,11 @@ class DirectoryRegressionFixture:
         if self.fixture_path.exists():
             shutil.rmtree(self.original_datadir)
         self.original_datadir.mkdir(exist_ok=True)
-        shutil.copytree(path_obtained, self.original_datadir
-                        / self.request.function.__name__)
+        shutil.copytree(path_obtained,
+                        self.original_datadir / self.request.function.__name__)
 
 
 @fixture(scope="function")
-def directory_regression(datadir, original_datadir,  request):
+def directory_regression(datadir, original_datadir, request):
     """directory_regression fixture"""
-    yield DirectoryRegressionFixture(datadir, original_datadir,
-                                     request)
+    yield DirectoryRegressionFixture(datadir, original_datadir, request)

@@ -82,21 +82,21 @@ class FilterDisplays(XMLTest):
     def setUp(self):
         self.xml = TEXT_DOC_ELEMENT
         self.db_displays = database_displays(self.root)
-        self.config = TextDocumentsConfig(
-            db_registration_id="testdb", search_locations=[])
+        self.config = TextDocumentsConfig(db_registration_id="testdb",
+                                          search_locations=[])
 
     @property
     def filtered(self):
         return filter_displays(self.config, self.db_displays)
 
     def test_one_display(self):
-        self.config = TextDocumentsConfig(
-            db_registration_id="testdb", search_locations=[])
+        self.config = TextDocumentsConfig(db_registration_id="testdb",
+                                          search_locations=[])
         assert len(self.filtered) == 1
 
     def test_no_display(self):
-        self.config = TextDocumentsConfig(
-            db_registration_id="nottestdb", search_locations=[])
+        self.config = TextDocumentsConfig(db_registration_id="nottestdb",
+                                          search_locations=[])
         assert len(self.filtered) == 0
 
 
@@ -104,21 +104,21 @@ class FilteredDisplays(XMLTest):
 
     def setUp(self):
         self.xml = TEXT_DOC_ELEMENT
-        self.config = TextDocumentsConfig(
-            db_registration_id="testdb", search_locations=[])
+        self.config = TextDocumentsConfig(db_registration_id="testdb",
+                                          search_locations=[])
 
     @property
     def filtered(self):
         return filtered_displays(self.config, self.root)
 
     def test_one_display(self):
-        self.config = TextDocumentsConfig(
-            db_registration_id="testdb", search_locations=[])
+        self.config = TextDocumentsConfig(db_registration_id="testdb",
+                                          search_locations=[])
         assert len(self.filtered) == 1
 
     def test_no_display(self):
-        self.config = TextDocumentsConfig(
-            db_registration_id="nottestdb", search_locations=[])
+        self.config = TextDocumentsConfig(db_registration_id="nottestdb",
+                                          search_locations=[])
         assert len(self.filtered) == 0
 
 
@@ -149,5 +149,7 @@ def test_text_document(shared_datadir):
 def test_read_text_documents(shared_datadir):
     """ find odts """
     directory = str((shared_datadir / DEFAULT_TESTDB).parent)
-    assert len(read_text_documents(
-        TextDocumentsConfig(db_registration_id="testdb", search_locations=[directory]))) == 1
+    assert len(
+        read_text_documents(
+            TextDocumentsConfig(db_registration_id="testdb",
+                                search_locations=[directory]))) == 1

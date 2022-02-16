@@ -9,12 +9,12 @@ from odbinfo.pure.processor import process_metadata
 
 
 @pytest.mark.slow
-def test_processor_regression(metadata_loader, data_regression, file_regression,
-                              benchmark):
+def test_processor_regression(metadata_loader, data_regression,
+                              file_regression, benchmark):
     """ regression test """
     # print("All objects count:", len(metadata.all_objects()))
-    process_and_check(metadata_loader, "metadata-processed",
-                      data_regression, file_regression, benchmark)
+    process_and_check(metadata_loader, "metadata-processed", data_regression,
+                      file_regression, benchmark)
 
 
 @pytest.mark.slow
@@ -25,9 +25,10 @@ def test_processor_regression_empty(empty_metadata_loader, data_regression,
                       data_regression, file_regression, benchmark)
 
 
-def process_and_check(unprocessed, filename, data_regression,
-                      file_regression, benchmark):
+def process_and_check(unprocessed, filename, data_regression, file_regression,
+                      benchmark):
     """ do processing and check"""
+
     def setup():
         metadata = unprocessed()
         config = create_configuration(metadata.name)
@@ -35,12 +36,16 @@ def process_and_check(unprocessed, filename, data_regression,
         return (config, metadata), {}
 
     processed = benchmark.pedantic(process_metadata, setup=setup)
-    file_regression.check(pickle.dumps(processed), binary=True,
-                          basename=filename, extension=".pickle")
+    file_regression.check(pickle.dumps(processed),
+                          binary=True,
+                          basename=filename,
+                          extension=".pickle")
 
     graphs_txt = "----------\n".join(g.source for g in processed.graphs)
-    file_regression.check(graphs_txt, binary=False,
-                          basename=f"{filename}-graphs", extension=".txt")
+    file_regression.check(graphs_txt,
+                          binary=False,
+                          basename=f"{filename}-graphs",
+                          extension=".txt")
 
     processed.graphs = []
     for obj in processed.all_objects():

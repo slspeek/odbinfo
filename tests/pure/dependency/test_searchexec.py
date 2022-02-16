@@ -56,7 +56,11 @@ def test_search_callable_in_callable():
 
 def test_search_callable_in_callable_shadowing():
     """ total search test"""
-    callables_one = _scan_basic(SOURCE_MODULEONE, "Lib", "ModuleOne", )
+    callables_one = _scan_basic(
+        SOURCE_MODULEONE,
+        "Lib",
+        "ModuleOne",
+    )
     callables_two = _scan_basic(SOURCE_MODULETWO, "Lib", "ModuleTwo")
     search_callable_in_callable(callables_one + callables_two)
     all_tokens = sum((x.tokens for x in callables_one + callables_two), [])
@@ -123,8 +127,7 @@ class RewriteModuleLinksTest(ModuleOneTest):
         rewrite_module_callable_links([self.module])
         linkindex = self.module.callables[0].calls[0].name_token.index
         token = self.module.tokens[linkindex]
-        identifier = Identifier(content_type(
-            Module), "Module.Lib", "Bar")
+        identifier = Identifier(content_type(Module), "Module.Lib", "Bar")
         assert token.link == identifier
 
     def test_rewrite_module_callable_links_with_skip(self):

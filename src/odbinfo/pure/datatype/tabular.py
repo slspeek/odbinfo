@@ -10,22 +10,19 @@ from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
 
-KEYTYPES = {1: "Primary",
-            2: "Unique",
-            3: "Foreign"}
+KEYTYPES = {1: "Primary", 2: "Unique", 3: "Foreign"}
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbc/ColumnValue.html
-COLUMNVALUES = {0: "No_Nulls",
-                1: "Nullable",
-                2: "Nullable_Unknown"}
+COLUMNVALUES = {0: "No_Nulls", 1: "Nullable", 2: "Nullable_Unknown"}
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbc/KeyRule.html
-KEYRULES = {0: "Cascade",
-            1: "Restrict",
-            2: "Set_Null",
-            3: "No_Action",
-            4: "Set_Default"}
-
+KEYRULES = {
+    0: "Cascade",
+    1: "Restrict",
+    2: "Set_Null",
+    3: "No_Action",
+    4: "Set_Default"
+}
 
 # pylint: disable=too-many-instance-attributes
 

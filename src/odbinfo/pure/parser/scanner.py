@@ -77,16 +77,19 @@ def unify(*args):
 
 def just(token_type):
     """ just a token of type `type`"""
+
     def inner(parser):
         token = parser.eat(token_type)
         if token is None:
             raise ParserError
         return token
+
     return inner
 
 
 def maybe(*args):
     """ maybe read `args`"""
+
     def inner(parser):
         mark = parser.cursor
         result = None
@@ -95,29 +98,35 @@ def maybe(*args):
         except ParserError:
             parser.set_cursor(mark)
         return result
+
     return inner
 
 
 def skip(*args):
     """ skip `args` """
+
     def inner(parser):
         unify(*args)(parser)
+
     return inner
 
 
 def anyof(*args):
     """ eat any of `args`"""
+
     def inner(parser):
         for arg in args:
             result = maybe(arg)(parser)
             if result:
                 return result
         raise ParserError
+
     return inner
 
 
 def someof(*args):
     """eat one or more `args`"""
+
     def inner(parser):
         result = unify(*args)(parser)
         while True:
@@ -127,12 +136,14 @@ def someof(*args):
             else:
                 break
         return result
+
     return inner
 
 
 # pylint: disable=invalid-name
 def a(*args):
     """eat `args`"""
+
     def inner(parser):
         result = []
         for arg in args:
@@ -145,11 +156,13 @@ def a(*args):
                 else:
                     result.extend(arg)
         return result
+
     return inner
 
 
 def find(*args):
     """ look for `args`"""
+
     def inner(parser):
         mark = parser.cursor
         for cursor in range(parser.cursor, len(parser.tokens)):
@@ -162,4 +175,5 @@ def find(*args):
             return result
         parser.set_cursor(mark)
         raise ParserError
+
     return inner

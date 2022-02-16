@@ -38,11 +38,13 @@ class BasicFunction(WebPageWithUses, Dependent):
     module: str
     name_token_index: int = field(init=False)
     tokens: List[BasicToken] = field(init=False, default_factory=list)
-    body_tokens: List[BasicToken] = field(
-        init=False, repr=False, default_factory=list)
+    body_tokens: List[BasicToken] = field(init=False,
+                                          repr=False,
+                                          default_factory=list)
     calls: List[BasicCall] = field(init=False, default_factory=list)
-    strings: List[BasicToken] = field(
-        init=False, repr=False, default_factory=list)
+    strings: List[BasicToken] = field(init=False,
+                                      repr=False,
+                                      default_factory=list)
 
     def __post_init__(self):
         super().__post_init__()

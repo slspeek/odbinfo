@@ -52,8 +52,10 @@ class UseLink(Dictable):
     sources: List[str]
 
     def to_dict(self):
-        result = {"link": self.link.to_dict(
-        ), "sources": ",".join(self.sources)}
+        result = {
+            "link": self.link.to_dict(),
+            "sources": ",".join(self.sources)
+        }
         if len(self.sources) > 1:
             result["mul"] = len(self.sources)
         return result
@@ -139,19 +141,16 @@ class User(Node):
         if self.link:
             logger.warning(
                 "Replacing link in user: %s:%s (link was %s) with %s",
-                self.content_type,
-                self.obj_id,
-                self.link,
-                target.identifier
-            )
+                self.content_type, self.obj_id, self.link, target.identifier)
         self.link = target.identifier
 
 
 @dataclass
 class Usable(NamedNode):
     """ Mixin for Nodes that can be used by other nodes """
-    used_by: List['Identifier'] = field(
-        init=False, repr=False, default_factory=list)
+    used_by: List['Identifier'] = field(init=False,
+                                        repr=False,
+                                        default_factory=list)
 
     def users_match(self, username: str) -> bool:
         """ determines whether `username` matches this object """
@@ -161,8 +160,7 @@ class Usable(NamedNode):
 @dataclass
 class UseAggregator(Node):
     """ aggregates uses and used_by """
-    uses: List['UseLink'] = field(
-        init=False, repr=False, default_factory=list)
+    uses: List['UseLink'] = field(init=False, repr=False, default_factory=list)
 
 
 @dataclass
@@ -207,10 +205,8 @@ def get_identifier(node) -> Identifier:
         parent = parent.parent
     webpage: WebPage = cast(WebPage, parent)
     if webpage is node:
-        return Identifier(node.content_type,
-                          node.title, None)
-    return Identifier(webpage.content_type,
-                      webpage.title, node.obj_id)
+        return Identifier(node.content_type, node.title, None)
+    return Identifier(webpage.content_type, webpage.title, node.obj_id)
 
 
 @dataclass

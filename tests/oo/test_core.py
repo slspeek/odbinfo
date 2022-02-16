@@ -37,12 +37,15 @@ def generate_report_test(oodoc, benchmark, directory_regression):
 
     odbpath = document_path(oodoc)
     with chdir(odbpath.parent):
-        with patch.object(builder, 'find_free_port', return_value=1313) as free_port:
-            with patch.object(ooutil, 'document_path',
-                              return_value=(Path("") / odbpath.name)) as doc_path:
+        with patch.object(builder, 'find_free_port',
+                          return_value=1313) as free_port:
+            with patch.object(ooutil,
+                              'document_path',
+                              return_value=(Path("") /
+                                            odbpath.name)) as doc_path:
                 open_browser_flag = os.getenv("OI_BROWSER") is not None
-                benchmark(generate_report, oodoc, config,
-                          False, open_browser_flag)
+                benchmark(generate_report, oodoc, config, False,
+                          open_browser_flag)
 
         free_port.assert_called()
         doc_path.assert_called()

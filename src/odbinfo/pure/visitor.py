@@ -115,11 +115,7 @@ class BasicFunctionVisitor(ABC):
         """ visit a basicfunction """
 
 
-class DependentVisitor(KeyVisitor,
-                       QueryBaseVisitor,
-                       EventListenerVisitor,
-                       CommanderVisitor,
-                       DatabaseDisplayVisitor,
-                       BasicFunctionVisitor,
-                       ABC):
+class DependentVisitor(KeyVisitor, QueryBaseVisitor, EventListenerVisitor,
+                       CommanderVisitor, DatabaseDisplayVisitor,
+                       BasicFunctionVisitor, ABC):
     """ Dependent visitor interface"""

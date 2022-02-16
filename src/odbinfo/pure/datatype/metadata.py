@@ -50,7 +50,8 @@ class Metadata(WebPage):
         self.node_by_id = {}
         self.usable_by_link = {}
 
-    def get_definitions(self, content_type: TopLevelDisplayedContent) -> Sequence[WebPage]:
+    def get_definitions(
+            self, content_type: TopLevelDisplayedContent) -> Sequence[WebPage]:
         """returns the definitions of `content_type`"""
         return getattr(self, f"{content_type.name.lower()}_defs")
 

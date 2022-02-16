@@ -44,8 +44,7 @@ OFFICE_EVENT_LISTENERS = f"""
 class ReadEventlisteners(unittest.TestCase):
 
     def setUp(self):
-        self.office_evlis_elem = document_element(
-            OFFICE_EVENT_LISTENERS)
+        self.office_evlis_elem = document_element(OFFICE_EVENT_LISTENERS)
         self.listeners = read_eventlisteners(self.office_evlis_elem)
 
     def test_count(self):

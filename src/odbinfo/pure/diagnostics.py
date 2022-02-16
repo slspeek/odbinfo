@@ -6,7 +6,8 @@ import graphviz
 
 
 def _run_checked(command) -> str:
-    return subprocess.check_output(command, shell=True).decode("UTF-8").split("\n", maxsplit=1)[0]
+    return subprocess.check_output(command, shell=True).decode("UTF-8").split(
+        "\n", maxsplit=1)[0]
 
 
 def gohugo_version() -> str:

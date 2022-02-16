@@ -46,12 +46,13 @@ def test_parse_trim(specifier):
 
 
 @pytest.mark.slow
-@pytest.mark.parametrize("specifier", ["year", "month", "day",
-                                       "hour", "minute", "second"])
+@pytest.mark.parametrize("specifier",
+                         ["year", "month", "day", "hour", "minute", "second"])
 def test_parse_extract(specifier):
     """ call parse extract(from)"""
     assert len(
-        parse(f'select extract({specifier} from "datefield") from "table"')[1]) == 1
+        parse(f'select extract({specifier} from "datefield") from "table"')
+        [1]) == 1
 
 
 @pytest.mark.slow
@@ -66,4 +67,5 @@ def test_parse_position():
 def test_parse_substring(forclause):
     """substring(from for)"""
     assert len(
-        parse(f'select substring("name" FROM 1 {forclause}) from "table"')[1]) == 1
+        parse(f'select substring("name" FROM 1 {forclause}) from "table"')
+        [1]) == 1

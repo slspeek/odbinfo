@@ -30,26 +30,25 @@ def read_metadata_in_test(testdb_doc, monkeypatch, benchmark):
 
 # pylint:disable=too-many-arguments
 def read_metadata_regression_test(testdb_doc, filename, data_regression,
-                                  file_regression, monkeypatch,
-                                  benchmark):
+                                  file_regression, monkeypatch, benchmark):
     """ runs read_metadata and asserts nothing changed """
     metadata_read = read_metadata_in_test(testdb_doc, monkeypatch, benchmark)
     data_regression.check(dataclasses.asdict(metadata_read))
     file_regression.check(pickle.dumps(metadata_read),
-                          binary=True, extension=".pickle", basename=filename)
+                          binary=True,
+                          extension=".pickle",
+                          basename=filename)
 
 
 # pylint:disable=too-many-arguments
 
 
 @pytest.mark.veryslow
-def test_metadata_regression(testdb_doc, data_regression,
-                             file_regression, monkeypatch,
-                             benchmark):
+def test_metadata_regression(testdb_doc, data_regression, file_regression,
+                             monkeypatch, benchmark):
     """ test read_metadata for regression """
-    read_metadata_regression_test(testdb_doc, "metadata",
-                                  data_regression, file_regression, monkeypatch,
-                                  benchmark)
+    read_metadata_regression_test(testdb_doc, "metadata", data_regression,
+                                  file_regression, monkeypatch, benchmark)
 
 
 # pylint:disable=too-many-arguments
@@ -57,9 +56,8 @@ def test_metadata_regression(testdb_doc, data_regression,
 
 @pytest.mark.veryslow
 def test_metadata_regression_empty(emptydb_doc, data_regression,
-                                   file_regression, monkeypatch,
-                                   benchmark):
+                                   file_regression, monkeypatch, benchmark):
     """ test read_metadata for regression """
     read_metadata_regression_test(emptydb_doc, "empty-metadata",
-                                  data_regression, file_regression, monkeypatch,
-                                  benchmark)
+                                  data_regression, file_regression,
+                                  monkeypatch, benchmark)

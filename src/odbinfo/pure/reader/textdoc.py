@@ -26,32 +26,31 @@ def display(db_display_elem: Element):
 
 def database_displays(doc_elem: Element) -> List[DatabaseDisplay]:
     """ returns the DatabaseDisplays in `doc_elem` """
-    return [display(display_elem) for display_elem
-            in doc_elem.getElementsByTagName("text:database-display")]
+    return [
+        display(display_elem) for display_elem in
+        doc_elem.getElementsByTagName("text:database-display")
+    ]
 
 
-def filter_displays(config: TextDocumentsConfig,
-                    displays: Sequence[DatabaseDisplay]) -> List[DatabaseDisplay]:
+def filter_displays(
+        config: TextDocumentsConfig,
+        displays: Sequence[DatabaseDisplay]) -> List[DatabaseDisplay]:
     """ filter by `config`.db_registration_id"""
     return \
         [display for display in displays if display.database
             == config.db_registration_id]
 
 
-def filtered_displays(config: TextDocumentsConfig, doc_element: Element) -> List[DatabaseDisplay]:
+def filtered_displays(config: TextDocumentsConfig,
+                      doc_element: Element) -> List[DatabaseDisplay]:
     """ filters the `doc_elem` database-diplays by `config`.db_registration_id"""
-    return filter_displays(
-        config, database_displays(doc_element))
+    return filter_displays(config, database_displays(doc_element))
 
 
-def text_document(doc_path: Path, displays: List[DatabaseDisplay]) -> TextDocument:
+def text_document(doc_path: Path,
+                  displays: List[DatabaseDisplay]) -> TextDocument:
     """ returns a TextDocument from `doc_path` and `displays`"""
-    return TextDocument(
-        doc_path.stem,
-        doc_path.name,
-        str(doc_path),
-        displays
-    )
+    return TextDocument(doc_path.stem, doc_path.name, str(doc_path), displays)
 
 
 def read_text_documents(config: TextDocumentsConfig) -> List[TextDocument]:

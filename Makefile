@@ -155,7 +155,7 @@ qserve:
 
 format:
 	$(PUREPYTHON) -m isort --sg="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" $(srcloc) $(testloc)
-	$(PUREPYTHON) -m autopep8 -ri --exclude="$(parserlocation)/sqlite/*,$(parserlocation)/oobasic/*" $(srcloc) $(testloc)
+	$(PUREPYTHON) -m yapf -p -ri $(pythonsources)
 
 pycompile: # Compiles the sources
 	$(OOPYTHON) -m py_compile $(srcloc)/**/**.py $(testloc)/**/*.py

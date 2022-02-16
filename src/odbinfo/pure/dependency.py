@@ -17,7 +17,8 @@ from odbinfo.pure.visitor import (BasicFunctionVisitor, CommanderVisitor,
                                   QueryBaseVisitor)
 
 
-def search_combinations(sources: Sequence[Dependent], targets: Sequence[Usable]) -> None:
+def search_combinations(sources: Sequence[Dependent],
+                        targets: Sequence[Usable]) -> None:
     """ search for uses of `targets` in `sources`"""
     for target in targets:
         visitor = DepencencySearch(target)
@@ -118,13 +119,9 @@ class BasicFunctionRemoveRecurisveCalls(BasicFunctionVisitor):
                 call.name_token.link = None
 
 
-class DepencencySearch(KeySearch,
-                       QueryBaseSearch,
-                       EventListenerSearch,
-                       CommanderSearch,
-                       DatabaseDisplaySearch,
-                       BasicFunctionStringSearch,
-                       DependentVisitor):
+class DepencencySearch(KeySearch, QueryBaseSearch, EventListenerSearch,
+                       CommanderSearch, DatabaseDisplaySearch,
+                       BasicFunctionStringSearch, DependentVisitor):
     """All dependency search visitors"""
 
 
@@ -154,9 +151,9 @@ def search_calls(source: BasicFunction, targets: Sequence[BasicFunction]):
         return not target.library == source.library
 
     # the order is crucial as it represents scope in OOBasic
-    ordered_targets = (list(filter(filter_own_module, targets))
-                       + list(filter(filter_own_library, targets))
-                       + list(filter(filter_other_library, targets)))
+    ordered_targets = (list(filter(filter_own_module, targets)) +
+                       list(filter(filter_own_library, targets)) +
+                       list(filter(filter_other_library, targets)))
     for target in ordered_targets:
         source.accept(BasicFunctionCallSearch(target))
 
@@ -175,28 +172,18 @@ def search_dependencies(metadata: Metadata) -> None:
     """ dependency search in `metadata`"""
     search_callable_in_callable(metadata.basicfunction_defs)
 
-    search_combinations(
-        sources=metadata.eventlisteners,
-        targets=metadata.basicfunction_defs)
-    search_combinations(
-        sources=metadata.basicfunction_defs,
-        targets=metadata.by_content_type(Table,
-                                         Query,
-                                         View,
-                                         Report,
-                                         TextDocument))
-    search_combinations(
-        sources=metadata.by_content_type(Key),
-        targets=metadata.table_defs)
-    search_combinations(
-        sources=metadata.by_content_type(View),
-        targets=metadata.by_content_type(Table, View))
-    search_combinations(
-        sources=metadata.by_content_type(Query, EmbeddedQuery),
-        targets=metadata.by_content_type(Table, Query, View))
-    search_combinations(
-        sources=metadata.commanders,
-        targets=metadata.by_content_type(Table, Query, View))
-    search_combinations(
-        sources=metadata.by_content_type(DatabaseDisplay),
-        targets=metadata.by_content_type(Table, Query, View))
+    search_combinations(sources=metadata.eventlisteners,
+                        targets=metadata.basicfunction_defs)
+    search_combinations(sources=metadata.basicfunction_defs,
+                        targets=metadata.by_content_type(
+                            Table, Query, View, Report, TextDocument))
+    search_combinations(sources=metadata.by_content_type(Key),
+                        targets=metadata.table_defs)
+    search_combinations(sources=metadata.by_content_type(View),
+                        targets=metadata.by_content_type(Table, View))
+    search_combinations(sources=metadata.by_content_type(Query, EmbeddedQuery),
+                        targets=metadata.by_content_type(Table, Query, View))
+    search_combinations(sources=metadata.commanders,
+                        targets=metadata.by_content_type(Table, Query, View))
+    search_combinations(sources=metadata.by_content_type(DatabaseDisplay),
+                        targets=metadata.by_content_type(Table, Query, View))

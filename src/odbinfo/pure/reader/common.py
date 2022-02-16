@@ -23,7 +23,9 @@ def child_elements(elem: Element) -> List[Element]:
 
 def child_elements_by_tagname(elem: Element, tagname: str) -> List[Element]:
     """ direct-child-elements by tagName"""
-    return [child for child in child_elements(elem) if child.tagName == tagname]
+    return [
+        child for child in child_elements(elem) if child.tagName == tagname
+    ]
 
 
 def attr_default(elem: Element, attr: str, def_value: str):

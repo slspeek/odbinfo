@@ -52,7 +52,9 @@ def test_new_site(tmpdir):
 
 def test_present_contenttypes(metadata_listbox):
     assert writer.present_contenttypes(metadata_listbox) == [
-        metadata.TopLevelDisplayedContent.TABLE, metadata.TopLevelDisplayedContent.FORM]
+        metadata.TopLevelDisplayedContent.TABLE,
+        metadata.TopLevelDisplayedContent.FORM
+    ]
 
 
 def test_create_config(configuration):
@@ -60,17 +62,25 @@ def test_create_config(configuration):
     assert writer.create_config(configuration, present_content) == {
         'baseURL': 'http://odbinfo.org/',
         'languageCode': 'en-us',
-        'menu': {'main': [
-            {'name': 'home',
-             'url': '/',
-             'weight': 1},
-            {'name': 'picture',
-             'url': '/svg/test_config.gv.svg',
-             'weight': 2},
-            {'name': 'table',
-             'url': '/table/index.html',
-             'weight': 3},
-        ]},
+        'menu': {
+            'main': [
+                {
+                    'name': 'home',
+                    'url': '/',
+                    'weight': 1
+                },
+                {
+                    'name': 'picture',
+                    'url': '/svg/test_config.gv.svg',
+                    'weight': 2
+                },
+                {
+                    'name': 'table',
+                    'url': '/table/index.html',
+                    'weight': 3
+                },
+            ]
+        },
         'theme': 'minimal',
         'title': 'test_config',
     }
@@ -78,11 +88,13 @@ def test_create_config(configuration):
 
 def test_write_config():
     out_stream = StringIO()
-    with mock.patch.object(builtins, "open", return_value=out_stream) as open_mock:
+    with mock.patch.object(builtins, "open",
+                           return_value=out_stream) as open_mock:
         conf = {"foo": "42"}
         writer.write_config(Path("output_dir"), conf)
-    open_mock.assert_called_with(
-        Path("output_dir/config.toml"), "w", encoding="utf-8")
+    open_mock.assert_called_with(Path("output_dir/config.toml"),
+                                 "w",
+                                 encoding="utf-8")
 
 
 def test_frontmatter():
@@ -92,5 +104,6 @@ def test_frontmatter():
 
 
 def test_content_dir():
-    assert writer.content_dir(Path(
-        "site"), metadata.TopLevelDisplayedContent.TABLE) == Path("site/content/table")
+    assert writer.content_dir(
+        Path("site"),
+        metadata.TopLevelDisplayedContent.TABLE) == Path("site/content/table")

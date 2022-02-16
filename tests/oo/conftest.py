@@ -20,12 +20,7 @@ SOFFICE_CMD = '/tmp/program/soffice ' \
               '--accept="socket,host=localhost,port=2002;urp;" ' \
               '--norestore --nologo --nodefault  --headless'
 
-__all__ = [
-    "directory_regression",
-    "libreoffice",
-    "testdb_doc",
-    "emptydb_doc"
-]
+__all__ = ["directory_regression", "libreoffice", "testdb_doc", "emptydb_doc"]
 
 
 @fixture(scope="session")
@@ -83,23 +78,20 @@ def get_context():
 
     # create the UnoUrlResolver
     resolver = local_context.ServiceManager.createInstanceWithContext(
-        "com.sun.star.bridge.UnoUrlResolver", local_context
-    )
+        "com.sun.star.bridge.UnoUrlResolver", local_context)
 
     i = 0
     while i < OFFICE_TIME_OUT * 10:
         # noinspection PyBroadException
         try:
             # connect to the running office
-            ctx = resolver.resolve(
-                "uno:socket,host=localhost,port=2002;"
-                "urp;StarOffice.ComponentContext"
-            )
+            ctx = resolver.resolve("uno:socket,host=localhost,port=2002;"
+                                   "urp;StarOffice.ComponentContext")
             break
         except Exception:  # pylint:disable=broad-except
             i += 1
-            logger.debug(
-                "waiting on uno connection for %0.1f seconds", float(i) / 10)
+            logger.debug("waiting on uno connection for %0.1f seconds",
+                         float(i) / 10)
             time.sleep(0.1)
     else:
         raise \

@@ -22,6 +22,7 @@ def chdir(dirname=None):
 
 def timed(mesg, indent=0, arg=None, name=True):
     """Timing decorator"""
+
     def decorate(func):
 
         def message(args):
@@ -43,11 +44,14 @@ def timed(mesg, indent=0, arg=None, name=True):
             result = func(*args, **kwargs)
             end_time = time.time()
             # pylint:disable=logging-not-lazy
-            logging.info(message(args) + f' finished in {(end_time-start_time):.2f} seconds '
-                         )
+            logging.info(
+                message(args) +
+                f' finished in {(end_time-start_time):.2f} seconds ')
 
             return result
+
         return wrapper
+
     return decorate
 
 
@@ -57,17 +61,17 @@ class CommandExecutionError(Exception):
     def __init__(self, cmd, completed_process):
         self.completed_process = completed_process
         super().__init__(
-            f"System command: {cmd} failed (returncode={completed_process.returncode})")
+            f"System command: {cmd} failed (returncode={completed_process.returncode})"
+        )
 
 
 def run_cmd(cmd, check=True):
     """ run os `cmd` and raise  if `check` was set"""
     # pylint:disable=subprocess-run-check
-    completed_process = subprocess.run(shlex.split(cmd),
-                                       capture_output=True)
+    completed_process = subprocess.run(shlex.split(cmd), capture_output=True)
     if completed_process.returncode != 0:
-        print("System command: ", cmd,
-              "failed (returncode=", completed_process.returncode, ")")
+        print("System command: ", cmd, "failed (returncode=",
+              completed_process.returncode, ")")
         print("stdout:", completed_process.stdout.decode("utf-8"))
         print("stderr:", completed_process.stderr.decode("utf-8"))
         if check:

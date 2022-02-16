@@ -48,17 +48,20 @@ def convert_local(site_path: Path) -> None:
             f"hugo server -p {port} --disableLiveReload --watch=false ")
         # pylint:disable=consider-using-with
         try:
-            webserver_proc = subprocess.Popen(args, stderr=subprocess.DEVNULL,
+            webserver_proc = subprocess.Popen(args,
+                                              stderr=subprocess.DEVNULL,
                                               stdout=subprocess.DEVNULL)
             with chdir(".."):
                 while not is_port_open(port):
                     if webserver_proc.poll():
                         raise RuntimeError("hugo serve finished unexpectedly")
                     time.sleep(0.1)
-                run_cmd("wget  --no-verbose"
-                        f" -nH --convert-links -P {localsite_path.name}"
-                        " -r --level=100"
-                        f" http://localhost:{port}/", check=True)
+                run_cmd(
+                    "wget  --no-verbose"
+                    f" -nH --convert-links -P {localsite_path.name}"
+                    " -r --level=100"
+                    f" http://localhost:{port}/",
+                    check=True)
         finally:
             webserver_proc.kill()
 

@@ -21,3 +21,4 @@ def verify_installation():
     ctx = XSCRIPTCONTEXT.getComponentContext()
     dlg = dialog.create_diagnostics_dialog(ctx)
     dlg.execute()
+    dlg.dispose()

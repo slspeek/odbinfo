@@ -1,7 +1,5 @@
 templates: Keys should have ids
 
-replace ODBINFO_NOBROWSE by open_browser:bool parameter
-
 look critical at token rendering
 
 Testing

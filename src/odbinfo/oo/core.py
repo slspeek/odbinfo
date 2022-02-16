@@ -14,7 +14,7 @@ from odbinfo.pure.writer import write_site
 
 
 @timed("Generate report")
-def _generate_report(oodocument, config=None):
+def _generate_report(oodocument, config=None, open_browser=False):
     if not config:
         config = get_configuration()
 
@@ -28,15 +28,15 @@ def _generate_report(oodocument, config=None):
 
     write_site(config, metadata)
 
-    build(config.site_path)
+    build(config.site_path, open_browser)
 
 
-def generate_report(oodocument, config=None, gui=False, ctx=None):
+def generate_report(oodocument, config=None, gui=False, open_browser=False, ctx=None):
     """ Make report """
     logging.basicConfig(level=logging.INFO)
     if gui:
         dialog = create_logging_dialog(
-            _generate_report, oodocument, config, ctx=ctx)
+            _generate_report, oodocument, config, open_browser, ctx=ctx)
         dialog.execute()
     else:
-        _generate_report(oodocument, config)
+        _generate_report(oodocument, config,  open_browser)

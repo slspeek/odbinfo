@@ -16,7 +16,7 @@ def gohugo_version() -> str:
 
 def wget_version() -> str:
     """ returns wget version """
-    return _run_checked("wgets -V")
+    return _run_checked("wget -V")
 
 
 def graphviz_version() -> str:

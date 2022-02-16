@@ -1,4 +1,5 @@
 """ test site creation """
+import os
 from pathlib import Path
 from unittest.mock import patch
 
@@ -39,7 +40,9 @@ def generate_report_test(oodoc, benchmark, directory_regression):
         with patch.object(builder, 'find_free_port', return_value=1313) as free_port:
             with patch.object(ooutil, 'document_path',
                               return_value=(Path("") / odbpath.name)) as doc_path:
-                benchmark(generate_report, oodoc, config)
+                open_browser_flag = os.getenv("OI_BROWSER") is not None
+                benchmark(generate_report, oodoc, config,
+                          False, open_browser_flag)
 
         free_port.assert_called()
         doc_path.assert_called()

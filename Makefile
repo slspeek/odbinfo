@@ -93,7 +93,7 @@ single: prepare
 	$(OOPYTEST) $(testloc)/${SINGLE}
 
 run: clean prepare
-	$(OOPYTEST) $(testloc)/oo/test_core.py::test_generate_report
+	OI_BROWSER=1 $(OOPYTEST) $(testloc)/oo/test_core.py::test_generate_report
 
 metadata_fixture: prepare
 	$(OOPYTEST) --force-regen $(ootestloc)/test_reader_regression.py ||$\

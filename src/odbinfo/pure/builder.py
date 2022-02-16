@@ -65,14 +65,14 @@ def convert_local(site_path: Path) -> None:
 
 def open_browser(site_dir: Path) -> None:
     """Opens a webbrowser on `site_dir`"""
-    if os.getenv("ODBINFO_NO_BROWSE", default="0") == "0":
-        site_abs_path = site_dir.resolve() / "index.html"
-        webbrowser.open(site_abs_path.as_uri())
+    site_abs_path = site_dir.resolve() / "index.html"
+    webbrowser.open(site_abs_path.as_uri())
 
 
 @timed("Build and open hugo site", indent=2)
-def build(site_path: Path):
+def build(site_path: Path, open_browser_flag):
     """builds a written site on `site_path`"""
     run_gohugo(site_path)
     convert_local(site_path)
-    open_browser(localsite(site_path))
+    if open_browser_flag:
+        open_browser(localsite(site_path))

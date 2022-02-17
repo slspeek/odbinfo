@@ -1,6 +1,6 @@
-remove Start button from UI
+About UI with credits to BaseDocumenter, gohugo, graphviz
 
-
+templates Copyright --> Powered by odbinfo
 
 Testing
 -------
@@ -28,7 +28,13 @@ make upgrade dependencies (20211229 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
-look critical at token rendering
+Factor out common parts of docker build and travis build
+
+See if Pydantic dict can simplify the Dictable bussiness
+
+look critical at token rendering &&
+look at Identifier construction at dependency.py:85
+- just use obj_id
 
 svg stylesheet, class for graph
 
@@ -111,8 +117,7 @@ caching of query parsing
 - https://docs.python.org/3.7/library/shelve.html
 
 direct sql queries must be transformed to Query object
-Threads: writer, parser?
-https://docs.python.org/3.7/library/multiprocessing.html
+Threads: writer, parser? Not possible, only threads by hand, no concurrent.pool nor asyncio
 i18n gettext in python, hugo {{ T id }}
 make typing more complete (lot of work)
 errors in parser need improvement
@@ -133,9 +138,6 @@ templates:
 
 ?make it work for .oxt files too?
 
-look at Identifier construction at dependency.py:85
-- just use obj_id
-
 Limitations
 -----------
 Dialogs, Toolbars, Toolbarcontrols are omitted
@@ -147,6 +149,8 @@ KeyColumns, IndexColumns not used fully
 
 Decided not to
 --------------
+remove Start button from UI (Will no be done, as plan is to provide output-dir file field in the logging UI)
+
 Consider making a recursive call down the children with the containing webpage, setting it in a field of Node
 (then remove all the parent stuff) NO! Because parent is used in the graph extensively
 

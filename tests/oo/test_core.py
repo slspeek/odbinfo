@@ -51,6 +51,6 @@ def generate_report_test(oodoc, benchmark, directory_regression):
         doc_path.assert_called()
 
         # remove the dot generated svg files (depend on dot version)
-        clear_generated_graphs(localsite(config.site_path))
-
-        directory_regression.check(localsite(config.site_path))
+        if not open_browser_flag:
+            clear_generated_graphs(localsite(config.site_path))
+            directory_regression.check(localsite(config.site_path))

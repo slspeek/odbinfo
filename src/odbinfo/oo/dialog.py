@@ -95,7 +95,7 @@ def create_logging_dialog(target, *args, ctx=None):
     start_button.setFocus()
     log_text = dlg.getControl("log_text")
     dlg.setTitle("ODBInfo logging")
-    logging.info(dir(dlg))
+    # logging.info(dir(dlg))
     # logging.info(dir(log_text.AccessibleContext))
     # logging.info(dir(log_text))
     logging.getLogger().addHandler(

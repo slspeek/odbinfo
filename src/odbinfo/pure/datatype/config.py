@@ -24,73 +24,123 @@ class GeneralConfig(BaseModel):
 
 PARENT_EDGE_ATTRS = {
     "style": "dashed",
-    "color": "#ffcc99",
+    "color": "#495C49",
+    "dir": "back",
     "arrowhead": "none",
+    "arrowtail": "diamond"
 }
 
 TYPE_ATTRS = {
-    "listbox": {},
-    "library": {},
-    "textdocument": {},
     "table": {
-        "shape": "cylinder",
-        "fillcolor": "#a7c3eb",
+        "shape": "box3d",
+        "fillcolor": "#ace5ee",
         "style": "filled"
     },
+    "column": {
+        "shape": "box",
+        "style": "filled",
+        "fillcolor": "#6dd1e1"
+    },
+    "key": {
+        "shape": "diamond",
+        "style": "filled",
+        "fillcolor": "#82d8e5"
+    },
+    "index": {
+        "shape": "hexagon",
+        "style": "filled",
+        "fillcolor": "#97dfe9"
+    },
     "view": {
-        "shape": "hexagon"
+        "shape": "diamond",
+        "style": "filled,rounded",
+        "fillcolor": "#d6f2f7",
     },
     "query": {
-        "shape": "ellipse"
+        "shape": "box",
+        "style": "filled,rounded",
+        "fillcolor": "#d6f2f7",
+    },
+    "querycolumn": {
+        "shape": "box",
+        "style": "filled",
+        "fillcolor": "#ebf9fb",
     },
     "embeddedquery": {
-        "shape": "ellipse"
+        "shape": "box",
+        "style": "filled,rounded",
+        "fillcolor": "#d6f2f7",
     },
     "eventlistener": {
-        "shape": "ellipse",
+        "shape": "box",
         "style": "filled",
-        "fillcolor": "lightblue"
+        "fillcolor": "#d9cbcb"
     },
     "form": {
-        "shape": "rect",
+        "shape": "square",
         "style": "filled",
-        "fillcolor": "#ffcc99"
-    },
-    "key": {},
-    "index": {},
-    "column": {},
-    "querycolumn": {},
-    "pythonlibrary": {},
-    "pythonmodule": {},
-    "databasedisplay": {},
-    "report": {
-        "shape": "rectangle"
-    },
-    "dialog": {
-        "shape": "trapezium"
-    },
-    "module": {
-        "shape": "component"
-    },
-    "field": {
-        "shape": "invhouse"
+        "fillcolor": "#ffe6cc"
     },
     "subform": {
         "shape": "doubleoctagon",
         "style": "filled",
-        "fillcolor": "#d3d3d3"
+        "fillcolor": "#ffcc99"
     },
     "grid": {
-        "shape": "Mdiamond"
+        "shape": "Mdiamond",
+        "style": "filled",
+        "fillcolor": "#ffcc99"
     },
     "control": {
         "shape": "octagon",
         "style": "filled",
         "fillcolor": "#d3d3d3"
     },
+    "listbox": {
+        "shape": "invtrapezium",
+        "style": "filled",
+        "fillcolor": "#d3d3d3"
+    },
+    "pythonlibrary": {
+        "shape": "folder",
+        "fillcolor": "#fff8dc",
+        "style": "filled"
+    },
+    "pythonmodule": {
+        "shape": "note",
+        "fillcolor": "#fff3c3",
+        "style": "filled"
+    },
+    "textdocument": {
+        "shape": "square",
+        "fillcolor": "#f2f7d6",
+        "style": "filled, rounded"
+    },
+    "databasedisplay": {
+        "shape": "box",
+        "fillcolor": "#fbebf9",
+        "style": "filled"
+    },
+    "report": {
+        "shape": "trapezium",
+        "fillcolor": "#fbebf9",
+        "style": "filled"
+    },
+    "library": {
+        "shape": "folder",
+        "fillcolor": "#99da9d",
+        "style": "filled"
+    },
+    "module": {
+        "shape": "note",
+        "style": "filled",
+        "fillcolor": "#bfe8c1"
+    },
     "basicfunction": {
-        "shape": "component"
-    }
+        "shape": "component",
+        "style": "filled",
+        "fillcolor": "#e4f5e5"
+    },
 }
 # RELATION_ATTRS = {}
 RELATION_ATTRS = {

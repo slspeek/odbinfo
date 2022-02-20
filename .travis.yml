@@ -7,6 +7,6 @@ before_install:
     - sudo bash ci/linux.bash
 install:
     - pip install pipenv
-    - ./install-vens.sh
+    - ./install-venvs.sh
 script:
     - ./build.sh

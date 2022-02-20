@@ -1,8 +1,7 @@
 About UI with credits to BaseDocumenter, gohugo, graphviz
 
 edit config function, and menu item
-
-templates Copyright --> Powered by odbinfo
+copyright in config
 
 Testing
 -------

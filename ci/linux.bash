@@ -1,5 +1,5 @@
 #!/bin/bash
-HUGO_VERSION=0.89.4
+HUGO_VERSION=0.92.2
 OFFICE_VERSION=7.0.4.2
 set -o errexit
 
@@ -20,3 +20,5 @@ ln -sf /opt/libreoffice${twodigitsversion}/program /tmp/program
 
 wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
 dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb
+
+apt-get -y install graphviz wget

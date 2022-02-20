@@ -14,7 +14,7 @@ from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.metadata import Metadata, TopLevelDisplayedContent
 from odbinfo.pure.util import timed
 
-FRONT_MATTER_MARK = "---\n"
+FRONT_MATTER_MARK = f"---{os.linesep}"
 
 
 def localsite(site_path: Path) -> Path:
@@ -30,7 +30,7 @@ def write_graphs(graphs: Sequence[Digraph], site_path: Path):
         graph.render(format="svg")
 
 
-def frontmatter(adict: Dict[str, str], out) -> None:
+def frontmatter(adict: Dict[str, Any], out) -> None:
     """ Writes `adict` in yaml to `out` and marks it as frontmatter """
     out.write(FRONT_MATTER_MARK)
     yaml.dump(adict, out)
@@ -53,7 +53,7 @@ def backup_old_site(site_path: Path, date: datetime = None) -> None:
 
 
 # We are at odbinfo/pure/writer.py and data resides besides odbinfo
-# so we go up three times, and then into 'data/hugo-template'
+# so we go up three times, and then into 'hugo-template'
 SITE_SKEL_PATH = Path(__file__).parent.parent.parent / "hugo-template"
 
 

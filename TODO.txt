@@ -1,5 +1,7 @@
 About UI with credits to BaseDocumenter, gohugo, graphviz
 
+edit config function, and menu item
+
 templates Copyright --> Powered by odbinfo
 
 Testing
@@ -28,8 +30,6 @@ make upgrade dependencies (20211229 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
-Factor out common parts of docker build and travis build
-
 See if Pydantic dict can simplify the Dictable bussiness ||
 make to_dict a visitor
 

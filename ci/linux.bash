@@ -5,6 +5,8 @@ set -o errexit
 
 [[ $(uname) != 'Linux' ]] && exit
 
+apt-get update -y && apt-get install -y graphviz wget
+
 pushd /tmp
 
 urldir=https://downloadarchive.documentfoundation.org/libreoffice/old/$OFFICE_VERSION/deb/x86_64
@@ -21,4 +23,3 @@ ln -sf /opt/libreoffice${twodigitsversion}/program /tmp/program
 wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
 dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb
 
-apt-get -y install graphviz wget

@@ -34,7 +34,7 @@ class DirectoryRegressionFixture:
          version of `path_obtained`"""
         try:
             assert os.system(
-                f"diff -r {str(self.fixture_path)}/ {str(path_obtained)}/"
+                f"""diff -r "{str(self.fixture_path)}/" "{str(path_obtained)}/" """
             ) == 0
         except AssertionError as asexcep:
             if self.request.config.getoption("force_regen"):

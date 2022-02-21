@@ -18,17 +18,21 @@ def _generate_report(oodocument, config=None, open_browser=False):
     if not config:
         config = get_configuration()
 
-    odbpath = ooutil.document_path(oodocument)
+    # noinspection PyBroadException
+    try:
+        odbpath = ooutil.document_path(oodocument)
 
-    set_configuration_defaults(config, odbpath)
+        set_configuration_defaults(config, odbpath)
 
-    metadata = read_metadata(config, oodocument.DataSource, odbpath)
+        metadata = read_metadata(config, oodocument.DataSource, odbpath)
 
-    process_metadata(config, metadata)
+        process_metadata(config, metadata)
 
-    write_site(config, metadata)
+        write_site(config, metadata)
 
-    build(config.site_path, open_browser)
+        build(config.site_path, open_browser)
+    except Exception:  # pylint:disable=broad-except
+        logging.exception("Unexpected exception")
 
 
 def generate_report(oodocument,

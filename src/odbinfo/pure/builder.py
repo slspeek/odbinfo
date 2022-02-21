@@ -58,7 +58,7 @@ def convert_local(site_path: Path) -> None:
                     time.sleep(0.1)
                 run_cmd(
                     "wget  --no-verbose"
-                    f" -nH --convert-links -P {localsite_path.name}"
+                    f" -nH --convert-links -P \"{localsite_path.name}\""
                     " -r --level=100"
                     f" http://localhost:{port}/",
                     check=True)

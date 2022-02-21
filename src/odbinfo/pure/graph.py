@@ -3,6 +3,7 @@ from typing import Dict, List, Sequence, Tuple
 
 from graphviz import Digraph
 
+from odbinfo.pure.datatype import base
 from odbinfo.pure.datatype.base import NamedNode
 from odbinfo.pure.datatype.config import Configuration, GraphConfig
 from odbinfo.pure.datatype.metadata import Metadata
@@ -96,7 +97,7 @@ def make_dependency_edges(metadata: Metadata, config: GraphConfig,
 
 def create_digraph(name: str) -> Digraph:
     """ Creates an empty graphviz.Digraph with `name` and sets some graph attributes"""
-    graph = Digraph(name)
+    graph = Digraph(name, filename=f"{base.hugo_filename(name)}.gv")
     graph.attr("graph", rankdir="LR")
     graph.attr("graph", label=name, labelloc="top", fontsize="24")
     return graph

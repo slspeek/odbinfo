@@ -29,7 +29,8 @@ make upgrade dependencies (20220220 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
-See if Pydantic dict can simplify the Dictable bussiness ||
+See if Pydantic dict can simplify the Dictable bussiness
+model.dict(exclude=(,)) ||
 make to_dict a visitor
 
 look critical at token rendering &&

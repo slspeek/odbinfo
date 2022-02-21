@@ -5,7 +5,7 @@
     <icon>
         <default xlink:href="icons/odbinfo.png"/>
     </icon>
-    <version value="0.1-beta-dev"/>
+    <version value="0.1-beta-dev-7"/>
     <registration>
         <simple-license accept-by="user" default-license-id="ID0" suppress-on-update="true">
             <license-text lang="en" license-id="ID0" xlink:href="LICENSE"/>

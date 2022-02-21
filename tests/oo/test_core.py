@@ -28,6 +28,13 @@ def test_generate_report_empty(emptydb_doc, benchmark, directory_regression):
     generate_report_test(emptydb_doc, benchmark, directory_regression)
 
 
+@pytest.mark.veryslow
+def test_generate_report_empty_space(empty_space_doc, benchmark,
+                                     directory_regression):
+    """ test generate-site """
+    generate_report_test(empty_space_doc, benchmark, directory_regression)
+
+
 def generate_report_test(oodoc, benchmark, directory_regression):
     """ generate report """
     config = create_configuration()

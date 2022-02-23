@@ -1,8 +1,5 @@
 About UI with credits to BaseDocumenter, gohugo, graphviz
 
-edit config function, and menu item
-copyright in config
-
 Testing
 -------
 Replace test that test nothing, by meaningfull unit tests
@@ -29,6 +26,11 @@ make upgrade dependencies (20220220 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
+text documents should be off by default
+
+edit config function, and menu item
+copyright in config
+
 See if Pydantic dict can simplify the Dictable bussiness
 model.dict(exclude=(,)) ||
 make to_dict a visitor

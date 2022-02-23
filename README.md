@@ -118,6 +118,7 @@ You must be on debian based linux for that.
 4. ```./bootstrap.sh```
 5. ```cd pipenv/pure && pipenv shell```
 6. ```cd ../..```
-7. Inspect the Makefile and run for example ```make run```
-8. If you are making a pull request please make sure ```make all```
-succeeds.
+7. ```source ./env.source```
+8. Inspect the Makefile and run for example ```make run```
+9. ```make all``` runs all tests and checks.
+

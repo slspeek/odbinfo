@@ -1,3 +1,5 @@
+All dataobjects should implement their own Visitor interface.
+
 Make scan textdocuments talk
 
 better description of the extension

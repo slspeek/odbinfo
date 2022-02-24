@@ -1,16 +1,18 @@
 # odbinfo
 
 ## About
-When I was working on a fairly complicated LibreOffice Base application, I wanted an
-overview of the components involved in a diagram expressing their relations.
-So I started writing an extension called [DBDeps](https://github.com/slspeek/dbdeps).
+When I was working on a fairly complicated LibreOffice Base 
+application, I wanted an overview of the components involved
+in a diagram expressing their relations,
+so I started writing an extension called
+[DBDeps](https://github.com/slspeek/dbdeps).
 Then I came across
 [BaseDocumenter](https://extensions.libreoffice.org/en/extensions/show/basedocumenter-to-document-your-base-applications)
-written by Jean Pierre Ledure.
-And I started adding graphviz diagram functionality to it
+written by Jean Pierre Ledure, and I started adding 
+graphviz diagram functionality to it
 (unfinished project [BaseDocumenter2Dot](https://github.com/slspeek/BaseDocumenter2Dot)).
 When I wanted to add more functionality, I wanted to work with my own code in my language
-of choice. So two years ago I decided to write the BaseDocumenter functionality
+of choice, so two years ago I decided to write the BaseDocumenter functionality
 from scratch in python.
 
 ## Audience

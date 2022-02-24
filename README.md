@@ -1,10 +1,17 @@
 # odbinfo
 
 ## About
-I am very grateful to Jean Pierre Ledure for writing the [BaseDocumenter](https://extensions.libreoffice.org/en/extensions/show/basedocumenter-to-document-your-base-applications)
-extension for LibreOffice Base. At first I wanted to add a graphviz diagram
-functionality to it (unfinished project [BaseDocumenter2Dot](https://github.com/slspeek/BaseDocumenter2Dot)) and later more things and Basic was too hard for me.
-So two years ago I decided to write the BaseDocumenter functionality from scratch in python.
+When I was working on a fairly complicated LibreOffice Base application, I wanted an
+overview of the components involved in a diagram expressing their relations.
+So I started writing an extension called [DBDeps](https://github.com/slspeek/dbdeps).
+Then I came across
+[BaseDocumenter](https://extensions.libreoffice.org/en/extensions/show/basedocumenter-to-document-your-base-applications)
+written by Jean Pierre Ledure.
+And I started adding graphviz diagram functionality to it
+(unfinished project [BaseDocumenter2Dot](https://github.com/slspeek/BaseDocumenter2Dot)).
+When I wanted to add more functionality, I wanted to work with my own code in my language
+of choice. So two years ago I decided to write the BaseDocumenter functionality
+from scratch in python.
 
 ## Audience
 People making applications with LibreOffice Base using forms, reports,
@@ -26,9 +33,9 @@ Get the odbinfo.oxt from ... (Coming soon)
 Install the odbinfo.oxt file in LibreOffice.
 
 ODBInfo needs:
-1. wget
-2. hugo
-3. graphviz
+1. [wget](https://www.gnu.org/software/wget/)
+2. [gohugo](https://gohugo.io/)
+3. [graphviz](https://graphviz.org/)
 
 If you are on debian-based linux run:
 ```bash
@@ -46,8 +53,8 @@ If you have the required software installed, you can use the menuitem "Make data
 "ODBInfo" menu. Press "Start" on the dialog the make a report.
 
 ## Configuration
-Most users will not have to do configuration to use the extension. The intension
-is that it should run out of the box. 
+Most users will not have to do configuration to use the extension.
+It should run out of the box. 
 
 Configuration is done via a [YAML](https://www.w3schools.io/file/yaml-arrays/)
 file config.yaml in the .odbinfo folder in the user home directory. After the first run

@@ -1,17 +1,4 @@
-About UI with credits to BaseDocumenter, gohugo, graphviz
-
-Testing
--------
-Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 85.98%)
-
-test/pure/test_sql_parser.py
-test/pure/test_writer_make_site.py
-test/pure/test_processor.py
-test/pure/test_basic_parser_slow.py
-test/pure/test_writer_regression.py
-test/pure/test_scanner.py
-test/pure/test_basic_parser.py
+Make scan textdocuments talk
 
 better description of the extension
 
@@ -26,6 +13,21 @@ make upgrade dependencies (20220220 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
+Testing
+-------
+Replace test that test nothing, by meaningfull unit tests
+unit test coverage 90% (now 85.98%)
+
+test/pure/test_sql_parser.py
+test/pure/test_writer_make_site.py
+test/pure/test_processor.py
+test/pure/test_basic_parser_slow.py
+test/pure/test_writer_regression.py
+test/pure/test_scanner.py
+test/pure/test_basic_parser.py
+
+About UI with credits to BaseDocumenter, gohugo, graphviz
+
 text documents should be off by default
 
 edit config function, and menu item

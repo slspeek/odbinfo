@@ -7,7 +7,7 @@ from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
                                         User, WebPageWithUses)
 from odbinfo.pure.datatype.config import GraphConfig
 from odbinfo.pure.datatype.tabular import EmbeddedQuery
-from odbinfo.pure.visitor import PreprocessableVisitor
+from odbinfo.pure.visitor import ControlVisitor, FormVisitor, ListBoxVisitor
 
 COMMAND_TYPE_COMMAND = ["command", "sql", "sql-pass-through"]
 
@@ -140,7 +140,7 @@ class Control(ControlBase, Preprocessable):
             return self.label
         return super().graph_label
 
-    def accept(self, visitor: PreprocessableVisitor):
+    def accept(self, visitor: ControlVisitor):
         visitor.visit_control(self)
 
 
@@ -172,7 +172,7 @@ class ListBox(AbstractCommander, ControlBase, Preprocessable):
             return self.eventlisteners + [self.embedded_query]
         return self.eventlisteners
 
-    def accept(self, visitor: PreprocessableVisitor):
+    def accept(self, visitor: ListBoxVisitor):
         visitor.visit_listbox(self)
 
 
@@ -218,7 +218,7 @@ class Form(WebPageWithUses, Preprocessable):
     def children(self):
         return self.subforms
 
-    def accept(self, visitor: PreprocessableVisitor):
+    def accept(self, visitor: FormVisitor):
         visitor.visit_form(self)
 
 

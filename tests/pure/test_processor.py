@@ -39,17 +39,17 @@ def test_link_name_tokens(module_single_function):
 
 
 def test_undouble_used_by():
-    assert processor.undouble_used_by([Identifier("foo", "bar", "67"),
-                                       Identifier("foo", "bar", "1")]) == \
+    assert processor.merge_used_by([Identifier("foo", "bar", "67"),
+                                    Identifier("foo", "bar", "1")]) == \
         [Identifier("foo", "bar", "67,1")]
 
 
 def test_undouble_used_by_three():
-    assert processor.undouble_used_by([Identifier("foo", "bar", "67"),
-                                       Identifier("foo", "bar", "1"),
-                                       Identifier("foo", "bar", "42"),
-                                       Identifier("goof", "fox", "13"),
-                                       ]) == \
+    assert processor.merge_used_by([Identifier("foo", "bar", "67"),
+                                    Identifier("foo", "bar", "1"),
+                                    Identifier("foo", "bar", "42"),
+                                    Identifier("goof", "fox", "13"),
+                                    ]) == \
         [Identifier("foo", "bar", "67,1,42"),
             Identifier("goof", "fox", "13"),
          ]

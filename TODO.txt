@@ -1,12 +1,10 @@
-All dataobjects should implement their own Visitor interface.
+Elaborate Development in README
+
+templates: Picture --> Diagram in report
 
 Make scan textdocuments talk
 
 better description of the extension
-
-Pre release
------------
-Try on windows
 
 update minimal theme (20210703 ok)
 

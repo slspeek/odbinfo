@@ -5,13 +5,10 @@ import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from itertools import chain
-from typing import TYPE_CHECKING, List, Optional, cast
+from typing import List, Optional, cast
 
 from odbinfo.pure.datatype.config import GraphConfig
 from odbinfo.pure.datatype.dictable import Dictable, to_dict
-
-if TYPE_CHECKING:
-    pass
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +29,7 @@ class Identifier(Dictable):
     @property
     def href(self):
         """returns href for the graph
-        FIXME: assumes that all graphs will be in 'svg/' subfolder """
+        NB: relies on all graphs to be in 'svg/' subfolder """
         url = f"../{self.content_type}/{hugo_filename(self.local_id)}/index.html"
         if self.bookmark:
             url = f"{url}#{self.bookmark}"
@@ -158,13 +155,13 @@ class Usable(NamedNode):
 
 
 @dataclass
-class UseAggregator(Node):
+class UseAggregator(Node, ABC):
     """ aggregates uses and used_by """
     uses: List['UseLink'] = field(init=False, repr=False, default_factory=list)
 
 
 @dataclass
-class WebPage(NamedNode):
+class WebPage(NamedNode, ABC):
     """ has its own page, thus title attribute "\
         " an object with a parent_link """
     parent_link: Optional['Identifier'] = field(init=False, default=None)
@@ -184,7 +181,7 @@ class WebPage(NamedNode):
 
 
 @dataclass
-class WebPageWithUses(Usable, UseAggregator, WebPage):
+class WebPageWithUses(Usable, UseAggregator, WebPage, ABC):
     """ WebPage with uses and used_by """
 
 

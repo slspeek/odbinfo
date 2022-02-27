@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from odbinfo.pure.datatype.tabular import Key, QueryBase
     from odbinfo.pure.datatype.ui import (AbstractCommander, Control,
                                           DatabaseDisplay, EventListener, Form,
-                                          Grid, ListBox, SubForm)
+                                          ListBox, SubForm)
 
 
 class BasicTokenVisitor(ABC):
@@ -39,20 +39,20 @@ class SubFormVisitor(ABC):
         """Visit SubForm"""
 
 
-class FormVisitor(SubFormVisitor, ListBoxVisitor, ABC):
-    """ Form visitor interface """
-
-    @abstractmethod
-    def visit_form(self, form: Form):
-        """Visit Form"""
+class ControlVisitor(ABC):
+    """ Control visitor interface"""
 
     @abstractmethod
     def visit_control(self, control: Control):
         """Visit Control"""
 
+
+class FormVisitor(SubFormVisitor, ListBoxVisitor, ControlVisitor, ABC):
+    """ Form visitor interface """
+
     @abstractmethod
-    def visit_grid(self, grid: Grid):
-        """Visit Grid"""
+    def visit_form(self, form: Form):
+        """Visit Form"""
 
 
 class ModuleVisitor(ABC):
@@ -75,7 +75,7 @@ class PreprocessableVisitor(ModuleVisitor, QueryBaseVisitor, FormVisitor, ABC):
     """ Preprocessable visitor interface """
 
 
-class KeyVisitor:
+class KeyVisitor(ABC):
     """Visitor interface for Key"""
 
     @abstractmethod
@@ -83,7 +83,7 @@ class KeyVisitor:
         """visit key"""
 
 
-class EventListenerVisitor:
+class EventListenerVisitor(ABC):
     """Visitor interface for EventListener"""
 
     @abstractmethod

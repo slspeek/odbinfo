@@ -105,13 +105,20 @@ class BasicFunctionStringSearch(BasicFunctionVisitor, DependencySearchBase):
                 string_literal.link_to(self.target)
 
 
-class BasicFunctionRemoveRecurisveCalls(BasicFunctionVisitor):
+class RemoveFalseRecursiveCalls(BasicFunctionVisitor):
     """ Removes the probably unintended link to itself for functions"""
 
     def visit_basicfunction(self, basicfunction: BasicFunction):
-        """ Removes recursive calls
-            to avoid linking every function to itself
-            because of the way a return value is specified"""
+        """ Removes false recursive calls
+
+            BASIC function 'return' statement looks like this:
+
+            Function NumericAdd(a, b)
+            NumericAdd() = a + b
+            End Function
+
+            The parser has identified 'NumericAdd()' as a call,
+            here it is removed."""
         for call in basicfunction.calls:
             if call.module_token:
                 continue
@@ -122,13 +129,13 @@ class BasicFunctionRemoveRecurisveCalls(BasicFunctionVisitor):
 class DepencencySearch(KeySearch, QueryBaseSearch, EventListenerSearch,
                        CommanderSearch, DatabaseDisplaySearch,
                        BasicFunctionStringSearch, DependentVisitor):
-    """All dependency search visitors"""
+    """All dependency search visitors,
+     note it implements DependentVisitor with its other superclasses"""
 
 
-def remove_recursive_calls(funcs: Sequence[BasicFunction]):
-    """remove the probably unintended recursive call made by assignment"\
-        "of the return value"""
-    remove_rec_calls_visitor = BasicFunctionRemoveRecurisveCalls()
+def remove_false_recursive_calls(funcs: Sequence[BasicFunction]):
+    """remove the parser's wrong interpretation of return values"""
+    remove_rec_calls_visitor = RemoveFalseRecursiveCalls()
     for function in funcs:
         function.accept(remove_rec_calls_visitor)
 
@@ -164,7 +171,7 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
     """
     for acallable in callables:
         search_calls(acallable, callables)
-    remove_recursive_calls(callables)
+    remove_false_recursive_calls(callables)
 
 
 @timed("Search dependencies", indent=4)

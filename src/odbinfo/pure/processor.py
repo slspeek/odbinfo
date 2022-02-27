@@ -10,7 +10,7 @@ from odbinfo.pure.datatype.config import Configuration
 from odbinfo.pure.datatype.exec import Module
 from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import QueryBase
-from odbinfo.pure.datatype.ui import Control, Form, Grid, ListBox, SubForm
+from odbinfo.pure.datatype.ui import Control, Form, ListBox, SubForm
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.graph import generate_graphs
 from odbinfo.pure.parser.basic import (OOBasicLexer, get_basic_tokens,
@@ -56,9 +56,6 @@ class FormPreprocessor(FormVisitor):
     def visit_control(self, control: Control):
         self.simplify_type(control)
 
-    def visit_grid(self, grid: Grid):
-        pass
-
     def visit_listbox(self, listbox: ListBox):
         self.simplify_type(listbox)
 
@@ -66,20 +63,23 @@ class FormPreprocessor(FormVisitor):
 def undouble_uses(usecases: List[UseLink]) -> List[UseLink]:
     """Merge sources of UseLinks with identical target"""
 
-    def pages():
+    def unique_identifiers() -> List[Identifier]:
         return list(dict.fromkeys(u.link for u in usecases))
 
-    def collect_sources_by_page(apage):
-        return sum([user.sources for user in usecases if user.link == apage],
-                   [])
+    def collect_sources_by_page(identifier: Identifier):
+        return sum(
+            [user.sources for user in usecases if user.link == identifier], [])
 
-    return [UseLink(page, collect_sources_by_page(page)) for page in pages()]
+    return [
+        UseLink(identifier, collect_sources_by_page(identifier))
+        for identifier in unique_identifiers()
+    ]
 
 
 def aggregate_uses_from_children(user_agg: UseAggregator,
                                  collapse_multiple_uses: bool) -> None:
     """Collect aggregated uses from its children """
-    collected_uses = []
+    collected_uses: List[UseLink] = []
     for node in user_agg.all_objects():
         if isinstance(node, User) and node.link:
             collected_uses.append(UseLink(node.link, [node.obj_id]))
@@ -95,23 +95,27 @@ def aggregate_uses(metadata: Metadata, collapse_multiple_uses: bool) -> None:
         aggregate_uses_from_children(use_agg, collapse_multiple_uses)
 
 
-def undouble_used_by(users: Sequence[Identifier]) -> List[Identifier]:
+def merge_used_by(users: Sequence[Identifier]) -> List[Identifier]:
     """If two ids have the same content_type and local_id merge their bookmarks"""
 
-    def pages():
+    def unique_page_identifiers():
+        """ returns all unique the WebPages involved in `users`,
+            that is discarding the bookmark part of the Identifier
+            when comparing """
         return list(dict.fromkeys((i.content_type, i.local_id) for i in users))
 
-    def collect_ids(apage):
+    def identifiers_matching(apage):
         return [
             user for user in users
             if user.content_type == apage[0] and user.local_id == apage[1]
         ]
 
     result = []
-    for key in pages():
-        bookmark = ",".join(link.bookmark for link in collect_ids(key)
-                            if link.bookmark)
-        result.append(Identifier(key[0], key[1], bookmark))
+    for page_id in unique_page_identifiers():
+        bookmark = ",".join(identifier.bookmark
+                            for identifier in identifiers_matching(page_id)
+                            if identifier.bookmark)
+        result.append(Identifier(page_id[0], page_id[1], bookmark))
     return result
 
 
@@ -122,7 +126,7 @@ def aggregate_used_by(metadata: Metadata,
         metadata.usable_by_link[user.link].used_by.append(user.identifier)
     if collapse_multiple_uses:
         for usable in metadata.by_content_type(Usable):
-            usable.used_by = undouble_used_by(usable.used_by)
+            usable.used_by = merge_used_by(usable.used_by)
 
 
 def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
@@ -246,7 +250,6 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     highlight_tokens(metadata.by_content_type(BasicToken))
     metadata.prepare_indexed_tree()
 
-    # TODO move these 3 lines to dependency module
     search_dependencies(metadata)
     rewrite_module_callable_links(metadata.module_defs)
     aggregate_uses(metadata, config.graph.collapse_multiple_uses)
@@ -254,5 +257,5 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
 
     metadata.graphs = generate_graphs(metadata, config)
     metadata.set_parent_links(None)
-    # for test purposes only
+    # for test purposes only, needed for benchmarking
     return metadata

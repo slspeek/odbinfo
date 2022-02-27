@@ -9,7 +9,7 @@ from odbinfo.pure.datatype.base import BasicToken, Preprocessable, WebPage
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 
 if TYPE_CHECKING:
-    from odbinfo.pure.visitor import PreprocessableVisitor
+    from odbinfo.pure.visitor import ModuleVisitor
 
 
 @dataclass
@@ -57,7 +57,7 @@ class Module(WebPage, Preprocessable):
         ]
         return rdict
 
-    def accept(self, visitor: PreprocessableVisitor):
+    def accept(self, visitor: ModuleVisitor):
         visitor.visit_module(self)
 
 

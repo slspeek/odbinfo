@@ -1,3 +1,14 @@
+review entire source tree
+
+Identidy the weak spots in Makefile
+* add goal show source files
+* (making dirs..., use .gitkeep)
+* all reports must go in target/build/reports
+
+test extension with packaged LibreOffice
+
+drop: Extra grammar .new
+
 Elaborate Development in README
 
 templates: Picture --> Diagram in report
@@ -13,6 +24,11 @@ make upgrade dependencies (20220220 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
+Look at VSCode
+
+test extension with packaged LibreOffice
+in docker with several different linux distros
+
 Testing
 -------
 Replace test that test nothing, by meaningfull unit tests

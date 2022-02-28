@@ -90,7 +90,7 @@ def aggregate_uses_from_children(user_agg: UseAggregator,
 
 
 def aggregate_uses(metadata: Metadata, collapse_multiple_uses: bool) -> None:
-    """Collect all aggregated uses """
+    """Collect uses by children for all UseAggregators"""
     for use_agg in metadata.by_content_type(UseAggregator):
         aggregate_uses_from_children(use_agg, collapse_multiple_uses)
 

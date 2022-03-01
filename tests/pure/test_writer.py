@@ -70,7 +70,7 @@ def test_create_config(configuration):
                     'weight': 1
                 },
                 {
-                    'name': 'picture',
+                    'name': 'diagram',
                     'url': '/svg/test_config.gv.svg',
                     'weight': 2
                 },

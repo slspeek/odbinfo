@@ -83,9 +83,7 @@ Identify the weak spots in Makefile
 
 Elaborate Development in README
 
-templates: Picture --> Diagram in report
-
-better description of the extension
+better description of the extension: see README.md
 
 update minimal theme (20210703 ok)
 

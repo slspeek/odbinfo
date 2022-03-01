@@ -11,7 +11,7 @@ weight = 1
 
 [[menu.main]]
 url = "/svg/testdb.gv.svg"
-name = "picture"
+name = "diagram"
 weight = 2
 
 [[menu.main]]

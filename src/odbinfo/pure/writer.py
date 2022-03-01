@@ -84,7 +84,7 @@ def create_config(
         "weight": 1
     }, {
         "url": f"/svg/{config.name}.gv.svg",
-        "name": "picture",
+        "name": "diagram",
         "weight": 2
     }]
     menus.extend({

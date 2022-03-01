@@ -1,8 +1,84 @@
 review entire source tree
+-------------------------
+src/main.py
+src/odbinfo/__init__.py
+src/odbinfo/oo/__init__.py
+src/odbinfo/oo/dialog.py
+src/odbinfo/oo/ooutil.py
+src/odbinfo/oo/core.py
+src/odbinfo/oo/reader.py
+src/odbinfo/pure/graph.py
+src/odbinfo/pure/writer.py
+src/odbinfo/pure/util.py
+src/odbinfo/pure/diagnostics.py
+src/odbinfo/pure/reader/textdoc.py
+src/odbinfo/pure/reader/exec.py
+src/odbinfo/pure/reader/report.py
+src/odbinfo/pure/reader/__init__.py
+src/odbinfo/pure/reader/form.py
+src/odbinfo/pure/reader/common.py
+src/odbinfo/pure/__init__.py
+src/odbinfo/pure/parser/__init__.py
+src/odbinfo/pure/parser/sql.py
+src/odbinfo/pure/parser/basic.py
+src/odbinfo/pure/parser/scanner.py
+src/odbinfo/pure/visitor.py
+src/odbinfo/pure/datatype/ui.py
+src/odbinfo/pure/datatype/exec.py
+src/odbinfo/pure/datatype/base.py
+src/odbinfo/pure/datatype/metadata.py
+src/odbinfo/pure/datatype/basicfunction.py
+src/odbinfo/pure/datatype/__init__.py
+src/odbinfo/pure/datatype/tabular.py
+src/odbinfo/pure/datatype/dictable.py
+src/odbinfo/pure/datatype/config.py
+src/odbinfo/pure/processor.py
+src/odbinfo/pure/builder.py
+src/odbinfo/pure/dependency.py
+tests/util.py
+tests/__init__.py
+tests/resource.py
+tests/oo/util.py
+tests/oo/__init__.py
+tests/oo/test_ooutil.py
+tests/oo/test_core.py
+tests/oo/conftest.py
+tests/oo/test_reader_regression.py
+tests/pure/test_template_regression.py
+tests/pure/test_util.py
+tests/pure/test_graph.py
+tests/pure/test_abcdataclass.py
+tests/pure/test_writemetadata_regression.py
+tests/pure/test_writemetadata_performance.py
+tests/pure/reader/__init__.py
+tests/pure/reader/test_common.py
+tests/pure/reader/test_exec.py
+tests/pure/reader/test_report.py
+tests/pure/reader/test_form.py
+tests/pure/reader/test_textdoc.py
+tests/pure/__init__.py
+tests/pure/test_sql_parser.py
+tests/pure/test_config.py
+tests/pure/test_init.py
+tests/pure/test_basic_parser.py
+tests/pure/test_scanner.py
+tests/pure/test_builder.py
+tests/pure/test_convert_local_regression.py
+tests/pure/test_processor_regression.py
+tests/pure/test_writer.py
+tests/pure/test_write_site_regression.py
+tests/pure/test_basic_parser_slow.py
+tests/pure/dependency/test_util.py
+tests/pure/dependency/__init__.py
+tests/pure/dependency/test_init.py
+tests/pure/dependency/test_searchexec.py
+tests/pure/conftest.py
+tests/pure/test_processor.py
+tests/regression.py
 
-Identidy the weak spots in Makefile
-* add goal show source files
-* (making dirs..., use .gitkeep)
+
+Identify the weak spots in Makefile
+* (making dirs..., use .gitkeep) regression.py should search for empty dirs
 * all reports must go in target/build/reports
 
 drop: Extra grammar .new
@@ -10,8 +86,6 @@ drop: Extra grammar .new
 Elaborate Development in README
 
 templates: Picture --> Diagram in report
-
-Make scan textdocuments talk
 
 better description of the extension
 

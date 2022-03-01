@@ -7,6 +7,7 @@ from zipfile import ZipFile
 from odbinfo.pure.datatype.config import TextDocumentsConfig
 from odbinfo.pure.datatype.ui import DatabaseDisplay, TextDocument
 from odbinfo.pure.reader.common import document
+from odbinfo.pure.util import timed
 
 
 def _text_documents(dir_path: Path) -> Generator[Path, None, None]:
@@ -53,6 +54,7 @@ def text_document(doc_path: Path,
     return TextDocument(doc_path.stem, doc_path.name, str(doc_path), displays)
 
 
+@timed("Reading text documents", indent=4)
 def read_text_documents(config: TextDocumentsConfig) -> List[TextDocument]:
     """ search odt, ott files and look for database-display fields"""
     docs = []

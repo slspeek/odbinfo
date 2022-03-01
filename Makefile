@@ -254,3 +254,6 @@ post_checkout:
 acceptence: clean oxt
 	docker build . --file manual-tests/Dockerfile -t buster-office
 	docker run -it --net=host -e DISPLAY -v /tmp/.X11-unix buster-office bash
+
+show_sources:
+	@echo $(pythonsources)|tr ' ' '\n'

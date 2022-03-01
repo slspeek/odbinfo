@@ -81,8 +81,6 @@ Identify the weak spots in Makefile
 * (making dirs..., use .gitkeep) regression.py should search for empty dirs
 * all reports must go in target/build/reports
 
-drop: Extra grammar .new
-
 Elaborate Development in README
 
 templates: Picture --> Diagram in report

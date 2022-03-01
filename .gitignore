@@ -1,4 +1,4 @@
-build
+/build
 # Byte-compiled / optimized / DLL files
 unitcov
 mypy-report
@@ -137,3 +137,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/odbinfo.oxt

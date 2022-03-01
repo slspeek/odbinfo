@@ -14,6 +14,8 @@ RUN useradd -ms /bin/bash build
 
 USER build
 
+ENV LANG en_US.UTF-8
+
 RUN cd ~ && git clone https://github.com/pyenv/pyenv.git ~/.pyenv && \
     cd ~/.pyenv && src/configure && make -C src
 
@@ -23,6 +25,6 @@ RUN pip install pipenv
 
 COPY --chown=build:build . /home/build/odbinfo-build
 
-RUN . ~/.profile && cd /home/build/odbinfo-build && bash bootstrap.sh
+RUN . ~/.profile && cd /home/build/odbinfo-build && bash bootstrap.sh && bash build.sh
 
 RUN . ~/.profile && cd /home/build/odbinfo-build && (cd pipenvconf/oo && PIPENV_IGNORE_VIRTUALENVS=1 pipenv run make -C ../..   oxt)

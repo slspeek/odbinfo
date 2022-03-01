@@ -119,15 +119,5 @@ to the search of related text documents.
 ## Bugs
 If you find a bug please submit an issue.
 
-## Development
-You must be on debian based linux for that. 
-1. Clone this repository
-2. ```cd odbinfo```
-3. ```sudo ci/bash.linux```
-4. ```./bootstrap.sh```
-5. ```cd pipenv/pure && pipenv shell```
-6. ```cd ../..```
-7. ```source ./env.source```
-8. Inspect the Makefile and run for example ```make run```
-9. ```make all``` runs all tests and checks.
-
+## Building
+See [development instructions](doc/development.md)

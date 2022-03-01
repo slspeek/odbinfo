@@ -5,8 +5,6 @@ Identidy the weak spots in Makefile
 * (making dirs..., use .gitkeep)
 * all reports must go in target/build/reports
 
-test extension with packaged LibreOffice
-
 drop: Extra grammar .new
 
 Elaborate Development in README

@@ -251,5 +251,6 @@ post_checkout:
 	-mkdir -p $(puretestloc)/test_template_regression/test_template_regression/resources/_gen/{assets,images}
 	-mkdir $(puretestloc)/test_template_regression/test_template_regression_empty/content
 
-
-
+acceptence: clean oxt
+	docker build . --file manual-tests/Dockerfile -t buster-office
+	docker run -it --net=host -e DISPLAY -v /tmp/.X11-unix buster-office bash

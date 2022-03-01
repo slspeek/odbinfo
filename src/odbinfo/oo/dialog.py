@@ -86,7 +86,7 @@ def create_dialog(ctx, dialog_name: str):
 
 
 def create_logging_dialog(target, *args, ctx=None):
-    """ create the verify dialog """
+    """ create the logging dialog """
     dlg = create_dialog(ctx, "odbinfo_ui.LoggingDialog")
 
     start_button = dlg.getControl("start_button")
@@ -102,13 +102,6 @@ def create_logging_dialog(target, *args, ctx=None):
         DialogLogger(log_text, logging.INFO, "%(levelname)s: %(message)s"))
 
     return dlg
-
-
-# def logging_dialog(ctx=None):
-#     """ runs the Verify Queries Dialog """
-#     dlg = create_logging_dialog(ctx)
-#     dlg.execute()
-#     dlg.dispose()
 
 
 class GUICommand(abc.ABC):

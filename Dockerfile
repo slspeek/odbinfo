@@ -2,9 +2,9 @@ FROM debian:bullseye
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -y && apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
-    libsqlite3-dev curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-    python3-pip default-jre git unzip zip
+COPY install-building-essentials.sh /install-building-essentials.sh
+
+RUN /install-building-essentials.sh
 
 COPY ci /ci
 
@@ -16,15 +16,14 @@ USER build
 
 ENV LANG en_US.UTF-8
 
-RUN cd ~ && git clone https://github.com/pyenv/pyenv.git ~/.pyenv && \
-    cd ~/.pyenv && src/configure && make -C src
+COPY install-python.sh /home/build/odbinfo-build/install-python.sh
 
-RUN ~/.pyenv/bin/pyenv install 3.7.7
+RUN . ~/.profile && cd /home/build/odbinfo-build && ./install-python.sh
 
 RUN pip install pipenv
 
 COPY --chown=build:build . /home/build/odbinfo-build
 
-RUN . ~/.profile && cd /home/build/odbinfo-build && bash bootstrap.sh && bash build.sh
+RUN . ~/.profile && cd /home/build/odbinfo-build && ./bootstrap.sh && ./build.sh
 
 RUN . ~/.profile && cd /home/build/odbinfo-build && (cd pipenvconf/oo && PIPENV_IGNORE_VIRTUALENVS=1 pipenv run make -C ../..   oxt)

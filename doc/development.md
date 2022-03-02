@@ -42,11 +42,20 @@ to get it in the current directory.
 This is the best way if you want to work on this project. 
 
 ### Initial setup
-
-Install the development dependencies
+Install the building essentials
+```bash
+sudo ./install-building-essentials.sh
+```
+Install the development runtime dependencies
 ```bash
 sudo ci/bash.linux
 ```
+
+Install python 3.7.7 using pyenv
+```bash
+./install-python.sh
+```
+
 Create the python environments with pipenv
 ```bash
 ./bootstrap.sh

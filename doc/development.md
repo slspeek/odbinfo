@@ -17,6 +17,11 @@ Install the docker.io package, if you have not already:
 ```bash
  sudo apt install docker.io
  ```
+And add the current unix user to the docker group and
+login again.
+```bash
+ sudo addduser $(whoami) docker
+ ```
 
  Run docker build
 (on my box, which not slow, this runs for a small hour when run for the first time).

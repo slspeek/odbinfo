@@ -4,9 +4,9 @@ language: python
 python:
     - "3.7.7"
 before_install:
-    - sudo bash ci/linux.bash
+    - sudo bash/install-development-runtime.sh
 install:
     - pip install pipenv
-    - ./install-venvs.sh
+    - bash/install-venvs.sh
 script:
-    - ./build.sh
+    - bash/build.sh

@@ -1,5 +1,3 @@
-move bash scripts in /bash folder
-
 review entire source tree
 -------------------------
 Check 'meaningful names' and docs-string, but do not refactor

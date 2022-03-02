@@ -44,30 +44,30 @@ This is the best way if you want to work on this project.
 ### Initial setup
 Install the building essentials
 ```bash
-sudo ./install-building-essentials.sh
+sudo bash/install-building-essentials.sh
 ```
 Install the development runtime dependencies
 ```bash
-sudo ci/bash.linux
+sudo bash/install-development-runtime.sh
 ```
 
 Install python 3.7.7 using pyenv
 ```bash
-./install-python.sh
+bash/install-python.sh
 ```
 
 Create the python environments with pipenv
 ```bash
-./bootstrap.sh
+bash/bootstrap.sh
 ```
 
 ### Regular build
-Get into the python environment
+Get into the pipenv virtual environment
 ```bash
-ln -s /tmp/program /opt/libreoffice7.0/program
-cd pipenv/pure && pipenv shell```
-cd ../..
-source ./env.source
+ln -sf /tmp/program /opt/libreoffice7.0/program
+cd pipenv/pure 
+pipenv shell -- 'cd ../.. && source bash/env.source'
+
 ```
 And run a make command like:
 ```bash

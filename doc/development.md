@@ -5,10 +5,12 @@ There are two ways to run the tests:
 1. Using docker.io, easy but slow.
 2. Setting up a local python environment.
 
-But first clone the source from github and navigate into it:
+But first clone the source from github, navigate into it and
+retrieve the submodules:
 ```bash
 git clone https://github.com/slspeek/odbinfo.git
 cd odbinfo
+git submodule update --init --recursive
 ```
 
 ## Docker build
@@ -58,7 +60,7 @@ bash/install-python.sh
 
 Create the python environments with pipenv
 ```bash
-bash/bootstrap.sh
+bash/install-venvs.sh
 ```
 
 ### Regular build
@@ -67,7 +69,6 @@ Get into the pipenv virtual environment
 ln -sf /tmp/program /opt/libreoffice7.0/program
 cd pipenv/pure 
 pipenv shell -- 'cd ../.. && source bash/env.source'
-
 ```
 And run a make command like:
 ```bash

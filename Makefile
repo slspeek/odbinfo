@@ -47,11 +47,11 @@ PUREPYTHON=PYTHONPATH=$(PUREPYTHONPATH) python
 
 build: mypy metric unitcoverage
 
-travis: installantlr post_checkout precommit
+travis: installantlr precommit
 
 precommit:  clean genparser info check alltest
 
-all: ctags mypy metric precommit install_oxt
+all: mypy metric precommit install_oxt
 
 prepare:
 	@echo prepare start
@@ -160,7 +160,7 @@ format:
 pycompile: # Compiles the sources
 	$(OOPYTHON) -m py_compile $(srcloc)/**/**.py $(testloc)/**/*.py
 
-check: pycompile check_main check_test
+check: check_main check_test
 
 check_main: pycompile format
 	PYTHONPATH=$(OOPYTHONPATH) $(python) -m pylint --ignore="$(parserlocation)/oobasic,$(parserlocation)/sqlite" $(srcloc)
@@ -170,7 +170,7 @@ check_test: pycompile format
 
 .PHONY:
 clean:
-	-@if [ -d /tmp/pytest-of-steven ]; then rm -rf /tmp/pytest-of-steven; fi
+	-@if [ -d /tmp/pytest-of-$(USER) ]; then rm -rf /tmp/pytest-of-$(USER); fi
 	-@if [ -d tests/oo/data/databases/.odbinfo ]; then rm -rf tests/oo/data/databases/.odbinfo; fi
 	-@if [ -f wily-report.html ]; then rm wily-report.html; fi
 	-@if [ -d htmlcov ]; then rm -rf htmlcov; fi
@@ -190,10 +190,7 @@ oxt:
 	--ignore-installed --no-binary pydantic --target $(lib)
 	cp $(srcloc)/main.py $(stage)/python
 	cp -r $(srcloc)/*  $(lib)
-#	cp -r $(vendorloc)/apso/* $(lib)
-#	cp -r $(vendorloc)/apso/pythonpath/*  $(lib)
 	cp -r $(basicloc)/odbinfo_ui $(stage)
-	#rm -r $(lib)/pythonpath
 	rm $(lib)/main.py
 	cp -r oometadata/* $(stage)
 	cp LICENSE $(stage)
@@ -233,9 +230,6 @@ installantlr:
 	cd $(antlrlocation)
 	curl -O https://www.antlr.org/download/$(antlr4jar)
 
-ctags:
-	ctags -R $(srcloc) $(testloc)
-
 metric: clean
 	$(PUREPYTHON) -m xenon -b A -m A -a A  $(pythonsources)
 
@@ -244,12 +238,6 @@ mypy_report:
 
 mypy:
 	$(PUREPYTHON) -m mypy --show-error-codes --disable-error-code  import $(pythonsources)
-
-post_checkout:
-	-mkdir $(fixtureloc)/fixtures/template_regression_input/test_write_site_empty/content
-	-mkdir -p $(puretestloc)/test_template_regression/test_template_regression_empty/resources/_gen/{assets,images}
-	-mkdir -p $(puretestloc)/test_template_regression/test_template_regression/resources/_gen/{assets,images}
-	-mkdir $(puretestloc)/test_template_regression/test_template_regression_empty/content
 
 acceptence: clean oxt
 	docker build . --file manual-tests/Dockerfile -t buster-office

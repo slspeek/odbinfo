@@ -2,9 +2,30 @@
 import os
 import shutil
 from pathlib import Path
+from typing import List
 
 import pytest
 from pytest import fixture
+
+GITKEEP = ".gitkeep"
+
+
+def is_empty_dir(path: Path) -> bool:
+    """Returns True if `path` is an empty directory"""
+    return path.is_dir() and not list(path.glob("**/*"))
+
+
+def find_empty_dirs(path: Path) -> List[Path]:
+    """Recursively search `path` for empty directories"""
+    if is_empty_dir(path):
+        return [path]
+    return [_dir for _dir in path.glob("**/*") if is_empty_dir(_dir)]
+
+
+def create_gitkeep_in_empty_dirs(path_obtained):
+    for empty_dir in find_empty_dirs(path_obtained):
+        with open(empty_dir / GITKEEP, 'w', encoding="UTF-8"):
+            pass
 
 
 class DirectoryRegressionFixture:
@@ -32,6 +53,7 @@ class DirectoryRegressionFixture:
     def check(self, path_obtained: Path):
         """verifies that `path_obtained` is equal to an earlier
          version of `path_obtained`"""
+        create_gitkeep_in_empty_dirs(path_obtained)
         try:
             assert os.system(
                 f"""diff -r "{str(self.fixture_path)}/" "{str(path_obtained)}/" """

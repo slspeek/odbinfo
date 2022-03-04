@@ -2,9 +2,6 @@ review entire source tree
 -------------------------
 Check 'meaningful names' and docs-string, but do not refactor
 
-src/main.py
-src/odbinfo/__init__.py
-src/odbinfo/oo/__init__.py
 src/odbinfo/oo/dialog.py
 src/odbinfo/oo/ooutil.py
 src/odbinfo/oo/core.py

@@ -7,15 +7,19 @@ from odbinfo.oo.core import generate_report
 
 
 def make_site():
-    """ Generate report on database metadata """
+    """ Generate report on database metadata
+        It reads from the current database document.
+    """
     # pylint: disable=undefined-variable
     doc = XSCRIPTCONTEXT.getDocument()
     ctx = XSCRIPTCONTEXT.getComponentContext()
     generate_report(doc, gui=True, open_browser=True, ctx=ctx)
 
 
-def verify_installation():
-    """ verify installation """
+def diagnostics():
+    """ Opens a diagnostics dialog, to check for the dependenies
+        needed to run ODBInfo
+    """
     logging.basicConfig(level=logging.INFO)
     # pylint: disable=undefined-variable
     ctx = XSCRIPTCONTEXT.getComponentContext()

@@ -29,7 +29,7 @@
               <value>com.sun.star.sdb.OfficeDatabaseDocument</value>
             </prop>
             <prop oor:name="URL" oor:type="xs:string">
-              <value>vnd.sun.star.script:odbinfo.oxt|python|main.py$verify_installation?language=Python&amp;location=user:uno_packages</value>
+              <value>vnd.sun.star.script:odbinfo.oxt|python|main.py$diagnostics?language=Python&amp;location=user:uno_packages</value>
             </prop>
             <prop oor:name="Title" oor:type="xs:string">
               <value>Verify installation of required components</value>

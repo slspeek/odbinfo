@@ -27,7 +27,7 @@ def timed(mesg, indent=0, arg=None, name=True):
 
         def message(args):
             result = indent * " " + mesg
-            if not arg is None:
+            if arg is not None:
                 result += " on "
                 if name:
                     result += args[arg].name

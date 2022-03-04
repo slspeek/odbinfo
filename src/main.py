@@ -3,7 +3,7 @@
 import logging
 
 from odbinfo.oo import dialog
-from odbinfo.oo.core import generate_report
+from odbinfo.oo.core import generate_report_ui
 
 
 def make_site():
@@ -13,7 +13,7 @@ def make_site():
     # pylint: disable=undefined-variable
     doc = XSCRIPTCONTEXT.getDocument()
     ctx = XSCRIPTCONTEXT.getComponentContext()
-    generate_report(doc, gui=True, open_browser=True, ctx=ctx)
+    generate_report_ui(doc, gui=True, open_browser=True, ctx=ctx)
 
 
 def diagnostics():

@@ -87,12 +87,11 @@ class EmbeddedQuery(QueryBase):
 @dataclass
 class QueryPage(QueryBase, WebPageWithUses):
     """ Query properties """
-    columns: List[QueryColumn] = field(init=False, default_factory=list)
+    columns: List[QueryColumn]
 
     def __post_init__(self):
         WebPageWithUses.__post_init__(self)
         QueryBase.__post_init__(self)
-        # self.title = self.name
 
     def children(self):
         return chain(super().children(), self.columns)

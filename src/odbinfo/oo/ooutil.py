@@ -27,6 +27,5 @@ def path_from_url(url: str) -> str:
 
 
 def document_path(oodoc) -> pathlib.Path:
-    """returns path object for `oodoc`"""
-
+    """returns path object for `oodoc` which is a staroffice (local) document"""
     return pathlib.Path(path_from_url(oodoc.URL))

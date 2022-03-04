@@ -13,7 +13,7 @@ def test_query_column():
 
 def test_query():
     """ test __post_init__"""
-    query = Query("plants", "select * from plants")
+    query = Query("plants", "select * from plants", [])
     assert query.title == "plants"
 
 
@@ -37,5 +37,5 @@ def test_table_post_init():
 
 
 def test_embeddedquery_children():
-    equery = Query("emdedded", 'select * from  Plant')
+    equery = Query("emdedded", 'select * from  Plant', [])
     assert not list(equery.children())

@@ -941,7 +941,7 @@ form_defs:
   title: view1
   used_by: []
   uses: []
-graphs: []
+graph: null
 library_defs:
 - modules:
   - callables: []

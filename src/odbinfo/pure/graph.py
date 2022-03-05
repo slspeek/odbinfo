@@ -1,5 +1,5 @@
 """ Graphviz graph generation """
-from typing import Dict, List, Sequence, Tuple
+from typing import Dict, Sequence, Tuple
 
 from graphviz import Digraph
 
@@ -9,8 +9,9 @@ from odbinfo.pure.datatype.config import Configuration, GraphConfig
 from odbinfo.pure.datatype.metadata import Metadata
 
 
-def make_node(config: GraphConfig, graph: Digraph, node: NamedNode):
-    """ adds a node to `graph` for `node` if `config` says so """
+def create_node(config: GraphConfig, graph: Digraph, node: NamedNode):
+    """ adds a node to `graph` for `node` if `config` says so.
+     """
     if node.is_visible(config):
         graph.node(str(node.obj_id),
                    label=node.graph_label,
@@ -21,7 +22,7 @@ def make_node(config: GraphConfig, graph: Digraph, node: NamedNode):
 
 
 def visible_ancestor(config: GraphConfig, node):
-    """ returns `node` if is visible, else first ancestor that is visible
+    """ returns `node` if `node` is visible, else the first ancestor that is visible
         or None if there is no visible ancestor"""
     parent = node
     while not parent.is_visible(config):
@@ -31,27 +32,21 @@ def visible_ancestor(config: GraphConfig, node):
     return parent
 
 
-def edge_attributes(config: GraphConfig, start: NamedNode,
-                    end: NamedNode) -> Dict[str, str]:
+def edge_attributes(config: GraphConfig, from_node: NamedNode,
+                    to_node: NamedNode) -> Dict[str, str]:
     """composes the node attributes"""
-    attrs = config.relation_attrs.get(start.content_type,
-                                      {}).get(end.content_type, {})
-    attrs["edgetooltip"] = f"{start.name} -> {end.name}"
+    attrs = config.relation_attrs.get(from_node.content_type,
+                                      {}).get(to_node.content_type, {})
+    attrs["edgetooltip"] = f"{from_node.name} -> {to_node.name}"
     return attrs
 
 
-def edge(graph, start, end, attrs):
+def create_edge(graph, from_node, to_node, attrs):
     """ make an edge in `graph`"""
-    graph.edge(start.obj_id, end.obj_id, _attributes=attrs)
+    graph.edge(from_node.obj_id, to_node.obj_id, _attributes=attrs)
 
 
-def make_edge(config: GraphConfig, graph: Digraph, start: NamedNode,
-              end: NamedNode):
-    """ make edge from `start` to `end` with attributes specified by `config`"""
-    edge(graph, start, end, edge_attributes(config, start, end))
-
-
-def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
+def create_parent_edge(config: GraphConfig, graph, node: NamedNode):
     """ make edge from `node` to `parent` if `config` says so """
     if not node.parent:
         return
@@ -64,7 +59,7 @@ def make_parent_edge(config: GraphConfig, graph, node: NamedNode):
         attrs["edgetooltip"] = \
             f"{node.name} is child of {avisible_ancestor.name}"
 
-        edge(graph, node, avisible_ancestor, attrs)
+        create_edge(graph, node, avisible_ancestor, attrs)
 
 
 def visible_dependency_edges(metadata: Metadata, config: GraphConfig) \
@@ -85,14 +80,14 @@ def visible_dependency_edges(metadata: Metadata, config: GraphConfig) \
     return uses
 
 
-def make_dependency_edges(metadata: Metadata, config: GraphConfig,
-                          graph: Digraph):
+def create_dependency_edges(metadata: Metadata, config: GraphConfig,
+                            graph: Digraph):
     """ make edges for all dependencies """
     uses = visible_dependency_edges(metadata, config)
     for use in uses:
         start = metadata.node_by_id[use[0]]
         end = metadata.node_by_id[use[1]]
-        make_edge(config, graph, start, end)
+        create_edge(graph, start, end, edge_attributes(config, start, end))
 
 
 def create_digraph(name: str) -> Digraph:
@@ -108,13 +103,7 @@ def generate_main_graph(metadata: Metadata, config: Configuration) -> Digraph:
         and the edges between them"""
     graph = create_digraph(config.name)
     for node in metadata.all_objects():
-        make_node(config.graph, graph, node)
-        make_parent_edge(config.graph, graph, node)
-    make_dependency_edges(metadata, config.graph, graph)
+        create_node(config.graph, graph, node)
+        create_parent_edge(config.graph, graph, node)
+    create_dependency_edges(metadata, config.graph, graph)
     return graph
-
-
-def generate_graphs(metadata: Metadata,
-                    configuration: Configuration) -> List[Digraph]:
-    """ returns a list of graphviz.Digraph objects """
-    return [generate_main_graph(metadata, configuration)]

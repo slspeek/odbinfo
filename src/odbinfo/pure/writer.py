@@ -23,11 +23,10 @@ def localsite(site_path: Path) -> Path:
 
 
 @timed("Write graphs", indent=4)
-def write_graphs(graphs: Sequence[Digraph], site_path: Path):
+def write_graph(graph: Digraph, site_path: Path):
     """Renders the graphs"""
-    for graph in graphs:
-        graph.save(directory=site_path / "static" / "svg")
-        graph.render(format="svg")
+    graph.save(directory=site_path / "static" / "svg")
+    graph.render(format="svg")
 
 
 def frontmatter(adict: Dict[str, Any], out) -> None:
@@ -148,4 +147,4 @@ def write_site(config: Configuration, metadata: Metadata) -> None:
     """ Writes hugo site from `metadata` """
     new_site(config.site_path)
     write_metadata(config, metadata)
-    write_graphs(metadata.graphs, config.site_path)
+    write_graph(metadata.graph, config.site_path)

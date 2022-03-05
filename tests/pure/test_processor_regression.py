@@ -32,7 +32,6 @@ def process_and_check(unprocessed, filename, data_regression, file_regression,
     def setup():
         metadata = unprocessed()
         config = create_configuration(metadata.name)
-        print("NAME:", config.name)
         return (config, metadata), {}
 
     processed = benchmark.pedantic(process_metadata, setup=setup)
@@ -41,13 +40,16 @@ def process_and_check(unprocessed, filename, data_regression, file_regression,
                           basename=filename,
                           extension=".pickle")
 
-    graphs_txt = "----------\n".join(g.source for g in processed.graphs)
-    file_regression.check(graphs_txt,
+    graph_txt = "No graph"
+    if processed.graph:
+        graph_txt = processed.graph.source
+
+    file_regression.check(graph_txt,
                           binary=False,
                           basename=f"{filename}-graphs",
                           extension=".txt")
 
-    processed.graphs = []
+    processed.graph = None
     for obj in processed.all_objects():
         obj.parent = None
     data_regression.check(dataclasses.asdict(processed))

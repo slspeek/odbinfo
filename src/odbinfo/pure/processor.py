@@ -12,7 +12,7 @@ from odbinfo.pure.datatype.metadata import Metadata
 from odbinfo.pure.datatype.tabular import QueryBase
 from odbinfo.pure.datatype.ui import Control, Form, ListBox, SubForm
 from odbinfo.pure.dependency import search_dependencies
-from odbinfo.pure.graph import generate_graphs
+from odbinfo.pure.graph import generate_main_graph
 from odbinfo.pure.parser.basic import (OOBasicLexer, get_basic_tokens,
                                        scan_basic)
 from odbinfo.pure.parser.sql import parse
@@ -255,7 +255,7 @@ def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
     aggregate_uses(metadata, config.graph.collapse_multiple_uses)
     aggregate_used_by(metadata, config.graph.collapse_multiple_uses)
 
-    metadata.graphs = generate_graphs(metadata, config)
+    metadata.graph = generate_main_graph(metadata, config)
     metadata.set_parent_links(None)
     # for test purposes only, needed for benchmarking
     return metadata

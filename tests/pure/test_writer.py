@@ -35,7 +35,7 @@ def test_backup_old_site(tmpdir):
 @pytest.mark.slow
 def test_write_graphs(tmpdir):
     """test write graphs"""
-    writer.write_graphs([graphviz.Digraph("foo")], tmpdir)
+    writer.write_graph(graphviz.Digraph("foo"), tmpdir)
     assert (tmpdir / "static" / "svg" / "foo.gv.svg").exists()
     assert (tmpdir / "static" / "svg" / "foo.gv").exists()
 

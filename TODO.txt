@@ -2,7 +2,6 @@ review entire source tree
 -------------------------
 Check 'meaningful names' and docs-string, but do not refactor
 
-src/odbinfo/pure/graph.py
 src/odbinfo/pure/writer.py
 src/odbinfo/pure/util.py
 src/odbinfo/pure/diagnostics.py

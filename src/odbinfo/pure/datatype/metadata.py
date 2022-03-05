@@ -3,7 +3,7 @@ import itertools
 from dataclasses import dataclass, field
 from enum import Enum
 from itertools import chain
-from typing import Iterable, List, Sequence, cast
+from typing import Iterable, List, Optional, Sequence, cast
 
 from graphviz import Digraph
 
@@ -43,7 +43,7 @@ class Metadata(WebPage):
     library_defs: List[Library]
     pythonlibrary_defs: List[PythonLibrary]
     textdocument_defs: List[TextDocument]
-    graphs: List[Digraph] = field(init=False, default_factory=list)
+    graph: Optional[Digraph] = field(init=False, default=None)
 
     def __post_init__(self):
         super().__post_init__()

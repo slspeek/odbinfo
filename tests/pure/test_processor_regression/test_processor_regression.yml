@@ -1542,7 +1542,7 @@ form_defs:
       local_id: view1
     sources:
     - '260'
-graphs: []
+graph: null
 library_defs:
 - modules:
   - callables:

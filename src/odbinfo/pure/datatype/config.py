@@ -287,7 +287,7 @@ def get_configuration(config_path: Path = default_config_path()
             config_path.parent.mkdir()
         config = create_configuration()
         write_configuration(config, config_path)
-        logging.info("  Wrote default configuration file found at %s",
+        logging.info("  Wrote default configuration file at %s",
                      config_path)
         return config
     return load_configuration(config_path)

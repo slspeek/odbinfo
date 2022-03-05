@@ -279,15 +279,15 @@ def write_configuration(config: Configuration, config_path: Path) -> None:
 
 def get_configuration(config_path: Path = default_config_path()
                       ) -> Configuration:
-    """ reads configuration from `config_path` if exits "\
-        " otherwise a default configuration is written in `config_path`"""
+    """ reads configuration from `config_path` if exits
+        otherwise a default configuration is written in `config_path`
+    """
     if not config_path.exists():
         logging.info("  No config found at %s", config_path)
         if not config_path.parent.exists():
             config_path.parent.mkdir()
         config = create_configuration()
         write_configuration(config, config_path)
-        logging.info("  Wrote default configuration file at %s",
-                     config_path)
+        logging.info("  Wrote default configuration file at %s", config_path)
         return config
     return load_configuration(config_path)

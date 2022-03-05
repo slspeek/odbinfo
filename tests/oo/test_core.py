@@ -6,7 +6,7 @@ from unittest.mock import patch
 import pytest
 
 from odbinfo.oo import ooutil
-from odbinfo.oo.core import generate_report_ui
+from odbinfo.oo.core import generate_report
 from odbinfo.oo.ooutil import document_path
 from odbinfo.pure import builder
 from odbinfo.pure.datatype.config import create_configuration
@@ -51,8 +51,7 @@ def generate_report_test(oodoc, benchmark, directory_regression):
                               return_value=(Path("") /
                                             odbpath.name)) as doc_path:
                 open_browser_flag = os.getenv("OI_BROWSER") is not None
-                benchmark(generate_report_ui, oodoc, config, False,
-                          open_browser_flag)
+                benchmark(generate_report, oodoc, config, open_browser_flag)
 
         free_port.assert_called()
         doc_path.assert_called()

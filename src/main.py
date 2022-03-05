@@ -13,7 +13,7 @@ def make_site():
     # pylint: disable=undefined-variable
     doc = XSCRIPTCONTEXT.getDocument()
     ctx = XSCRIPTCONTEXT.getComponentContext()
-    generate_report_ui(doc, gui=True, open_browser=True, ctx=ctx)
+    generate_report_ui(oodocument=doc, ctx=ctx, open_browser=True)
 
 
 def diagnostics():

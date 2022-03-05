@@ -45,23 +45,22 @@ def generate_report(oodocument,
         logging.exception("Unexpected exception")
 
 
-def generate_report_ui(oodocument,
-                       config: Configuration = None,
-                       gui: bool = False,
-                       open_browser: bool = False,
-                       ctx=None):
-    """ Generates a report of the staroffice document `oodocument` using configuration `config`.
-        If `gui` is False it runs headless, else it shows a dialog.
+def generate_report_ui(
+    oodocument,
+    ctx,
+    open_browser: bool = False,
+):
+    """
+        Displays a dialog that can run report generation on `oodocument`.
+
+        `oodocument` is a staroffice document.
+        `ctx` is a staroffice context.
         If `openbrowser` is True it opens a browser on the generated report.
-        `ctx` needs to be a staroffice context, and is only needed if `gui`=True.
         """
     logging.basicConfig(level=logging.INFO)
-    if gui:
-        dialog = create_logging_dialog(generate_report,
-                                       oodocument,
-                                       config,
-                                       open_browser,
-                                       ctx=ctx)
-        dialog.execute()
-    else:
-        generate_report(oodocument, config, open_browser)
+    dialog = create_logging_dialog(generate_report,
+                                   oodocument,
+                                   None,
+                                   open_browser,
+                                   ctx=ctx)
+    dialog.execute()

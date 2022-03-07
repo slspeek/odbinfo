@@ -32,17 +32,3 @@ def try_run(target) -> Tuple[bool, str]:
         return True, target()
     except Exception as exception:  # pylint:disable=broad-except
         return False, str(exception)
-
-
-def verify_installation():
-    """ print versions of required components """
-    print("ODBInfo verify installation:")
-    print("")
-    print("Hugo:")
-    print(try_run(gohugo_version))
-    print("")
-    print("wget:")
-    print(try_run(wget_version))
-    print("")
-    print("graphviz:")
-    print(try_run(graphviz_version))

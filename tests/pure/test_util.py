@@ -33,6 +33,8 @@ def test_run_cmd_errors():
         run_cmd("false")
 
 
-def test_run_cmd_errors_no_check():
+def test_run_cmd_errors_no_check(caplog):
     """ run_cmd with errors, but no check"""
     run_cmd("false", check=False)
+    assert caplog.record_tuples[0][
+        2] == "System command: false failed (returncode=1)"

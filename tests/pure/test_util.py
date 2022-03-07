@@ -1,9 +1,10 @@
 """ test for the util module"""
 import os
+import subprocess
 
 import pytest
 
-from odbinfo.pure.util import CommandExecutionError, chdir, run_cmd
+from odbinfo.pure.util import chdir, run_cmd
 
 
 def test_chdir_none():
@@ -29,7 +30,7 @@ def test_run_cmd():
 
 def test_run_cmd_errors():
     """ run_cmd with errors"""
-    with pytest.raises(CommandExecutionError):
+    with pytest.raises(subprocess.CalledProcessError):
         run_cmd("false")
 
 

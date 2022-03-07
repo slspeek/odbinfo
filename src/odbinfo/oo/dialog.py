@@ -119,7 +119,7 @@ class DiagnosticsAction(GUICommand):
         self.target = target
 
     def run(self):
-        found, msg = diagnostics.try_run(self.target)
+        found, msg = self.target()
         msg_label = self.dlg.getControl(f"{self.name}_msg")
         msg_label.Text = msg
         found_msg = self.dlg.getControl(f"{self.name}_found")

@@ -79,7 +79,7 @@ classdiagram: prepare
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser $(classdiagram)/classes.svg $(classdiagram)/packages.svg
 
 coverage: clean prepare
-	ODBINFO_NO_BROWSE=1 $(PUREPYTEST)  --cov --cov-branch --cov-fail-under=95 --cov-config=./.coveragerc --cov-report html -m "not veryslow and not tooslow" $(puretestloc)
+	ODBINFO_NO_BROWSE=1 $(PUREPYTEST)  --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html -m "not veryslow and not tooslow" $(puretestloc)
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
 
 unitcoverage:

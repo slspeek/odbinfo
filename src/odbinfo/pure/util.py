@@ -69,16 +69,6 @@ def timed(mesg: str,
     return decorate
 
 
-class CommandExecutionError(Exception):
-    """Describes a failed command"""
-
-    def __init__(self, cmd, completed_process):
-        self.completed_process = completed_process
-        super().__init__(
-            f"System command: {cmd} failed (returncode={completed_process.returncode})"
-        )
-
-
 def run_cmd(cmd, check=True):
     """ run os `cmd`.
     If command succeeds nothing is logged nor printed to stdout nor to stderr.
@@ -86,12 +76,11 @@ def run_cmd(cmd, check=True):
     logged with the captured stdout and stderr of the command.
     If the command fails and `check` is True an exception is raised.
     """
-    # pylint:disable=subprocess-run-check
-    completed_process = subprocess.run(shlex.split(cmd), capture_output=True)
-    if completed_process.returncode != 0:
+    try:
+        subprocess.check_output(shlex.split(cmd))
+    except subprocess.CalledProcessError as error:
         logging.warning("System command: %s failed (returncode=%s)", cmd,
-                        completed_process.returncode)
-        logging.warning("stdout: %s", completed_process.stdout.decode("utf-8"))
-        logging.warning("stderr: %s", completed_process.stderr.decode("utf-8"))
+                        error.returncode)
+        logging.warning("Output: %s", error.output.decode("utf-8"))
         if check:
-            raise CommandExecutionError(cmd, completed_process)
+            raise error

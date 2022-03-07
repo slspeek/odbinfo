@@ -34,8 +34,17 @@ def test_run_cmd_errors():
         run_cmd("false")
 
 
-def test_run_cmd_errors_no_check(caplog):
+def test_run_cmd_errors_verify_stderr(caplog):
     """ run_cmd with errors, but no check"""
-    run_cmd("false", check=False)
-    assert caplog.record_tuples[0][
-        2] == "System command: false failed (returncode=1)"
+    run_cmd("bash -c 'echo errorout 1>&2;false'", check=False)
+    assert caplog.records[
+        0].message == "System command: bash -c 'echo errorout 1>&2;false' failed (returncode=1)"
+    assert caplog.records[1].message == "Output: errorout\n"
+
+
+def test_run_cmd_errors_verify_stdout(caplog):
+    """ run_cmd with errors, but no check"""
+    run_cmd("bash -c 'echo stdout;false'", check=False)
+    assert caplog.records[
+        0].message == "System command: bash -c 'echo stdout;false' failed (returncode=1)"
+    assert caplog.records[1].message == "Output: stdout\n"

@@ -77,7 +77,7 @@ def run_cmd(cmd, check=True):
     If the command fails and `check` is True an exception is raised.
     """
     try:
-        subprocess.check_output(shlex.split(cmd))
+        subprocess.check_output(shlex.split(cmd), stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         logging.warning("System command: %s failed (returncode=%s)", cmd,
                         error.returncode)

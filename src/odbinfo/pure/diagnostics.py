@@ -16,8 +16,9 @@ def _run_checked(command: str) -> Tuple[bool, str]:
     If the command failed the boolean is False and the error message."""
     try:
         return True, subprocess.check_output(
-            shlex.split(command)).decode("UTF-8").split(os.linesep,
-                                                        maxsplit=1)[0]
+            shlex.split(command),
+            stderr=subprocess.STDOUT).decode("UTF-8").split(os.linesep,
+                                                            maxsplit=1)[0]
     except subprocess.CalledProcessError as error:
         return False, str(error)
 

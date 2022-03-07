@@ -18,22 +18,8 @@ FRONT_MATTER_MARK = f"---{os.linesep}"
 
 
 def localsite(site_path: Path) -> Path:
-    """returns the local site_path for `site_path`"""
+    """returns the local site path for `site_path`"""
     return site_path.parent / f"{site_path.name}-local"
-
-
-@timed("Write graphs", indent=4)
-def write_graph(graph: Digraph, site_path: Path):
-    """Renders the graphs"""
-    graph.save(directory=site_path / "static" / "svg")
-    graph.render(format="svg")
-
-
-def frontmatter(adict: Dict[str, Any], out) -> None:
-    """ Writes `adict` in yaml to `out` and marks it as frontmatter """
-    out.write(FRONT_MATTER_MARK)
-    yaml.dump(adict, out)
-    out.write(FRONT_MATTER_MARK)
 
 
 def rename_timestamp(directory: Path, date: datetime):
@@ -58,7 +44,6 @@ SITE_SKEL_PATH = Path(__file__).parent.parent.parent / "hugo-template"
 
 def new_site(site_path: Path) -> None:
     """ Sets up a empty hugo site with odbinfo templates """
-    backup_old_site(site_path)
     os.makedirs(site_path.parent, exist_ok=True)
     shutil.copytree(SITE_SKEL_PATH, site_path)
 
@@ -114,6 +99,21 @@ def content_dir(site_path: Path,
     return site_path / "content" / content_type.value
 
 
+def create_content_dirs(site_path: Path,
+                        present_content: Sequence[TopLevelDisplayedContent]):
+    """ Create content directories for the content_types in `present_content`"""
+    for content_type in present_content:
+        targetpath = content_dir(site_path, content_type)
+        targetpath.mkdir(parents=True, exist_ok=True)
+
+
+def frontmatter(adict: Dict[str, Any], out) -> None:
+    """ Writes `adict` in yaml to `out` and marks it as frontmatter """
+    out.write(FRONT_MATTER_MARK)
+    yaml.dump(adict, out)
+    out.write(FRONT_MATTER_MARK)
+
+
 @timed("Write content", indent=4, arg=1, name=True)
 def write_content(metadata: Metadata, content_type: TopLevelDisplayedContent,
                   site_path: Path):
@@ -125,14 +125,6 @@ def write_content(metadata: Metadata, content_type: TopLevelDisplayedContent,
             frontmatter(content.to_dict(), out)
 
 
-def create_content_dirs(site_path: Path,
-                        present_content: Sequence[TopLevelDisplayedContent]):
-    """ Create content directories """
-    for content_type in present_content:
-        targetpath = content_dir(site_path, content_type)
-        targetpath.mkdir(parents=True, exist_ok=True)
-
-
 def write_metadata(config: Configuration, metadata: Metadata):
     """writes out the `metadata` at `site_path`"""
     present_content = present_contenttypes(metadata)
@@ -142,9 +134,17 @@ def write_metadata(config: Configuration, metadata: Metadata):
         write_content(metadata, content, config.site_path)
 
 
+@timed("Write graph", indent=4)
+def write_graph(graph: Digraph, site_path: Path):
+    """Renders the graph"""
+    graph.save(directory=site_path / "static" / "svg")
+    graph.render(format="svg")
+
+
 @timed("Write hugo site", indent=2)
 def write_site(config: Configuration, metadata: Metadata) -> None:
     """ Writes hugo site from `metadata` """
+    backup_old_site(config.site_path)
     new_site(config.site_path)
     write_metadata(config, metadata)
     write_graph(metadata.graph, config.site_path)

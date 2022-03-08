@@ -79,12 +79,12 @@ classdiagram: prepare
 	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser $(classdiagram)/classes.svg $(classdiagram)/packages.svg
 
 coverage: clean prepare
-	ODBINFO_NO_BROWSE=1 $(PUREPYTEST)  --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html -m "not veryslow and not tooslow" $(puretestloc)
-	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser htmlcov/index.html
+	ODBINFO_NO_BROWSE=1 $(PUREPYTEST)  --cov --cov-branch --cov-fail-under=96 --cov-config=./.coveragerc --cov-report html:$(report)/coverage -m "not veryslow and not tooslow" $(puretestloc)
+	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser $(report)/coverage/index.html
 
 unitcoverage:
-	$(PUREPYTHON) -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=90 --cov-config=./.coveragerc --cov-report html:unitcov $(unit) $(puretestloc)
-	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser unitcov/index.html
+	$(PUREPYTHON) -m pytest ${PYTESTOPTS} --benchmark-disable --cov --cov-branch --cov-fail-under=90 --cov-config=./.coveragerc --cov-report html:$(report)/unitcov $(unit) $(puretestloc)
+	test -n "${ODBINFO_NO_BROWSE}" || x-www-browser $(report)/unitcov/index.html
 
 itest: clean prepare
 	$(OOPYTEST) $(itests) $(testloc)
@@ -173,7 +173,6 @@ clean:
 	-@if [ -d /tmp/pytest-of-$(USER) ]; then rm -rf /tmp/pytest-of-$(USER); fi
 	-@if [ -d tests/oo/data/databases/.odbinfo ]; then rm -rf tests/oo/data/databases/.odbinfo; fi
 	-@if [ -f wily-report.html ]; then rm wily-report.html; fi
-	-@if [ -d htmlcov ]; then rm -rf htmlcov; fi
 	-@if [ -f logje ]; then rm logje; fi
 	-@find . -type d -name __pycache__ -exec rm -rf '{}' \;
 	-@rm -rf $(target)

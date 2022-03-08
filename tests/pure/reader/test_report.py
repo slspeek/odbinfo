@@ -4,6 +4,7 @@ from unittest.mock import Mock
 
 import pytest
 
+from odbinfo.pure.reader.common import CONTENT_XML
 from odbinfo.pure.reader.report import read_reports
 from tests.pure.reader.test_common import OO_NAMESPACES, ZipFileMock
 
@@ -195,7 +196,7 @@ RPT_ELEMENT = f"""<?xml version="1.0" encoding="UTF-8"?>
 </office:document-content>
 """
 
-data = {"content.xml": ODB_ELEMENT, "reports/Obj11/content.xml": RPT_ELEMENT}
+data = {CONTENT_XML: ODB_ELEMENT, "reports/Obj11/content.xml": RPT_ELEMENT}
 
 
 def test_reports():

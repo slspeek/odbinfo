@@ -3,6 +3,8 @@ from typing import List, Union, cast
 from xml.dom.minidom import Element, Node, parseString
 from zipfile import ZipFile
 
+CONTENT_XML = "content.xml"
+
 
 def document_element_from_string(source: Union[bytes, str]) -> Element:
     """ returns the root element of parsed `source` dom tree"""

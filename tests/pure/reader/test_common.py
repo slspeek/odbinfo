@@ -4,7 +4,7 @@ import unittest
 import pytest
 
 from odbinfo.pure.reader.common import (child_elements, document_element,
-                                        document_element_from_string)
+                                        document_element_from_string, CONTENT_XML)
 
 # pylint:disable=line-too-long
 # noinspection PyPep8
@@ -42,6 +42,6 @@ class ChildElements(XMLTest):
 
 @pytest.mark.slow
 def test_document(odbzip):
-    doc = document_element(odbzip, "content.xml")
+    doc = document_element(odbzip, CONTENT_XML)
     # print(doc.toprettyxml())
     assert doc.tagName == "office:document-content"

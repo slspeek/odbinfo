@@ -3,11 +3,11 @@ from typing import List, Tuple
 from xml.dom.minidom import Element
 
 from odbinfo.pure.datatype.ui import Report
-from odbinfo.pure.reader.common import attr_default, document_element
+from odbinfo.pure.reader.common import attr_default, document_element, CONTENT_XML
 
 
 def _reports(odbzip) -> List[Tuple[str, Element]]:
-    odb_elem = document_element(odbzip, "content.xml")
+    odb_elem = document_element(odbzip, CONTENT_XML)
     db_report_elements = odb_elem.getElementsByTagName("db:reports")
     if not db_report_elements:
         return []

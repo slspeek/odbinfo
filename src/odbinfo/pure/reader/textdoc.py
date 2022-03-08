@@ -6,7 +6,7 @@ from zipfile import ZipFile
 
 from odbinfo.pure.datatype.config import TextDocumentsConfig
 from odbinfo.pure.datatype.ui import DatabaseDisplay, TextDocument
-from odbinfo.pure.reader.common import document_element
+from odbinfo.pure.reader.common import document_element, CONTENT_XML
 from odbinfo.pure.util import timed
 
 
@@ -64,7 +64,7 @@ def read_text_documents(config: TextDocumentsConfig) -> List[TextDocument]:
         for search_loc in config.search_locations:
             for doc_path in _text_documents(Path(search_loc)):
                 with ZipFile(doc_path) as doc_zip:
-                    doc_element = document_element(doc_zip, "content.xml")
+                    doc_element = document_element(doc_zip, CONTENT_XML)
                     displays = filtered_displays(config, doc_element)
                     if len(displays) > 0:
                         docs.append(create_text_document(doc_path, displays))

@@ -7,7 +7,7 @@ from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
                                       ListBox, SubForm)
 from odbinfo.pure.reader.common import (attr_default, child_elements,
                                         child_elements_by_tagname,
-                                        document_element)
+                                        document_element, CONTENT_XML)
 
 
 def read_form_item(control_elem: Element) -> Union[Control, Grid, ListBox]:
@@ -160,7 +160,7 @@ def read_grid_control(column_elem: Element):
 def forms(odbzip: ZipFile) -> List[Tuple[str, Element]]:
     """ return a tuple with the form name and <office:forms> element """
     forms_elements = document_element(
-        odbzip, "content.xml").getElementsByTagName("db:forms")
+        odbzip, CONTENT_XML).getElementsByTagName("db:forms")
     if not forms_elements:
         return []
     forms_elem = forms_elements[0]

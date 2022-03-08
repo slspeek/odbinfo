@@ -3,11 +3,11 @@ from typing import List, Tuple
 from xml.dom.minidom import Element
 
 from odbinfo.pure.datatype.ui import Report
-from odbinfo.pure.reader.common import attr_default, document
+from odbinfo.pure.reader.common import attr_default, document_element
 
 
 def _reports(odbzip) -> List[Tuple[str, Element]]:
-    odb_elem = document(odbzip, "content.xml")
+    odb_elem = document_element(odbzip, "content.xml")
     db_report_elements = odb_elem.getElementsByTagName("db:reports")
     if not db_report_elements:
         return []
@@ -16,8 +16,8 @@ def _reports(odbzip) -> List[Tuple[str, Element]]:
     def report(rpt_elem) -> Tuple[str, Element]:
         relpath = rpt_elem.getAttribute("xlink:href") + "/content.xml"
         return (rpt_elem.getAttribute("db:name"),
-                document(odbzip,
-                         relpath).getElementsByTagName("office:report")[0])
+                document_element(
+                    odbzip, relpath).getElementsByTagName("office:report")[0])
 
     return [report(rpt_elem) for rpt_elem in db_reports]
 

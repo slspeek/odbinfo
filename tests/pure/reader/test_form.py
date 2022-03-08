@@ -4,7 +4,7 @@ import unittest
 
 import pytest
 
-from odbinfo.pure.reader.common import document_element
+from odbinfo.pure.reader.common import document_element_from_string
 from odbinfo.pure.reader.form import (forms, is_visible, read_control,
                                       read_eventlisteners, read_forms,
                                       read_grid, read_listbox, read_subforms)
@@ -27,7 +27,7 @@ FORM_PROPERTIES = f"""
 
 
 def test_has_enable_visible():
-    element = document_element(FORM_PROPERTIES)
+    element = document_element_from_string(FORM_PROPERTIES)
     assert not is_visible(element)
 
 
@@ -44,7 +44,8 @@ OFFICE_EVENT_LISTENERS = f"""
 class ReadEventlisteners(unittest.TestCase):
 
     def setUp(self):
-        self.office_evlis_elem = document_element(OFFICE_EVENT_LISTENERS)
+        self.office_evlis_elem = document_element_from_string(
+            OFFICE_EVENT_LISTENERS)
         self.listeners = read_eventlisteners(self.office_evlis_elem)
 
     def test_count(self):
@@ -78,7 +79,7 @@ LISTBOX_VALUELIST = f"""
 class ReadListBoxValueList(unittest.TestCase):
 
     def setUp(self):
-        self.listbox_elem = document_element(LISTBOX_VALUELIST)
+        self.listbox_elem = document_element_from_string(LISTBOX_VALUELIST)
         self.listbox = read_listbox(self.listbox_elem)
 
     def test_listbox_name(self):
@@ -134,7 +135,7 @@ BUTTON_ELEMENT = f"""
 class ReadControlButton(unittest.TestCase):
 
     def setUp(self):
-        self.control_elem = document_element(BUTTON_ELEMENT)
+        self.control_elem = document_element_from_string(BUTTON_ELEMENT)
         self.control = read_control(self.control_elem)
 
     def test_control_name(self):
@@ -212,7 +213,7 @@ RELATED_SUBFORM = f"""<?xml version="1.0" encoding="UTF-8"?>
 
 
 def test_read_subform_related_subform():
-    doc = document_element(RELATED_SUBFORM)
+    doc = document_element_from_string(RELATED_SUBFORM)
     subforms = read_subforms(doc)
     assert len(subforms[0].subforms) == 1
     print(subforms)
@@ -243,7 +244,7 @@ GRID_ELEMENT = f"""
 class ReadGrid(unittest.TestCase):
 
     def setUp(self):
-        self.grid_elem = document_element(GRID_ELEMENT)
+        self.grid_elem = document_element_from_string(GRID_ELEMENT)
 
     def test_read_grid(self):
         self.grid = read_grid(self.grid_elem)

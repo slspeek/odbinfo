@@ -5,10 +5,9 @@ from pathlib import Path
 import pytest
 
 from odbinfo.pure.datatype.config import TextDocumentsConfig
-from odbinfo.pure.reader.textdoc import (_text_documents, database_displays,
-                                         display, filter_displays,
-                                         filtered_displays,
-                                         read_text_documents, text_document)
+from odbinfo.pure.reader.textdoc import (
+    _text_documents, create_database_display, create_text_document,
+    database_displays, filter_displays, filtered_displays, read_text_documents)
 from tests.resource import DEFAULT_TESTDB
 
 from ..reader.test_common import OO_NAMESPACES, XMLTest
@@ -22,7 +21,7 @@ class Display(XMLTest):
 
     def setUp(self):
         self.xml = DISPLAY_ELEMENT
-        self.db_display = display(self.root)
+        self.db_display = create_database_display(self.root)
 
     def test_database_name(self):
         assert self.db_display.database == "testdb"
@@ -126,7 +125,7 @@ class TextDocument(unittest.TestCase):
 
     def setUp(self):
         self.doc_path = Path("/data/MyDocument.odt")
-        self.textdoc = text_document(self.doc_path, [])
+        self.textdoc = create_text_document(self.doc_path, [])
 
     def test_doc_name(self):
         assert self.textdoc.name == "MyDocument"

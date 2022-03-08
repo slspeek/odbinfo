@@ -6,12 +6,12 @@ from zipfile import ZipFile
 
 from odbinfo.pure.datatype.exec import (Library, Module, PythonLibrary,
                                         PythonModule)
-from odbinfo.pure.reader.common import document
+from odbinfo.pure.reader.common import document_element
 
 
 def manifest_fileentries(odbzip: ZipFile) -> List[Element]:
     """ returns the <manifest:file-entry> elements from `odbzip`"""
-    manifest = document(odbzip, "META-INF/manifest.xml")
+    manifest = document_element(odbzip, "META-INF/manifest.xml")
     return manifest.getElementsByTagName("manifest:file-entry")
 
 
@@ -59,7 +59,7 @@ def read_libraries(odbzip) -> List[Library]:
     """ Reads Basic libraries """
     libraries = []
     if has_libraries(odbzip):
-        script_lc = document(odbzip, "Basic/script-lc.xml")
+        script_lc = document_element(odbzip, "Basic/script-lc.xml")
         libraries = \
             [read_library(odbzip, elem.getAttribute("library:name")) for elem in
                 script_lc.getElementsByTagName("library:library")]
@@ -68,7 +68,7 @@ def read_libraries(odbzip) -> List[Library]:
 
 def read_library(odbzip: ZipFile, libname: str) -> Library:
     """ reads `libname` from `odbzip`"""
-    script_lb = document(odbzip, f"Basic/{libname}/script-lb.xml")
+    script_lb = document_element(odbzip, f"Basic/{libname}/script-lb.xml")
     lib_elems = script_lb.getElementsByTagName("library:element")
     return Library(libname, [
         read_module(odbzip, libname, elem.getAttribute("library:name"))
@@ -91,5 +91,6 @@ def _get_text(elem: Element) -> str:
 def read_module(odbzip: ZipFile, library_name: str,
                 module_name: str) -> Module:
     """ read one Basic module from `odbzip` from """
-    module_doc = document(odbzip, f"Basic/{library_name}/{module_name}.xml")
+    module_doc = document_element(odbzip,
+                                  f"Basic/{library_name}/{module_name}.xml")
     return Module(module_name, library_name, _get_text(module_doc))

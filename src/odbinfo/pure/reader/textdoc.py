@@ -6,7 +6,7 @@ from zipfile import ZipFile
 
 from odbinfo.pure.datatype.config import TextDocumentsConfig
 from odbinfo.pure.datatype.ui import DatabaseDisplay, TextDocument
-from odbinfo.pure.reader.common import document
+from odbinfo.pure.reader.common import document_element
 from odbinfo.pure.util import timed
 
 
@@ -14,8 +14,8 @@ def _text_documents(dir_path: Path) -> Generator[Path, None, None]:
     return dir_path.glob("**/*.o[dt]t")
 
 
-def display(db_display_elem: Element):
-    """ reads the attributres of `db_display_elem`"""
+def create_database_display(db_display_elem: Element):
+    """ returns a DatabaseDisplay populated with the attributres of `db_display_elem`"""
     return \
         DatabaseDisplay(
             db_display_elem.getAttribute("text:column-name"),
@@ -26,9 +26,11 @@ def display(db_display_elem: Element):
 
 
 def database_displays(doc_elem: Element) -> List[DatabaseDisplay]:
-    """ returns the DatabaseDisplays in `doc_elem` """
+    """ returns a list of DatabaseDisplays created from the
+        "text:database-display" elements under `doc_elem`
+     """
     return [
-        display(display_elem) for display_elem in
+        create_database_display(display_elem) for display_elem in
         doc_elem.getElementsByTagName("text:database-display")
     ]
 
@@ -48,8 +50,8 @@ def filtered_displays(config: TextDocumentsConfig,
     return filter_displays(config, database_displays(doc_element))
 
 
-def text_document(doc_path: Path,
-                  displays: List[DatabaseDisplay]) -> TextDocument:
+def create_text_document(doc_path: Path,
+                         displays: List[DatabaseDisplay]) -> TextDocument:
     """ returns a TextDocument from `doc_path` and `displays`"""
     return TextDocument(doc_path.stem, doc_path.name, str(doc_path), displays)
 
@@ -62,8 +64,8 @@ def read_text_documents(config: TextDocumentsConfig) -> List[TextDocument]:
         for search_loc in config.search_locations:
             for doc_path in _text_documents(Path(search_loc)):
                 with ZipFile(doc_path) as doc_zip:
-                    doc_element = document(doc_zip, "content.xml")
+                    doc_element = document_element(doc_zip, "content.xml")
                     displays = filtered_displays(config, doc_element)
                     if len(displays) > 0:
-                        docs.append(text_document(doc_path, displays))
+                        docs.append(create_text_document(doc_path, displays))
     return docs

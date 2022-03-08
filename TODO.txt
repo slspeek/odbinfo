@@ -1,13 +1,12 @@
 review entire source tree
 -------------------------
-Check 'meaningful names' and docs-string, but do not refactor
+Check 'meaningful names' and docs-string, but do not refactor big time
 
 src/odbinfo/pure/reader/textdoc.py
 src/odbinfo/pure/reader/exec.py
 src/odbinfo/pure/reader/report.py
 src/odbinfo/pure/reader/__init__.py
 src/odbinfo/pure/reader/form.py
-src/odbinfo/pure/reader/common.py
 src/odbinfo/pure/__init__.py
 src/odbinfo/pure/parser/__init__.py
 src/odbinfo/pure/parser/sql.py
@@ -26,6 +25,41 @@ src/odbinfo/pure/datatype/config.py
 src/odbinfo/pure/processor.py
 src/odbinfo/pure/builder.py
 src/odbinfo/pure/dependency.py
+
+
+
+Identify the weak spots in Makefile
+* all reports must go in target/build/reports
+
+better description of the extension: see README.md
+
+update minimal theme (20210703 ok)
+
+make upgrade dependencies (20220220 done)
+
+#################################################################################
+############################## release 0.1 ######################################
+#################################################################################
+Look at VSCode
+
+test extension with packaged LibreOffice
+in docker with several different linux distros
+
+Testing
+-------
+Replace test that test nothing, by meaningfull unit tests
+unit test coverage 90% (now 85.98%)
+
+test/pure/test_sql_parser.py
+test/pure/test_writer_make_site.py
+test/pure/test_processor.py
+test/pure/test_basic_parser_slow.py
+test/pure/test_writer_regression.py
+test/pure/test_scanner.py
+test/pure/test_basic_parser.py
+
+test-files review?
+------------------
 tests/util.py
 tests/__init__.py
 tests/resource.py
@@ -66,37 +100,6 @@ tests/pure/dependency/test_searchexec.py
 tests/pure/conftest.py
 tests/pure/test_processor.py
 tests/regression.py
-
-
-Identify the weak spots in Makefile
-* all reports must go in target/build/reports
-
-better description of the extension: see README.md
-
-update minimal theme (20210703 ok)
-
-make upgrade dependencies (20220220 done)
-
-#################################################################################
-############################## release 0.1 ######################################
-#################################################################################
-Look at VSCode
-
-test extension with packaged LibreOffice
-in docker with several different linux distros
-
-Testing
--------
-Replace test that test nothing, by meaningfull unit tests
-unit test coverage 90% (now 85.98%)
-
-test/pure/test_sql_parser.py
-test/pure/test_writer_make_site.py
-test/pure/test_processor.py
-test/pure/test_basic_parser_slow.py
-test/pure/test_writer_regression.py
-test/pure/test_scanner.py
-test/pure/test_basic_parser.py
 
 About UI with credits to BaseDocumenter, gohugo, graphviz
 

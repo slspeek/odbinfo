@@ -3,8 +3,9 @@ import unittest
 
 import pytest
 
-from odbinfo.pure.reader.common import (child_elements, document_element,
-                                        document_element_from_string, CONTENT_XML)
+from odbinfo.pure.reader.common import (CONTENT_XML, child_elements,
+                                        document_element,
+                                        document_element_from_string)
 
 # pylint:disable=line-too-long
 # noinspection PyPep8

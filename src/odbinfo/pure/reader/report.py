@@ -3,7 +3,8 @@ from typing import List, Tuple
 from xml.dom.minidom import Element
 
 from odbinfo.pure.datatype.ui import Report
-from odbinfo.pure.reader.common import attr_default, document_element, CONTENT_XML
+from odbinfo.pure.reader.common import (CONTENT_XML, attr_default,
+                                        document_element)
 
 
 def _reports(odbzip) -> List[Tuple[str, Element]]:

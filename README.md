@@ -107,7 +107,8 @@ textdocuments:
   # defaults to the database filename without the extension.
   db_registration_id: null
   # Leaving this null searches the parent directory of the database document
-  # and its subdirectories for related text documents
+  # and its subdirectories for related text documents.
+  # Set it to [] to skip searching for text documents or templates altogether.
   search_locations: null
 
 ```

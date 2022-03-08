@@ -1,16 +1,19 @@
 """reading odt and ott files"""
 from pathlib import Path
-from typing import Generator, List, Sequence
+from typing import Generator, List
 from xml.dom.minidom import Element
 from zipfile import ZipFile
 
 from odbinfo.pure.datatype.config import TextDocumentsConfig
 from odbinfo.pure.datatype.ui import DatabaseDisplay, TextDocument
-from odbinfo.pure.reader.common import document_element, CONTENT_XML
+from odbinfo.pure.reader.common import CONTENT_XML, document_element
 from odbinfo.pure.util import timed
 
 
-def _text_documents(dir_path: Path) -> Generator[Path, None, None]:
+def find_text_documents(dir_path: Path) -> Generator[Path, None, None]:
+    """ Returns generator for staroffice text documents and templates
+        in the directory `dir_path' and its subdirectories.
+    """
     return dir_path.glob("**/*.o[dt]t")
 
 
@@ -35,19 +38,13 @@ def database_displays(doc_elem: Element) -> List[DatabaseDisplay]:
     ]
 
 
-def filter_displays(
-        config: TextDocumentsConfig,
-        displays: Sequence[DatabaseDisplay]) -> List[DatabaseDisplay]:
-    """ filter by `config`.db_registration_id"""
-    return \
-        [display for display in displays if display.database
-            == config.db_registration_id]
-
-
-def filtered_displays(config: TextDocumentsConfig,
+def filtered_displays(db_registration_id: str,
                       doc_element: Element) -> List[DatabaseDisplay]:
-    """ filters the `doc_elem` database-diplays by `config`.db_registration_id"""
-    return filter_displays(config, database_displays(doc_element))
+    """ returns the database-displays that match `db_registration_id` from the `doc_elem`"""
+    return [
+        display for display in database_displays(doc_element)
+        if display.database == db_registration_id
+    ]
 
 
 def create_text_document(doc_path: Path,
@@ -58,14 +55,20 @@ def create_text_document(doc_path: Path,
 
 @timed("Reading text documents", indent=4)
 def read_text_documents(config: TextDocumentsConfig) -> List[TextDocument]:
-    """ search odt, ott files and look for database-display fields"""
-    docs = []
-    if config.search_locations:
-        for search_loc in config.search_locations:
-            for doc_path in _text_documents(Path(search_loc)):
-                with ZipFile(doc_path) as doc_zip:
-                    doc_element = document_element(doc_zip, CONTENT_XML)
-                    displays = filtered_displays(config, doc_element)
-                    if len(displays) > 0:
-                        docs.append(create_text_document(doc_path, displays))
+    """ Search for staroffice text document and text template files and looks
+        for database-display fields that match our db_registration_id.
+        Returns a list of TextDocuments found in the specified locations that match.
+    """
+    docs: List[TextDocument] = []
+    if not config.search_locations:
+        return docs
+
+    for search_loc in config.search_locations:
+        for doc_path in find_text_documents(Path(search_loc)):
+            with ZipFile(doc_path) as doc_zip:
+                doc_element: Element = document_element(doc_zip, CONTENT_XML)
+                displays: List[DatabaseDisplay] = filtered_displays(
+                    config.db_registration_id, doc_element)
+                if len(displays) > 0:
+                    docs.append(create_text_document(doc_path, displays))
     return docs

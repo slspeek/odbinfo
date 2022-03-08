@@ -5,9 +5,10 @@ from zipfile import ZipFile
 
 from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
                                       ListBox, SubForm)
-from odbinfo.pure.reader.common import (attr_default, child_elements,
+from odbinfo.pure.reader.common import (CONTENT_XML, attr_default,
+                                        child_elements,
                                         child_elements_by_tagname,
-                                        document_element, CONTENT_XML)
+                                        document_element)
 
 
 def read_form_item(control_elem: Element) -> Union[Control, Grid, ListBox]:

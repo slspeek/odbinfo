@@ -5,9 +5,11 @@ from pathlib import Path
 import pytest
 
 from odbinfo.pure.datatype.config import TextDocumentsConfig
-from odbinfo.pure.reader.textdoc import (
-    _text_documents, create_database_display, create_text_document,
-    database_displays, filter_displays, filtered_displays, read_text_documents)
+from odbinfo.pure.reader.textdoc import (create_database_display,
+                                         create_text_document,
+                                         database_displays, filtered_displays,
+                                         find_text_documents,
+                                         read_text_documents)
 from tests.resource import DEFAULT_TESTDB
 
 from ..reader.test_common import OO_NAMESPACES, XMLTest
@@ -76,29 +78,6 @@ class DatabaseDisplays(XMLTest):
         assert len(self.db_displays) == 1
 
 
-class FilterDisplays(XMLTest):
-
-    def setUp(self):
-        self.xml = TEXT_DOC_ELEMENT
-        self.db_displays = database_displays(self.root)
-        self.config = TextDocumentsConfig(db_registration_id="testdb",
-                                          search_locations=[])
-
-    @property
-    def filtered(self):
-        return filter_displays(self.config, self.db_displays)
-
-    def test_one_display(self):
-        self.config = TextDocumentsConfig(db_registration_id="testdb",
-                                          search_locations=[])
-        assert len(self.filtered) == 1
-
-    def test_no_display(self):
-        self.config = TextDocumentsConfig(db_registration_id="nottestdb",
-                                          search_locations=[])
-        assert len(self.filtered) == 0
-
-
 class FilteredDisplays(XMLTest):
 
     def setUp(self):
@@ -108,7 +87,7 @@ class FilteredDisplays(XMLTest):
 
     @property
     def filtered(self):
-        return filtered_displays(self.config, self.root)
+        return filtered_displays(self.config.db_registration_id, self.root)
 
     def test_one_display(self):
         self.config = TextDocumentsConfig(db_registration_id="testdb",
@@ -141,7 +120,7 @@ class TextDocument(unittest.TestCase):
 def test_text_document(shared_datadir):
     """ find odts """
     directory = (shared_datadir / DEFAULT_TESTDB).parent
-    assert len(list(_text_documents(directory))) == 3
+    assert len(list(find_text_documents(directory))) == 3
 
 
 @pytest.mark.slow

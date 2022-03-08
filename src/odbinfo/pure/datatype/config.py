@@ -7,18 +7,10 @@ import yaml
 from pydantic import BaseModel
 
 
-class ConfigurationAttributeNotSet(Exception):
-    """For attributes that need to be there"""
-
-    def __init__(self, attribute: str):
-        self.attribute = attribute
-        super().__init__(f"Configuration attribute {attribute} was not set")
-
-
 class GeneralConfig(BaseModel):
     """ General options """
 
-    output_dir: Optional[str] = None
+    output_dir: str = ""
     base_url: str = "http://odbinfo.org/"
 
 
@@ -206,7 +198,7 @@ ALWAYS_EXCLUDED = ["metadata", "basictoken", "sqltoken"]
 class TextDocumentsConfig(BaseModel):
     """ Config for the search of textdocuments """
 
-    db_registration_id: Optional[str] = None
+    db_registration_id: str = ""
     search_locations: Optional[List[str]] = None
 
 
@@ -236,12 +228,10 @@ class Configuration(BaseModel):
     @property
     def site_path(self) -> Path:
         """returns the path of the hugo site"""
-        if self.general.output_dir is None:
-            raise ConfigurationAttributeNotSet("general.output_dir")
         return Path(self.general.output_dir) / self.name
 
 
-def create_configuration(name="", output_dir=None) -> Configuration:
+def create_configuration(name="", output_dir="") -> Configuration:
     """ returns configuration """
     return \
         Configuration(name=name, general={"output_dir": output_dir})
@@ -279,8 +269,8 @@ def write_configuration(config: Configuration, config_path: Path) -> None:
 
 def get_configuration(config_path: Path = default_config_path()
                       ) -> Configuration:
-    """ reads configuration from `config_path` if exits
-        otherwise a default configuration is written in `config_path`
+    """ returns configuration read from `config_path` if exits.
+        Otherwise a default configuration is written in `config_path` and returned.
     """
     if not config_path.exists():
         logging.info("  No config found at %s", config_path)

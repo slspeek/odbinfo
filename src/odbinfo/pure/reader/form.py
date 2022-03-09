@@ -5,10 +5,9 @@ from zipfile import ZipFile
 
 from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
                                       ListBox, SubForm)
-from odbinfo.pure.reader.common import (CONTENT_XML, attr_default,
-                                        child_elements,
+from odbinfo.pure.reader.common import (attr_default, child_elements,
                                         child_elements_by_tagname,
-                                        document_element)
+                                        get_elements_from_href)
 
 
 def read_form_item(control_elem: Element) -> Union[Control, Grid, ListBox]:
@@ -158,24 +157,26 @@ def read_grid_control(column_elem: Element):
     return control
 
 
-def forms(odbzip: ZipFile) -> List[Tuple[str, Element]]:
-    """ return a tuple with the form name and <office:forms> element """
-    forms_elements = document_element(
-        odbzip, CONTENT_XML).getElementsByTagName("db:forms")
-    if not forms_elements:
+def office_forms_elements(odbzip: ZipFile) -> List[Tuple[str, Element]]:
+    """ Returns a tuple with the form name and <office:forms> element """
+    db_forms_elements = get_elements_from_href(odbzip, "", "db:forms")
+    if not db_forms_elements:
         return []
-    forms_elem = forms_elements[0]
 
-    def load_form(form_elem: Element) -> Element:
-        relpath = form_elem.getAttribute("xlink:href") + "/content.xml"
-        return document_element(
-            odbzip, relpath).getElementsByTagName("office:forms")[0]
+    db_component_elements = db_forms_elements[0].getElementsByTagName(
+        "db:component")
 
     return \
-        [(form_comp.getAttribute("db:name"), load_form(form_comp))
-         for form_comp in forms_elem.getElementsByTagName("db:component")]
+        [(db_component.getAttribute("db:name"),
+          get_elements_from_href(odbzip,
+                                 db_component.getAttribute("xlink:href"),
+                                 "office:forms")[0])
+         for db_component in db_component_elements]
 
 
 def read_forms(odbzip):
     """ Reads form metadata from `odbzip` """
-    return [Form(name, read_subforms(data)) for name, data in forms(odbzip)]
+    return [
+        Form(name, read_subforms(office_forms_element))
+        for name, office_forms_element in office_forms_elements(odbzip)
+    ]

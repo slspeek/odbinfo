@@ -22,7 +22,7 @@ def test_read_reports_empty(empty_odbzip):
     assert len(read_reports(empty_odbzip)) == 0
 
 
-ODB_ELEMENT = f"""<?xml version="1.0" encoding="UTF-8"?>
+CONTENT_XML_ELEMENT = f"""<?xml version="1.0" encoding="UTF-8"?>
 <office:document-content {OO_NAMESPACES} office:version="1.2">
   <office:scripts/>
   <office:font-face-decls>
@@ -196,11 +196,13 @@ RPT_ELEMENT = f"""<?xml version="1.0" encoding="UTF-8"?>
 </office:document-content>
 """
 
-data = {CONTENT_XML: ODB_ELEMENT, "reports/Obj11/content.xml": RPT_ELEMENT}
+data = {
+    CONTENT_XML: CONTENT_XML_ELEMENT,
+    "reports/Obj11/content.xml": RPT_ELEMENT
+}
 
 
 def test_reports():
-    # pylint:disable=too-few-public-methods
     fakezip = ZipFileMock()
 
     def read(file: str) -> str:
@@ -210,7 +212,7 @@ def test_reports():
     assert len(read_reports(fakezip)) == 1
 
 
-ODB_ELEMENT_NO_REPORTS = f"""<?xml version="1.0" encoding="UTF-8"?>
+CONTENT_XML_ELEMENT_NO_REPORTS = f"""<?xml version="1.0" encoding="UTF-8"?>
 <office:document-content {OO_NAMESPACES} office:version="1.2">
   <office:scripts/>
   <office:font-face-decls>
@@ -256,5 +258,5 @@ ODB_ELEMENT_NO_REPORTS = f"""<?xml version="1.0" encoding="UTF-8"?>
 def test_no_reports():
     # pylint:disable=too-few-public-methods
     fakezip = ZipFileMock()
-    fakezip.read = Mock(return_value=ODB_ELEMENT_NO_REPORTS)
+    fakezip.read = Mock(return_value=CONTENT_XML_ELEMENT_NO_REPORTS)
     assert len(read_reports(fakezip)) == 0

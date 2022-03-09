@@ -1,42 +1,45 @@
 """ reading reports """
 from typing import List, Tuple
 from xml.dom.minidom import Element
+from zipfile import ZipFile
 
 from odbinfo.pure.datatype.ui import Report
-from odbinfo.pure.reader.common import (CONTENT_XML, attr_default,
-                                        document_element)
+from odbinfo.pure.reader.common import attr_default, get_elements_from_href
 
 
-def _reports(odbzip) -> List[Tuple[str, Element]]:
-    odb_elem = document_element(odbzip, CONTENT_XML)
-    db_report_elements = odb_elem.getElementsByTagName("db:reports")
-    if not db_report_elements:
+def office_report_elements(odbzip) -> List[Tuple[str, Element]]:
+    """Returns a list off the name and <office:report> element for all reports"""
+    db_reports_elements = get_elements_from_href(odbzip, "", "db:reports")
+    if not db_reports_elements:
         return []
-    db_reports = db_report_elements[0].getElementsByTagName("db:component")
 
-    def report(rpt_elem) -> Tuple[str, Element]:
-        relpath = rpt_elem.getAttribute("xlink:href") + "/content.xml"
-        return (rpt_elem.getAttribute("db:name"),
-                document_element(
-                    odbzip, relpath).getElementsByTagName("office:report")[0])
+    db_component_elements = db_reports_elements[0].getElementsByTagName(
+        "db:component")
 
-    return [report(rpt_elem) for rpt_elem in db_reports]
+    return [(db_component.getAttribute("db:name"),
+             get_elements_from_href(odbzip,
+                                    db_component.getAttribute("xlink:href"),
+                                    "office:report")[0])
+            for db_component in db_component_elements]
 
 
-def _read_report_formulas(rpt_doc: Element) -> List[str]:
+def get_report_formulas(office_report_element: Element) -> List[str]:
+    """Returns the report formulas in `office_report_element`"""
     return [
-        elem.getAttribute("rpt:formula")
-        for elem in rpt_doc.getElementsByTagName("rpt:formatted-text")
+        elem.getAttribute("rpt:formula") for elem in
+        office_report_element.getElementsByTagName("rpt:formatted-text")
     ]
 
 
-def read_reports(odbzip) -> List[Report]:
-    """ Read reports from odb file """
+def read_reports(odbzip: ZipFile) -> List[Report]:
+    """ Returns a list of Reports read reports from `odbzip` zipfile """
     reports = []
-    for name, rpt_doc in _reports(odbzip):
+    for name, office_report_element in office_report_elements(odbzip):
         reports.append(
-            Report(name, rpt_doc.getAttribute("rpt:command"),
-                   attr_default(rpt_doc, "rpt:command-type", "command"),
-                   rpt_doc.getAttribute("office:mimetype"),
-                   _read_report_formulas(rpt_doc)))
+            Report(
+                name, office_report_element.getAttribute("rpt:command"),
+                attr_default(office_report_element, "rpt:command-type",
+                             "command"),
+                office_report_element.getAttribute("office:mimetype"),
+                get_report_formulas(office_report_element)))
     return reports

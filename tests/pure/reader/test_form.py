@@ -5,9 +5,10 @@ import unittest
 import pytest
 
 from odbinfo.pure.reader.common import document_element_from_string
-from odbinfo.pure.reader.form import (forms, is_visible, read_control,
-                                      read_eventlisteners, read_forms,
-                                      read_grid, read_listbox, read_subforms)
+from odbinfo.pure.reader.form import (is_visible, office_forms_elements,
+                                      read_control, read_eventlisteners,
+                                      read_forms, read_grid, read_listbox,
+                                      read_subforms)
 from tests.pure.reader.test_common import OO_NAMESPACES
 
 FORM_PROPERTIES = f"""
@@ -253,7 +254,7 @@ class ReadGrid(unittest.TestCase):
 
 @pytest.mark.slow
 def test_forms(odbzip):
-    form_elements = forms(odbzip)
+    form_elements = office_forms_elements(odbzip)
     assert len(form_elements) == 9
     print(form_elements[0][1].tagName)
 

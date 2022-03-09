@@ -34,8 +34,16 @@ def child_elements_by_tagname(element: Element, tagname: str) -> List[Element]:
 
 
 def attr_default(element: Element, attribute_name: str, default_value: str):
-    """returns `def_value` if `elem` has no attribute `attr` else the attribute value"""
+    """Returns `def_value` if `elem` has no attribute `attr` else the attribute value"""
     value = element.getAttribute(attribute_name)
     if value == "":
         return default_value
     return value
+
+
+def get_elements_from_href(odbzip: ZipFile, href: str,
+                           element_name: str) -> List[Element]:
+    """ Returns the elements with name `element_name` from the subdocument under `href` in `odbzip`
+    """
+    return document_element(odbzip, f"{href}/{CONTENT_XML}" if href else
+                            CONTENT_XML).getElementsByTagName(element_name)

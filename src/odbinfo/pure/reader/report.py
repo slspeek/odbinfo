@@ -23,6 +23,13 @@ def _reports(odbzip) -> List[Tuple[str, Element]]:
     return [report(rpt_elem) for rpt_elem in db_reports]
 
 
+def _read_report_formulas(rpt_doc: Element) -> List[str]:
+    return [
+        elem.getAttribute("rpt:formula")
+        for elem in rpt_doc.getElementsByTagName("rpt:formatted-text")
+    ]
+
+
 def read_reports(odbzip) -> List[Report]:
     """ Read reports from odb file """
     reports = []
@@ -33,10 +40,3 @@ def read_reports(odbzip) -> List[Report]:
                    rpt_doc.getAttribute("office:mimetype"),
                    _read_report_formulas(rpt_doc)))
     return reports
-
-
-def _read_report_formulas(rpt_doc: Element) -> List[str]:
-    return [
-        elem.getAttribute("rpt:formula")
-        for elem in rpt_doc.getElementsByTagName("rpt:formatted-text")
-    ]

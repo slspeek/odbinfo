@@ -2,7 +2,6 @@ review entire source tree
 -------------------------
 Check 'meaningful names' and docs-string, but do not refactor big time
 
-src/odbinfo/pure/reader/exec.py
 src/odbinfo/pure/reader/report.py
 src/odbinfo/pure/reader/__init__.py
 src/odbinfo/pure/reader/form.py

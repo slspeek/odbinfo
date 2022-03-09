@@ -3,10 +3,11 @@ from unittest.mock import Mock
 
 import pytest
 
-from odbinfo.pure.reader.exec import (has_libraries, manifest_fileentries,
-                                      read_libraries, read_library,
-                                      read_module, read_python_libraries,
-                                      read_python_library, read_python_module)
+from odbinfo.pure.reader.exec import (create_library, create_module,
+                                      create_python_library,
+                                      create_python_module, has_libraries,
+                                      manifest_fileentries, read_libraries,
+                                      read_python_libraries)
 from tests.pure.reader.test_common import ZipFileMock
 
 # pylint: disable=line-too-long
@@ -51,9 +52,9 @@ def test_read_python_module():
         return {"Scripts/python/Bibliotheek/Module.py": MODULE_FILE}[fullpath]
 
     fakezip.read = read
-    module = read_python_module(fakezip,
-                                "Scripts/python/Bibliotheek/Module.py",
-                                "Bibliotheek")
+    module = create_python_module(fakezip,
+                                  "Scripts/python/Bibliotheek/Module.py",
+                                  "Bibliotheek")
 
     assert module.name == "Module.py"
     assert module.library == "Bibliotheek"
@@ -70,7 +71,7 @@ def test_read_python_library():
         }[fullpath]
 
     fakezip.read = read
-    library = read_python_library(fakezip, "Scripts/python/Bibliotheek/")
+    library = create_python_library(fakezip, "Scripts/python/Bibliotheek/")
 
     assert library.name == "Bibliotheek"
     assert len(library.modules) == 1
@@ -131,7 +132,7 @@ def test_read_module():
         return {"Basic/Library1/Module1.xml": BASIC_MODULE}[fullpath]
 
     fakezip.read = read
-    module = read_module(fakezip, "Library1", "Module1")
+    module = create_module(fakezip, "Library1", "Module1")
     assert module.library == "Library1"
     assert module.name == "Module1"
     assert module.source.count("Mijn fout") > 0
@@ -154,7 +155,7 @@ def test_read_library():
         }[fullpath]
 
     fakezip.read = read
-    library = read_library(fakezip, "Library1")
+    library = create_library(fakezip, "Library1")
     assert library.name == "Library1"
     assert len(library.modules) == 1
 

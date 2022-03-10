@@ -193,8 +193,10 @@ class QueryBasePreprocessor(QueryBaseVisitor):
     @staticmethod
     def parse_query(query: QueryBase):
         """parses `query.command`"""
-        query.tokens, query.table_tokens, query.literal_values = parse(
-            query.command)
+        parse_result = parse(query.command)
+        query.tokens = parse_result.tokens
+        query.table_tokens = parse_result.tablenames
+        query.literal_values = parse_result.literal_values
 
     @staticmethod
     def color_hightlight_query(query: QueryBase):

@@ -22,8 +22,9 @@ def find_empty_dirs(path: Path) -> List[Path]:
     return [_dir for _dir in path.glob("**/*") if is_empty_dir(_dir)]
 
 
-def create_gitkeep_in_empty_dirs(path_obtained):
-    for empty_dir in find_empty_dirs(path_obtained):
+def create_gitkeep_in_empty_dirs(path):
+    """ Creates an empty .gitkeep file in the empty directories under `path`"""
+    for empty_dir in find_empty_dirs(path):
         with open(empty_dir / GITKEEP, 'w', encoding="UTF-8"):
             pass
 
@@ -36,19 +37,19 @@ class DirectoryRegressionFixture:
         self.original_datadir = original_datadir
         self.request = request
 
-    def prepend_path(self, path) -> Path:
-        """prepends `path` function name"""
+    def append_test_function_name(self, path) -> Path:
+        """prepends `path` to the function name"""
         return Path(path) / self.request.function.__name__
 
     @property
     def fixture_path(self):
         """reading fixture path"""
-        return self.prepend_path(Path(self.datadir))
+        return self.append_test_function_name(Path(self.datadir))
 
     @property
     def fixture_original_path(self):
         """writing fixture path"""
-        return self.prepend_path(Path(self.original_datadir))
+        return self.append_test_function_name(Path(self.original_datadir))
 
     def check(self, path_obtained: Path):
         """verifies that `path_obtained` is equal to an earlier
@@ -70,8 +71,7 @@ class DirectoryRegressionFixture:
         if self.fixture_path.exists():
             shutil.rmtree(self.original_datadir)
         self.original_datadir.mkdir(exist_ok=True)
-        shutil.copytree(path_obtained,
-                        self.original_datadir / self.request.function.__name__)
+        shutil.copytree(path_obtained, self.fixture_original_path)
 
 
 @fixture(scope="function")

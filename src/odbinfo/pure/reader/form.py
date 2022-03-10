@@ -1,5 +1,5 @@
-"""reading forms"""
-from typing import List, Optional, Tuple, Union
+"""Reading forms from the odb-zipfile"""
+from typing import List, Union
 from xml.dom.minidom import Element
 from zipfile import ZipFile
 
@@ -7,87 +7,87 @@ from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
                                       ListBox, SubForm)
 from odbinfo.pure.reader.common import (attr_default, child_elements,
                                         child_elements_by_tagname,
-                                        elements_from_subdoc)
+                                        subdocuments_elements)
 
 
-def read_form_item(control_elem: Element) -> Union[Control, Grid, ListBox]:
-    """ case on the tagName of `control_elem` to read the right component"""
-    if control_elem.tagName == "form:grid":
-        return read_grid(control_elem)
-    if control_elem.tagName == "form:listbox":
-        return read_listbox(control_elem)
-    return read_control(control_elem)
+def create_form_item(
+        control_element: Element) -> Union[Control, Grid, ListBox]:
+    """ Case on the tagName of `control_elem` to create the right component"""
+    if control_element.tagName == "form:grid":
+        return create_grid(form_grid_element=control_element)
+    if control_element.tagName == "form:listbox":
+        return create_listbox(listbox_element=control_element)
+    return create_control(control_element=control_element)
 
 
-def read_subforms(office_form_elem: Element) -> List[SubForm]:
-    """read the subforms of a form"""
+def create_subforms(office_form_element: Element) -> List[SubForm]:
+    """Creates the subforms of a <office:form> element `office_form_element`"""
     return [
-        read_subform(form_form_elem)
-        for form_form_elem in child_elements_by_tagname(
-            office_form_elem, "form:form")
+        create_subform(form_form_element)
+        for form_form_element in child_elements_by_tagname(
+            office_form_element, "form:form")
     ]
 
 
-def read_subform(form_form_elem: Element):
-    """read a SubForm from `form_form_elem` (<form:form>)"""
+def create_subform(form_form_element: Element):
+    """Creates a SubForm from `form_form_element` (<form:form>)
+    """
     controls: List[Union[Control, ListBox, Grid]] = [
-        read_form_item(elem) for elem in child_elements(form_form_elem)
+        create_form_item(elem) for elem in child_elements(form_form_element)
         if elem.tagName not in ["form:form", "form:properties"]
     ]
     subforms: List[SubForm] = [
-        read_subform(elem)
-        for elem in child_elements_by_tagname(form_form_elem, "form:form")
+        create_subform(nested_form_from_element)
+        for nested_form_from_element in child_elements_by_tagname(
+            form_form_element, "form:form")
     ]
 
     return SubForm(
-        form_form_elem.getAttribute("form:name"),
-        form_form_elem.getAttribute("form:command"),
-        attr_default(form_form_elem, "form:command-type", "command"),
-        attr_default(form_form_elem, "form:allow-deletes", "true"),
-        attr_default(form_form_elem, "form:allow-updates", "true"),
-        attr_default(form_form_elem, "form:allow-inserts", "true"),
-        form_form_elem.getAttribute("form:master-fields"),
-        form_form_elem.getAttribute("form:detail-fields"), controls, subforms)
+        name=form_form_element.getAttribute("form:name"),
+        cmd=form_form_element.getAttribute("form:command"),
+        cmdtype=attr_default(form_form_element, "form:command-type",
+                             "command"),
+        allowdeletes=attr_default(form_form_element, "form:allow-deletes",
+                                  "true"),
+        allowupdates=attr_default(form_form_element, "form:allow-updates",
+                                  "true"),
+        allowinserts=attr_default(form_form_element, "form:allow-inserts",
+                                  "true"),
+        masterfields=form_form_element.getAttribute("form:master-fields"),
+        detailfields=form_form_element.getAttribute("form:detail-fields"),
+        controls=controls,
+        subforms=subforms)
 
 
-def read_grid(grid_elem: Element) -> Grid:
-    """read a tableview from `grid_elem` <form:grid>"""
+def create_grid(form_grid_element: Element) -> Grid:
+    """Creates a Grid from the <form:grid> `form_grid_element` """
     controls = [
-        read_grid_control(elem)
-        for elem in grid_elem.getElementsByTagName("form:column")
+        create_grid_control(elem)
+        for elem in form_grid_element.getElementsByTagName("form:column")
     ]
-    return Grid(grid_elem.getAttribute("form:name"), controls, "Grid")
+    return Grid(form_grid_element.getAttribute("form:name"), controls, "Grid")
 
 
-def office_eventlisteners_elem(control_elem: Element) -> Optional[Element]:
-    """find <office:event-listeners> under `control_elem`"""
-    off_evl_elem = control_elem.getElementsByTagName("office:event-listeners")
-    if not off_evl_elem:
-        return None
-    return off_evl_elem[0]
-
-
-def read_eventlisteners(control_elem: Element) -> List[EventListener]:
-    """reads the <script:event-listener> under <office:event-listeners> under `control_elem`"""
-    office_evlis_elem = office_eventlisteners_elem(control_elem)
-    if not office_evlis_elem:
+def create_eventlisteners(control_element: Element) -> List[EventListener]:
+    """Creates the list of EventListeners from the <script:event-listener>
+        elements under <office:event-listeners> under `control_element`
+    """
+    office_evlis_elems = control_element.getElementsByTagName(
+        "office:event-listeners")
+    if not office_evlis_elems:
         return []
 
-    def read_listener(script_ev_listener: Element):
-        return \
-            EventListener(script_ev_listener.getAttribute("script:event-name"),
-                          script_ev_listener.getAttribute("xlink:href"))
-
     return [
-        read_listener(elem) for elem in office_evlis_elem.getElementsByTagName(
-            "script:event-listener")
+        EventListener(elem.getAttribute("script:event-name"),
+                      elem.getAttribute("xlink:href")) for elem in
+        office_evlis_elems[0].getElementsByTagName("script:event-listener")
     ]
 
 
-def is_visible(form_properties_elem: Element):
-    """Looks for EnableVisible property amoung the `form_properties_elem`"""
+def is_visible(form_properties_element: Element) -> bool:
+    """Looks for EnableVisible property amoung the `form_properties_elements`"""
 
-    for prop_element in form_properties_elem.getElementsByTagName(
+    for prop_element in form_properties_element.getElementsByTagName(
             "form:property"):
         if prop_element.getAttribute("form:property-name") == "EnableVisible":
             if prop_element.getAttribute("office:boolean-value") == "false":
@@ -95,7 +95,7 @@ def is_visible(form_properties_elem: Element):
     return True
 
 
-def is_control_visible(control_element: Element):
+def is_control_visible(control_element: Element) -> bool:
     """Looks for EnableVisible property amoung the properties of `control_element` """
     properties_element = control_element.getElementsByTagName(
         "form:properties")
@@ -104,79 +104,66 @@ def is_control_visible(control_element: Element):
     return True
 
 
-def read_control(control_elem) -> Control:
-    """returns Control read from `control_elem` (<form:button>, ...) """
+def create_control(control_element: Element) -> Control:
+    """Creates a Control read from `control_elem` (<form:button>, ...) """
 
     return \
-        Control(control_elem.getAttribute("form:name"),
-                control_elem.getAttribute("form:id"),
-                control_elem.getAttribute("form:data-field"),
-                control_elem.getAttribute("form:input-required"),
-                control_elem.getAttribute("form:convert-empty-to-null"),
-                control_elem.getAttribute("form:label"),
-                control_elem.getAttribute("form:for"),
-                control_elem.getAttribute("form:control-implementation"),
-                is_control_visible(control_elem),
-                read_eventlisteners(control_elem))
+        Control(name=control_element.getAttribute("form:name"),
+                controlid=control_element.getAttribute("form:id"),
+                datafield=control_element.getAttribute("form:data-field"),
+                inputrequired=control_element.getAttribute("form:input-required"),
+                convertemptytonull=control_element.getAttribute("form:convert-empty-to-null"),
+                label=control_element.getAttribute("form:label"),
+                formfor=control_element.getAttribute("form:for"),
+                type=control_element.getAttribute("form:control-implementation"),
+                isvisible=is_control_visible(control_element),
+                eventlisteners=create_eventlisteners(control_element))
 
 
-def read_listbox(listbox_elem: Element) -> ListBox:
-    """returns a ListBox from `listbox_elem` (<form:listbox>)"""
-    listsourcetype = attr_default(listbox_elem, "form:list-source-type",
-                                  "valuelist")
-    listsource = listbox_elem.getAttribute("form:list-source")
+def create_listbox(listbox_element: Element) -> ListBox:
+    """Returns a ListBox from `listbox_element` (<form:listbox>)"""
+    listsourcetype = attr_default(listbox_element,
+                                  "form:list-source-type",
+                                  default_value="valuelist")
+    listsource = listbox_element.getAttribute("form:list-source")
     if listsourcetype == "valuelist":
-        options = listbox_elem.getElementsByTagName('form:option')
+        options = listbox_element.getElementsByTagName('form:option')
         listsource = ", ".join(x.getAttribute('form:value') for x in options)
 
     return \
-        ListBox(listbox_elem.getAttribute("form:name"),
-                listbox_elem.getAttribute("form:id"),
-                listbox_elem.getAttribute("form:data-field"),
-                listbox_elem.getAttribute("form:input-required"),
-                listbox_elem.getAttribute("form:convert-empty-to-null"),
-                listbox_elem.getAttribute("form:label"),
-                listbox_elem.getAttribute("form:for"),
-                listbox_elem.getAttribute("form:control-implementation"),
-                is_control_visible(listbox_elem),
-                read_eventlisteners(listbox_elem),
-                listbox_elem.getAttribute("form:bound-column"),
-                listbox_elem.getAttribute("form:dropdown"),
-                listsourcetype,
-                listsource
+        ListBox(name=listbox_element.getAttribute("form:name"),
+                controlid=listbox_element.getAttribute("form:id"),
+                datafield=listbox_element.getAttribute("form:data-field"),
+                inputrequired=listbox_element.getAttribute("form:input-required"),
+                convertemptytonull=listbox_element.getAttribute("form:convert-empty-to-null"),
+                label=listbox_element.getAttribute("form:label"),
+                formfor=listbox_element.getAttribute("form:for"),
+                type=listbox_element.getAttribute("form:control-implementation"),
+                isvisible=is_control_visible(listbox_element),
+                eventlisteners=create_eventlisteners(listbox_element),
+                boundcolumn=listbox_element.getAttribute("form:bound-column"),
+                dropdown=listbox_element.getAttribute("form:dropdown"),
+                listsourcetype=listsourcetype,
+                listsource=listsource
                 )
 
 
-def read_grid_control(column_elem: Element):
-    """ reads the grid control from `column_elem`"""
-    elem = child_elements(column_elem)[0]
-    control = read_control(elem)
-    control.name = column_elem.getAttribute("form:name")
-    control.label = column_elem.getAttribute("form:label")
-    control.type = column_elem.getAttribute("form:control-implementation")
+def create_grid_control(column_element: Element) -> Control:
+    """ Returns the grid control from `column_element` (<form:column>)"""
+    elem = child_elements(column_element)[0]
+    control = create_control(control_element=elem)
+    control.name = column_element.getAttribute("form:name")
+    control.label = column_element.getAttribute("form:label")
+    control.type = column_element.getAttribute("form:control-implementation")
     return control
 
 
-def office_forms_elements(odbzip: ZipFile) -> List[Tuple[str, Element]]:
-    """ Returns a tuple with the form name and <office:forms> element """
-    db_forms_elements = elements_from_subdoc(odbzip, "", "db:forms")
-    if not db_forms_elements:
-        return []
-
-    db_component_elements = db_forms_elements[0].getElementsByTagName(
-        "db:component")
-
-    return \
-        [(db_component.getAttribute("db:name"),
-          elements_from_subdoc(odbzip,
-                               db_component.getAttribute("xlink:href"),
-                                 "office:forms")[0])
-         for db_component in db_component_elements]
-
-
-def read_forms(odbzip):
+def read_forms(odbzip: ZipFile) -> List[Form]:
     """ Reads form metadata from `odbzip` """
     return [
-        Form(name, read_subforms(office_forms_element))
-        for name, office_forms_element in office_forms_elements(odbzip)
+        Form(name, create_subforms(office_forms_element))
+        for name, office_forms_element in subdocuments_elements(
+            odbzip=odbzip,
+            specified_by_tag="db:forms",
+            desired_tag="office:forms")
     ]

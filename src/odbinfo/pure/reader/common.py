@@ -1,5 +1,5 @@
 """ shared reading utilities"""
-from typing import List, Union, cast
+from typing import List, Tuple, Union, cast
 from xml.dom.minidom import Element, Node, parseString
 from zipfile import ZipFile
 
@@ -41,9 +41,34 @@ def attr_default(element: Element, attribute_name: str, default_value: str):
     return value
 
 
-def get_elements_from_href(odbzip: ZipFile, href: str,
-                           element_name: str) -> List[Element]:
+def elements_from_subdoc(odbzip: ZipFile, href: str,
+                         desired_tag: str) -> List[Element]:
     """ Returns the elements with name `element_name` from the subdocument under `href` in `odbzip`
     """
     return document_element(odbzip, f"{href}/{CONTENT_XML}" if href else
-                            CONTENT_XML).getElementsByTagName(element_name)
+                            CONTENT_XML).getElementsByTagName(desired_tag)
+
+
+def subdocuments_elements(odbzip: ZipFile, specified_by_tag: str,
+                          desired_tag: str) -> List[Tuple[str, Element]]:
+    """ Reads the subdocuments specified in the main document "content.xml" by
+        the <db:component> elements under the `specified_by_tag`.
+        It returns a list of tuples of the name of the subdocument and the `desired_tag` from
+        the subdocument. (This is used for form and report reading)
+    """
+    specifying_elements = elements_from_subdoc(odbzip,
+                                               "",
+                                               desired_tag=specified_by_tag)
+    if not specifying_elements:
+        # The specifying tag is not present
+        return []
+
+    db_component_elements = specifying_elements[0].getElementsByTagName(
+        "db:component")
+
+    return \
+        [(db_component.getAttribute("db:name"),
+          elements_from_subdoc(odbzip=odbzip,
+                               href=db_component.getAttribute("xlink:href"),
+                               desired_tag=desired_tag)[0])
+         for db_component in db_component_elements]

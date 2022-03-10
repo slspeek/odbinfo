@@ -1,4 +1,4 @@
-""" collector """
+""" API collector """
 from odbinfo.pure.reader.exec import read_libraries, read_python_libraries
 from odbinfo.pure.reader.form import read_forms
 from odbinfo.pure.reader.report import read_reports

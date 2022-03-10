@@ -7,7 +7,7 @@ from odbinfo.pure.datatype.ui import (Control, EventListener, Form, Grid,
                                       ListBox, SubForm)
 from odbinfo.pure.reader.common import (attr_default, child_elements,
                                         child_elements_by_tagname,
-                                        get_elements_from_href)
+                                        elements_from_subdoc)
 
 
 def read_form_item(control_elem: Element) -> Union[Control, Grid, ListBox]:
@@ -159,7 +159,7 @@ def read_grid_control(column_elem: Element):
 
 def office_forms_elements(odbzip: ZipFile) -> List[Tuple[str, Element]]:
     """ Returns a tuple with the form name and <office:forms> element """
-    db_forms_elements = get_elements_from_href(odbzip, "", "db:forms")
+    db_forms_elements = elements_from_subdoc(odbzip, "", "db:forms")
     if not db_forms_elements:
         return []
 
@@ -168,8 +168,8 @@ def office_forms_elements(odbzip: ZipFile) -> List[Tuple[str, Element]]:
 
     return \
         [(db_component.getAttribute("db:name"),
-          get_elements_from_href(odbzip,
-                                 db_component.getAttribute("xlink:href"),
+          elements_from_subdoc(odbzip,
+                               db_component.getAttribute("xlink:href"),
                                  "office:forms")[0])
          for db_component in db_component_elements]
 

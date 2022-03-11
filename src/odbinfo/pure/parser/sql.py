@@ -5,11 +5,11 @@ from typing import List
 from antlr4 import ParseTreeWalker
 
 from odbinfo.pure.datatype.base import SQLToken
-from odbinfo.pure.parser.scanner import get_token_stream, get_tokens
 from odbinfo.pure.parser.sqlite.SQLiteLexer import SQLiteLexer
 from odbinfo.pure.parser.sqlite.SQLiteParser import SQLiteParser
 from odbinfo.pure.parser.sqlite.SQLiteParserListener import \
     SQLiteParserListener
+from odbinfo.pure.parser.tokenizer import get_token_stream, get_tokens
 
 
 @dataclasses.dataclass

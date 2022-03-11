@@ -4,17 +4,9 @@ from typing import List, Tuple
 from odbinfo.pure.datatype.base import BasicToken
 from odbinfo.pure.datatype.basicfunction import BasicCall, BasicFunction
 from odbinfo.pure.parser.oobasic.OOBasicLexer import OOBasicLexer
-from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find,
-                                         get_token_stream, get_tokens, maybe,
-                                         skip, someof)
-
-
-def scan_basic(alltokens: List[BasicToken], library: str,
-               module: str) -> List[BasicFunction]:
-    """ extract procedure names """
-    tokens = list(filter(lambda x: not x.hidden, alltokens))
-    scanner = ModuleScanner(tokens, alltokens, library, module)
-    return scanner.scan()
+from odbinfo.pure.parser.scanner import (Scanner, a, anyof, find, maybe, skip,
+                                         someof)
+from odbinfo.pure.parser.tokenizer import get_token_stream, get_tokens
 
 
 def analyze_callable(acallable: BasicFunction):
@@ -33,42 +25,6 @@ def extract_stringliterals(acallable: BasicFunction) -> List[BasicToken]:
     return list(
         filter(lambda t: t.type == OOBasicLexer.STRINGLITERAL,
                acallable.body_tokens))
-
-
-# pylint:disable=too-few-public-methods
-class ModuleScanner(Scanner):
-    """scan for procedure names"""
-
-    def __init__(self, tokens: List[BasicToken], alltokens: List[BasicToken],
-                 library: str, module: str):
-        super().__init__(tokens)
-        self.alltokens: List[BasicToken] = alltokens
-        self.library = library
-        self.module = module
-
-    # pylint: disable=too-many-arguments
-    def _callable(self, start: int, bodystart: int, bodyend: int, end: int,
-                  name_token: BasicToken) -> BasicFunction:
-        acallable = BasicFunction(name_token.text, self.library, self.module)
-        acallable.body_tokens = list(self.tokens[bodystart:bodyend])
-        acallable.name_token_index = name_token.index
-
-        start_index = self.tokens[start].index
-        end_index = self.tokens[end - 1].index
-        acallable.tokens = list(self.alltokens[start_index:end_index + 1])
-
-        analyze_callable(acallable)
-        return acallable
-
-    def scan(self) -> List[BasicFunction]:
-        """perform the scan"""
-        callables = []
-        callable_infos = allmacros(self)
-        if callable_infos:
-            for callable_info in callable_infos:
-                acallable = self._callable(*callable_info)
-                callables.append(acallable)
-        return callables
 
 
 def signature(parser) -> Tuple[int, int, BasicToken]:
@@ -135,3 +91,47 @@ def functioncall(parser):
 def get_basic_tokens(basiccode) -> List[BasicToken]:
     """ Tokenize `basiccode` """
     return get_tokens(get_token_stream(basiccode, OOBasicLexer), BasicToken)
+
+
+# pylint:disable=too-few-public-methods
+class ModuleScanner(Scanner):
+    """scan for procedure names"""
+
+    def __init__(self, tokens: List[BasicToken], alltokens: List[BasicToken],
+                 library: str, module: str):
+        super().__init__(tokens)
+        self.alltokens: List[BasicToken] = alltokens
+        self.library = library
+        self.module = module
+
+    # pylint: disable=too-many-arguments
+    def _callable(self, start: int, bodystart: int, bodyend: int, end: int,
+                  name_token: BasicToken) -> BasicFunction:
+        acallable = BasicFunction(name_token.text, self.library, self.module)
+        acallable.body_tokens = list(self.tokens[bodystart:bodyend])
+        acallable.name_token_index = name_token.index
+
+        start_index = self.tokens[start].index
+        end_index = self.tokens[end - 1].index
+        acallable.tokens = list(self.alltokens[start_index:end_index + 1])
+
+        analyze_callable(acallable)
+        return acallable
+
+    def scan(self) -> List[BasicFunction]:
+        """perform the scan"""
+        callables = []
+        callable_infos = allmacros(self)
+        if callable_infos:
+            for callable_info in callable_infos:
+                acallable = self._callable(*callable_info)
+                callables.append(acallable)
+        return callables
+
+
+def scan_basic(alltokens: List[BasicToken], library: str,
+               module: str) -> List[BasicFunction]:
+    """ extract procedure names """
+    tokens = list(filter(lambda x: not x.hidden, alltokens))
+    scanner = ModuleScanner(tokens, alltokens, library, module)
+    return scanner.scan()

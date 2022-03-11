@@ -14,7 +14,7 @@ from odbinfo.pure.datatype.ui import Control, Form, ListBox, SubForm
 from odbinfo.pure.dependency import search_dependencies
 from odbinfo.pure.graph import generate_main_graph
 from odbinfo.pure.parser.basic import (OOBasicLexer, get_basic_tokens,
-                                       scan_basic)
+                                       parse_basic)
 from odbinfo.pure.parser.sql import parse
 from odbinfo.pure.util import timed
 from odbinfo.pure.visitor import (BasicTokenVisitor, FormVisitor,
@@ -180,7 +180,7 @@ class ModulePreprocessor(ModuleVisitor):
         module.tokens = \
             get_basic_tokens(module.source)
         module.callables = \
-            scan_basic(module.tokens, module.library, module.name)
+            parse_basic(module.tokens, module.library, module.name)
         self.copy_tokens(module)
         module.name_indexes = \
             [c.name_token_index for c in module.callables]

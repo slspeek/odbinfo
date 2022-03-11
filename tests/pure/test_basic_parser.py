@@ -2,29 +2,29 @@
 import pytest
 
 from odbinfo.pure.datatype.basicfunction import BasicFunction
-from odbinfo.pure.parser.basic import (BodyScanner, ModuleScanner,
-                                       all_functioncalls, allmacros,
-                                       extract_stringliterals, functioncall,
-                                       get_basic_tokens, macro, maybe,
-                                       scan_basic, signature)
+from odbinfo.pure.parser.basic import (FunctionBodyParser, ModuleParser,
+                                       all_basicfunctions, all_functioncalls,
+                                       basicfunction, extract_stringliterals,
+                                       function_signature, functioncall,
+                                       get_basic_tokens, maybe, parse_basic)
 
 
 def parse(source):
     """ wrap parse with default arguments """
-    return scan_basic(get_basic_tokens(source), "Standard", "Module")
+    return parse_basic(get_basic_tokens(source), "Standard", "Module")
 
 
-def module_scanner(source: str) -> ModuleScanner:
+def module_scanner(source: str) -> ModuleParser:
     """Instantiates ModuleScanner on `source`"""
     alltokens = get_basic_tokens(source)
     tokens = list(filter(lambda x: not x.hidden, alltokens))
-    return ModuleScanner(tokens, alltokens, "Standard", "Module1")
+    return ModuleParser(tokens, alltokens, "Standard", "Module1")
 
 
-def bodyscanner(source: str) -> BodyScanner:
+def bodyscanner(source: str) -> FunctionBodyParser:
     """Instantiates bodyscanner"""
     tokens = get_basic_tokens(source)
-    return BodyScanner(tokens)
+    return FunctionBodyParser(tokens)
 
 
 @pytest.mark.slow
@@ -77,14 +77,14 @@ rem end of file"""
 def test_allmacros():
     """ test allmacros"""
     scanner = module_scanner(TOKENSOURCECODE)
-    macros = allmacros(scanner)
+    macros = all_basicfunctions(scanner)
     print("All Macros: ", macros)
 
 
 def test_allmacros_empty():
     """ test allmacros"""
     scanner = module_scanner("")
-    macros = allmacros(scanner)
+    macros = all_basicfunctions(scanner)
     print("All Macros: ", macros)
 
 
@@ -134,7 +134,7 @@ def test_allfunctioncalls_method():
 def test_signature():
     """ test signature"""
     scanner = module_scanner("public static sub foo()\n")
-    start, end, name_token = signature(scanner)
+    start, end, name_token = function_signature(scanner)
 
     print(start, end, name_token)
     assert name_token.text == "foo"
@@ -143,14 +143,14 @@ def test_signature():
 def test_macro():
     """ test macro"""
     scanner = module_scanner("sub foo()\nend sub\n")
-    amacro = macro(scanner)
+    amacro = basicfunction(scanner)
     print("Macro: ", amacro)
 
 
 def test_find_signature():
     """ test _signature"""
     scanner = module_scanner("public static sub sub foo()\n")
-    result = maybe(signature)(scanner)
+    result = maybe(function_signature)(scanner)
     print(result)
 
 

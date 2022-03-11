@@ -8,7 +8,7 @@ import pytest
 import xmltodict
 
 from odbinfo.pure.datatype.exec import Module
-from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
+from odbinfo.pure.parser.basic import get_basic_tokens, parse_basic
 from tests.resource import BASEDOCUMENTER
 
 
@@ -57,5 +57,5 @@ def test_basedocumenter_sources(shared_datadir):
                     """, _BD_UTF8(Replace(_BD_GetLabel("PREFERENCESTITLE"),"""
                     """ "%0", BaseDocumenterTitle)))""")
             #
-            scan_basic(get_basic_tokens(module.source), "BaseDocumenter",
-                       module.name)
+            parse_basic(get_basic_tokens(module.source), "BaseDocumenter",
+                        module.name)

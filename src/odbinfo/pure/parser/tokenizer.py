@@ -1,27 +1,26 @@
 """ Interaction with the ANTLR tokenizers """
 import antlr4
-from antlr4 import CommonTokenStream, InputStream
 
 
 def convert_token(atoken: antlr4.Token, token_class):
     """ convert antlr4 token to Token subclass"""
     return \
         token_class(
-            atoken.text,
-            atoken.type,
-            atoken.tokenIndex,
-            atoken.channel == antlr4.Token.HIDDEN_CHANNEL
+            text=atoken.text,
+            type=atoken.type,
+            index=atoken.tokenIndex,
+            hidden=(atoken.channel == antlr4.Token.HIDDEN_CHANNEL)
         )
 
 
-def get_token_stream(source_code, lexer) -> CommonTokenStream:
+def get_token_stream(source_code: str,
+                     lexer: antlr4.Lexer) -> antlr4.CommonTokenStream:
     """ return antlr4.CommonTokenStream on `source_code` with `lexer`"""
-    input_stream = InputStream(source_code)
-    lexer = lexer(input_stream)
-    return CommonTokenStream(lexer)
+    input_stream = antlr4.InputStream(source_code)
+    return antlr4.CommonTokenStream(lexer(input_stream))
 
 
-def get_tokens(stream, token_class):
+def get_tokens(stream: antlr4.CommonTokenStream, token_class):
     """Read `stream` and return the tokens"""
     stream.fill()
     # exclude EOF token, by leaving the last token out

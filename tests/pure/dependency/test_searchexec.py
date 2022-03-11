@@ -8,7 +8,7 @@ from odbinfo.pure.datatype.tabular import Table
 from odbinfo.pure.dependency import (BasicFunctionCallSearch,
                                      BasicFunctionStringSearch,
                                      search_callable_in_callable)
-from odbinfo.pure.parser.basic import get_basic_tokens, scan_basic
+from odbinfo.pure.parser.basic import get_basic_tokens, parse_basic
 from odbinfo.pure.processor import Preprocessor, rewrite_module_callable_links
 
 SOURCE_MODULEONE = """
@@ -43,7 +43,7 @@ End Function
 
 
 def _scan_basic(source, lib, module):
-    return scan_basic(get_basic_tokens(source), lib, module)
+    return parse_basic(get_basic_tokens(source), lib, module)
 
 
 def test_search_callable_in_callable():

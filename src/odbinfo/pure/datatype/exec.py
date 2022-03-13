@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 @dataclass
 class PythonModule(WebPage):
-    """ Python Module """
+    """ Python Module metadata """
     library: str
     source: str
 
@@ -25,7 +25,7 @@ class PythonModule(WebPage):
 
 @dataclass
 class PythonLibrary(WebPage):
-    """ Python library """
+    """ Python library metadata """
     modules: List[PythonModule]
 
     def children(self):
@@ -34,7 +34,7 @@ class PythonLibrary(WebPage):
 
 @dataclass
 class Module(WebPage, Preprocessable):
-    """ Basic module"""
+    """ Basic module metadata """
 
     library: str
     source: str
@@ -63,7 +63,7 @@ class Module(WebPage, Preprocessable):
 
 @dataclass
 class Library(WebPage):
-    """ Basic library"""
+    """ Basic library metadata """
     modules: List[Module]
 
     def children(self):
@@ -78,5 +78,5 @@ class Library(WebPage):
 
     @property
     def basicfunctions(self) -> List[BasicFunction]:
-        """returns all basicfunctions in this library"""
+        """ Returns all BasicFunctions in this library """
         return sum((module.callables for module in self.modules), [])

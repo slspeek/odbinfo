@@ -4,7 +4,6 @@ Check 'meaningful names' and docs-string, but do not refactor big time
 
 src/odbinfo/pure/datatype/exec.py
 src/odbinfo/pure/datatype/metadata.py
-src/odbinfo/pure/datatype/tabular.py
 src/odbinfo/pure/datatype/dictable.py
 src/odbinfo/pure/processor.py
 src/odbinfo/pure/builder.py

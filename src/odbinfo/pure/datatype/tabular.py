@@ -9,7 +9,6 @@ from odbinfo.pure.datatype.base import (Dependent, NamedNode, Preprocessable,
                                         SQLToken, User, WebPageWithUses)
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/KeyType.html
-
 KEYTYPES = {1: "Primary", 2: "Unique", 3: "Foreign"}
 
 # www.openoffice.org/api/docs/common/ref/com/sun/star/sdbc/ColumnValue.html
@@ -24,11 +23,9 @@ KEYRULES = {
     4: "Set_Default"
 }
 
-# pylint: disable=too-many-instance-attributes
-
 
 @dataclass
-class BaseColumn(NamedNode):
+class BaseColumn(NamedNode):  # pylint: disable=too-many-instance-attributes
     """https://www.openhttps://www.openoffice.org/api/docs/"\
         "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"""
     autoincrement: bool
@@ -43,7 +40,7 @@ class BaseColumn(NamedNode):
 
 
 @dataclass
-class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
+class QueryColumn(BaseColumn):
     """https://www.openhttps://www.openoffice.org/api/docs/"\
         "common/ref/com/sun/star/sdbc/XResultSetMetaData.html"""
     position: int
@@ -54,7 +51,7 @@ class QueryColumn(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 @dataclass
 class QueryBase(NamedNode, Dependent, Preprocessable):
-    """ Query properties see:
+    """ Query metadata see:
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdb/
         QueryDefinition.html"""
     command: str
@@ -86,7 +83,7 @@ class EmbeddedQuery(QueryBase):
 
 @dataclass
 class QueryPage(QueryBase, WebPageWithUses):
-    """ Query properties """
+    """ Query metadata """
     columns: List[QueryColumn]
 
     def __post_init__(self):
@@ -99,17 +96,17 @@ class QueryPage(QueryBase, WebPageWithUses):
 
 @dataclass
 class Query(QueryPage):
-    """ Query properties """
+    """ Query metadata """
 
 
 @dataclass
 class View(QueryPage):
-    """ View properties """
+    """ View metadata """
 
 
 @dataclass
 class Column(BaseColumn):  # pylint: disable=too-many-instance-attributes
-    """ Column properties see:
+    """ Column metadata see:
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Column.html
     """
     description: str
@@ -118,7 +115,7 @@ class Column(BaseColumn):  # pylint: disable=too-many-instance-attributes
 
 @dataclass
 class Key(User, NamedNode, Dependent):  # pylint: disable=too-many-instance-attributes
-    """ Database key properties
+    """ Database key metadata
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Key.html
     """
 
@@ -130,7 +127,6 @@ class Key(User, NamedNode, Dependent):  # pylint: disable=too-many-instance-attr
     update_rule: object
 
     def __post_init__(self):
-        # super().__post_init__()
         self.typename = KEYTYPES[self.typename]
         self.update_rule = KEYRULES[self.update_rule]
         self.delete_rule = KEYRULES[self.delete_rule]
@@ -141,7 +137,7 @@ class Key(User, NamedNode, Dependent):  # pylint: disable=too-many-instance-attr
 
 @dataclass
 class Index(NamedNode):
-    """ Index properties
+    """ Index metadata
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Index.html
     """
     catalog: str
@@ -153,7 +149,7 @@ class Index(NamedNode):
 
 @dataclass
 class Table(WebPageWithUses):
-    """ Table properties
+    """ Table metadata
         www.openoffice.org/api/docs/common/ref/com/sun/star/sdbcx/Table.html
     """
     description: str
@@ -163,6 +159,3 @@ class Table(WebPageWithUses):
 
     def children(self):
         return chain(self.keys, self.indexes, self.columns)
-
-
-Tabular = Union[Table, View, Query]

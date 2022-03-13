@@ -21,15 +21,18 @@ def hugo_filename(name: str) -> str:
 
 @dataclass(frozen=True)
 class Identifier(Dictable):
-    """ Unique id for ooobjects """
+    """ Unique id for (database) components """
     content_type: str
     local_id: str
     bookmark: Optional[str]
 
     @property
     def href(self):
-        """returns href for the graph
-        NB: relies on all graphs to be in 'svg/' subfolder """
+        """Returns href for the graph.
+        This is used to place a link in the diagram back to the hugo site,
+        for each node in the diagram.
+        """
+        # NB: relies on all graphs to be in 'svg/' subfolder
         url = f"../{self.content_type}/{hugo_filename(self.local_id)}/index.html"
         if self.bookmark:
             url = f"{url}#{self.bookmark}"
@@ -59,7 +62,7 @@ class UseLink(Dictable):
 
 
 def content_type(clazz) -> str:
-    """returns the Hugo content type of `clazz`"""
+    """Returns the Hugo content type name for `clazz`"""
     return clazz.__name__.lower()
 
 
@@ -68,11 +71,11 @@ class TreeNode:
 
     # pylint:disable=no-self-use
     def children(self):
-        """ returns a list of child nodes """
+        """ Returns a list of child nodes """
         return ()
 
     def all_objects(self):
-        """ returns all nodes in the subtree with self as root """
+        """ Returns all nodes in the subtree with self as root """
         return_value = [self]
         for child in self.children():
             return_value = chain(return_value, child.all_objects())
@@ -82,23 +85,23 @@ class TreeNode:
 
 @dataclass
 class Node(Dictable, TreeNode):
-    """ superclass of OO-objects representations """
+    """ Superclass of OO-component metadata classes """
     obj_id: str = field(init=False, default="OBJID_NOT_SET")
     parent: Optional["NamedNode"] = field(init=False, default=None, repr=False)
 
     @property
     def content_type(self) -> str:
-        """ returns classname in lowercase """
+        """ Returns classname in lowercase """
         return content_type(self.__class__)
 
     @property
     def identifier(self):
-        """returns a link to this node"""
+        """Returns a link to this node"""
         return get_identifier(self)
 
     @property
     def href(self):
-        """returns href fot the graph"""
+        """Returns href for the graph"""
         return self.identifier.href
 
     def to_dict(self):
@@ -130,7 +133,7 @@ class NamedNode(Node):
 
 @dataclass
 class User(Node):
-    """ Mixin for Nodes that can use one other node"""
+    """ Mixin for Nodes that can use at most one other node"""
     link: Optional[Identifier] = field(init=False, default=None)
 
     def link_to(self, target: "Usable"):
@@ -149,21 +152,28 @@ class Usable(NamedNode):
                                         repr=False,
                                         default_factory=list)
 
-    def users_match(self, username: str) -> bool:
-        """ determines whether `username` matches this object """
-        return self.name == username
+    def reference_match(self, referring: str) -> bool:
+        """ determines whether `referring` string matches this object """
+        return self.name == referring
 
 
 @dataclass
 class UseAggregator(Node, ABC):
-    """ aggregates uses and used_by """
+    """ Mixin for aggregating uses from children.
+     E.g. a query object does not not directly refer to a table,
+     but one of its SQLTokens does.
+     Likewise for a Form containing a Control with an EventListener that uses BasicFunction.
+    """
     uses: List['UseLink'] = field(init=False, repr=False, default_factory=list)
 
 
 @dataclass
 class WebPage(NamedNode, ABC):
-    """ has its own page, thus title attribute "\
-        " an object with a parent_link """
+    """ Has its own page,
+        thus title attribute, which must be unique within the content_type.
+        Can have a parent_link
+        See metadata.TopLevelDisplayedContent.
+    """
     parent_link: Optional['Identifier'] = field(init=False, default=None)
     title: str = field(init=False, default="TITLE_NOT_SET")
 
@@ -171,7 +181,7 @@ class WebPage(NamedNode, ABC):
         self.title = self.name
 
     def set_parent_links(self, parent: Optional['WebPage']) -> None:
-        """ recursively set parent links """
+        """ Recursively set parent links """
         if isinstance(parent, WebPage):
             self.parent_link = parent.identifier
 
@@ -262,7 +272,8 @@ class BasicToken(Token, Visitable):
 
 
 class Dependent(Visitable, ABC):
-    """Depends on zero of more Usable instances"""
+    """Is used as a source (referring component) in dependency search.
+    """
 
 
 class Preprocessable(Visitable, ABC):

@@ -21,12 +21,12 @@ def test_text_document(textdoc):
 
 
 def test_text_document_user_match(textdoc):
-    assert textdoc.users_match("plant.odt")
-    assert textdoc.users_match("plant")
+    assert textdoc.reference_match("plant.odt")
+    assert textdoc.reference_match("plant")
 
 
 def test_eventlistener(eventlistener):
-    assert eventlistener.parsescript() == "Library1.Module1.Main"
+    assert eventlistener.fully_qualified_function_name() == "Library1.Module1.Main"
 
 
 def test_control_children(control, eventlistener):

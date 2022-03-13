@@ -53,7 +53,7 @@ def test_node_all_objects():
 
 def test_node_users_match(table_plant):
     """ default implementation of users_match does string equality """
-    assert table_plant.users_match("plant")
+    assert table_plant.reference_match("plant")
 
 
 @pytest.mark.parametrize("parent,parent_link",

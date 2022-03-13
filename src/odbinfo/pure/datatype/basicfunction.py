@@ -7,7 +7,7 @@ from odbinfo.pure.datatype.base import BasicToken, Dependent, WebPageWithUses
 
 @dataclass
 class BasicCall:
-    """ a function or procedure call in parsed basic code"""
+    """ A function or procedure call in parsed basic code"""
     name_token: BasicToken
     module_token: Optional[BasicToken]
 
@@ -32,7 +32,7 @@ class BasicCall:
 # pylint:disable=too-many-instance-attributes
 @dataclass
 class BasicFunction(WebPageWithUses, Dependent):
-    """ Basic sub or function """
+    """ Basic procedure or function metadata"""
 
     library: str
     module: str

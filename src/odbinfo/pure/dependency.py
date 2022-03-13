@@ -37,7 +37,7 @@ class KeySearch(KeyVisitor, DependencySearchBase):
     """ Visitor for depencency search in Keys"""
 
     def visit_key(self, key: Key):
-        if self.target.users_match(key.referenced_table):
+        if self.target.reference_match(key.referenced_table):
             key.link = self.target.identifier
 
 
@@ -46,7 +46,7 @@ class QueryBaseSearch(QueryBaseVisitor, DependencySearchBase):
 
     def visit_querybase(self, query: QueryBase):
         for token in query.table_tokens:
-            if self.target.users_match(token.text[1:-1]):
+            if self.target.reference_match(token.text[1:-1]):
                 token.link_to(self.target)
 
 
@@ -58,7 +58,7 @@ class EventListenerSearch(EventListenerVisitor, DependencySearchBase):
             return
         func = cast(BasicFunction, self.target)
         if f"{func.library}.{func.module}.{func.name}" == \
-                eventlistener.parsescript():
+                eventlistener.fully_qualified_function_name():
             eventlistener.link_to(func)
 
 
@@ -67,7 +67,7 @@ class CommanderSearch(CommanderVisitor, DependencySearchBase):
 
     def visit_commander(self, commander: AbstractCommander):
         if not commander.issqlcommand and \
-                self.target.users_match(commander.command):
+                self.target.reference_match(commander.command):
             commander.link_to(self.target)
 
     def visit_listbox(self, listbox: ListBox):
@@ -81,7 +81,7 @@ class DatabaseDisplaySearch(DatabaseDisplayVisitor, DependencySearchBase):
     """Dependency search in database display object in text documents"""
 
     def visit_databasedisplay(self, display: DatabaseDisplay):
-        if self.target.users_match(display.table):
+        if self.target.reference_match(display.table):
             display.link_to(self.target)
 
 
@@ -101,7 +101,7 @@ class BasicFunctionStringSearch(BasicFunctionVisitor, DependencySearchBase):
 
     def visit_basicfunction(self, basicfunction: BasicFunction):
         for string_literal in basicfunction.strings:
-            if self.target.users_match(string_literal.text[1:-1]):
+            if self.target.reference_match(string_literal.text[1:-1]):
                 string_literal.link_to(self.target)
 
 

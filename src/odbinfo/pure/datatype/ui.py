@@ -22,21 +22,22 @@ class AbstractCommander(User, NamedNode, Dependent, ABC):
     def __post_init__(self):
         if self.issqlcommand:
             self.embedded_query = \
-                EmbeddedQuery(f"{self.name}.Command", self.command)
+                EmbeddedQuery(name=f"{self.name}.Command",
+                              command=self.command)
 
     @property
     @abstractmethod
     def command(self):
-        """returns the command str"""
+        """Returns the command str"""
 
     @property
     @abstractmethod
     def commandtype(self):
-        """returns the commandtype"""
+        """Returns the commandtype"""
 
     @property
     def issqlcommand(self):
-        """returns True if command contains SQL"""
+        """Returns True if command contains SQL"""
         return self.commandtype in COMMAND_TYPE_COMMAND
 
     def accept(self, visitor):
@@ -60,7 +61,7 @@ class Commander(AbstractCommander):
 
 @dataclass
 class DatabaseDisplay(User, NamedNode, Dependent):
-    """ Field in TextDocument """
+    """ Database field in TextDocument """
 
     database: str
     table: str
@@ -80,19 +81,23 @@ class TextDocument(WebPageWithUses):
     def children(self):
         return self.fields
 
-    def users_match(self, username: str) -> bool:
+    def reference_match(self, referring: str) -> bool:
         # could be done better by enumerating all subpaths
-        return username in (self.name, self.filename)
+        return referring in (self.name, self.filename)
 
 
 @dataclass
 class EventListener(User, NamedNode, Dependent):
-    """ Control eventlistener """
+    """ Control eventlistener metadata """
 
     script: str
 
-    def parsescript(self) -> str:
-        """returns {Lib}.{Mod}.{Func} part from script field"""
+    def fully_qualified_function_name(self) -> str:
+        """
+        This method returns {Library}.{Module}.{Function} part from script field.
+        In case of "vnd.sun.star.script:Library1.Module1.Main?language=Basic&location=document",
+        "Library1.Module1.Main" is returned.
+        """
         return (self.script.split(":")[1]).split("?")[0]
 
     def accept(self, visitor):
@@ -102,7 +107,7 @@ class EventListener(User, NamedNode, Dependent):
 @dataclass
 # pylint: disable=too-many-instance-attributes
 class ControlBase(NamedNode):
-    """ Form control """
+    """ Form control metadata"""
     controlid: str
     datafield: str
     inputrequired: bool
@@ -124,7 +129,7 @@ class ControlBase(NamedNode):
         return True
 
     def is_relevant(self):
-        """Returns True if this Control is interesting for the depencency graph"""
+        """ Returns True if this Control is interesting for the depencency graph """
         if self.eventlisteners:
             return True
         return False
@@ -132,7 +137,7 @@ class ControlBase(NamedNode):
 
 @dataclass
 class Control(ControlBase, Preprocessable):
-    """ Form control """
+    """ Form control metadata """
 
     @property
     def graph_label(self):
@@ -146,7 +151,7 @@ class Control(ControlBase, Preprocessable):
 
 @dataclass
 class ListBox(AbstractCommander, ControlBase, Preprocessable):
-    """ ListBox control"""
+    """ ListBox control metadata """
     boundcolumn: int
     dropdown: bool
     listsourcetype: str
@@ -178,7 +183,7 @@ class ListBox(AbstractCommander, ControlBase, Preprocessable):
 
 @dataclass
 class Grid(NamedNode):
-    """ Table view control"""
+    """ Table view control metadata """
     columns: List[Control]
     type: str
 
@@ -189,7 +194,7 @@ class Grid(NamedNode):
 @dataclass
 # pylint: disable=too-many-instance-attributes
 class SubForm(Commander, NamedNode, Preprocessable):
-    """ Database subform """
+    """ Database subform metadata """
     allowdeletes: str
     allowinserts: str
     allowupdates: str
@@ -211,7 +216,7 @@ class SubForm(Commander, NamedNode, Preprocessable):
 
 @dataclass
 class Form(WebPageWithUses, Preprocessable):
-    """ Toplevel form """
+    """ Toplevel form metadata """
     subforms: List[SubForm]
     height: Optional[int] = field(init=False, default=None)
 

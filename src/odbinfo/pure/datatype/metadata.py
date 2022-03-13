@@ -1,4 +1,7 @@
-""" Metadata class """
+""" Metadata class
+Contains all the metadata read from the odb zipfile or retrieved from staroffice.
+Like Tables, Views,  Queries, Forms, Reports and BasicFunctions.
+"""
 import itertools
 from dataclasses import dataclass, field
 from enum import Enum
@@ -11,9 +14,8 @@ from odbinfo.pure.datatype.base import BasicToken, Node, Usable, User, WebPage
 from odbinfo.pure.datatype.basicfunction import BasicFunction
 from odbinfo.pure.datatype.exec import (Library, Module, PythonLibrary,
                                         PythonModule)
-from odbinfo.pure.datatype.tabular import EmbeddedQuery, Query, Table, View
-from odbinfo.pure.datatype.ui import (AbstractCommander, EventListener, Form,
-                                      Report, TextDocument)
+from odbinfo.pure.datatype.tabular import Query, Table, View
+from odbinfo.pure.datatype.ui import Form, Report, TextDocument
 
 
 class TopLevelDisplayedContent(Enum):
@@ -34,7 +36,7 @@ class TopLevelDisplayedContent(Enum):
 # pylint: disable=too-many-instance-attributes
 @dataclass
 class Metadata(WebPage):
-    """ Collector class for all metadata read from the odb-file """
+    """ Collector class for all metadata read from the odb-file or retrieved from staroffice"""
     table_defs: List[Table]
     view_defs: List[View]
     query_defs: List[Query]
@@ -52,50 +54,37 @@ class Metadata(WebPage):
 
     def get_definitions(
             self, content_type: TopLevelDisplayedContent) -> Sequence[WebPage]:
-        """returns the definitions of `content_type`"""
+        """ Returns the definitions of `content_type`
+            Another way of calling table_defs, form_defs etc.
+        """
         return getattr(self, f"{content_type.name.lower()}_defs")
 
     def _set_parents(self):
-        """ set the parents in all objects """
+        """ Sets the parents in all objects """
         for obj in self.all_objects():
             for child in obj.children():
                 child.parent = obj
 
     @property
     def basicfunction_defs(self) -> List[BasicFunction]:
-        """collect all targets from libraries"""
+        """ Returns a list of all basic functions """
         return sum((lib.basicfunctions for lib in self.library_defs), [])
 
     @property
     def module_defs(self) -> List[Module]:
-        """collect all basic modules from libraries"""
+        """ Returns a list of all basic modules """
         return sum((lib.modules for lib in self.library_defs), [])
 
     @property
     def pythonmodule_defs(self) -> List[PythonModule]:
-        """collect all python modules from libraries"""
+        """ Returns a list of all python modules """
         return sum((lib.modules for lib in self.pythonlibrary_defs), [])
 
     def by_content_type(self, *content_type_class):
-        """returns as iterator for all instances of `content_type_class`"""
+        """ Returns as iterator for all instances of the `content_type_class` arguments """
         return \
             [obj for obj in self.all_objects()
              if isinstance(obj, tuple(content_type_class))]
-
-    @property
-    def embeddedqueries(self) -> Iterable[EmbeddedQuery]:
-        """ collect all EmbeddedQuery objects """
-        return self.by_content_type(EmbeddedQuery)
-
-    @property
-    def commanders(self):
-        """ collect all AbstractCommander objects"""
-        return self.by_content_type(AbstractCommander)
-
-    @property
-    def eventlisteners(self):
-        """ collect all EventListener objects"""
-        return self.by_content_type(EventListener)
 
     def children(self):
         return \
@@ -111,12 +100,14 @@ class Metadata(WebPage):
             )
 
     def _set_obj_ids(self) -> None:
-        """ numbers all contained objects """
+        """ Numbers all contained objects """
         for index, obj in zip(itertools.count(), self.all_objects()):
             obj.obj_id = str(index)
 
     def _create_index(self) -> None:
-        """ make an index of linkable objects """
+        """ Creates two indexes
+         one by obj_id and one by identifier.
+         """
         for content in self.all_objects():
             # pylint:disable=no-member
             self.node_by_id[content.obj_id] = content
@@ -131,11 +122,10 @@ class Metadata(WebPage):
         self._create_index()
 
     @property
-    def all_active_users(self) -> Iterable[User]:
-        """ returns all User objects with a link set from the tree """
-        # exclude tokens in Modules
+    def actual_users(self) -> Iterable[User]:
+        """ Returns an iterator on all User objects with their link set """
+        # exclude tokens in Modules, the ones from the BasicFunctions suffice
         # pylint:disable=no-member
-
         return \
             (obj for obj in self.by_content_type(User)
              if obj.link and not (isinstance(obj.parent, Module) and isinstance(obj, BasicToken)))

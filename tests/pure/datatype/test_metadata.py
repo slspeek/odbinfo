@@ -45,23 +45,6 @@ def test_pythonmodule_defs(metadata_empty):
     assert metadata_empty.pythonmodule_defs == [module]
 
 
-def test_embeddedquery_defs(metadata_empty, report_embeddedquery, embedded_query):
-    metadata_empty.report_defs = [report_embeddedquery]
-    assert list(metadata_empty.embeddedqueries) == [
-        embedded_query]
-
-
-def test_commanders(metadata_empty, report_embeddedquery):
-    metadata_empty.report_defs = [report_embeddedquery]
-    assert list(metadata_empty.commanders) == [report_embeddedquery]
-
-
-def test_eventlisteners(metadata_empty, form, eventlistener):
-    metadata_empty.form_defs = [form]
-
-    assert list(metadata_empty.eventlisteners) == [eventlistener]
-
-
 def test_set_obj_ids(metadata_empty, table_plant, table_family):
     metadata_empty.table_defs = [table_plant, table_family]
 
@@ -87,6 +70,6 @@ def test_all_active_users(metadata_tables):
     key = metadata_tables.table_defs[0].keys[0]
     key.link = metadata_tables.table_defs[1].identifier
 
-    active_users = list(metadata_tables.all_active_users)
+    active_users = list(metadata_tables.actual_users)
     assert len(active_users) == 1
     assert key in active_users

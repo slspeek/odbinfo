@@ -122,7 +122,7 @@ def merge_used_by(users: Sequence[Identifier]) -> List[Identifier]:
 def aggregate_used_by(metadata: Metadata,
                       collapse_multiple_uses: bool) -> None:
     """Collect all used_by"""
-    for user in metadata.all_active_users:
+    for user in metadata.actual_users:
         metadata.usable_by_link[user.link].used_by.append(user.identifier)
     if collapse_multiple_uses:
         for usable in metadata.by_content_type(Usable):

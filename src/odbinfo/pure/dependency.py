@@ -179,7 +179,7 @@ def search_dependencies(metadata: Metadata) -> None:
     """ dependency search in `metadata`"""
     search_callable_in_callable(metadata.basicfunction_defs)
 
-    search_combinations(sources=metadata.eventlisteners,
+    search_combinations(sources=metadata.by_content_type(EventListener),
                         targets=metadata.basicfunction_defs)
     search_combinations(sources=metadata.basicfunction_defs,
                         targets=metadata.by_content_type(
@@ -190,7 +190,7 @@ def search_dependencies(metadata: Metadata) -> None:
                         targets=metadata.by_content_type(Table, View))
     search_combinations(sources=metadata.by_content_type(Query, EmbeddedQuery),
                         targets=metadata.by_content_type(Table, Query, View))
-    search_combinations(sources=metadata.commanders,
+    search_combinations(sources=metadata.by_content_type(AbstractCommander),
                         targets=metadata.by_content_type(Table, Query, View))
     search_combinations(sources=metadata.by_content_type(DatabaseDisplay),
                         targets=metadata.by_content_type(Table, Query, View))

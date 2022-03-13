@@ -66,7 +66,7 @@ def visible_dependency_edges(metadata: Metadata, config: GraphConfig) \
         -> Sequence[Tuple[str, str]]:
     """ returns edges to draw in graph """
     uses = []
-    for user in metadata.all_active_users:
+    for user in metadata.actual_users:
         used_node = metadata.usable_by_link[user.link]
         user_vis_ancestor = visible_ancestor(config, user)
         if not user_vis_ancestor:

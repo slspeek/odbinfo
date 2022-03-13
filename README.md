@@ -117,6 +117,8 @@ textdocuments:
 May take a while to run if the database document file is in a big directory due
 to the search of related text documents.  
 
+The BASIC parsing does not recorgnize BASIC class modules and method invocations.
+
 ## Bugs
 If you find a bug please submit an issue.
 

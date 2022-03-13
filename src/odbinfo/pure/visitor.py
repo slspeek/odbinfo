@@ -1,4 +1,4 @@
-"""Node visitor interfaces"""
+"""Visitor interfaces for the datatypes"""
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
@@ -21,6 +21,22 @@ class BasicTokenVisitor(ABC):
     @abstractmethod
     def visit_basictoken(self, token: BasicToken):
         """ visit a BASIC token"""
+
+
+class BasicFunctionVisitor(ABC):
+    """BasicFucntion visitor interface """
+
+    @abstractmethod
+    def visit_basicfunction(self, basicfunction: BasicFunction):
+        """ visit a basicfunction """
+
+
+class ModuleVisitor(ABC):
+    """ Module visitor interface """
+
+    @abstractmethod
+    def visit_module(self, module: Module):
+        """Visit Module"""
 
 
 class ListBoxVisitor(ABC):
@@ -48,19 +64,11 @@ class ControlVisitor(ABC):
 
 
 class FormVisitor(SubFormVisitor, ListBoxVisitor, ControlVisitor, ABC):
-    """ Form visitor interface """
+    """ Form visitor interface, can visit a Form and its subcomponents """
 
     @abstractmethod
     def visit_form(self, form: Form):
         """Visit Form"""
-
-
-class ModuleVisitor(ABC):
-    """ Module visitor interface """
-
-    @abstractmethod
-    def visit_module(self, module: Module):
-        """Visit Module"""
 
 
 class QueryBaseVisitor(ABC):
@@ -72,7 +80,9 @@ class QueryBaseVisitor(ABC):
 
 
 class PreprocessableVisitor(ModuleVisitor, QueryBaseVisitor, FormVisitor, ABC):
-    """ Preprocessable visitor interface """
+    """ Preprocessable visitor interface, can visit all components that need preprocessing
+        before the dependency search
+     """
 
 
 class KeyVisitor(ABC):
@@ -107,15 +117,7 @@ class DatabaseDisplayVisitor(ABC):
         """visit a database display"""
 
 
-class BasicFunctionVisitor(ABC):
-    """BasicFucntion visitor interface """
-
-    @abstractmethod
-    def visit_basicfunction(self, basicfunction: BasicFunction):
-        """ visit a basicfunction """
-
-
 class DependentVisitor(KeyVisitor, QueryBaseVisitor, EventListenerVisitor,
                        CommanderVisitor, DatabaseDisplayVisitor,
                        BasicFunctionVisitor, ABC):
-    """ Dependent visitor interface"""
+    """ Dependent visitor interface, can visit all componets that can use another component"""

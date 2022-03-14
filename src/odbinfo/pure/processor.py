@@ -1,4 +1,11 @@
-""" Processor module """
+""" Processor module
+    Processing consists of
+    1. Preprocessing for the dependency search (e.g. parsing)
+    2. Dependency search
+    3. Graph generation
+    4. Color highlighting BASIC
+    5. Sets the parent links (e.g. BasicFunction -> Module -> Library)
+"""
 import dataclasses
 from typing import List, Sequence, Union
 
@@ -26,18 +33,18 @@ class FormPreprocessor(FormVisitor):
     """Form preprocessor, set the height of the form"""
 
     def height(self, subform: SubForm) -> int:
-        """ max path length to a leaf subform """
+        """ Returns the maximum path length to a leaf subform """
         return max((self.height(sf) + 1 for sf in subform.subforms), default=0)
 
     @staticmethod
     def set_depth(depth: int, subform: SubForm) -> None:
-        """ sets depth recursively in `subform`"""
+        """ Sets depth recursively in `subform`"""
         subform.depth = depth
         for asubform in subform.subforms:
             FormPreprocessor.set_depth(depth + 1, asubform)
 
     def set_form_height(self, form: Form) -> None:
-        """ set the max height into the `form` """
+        """ Set the maximum height into the `form` """
         form.height = max([self.height(sf) for sf in form.subforms], default=0)
 
     def visit_form(self, form: Form):
@@ -78,7 +85,15 @@ def undouble_uses(usecases: List[UseLink]) -> List[UseLink]:
 
 def aggregate_uses_from_children(user_agg: UseAggregator,
                                  collapse_multiple_uses: bool) -> None:
-    """Collect aggregated uses from its children """
+    """
+        Collect aggregated uses from its children.
+        Queries and Forms are UseAggregators.
+
+        One can call these uses the implied uses.
+        E.g. a Query "SELECT * FROM "table_1";" has an implied use of Table "table_1".
+        While a SQLToken (child of that Query) referring to the Table is the actual
+        user.
+    """
     collected_uses: List[UseLink] = []
     for node in user_agg.all_objects():
         if isinstance(node, User) and node.link:
@@ -89,9 +104,10 @@ def aggregate_uses_from_children(user_agg: UseAggregator,
         user_agg.uses = collected_uses
 
 
-def aggregate_uses(metadata: Metadata, collapse_multiple_uses: bool) -> None:
+def aggregate_uses(use_aggregators: List[UseAggregator],
+                   collapse_multiple_uses: bool) -> None:
     """Collect uses by children for all UseAggregators"""
-    for use_agg in metadata.by_content_type(UseAggregator):
+    for use_agg in use_aggregators:
         aggregate_uses_from_children(use_agg, collapse_multiple_uses)
 
 
@@ -99,7 +115,7 @@ def merge_used_by(users: Sequence[Identifier]) -> List[Identifier]:
     """If two ids have the same content_type and local_id merge their bookmarks"""
 
     def unique_page_identifiers():
-        """ returns all unique the WebPages involved in `users`,
+        """ Returns all unique the WebPages involved in `users`,
             that is discarding the bookmark part of the Identifier
             when comparing """
         return list(dict.fromkeys((i.content_type, i.local_id) for i in users))
@@ -136,7 +152,7 @@ def rewrite_module_callable_links(module_seq: Sequence[Module]) -> None:
     # process module source tokens to support callable links at module level
     # e.g /Lib1.Mod1/#macro
     # By rewriting Identifier(type="BasicFunction" local_id="call.Mod1.Lib1")
-    # to Identifier("Module", "Mod1.Lib1", bookmark="call")
+    # to Identifier(type="Module", local_id="Mod1.Lib1", bookmark="call")
     def rewrite_module(basic_module: Module):
 
         def rewrite_link(link: Identifier):
@@ -164,7 +180,7 @@ class ModulePreprocessor(ModuleVisitor):
 
     @staticmethod
     def link_name_tokens(module: Module):
-        """Link the name tokens to the single function pages"""
+        """Link the name tokens to the function-detail pages"""
         for name_index, acallable in zip(module.name_indexes,
                                          module.callables):
             module.tokens[name_index].link_to(acallable)
@@ -175,8 +191,12 @@ class ModulePreprocessor(ModuleVisitor):
         module.tokens = [dataclasses.replace(token) for token in module.tokens]
 
     def visit_module(self, module: Module):
-        """ Tokenizes, parses, copies the tokens and sets the indexes
-                       of the tokens that are the names of the procedures """
+        """ 1. Tokenizes
+            2. Parses
+            3. Deep copies the module tokens (so they can diverge from the function tokens)
+            4. Sets the indexes of the tokens that are the names of the procedures
+            5. Links to procedure name tokens to function-detail page
+        """
         module.tokens = \
             get_basic_tokens(module.source)
         module.callables = \
@@ -192,7 +212,7 @@ class QueryBasePreprocessor(QueryBaseVisitor):
 
     @staticmethod
     def parse_query(query: QueryBase):
-        """parses `query.command`"""
+        """Parses `query.command`"""
         parse_result = parse(query.command)
         query.tokens = parse_result.tokens
         query.table_tokens = parse_result.tablenames
@@ -206,14 +226,17 @@ class QueryBasePreprocessor(QueryBaseVisitor):
 
     @timed("Parse query", indent=4, arg=1)
     def visit_querybase(self, query: QueryBase):
-        """preprocesses `query`, that is parses it and does its the color highlighting"""
+        """Preprocesses `query`, that is parses it and does its the color highlighting"""
         self.parse_query(query)
         self.color_hightlight_query(query)
 
 
 class Preprocessor(PreprocessableVisitor, ModulePreprocessor,
                    QueryBasePreprocessor, FormPreprocessor):
-    """All preprocessors together"""
+    """All preprocessor implementations together.
+       ModulePreprocessor, QueryBasePreprocessor with FormPreprocessor implement
+       PreprocessableVisitor
+    """
 
 
 BASICTOKEN_CLASSES = {
@@ -247,17 +270,20 @@ def preprocess(preprocessables: Sequence[Preprocessable]):
 
 @timed("Process metadata", indent=2)
 def process_metadata(config: Configuration, metadata: Metadata) -> Metadata:
-    """ preprocessing of the data before it is written """
+    """ Processing of the `metadata`"""
     preprocess(metadata.by_content_type(Preprocessable))
-    highlight_tokens(metadata.by_content_type(BasicToken))
+
     metadata.prepare_indexed_tree()
 
     search_dependencies(metadata)
     rewrite_module_callable_links(metadata.module_defs)
-    aggregate_uses(metadata, config.graph.collapse_multiple_uses)
+    aggregate_uses(metadata.by_content_type(UseAggregator),
+                   config.graph.collapse_multiple_uses)
     aggregate_used_by(metadata, config.graph.collapse_multiple_uses)
 
     metadata.graph = generate_main_graph(metadata, config)
     metadata.set_parent_links(None)
+
+    highlight_tokens(metadata.by_content_type(BasicToken))
     # for test purposes only, needed for benchmarking
     return metadata

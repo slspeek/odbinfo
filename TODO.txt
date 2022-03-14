@@ -4,9 +4,6 @@ Check 'meaningful names' and docs-string, but do not refactor big time
 src/odbinfo/pure/builder.py
 src/odbinfo/pure/dependency.py
 
-Identify the weak spots in Makefile
-* all reports must go in target/build/reports
-
 better description of the extension: see README.md
 
 update minimal theme (20210703 ok)
@@ -16,6 +13,9 @@ make upgrade dependencies (20220220 done)
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
+Identify the weak spots in Makefile
+* all reports must go in target/build/reports
+
 Basic parsing: class modules and method invocation
 
 Look at VSCode

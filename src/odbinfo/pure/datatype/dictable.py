@@ -9,20 +9,21 @@ class Dictable(ABC):
 
     @abstractmethod
     def to_dict(self):
-        """ returns dictionary representation
+        """ Returns dictionary representation
             used for the write-out to the hugo site"""
 
 
-def list_to_dict(values):
-    """ convert list values to dict """
+def list_to_dict(values: List[Any]) -> List[Any]:
+    """ Convert list values to dict """
     if values:
         if isinstance(values[0], Dictable):
+            # It is assumed that all values are Dictable instances too
             return [d.to_dict() for d in values]
     return values
 
 
 def to_dict(value: Any):
-    """ returns dictionay representation of `value`"""
+    """ Returns dictionay representation of `value`"""
     if isinstance(value, List):
         return list_to_dict(value)
     if isinstance(value, Dictable):

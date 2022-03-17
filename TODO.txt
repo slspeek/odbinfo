@@ -1,14 +1,17 @@
 #################################################################################
-############################## release 0.1.0 ####################################
+############################## release 0.1.1 ####################################
 #################################################################################
 update minimal theme (20210703 ok)
 make upgrade dependencies (20220317 done)
+bump version and tag v0.1.1
 ---------------------------------------------------------
 ---------------------------------------------------------
 Identify the weak spots in Makefile
 * all reports must go in target/build/reports
 
 Basic parsing: class modules and method invocation
+
+Look at VSCode
 
 test extension with packaged LibreOffice
 in docker with several different linux distros

@@ -3,7 +3,7 @@
 #################################################################################
 update minimal theme (20210703 ok)
 
-make upgrade dependencies (20220220 done)
+make upgrade dependencies (20220317 done)
 
 bump version and tag v0.1.0
 ---------------------------------------------------------

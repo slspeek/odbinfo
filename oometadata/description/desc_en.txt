@@ -1,2 +1,11 @@
-Makes a report of your database file.
+Creates a html-report of the components of a LibreOffice database.
+The tables, views, queries, forms, reports, macros and mail-merge
+documents get their own detailed page. Their dependency relations
+are hyperlinked.
+The report contains a diagram with all the components as nodes
+and their relations as arrows.
+
+Please see: https://github.com/slspeek/odbinfo#installation on how
+to install and use this tool.
+
 Copyright (c) Steven L. Speek 2020 - 2022.

@@ -21,8 +21,8 @@ def test_text_document(textdoc):
 
 
 def test_text_document_user_match(textdoc):
-    assert textdoc.reference_match("plant.odt")
-    assert textdoc.reference_match("plant")
+    assert textdoc.is_reference_match("plant.odt")
+    assert textdoc.is_reference_match("plant")
 
 
 def test_eventlistener(eventlistener):

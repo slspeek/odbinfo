@@ -152,8 +152,8 @@ class Usable(NamedNode):
                                         repr=False,
                                         default_factory=list)
 
-    def reference_match(self, referring: str) -> bool:
-        """ determines whether `referring` string matches this object """
+    def is_reference_match(self, referring: str) -> bool:
+        """ Determines whether `referring` string matches this object """
         return self.name == referring
 
 

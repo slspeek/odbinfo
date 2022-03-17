@@ -17,41 +17,32 @@ from odbinfo.pure.visitor import (BasicFunctionVisitor, CommanderVisitor,
                                   QueryBaseVisitor)
 
 
-def search_combinations(sources: Sequence[Dependent],
-                        targets: Sequence[Usable]) -> None:
-    """ search for uses of `targets` in `sources`"""
-    for target in targets:
-        visitor = DepencencySearch(target)
-        for source in sources:
-            source.accept(visitor)
-
-
 class DependencySearchBase(ABC):
-    """Stores the target"""
+    """ Stores the target """
 
-    def __init__(self, target: Usable):
+    def __init__(self, target: Usable) -> None:
         self.target = target
 
 
 class KeySearch(KeyVisitor, DependencySearchBase):
-    """ Visitor for depencency search in Keys"""
+    """ Depencency search with Keys as source or referrer """
 
     def visit_key(self, key: Key):
-        if self.target.reference_match(key.referenced_table):
+        if self.target.is_reference_match(key.referenced_table):
             key.link = self.target.identifier
 
 
 class QueryBaseSearch(QueryBaseVisitor, DependencySearchBase):
-    """ Visitor for depencency search in Query-like objects"""
+    """ Depencency search with Query-like objects as source """
 
     def visit_querybase(self, query: QueryBase):
         for token in query.table_tokens:
-            if self.target.reference_match(token.text[1:-1]):
+            if self.target.is_reference_match(token.text[1:-1]):
                 token.link_to(self.target)
 
 
 class EventListenerSearch(EventListenerVisitor, DependencySearchBase):
-    """ Visitor for depencency search in EventListeners"""
+    """ Depencency search with EventListeners as source """
 
     def visit_eventlistener(self, eventlistener: EventListener):
         if not isinstance(self.target, BasicFunction):
@@ -63,11 +54,11 @@ class EventListenerSearch(EventListenerVisitor, DependencySearchBase):
 
 
 class CommanderSearch(CommanderVisitor, DependencySearchBase):
-    """ Commander depencency search """
+    """ Depencency search with Commanders as source """
 
     def visit_commander(self, commander: AbstractCommander):
         if not commander.issqlcommand and \
-                self.target.reference_match(commander.command):
+                self.target.is_reference_match(commander.command):
             commander.link_to(self.target)
 
     def visit_listbox(self, listbox: ListBox):
@@ -78,15 +69,15 @@ class CommanderSearch(CommanderVisitor, DependencySearchBase):
 
 
 class DatabaseDisplaySearch(DatabaseDisplayVisitor, DependencySearchBase):
-    """Dependency search in database display object in text documents"""
+    """ Dependency search with database display object in text documents as source """
 
     def visit_databasedisplay(self, display: DatabaseDisplay):
-        if self.target.reference_match(display.table):
+        if self.target.is_reference_match(display.table):
             display.link_to(self.target)
 
 
 class BasicFunctionCallSearch(BasicFunctionVisitor):
-    """ Dependency search in a basic function """
+    """ Dependency search with a basic function as source """
 
     def __init__(self, target: BasicFunction):
         self.target = target
@@ -97,16 +88,16 @@ class BasicFunctionCallSearch(BasicFunctionVisitor):
 
 
 class BasicFunctionStringSearch(BasicFunctionVisitor, DependencySearchBase):
-    """ Dependency search in a basic function """
+    """ Dependency search with a basic function as source """
 
     def visit_basicfunction(self, basicfunction: BasicFunction):
         for string_literal in basicfunction.strings:
-            if self.target.reference_match(string_literal.text[1:-1]):
+            if self.target.is_reference_match(string_literal.text[1:-1]):
                 string_literal.link_to(self.target)
 
 
 class RemoveFalseRecursiveCalls(BasicFunctionVisitor):
-    """ Removes the probably unintended link to itself for functions"""
+    """ Removes the probably unintended link to itself for functions """
 
     def visit_basicfunction(self, basicfunction: BasicFunction):
         """ Removes false recursive calls
@@ -118,7 +109,8 @@ class RemoveFalseRecursiveCalls(BasicFunctionVisitor):
             End Function
 
             The parser has identified 'NumericAdd()' as a call,
-            here it is removed."""
+            here it is removed.
+        """
         for call in basicfunction.calls:
             if call.module_token:
                 continue
@@ -130,20 +122,30 @@ class DepencencySearch(KeySearch, QueryBaseSearch, EventListenerSearch,
                        CommanderSearch, DatabaseDisplaySearch,
                        BasicFunctionStringSearch, DependentVisitor):
     """All dependency search visitors,
-     note it implements DependentVisitor with its other superclasses"""
+     note that it implements DependentVisitor with its other superclasses"""
 
 
-def remove_false_recursive_calls(funcs: Sequence[BasicFunction]):
-    """remove the parser's wrong interpretation of return values"""
+def search_combinations(sources: Sequence[Dependent],
+                        targets: Sequence[Usable]) -> None:
+    """ Search for uses of `targets` in `sources` """
+    for target in targets:
+        visitor = DepencencySearch(target)
+        for source in sources:
+            source.accept(visitor)
+
+
+def remove_false_recursive_calls(funcs: Sequence[BasicFunction]) -> None:
+    """ Remove the parser's wrong interpretation of return values """
     remove_rec_calls_visitor = RemoveFalseRecursiveCalls()
     for function in funcs:
         function.accept(remove_rec_calls_visitor)
 
 
-def search_calls(source: BasicFunction, targets: Sequence[BasicFunction]):
-    """ search for calls from source in `targets`"""
+def search_calls(source: BasicFunction,
+                 targets: Sequence[BasicFunction]) -> None:
+    """ Search for calls from source in `targets` """
 
-    # source's module
+    # targets in the same module
     def filter_own_module(target: BasicFunction) -> bool:
         return (target.module == source.module
                 and target.library == source.library)
@@ -167,7 +169,7 @@ def search_calls(source: BasicFunction, targets: Sequence[BasicFunction]):
 
 def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
     """
-    dependency search amoung the basicfunctions
+    Dependency search amoung the basicfunctions
     """
     for acallable in callables:
         search_calls(acallable, callables)
@@ -176,7 +178,7 @@ def search_callable_in_callable(callables: Sequence[BasicFunction]) -> None:
 
 @timed("Search dependencies", indent=4)
 def search_dependencies(metadata: Metadata) -> None:
-    """ dependency search in `metadata`"""
+    """ The dependency search matrix """
     search_callable_in_callable(metadata.basicfunction_defs)
 
     search_combinations(sources=metadata.by_content_type(EventListener),

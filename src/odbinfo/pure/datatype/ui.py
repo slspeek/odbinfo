@@ -81,7 +81,7 @@ class TextDocument(WebPageWithUses):
     def children(self):
         return self.fields
 
-    def reference_match(self, referring: str) -> bool:
+    def is_reference_match(self, referring: str) -> bool:
         # could be done better by enumerating all subpaths
         return referring in (self.name, self.filename)
 

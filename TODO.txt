@@ -1,11 +1,6 @@
 #################################################################################
 ############################## release 0.1 ######################################
 #################################################################################
-review entire source tree
--------------------------
-Check 'meaningful names' and docs-string, but do not refactor big time
-src/odbinfo/pure/dependency.py
-
 update minimal theme (20210703 ok)
 
 make upgrade dependencies (20220220 done)

@@ -22,6 +22,7 @@ class BasicCall:
         """Consider `target` for this call"""
         if self.name_token.link:
             # if already linked do nothing
+            # TODO this 'if' doesn't belong here
             return
         if not self.match_module(target.module):
             return

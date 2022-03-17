@@ -1,4 +1,8 @@
-""" builder module: calls gohugo"""
+""" builder module is responsible for:
+    1. calling gohugo
+    2. converting the report to a local html-site with wget
+    3. opening a webbrowser
+"""
 import os
 import shlex
 import socket
@@ -19,7 +23,7 @@ def run_gohugo(site_path: Path) -> None:
 
 
 def find_free_port() -> int:
-    """returns a free port number"""
+    """Returns a free port number"""
     # pylint: disable=no-member
     with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
         sock.bind(('', 0))
@@ -27,7 +31,7 @@ def find_free_port() -> int:
         return sock.getsockname()[1]
 
 
-def is_port_open(port):
+def is_port_open(port) -> bool:
     """Returns True if `port` is open, otherwise False"""
     # pylint: disable=no-member
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
@@ -67,14 +71,14 @@ def convert_local(site_path: Path) -> None:
 
 
 def open_browser(site_dir: Path) -> None:
-    """Opens a webbrowser on `site_dir`"""
+    """Opens a webbrowser on `site_dir`/index.html"""
     site_abs_path = site_dir.resolve() / "index.html"
     webbrowser.open(site_abs_path.as_uri())
 
 
 @timed("Build and open hugo site", indent=2)
-def build(site_path: Path, open_browser_flag):
-    """builds a written site on `site_path`"""
+def build(site_path: Path, open_browser_flag: bool) -> None:
+    """Builds a written site on `site_path`"""
     run_gohugo(site_path)
     convert_local(site_path)
     if open_browser_flag:

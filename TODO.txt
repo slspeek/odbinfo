@@ -4,7 +4,6 @@
 review entire source tree
 -------------------------
 Check 'meaningful names' and docs-string, but do not refactor big time
-src/odbinfo/pure/builder.py
 src/odbinfo/pure/dependency.py
 
 update minimal theme (20210703 ok)

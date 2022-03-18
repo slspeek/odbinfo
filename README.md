@@ -30,7 +30,7 @@ this to your advantage working on it. It is handy when you want to rename
 a component, because you can easily inspect the uses.
 
 ## Installation
-Get the odbinfo.oxt from ... (Coming soon)
+Get the odbinfo.oxt  [here](https://github.com/slspeek/odbinfo/releases/tag/v0.1.1).
 
 Install the odbinfo.oxt file in LibreOffice.
 
@@ -71,7 +71,7 @@ general:
   base_url: http://odbinfo.org/
   # If null the .odbinfo folder in the parent of the database
   # document is used
-  output_dir: null
+  output_dir: ''
 graph:
   # Multiple uses of the same object by one specific object are
   # merged when this option is set to true

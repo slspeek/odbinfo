@@ -8,7 +8,7 @@ import uno
 from pytest import fixture
 
 from tests.regression import directory_regression
-from tests.resource import DEFAULT_TESTDB, EMPTY_SPACE, EMPTYDB
+from tests.resource import DEFAULT_TESTDB, EMPTY_SPACE, EMPTYDB, LOANSDB
 
 logger = logging.getLogger(__name__)
 logging.basicConfig()
@@ -76,6 +76,17 @@ def emptydb_doc(libreoffice, shared_datadir):
 def empty_space_doc(libreoffice, shared_datadir):
     """ libreoffice document 'emptydb.odb' """
     filename = (shared_datadir / EMPTY_SPACE).as_uri()
+
+    a_desktop = desktop()
+    doc = a_desktop.loadComponentFromURL(filename, "_blank", 0, ())
+    yield doc
+    doc.close(True)
+
+
+@fixture(scope="function")
+def loansdatabase_doc(libreoffice, shared_datadir):
+    """ libreoffice document 'LoansDatabase' """
+    filename = (shared_datadir / LOANSDB).as_uri()
 
     a_desktop = desktop()
     doc = a_desktop.loadComponentFromURL(filename, "_blank", 0, ())

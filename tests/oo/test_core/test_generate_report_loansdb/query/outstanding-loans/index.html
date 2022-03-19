@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Outstanding Loans</title>
+        
+        <style>
+
+    html body {
+        font-family: '', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #2196F3;
+        --border-width:  0 ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="../../css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=">
+
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+ 
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.92.2" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+<script src="../../js/highlight.js"> </script>
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container" id="menubar">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="index.html#">Outstanding Loans</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="../../index.html">home</a></li>
+                            
+                                <li><a href="../../svg/loansdatabase.gv.svg">diagram</a></li>
+                            
+                                <li><a href="../../table/index.html">table</a></li>
+                            
+                                <li><a href="../index.html">query</a></li>
+                            
+                                <li><a href="../../form/index.html">form</a></li>
+                            
+                                <li><a href="../../report/index.html">report</a></li>
+                            
+                        </ul>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+  <div class="container">
+    <h2>Query: Outstanding Loans</h2>
+    <h4><a href="../../svg/loansdatabase.gv.svg#36">Outstanding Loans in diagram</a></h4>
+        <table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Auto increment</th>
+    <th>Nullable</th>
+    <th>Typename</th>
+    <th>Precision</th>
+    <th>Scale</th>
+    <th>Is signed</th>
+    <th>Writable</th>
+    <th>Read only</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  
+   <tr id="154">
+      <td>
+      Item
+      </td>
+      <td>
+      false
+      </td>
+      <td>
+        Nullable
+      </td>
+      <td>
+      VARCHAR
+      </td>
+      <td>
+      2147483647
+      </td>
+      <td>
+      0
+      </td>
+      <td>
+        false
+      </td>
+      <td>
+        true
+      </td>
+      <td>
+        false
+      </td>
+    </tr>
+
+   <tr id="155">
+      <td>
+      LentToPerson
+      </td>
+      <td>
+      false
+      </td>
+      <td>
+        Nullable
+      </td>
+      <td>
+      VARCHAR
+      </td>
+      <td>
+      2147483647
+      </td>
+      <td>
+      0
+      </td>
+      <td>
+        false
+      </td>
+      <td>
+        true
+      </td>
+      <td>
+        false
+      </td>
+    </tr>
+
+   <tr id="156">
+      <td>
+      Returned
+      </td>
+      <td>
+      false
+      </td>
+      <td>
+        Nullable
+      </td>
+      <td>
+      BOOLEAN
+      </td>
+      <td>
+      1
+      </td>
+      <td>
+      0
+      </td>
+      <td>
+        false
+      </td>
+      <td>
+        true
+      </td>
+      <td>
+        false
+      </td>
+    </tr>
+
+   <tr id="157">
+      <td>
+      DateExpected
+      </td>
+      <td>
+      false
+      </td>
+      <td>
+        Nullable
+      </td>
+      <td>
+      DATE
+      </td>
+      <td>
+      10
+      </td>
+      <td>
+      0
+      </td>
+      <td>
+        false
+      </td>
+      <td>
+        true
+      </td>
+      <td>
+        false
+      </td>
+    </tr>
+
+   <tr id="158">
+      <td>
+      Landline
+      </td>
+      <td>
+      false
+      </td>
+      <td>
+        Nullable
+      </td>
+      <td>
+      VARCHAR
+      </td>
+      <td>
+      2147483647
+      </td>
+      <td>
+      0
+      </td>
+      <td>
+        false
+      </td>
+      <td>
+        true
+      </td>
+      <td>
+        false
+      </td>
+    </tr>
+
+</tbody>
+</table>
+
+      
+      <div style="text-align:left; font-size: 150%;">
+  <div class="highlight">
+    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span>SELECT</span><span> </span><span id="39"><a class=link href="../../table/loans/index.html">&#34;Loans&#34;</a></span><span>.</span><span>&#34;Item&#34;</span><span> </span><span>as</span><span> </span><span>&#34;Item&#34;</span><span>,</span><span>
+</span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span><span id="55"><a class=link href="../../table/loans/index.html">&#34;Loans&#34;</a></span><span>.</span><span>&#34;LentToPerson&#34;</span><span> </span><span>as</span><span> </span><span>&#34;LentToPerson&#34;</span><span>,</span><span>
+</span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span><span id="71"><a class=link href="../../table/loans/index.html">&#34;Loans&#34;</a></span><span>.</span><span>&#34;Returned&#34;</span><span> </span><span>as</span><span> </span><span>&#34;Returned&#34;</span><span>,</span><span>
+</span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span><span id="87"><a class=link href="../../table/loans/index.html">&#34;Loans&#34;</a></span><span>.</span><span>&#34;DateExpected&#34;</span><span> </span><span>as</span><span> </span><span>&#34;DateExpected&#34;</span><span>,</span><span>
+</span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span><span> </span><span id="103"><a class=link href="../../table/people/index.html">&#34;People&#34;</a></span><span>.</span><span>&#34;Landline&#34;</span><span>
+</span><span>FROM</span><span> </span><span> </span><span> </span><span id="111"><a class=link href="../../table/loans/index.html">&#34;Loans&#34;</a></span><span>,</span><span> </span><span id="114"><a class=link href="../../table/people/index.html">&#34;People&#34;</a></span><span>
+</span><span>WHERE</span><span> </span><span> </span><span id="119"><a class=link href="../../table/loans/index.html">&#34;Loans&#34;</a></span><span>.</span><span>&#34;LentToPerson&#34;</span><span> </span><span>=</span><span> </span><span id="125"><a class=link href="../../table/people/index.html">&#34;People&#34;</a></span><span>.</span><span>&#34;Name&#34;</span><span>
+</span><span> </span><span> </span><span> </span><span>and</span><span> </span><span id="134"><a class=link href="../../table/loans/index.html">&#34;Loans&#34;</a></span><span>.</span><span>&#34;Returned&#34;</span><span> </span><span>=</span><span> </span><span><span class="literalvalue" >0</span></span><span>
+</span><span> </span><span> </span><span> </span><span>and</span><span> </span><span id="147"><a class=link href="../../table/loans/index.html">&#34;Loans&#34;</a></span><span>.</span><span>&#34;DateExpected&#34;</span><span> </span><span>&lt;</span><span> </span><span><span class="literalvalue" >current_date</span></span></code></pre></div>
+</div>
+      <div class="row">
+        <div class="col-lg-4 col-md-12 mb-4">
+        
+  
+  <h3>Uses</h3>
+    <ul class="list-group">
+    
+      <li class="list-group-item" onmouseenter="highlightIds('39,55,71,87,111,119,134,147')" onmouseleave="dehighlightIds('39,55,71,87,111,119,134,147')" ><a href='../../table/loans/index.html'>Loans (table) 8x</a>
+</li>
+    
+      <li class="list-group-item" onmouseenter="highlightIds('103,114,125')" onmouseleave="dehighlightIds('103,114,125')" ><a href='../../table/people/index.html'>People (table) 3x</a>
+</li>
+    
+    </ul>
+  
+
+        </div>
+        <div class="col-lg-4 col-md-12 mb-4">
+        
+  
+
+        </div>
+      </div>
+  </div>
+</main>
+
+        <footer>
+            <p class="copyright text-muted">Powered by <a href="https://github.com/slspeek/odbinfo">odbinfo</a></p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

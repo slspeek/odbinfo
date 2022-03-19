@@ -23,6 +23,13 @@ def test_generate_report(testdb_doc, benchmark, directory_regression):
 
 
 @pytest.mark.veryslow
+def test_generate_report_loansdb(loansdatabase_doc, benchmark,
+                                 directory_regression):
+    """ test generate-site """
+    generate_report_test(loansdatabase_doc, benchmark, directory_regression)
+
+
+@pytest.mark.veryslow
 def test_generate_report_empty(emptydb_doc, benchmark, directory_regression):
     """ test generate-site """
     generate_report_test(emptydb_doc, benchmark, directory_regression)

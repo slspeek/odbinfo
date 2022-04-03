@@ -53,7 +53,7 @@ For Module obj_id, title and to_dict have to do with the representation. basic_f
 
 ## New design setup 
 
-In principle for all components mentioned above we make three classes. For example for Module we create ModuleRaw for the result of the reading process. Then a Module for the dependency search and the representation layer can make a ModuleOut to collect the attributes it needs for the representation.
+In principle for all components mentioned above we make three classes. For example for Module we create ModuleRaw for the result of the reading process. Then a Module for the dependency search.
 ```mermaid
     classDiagram
     
@@ -68,39 +68,58 @@ In principle for all components mentioned above we make three classes. For examp
         +List[BasicFunction] basic_functions
     }
 
-    class ModuleOut {
-        +Link parent_link
-        +String title
-        +List[LinkToBasicFunction]
-    }
-
 ```
-The preprocess_module and represent_module function should have this type
+
+The preprocess_module function has this type
 ```python
 def preprocess_module(module: ModuleRaw) -> Module:
     ...
 
-def represent_module(module: Module) -> ModuleOut
-    ...
 ```
 These classes can be frozen. The class instances are not modified in their lifetime.
-
-Downside of this approach is that it potentially leads to 60 classes.
+For this the ```__post_init__``` methods have to go, have to use factories instead.
 
 ### Inventarisation 
-#### Table
-Table = TableRaw, but TableOut needed
-#### View
-ViewRaw, View and ViewOut needed
-#### Query
-See View
-#### BasicLibrary
-Gives BasicLibraryRaw and BasicLibrary and BasicLibraryOut
-#### BasicModule
-BasicModuleRaw, BasicModule, BasicFunction, BasicCall, BasicToken
-#### PythonLibrary
-PythonLibrary 
-#### PythonModule
-PythonModule
-#### Form
-FormRaw, Form
+### Unproblematic, only one class needed
+PythonLibrary, PythonModule, Table, TextDocument and Report.
+### Raw class needed
+Form, View, EmbeddedQuery and Query.
+Separate Raw classes needed (4 classes extra).
+### Hard
+BasicLibrary gives classes
+BasicModule, BasicFunction, BasicCall, BasicToken
+and needs BasicLibraryRaw and BasicModuleRaw.
+(2 classes extra)
+
+So 6 more classes needed.
+
+More work needed for the representation layer, which is based on the 'normal' classes, e.g. Table, Module etc.
+
+New metadata class:
+```mermaid
+    classDiagram
+    class Tabular {
+        +Dict~String,Table~ tables
+        +Dict~String,View~ views
+        +Dict~String,Query~ queries
+
+    }
+    class GUI {
+        +Dict~String,Form~ forms
+        +Dict~String,Report~ reports
+        +Dict~String,TextDocument~ text_documents
+    }
+    class Executable {
+        +Dict~String,BasicLibrary~ basic_libraries
+        +Dict~String,PythonLibrary~ python_libraries
+    }
+    class Metadata {
+        +Tabular tabular
+        +Executable executable
+        +GUI gui
+    }
+    Metadata *-- Tabular
+    Metadata *-- Executable
+    Metadata *-- GUI
+
+```

@@ -16,7 +16,7 @@
   <dlg:text dlg:id="graphviz_found" dlg:tab-index="8" dlg:left="248" dlg:top="36" dlg:width="37" dlg:height="18" dlg:align="center" dlg:valign="center"/>
   <dlg:text dlg:id="gohugo_found" dlg:tab-index="9" dlg:left="248" dlg:top="84" dlg:width="37" dlg:height="18" dlg:align="center" dlg:valign="center"/>
   <dlg:text dlg:id="wget_found" dlg:tab-index="10" dlg:left="248" dlg:top="131" dlg:width="37" dlg:height="18" dlg:align="center" dlg:valign="center"/>
-  <dlg:textfield dlg:id="path_msg" dlg:tab-index="11" dlg:left="84" dlg:top="162" dlg:width="206" dlg:height="40" dlg:vscroll="true" dlg:multiline="true"/>
+  <dlg:textfield dlg:id="path_msg" dlg:tab-index="11" dlg:left="84" dlg:top="162" dlg:width="206" dlg:height="40" dlg:vscroll="true" dlg:multiline="true" dlg:readonly="true"/>
   <dlg:linklabel dlg:id="graphviz_href" dlg:tab-index="12" dlg:left="84" dlg:top="12" dlg:width="28" dlg:height="14" dlg:value="website" dlg:url="https://www.graphviz.org/download/" dlg:align="center" dlg:valign="center"/>
   <dlg:linklabel dlg:id="HyperlinkControl1" dlg:tab-index="13" dlg:left="85" dlg:top="62" dlg:width="28" dlg:height="14" dlg:value="website" dlg:url="https://gohugo.io/getting-started/installing/" dlg:align="center" dlg:valign="center"/>
   <dlg:linklabel dlg:id="wget_win_href" dlg:tab-index="14" dlg:left="86" dlg:top="109" dlg:width="28" dlg:height="14" dlg:value="windows" dlg:url="https://eternallybored.org/misc/wget/" dlg:align="center" dlg:valign="center"/>

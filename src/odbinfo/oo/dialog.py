@@ -159,7 +159,12 @@ class AllDiagnosticsAction(DialogActionListener):
 
     def actionPerformed(self, _):
         for action in self.actions:
-            action.run()
+            try:
+                action.run()
+            # pylint:disable=broad-except
+            except Exception:
+                logging.exception("Unexpected exception in action: %s",
+                                  action.name)
 
 
 def create_diagnostics_dialog(ctx):

@@ -2,7 +2,7 @@
     -->{{ $objects := where $all_objects "Params.title" .title }}<!--
     -->{{ if (ne (len $objects) 0) }}<!--
       -->{{$obj := (index $objects 0) }}<!--
-      -->{{$obj.URL}}<!--
+      -->{{$obj.Permalink}}<!--
     -->{{ else }}<!--
       -->{{ errorf "Link not found for: (%s, %s)" .section .title }}<!--
     -->{{ end }}

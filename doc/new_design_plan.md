@@ -4,6 +4,8 @@ The current design uses one family of datastructures to represent the StarOffice
 1. Basic library
 2. Basic module
 3. Basic function
+4. Basic call
+5. BasicToken
 4. Python library
 5. Python module
 6. Python function
@@ -12,6 +14,7 @@ The current design uses one family of datastructures to represent the StarOffice
 9. Key
 10. Index
 11. View
+11. SQLToken
 12. QueryColumn
 13. Query
 14. Form
@@ -21,6 +24,7 @@ The current design uses one family of datastructures to represent the StarOffice
 18. Grid
 19. Report
 20. Text document
+21. Database display
 
 The classes representing the components above are complex because they mix data used for the dependency search and for representation. 
 
@@ -43,6 +47,7 @@ For example the Module class:
     }
 
     class BasicFunction{
+    + String source
       +List[BasicCall] calls
       +to_dict()
     }
@@ -52,8 +57,17 @@ For example the Module class:
 For Module obj_id, title and to_dict have to do with the representation. basic_functions stores the analysis result.
 
 ## New design setup 
+### Steps to distingish
+1. Reading 
+2. Preprocessing
+3. Dependency search
+4. Representation
+    * Graphs
+    * Hugo website
 
-In principle for all components mentioned above we make three classes. For example for Module we create ModuleRaw for the result of the reading process. Then a Module for the dependency search.
+
+### Immutability
+In principle for all components mentioned above we make two classes. For example for Module we create ModuleRaw for the result of the reading process. Then a Module for the dependency search.
 ```mermaid
     classDiagram
     
@@ -95,31 +109,25 @@ So 6 more classes needed.
 
 More work needed for the representation layer, which is based on the 'normal' classes, e.g. Table, Module etc.
 
-New metadata class:
+### Metadata replacement
 ```mermaid
     classDiagram
-    class Tabular {
-        +Dict~String,Table~ tables
-        +Dict~String,View~ views
-        +Dict~String,Query~ queries
+    class ReadResult {
+        Dict[Type[T], Dict[str, T]] dataMap
+    }
 
+    class PreprocessResult {
+        Dict[Type[T], Dict[str, T]] dataMap
     }
-    class GUI {
-        +Dict~String,Form~ forms
-        +Dict~String,Report~ reports
-        +Dict~String,TextDocument~ text_documents
-    }
-    class Executable {
-        +Dict~String,BasicLibrary~ basic_libraries
-        +Dict~String,PythonLibrary~ python_libraries
-    }
-    class Metadata {
-        +Tabular tabular
-        +Executable executable
-        +GUI gui
-    }
-    Metadata *-- Tabular
-    Metadata *-- Executable
-    Metadata *-- GUI
-
 ```
+
+### Dependency search
+Dependency search should return of list of:
+```mermaid
+    classDiagram
+    class Dependency{
+        List[Comp] source_path
+        List[Comp] target_path
+        source()  Comp
+        target()  Comp
+    }

@@ -6,7 +6,7 @@
     <h2>{{ .Title }}</h2>
     <ol class="list-group">
     {{ range .Pages }}
-      <li class="list-group-item"><h3><a href="{{.URL}}">{{.Params.name}}</a></h3>
+      <li class="list-group-item"><h3><a href="{{.Permalink}}">{{.Params.name}}</a></h3>
       </li>
     {{ end }}
     </ol>

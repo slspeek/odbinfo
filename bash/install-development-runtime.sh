@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-HUGO_VERSION=0.92.2
+HUGO_VERSION=0.99.1
 OFFICE_VERSION=7.0.4.2
 set -o errexit
 

@@ -40,7 +40,7 @@ def database_displays(doc_elem: Element) -> List[DatabaseDisplay]:
 
 def filtered_displays(db_registration_id: str,
                       doc_element: Element) -> List[DatabaseDisplay]:
-    """ returns the database-displays that match `db_registration_id` from the `doc_elem`"""
+    """ Returns the database-displays that match `db_registration_id` from the `doc_elem`"""
     return [
         display for display in database_displays(doc_element)
         if display.database == db_registration_id
@@ -49,7 +49,7 @@ def filtered_displays(db_registration_id: str,
 
 def create_text_document(doc_path: Path,
                          displays: List[DatabaseDisplay]) -> TextDocument:
-    """ returns a TextDocument from `doc_path` and `displays`"""
+    """ Creates a TextDocument from `doc_path` and `displays`"""
     return TextDocument(doc_path.stem, doc_path.name, str(doc_path), displays)
 
 

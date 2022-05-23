@@ -7,7 +7,7 @@
     <h2>Index</h2>
     <ol class="list-group">
       {{ range (.Paginator 10).Pages }}
-      <li class="list-group-item"><h4><a href="{{.URL}}">{{ .Params.Title }} ({{ .Section }})</a></h4>
+      <li class="list-group-item"><h4><a href="{{.Permalink}}">{{ .Params.Title }} ({{ .Section }})</a></h4>
       </li>
       {{ end }}
     </ol>

@@ -6,7 +6,7 @@
     <h2>{{ .Title }}</h2>
     <ol class="list-group">
     {{ range (.Paginator 10).Pages }}
-      <li class="list-group-item"><h3><a href="{{.URL}}">{{.Params.title}}</a></h3>
+      <li class="list-group-item"><h3><a href="{{.Permalink}}">{{.Params.title}}</a></h3>
       </li>
     {{ end }}
     </ol>

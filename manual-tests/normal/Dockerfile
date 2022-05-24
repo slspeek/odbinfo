@@ -14,4 +14,6 @@ COPY --chown=manual:manual ./tests/oo/data/databases/testdb.odb /home/manual
 
 USER manual
 
+RUN echo "soffice ~/testdb.odb" > /home/manual/.bash_history
+
 RUN . ~/.profile && cd /home/manual && unopkg add --suppress-license odbinfo.oxt

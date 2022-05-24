@@ -18,7 +18,7 @@ def _run_checked(command: str) -> Tuple[bool, str]:
                                              universal_newlines=True,
                                              stderr=subprocess.STDOUT).split(
                                                  '\n', maxsplit=1)[0]
-    except subprocess.CalledProcessError as error:
+    except (subprocess.CalledProcessError, OSError) as error:
         return False, str(error)
 
 

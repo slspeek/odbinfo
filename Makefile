@@ -239,8 +239,12 @@ mypy:
 	$(PUREPYTHON) -m mypy --show-error-codes --disable-error-code  import $(pythonsources)
 
 acceptence: clean oxt
-	docker build . --file manual-tests/Dockerfile -t buster-office
+	docker build . --file manual-tests/normal/Dockerfile -t buster-office
 	docker run -it --net=host -e DISPLAY -v /tmp/.X11-unix buster-office bash
+
+acceptence_missing_deps: clean oxt
+	docker build . --file manual-tests/missing_runtime_dependencies/Dockerfile -t buster-office-missing-deps
+	docker run -it --net=host -e DISPLAY -v /tmp/.X11-unix buster-office-missing-deps bash
 
 show_sources:
 	@echo $(pythonsources)|tr ' ' '\n'
